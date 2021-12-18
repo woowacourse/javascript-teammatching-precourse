@@ -5,9 +5,9 @@ import DrawTeamTabContent from './components/drawTeamTabContent.js';
 
 let frontEndCrew = [];
 let backEndCrew = [];
-export default {frontEndCrew,backEndCrew};
+export {frontEndCrew,backEndCrew};
 
-export class Board {
+class Board {
   drawMainTitle(){
     $('#app').innerHTML += HEADER;
     $('#app').innerHTML += MAIN;
