@@ -5,6 +5,10 @@ export default class Crew {
     this.lastCrew = '';
   }
 
+  removeCrew = (targetCrew) => {
+    console.log(targetCrew);
+  };
+
   setCrew = (newCrew) => {
     this.crewList.push([this.crewIndex, newCrew]);
     this.lastCrew = newCrew;

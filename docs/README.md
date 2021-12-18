@@ -13,7 +13,7 @@
       1. [x] alert 메시지 띄우기
 6. [x] 크루 이름 확인 버튼 클릭시 table에 추가
 7. [ ] 크루 삭제 버튼 클릭시 confirm 사용
-8. [ ] 팀 매칭 관리 클릭시 template render
+8. [x] 팀 매칭 관리 클릭시 template render
 9. [ ] select 후 확인 버튼 클릭시 해당하는 template render
 10. [ ] 1팀당 인원수 validate 확인
     1. [ ] 예외1) 양의 정수인지 확인한다.

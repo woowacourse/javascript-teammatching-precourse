@@ -30,14 +30,36 @@ export default class Controller {
     this.render.crewTableTemplate(targetCrew);
   };
 
+  deleteTargetCrew = (targetName, targetCrew) => {
+    const $targetElement = document.querySelector(DOM.$TR_TARGET_NAME(targetName));
+
+    $targetElement.remove();
+    // 현재 이부분이 잘 안된다.. . 다시 확인 필요
+    // if (confirm('정말 삭제하실래요?')) {
+    //   targetCrew.removeCrew(targetName);
+    // }
+  };
+
+  onClickDeleteCrewButton = (targetCrew) => {
+    const $$deleteCrewButtons = [...document.querySelectorAll(DOM.$DELETE_CREW_BUTTON)];
+
+    $$deleteCrewButtons.forEach(($deleteCrewButton) => {
+      $deleteCrewButton.addEventListener(EVENT.CLICK, () => {
+        this.deleteTargetCrew($deleteCrewButton.dataset.targetName, targetCrew);
+        return;
+      });
+    });
+  };
+
   setCrewList = ($crewNameInput, targetCrew) => {
     targetCrew.setCrew($crewNameInput.value);
     this.crewTableTemplateRender(targetCrew);
+    this.onClickDeleteCrewButton(targetCrew);
   };
 
   isValidateInput = (targetCrew) => {
     const input = new Input(this.render, targetCrew);
-    const $crewNameInput = document.querySelector('#crew-name-input');
+    const $crewNameInput = document.querySelector(DOM.$CREW_NAME_INPUT);
     !input.isBlank($crewNameInput) &&
       !input.isOverLengthSix($crewNameInput) &&
       !input.isDuplicate($crewNameInput) &&
@@ -45,39 +67,60 @@ export default class Controller {
   };
 
   onClickAddCrewButton = (targetCrew) => {
-    const $addCrewButton = document.querySelector('#add-crew-button');
-    $addCrewButton.addEventListener('click', (event) => {
+    const $addCrewButton = document.querySelector(DOM.$ADD_CREW_BUTTON);
+    $addCrewButton.addEventListener(EVENT.CLICK, (event) => {
       event.preventDefault();
       this.isValidateInput(targetCrew);
     });
   };
 
-  isCheckedRadioInput = ($radioInput) => {
-    if ($radioInput.value === RADIO_SELECT.FRONTEND) {
-      this.crewFrontendTemplateRender();
-      this.onClickAddCrewButton(this.frontCrew);
-    }
+  teamSelectTemplateRender = () => {
+    this.render.teamSelectTemplate();
+  };
 
-    if ($radioInput.value === RADIO_SELECT.BACKEND) {
-      this.crewBackendTemplateRender();
-      this.onClickAddCrewButton(this.backCrew);
+  crewTabTargetCheck = (eventTarget, $crewTab) => {
+    if (eventTarget === $crewTab) {
+      this.crewManageTemplateRender();
+
+      return;
     }
   };
 
-  onChangeRadioInput = () => {
-    const $$radioInputs = [...document.querySelectorAll(DOM.$$RADIO_INPUTS)];
-    $$radioInputs.forEach(($radioInput) => {
-      $radioInput.addEventListener('change', () => {
-        this.isCheckedRadioInput($radioInput);
-      });
-    });
+  crewRadioFrontTargetCheck = (eventTargetValue) => {
+    if (eventTargetValue === RADIO_SELECT.FRONTEND) {
+      this.crewFrontendTemplateRender();
+      this.onClickAddCrewButton(this.frontCrew);
+
+      return;
+    }
+  };
+
+  crewRadioBackTargetCheck = (eventTargetValue) => {
+    if (eventTargetValue === RADIO_SELECT.BACKEND) {
+      this.crewBackendTemplateRender();
+      this.onClickAddCrewButton(this.backCrew);
+      return;
+    }
+  };
+
+  teamTabTargetCheck = (eventTarget) => {
+    const $teamTab = document.querySelector(DOM.$TEAM_TAP);
+    if (eventTarget === $teamTab) {
+      this.teamSelectTemplateRender();
+
+      return;
+    }
   };
 
   onClickCrewTabButton = () => {
+    const $app = document.querySelector(DOM.$APP);
     const $crewTab = document.querySelector(DOM.$CREW_TAP);
-    $crewTab.addEventListener(EVENT.CLICK, () => {
-      this.crewManageTemplateRender();
-      this.onChangeRadioInput();
+
+    $app.addEventListener(EVENT.CLICK, (event) => {
+      this.crewTabTargetCheck(event.target, $crewTab);
+      this.crewRadioFrontTargetCheck(event.target.value);
+      this.crewRadioBackTargetCheck(event.target.value);
+      this.teamTabTargetCheck(event.target);
     });
   };
 
