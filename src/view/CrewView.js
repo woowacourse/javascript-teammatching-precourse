@@ -16,9 +16,17 @@ export class CrewView {
     });
   }
 
+  setOnCrewAddButtonClick(fn, course) {
+    // console.log(`$addCrewButton`, $addCrewButton);
+    $('#add-crew-button').addEventListener('click', (e) => {
+      e.preventDefault();
+      const crewName = $('#crew-name-input').value;
+      fn(crewName, course);
+    });
+  }
+
   showCourse(course, crewList) {
     this.$crewMain.innerHTML += getCrewList(course);
-    console.log(`getCrewList(course)`, getCrewList(course));
     this.$crewTable = $('#crew-table');
     this.$crewTableBody = $('#crew-table-body');
     this.showCrewList(crewList);
