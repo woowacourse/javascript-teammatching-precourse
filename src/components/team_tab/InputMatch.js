@@ -38,7 +38,7 @@ export default class InputMatch extends Component {
     e.preventDefault();
     const { setTeamNumbers, currentCrews, setMatchedTeam } = this.$props;
     const numbers = document.querySelector("#team-member-count-input").value;
-    console.log(numbers);
+
     if (numbers === "") {
       window.alert(`인원 수를 입력해주세요.`);
       return;
@@ -64,29 +64,26 @@ export default class InputMatch extends Component {
       .fill(null)
       .map((v, idx) => idx);
     const randomShuffleBox = MissionUtils.Random.shuffle(shuffleBox);
-    console.log("randomShuffleBox", randomShuffleBox, maxLength);
 
     const boxCnt = Math.floor(maxLength / numbers);
-    console.log("boxCnt", boxCnt);
 
-    const result = Array(boxCnt)
-      .fill(null)
-      .map((x) => []);
+    let result = [];
 
     while (randomShuffleBox.length) {
-      const spliceBox = randomShuffleBox.splice(0, boxCnt);
-      console.log(spliceBox);
+      const spliceBox = randomShuffleBox.splice(0, numbers);
 
-      spliceBox.forEach((num, idx) => {
-        console.log(num, idx);
+      if (spliceBox.length < numbers) {
+        spliceBox.forEach((num, idx) => {
+          if (currentCrews[num]) {
+            result[idx].push(currentCrews[num]);
+          }
+        });
 
-        if (currentCrews[num]) {
-          result[idx].push(currentCrews[num]);
-        }
-      });
+        break;
+      }
+
+      result.push(spliceBox.map((num) => currentCrews[num]));
     }
-
-    console.log("---------result", result);
 
     return result;
   }
