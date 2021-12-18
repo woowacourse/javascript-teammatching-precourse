@@ -30,11 +30,13 @@ export default class Controller {
     $frontend.addEventListener("click", (e) => {
       e.preventDefault();
       this.manageCrewView.showCrewList("frontend");
+      this.manageCrewView.reloadTable(this.crewModel.frontCrew);
       this.onClickCrewAdd("frontend");
     });
     $backend.addEventListener("click", (e) => {
       e.preventDefault();
       this.manageCrewView.showCrewList("backend");
+      this.manageCrewView.reloadTable(this.crewModel.backCrew);
       this.onClickCrewAdd("backend");
     });
   }
@@ -70,7 +72,7 @@ export default class Controller {
           this.onClickDelete(type);
           return;
         }
-        if (result) {
+        if (type === "backend" && result) {
           this.crewModel.deleteCrew(type, name);
           this.manageCrewView.reloadTable(this.crewModel.backCrew);
           this.onClickDelete(type);
