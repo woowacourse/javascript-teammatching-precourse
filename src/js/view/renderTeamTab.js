@@ -4,7 +4,7 @@ import { checkcourseCrew } from '../core/manageTeam.js';
 
 export const renderTeamMain = () => {
   if ($('main') !== null) {
-    $('main').innerHTML = '';
+    $('main').remove();
   }
   const template = () => {
     return `
@@ -43,6 +43,9 @@ export const renderSelectCourseAndMission = () => {
 };
 
 export const renderNotExistTeam = (course, mission) => {
+  if ($('#team-list') !== null) {
+    $('#team-list').innerHTML = '';
+  }
   const template = () => {
     return `<h3>${course} ${mission} 미션의 팀 매칭</h3>
         <div>
@@ -68,6 +71,10 @@ export const renderCrewList = course => {
 };
 
 export const renderExistTeam = (course, mission, key) => {
+  if ($('#add-team-form') !== null && $('#crew-list') !== null) {
+    $('#add-team-form').innerHTML = '';
+    $('#crew-list').innerHTML = '';
+  }
   const template = () => {
     return `<h3>${course} ${mission} 조회</h3>
         <p>팀이 매칭되었습니다.</p>
@@ -83,12 +90,19 @@ export const renderExistTeam = (course, mission, key) => {
 
 export const renderTeams = key => {
   const teams = store.getItem(key);
+  if (teams === null) {
+    return;
+  }
+  const newUl = document.createElement('ul');
+  newUl.id = 'team-match-result';
+  $('#team-result-div').appendChild(newUl);
   for (let i = 0; i < teams.length; i++) {
-    const newUl = document.createElement('ul');
-    newUl.id = 'team-match-result';
-    $('#team-result-div').appendChild(newUl);
-    for (let j = 0; j < teams[i].length; j++) {
-      newUl.innerHTML += `<li>${teams[i][j].name}</li>`;
-    }
+    const newLi = document.createElement('li');
+    newLi.innerHTML = teams[i]
+      .map(crew => {
+        return crew.name;
+      })
+      .join(',');
+    $('#team-match-result').appendChild(newLi);
   }
 };

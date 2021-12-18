@@ -39,7 +39,16 @@ export const makeTeamTemplate = e => {
 export const makeRandomTeam = (course, mission, people) => {
   const crewList = store.getItem(checkcourseCrew());
   const teamPeople = parseInt(people, DECIMAL);
+  let targetCourse = $('#course-select');
+  const currentCourse = targetCourse.options[targetCourse.selectedIndex].text;
+  let targetMission = $('#mission-select');
+  const currentMission =
+    targetMission.options[targetMission.selectedIndex].text;
+
   let crewIndexList = [];
+  if (crewList === null) {
+    return;
+  }
   for (let i = 0; i < crewList.length; i++) {
     crewIndexList.push(i);
   }
@@ -61,6 +70,7 @@ export const makeRandomTeam = (course, mission, people) => {
     index += 1;
   }
   store.setItem(localStorageKey, totalTeam);
+  renderExistTeam(currentCourse, currentMission, localStorageKey);
 };
 
 export const checkcourseTeam = () => {

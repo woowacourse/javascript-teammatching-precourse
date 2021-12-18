@@ -3,7 +3,7 @@ import { store } from '../store/store.js';
 
 export const renderCrewMain = () => {
   if ($('main') !== null) {
-    $('main').innerHTML = '';
+    $('main').remove();
   }
   const template = () => {
     return `
@@ -49,7 +49,7 @@ export const renderAddCrewForm = course => {
 export const renderCrewTable = course => {
   const template = () => {
     return `<section><h3>${course} 크루 목록</h3>
-      <table border="1">
+      <table id='crew-table' border="1">
         <thead>
           <tr>
             <th></th>
@@ -66,6 +66,9 @@ export const renderCrewTable = course => {
 export const renderCrewTableItems = course => {
   $('tbody').innerHTML = '';
   const crewList = store.getItem(course);
+  if (crewList === null) {
+    return;
+  }
   const template = index => {
     return `
       <tr>

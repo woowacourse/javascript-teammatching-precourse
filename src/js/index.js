@@ -20,6 +20,7 @@ import {
   checkMission,
 } from './core/manageTeam.js';
 import { checkExistTeam } from './core/manageTeam.js';
+import { store } from './store/store.js';
 
 function App() {
   //$('head').innerHTML = `<link rel="stylesheet" href="src/css/style.css"/>`;
@@ -31,7 +32,12 @@ function App() {
         confirmDeleteCrew(e.target);
         break;
       case 'rematch-team-button':
-        makeRandomTeam(checkcourseTeam(), checkMission(), numberOfPeople);
+        const teams = store.getItem(`${checkcourseTeam()}-${checkMission()}`);
+        makeRandomTeam(
+          checkcourseTeam(),
+          checkMission(),
+          teams[teams.length - 1].length,
+        );
         renderTeams();
         break;
     }
