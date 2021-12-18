@@ -1,4 +1,4 @@
-import { CREWTAP_ID, TAP_BUTTON_ID } from '../constants.js';
+import { CREW_TAP_ID, TAP_BUTTON_ID } from '../constants.js';
 import TapView from './TapView.js';
 
 export default class CrewTapView extends TapView {
@@ -25,9 +25,9 @@ export default class CrewTapView extends TapView {
     <section>
       <h3>크루를 관리할 코스를 선택해주세요</h3>
       <div>
-        <input type="radio" name="course" value="frontend" id=${CREWTAP_ID.radioFront}/>
+        <input type="radio" name="course" value="frontend" id=${CREW_TAP_ID.radioFront}/>
         <label for="frontend">프론트엔드</label>
-        <input type="radio" name="course" value="backend" id=${CREWTAP_ID.radioBack}/>
+        <input type="radio" name="course" value="backend" id=${CREW_TAP_ID.radioBack}/>
         <label for="backend">백엔드</label>
       </div>
     </section>
@@ -45,8 +45,8 @@ export default class CrewTapView extends TapView {
     <h3></h3>
     <form>
       <label>크루 이름</label>
-      <input type="text" id=${CREWTAP_ID.crewName}/>
-      <button id=${CREWTAP_ID.crewButton}>확인</button>
+      <input type="text" id=${CREW_TAP_ID.crewName}/>
+      <button id=${CREW_TAP_ID.crewButton}>확인</button>
     </form>
     `;
   }
@@ -55,7 +55,7 @@ export default class CrewTapView extends TapView {
     // radioValue에 따라서 프론트 or back 크루 목록 출력.
     document.getElementById('crew-list-view').innerHTML = `
     <h3>프론트엔드 크루 목록</h3>
-    <table border="1" id=${CREWTAP_ID.crewTable}>
+    <table border="1" id=${CREW_TAP_ID.crewTable}>
       <thead>
         <tr>
           <th></th>

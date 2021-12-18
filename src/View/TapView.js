@@ -1,4 +1,4 @@
-import { TAP_BUTTON_ID } from '../constants';
+import { TAP_BUTTON_ID } from '../constants.js';
 
 export default class TapView {
   constructor() {

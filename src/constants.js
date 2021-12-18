@@ -3,7 +3,7 @@ export const TAP_BUTTON_ID = {
   team: 'team-tab',
 };
 
-export const CREWTAP_ID = {
+export const CREW_TAP_ID = {
   radioFront: 'frontend-course',
   radioBack: 'backend-course',
   crewName: 'crew-name-input',
@@ -11,4 +11,12 @@ export const CREWTAP_ID = {
   crewTable: 'crew-table',
 };
 
-export const TeamTap_id = {};
+export const TEAM_TAP_ID = {
+  selectCourse: 'course-select',
+  selectMission: 'mission-select',
+  showTeamButton: 'show-team-matcher-button',
+  memberCount: 'team-member-count-input',
+  teamMatchButton: 'match-team-button',
+  teamResult: 'team-match-result',
+  rematchButton: 'rematch-team-button',
+};
