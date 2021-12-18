@@ -1,3 +1,4 @@
+import { isValidCrewName } from '../utils/validations.js';
 import CrewTabView from '../views/CrewTabView.js';
 
 export default class CrewTab {
@@ -8,12 +9,11 @@ export default class CrewTab {
 
   initialize() {
     this.view.initialRender();
-    this.courseRadio = document.querySelectorAll('[type = radio]');
     this.setRadioEvent();
   }
 
   setRadioEvent() {
-    this.courseRadio.forEach((radio) => {
+    document.querySelectorAll('[type = radio]').forEach((radio) => {
       radio.addEventListener('click', this.onSelectCourseRadio.bind(this));
     });
   }
@@ -31,7 +31,7 @@ export default class CrewTab {
 
   onSelectCourseRadio(e) {
     this.course = e.target.value;
-    this.view.updateOnSelectRadio(this.course, this.storage.crew);
+    this.view.updateOnSelectRadio(this.course, this.storage.crew[this.course]);
     this.crewNameInput = document.querySelector('#crew-name-input');
     this.setManageButtonEvent();
   }
@@ -39,14 +39,18 @@ export default class CrewTab {
   onClickAddCrew(e) {
     e.preventDefault();
     const crewName = this.crewNameInput.value;
+    if (!isValidCrewName(crewName, this.storage.crew[this.course])) return;
     this.storage.addCrew(this.course, crewName);
-    this.view.updateOnManageCrew(this.course, this.storage.crew);
+    this.view.updateOnManageCrew(this.storage.crew[this.course]);
+    this.setCrewDeleteButtonEvent();
   }
 
   onClickDeleteCrew(e) {
     const { crewName } = e.target.dataset;
-    this.storage.deleteCrew(this.course, crewName);
-    this.view.updateOnManageCrew(this.course, this.storage.crew);
-    this.setCrewDeleteButtonEvent();
+    if (window.confirm('정말 삭제하시겠습니까?')) {
+      this.storage.deleteCrew(this.course, crewName);
+      this.view.updateOnManageCrew(this.storage.crew[this.course]);
+      this.setCrewDeleteButtonEvent();
+    }
   }
 }

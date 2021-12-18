@@ -32,10 +32,10 @@ export default class CrewTabView {
   updateOnSelectRadio(course, crew) {
     const courseName = NAME[course];
     this.renderCrewAddSection(courseName);
-    this.renderCrewListSection(courseName, crew[course]);
+    this.renderCrewListSection(courseName, crew);
   }
 
-  updateOnManageCrew(course, crew) {
-    this.renderCrewTableItem(crew[course]);
+  updateOnManageCrew(crew) {
+    this.renderCrewTableItem(crew);
   }
 }

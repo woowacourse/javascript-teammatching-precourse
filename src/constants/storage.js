@@ -1,5 +1,8 @@
 const INITIAL_DATA = {
-  CREW: {},
+  CREW: {
+    frontend: [],
+    backend: [],
+  },
 };
 
 const KEY = {
