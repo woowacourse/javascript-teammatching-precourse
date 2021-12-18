@@ -14,6 +14,18 @@ function App() {
   renderMain();
   const handleClick = e => {
     changeTab(e);
+    selectCourse(e);
+  };
+
+  const handleSumbit = e => {
+    switch (e.target.id) {
+      case 'add-crew-form':
+        makeCrewTemplate(e);
+        break;
+    }
+  };
+
+  const selectCourse = e => {
     switch (e.target.id) {
       case 'frontend-course':
         renderAddCrewForm(FRONT_END);
@@ -24,14 +36,6 @@ function App() {
         renderAddCrewForm(BACK_END);
         renderCrewTable(BACK_END);
         renderCrewTableItems('backCrew');
-        break;
-    }
-  };
-
-  const handleSumbit = e => {
-    switch (e.target.id) {
-      case 'add-crew-form':
-        makeCrewTemplate(e);
         break;
     }
   };

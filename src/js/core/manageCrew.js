@@ -2,6 +2,7 @@ import { $ } from '../util/dom.js';
 import { check } from '../util/checkValue.js';
 import { ALERT } from '../constants/constants.js';
 import { store } from '../store/store.js';
+import { renderCrewTableItems } from '../view/render.js';
 
 export const makeCrewTemplate = e => {
   e.preventDefault();
@@ -17,6 +18,7 @@ export const makeCrewTemplate = e => {
     return;
   }
   addCrewLocalStorage(crewListLength + 1, crewName, course);
+  renderCrewTableItems(course);
 };
 
 export const getCrewListLength = course => {
