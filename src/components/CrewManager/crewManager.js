@@ -1,3 +1,5 @@
+import CrewNameForm from './crewNameForm.js';
+
 export default function CrewManager() {
   this.container = document.querySelector('#main-container');
 
@@ -22,17 +24,6 @@ export default function CrewManager() {
         <input type="radio" name="course" value="backend" id="backend-course"/>
         <label for="backend">백엔드</label>
       </div>
-    `;
-  };
-
-  this.crewNameFormTemplate = (course) => {
-    return `
-      <h3>${course} 크루 관리</h3>
-      <form>
-        <label>크루 이름</label>
-        <input type="text" id="crew-name-input"/>
-        <button id="add-crew-button">확인</button>
-      </form>
     `;
   };
 
@@ -72,18 +63,18 @@ export default function CrewManager() {
   };
 
   this.onClickCrewRadioInput = (e) => {
-    const crewNameFormSection = document.querySelector(
-      '#crew-name-form-section'
+    const crewNameForm = new CrewNameForm(
+      document.querySelector('#crew-name-form-section')
     );
     const crewTableSection = document.querySelector('#crew-table-section');
     const course = e.target.value;
 
     if (e.target.id === 'frontend-course') {
-      crewNameFormSection.innerHTML = this.crewNameFormTemplate(course);
+      crewNameForm.render(course);
       crewTableSection.innerHTML = this.crewTableTemplate(course);
     }
     if (e.target.id === 'backend-course') {
-      crewNameFormSection.innerHTML = this.crewNameFormTemplate(course);
+      crewNameForm.render(course);
       crewTableSection.innerHTML = this.crewTableTemplate(course);
     }
   };
@@ -92,6 +83,7 @@ export default function CrewManager() {
     const courseRadioContainer = document.querySelector(
       '#course-radio-container'
     );
+
     courseRadioContainer.addEventListener('click', this.onClickCrewRadioInput);
   };
 

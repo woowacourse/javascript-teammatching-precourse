@@ -1,4 +1,4 @@
-import CrewManager from './crewManager.js';
+import CrewManager from './CrewManager/crewManager.js';
 import TeamMatchingManager from './teamMatchingManager.js';
 
 export default function Header() {
