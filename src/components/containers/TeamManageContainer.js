@@ -22,6 +22,11 @@ export default class TeamManageContainer extends Component {
 
   mounted() {
     this.$target.querySelector('#select-course-mission').innerHTML = this.printSelectSection();
+    const { teams, selectedCourse, selectedMission } = this.$state;
+    if (selectedCourse !== '' && selectedMission !== '') {
+      if (!teams[selectedCourse] || (teams[selectedCourse] && !teams[selectedCourse][selectedMission]))
+        this.$target.querySelector('#team-not-matched').innerHTML = this.printNotMatchedTeamSection();
+    }
   }
 
   setEvent() {
@@ -40,6 +45,32 @@ export default class TeamManageContainer extends Component {
         </select>
         <button id="show-team-matcher-button">확인</button>
       </form>
+    `;
+  }
+
+  printNotMatchedTeamSection() {
+    return `
+    <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
+    <div>
+      <div>
+        <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
+        <form>
+          <label>1팀당 인원 수</label>
+          <input type="number" id="team-member-count-input"/>
+          <button id="match-team-button">팀 매칭</button>
+        </form>
+      </div>
+      ${this.printCrewList()}
+    </div>
+    `;
+  }
+
+  printCrewList() {
+    return `
+    <h4>크루 목록</h4>
+    <ul>
+      ${this.$state.crews[this.$state.selectedCourse].map((crew) => `<li>${crew}</li>`).join('')}
+    </ul>
     `;
   }
 
