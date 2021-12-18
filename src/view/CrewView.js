@@ -1,3 +1,4 @@
+import { DELETE_MESSAGE } from '../utils/constant.js';
 import { $, siblings } from '../utils/DOM.js';
 import { CREW_HEAD, CREW_TEMPLATE, getCrewList, getCrewRow } from '../utils/template.js';
 
@@ -30,7 +31,7 @@ export class CrewView {
       const $deleteButton = e.target.closest('#delete-crew-button');
       const $deleteButtonSiblings = siblings($deleteButton.parentNode);
       const crewName = $deleteButtonSiblings[1].innerText;
-      if (window.confirm('정말 삭제하시겠습니까?')) {
+      if (window.confirm(DELETE_MESSAGE)) {
         fn(crewName, course);
       }
     });

@@ -18,8 +18,10 @@ export class TeamView {
     });
   }
 
-  showCrewList(selectedCourse, selectedMission) {
+  showCrewList(selectedCourse, selectedMission, crewList) {
     this.$teamMemberSection.innerHTML = getMatchingQuestion(selectedCourse, selectedMission);
+    const $crewList = $('#crew-list');
+    crewList.map((crew) => ($crewList.innerHTML += `<li>${crew}</li>`));
   }
 
   addElements() {

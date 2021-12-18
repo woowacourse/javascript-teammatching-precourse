@@ -111,9 +111,7 @@ export function getMatchingQuestion(selectedCourse, selectedMission) {
         </form>
       </div>
       <h4>크루 목록</h4>
-      <ul>
-        <li>준</li>
-        <li>포코</li>
+      <ul id="crew-list">
       </ul>
     </div>
   `;
