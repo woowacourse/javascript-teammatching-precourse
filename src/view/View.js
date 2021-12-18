@@ -95,7 +95,7 @@ export default class View {
           <option value="performance">성능개선</option>
           <option value="deploy">배포</option>
         </select>
-        <button id="show-team-matcher-button">확인</button>
+        <button data-action="showTeamMatcher" id="show-team-matcher-button">확인</button>
       </form>
     </section>
 

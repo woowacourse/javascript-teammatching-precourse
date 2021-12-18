@@ -58,6 +58,18 @@ export default class ClickEventManager {
     DOM.showCrewList(DOM.getCourseType());
   }
 
+  showTeamMatcher() {
+    const [courseType, missionType] = [$('#course-select').value, $('#mission-select').value];
+
+    const hasCrew = DB.load(`${courseType}Mission`)[missionType].length;
+
+    if (hasCrew) {
+      console.log('있지롱');
+    } else {
+      console.log('없지롱');
+    }
+  }
+
   onClick(event) {
     event.preventDefault();
 

@@ -15,6 +15,26 @@ export default class Controller {
   checkLocalStorage() {
     DB.init('frontendCrew');
     DB.init('backendCrew');
+    DB.init('frontendMission', {
+      baseball: [],
+      racingcar: [],
+      lotto: [],
+      'shopping-cart': [],
+      payments: [],
+      subway: [],
+      performance: [],
+      deploy: [],
+    });
+    DB.init('backendMission', {
+      baseball: [],
+      racingcar: [],
+      lotto: [],
+      'shopping-cart': [],
+      payments: [],
+      subway: [],
+      performance: [],
+      deploy: [],
+    });
   }
 
   handleMenuClick(event) {
