@@ -20,21 +20,20 @@ export default class Controller {
 
   selectFront() {
     this.$frontRadio.addEventListener('click', e => {
-      console.log('프론트');
       this.course = 'front';
       this.$renderDiv.style.visibility = 'visible';
       this.view.showList(this.model.FrontPeopleList);
-      console.log(this.course);
+      this.view.showHead(this.course);
     });
   }
 
   selectBack() {
     this.$backRadio.addEventListener('click', e => {
-      console.log('백');
       this.course = 'back';
       this.$renderDiv.style.visibility = 'visible';
       this.view.showList(this.model.BackPeopleList);
       console.log(this.course);
+      this.view.showHead(this.course);
     });
   }
 
@@ -82,5 +81,15 @@ export default class Controller {
         }
       });
     });
+  }
+
+  getPeopleList() {
+    const frontList = this.model.FrontPeopleList;
+    const backList = this.model.BackPeopleList;
+
+    return {
+      front: frontList,
+      back: backList,
+    };
   }
 }
