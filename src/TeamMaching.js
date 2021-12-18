@@ -9,8 +9,12 @@ export default class VendingMachine {
   setMenuClickEvent() {
     const crewTab = document.querySelector("#crew-tab");
     const teamTab = document.querySelector("#team-tab");
+
     crewTab.addEventListener("click", () => {
       this.tab.manageCrewInitialize();
+    });
+    teamTab.addEventListener("click", () => {
+      this.tab.manageTeamInitialize();
     });
   }
 
