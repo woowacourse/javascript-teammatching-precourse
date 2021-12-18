@@ -41,14 +41,11 @@ export default class Course extends Component {
 
   deleteCrew(e) {
     e.preventDefault();
-    const seq = e.target.closest("[data-seq]").dataset.seq - 1;
-    const newCrewList = [...this.crewList];
-    console.log(seq);
-    newCrewList.splice(
-      newCrewList.findIndex((v) => v.seq === seq),
-      1
-    );
-    setState(`${this.currentCourse}`, newCrewList);
+    this.index = Number(e.target.closest("[data-seq]").dataset.seq);
+    const newCrewList = this.crewList.filter((v) => {
+      return Number(v.index) !== this.index;
+    });
+    setState(this.currentCourse, newCrewList);
   }
 
   template() {
