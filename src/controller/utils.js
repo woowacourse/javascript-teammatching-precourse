@@ -5,7 +5,9 @@ export const $ = id => document.getElementById(id);
 export const validation = {
   isCrewNameValid(selectedCourseCrewList, crewName) {
     const isValid =
-      !this.isDuplicatedName(selectedCourseCrewList, crewName) && this.crewNameInLength(crewName);
+      !this.isDuplicatedName(selectedCourseCrewList, crewName) &&
+      this.isInLength(crewName) &&
+      !this.isBlankExist(crewName);
 
     return isValid;
   },
@@ -17,12 +19,20 @@ export const validation = {
 
     return isDuplicated;
   },
-  crewNameInLength(crewName) {
+  isInLength(crewName) {
     const inLength = crewName.length <= 5;
     if (!inLength) {
       alert(ALERT_MESSAGE.CREW_NAME_NOT_INLENGTH);
     }
 
     return inLength;
+  },
+  isBlankExist(crewName) {
+    const isExist = crewName === '' || crewName.includes(' ');
+    if (isExist) {
+      alert(ALERT_MESSAGE.BLANK_EXIST);
+    }
+
+    return isExist;
   },
 };
