@@ -16,7 +16,7 @@ const onClickAddCrewButton = () => {
     e.preventDefault();
     const crewName = document.getElementById("crew-name-input");
 
-    if (checkCrewName(crewName)) {
+    if (checkCrewName(crewName.value)) {
       addCrew(getCourseValue(), crewName.value);
       if (getCourseValue() === "frontend") {
         showFrontEndCrews();
