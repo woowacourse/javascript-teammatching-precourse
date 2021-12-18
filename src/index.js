@@ -1,3 +1,3 @@
-import { initialize } from "./util.js";
+import { initialize } from "./util/util.js";
 
 initialize();
