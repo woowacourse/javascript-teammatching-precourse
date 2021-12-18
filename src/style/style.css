@@ -1,0 +1,30 @@
+button {
+  cursor: pointer;
+}
+
+.station-manager-tab {
+  display: none;
+}
+
+.line-manager-tab {
+  display: none;
+}
+
+.section-manager-tab {
+  display: none;
+}
+
+.map-print-manager-tab {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+table,
+td,
+th {
+  border: 1px solid black;
+  text-align: center;
+}

@@ -72,8 +72,8 @@ const dataObj = {
 - [ ] localStorage를 이용하여, 새로고침하더라도 가장 최근에 작업한 정보들을 불러올 수 있도록 한다.
 
 - [ ] DOM 선택자
-  - [ ] `크루 관리` 버튼의 메뉴 id는 `crew-tab`이다.
-  - [ ] `팀 관리` 버튼의 메뉴 id는 `team-tab`이다.
+  - [x] `크루 관리` 버튼의 메뉴 id는 `crew-tab`이다.
+  - [x] `팀 관리` 버튼의 메뉴 id는 `team-tab`이다.
 
 ### 2) 크루 관리 기능 탭
 
@@ -90,19 +90,19 @@ const dataObj = {
 
   - [ ] [] **코스 선택 radio input**
 
-    - [ ] 프론트엔드 코스 선택 radio input의 id는 `frontend-course`이다.
-    - [ ] 백엔드 코스 선택 radio input의 id는 `backend-course`이다.
+    - [x] 프론트엔드 코스 선택 radio input의 id는 `frontend-course`이다.
+    - [x] 백엔드 코스 선택 radio input의 id는 `backend-course`이다.
 
   - [ ] **크루 추가/삭제 button**
 
-    - [ ] 크루 이름을 입력하기 위한 input의 id는`crew-name-input`이다.
-    - [ ] 크루 추가를 위한 확인 버튼의 id는 `add-crew-buttton`이다.
+    - [x] 크루 이름을 입력하기 위한 input의 id는`crew-name-input`이다.
+    - [x] 크루 추가를 위한 확인 버튼의 id는 `add-crew-buttton`이다.
       - 제시된 id가 오타인 것으로 판단되어 button으로 수정
-    - [ ] 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-buttton`이다.
+    - [x] 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-buttton`이다.
       - 제시된 id가 오타인 것으로 판단되어 button으로 수정
 
   - [ ] **크루 table**
-    - [ ] 크루 목록을 보여주기 위한 table의 id는 `crew-table`이다.
+    - [x] 크루 목록을 보여주기 위한 table의 id는 `crew-table`이다.
 
 ### 3) 팀 매칭 관리 기능
 
@@ -119,16 +119,16 @@ const dataObj = {
 
 - [ ] DOM 선택자
 
-  - [ ] 코스를 선택하는 select의 id는 `course-select`이다.
-  - [ ] 미션을 선택하는 select의 id는 `mission-select`이다.
-  - [ ] 미션에 해당하는 팀을 관리하기 위한 확인 버튼의 id는 `show-team-matcher-button`이다.
-  - [ ] 팀 매칭을 위한 인원 입력 요소의 id는 `team-member-count-input`이다.
-  - [ ] 팀 매칭을 위한 버튼의 id는 `match-team-button`이다.
-  - [ ] 팀 매칭 결과를 보여주기 위한 ul의 id는 `team-match-result`이다.
-  - [ ] 팀 재매칭을 위한 버튼의 id는 `rematch-team-button`이다.
+  - [x] 코스를 선택하는 select의 id는 `course-select`이다.
+  - [x] 미션을 선택하는 select의 id는 `mission-select`이다.
+  - [x] 미션에 해당하는 팀을 관리하기 위한 확인 버튼의 id는 `show-team-matcher-button`이다.
+  - [x] 팀 매칭을 위한 인원 입력 요소의 id는 `team-member-count-input`이다.
+  - [x] 팀 매칭을 위한 버튼의 id는 `match-team-button`이다.
+  - [x] 팀 매칭 결과를 보여주기 위한 ul의 id는 `team-match-result`이다.
+  - [x] 팀 재매칭을 위한 버튼의 id는 `rematch-team-button`이다.
 
 - [ ] 데이터
-  - [ ] 팀 매칭을 위한 select option에 아래 데이터를 반드시 예시와 같이 괄호안에 있는 값을 option의 value로 추가해야 한다.
+  - [x] 팀 매칭을 위한 select option에 아래 데이터를 반드시 예시와 같이 괄호안에 있는 값을 option의 value로 추가해야 한다.
 
 ```
 # 코스

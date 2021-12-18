@@ -1,3 +1,5 @@
+import { TEMPLATES } from '../view/templates.js';
+
 export default class TeamController {
   constructor(model, view) {
     this.model = model;
@@ -7,5 +9,8 @@ export default class TeamController {
   app() {
     console.log('Hello world');
     this.model.test();
+    this.view.renderInTarget(this.view.$.app(), TEMPLATES.topMenuContainerHTML);
+    this.view.renderInTarget(this.view.$.app(), TEMPLATES.crewManagerTabHTML);
+    this.view.renderInTarget(this.view.$.app(), TEMPLATES.teamMatchingTabHTML);
   }
 }
