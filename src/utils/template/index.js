@@ -1,7 +1,7 @@
 import { CLASS, ID } from '../constants.js';
 
 export const TAB_MENUS_TEMPLATE = `
-<header>
+  <header>
     <h1>우테코 크루와 팀 매칭 관리 보드</h1>
     <nav>
       <ul>
@@ -63,56 +63,56 @@ export const CREW_MANAGE_TEMPLATE = (crewList, course) => {
 
 export const getCrewListTemplate = (crewList) => {
   return `
-  ${crewList
-    .map(
-      (crew, index) => `
-    <tr>
-      <td>${index + 1}</td>
-      <td>${crew}</td>
-      <td>
-        <button id=${index} class=${CLASS.DELETE_CREW_BUTTON}>삭제</button>
-      </td>
-    </tr>
-  `
-    )
-    .join('')}`;
+    ${crewList
+      .map(
+        (crew, index) => `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${crew}</td>
+        <td>
+          <button id=${index} class=${CLASS.DELETE_CREW_BUTTON}>삭제</button>
+        </td>
+      </tr>
+    `
+      )
+      .join('')}`;
 };
 
 export const COURSE_MISSION_SELECT_TEMPLATE = `
-<section>
-<h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
-<form id=${ID.TEAM_MATCHER_FORM}>
-  <select id=${ID.COURSE_SELECT}>
-    <option>frontend</option>
-    <option>backend</option>
-  </select>
-  <select id=${ID.MISSION_SELECT}>
-    <option>baseball</option>
-    <option>racingcar</option>
-    <option>lotto</option>
-    <option>shopping-cart</option>
-    <option>payments</option>
-    <option>submay</option>
-    <option>performance</option>
-    <option>deploy</option>
-  </select>
-  <button id=${ID.SHOW_TEAM_MATCHER_BUTTON}>확인</button>
-</form>
-</section>
-<section id=${ID.TEAM_MANAGE_SECTION}>
-</section> 
+  <section>
+    <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
+    <form id=${ID.TEAM_MATCHER_FORM}>
+      <select id=${ID.COURSE_SELECT}>
+        <option>frontend</option>
+        <option>backend</option>
+      </select>
+      <select id=${ID.MISSION_SELECT}>
+        <option>baseball</option>
+        <option>racingcar</option>
+        <option>lotto</option>
+        <option>shopping-cart</option>
+        <option>payments</option>
+        <option>submay</option>
+        <option>performance</option>
+        <option>deploy</option>
+      </select>
+      <button id=${ID.SHOW_TEAM_MATCHER_BUTTON}>확인</button>
+    </form>
+  </section>
+  <section id=${ID.TEAM_MANAGE_SECTION}>
+  </section> 
 
 `;
 
 const getCrewTagList = (crewList) => {
   return `
-  ${crewList
-    .map(
-      (crew) => `
-      <li>${crew}</li>
-  `
-    )
-    .join('')}`;
+    ${crewList
+      .map(
+        (crew) => `
+        <li>${crew}</li>
+    `
+      )
+      .join('')}`;
 };
 
 export const getTeamMatchingTemplate = (crewList, course) => {
@@ -140,20 +140,20 @@ export const getTeamMatchingTemplate = (crewList, course) => {
 
 export const getTeamMatchingResultTemplate = (course, result) => {
   return `
-<section>
-  <h3>${course} 숫자야구게임 조회</h3>
-  <p>팀이 매칭되었습니다.</p>
-  <ul id=${ID.TEAM_MATCH_RESULT}>
-    ${result.map(
-      (item) => `
-    <li>${item.join(',')}</li>
-    `
-    )}
-  </ul>
-  <p>
-    팀을 재매칭 하시겠습니까?
-    <button id=${ID.REMATCH_TEAM_BUTTON}>재매칭</button>
-  </p>
-</section>
+    <section>
+      <h3>${course} 숫자야구게임 조회</h3>
+      <p>팀이 매칭되었습니다.</p>
+      <ul id=${ID.TEAM_MATCH_RESULT}>
+        ${result.map(
+          (item) => `
+        <li>${item.join(',')}</li>
+        `
+        )}
+      </ul>
+      <p>
+        팀을 재매칭 하시겠습니까?
+        <button id=${ID.REMATCH_TEAM_BUTTON}>재매칭</button>
+      </p>
+    </section>
 `;
 };
