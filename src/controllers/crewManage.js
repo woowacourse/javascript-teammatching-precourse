@@ -1,9 +1,12 @@
-import { renderCrewManage } from '../views/crewManageView.js';
+import { $ } from '../utils/dom.js';
+import { renderCrewManage, renderFrontEnd } from '../views/crewManageView.js';
 
-export default function HandleCrewManageTap() {
-  this.init = () => {
-    renderCrewManage();
-  };
+const handleFrontEndCoures = () => {
+  renderFrontEnd();
+};
 
-  this.init();
-}
+export const handleCrewManageTap = () => {
+  renderCrewManage();
+
+  $('#frontend-course').addEventListener('click', handleFrontEndCoures);
+};

@@ -1,8 +1,6 @@
-import HandleCrewManageTap from './crewManage.js';
+import { handleCrewManageTap } from './crewManage.js';
 import { $ } from '../utils/dom.js';
 
 export const teamMatchingMenu = () => {
-  $('#crew-tab').addEventListener('click', () => {
-    new HandleCrewManageTap();
-  });
+  $('#crew-tab').addEventListener('click', handleCrewManageTap);
 };
