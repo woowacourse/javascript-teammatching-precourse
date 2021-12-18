@@ -2,6 +2,7 @@ import Component from '../../core/Component.js';
 import { newElement } from '../../utils/dom.js';
 import CourseSection from './CourseSection.js';
 import CrewAddForm from './CrewAddForm.js';
+import CrewList from './CrewList.js';
 
 export default class CrewManagement extends Component {
   initState() {
@@ -21,6 +22,9 @@ export default class CrewManagement extends Component {
         onChangeCourse: course => this.onChangeCourse(course),
       }),
       new CrewAddForm(newElement('<section id="crew-add-form"/>'), {
+        selectedCourse,
+      }),
+      new CrewList(newElement('<section id="crew-list"/>'), {
         selectedCourse,
       }),
     ];

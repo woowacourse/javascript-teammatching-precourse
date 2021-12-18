@@ -26,9 +26,10 @@ class CrewStore extends Store {
     this.setState({ [course]: [...crewList, name] });
   }
 
-  //   removeCrew(course, name) {
-  //     // const crews = [...this.state.crews].filter(name);
-  //   }
+  removeCrew(course, name) {
+    console.log(course, name);
+    // const crews = [...this.state.crews].filter(name);
+  }
 }
 
 export default new CrewStore(initialState, CrewStorage);
