@@ -46,8 +46,8 @@ export const crewManageTemplate = `
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
-            <td>준</td>
+            <td></td>
+            <td></td>
             <td>
               <button id="delete-crew-buttton">삭제</button>
             </td>
