@@ -22,13 +22,13 @@
 
     [x] 백엔드 코스 radio input의 id 는 backend-course이다
 
-[ ] 크루 코스가 선택될 경우 쿠루 이름을 입력할 element가 render 된다
+[x] 크루 코스가 선택될 경우 쿠루 이름을 입력할 element가 render 된다
 
-[ ] 크루 이름을 입력하는 input의 id 는 crew-name-input 이다
+[x] 크루 이름을 입력하는 input의 id 는 crew-name-input 이다
 
 [ ] 유저가 크루 이름을 입력한다
 
-[ ] 크루 추가를 위한 확인 버튼의 id는 add-crew-button 이다
+[x] 크루 추가를 위한 확인 버튼의 id는 add-crew-button 이다
 
 [ ] add-crew-button을 클릭하면 유저가 입력한 값의 유효성을 평가한다
 
@@ -40,9 +40,9 @@
 
     [ ] 크루 이름은 최대 5글자까지만 허용된다
 
-[ ] 크루 모록을 보여주기 위한 table의 id는 crew-table 이다
+[x] 크루 목록을 보여주기 위한 table의 id는 crew-table 이다
 
-[ ] 크루 삭제버튼의 class는 delete-crew-button 이다
+[x] 크루 삭제버튼의 class는 delete-crew-button 이다
 
 [ ] 코스별로 크루 관리 삭제버튼을 confirm을 통해서 유저에게 삭제 여부를 확인한다
 
@@ -129,3 +129,21 @@ ex) <option value="baseball">숫자야구게임</option>
 ```
 
 [ ] 미션 이름들을 상수화 해서 관리하기
+
+## localStorage관련 설정
+
+### 프론트엔드 크루 localStorage
+
+    이름: frontend
+    value 저장 방식 : fronted = [
+        {name: '이름',
+        index : 1, }
+    ]
+
+### 벡엔드 크루 localStorage
+
+    이름 : backend
+    value 저장 방식: backend = [
+        {name: '이름',
+        index: 1,}
+    ]
