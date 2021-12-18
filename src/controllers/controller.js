@@ -99,5 +99,25 @@ export default class Controller {
       this.matchingMission,
       this.model.getCrew(this.matchingType)
     );
+    document
+      .getElementById(ID.TEAM_MATCH_BUTTON)
+      .addEventListener('click', this.startTeamMatching);
+  };
+
+  startTeamMatching = (e) => {
+    e.preventDefault();
+    const numberOfMember = document.getElementById(
+      ID.TEAM_MEMEBER_COUNT_INPUT
+    ).value;
+    this.model.teamMatch(
+      this.matchingType,
+      this.matchingMission,
+      numberOfMember
+    );
+    this.view.showMatching(
+      this.matchingType,
+      this.matchingMission,
+      this.model.getTeams(this.matchingType, this.matchingMission)
+    );
   };
 }

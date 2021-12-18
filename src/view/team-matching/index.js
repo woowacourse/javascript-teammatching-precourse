@@ -13,10 +13,6 @@ export default class TeamManage {
     this.$main = createElement('main');
     this.$emptyContainer = createElement('div');
     this.$missionChoiceSection = new MissionChoice();
-
-    this.$missionStauts = new MatchingStatus('프론트엔드', '숫자야구미션', [
-      ['준', '포비']
-    ]);
   }
 
   appendChildren() {
@@ -30,6 +26,14 @@ export default class TeamManage {
     this.$matchingStart = new MatchingStart(type, mission, crew);
     this.$main.replaceChild(
       this.$matchingStart.component,
+      this.$main.lastElementChild
+    );
+  }
+
+  showMatching(type, mission, crew) {
+    this.$matchingStatus = new MatchingStatus(type, mission, crew);
+    this.$main.replaceChild(
+      this.$matchingStatus.component,
       this.$main.lastElementChild
     );
   }

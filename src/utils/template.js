@@ -33,7 +33,7 @@ export function crewNameForm() {
 }
 
 export function crewStatusTable(crews) {
-  let table = `<table border="1">
+  let table = `<table id="crew-table" border="1">
     <thead>
       <tr>
         <th></th>
@@ -56,8 +56,8 @@ export function crewStatusTable(crews) {
 
 export function selectMissionForm() {
   return `<select id=${ID.TEAM_MATCHING_COURSE_CHOICE}>
-    <option value=${ID.COURSE_CHOICE_FRONT} >프론트엔드</option>
-    <option value=${ID.COURSE_CHOICE_BACK} >백엔드</option>
+    <option value='frontend' >프론트엔드</option>
+    <option value='backend' >백엔드</option>
   </select>
   <select id = ${ID.TEAM_MATCHING_MISSION_CHOICE}>
   ${MISSION.reduce(
@@ -73,7 +73,7 @@ export function selectMissionForm() {
 export function selectNumberOfCrew() {
   return `<form>
     <label>1팀당 인원 수</label>
-    <input type="number" id = ${ID.TEAM_MEMEBER_COUNT_INPUT}/>
+    <input type="number" id = ${ID.TEAM_MEMEBER_COUNT_INPUT} />
     <button id = ${ID.TEAM_MATCH_BUTTON}>팀 매칭</button>
   </form>`;
 }
@@ -91,9 +91,14 @@ export function showCrew(crew) {
 }
 
 export function showMatchingCrew(crew) {
-  const crewList = crew.map((members) => members.join(''));
+  const crewList = crew.map((members) => members.join(','));
+  let crewNameList = '';
+  crew.forEach((member) => {
+    crewNameList += `<li>${member}`;
+  });
+  crewNameList += '</li>';
   return `<p>
-  ${crewList.reduce((acc, cur) => `${acc}<li>${cur}<li/>`, '')}
+  ${crewNameList}
     </p>`;
 }
 
