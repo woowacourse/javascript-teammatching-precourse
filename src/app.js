@@ -1,4 +1,4 @@
-import Header from './components/header.js';
+import CrewManagement from './components/crewManagement.js';
 
 export default class Teammatching {
   constructor() {
@@ -7,7 +7,7 @@ export default class Teammatching {
   }
 
   initialize() {
-    new Header(this.$target);
+    new CrewManagement(this.$target);
   }
 }
 
