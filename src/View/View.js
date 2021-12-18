@@ -112,4 +112,16 @@ export default class View {
       }
     });
   }
+
+  bindTeamMatch(handler) {
+    this.main.addEventListener("click", (event) => {
+      if (event.target.id === ID.TEAM_MATCH_BUTTON) {
+        handler(
+          document.getElementById(ID.COURSE_SELECT).value,
+          document.getElementById(ID.TEAM_INPUT).value
+        );
+        document.getElementById(ID.TEAM_INPUT).value = "";
+      }
+    });
+  }
 }

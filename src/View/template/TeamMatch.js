@@ -27,8 +27,8 @@ ${teamMatchHeader(course, mission)}
       <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
       <form>
         <label>1팀당 인원 수</label>
-        <input type="number" id=${ID.TEAM_INPUT}/>
-        <button id=${ID.TEAM_MATCH_BUTTON}>팀 매칭</button>
+        <input type="number" id=${ID.TEAM_INPUT} />
+        <button id=${ID.TEAM_MATCH_BUTTON} type="button">팀 매칭</button>
       </form>
       </div>
         <h4>크루 목록</h4>
