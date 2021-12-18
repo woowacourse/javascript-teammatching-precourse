@@ -95,7 +95,7 @@ export default class CrewManageView {
           <td>${crew}</td>
           <td>
             <button id="delete-crew-buttto">삭제</button>
-          </td>
+          <td>
         </tr>
       `;
       })

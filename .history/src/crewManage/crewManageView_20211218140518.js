@@ -87,19 +87,16 @@ export default class CrewManageView {
   };
 
   renderCrewsTable = (crews, container) => {
-    const template = crews
-      .map((crew, idx) => {
-        return `
+    const template = crews.map((crew, idx) => {
+      return `
         <tr>
           <td>${idx}</td>
           <td>${crew}</td>
           <td>
             <button id="delete-crew-buttto">삭제</button>
-          </td>
+          <td>
         </tr>
       `;
-      })
-      .join("");
-    container.innerHTML = template;
+    });
   };
 }

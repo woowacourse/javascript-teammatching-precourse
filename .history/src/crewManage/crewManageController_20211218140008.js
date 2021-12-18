@@ -30,7 +30,7 @@ export default class CrewManageController {
   };
 
   setEvent = () => {
-    this.$radioForm.addEventListener("change", this.setChangeRadioEvent);
+    this.$radioForm.addEventListener("change", this.checkRadioState);
   };
 
   setEventAfterRenderCourse = () => {
@@ -40,25 +40,18 @@ export default class CrewManageController {
   setClickAddButtonEvent = (e) => {
     e.preventDefault();
     const name = this.$crewNameInput.value;
-    const selectedState = this.checkRadioState();
-    this.model.addCrew(selectedState, name);
-    const crews = this.model.getCrewsById(selectedState);
-    this.view.renderCrewsTable(crews, this.$crewTableBody);
   };
 
   checkRadioState = () => {
-    let state = null;
     this.$radioButton.forEach((node) => {
       if (node.checked) {
-        state = node.value;
+        return node.value;
       }
     });
-    return state;
   };
 
-  setChangeRadioEvent = () => {
-    const selectedState = this.checkRadioState();
-    this.renderCoursePage(selectedState);
+  setChangeRadioEvent = (id) => {
+    this.renderCoursePage(id);
   };
 
   renderCoursePage = (id) => {

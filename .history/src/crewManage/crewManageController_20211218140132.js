@@ -40,20 +40,14 @@ export default class CrewManageController {
   setClickAddButtonEvent = (e) => {
     e.preventDefault();
     const name = this.$crewNameInput.value;
-    const selectedState = this.checkRadioState();
-    this.model.addCrew(selectedState, name);
-    const crews = this.model.getCrewsById(selectedState);
-    this.view.renderCrewsTable(crews, this.$crewTableBody);
   };
 
   checkRadioState = () => {
-    let state = null;
     this.$radioButton.forEach((node) => {
       if (node.checked) {
-        state = node.value;
+        return node.value;
       }
     });
-    return state;
   };
 
   setChangeRadioEvent = () => {
