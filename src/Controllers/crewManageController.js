@@ -34,6 +34,15 @@ export default class CrewManageController {
     this.configureButton();
   };
 
+  onClickAddButton = (event) => {
+    event.preventDefault();
+    const name = $(`#${ID.CREW_NAME_INPUT}`).value;
+    this.saveInputName(name);
+    const data = this.getSelectedData();
+    this.crewManageView.renderTable(data);
+    this.configureButton();
+  };
+
   getSelectedData() {
     let data;
     if (this.selectCourse === ID.FRONT_RADIO) {
