@@ -3,6 +3,7 @@ import {
   FRONT_END_CREW_LIST_KEY,
   BACK_END_CREW_LIST_KEY,
 } from "../constants/constants.js";
+import { deleteCrewButton } from "../controllers/eventController.js";
 
 const $app = document.getElementById("app");
 
@@ -131,20 +132,20 @@ export function showCrewList(crewType) {
     <tr>
       <td>${index + 1}</td>
       <td>${item}</td>
-      <td> <button id="delete-crew-buttton">삭제</button> </td>
+      <td> <button class="delete-crew-buttton" id=${item}>삭제</button> </td>
     </tr>
   `;
     });
-  }
-  else {
+  } else {
     state.backEndCrewList.map((item, index) => {
       $crewTable.innerHTML += `
     <tr>
       <td>${index + 1}</td>
       <td>${item}</td>
-      <td> <button id="delete-crew-buttton">삭제</button> </td>
+      <td> <button class="delete-crew-buttton" id=${item}> 삭제</button> </td>
     </tr>
   `;
     });
   }
+  deleteCrewButton();
 }

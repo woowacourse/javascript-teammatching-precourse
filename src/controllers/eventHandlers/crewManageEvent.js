@@ -3,9 +3,13 @@ import {
   FRONT_END_CREW_LIST_KEY,
   BACK_END_CREW_LIST_KEY,
 } from "../../constants/constants.js";
-import { setLocalStorageCrewList } from "../../utils/localStorage.js";
+import {
+  setLocalStorageItem,
+  setLocalStorageCrewList,
+} from "../../utils/localStorage.js";
 import { updateState } from "../../models/state.js";
 import { showCrewList } from "../../views/view.js";
+import { state } from "../../models/state.js";
 
 export function checkedFrontendButton(e) {
   const $crewManageTitle = document.getElementById("crew-manage-title");
@@ -43,6 +47,36 @@ export function clickAddCrewButton(e) {
   } else {
     if (isDuplicateCrew(BACK_END_CREW_LIST_KEY, newCrew)) return;
     setLocalStorageCrewList(BACK_END_CREW_LIST_KEY, newCrew);
+    updateState();
+    showCrewList(BACK_END_CREW_LIST_KEY);
+  }
+}
+
+export function clickDeleteCrewButton(e) {
+  e.preventDefault();
+  console.log("click");
+  const isCourseFrontEnd = document.getElementById("frontend-course").checked;
+  const targetCrew = e.target.id;
+  if (isCourseFrontEnd) {
+    deleteCrew(FRONT_END_CREW_LIST_KEY, targetCrew);
+  } else {
+    deleteCrew(BACK_END_CREW_LIST_KEY, targetCrew);
+  }
+}
+
+export function deleteCrew(crewType, crew) {
+  if (crewType === FRONT_END_CREW_LIST_KEY) {
+    const newFrontCrewList = state.frontEndCrewList.filter((item) => {
+      return item !== crew;
+    });
+    setLocalStorageItem(FRONT_END_CREW_LIST_KEY, newFrontCrewList);
+    updateState();
+    showCrewList(FRONT_END_CREW_LIST_KEY);
+  } else {
+    const newBackCrewList = state.backEndCrewList.filter((item) => {
+      return item !== crew;
+    });
+    setLocalStorageItem(BACK_END_CREW_LIST_KEY, newBackCrewList);
     updateState();
     showCrewList(BACK_END_CREW_LIST_KEY);
   }
