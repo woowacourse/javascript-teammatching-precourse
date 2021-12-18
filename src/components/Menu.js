@@ -19,10 +19,10 @@ export default class Menu extends Component {
 
   setEvent() {
     this.addEvent('click', '#crew-tab', () => {
-      this.$props.onClickProductManageTab();
+      this.$props.onClickCrewTab();
     });
-    this.addEvent('click', 'team-tab', () => {
-      this.$props.onClickChargeTab();
+    this.addEvent('click', '#team-tab', () => {
+      this.$props.onClickTeamTab();
     });
   }
 }
