@@ -12,6 +12,11 @@ export const SELECTOR = {
     BACKEND_COURSE: 'backend-course',
     CREW_NAME_INPUT: 'crew-name-input',
     ADD_CREW_BUTTON: 'add-crew-button',
+    CREW_TABLE: 'crew-table',
+  },
+  CLASS: {
+    CREW_TABLE_LINE: 'crew-table-line',
+    DELETE_CREW_BUTTON: 'delete-crew-button',
   },
 };
 

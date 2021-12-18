@@ -26,5 +26,6 @@ const isInLimit = (input) => {
 };
 
 const isNotDuplicate = (name, course) => {
+  console.log(course);
   return !course.crews.includes(name);
 };
