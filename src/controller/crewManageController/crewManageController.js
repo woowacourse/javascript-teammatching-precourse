@@ -44,6 +44,8 @@ export default class CrewManageController {
     const crewName = this.view.$crewNameInput.value;
 
     if (isValidCrewName(crewName, this.model)) {
+      this.model.addCrew(crewName);
+      console.log(this.model);
       return console.log(crewName);
     }
 
