@@ -14,7 +14,7 @@ export const selectCourseDOM = () => {
 };
 
 export const crewManageDOM = () => {
-  const $crewManageInput = document.querySelector("#crew-select-course");
+  const $crewManageInput = document.querySelector("#crew-manage-input");
   const $crewManageTable = document.querySelector("#crew-manage-table");
 
   $crewManageInput.style.display = "block";
@@ -22,18 +22,17 @@ export const crewManageDOM = () => {
 };
 
 export const addCrewDOM = (number, crew) => {
-  const table = $crewTable.getElementsByTagName("tbody");
-  const td = `
-    <tr>
-      <td>${number}</td>
-      <td>${crew}</td>
-      <td>
-        <button id="delete-crew-buttton">삭제</button>
-      </td>
-    </tr>
-  `;
+  const table = document.getElementById("crew-table");
+  
+  const newRow = table.insertRow();
 
-  table.innerHTML = td;
+  const numberCell = newRow.insertCell(0);
+  const nameCell = newRow.insertCell(1);
+  const buttonCell = newRow.insertCell(2);
+
+  numberCell.innerText = number;
+  nameCell.innerText = crew;
+  buttonCell.innerHTML = `<button id="delete-crew-buttton">삭제</button>`;
 };
 
 export const deleteCrewDOM = (e) => {  

@@ -127,7 +127,7 @@
 
 [crewManage.js] : crew 관리에서 일어나는 로직에 대한 함수를 관리한다.
 
-- [ ] radio 버튼을 선택했을 때 eventListener, DOM 출력 (크루관리) 
+- [ ] radio 버튼을 선택했을 때 eventListener, DOM 출력 (크루관리) - `selectCourseRadio`
 - [ ] 크루 관리 확인 버튼의 eventListener, 테이블 데이터 추가. (및 input 초기화) - `addCrewData`
 - [ ] 크루 목록 삭제 버튼의 eventListener, 테이블 데이터 삭제. - `deleteCrewData`
   (삭제 시 confirm 이용하여 안내 창 넣어주기)
@@ -157,8 +157,8 @@
 
 [localStorage.js] - localStorage와 관련된 로직에 대한 함수를 관리한다. <b>(프론트, 백 따로 관리 유의)</b>
 
-- [ ] 크루 관리 table 추가 및 삭제 시 localStorage를 갱신한다. - `setLocalStorage`
-- [ ] 크루 관리 table을 가져와 데이터를 배열 형태로 return한다. - `getLocalStorage`
+- [ ] 크루 관리 table 추가 및 삭제 시 localStorage를 갱신한다. - `setCrewLocalStorage`
+- [ ] 크루 관리 table을 가져와 데이터를 배열 형태로 return한다. - `getCrewLocalStorage`
 
 
 

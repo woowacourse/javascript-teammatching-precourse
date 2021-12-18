@@ -50,7 +50,7 @@ export const crewManage_table = `
       </tr>
     </thead>
     <tbody>
-      
+ 
     </tbody>
   </table>
   </section>
