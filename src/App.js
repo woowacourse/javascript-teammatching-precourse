@@ -1,4 +1,5 @@
 import Component from './core/Component.js';
+import CrewTab from './components/CrewTab.js';
 import { $, $$, visibleElement } from './utils/element-tools.js';
 
 export default class App extends Component {
@@ -22,7 +23,9 @@ export default class App extends Component {
     `;
   }
 
-  mounted() {}
+  mounted() {
+    this.addMount('crew-tab', CrewTab);
+  }
 
   bindEvents() {
     this.addEvent('click', 'nav button[id]', this.handleMenuClick);
