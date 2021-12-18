@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable radix */
 import TeamMatcher from "../class/teamMatcher.js";
 import Component from "../common/component.js";
@@ -9,8 +10,8 @@ import Table from "./table.js";
 import UnmatchedSelection from "./unmatchedSection.js";
 
 const courseIdToTitle = {
-  "frontend-course": "프런트엔드",
-  "backend-course": "백엔드",
+  frontend: "프런트엔드",
+  backend: "백엔드",
 };
 
 const missionIdToTitle = {
@@ -25,8 +26,8 @@ const missionIdToTitle = {
 };
 
 const courseOptions = [
-  { value: "frontend-course", name: "프런트엔드" },
-  { value: "backend-course", name: "백엔드" },
+  { value: "frontend", name: "프런트엔드" },
+  { value: "backend", name: "백엔드" },
 ];
 
 const missionOptions = [
@@ -49,6 +50,7 @@ const COURSE_SELECT_ID = "course-select";
 const MISSION_SELECT_ID = "mission-select";
 const TEAM_MEMBER_COUNT_INPUT_ID = "team-member-count-input";
 const MATCH_TEAM_BUTTON_ID = "match-team-button";
+const MAX_NAME_LENGTH = 5;
 
 export default class App extends Component {
   initialize() {
@@ -174,7 +176,7 @@ export default class App extends Component {
 
     const { target } = event;
 
-    if (target.name === "course") this.setactiveRadioCourse(target.id);
+    if (target.name === "course") this.setactiveRadioCourse(target.value);
     else if (target.id === ADD_CREW_BUTTON_ID) this.onClickAddCrew();
     else if (target.className === DELETE_CREW_BUTTON_CLASS) {
       this.onClickRemoveCrew(target.value);
@@ -196,11 +198,25 @@ export default class App extends Component {
   onClickAddCrew() {
     const userInput = document.getElementById(ADD_CREW_INPUT_ID).value;
 
-    this.$teamMatcher.addCrew(userInput, this.$state.activeRadioCourse);
+    if (this.isInvalidLength(userInput)) {
+      alert("1-5글자 사이의 이름 입력");
+      return;
+    }
+    const created = this.$teamMatcher.addCrew(
+      userInput,
+      this.$state.activeRadioCourse
+    );
+
+    if (!created) alert("이름 반복");
     this.render();
   }
 
+  isInvalidLength(name) {
+    return name.length === 0 || name.length > MAX_NAME_LENGTH;
+  }
+
   onClickRemoveCrew(crewName) {
+    if (!confirm("삭제하겠습니다?")) return;
     this.$teamMatcher.removeCrew(crewName, this.$state.activeRadioCourse);
     this.render();
   }

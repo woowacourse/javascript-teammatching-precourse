@@ -4,7 +4,7 @@ export default class Table extends Component {
   template() {
     return `
       <h3>${this.$props.title}</h3>
-      <table border="1">
+      <table id="crew-table" border="1">
         ${this.getTableHeader()}
         ${this.getTableContents()}
       </table>
