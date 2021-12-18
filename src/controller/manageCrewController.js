@@ -4,6 +4,7 @@ import {
   CONFIRM_MESSAGE,
   FRONT_END_INPUT_TITLE,
   FRONT_END_TABLE_TITLE,
+  SECOND_SECTION,
 } from "../util/constant.js";
 import {
   createInputForm,
@@ -51,7 +52,7 @@ export const onClickAddBackEnd = event => {
 };
 
 export const onClickFrontEndInput = () => {
-  const $section = document.getElementById("input-section");
+  const $section = document.getElementById(SECOND_SECTION);
   $section.innerHTML = "";
   $section.appendChild(createTitle(FRONT_END_INPUT_TITLE));
   $section.appendChild(createInputForm(onClickAddFrontEnd));
@@ -60,7 +61,7 @@ export const onClickFrontEndInput = () => {
 };
 
 export const onClickBackEndInput = () => {
-  const $section = document.getElementById("input-section");
+  const $section = document.getElementById(SECOND_SECTION);
   $section.innerHTML = "";
   $section.appendChild(createTitle(BACK_END_INPUT_TITLE));
   $section.appendChild(createInputForm(onClickAddBackEnd));

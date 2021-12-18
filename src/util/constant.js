@@ -23,6 +23,10 @@ export const ERROR_MESSAGE = {
   inOverFiveLength: "5글자 이하의 이름을 입력해주세요.",
 };
 
+export const FIRST_SECTION = "first-section";
+export const SECOND_SECTION = "second-section";
+export const THIRD_SECTION = "third-section";
+
 export const PUBLIC_HEADER = `
 <header>
 <h1>우테코 크루와 팀 매칭 관리 보드</h1>
@@ -38,7 +42,7 @@ export const PUBLIC_HEADER = `
 </nav>
 </header>
 <main>
-  <section id="course-section"></section>
-  <section id="input-section"></section>
-  <section id="list-section"></section>
+  <section id="first-section"></section>
+  <section id="second-section"></section>
+  <section id="third-section"></section>
 </main>`;

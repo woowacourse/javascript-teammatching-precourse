@@ -10,6 +10,8 @@ import {
   TABLE_BORDER,
   TABLE_HEADERS,
   DELETE_BUTTON,
+  FIRST_SECTION,
+  THIRD_SECTION,
 } from "./constant.js";
 import {
   onClickBackEndDeleteButton,
@@ -189,14 +191,14 @@ export const createBackEndTableRaw = (member, index) => {
 };
 
 export const resetListSection = title => {
-  const $section = document.getElementById("list-section");
+  const $section = document.getElementById(THIRD_SECTION);
   $section.innerHTML = "";
   $section.appendChild(createTitle(title));
   $section.appendChild(createMemberTable());
 };
 
 const resetSelectCourseSection = () => {
-  const $section = document.getElementById("course-section");
+  const $section = document.getElementById(FIRST_SECTION);
   $section.innerHTML = "";
   $section.appendChild(createTitle(SELECT_COURSE_TITLE));
   $section.appendChild(createRadioInputContainer());
