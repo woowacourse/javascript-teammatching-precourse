@@ -1,3 +1,4 @@
+import { MESSAGE } from '../../../common/constant.js';
 import { $ } from '../../../common/element.js';
 import {
   getLocalStorageArray,
@@ -14,7 +15,7 @@ function getNewCrew() {
   return newCrew;
 }
 
-function setCrewLocalStorage() {
+function setAddCrewsLocalStorage() {
   const crews = getLocalStorageArray('crew');
   const newCrew = getNewCrew();
   crews.push(newCrew);
@@ -24,10 +25,46 @@ function setCrewLocalStorage() {
 function onCrewAddClick(event) {
   event.preventDefault();
 
-  setCrewLocalStorage();
+  setAddCrewsLocalStorage();
   updateCrewList();
 }
 
-export default function crewAdd() {
+export function crewAdd() {
   $('add-crew-buttton').addEventListener('click', onCrewAddClick);
+}
+
+function getCrewIdx(name) {
+  const crews = getLocalStorageArray('crew');
+  const crewIdx = crews.findIndex((i) => i.name === name);
+
+  return crewIdx;
+}
+
+function setDeleteCrewsLocalStorage(crewIdx) {
+  const crews = getLocalStorageArray('crew');
+  crews.splice(crewIdx, 1);
+  setLocalStorage('crew', JSON.stringify(crews));
+}
+
+function onCrewDeleteClick(event) {
+  event.preventDefault();
+
+  if (!confirm(MESSAGE.CONFIRM)) return;
+
+  const name = event.target.dataset.crewName;
+  const crewIdx = getCrewIdx(name);
+  setDeleteCrewsLocalStorage(crewIdx);
+  updateCrewList();
+}
+
+function getDeleteButtons() {
+  return document.getElementsByClassName('delete-crew-button');
+}
+
+export function crewDelete() {
+  const deleteButtons = [...getDeleteButtons()];
+
+  deleteButtons.forEach((button) => {
+    button.addEventListener('click', onCrewDeleteClick);
+  });
 }

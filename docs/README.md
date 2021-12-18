@@ -60,9 +60,9 @@
         - [ ] 예외: 5자 초과의 이름 입력
   - 프론트엔드/백엔드 크루 목록
     - idx, 크루, 관리 표
-      - [x]] 이름 입력 시 localstorage 및 표 갱신
-      - [ ] 삭제 클릭 시 confirm 생성
-      - [ ] confirm 확인 버튼 클릭 시 localstorage 및 표 갱신
+      - [x] 이름 입력 시 localstorage 및 표 갱신
+      - [x] 삭제 클릭 시 confirm 생성
+      - [x] confirm 확인 버튼 클릭 시 localstorage 및 표 갱신
 - 팀 매칭 관리
   - 코스, 미션 선택
     - [ ] 확인 버튼 클릭 시 팀 매칭 수행 display

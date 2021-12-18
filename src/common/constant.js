@@ -25,3 +25,7 @@ export const LIST = {
   CREW: '크루',
   MANAGE: '관리',
 };
+
+export const MESSAGE = {
+  CONFIRM: '정말 삭제하시겠습니까?',
+};

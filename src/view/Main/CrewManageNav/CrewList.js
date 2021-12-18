@@ -1,6 +1,7 @@
 import { BUTTON, HEADER, LIST } from '../../../common/constant.js';
 import { $, createHeader, createSection } from '../../../common/element.js';
 import { getLocalStorage } from '../../../common/localStorage.js';
+import { crewDelete } from '../../../control/Main/CrewManageDiv/CrewManage.js';
 
 function createCrewListSection() {
   const crewListSection = createSection();
@@ -33,7 +34,7 @@ function createCrewListTableData(idx, name) {
         <td>${idx}</td>
         <td>${name}</td>
         <td>
-          <button id="delete-crew-buttton">${BUTTON.DELETE}</button>
+          <button class="delete-crew-button" data-crew-name="${name}">${BUTTON.DELETE}</button>
         </td>
       </tr>
   `;
@@ -66,17 +67,20 @@ export function createCrewList() {
   const crewList = createCrewListSection();
   const crewListHeader = createCrewListHeader();
   crewList.append(crewListHeader);
-
   let crewListTable = createCrewListTable();
   const crewListTableBody = createProductListTableBody();
   crewListTable += crewListTableBody;
   crewList.innerHTML += crewListTable;
-
   $('crew-manage-nav').append(crewList);
+
+  if (getLocalStorage('crew')) {
+    crewDelete();
+  }
 }
 
 export function updateCrewList() {
   const oldCrewList = $('crew-manage-nav').lastChild;
   oldCrewList.remove();
   createCrewList();
+  crewDelete();
 }
