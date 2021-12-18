@@ -67,8 +67,8 @@ export default class matchingManageController {
     const remainingCount = crewsAmount % count;
     const teamMemberClass = this.createTeamMemberClass(count, remainingCount, teamCount);
 
-    const shuffledCrews = this.createSuffledCrews(crews, shuffledCrewsIdx, teamMemberClass);
-    console.log(shuffledCrews);
+    const a = this.createSuffledCrews(null, shuffledCrewsIdx, teamMemberClass);
+    console.log(a);
   };
 
   createCrewIndexArray = (crewsAmount) => {

@@ -67,8 +67,8 @@ export default class matchingManageController {
     const remainingCount = crewsAmount % count;
     const teamMemberClass = this.createTeamMemberClass(count, remainingCount, teamCount);
 
-    const shuffledCrews = this.createSuffledCrews(crews, shuffledCrewsIdx, teamMemberClass);
-    console.log(shuffledCrews);
+    const a = this.createSuffledCrews(null, shuffledCrewsIdx, teamMemberClass);
+    console.log(a);
   };
 
   createCrewIndexArray = (crewsAmount) => {
@@ -86,11 +86,15 @@ export default class matchingManageController {
   };
 
   createSuffledCrews = (crews, shuffledCrewsIdx, teamMemberClass) => {
-    const arr = [];
-    const crewsIdx = shuffledCrewsIdx;
-    teamMemberClass.forEach((team) => {
-      arr.push(crewsIdx.splice(0, team).map((idx) => crews[idx]));
+    let prevIdx = 0;
+    return teamMemberClass.map((team, idx) => {
+      const subArray = [];
+      console.log(subArray);
+      subArray.push(shuffledCrewsIdx[idx]);
+      if (idx === prevIdx + team - 1) {
+        prevIdx = prevIdx + team - 1;
+        return subArray;
+      }
     });
-    return arr;
   };
 }
