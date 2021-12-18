@@ -18,6 +18,7 @@ export default class AppController {
     this.view.renderHeader();
     this.view.selectHeaderDOM();
 
+    this.crewManageController.init();
     this.attachEvents();
   }
 
