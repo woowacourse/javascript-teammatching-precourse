@@ -27,4 +27,22 @@ export default class CrewView {
           )
           .join('')}`;
     }
+
+    static showBackTable() {
+        const crewBack = JSON.parse(localStorage.getItem("CrewBack"));
+
+        document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
+        ${Object.keys(crewBack)
+          .map(
+            (name) => `            
+        <tr class="product-manage-item">
+        <td>1</td>
+        <td>${name}</td>
+        <td>
+          <button id="delete-crew-buttton">삭제</button>
+        </td>
+        </tr>`
+          )
+          .join('')}`;
+    }
 }
