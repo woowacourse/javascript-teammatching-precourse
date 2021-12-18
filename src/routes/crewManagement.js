@@ -1,6 +1,8 @@
 import $ from '../util/domSelector.js';
 import TeamManagement from './teamManagement.js';
 import header from '../templates/header.js';
+import CrewInput from '../components/crewInput.js';
+import CrewPrint from '../components/crewPrint.js';
 import crewManagement from '../templates/crewManagement.js';
 import crewPrint from '../templates/crewPrint.js';
 import { NAVIGATION, CREW_MANAGEMENT } from '../constants/selector.js';
@@ -16,6 +18,11 @@ export default class CrewManagement {
   initialize(course) {
     this.crewNames = this.getCrewName(course);
     this.render(course);
+  }
+
+  mounted() {
+    new CrewInput();
+    new CrewPrint();
   }
 
   template() {
@@ -75,6 +82,7 @@ export default class CrewManagement {
   }
 
   render(course) {
+    this.mounted();
     $(this.$target).innerHTML = this.template();
     this.setEvent(course);
   }

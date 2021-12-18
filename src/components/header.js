@@ -1,7 +1,7 @@
 import header from '../templates/header.js';
 import $ from '../util/domSelector.js';
-import CrewManagement from './crewManagement.js';
-import TeamManagement from './teamManagement.js';
+import CrewManagement from '../routes/crewManagement.js';
+import TeamManagement from '../routes/teamManagement.js';
 import { NAVIGATION } from '../constants/selector.js';
 
 export default class Header {
