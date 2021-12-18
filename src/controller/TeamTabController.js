@@ -3,11 +3,11 @@ import { ID, INDEX, ERROR_MSG } from '../utils/constants.js';
 import { template as teamTabTemplate } from '../view/templates/team-tab.js';
 import {
   getLocalStorage,
+  getLocalStorage__Boolean,
   getLocalStorage__Choice,
   setLocalStorage,
 } from '../utils/commonLogics.js';
-
-// - 코스와 미션을 선택해 확인을 눌러 매칭 시작화면을 그린다.
+import { clearInputs } from '../view/OutputView.js';
 
 export default class TeamTabController {
   constructor() {
@@ -15,8 +15,6 @@ export default class TeamTabController {
     this.beCrews;
 
     this.isMatchEnd = false;
-    // this.courseChoice = '0';
-    // this.missionChoice = '0';
     this.courseChoice;
     this.missionChoice;
     this.matchResult;
@@ -27,7 +25,7 @@ export default class TeamTabController {
     this.feCrews = getLocalStorage('feCrews');
     this.beCrews = getLocalStorage('beCrews');
 
-    this.isMatchEnd = getLocalStorage('isMatchEnd');
+    this.isMatchEnd = getLocalStorage__Boolean('isMatchEnd');
     this.courseChoice = getLocalStorage__Choice('courseChoice');
     this.missionChoice = getLocalStorage__Choice('missionChoice');
     this.matchResult = getLocalStorage('matchResult');
@@ -37,8 +35,20 @@ export default class TeamTabController {
     // this.load
     this.paintCrewsByChoice(this.courseChoice);
 
-    $(`#${ID.MATCH_FORM}`).addEventListener('submit', this.handleMatchSubmit);
+    if (this.isMatchEnd) {
+      $(`#${ID.TEAM_MEMBER_COUNT_INPUT}`).disabled = true;
+    }
+    if (!this.isMatchEnd) {
+      $(`#${ID.TEAM_MEMBER_COUNT_INPUT}`).disabled = false;
+      $(`#${ID.MATCH_FORM}`).addEventListener('submit', this.handleMatchSubmit);
+    }
     $(`#${ID.CHOICE_FORM}`).addEventListener('submit', this.handleChoiceSubmit);
+    $(`#${ID.REMATCH_TEAM_BTN}`).addEventListener('click', this.handleRestart);
+  };
+
+  handleRestart = () => {
+    this.isMatchEnd = true;
+    $(`#${ID.TEAM_MEMBER_COUNT_INPUT}`).disabled = false;
   };
 
   paintCrewsByChoice = (courseChoice) => {
@@ -68,17 +78,26 @@ export default class TeamTabController {
 
   handleMatchSubmit = (e) => {
     e.preventDefault();
-    this.$countInput = $(`#${ID.TEAM_MEMBER_COUNT_INPUT}`);
-    const slicedTeams = this.doTheMatch(
-      this.courseChoice,
-      parseInt(this.$countInput.value)
-    );
+    $(`#${ID.TEAM_MEMBER_COUNT_INPUT}`).disabled = true;
+    this.isMatchEnd = true;
 
-    this.paintSlicedTeams(slicedTeams);
+    this.$countInput = $(`#${ID.TEAM_MEMBER_COUNT_INPUT}`);
+
+    if (this.$countInput < 1) {
+      alert(ERROR_MSG.TEAM_TAB);
+    } else {
+      const slicedTeams = this.doTheMatch(
+        this.courseChoice,
+        parseInt(this.$countInput.value)
+      );
+      this.paintSlicedTeams(slicedTeams);
+      clearInputs([this.$countInput]);
+    }
   };
 
   paintSlicedTeams = (slicedTeams) => {
-    console.log(slicedTeams);
+    $(`#${ID.TEAM_MATCH_RESULT}`).innerHTML = '';
+
     slicedTeams.map((team) => {
       const names = team.map((crew) => crew.name).join();
       const $li = document.createElement('li');
