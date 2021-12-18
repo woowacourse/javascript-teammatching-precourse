@@ -1,4 +1,4 @@
-import triggerEvent from './controller/tap.js';
+import triggerTapEvent from './controller/tap.js';
 import {
     triggerSelectCourse,
     triggerAddCrew,
@@ -10,7 +10,7 @@ import {
     triggerRematchTeam,
 } from './controller/manageTeam/manageTeam.js';
 
-triggerEvent();
+triggerTapEvent();
 triggerSelectCourse();
 triggerAddCrew();
 triggerDeleteCrew();

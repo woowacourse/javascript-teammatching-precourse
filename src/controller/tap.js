@@ -6,9 +6,9 @@ const convertTabEvent = (tab) => () => {
     $('#main').classList.add(tab);
 };
 
-const triggerEvent = () => {
+const triggerTapEvent = () => {
     $('#crew-tab').addEventListener('click', convertTabEvent('crew'));
     $('#team-tab').addEventListener('click', convertTabEvent('team'));
 };
 
-export default triggerEvent;
+export default triggerTapEvent;
