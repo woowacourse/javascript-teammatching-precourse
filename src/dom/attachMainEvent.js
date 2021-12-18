@@ -64,12 +64,26 @@ const selectCourseAndMissionEvent = (crewManager) => {
   };
 };
 
-const attachMainEvent = (crewManager) => {
+const matchEvent = (teamMatchManager, crewManager) => {
+  return (event) => {
+    if (event.target.id !== TEAM_MISSION_DOM_SELECTOR.matchTeamButton) return;
+    event.preventDefault();
+
+    const course = document.getElementById(TEAM_MISSION_DOM_SELECTOR.courseSelect).value;
+    const mission = document.getElementById(TEAM_MISSION_DOM_SELECTOR.missionSelect).value;
+    const teamMemberCount = document.getElementById(TEAM_MISSION_DOM_SELECTOR.teamMemberCountInput).value;
+
+    teamMatchManager.match(course, mission, teamMemberCount, crewManager);
+  };
+};
+
+const attachMainEvent = (crewManager, teamMatchManager) => {
   const $main = document.querySelector(MAIN);
   $main.addEventListener('click', selectCourseEvent(crewManager));
   $main.addEventListener('click', addCrewEvent(crewManager));
   $main.addEventListener('click', deleteCrewEvent(crewManager));
   $main.addEventListener('click', selectCourseAndMissionEvent(crewManager));
+  $main.addEventListener('click', matchEvent(teamMatchManager, crewManager));
 };
 
 export default attachMainEvent;
