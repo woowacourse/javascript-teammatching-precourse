@@ -11,8 +11,11 @@ export default class Render {
 
   crewManageTemplate = () => {
     const $main = document.querySelector('main');
-    const $section = document.createElement('section');
-    $section.innerHTML = TEMPLATE.CREW_MANAGE;
-    $main.appendChild($section);
+    $main.innerHTML = TEMPLATE.CREW_MANAGE;
+  };
+
+  crewFrontendTemplate = () => {
+    const $main = document.querySelector('main');
+    $main.innerHTML += TEMPLATE.CREW_FRONTEND;
   };
 }

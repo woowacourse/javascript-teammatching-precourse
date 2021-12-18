@@ -2,7 +2,7 @@
 
 1. [x] 메인 template render
 2. [x] 크루 관리 클릭시 template render
-3. [ ] 프론트엔드 radio 클릭시 template render
+3. [x] 프론트엔드 radio 클릭시 template render
 4. [ ] 백엔드 radio 클릭시 template render
 5. [ ] 크루 이름 validate 확인
    1. [ ] 예외1) 동일한 이름의 크루는 추가할 수 없다.
