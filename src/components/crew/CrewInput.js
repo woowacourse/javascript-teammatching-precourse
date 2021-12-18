@@ -1,4 +1,5 @@
-import { ID } from '../../constants/index.js';
+import { ID, LOCAL_DB } from '../../constants/index.js';
+import { getLocalStorage, saveLocalStorage } from '../../utils/localStorage.js';
 import { $ } from '../../utils/selector.js';
 import { isValidCrewName } from '../../utils/valid.js';
 
@@ -36,10 +37,19 @@ class CrewInput {
   clickButton(e) {
     e.preventDefault();
 
-    console.log(this.$nameInput.value);
     const { value } = this.$nameInput;
     if (!isValidCrewName(value)) {
       return;
+    }
+
+    if (this.courseName === '프론트엔드') {
+      const crew = getLocalStorage(LOCAL_DB.CREW_FRONT);
+      saveLocalStorage(LOCAL_DB.CREW_FRONT, [...crew, value]);
+    }
+
+    if (this.courseName === '백엔드') {
+      const crew = getLocalStorage(LOCAL_DB.CREW_BACK);
+      saveLocalStorage(LOCAL_DB.CREW_BACK, [...crew, value]);
     }
   }
 }

@@ -24,3 +24,8 @@ export const NUM = {
 export const ERROR = {
   CREW_NAME_IS_LONG: `크루 이름은 ${NUM.MAX_CREW_NAME}자가 초과되지 않도록 입력해주세요.`,
 };
+
+export const LOCAL_DB = {
+  CREW_FRONT: 'CREW_FRONT',
+  CREW_BACK: 'CREW_BACK',
+};
