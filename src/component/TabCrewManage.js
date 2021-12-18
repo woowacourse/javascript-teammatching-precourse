@@ -20,7 +20,7 @@ export default class TabCrewManage extends Component {
   template() {
     const { focusedTab } = navigator.getValue();
     return `
-      <div ${focusedTab === TAB.CREW ? '' : 'hidden'}>
+      <div ${focusedTab === null || focusedTab !== TAB.CREW ? 'hidden' : ''}>
         <section id="${ID.SECTION_SELECTION_COURSE}"></section>
         <section id="${ID.SECTION_NAME_FORM}"></section>
         <section id="${ID.SECTION_CREW_TABLE}"></section>

@@ -10,7 +10,7 @@ export default class TabTeamManage extends Component {
   template() {
     const { focusedTab } = navigator.getValue();
     return `
-      <div ${focusedTab === TAB.TEAM ? '' : 'hidden'}>
+      <div ${focusedTab === null || focusedTab !== TAB.TEAM ? 'hidden' : ''}>
         여기는 팀 관리 탭!
       </div>
     `;

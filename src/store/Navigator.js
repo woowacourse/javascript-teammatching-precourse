@@ -5,7 +5,10 @@ import STORAGE from '../constant/storage.js';
 
 class Navigator extends Store {
   init() {
-    this.load();
+    this.value = {
+      focusedTab: null,
+    };
+    // this.load();
   }
 
   load() {
