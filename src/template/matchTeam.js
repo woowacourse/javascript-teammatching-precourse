@@ -85,6 +85,11 @@ function displayMatchTeam(type, mission, selectCourse) {
         </div>
       </div>`
 
+    const rematchButton = document.getElementById("rematch-team-button");
+    if(rematchButton) rematchButton.onclick = (e) => {
+        matchTeam(type, mission);
+        e.preventDefault();
+    }
     randomMatchTeam(type, memberCount.value);
 }
 
