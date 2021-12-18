@@ -1,8 +1,17 @@
 import Component from "./core/Component.js";
 
+import Api from "./libs/api.js";
+
 export default class App extends Component {
   setup() {
     console.log("app");
+    this.callAPI = new Api();
+    this.initCallAPI();
+  }
+
+  initCallAPI() {
+    this.callAPI.setup();
+    this.$state = this.callAPI.getTeamMatching();
   }
 
   template() {
