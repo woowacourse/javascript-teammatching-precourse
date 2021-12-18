@@ -51,7 +51,6 @@ class CrewTable {
 
     const tr = e.target.closest('tr');
     const index = Number(tr.children[0].dataset.index);
-
     this.updateLocalStorage(index);
     this.render();
   }

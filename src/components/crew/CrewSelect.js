@@ -40,10 +40,10 @@ class CrewSelect {
   }
 
   clickOption(e) {
-    const { textContent } = e.target.nextElementSibling;
     const { id } = e.target;
 
     if (id === ID.FRONTEND_COURSE || id === ID.BACKEND_COURSE) {
+      const textContent = e.target.nextElementSibling.textContent;
       new CrewManage(this.$manageSection, textContent, this.state);
       new CrewTable(this.$resultSection, textContent, this.state);
     }
