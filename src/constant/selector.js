@@ -12,6 +12,10 @@ export const ID = Object.freeze({
   NAME_SUBMIT: 'add-crew-buttton',
   SECTION_CREW_TABLE: 'section-crew-table',
   CREW_TABLE: 'crew-table',
+  SECTION_SELECTION_MISSION: 'section-secltion-mission',
+  COURSE_SELECTOR: 'course-select',
+  MISSION_SELECTOR: 'mission-select',
+  TEAM_MATCHER_BUTTON: 'show-team-matcher-button',
 });
 
 export const CLASS = Object.freeze({
