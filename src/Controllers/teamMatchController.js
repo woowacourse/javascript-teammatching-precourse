@@ -31,35 +31,41 @@ export default class TeamMatchController {
 
   onClickSelectButton = (event) => {
     event.preventDefault();
-    this.selectedCourse = $(`#${ID.COURSE_SELECT}`).value;
-    this.selectedMission = $(`#${ID.MISSION_SELECT}`).value;
-    this.teamMatchView.bodyMainRender();
-    this.configureMatchButton();
-    this.renderCrewList(this.selectedCourse);
+    this.matchRadomTeam();
   };
 
   onClickMatchButton = (event) => {
     event.preventDefault();
+    this.matchResultRender();
+  };
+
+  onClickRematchButton = (event) => {
+    event.preventDefault();
+    this.matchRadomTeam();
+  };
+
+  renderCrewList(course) {
+    const data = this.getSelectedData(course);
+    this.teamMatchView.crewListRender(data);
+  }
+
+  matchRadomTeam() {
+    this.selectedCourse = $(`#${ID.COURSE_SELECT}`).value;
+    this.selectedMission = $(`#${ID.MISSION_SELECT}`).value;
+    if (this.checkTeamData(this.selectedCourse, this.selectedMission)) {
+    }
+    this.teamMatchView.bodyMainRender();
+    this.configureMatchButton();
+    this.renderCrewList(this.selectedCourse);
+  }
+
+  matchResultRender() {
     const number = Number($(`#${ID.TEAM_MEMBER_COUNT_INPUT}`).value);
     const randomTeamList = this.createRandomTeam(number);
     console.log(randomTeamList);
     this.teamMatchView.matchedMainRender();
     this.teamMatchView.matchedListRender(randomTeamList);
     this.configureRematchButton();
-  };
-
-  onClickRematchButton = (event) => {
-    event.preventDefault();
-    this.selectedCourse = $(`#${ID.COURSE_SELECT}`).value;
-    this.selectedMission = $(`#${ID.MISSION_SELECT}`).value;
-    this.teamMatchView.bodyMainRender();
-    this.configureMatchButton();
-    this.renderCrewList(this.selectedCourse);
-  };
-
-  renderCrewList(course) {
-    const data = this.getSelectedData(course);
-    this.teamMatchView.crewListRender(data);
   }
 
   getSelectedData(course) {
@@ -102,13 +108,17 @@ export default class TeamMatchController {
     return tempList;
   }
 
-  saveTeamData() {
-    if (!data) data = teamMatchModel;
-    return data[course][mission];
+  saveTeamData(list, course, mission) {
+    const data = LocalStorageUtils.getItem(LocalStorageUtils.keys.teamMatcher);
+    if (!data) data = [];
   }
 
-  checkData(course, mission) {
-    const data = LocalStorageUtils.getItem(LocalStorageUtils.keys.teamMatcher);
+  deleteTeamData() {}
+
+  checkTeamData(course, mission) {
+    let data = LocalStorageUtils.getItem(LocalStorageUtils.keys.teamMatcher);
+    if (!data) data = teamMatchModel;
+    LocalStorageUtils.setItem(LocalStorageUtils.keys.teamMatcher, data);
     return data[course][mission];
   }
 }
