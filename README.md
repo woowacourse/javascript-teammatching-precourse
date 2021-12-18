@@ -90,8 +90,8 @@
 
 [crewDOM.js] : crew 관리에서 일어나는 DOM 제어를 관리한다.
 
-- [ ] 관리 코스 선택 창을 보여준다. - `SelectCourseDOM`
-- [ ] 크루 관리 입력 창 및 테이블을 보여준다. - `CrewManageDOM`
+- [ ] 관리 코스 선택 창을 보여준다. - `selectCourseDOM`
+- [ ] 크루 관리 입력 창 및 테이블을 보여준다. - `crewManageDOM`
 - [ ] 크루 목록 테이블 데이터를 추가한다. -`addCrewDOM`
 - [ ] 크루 목록 테이블 데이터를 삭제한다. - `deleteCrewDOM`
 - [ ] crew에서 필요한 DOM을 초기화한다. - `initCrewDOM`
@@ -100,11 +100,11 @@
 
 [teamDOM.js] : team 관리에서 일어나는 DOM 제어를 관리한다.
 
-- [ ] 코스, 미션 선택 창과 버튼을 보여준다. - `SelectMissionDOM`
-- [ ] 팀 매칭 section을 보여준다. - `TeamMatchingDOM`
-- [ ] 팀 조회 결과 section을 보여준다.  - `TeamResultDOM`
+- [ ] 코스, 미션 선택 창과 버튼을 보여준다. - `selectMissionDOM`
+- [ ] 팀 매칭 section을 보여준다. - `teamMatchingDOM`
+- [ ] 팀 조회 결과 section을 보여준다.  - `teamResultDOM`
 - [ ] 팀 조회 결과 section을 숨기고, 매칭 section을 보여준다. (재시작) - `restartDOM`
-- [ ] 팀 매칭 목록에 대한 DOM 재배치를 한다. (매칭 결과 보여주기) - `TeamListDOM`
+- [ ] 팀 매칭 목록에 대한 DOM 재배치를 한다. (매칭 결과 보여주기) - `teamListDOM`
 - [ ] team에서 필요한 DOM을 초기화한다. - `initTeamDOM`
 
 
