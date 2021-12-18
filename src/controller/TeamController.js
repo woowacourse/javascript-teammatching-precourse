@@ -1,5 +1,6 @@
 import { FRONT_END } from '../utils/constant.js';
 import { create2DArray, sequenceArray } from '../utils/makeArray.js';
+import { isHeadCountInputValid } from '../utils/validator.js';
 
 export class TeamController {
   constructor(model, coreView) {
@@ -35,6 +36,9 @@ export class TeamController {
   }
 
   onMatchButtonClick(headCountPerTeam, selectedCourse, selectedMission) {
+    if (!isHeadCountInputValid(headCountPerTeam)) {
+      return;
+    }
     const teamList = this.matchTeam(headCountPerTeam, selectedCourse);
     this.coreView.teamView.showTeamMatchResult(selectedCourse, selectedMission, teamList);
     this.triggerReMatchClickEvent(headCountPerTeam, selectedCourse, selectedMission);

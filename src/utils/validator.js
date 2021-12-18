@@ -1,11 +1,10 @@
 import { USER_INPUT_ALERT, MAX_NAME_LENGTH } from './constant.js';
 
 export const NameInputCheckMethods = [
-  // 빈칸 및 공백 입력 금지
   (value) => {
     const isFilled = value.trim() !== '';
     if (!isFilled) {
-      alert(USER_INPUT_ALERT.blankNameError);
+      alert(USER_INPUT_ALERT.blankError);
     }
     return isFilled;
   },
@@ -20,4 +19,27 @@ export const NameInputCheckMethods = [
 
 export function isNameInputValid(value) {
   return NameInputCheckMethods.every((NameInputCheckMethod) => NameInputCheckMethod(value));
+}
+
+export const HeadCountInputCheckMethods = [
+  (value) => {
+    const isNaturalNumber = Number(value) >= 1 && parseInt(value) === Number(value);
+    if (!isNaturalNumber) {
+      alert(USER_INPUT_ALERT.notNaturalNumberError);
+    }
+    return isNaturalNumber;
+  },
+  (value) => {
+    const isFilled = value.trim() !== '';
+    if (!isFilled) {
+      alert(USER_INPUT_ALERT.blankError);
+    }
+    return isFilled;
+  },
+];
+
+export function isHeadCountInputValid(value) {
+  return HeadCountInputCheckMethods.every((HeadCountInputCheckMethod) =>
+    HeadCountInputCheckMethod(value),
+  );
 }
