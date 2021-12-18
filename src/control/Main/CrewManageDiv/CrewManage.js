@@ -5,6 +5,7 @@ import {
   setLocalStorage,
 } from '../../../common/localStorage.js';
 import { updateCrewList } from '../../../view/Main/CrewManageNav/CrewList.js';
+import { checkInputValidation, getInputValidation } from './NameValidation.js';
 
 function getNewCrew() {
   const crewNameInput = $('crew-name-input').value;
@@ -24,6 +25,9 @@ function setAddCrewsLocalStorage() {
 
 function onCrewAddClick(event) {
   event.preventDefault();
+
+  checkInputValidation();
+  if (!getInputValidation()) return;
 
   setAddCrewsLocalStorage();
   updateCrewList();

@@ -1,4 +1,4 @@
-import { BUTTON, HEADER, TEXT } from '../../../common/constant.js';
+import { BUTTON, HEADER, CREW } from '../../../common/constant.js';
 import { $ } from '../../../common/element.js';
 
 export default function createCrewManage() {
@@ -6,7 +6,7 @@ export default function createCrewManage() {
     <section id="crew-manage"">
       <h3>${HEADER.CREW_MANAGE}</h3>
       <form>
-        <label>${TEXT.CREW_NAME}</label>
+        <label>${CREW.CREW_NAME}</label>
         <input id="crew-name-input" type="text" />
         <button id="add-crew-buttton">${BUTTON.CONFIRM}</button>
       </form>

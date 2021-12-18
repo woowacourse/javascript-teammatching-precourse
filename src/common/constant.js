@@ -18,8 +18,9 @@ export const COURSE = {
   BACKEND: '백엔드',
 };
 
-export const TEXT = {
+export const CREW = {
   CREW_NAME: '크루 이름',
+  CREW_NAME_MAX: 5,
 };
 
 export const LIST = {
@@ -29,6 +30,9 @@ export const LIST = {
 
 export const MESSAGE = {
   CONFIRM: '정말 삭제하시겠습니까?',
+  NULL: '이름을 입력되지 않았습니다. 다시 입력해 주세요.',
+  TOO_LONG: '잘못 입력하셨습니다. 5자 이내의 이름을 입력해 주세요.',
+  DUPLICATE: '이미 등록된 크루입니다.',
 };
 
 export const MISSION = {
