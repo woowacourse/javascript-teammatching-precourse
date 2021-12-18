@@ -60,7 +60,7 @@ export const HTML_OF_BACK_CHECKED_RADIO = `
   </main>
 </div>`;
 
-export const HTML_OF_CREW_INPUT = `
+export const HTML_OF_FRONT_CREW_INPUT = `
     <section>
       <h3>프론트엔드 크루 관리</h3>
       <form>
@@ -73,6 +73,19 @@ export const HTML_OF_CREW_INPUT = `
     <h3>프론트엔드 크루 목록</h3>
     </section>`;
 
+
+export const HTML_OF_BACK_CREW_INPUT = `
+    <section>
+      <h3>백엔드 크루 관리</h3>
+      <form>
+        <label>크루 이름</label>
+        <input type="text" id="crew-name-input"/>
+        <button id="add-crew-buttton">확인</button>
+      </form>
+    </section>
+    <section>
+    <h3>백엔드 크루 목록</h3>
+    </section>`;
 
 
 export const HTML_OF_CREW_TABLE = `

@@ -1,6 +1,6 @@
 import CrewCheck from "./CrewCheck.js";
 import CrewView from "./CrewView.js";
-import { HTML_OF_CREW_INPUT, HTML_OF_CREW_TABLE, HTML_OF_FRONT_CHECKED_RADIO , HTML_OF_CREW_RADIO, HTML_OF_HEADER, HTML_OF_TEAM_TAB} from "./utils/html.js";
+import { HTML_OF_FRONT_CREW_INPUT, HTML_OF_BACK_CREW_INPUT, HTML_OF_CREW_TABLE, HTML_OF_FRONT_CHECKED_RADIO , HTML_OF_HEADER, HTML_OF_TEAM_TAB, HTML_OF_BACK_CHECKED_RADIO} from "./utils/html.js";
 export default class CrewEvent {
     static addEvent() {
         this.addFrontEndEvent();
@@ -14,19 +14,21 @@ export default class CrewEvent {
         document.getElementById('add-crew-buttton').addEventListener('click', (e) => {
             e.preventDefault();
 
+
             const name = document.getElementById("crew-name-input").value;
             const crewCheck = new CrewCheck(name);
 
             if(crewCheck.checkAll()) {
-                //이름 저장
-                if(this.getCourse() === "frontend") {
-                    this.storeFrontCrew(name, this.getCourse());
-                    CrewView.showFrontTable();
-                }
-                if(this.getCourse() === "backend") {
-                    this.storeBackCrew(name, this.getCourse());
-                    CrewView.showBackTable();
-                }
+                // //이름 저장
+                // if(this.getCourse() === "frontend") {
+                //     this.storeFrontCrew(name, this.getCourse());
+                //     CrewView.showFrontTable();
+                //     console.log(name);
+                // }
+                // if(this.getCourse() === "backend") {
+                //     this.storeBackCrew(name, this.getCourse());
+                //     CrewView.showBackTable();
+                // }
 
                 
                 
@@ -44,6 +46,12 @@ export default class CrewEvent {
             if (document.getElementsByName("course")[i].checked === true) {
                 courseType = document.getElementsByName("course")[i].value;
                 console.log(courseType);
+                if(i === 0) {
+                    document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_CREW_INPUT + HTML_OF_CREW_TABLE;
+                }
+                if(i === 1) {
+                    document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_CREW_INPUT + HTML_OF_CREW_TABLE;
+                }
                 return courseType;
             }
         }
@@ -75,24 +83,25 @@ export default class CrewEvent {
     static addFrontEndEvent() {
         document.getElementById('frontend-course').addEventListener('click', (e) => {
             console.log("프론트");
-            document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_CREW_INPUT + HTML_OF_CREW_TABLE;
-            // document.getElementsByName('course')[0].prop("checked", true);
-
-            CrewView.showFrontTable();
-
+            document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
             this.addCrewEvent();
+
+            if(localStorage.getItem("CrewFront") !== null){
+                CrewView.showFrontTable();
+            }
         })
     }
 
     static addBackEndEvent() {
         document.getElementById('backend-course').addEventListener('click', (e) => {
             console.log("백");
-            document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_CREW_INPUT + HTML_OF_CREW_TABLE;
-            // document.getElementsByName('course')[0].prop("checked", true);
-
-            CrewView.showBackTable();
-
+            document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
             this.addCrewEvent();
+
+            if(localStorage.getItem("CrewFront") !== null){
+                CrewView.showBackTable();
+            }
+            
         })
     }
 
