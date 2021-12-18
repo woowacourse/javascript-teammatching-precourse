@@ -1,6 +1,7 @@
 import Component from "../../core/Component.js";
 import SelectCourse from "./SelectCourse.js";
 import CrewManage from "./CrewManage.js";
+import CrewList from "./CrewList.js";
 
 import Api from "../../libs/api.js";
 
@@ -20,27 +21,7 @@ export default class CrewTab extends Component {
     return `
         <section id="select-course"></section>
         <section id="crew-manage"></section>
-        <section id="crew-list">
-        <h3>프론트엔드 크루 목록</h3>
-        <table border="1" id="crew-table">
-            <thead>
-            <tr>
-                <th></th>
-                <th>크루</th>
-                <th>관리</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>준</td>
-                <td>
-                <button id="delete-crew-buttton">삭제</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        </section>
+        <section id="crew-list"></section>
     `;
   }
 
@@ -73,6 +54,8 @@ export default class CrewTab extends Component {
       checkedCrewCourse,
       addCrew: addCrew.bind(this),
     });
+
+    new CrewList($crewList, { courseName });
   }
 
   setChangeCourse(newCourse) {
