@@ -1,5 +1,4 @@
 import Component from '../../essential/component.js';
-import FrontTable from './front-table.js';
 
 const CONTENT = `
   <h3>크루를 관리할 코스를 선택해주세요</h3>
