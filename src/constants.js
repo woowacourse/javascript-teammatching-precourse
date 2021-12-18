@@ -19,3 +19,17 @@ export const RADIO = 'radio';
 export const SELECT_COURSE = '크루를 관리할 코스를 선택해주세요';
 
 export const MAIN = 'main';
+
+export const ADD_CREW_FORM_TITLE = {
+  frontend: '프론트엔드 크루 관리',
+  backend: '백엔드 크루 관리',
+};
+
+export const CREW_NAME = '크루 이름';
+
+export const CONFIRM = '확인';
+
+export const CREW_MANAGE_DOM_SELECTOR = {
+  crewNameInput: 'crew-name-input',
+  addCrewButton: 'add-crew-button',
+};
