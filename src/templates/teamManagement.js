@@ -31,7 +31,7 @@ export const teamListGenerator = teamList =>
 
 export const matchedTeams = teamList => `
   <p>팀이 매칭되었습니다.</p>
-  <ul id="team-match-result"">
+  <ul id="team-match-result">
     ${teamListGenerator(teamList)}
   </ul>
   <p>
