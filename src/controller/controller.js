@@ -1,3 +1,4 @@
+import CrewModel from "../model/crewModel.js";
 import CommonView from "../view/commonView.js";
 import ManageCrewView from "../view/manageCrewView.js";
 import TeamMatchingView from "../view/teamMatchingView.js";
@@ -7,7 +8,7 @@ export default class Controller {
     this.commonView = new CommonView().init();
     this.manageCrewView = new ManageCrewView();
     this.teamMathcingView = new TeamMatchingView();
-
+    this.crewModel = new CrewModel();
     this.onClickCrewManageBtn(); // 크루 관리 버튼 클릭 시
     this.onClickTeamTab(); // 팀 매칭 관리 클릭 시
   }
@@ -22,14 +23,29 @@ export default class Controller {
     });
   }
 
+  // 크루 관리 탭 - 관리할 코스 선택
   onClickCourseRadio() {
     const $frontend = document.querySelector('input[value="frontend"]');
     const $backend = document.querySelector('input[value="backend"]');
-    $frontend.addEventListener("click", () => {
+    $frontend.addEventListener("click", (e) => {
+      e.preventDefault();
       this.manageCrewView.showCrewList("frontend");
+      this.onClickCrewAdd("frontend");
     });
-    $backend.addEventListener("click", () => {
+    $backend.addEventListener("click", (e) => {
+      e.preventDefault();
       this.manageCrewView.showCrewList("backend");
+      this.onClickCrewAdd("backend");
+    });
+  }
+
+  // 크루 관리 탭 - 크루 추가 이름 작성
+  onClickCrewAdd(type) {
+    const $addBtn = document.querySelector("#add-crew-buttton");
+    $addBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const name = document.querySelector("#crew-name-input").value;
+      this.crewModel.addCrew(type, name);
     });
   }
 
