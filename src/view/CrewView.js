@@ -38,7 +38,7 @@ export class CrewView {
   }
 
   showCourse(course, crewList) {
-    this.$crewMain.innerHTML += getCrewList(course);
+    this.$crewSection.innerHTML = getCrewList(course);
     this.$crewTable = $('#crew-table');
     this.$crewTableBody = $('#crew-table-body');
     this.showCrewList(crewList);
@@ -59,5 +59,6 @@ export class CrewView {
     this.$radioContainer = $('#radio-container');
     this.$frontEndRadioButton = $('#frontend-course');
     this.$backEndRadioButton = $('#backend-course');
+    this.$crewSection = $('#crew-section');
   }
 }

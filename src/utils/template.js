@@ -26,11 +26,12 @@ export const CREW_TEMPLATE = `
     <label for="backend">백엔드</label>
   </div>
   </section>
+  <section id="crew-section" >
+  </section>
 `;
 
 export function getCrewList(course) {
   return `
-    <section>
       <h3>${course} 크루 관리</h3>
       <form>
         <label>크루 이름</label>
@@ -43,7 +44,6 @@ export function getCrewList(course) {
       <table id="crew-table" border="1">
         ${CREW_HEAD}
       </table>
-    </section>
   `;
 }
 
