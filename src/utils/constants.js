@@ -14,6 +14,7 @@ const OPTIONS = {
 
 const ALERT_MSG = {
   wrongName: "이름을 잘못 입력하셨습니다. 다시 입력해주세요.",
+  askDeleteElement: "정말로 삭제하시겠습니까?",
 };
 
 export { OPTIONS, ALERT_MSG };

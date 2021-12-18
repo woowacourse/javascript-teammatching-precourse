@@ -1,3 +1,5 @@
+import { onClickDeleteCrewButton } from "../../controllers/crewManager/eventHandlers.js"
+
 const makeEmptyTable = $table => {
   $table.innerHTML = `
     <thead>
@@ -17,7 +19,7 @@ const insertCrew = (index, name) => {
       <td>${index}</td>
       <td>${name}</td>
       <td>
-        <button class="delete-crew-button">삭제</button>
+        <button class="delete-crew-button" id=${name}>삭제</button>
       </td>
     </tr>
   `;
@@ -41,6 +43,8 @@ const showFrontEndCrews = () => {
       }
     }
   }
+
+  onClickDeleteCrewButton();
 };
 
 const showBackEndCrews = () => {
@@ -61,6 +65,8 @@ const showBackEndCrews = () => {
       }
     }
   }
+
+  onClickDeleteCrewButton();
 };
 
 export { showFrontEndCrews, showBackEndCrews };

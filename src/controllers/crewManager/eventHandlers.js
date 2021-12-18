@@ -2,7 +2,7 @@ import { ALERT_MSG, OPTIONS } from "../../utils/constants.js";
 import { showBackendSection } from "../../views/crewManager/backendCourse.js";
 import { showFrontendSection } from "../../views/crewManager/frontendCourse.js";
 import { checkCrewName } from "./checkCrewName.js";
-import { addCrew } from "./crewDataController.js";
+import { addCrew, deleteCrew } from "./crewDataController.js";
 import { getCourseValue } from "./getCourseValue.js";
 import {
   showFrontEndCrews,
@@ -28,6 +28,23 @@ const onClickAddCrewButton = () => {
       alert(ALERT_MSG.wrongName);
     }
   };
+};
+
+const onClickDeleteCrewButton = () => {
+  const $deleteButtons = document.getElementsByClassName("delete-crew-button");
+
+  for (let i = 0; i < $deleteButtons.length; i++) {
+    $deleteButtons[i].onclick = () => {
+      if (confirm(ALERT_MSG.askDeleteElement)) {
+        deleteCrew($deleteButtons[i].id);
+        if (getCourseValue() === "frontend") {
+          showFrontEndCrews();
+        } else if (getCourseValue() === "backend") {
+          showBackEndCrews();
+        }
+      }
+    };
+  }
 };
 
 const selectFrontendCourse = () => {
@@ -58,4 +75,4 @@ const selectCourseEvent = () => {
   }
 };
 
-export { selectCourseEvent };
+export { selectCourseEvent, onClickDeleteCrewButton };
