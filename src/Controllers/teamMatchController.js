@@ -24,6 +24,10 @@ export default class TeamMatchController {
     $(`#${ID.MATCH_TEAM_BUTTON}`).addEventListener('click', this.onClickMatchButton);
   }
 
+  configureRematchButton() {
+    $(`#${ID.REMATCH_TEAM_BUTTON}`).addEventListener('click', this.onClickRematchButton);
+  }
+
   onClickSelectButton = (event) => {
     event.preventDefault();
     this.selectedCourse = $(`#${ID.COURSE_SELECT}`).value;
@@ -38,6 +42,18 @@ export default class TeamMatchController {
     const number = Number($(`#${ID.TEAM_MEMBER_COUNT_INPUT}`).value);
     const randomTeamList = this.createRandomTeam(number);
     console.log(randomTeamList);
+    this.teamMatchView.matchedMainRender();
+    this.teamMatchView.matchedListRender(randomTeamList);
+    this.configureRematchButton();
+  };
+
+  onClickRematchButton = (event) => {
+    event.preventDefault();
+    this.selectedCourse = $(`#${ID.COURSE_SELECT}`).value;
+    this.selectedMission = $(`#${ID.MISSION_SELECT}`).value;
+    this.teamMatchView.bodyMainRender();
+    this.configureMatchButton();
+    this.renderCrewList(this.selectedCourse);
   };
 
   renderCrewList(course) {
