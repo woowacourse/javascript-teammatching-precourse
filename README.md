@@ -158,7 +158,7 @@
 [localStorage.js] - localStorage와 관련된 로직에 대한 함수를 관리한다. <b>(프론트, 백 따로 관리 유의)</b>
 
 - [x] 크루 관리 table 추가 및 삭제 시 localStorage를 갱신한다. - `setCrewLocalStorage`
-- [ ] 크루 관리 table을 가져와 데이터를 배열 형태로 return한다. - `getCrewLocalStorage`
+- [x] 크루 관리 table을 가져와 데이터를 배열 형태로 return한다. - `getCrewLocalStorage`
 
 
 

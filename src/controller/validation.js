@@ -8,11 +8,10 @@ export const isEmpty = (value) => {
 
 export const isSame = (value) => {
   const names = localStorage.getItem("crew").split(",");
-  
+
   return names.includes(value);
 };
 
 export const validateInput = (value) => {
-  console.log(isNameLength(value) , isEmpty(value) , isSame(value));
   return isNameLength(value) && isEmpty(value) && isSame(value);
 };

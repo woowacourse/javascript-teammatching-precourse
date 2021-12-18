@@ -5,6 +5,7 @@ import { validateInput } from "./validation.js";
 export const initCrewManage = () => {
   selectCourseRadio();
   addCrewData();
+  loadTableData();
 };
 
 export const selectCourseRadio = () => {
@@ -42,3 +43,10 @@ export const deleteCrewData = () => {
 
 };
 
+export const loadTableData = () => {
+  const data = getCrewLocalStorage();
+
+  if(data !== null) {
+    data.forEach((names, index) => addCrewDOM(index, names));
+  }
+}

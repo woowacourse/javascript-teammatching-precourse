@@ -7,4 +7,8 @@ export const setCrewLocalStorage = (value) => {
   return info.split(",").length;
 };
 
-export const getCrewLocalStorage = () => localStorage.getItem("crew");
+export const getCrewLocalStorage = () => {
+  const data = localStorage.getItem("crew");
+
+  return data === null ? null : data.split(",");
+};
