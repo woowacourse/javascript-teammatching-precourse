@@ -9,10 +9,28 @@ const isFrontCourse = () => $('#frontend-course').checked;
 const createCrew = (crewName) =>
     isFrontCourse() ? new FrontCrew(crewName) : new BackCrew(crewName);
 
+const renderCrewTable = () => {
+    $('#crew-table-tbody').innerHTML = createCrew()
+        .getCrews()
+        .reduce(
+            (m, crewName, idx) =>
+                `${m}
+                <tr>
+                    <td>${idx + 1}</td>
+                    <td>${crewName}</td>
+                    <td>
+                    <button>삭제</button>
+                    </td>
+                </tr>`,
+            '',
+        );
+};
+
 const selectCourse = (title) => () => {
     $('#crew-section').classList.add('on');
     $('#course-manage-title').innerText = title;
     $('#course-list-title').innerText = title;
+    renderCrewTable();
 };
 
 const triggerSelectCourse = () => {
@@ -22,23 +40,6 @@ const triggerSelectCourse = () => {
 
 const addCrewToCourse = (crewName) => {
     createCrew(crewName).addCrew();
-};
-
-const renderCrewTable = () => {
-    $('#crew-table-tbody').innerHTML = createCrew()
-        .getCrews()
-        .reduce(
-            (m, crewName, idx) =>
-                `${m}
-            <tr>
-                <td>${idx + 1}</td>
-                <td>${crewName}</td>
-                <td>
-                <button>삭제</button>
-                </td>
-            </tr>`,
-            '',
-        );
 };
 
 const isUniqueCrewNameOfCourse = (crewName) => createCrew(crewName).isUniqueCrewName();
