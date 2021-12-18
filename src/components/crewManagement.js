@@ -4,6 +4,7 @@ import crewManagement from '../templates/crewManagement.js';
 import { NAVIGATION, CREW_MANAGEMENT } from '../constants/selector.js';
 import { NAME } from '../constants/constants.js';
 import { setLocalStorage, getLocalStorage } from '../store.js';
+import { crewInputValid } from '../util/valid.js';
 
 export default class CrewManagement {
   constructor(target) {
@@ -56,7 +57,9 @@ export default class CrewManagement {
         name: $(`#${CREW_MANAGEMENT.ID.CREW_NAME_INPUT}`).value,
       };
       $(`#${CREW_MANAGEMENT.ID.CREW_NAME_INPUT}`).value = '';
-      this.setCrewName(crewName);
+      if (crewInputValid(crewName, this.crewNames)) {
+        this.setCrewName(crewName);
+      }
     });
   }
 
