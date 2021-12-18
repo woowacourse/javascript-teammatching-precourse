@@ -7,6 +7,7 @@ import alertError from '../views/alertError.js';
 export default function HandleCrewManager() {
   this.frontCrew = [];
   this.backCrew = [];
+  this.idx = 0;
   this.course = '';
   this.init = () => {
     if (store.getLocalStorage('FrontCrew')) {

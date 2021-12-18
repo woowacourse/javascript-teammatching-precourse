@@ -1,9 +1,9 @@
 import $ from '../utils/dom.js';
 import store from '../utils/store.js';
 
-export const renderExistTeam = course => {
+export const renderExistTeam = (course, mission) => {
   $('#team-result-wrapper').innerHTML = `
-    <h3>프론트엔드 숫자야구게임 조회</h3>
+    <h3>${course} ${mission} 조회</h3>
     <p>팀이 매칭되었습니다.</p>
     <ul>
       <li>준,포코</li>
@@ -15,9 +15,9 @@ export const renderExistTeam = course => {
     `;
 };
 
-const renderFrontMatchTeam = () => {
+const renderFrontMatchTeam = mission => {
   $('#team-result-wrapper').innerHTML = `
-  <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
+  <h3>프론트엔드 ${mission} 미션의 팀 매칭</h3>
   <div>
     <div>
       <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
@@ -42,9 +42,9 @@ const renderFrontMatchTeam = () => {
   $('#team-match-result').innerHTML = listTemplate;
 };
 
-const renderBackMatchTeam = () => {
+const renderBackMatchTeam = mission => {
   $('#team-result-wrapper').innerHTML = `
-  <h3>백엔드 숫자야구게임 미션의 팀 매칭</h3>
+  <h3>백엔드 ${mission}의 팀 매칭</h3>
   <div>
     <div>
       <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
@@ -69,11 +69,15 @@ const renderBackMatchTeam = () => {
   $('#team-match-result').innerHTML = listTemplate;
 };
 
-export const renderMatchTeam = course => {
+export const renderMatchTeam = (course, mission) => {
   if (course === 'frontend') {
-    renderFrontMatchTeam();
+    renderFrontMatchTeam(mission);
   }
   if (course === 'backend') {
-    renderBackMatchTeam();
+    renderBackMatchTeam(mission);
   }
+};
+
+export const resetMeberCountInput = () => {
+  $('#team-member-count-input').value = '';
 };

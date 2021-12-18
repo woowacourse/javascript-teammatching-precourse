@@ -1,6 +1,7 @@
 import { backTeam, frontTeam } from '../../../data.js';
-import findTeam from '../models/teamManagerModel.js';
-import { renderExistTeam, renderMatchTeam } from '../views/teamManagerView.js';
+import { findTeam, matchTeam, getSelectCourse, getSelectMission } from '../models/teamManagerModel.js';
+import { renderExistTeam, renderMatchTeam, resetMeberCountInput } from '../views/teamManagerView.js';
+import alertError from '../views/alertError.js';
 import store from '../utils/store.js';
 import $ from '../utils/dom.js';
 
@@ -28,16 +29,40 @@ export default function HandleTeamManager() {
     }
   };
 
+  const isValidMemberCount = memberCount => {
+    if (memberCount === '') {
+      return alertError('인원수를 입력하지 않았습니다. 다시 입력하세요.');
+    }
+    if (Number(memberCount) < 1) {
+      return alertError('인원수는 최소 1명 이상을 입력해야합니다. 다시 입력하세요.');
+    }
+    return true;
+  };
+
   $('#show-team-matcher-button').addEventListener('click', e => {
     e.preventDefault();
 
     this.course = $('#course-select').value;
     this.mission = $('#mission-select').value;
+    const selectCourse = getSelectCourse();
+    const selectMission = getSelectMission();
+
     if (isExistTeam()) {
-      renderExistTeam(this.course); // 구현
+      renderExistTeam(selectCourse, selectMission); // 구현
       return;
     }
-    renderMatchTeam(this.course);
+    renderMatchTeam(this.course, selectMission);
+  });
+
+  $('#team-result-wrapper').addEventListener('click', e => {
+    e.preventDefault();
+    if (e.target.id === 'match-team-button') {
+      const memberCount = $('#team-member-count-input').value;
+      if (isValidMemberCount(memberCount)) {
+        matchTeam(this.course, this.mission, Number(memberCount));
+      }
+      resetMeberCountInput();
+    }
   });
 
   this.init();
