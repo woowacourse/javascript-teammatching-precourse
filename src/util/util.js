@@ -14,6 +14,13 @@ import {
   THIRD_SECTION,
   SECOND_SECTION,
   SELECT_TEAM_COURSE_TITLE,
+  CREW_TAB,
+  TEAM_TAB,
+  FRONT_END_RADIO,
+  BACK_END_RADIO,
+  CREW_NAME_INPUT,
+  ADD_CREW_BUTTON,
+  DELETE_CREW_BUTTON,
 } from "./constant.js";
 import {
   onClickBackEndDeleteButton,
@@ -26,8 +33,8 @@ export const initialize = () => {
   const $app = document.getElementById("app");
   $app.innerHTML = PUBLIC_HEADER;
 
-  const $crewTab = document.getElementById("crew-tab");
-  const $teamTab = document.getElementById("team-tab");
+  const $crewTab = document.getElementById(CREW_TAB);
+  const $teamTab = document.getElementById(TEAM_TAB);
   $crewTab.addEventListener("click", onClickCrewTab);
   $teamTab.addEventListener("click", onClickTeamTab);
 };
@@ -38,10 +45,11 @@ const onClickCrewTab = event => {
 
   const clickedRadio = localStorage.getItem("radio-button");
   if (clickedRadio) {
-    document.getElementById(clickedRadio).checked = true;
     if (clickedRadio === FRONT_END) {
+      document.getElementById(FRONT_END_RADIO).checked = true;
       onClickFrontEndInput();
     } else if (clickedRadio === BACK_END) {
+      document.getElementById(BACK_END_RADIO).checked = true;
       onClickBackEndInput();
     }
   }
@@ -61,6 +69,7 @@ const createInputFormLabel = () => {
 const createInputFormInput = () => {
   const input = document.createElement("input");
   input.type = "text";
+  input.id = CREW_NAME_INPUT;
 
   return input;
 };
@@ -68,6 +77,7 @@ const createInputFormInput = () => {
 const createInputFormButton = event => {
   const button = document.createElement("button");
   button.type = "submit";
+  button.id = ADD_CREW_BUTTON;
   button.innerText = INPUT_FORM_BUTTON;
   button.addEventListener("click", event);
 
@@ -90,11 +100,11 @@ export const createTitle = title => {
   return h3;
 };
 
-const createRadioInput = (value, event) => {
+const createRadioInput = (value, id, event) => {
   const input = document.createElement("input");
   input.type = "radio";
   input.name = "course";
-  input.id = value;
+  input.id = id;
   input.value = value;
   input.addEventListener("click", event);
 
@@ -111,9 +121,13 @@ const createRadioLabel = (value, text) => {
 
 const createRadioInputContainer = () => {
   const div = document.createElement("div");
-  div.appendChild(createRadioInput(FRONT_END, onClickFrontEndInput));
+  div.appendChild(
+    createRadioInput(FRONT_END, FRONT_END_RADIO, onClickFrontEndInput)
+  );
   div.appendChild(createRadioLabel(FRONT_END, FRONT_END_TEXT));
-  div.appendChild(createRadioInput(BACK_END, onClickBackEndInput));
+  div.appendChild(
+    createRadioInput(BACK_END, BACK_END_RADIO, onClickBackEndInput)
+  );
   div.appendChild(createRadioLabel(BACK_END, BACK_END_TEXT));
 
   return div;
@@ -173,6 +187,7 @@ const createNameTd = text => {
 const createDeleteButton = event => {
   const button = document.createElement("button");
   button.innerText = DELETE_BUTTON;
+  button.className = DELETE_CREW_BUTTON;
   button.addEventListener("click", event);
 
   return button;
@@ -224,10 +239,6 @@ const resetSelectCourseSection = () => {
   $section.innerHTML = "";
   $section.appendChild(createTitle(SELECT_COURSE_TITLE));
   $section.appendChild(createRadioInputContainer());
-};
-
-const createSelectForm = () => {
-  const form = document.createElement("form");
 };
 
 const renderSelectMatchingSection = () => {

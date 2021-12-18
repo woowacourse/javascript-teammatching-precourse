@@ -4,10 +4,19 @@ export const FRONT_END_TEXT = "프론트엔드";
 export const BACK_END = "backend";
 export const BACK_END_TEXT = "백엔드";
 
+export const CREW_TAB = "crew-tab";
+export const TEAM_TAB = "team-tab";
+
 export const FRONT_END_INPUT_TITLE = "프론트엔드 크루 관리";
 export const BACK_END_INPUT_TITLE = "백엔드 크루 관리";
+export const FRONT_END_RADIO = "frontend-course";
+export const BACK_END_RADIO = "backend-course";
 export const INPUT_FORM_LABEL = "크루 이름";
 export const INPUT_FORM_BUTTON = "확인";
+
+export const CREW_NAME_INPUT = "crew-name-input";
+export const ADD_CREW_BUTTON = "add-crew-button";
+export const DELETE_CREW_BUTTON = "delete-crew-button";
 
 export const TABLE_BORDER = 1;
 export const FRONT_END_TABLE_TITLE = "프론트엔드 크루 목록";
@@ -46,3 +55,6 @@ export const PUBLIC_HEADER = `
   <section id="second-section"></section>
   <section id="third-section"></section>
 </main>`;
+
+export const SELECT_TEAM_COURSE_TITLE =
+  "팀 매칭을 관리할 코스, 미션을 선택하세요.";
