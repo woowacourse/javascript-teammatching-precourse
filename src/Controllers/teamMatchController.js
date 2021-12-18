@@ -61,11 +61,16 @@ export default class TeamMatchController {
 
   matchResultRender() {
     const number = Number($(`#${ID.TEAM_MEMBER_COUNT_INPUT}`).value);
-    const randomTeamList = this.createRandomTeam(number);
-    console.log(randomTeamList);
-    this.teamMatchView.matchedMainRender();
-    this.teamMatchView.matchedListRender(randomTeamList);
-    this.configureRematchButton();
+    try {
+      ValidationUtils.checkInputNumber(number);
+      const randomTeamList = this.createRandomTeam(number);
+      console.log(randomTeamList);
+      this.teamMatchView.matchedMainRender();
+      this.teamMatchView.matchedListRender(randomTeamList);
+      this.configureRematchButton();
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   getSelectedData(course) {
