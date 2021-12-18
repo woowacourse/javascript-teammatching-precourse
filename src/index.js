@@ -1,15 +1,14 @@
 import { start, selectMission } from "./constants/doms.js";
+import { initDOM } from "./view/initDOM.js";
 
 class TeamMatching {
   constructor() {
     this.initEventLister();
-
+    initDOM();
   }
 
   initEventLister() {
-    const section = document.createElement('section');
-    section.innerHTML = selectMission;
-    document.body.innerHTML = selectMission
+    
   }
 }
 
