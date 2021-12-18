@@ -1,4 +1,5 @@
-import { ID } from '../../constants/index.js';
+import { ID, LOCAL_DB } from '../../constants/index.js';
+import { getLocalStorage } from '../../utils/localStorage.js';
 import { $ } from '../../utils/selector.js';
 import { crewLists } from '../../utils/template.js';
 import { isValidCount } from '../../utils/valid.js';
@@ -50,10 +51,71 @@ class TeamManage {
     const crewCount = this.$teamCrewList.childElementCount;
     const matchCount = Number(this.$countInput.value);
 
-    console.log(crewCount, matchCount);
-
     if (!isValidCount(crewCount, matchCount)) {
       return;
+    }
+
+    const teamCountArray = this.getTeamCountArray(crewCount, matchCount);
+    const teamShuffleArray = this.getTeamShuffleList(crewCount, teamCountArray);
+    teamShuffleArray.forEach(arr => {
+      console.log(this.getTeamName(arr));
+    });
+  }
+
+  getTeamCountArray(crewCount, matchCount) {
+    const arr = [];
+    let crew = crewCount;
+    while (crew > matchCount) {
+      crew = crew - matchCount;
+      arr.push(matchCount);
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      if (crew === 0) break;
+      arr[i] += 1;
+      crew--;
+    }
+
+    return arr;
+  }
+
+  getTeamShuffleList(crewCount, teamCountArray) {
+    const shuffleIndexArray = MissionUtils.Random.shuffle(
+      Array.from({ length: crewCount }, (v, i) => i)
+    );
+
+    const matchResultArray = [];
+    for (let i = 0; i < teamCountArray.length; i++) {
+      matchResultArray.push(shuffleIndexArray.slice(0, teamCountArray[i]));
+      shuffleIndexArray.splice(0, teamCountArray[i]);
+    }
+
+    return matchResultArray;
+  }
+
+  getTeamName(arr) {
+    if (this.course === '프론트엔드') {
+      let crews = getLocalStorage(LOCAL_DB.CREW_FRONT);
+      const crewBlock = [];
+      crews.forEach((crew, i) => {
+        if (arr.includes(i)) {
+          crewBlock.push(crew);
+        }
+      });
+
+      return crewBlock;
+    }
+
+    if (this.course === '백엔드') {
+      let crews = getLocalStorage(LOCAL_DB.CREW_BACK);
+      const crewBlock = [];
+      crews.forEach((crew, i) => {
+        if (arr.includes(i)) {
+          crewBlock.push(crew);
+        }
+      });
+
+      return crewBlock;
     }
   }
 }
