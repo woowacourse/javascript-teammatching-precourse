@@ -1,12 +1,6 @@
 import { $, $$ } from '../util/index.js';
 import { checkCrewName } from '../validation/index.js';
-import {
-    addFronCrew,
-    addBackCrew,
-    isUniqueFrontCrewName,
-    isUniqueBackCrewName,
-    getCrews,
-} from '../model/index.js';
+import { addCrew, isUniqueCrewName, getCrews } from '../model/index.js';
 
 export const triggerSelectCourse = () => {
     $('#frontend-course').addEventListener('click', () => {
@@ -15,7 +9,6 @@ export const triggerSelectCourse = () => {
             courseTitle.innerText = '프론트';
         });
     });
-
     $('#backend-course').addEventListener('click', () => {
         $('#crew-section').classList.add('on');
         $$('.course-title').forEach((courseTitle) => {
@@ -26,9 +19,9 @@ export const triggerSelectCourse = () => {
 
 const addCrewOnCourse = (crewName) => {
     if ($('#frontend-course').checked) {
-        addFronCrew(crewName);
+        addCrew('frontCrews', crewName);
     } else {
-        addBackCrew(crewName);
+        addCrew('backCrews', crewName);
     }
 };
 
@@ -51,8 +44,8 @@ const renderCrewTable = () => {
 
 const isUniqueCrewNameOnCourse = (crewName) =>
     $('#frontend-course').checked
-        ? isUniqueFrontCrewName(crewName)
-        : isUniqueBackCrewName(crewName);
+        ? isUniqueCrewName('frontCrews', crewName)
+        : isUniqueCrewName('backCrews', crewName);
 
 const checkUniqueCrewName = (crewName) => {
     if (!isUniqueCrewNameOnCourse(crewName)) {
