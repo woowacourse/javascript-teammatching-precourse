@@ -18,7 +18,7 @@ const renderCrewTable = () => {
                     <td>${idx + 1}</td>
                     <td>${crewName}</td>
                     <td>
-                    <button>삭제</button>
+                    <button class='delete-crew-buttton' dataset-id='${idx}'>삭제</button>
                     </td>
                 </tr>`,
             '',
