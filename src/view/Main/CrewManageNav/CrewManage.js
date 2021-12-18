@@ -1,12 +1,10 @@
 import { BUTTON, HEADER, TEXT } from '../../../common/constant.js';
-import getStandard from '../../../control/Main/CrewManageDiv/CourseSelect.js';
+import { $ } from '../../../common/element.js';
 
-export default function createCourseManage() {
-  const course = getStandard();
-
-  return `
-    <section>
-      <h3>${course} ${HEADER.CREW_MANAGE}</h3>
+export default function createCrewManage() {
+  const crewManage = `
+    <section id="crew-manage"">
+      <h3>${HEADER.CREW_MANAGE}</h3>
       <form>
         <label>${TEXT.CREW_NAME}</label>
         <input id="crew-name-input" type="text" />
@@ -14,4 +12,6 @@ export default function createCourseManage() {
       </form>
     </section>
   `;
+
+  $('crew-manage-nav').innerHTML += crewManage;
 }

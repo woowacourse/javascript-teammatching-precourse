@@ -1,12 +1,11 @@
-export default function getStandard() {
-  const radioButtons = document.getElementsByName('course');
-  let standard = '';
+import { $ } from '../../../common/element.js';
+import createCrewManage from '../../../view/Main/CrewManageNav/CrewManage.js';
 
-  radioButtons.forEach((button) => {
-    if (button.checked) {
-      standard = button.value;
-    }
-  });
+function onCourseClick() {
+  createCrewManage();
+}
 
-  return standard;
+export default function selectCourse() {
+  $('frontend-course').addEventListener('click', onCourseClick);
+  $('backend-course').addEventListener('click', onCourseClick);
 }
