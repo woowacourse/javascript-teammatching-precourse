@@ -1,8 +1,8 @@
-import { crewManageDOM, addCrewDOM } from "../view/crewDOM.js";
-import { setCrewLocalStorage, getCrewLocalStorage } from "../data/localStorage.js";
-import { validateInput } from "./validation.js";
+import {crewManageDOM, addCrewDOM} from '../view/crewDOM.js';
+import {setCrewLocalStorage, getCrewLocalStorage} from '../data/localStorage.js';
+import {validateInput} from './validation.js';
 
-//이벤트 리스너 초기화
+// 이벤트 리스너 초기화
 export const initCrewManage = () => {
   selectCourseRadio();
   addCrewData();
@@ -10,33 +10,32 @@ export const initCrewManage = () => {
 };
 
 export const selectCourseRadio = () => {
-  const $radios = document.getElementsByName("course");
+  const $radios = document.getElementsByName('course');
 
-  $radios.forEach((node) => {
+  $radios.forEach(node => {
     node.addEventListener('click', e => {
       crewManageDOM();
-    })
-  })
-}
+    });
+  });
+};
 
 export const addCrewData = () => {
-  const $addButton = document.querySelector("#add-crew-buttton");
-  const $addInput = document.querySelector("#crew-name-input");
+  const $addButton = document.querySelector('#add-crew-buttton');
+  const $addInput = document.querySelector('#crew-name-input');
 
   $addButton.addEventListener('click', e => {
     e.preventDefault();
-    
+
     const input = $addInput.value;
     const index = setCrewLocalStorage(input);
-    
-    if(validateInput(input)) {
-      addCrewDOM(index, $addInput.value);
+
+    if (validateInput(input)) {
+      addCrewDOM(index, ($addInput.value).trim());
+    } else {
+      alert('올바르게 입력해주세요!');
     }
-    else {
-      alert("올바르게 입력해주세요!");
-    }
-    
-    $addInput.value = '';
+
+    $addInput.value = null;
   });
 };
 
@@ -47,7 +46,7 @@ export const deleteCrewData = () => {
 export const loadTableData = () => {
   const data = getCrewLocalStorage();
 
-  if(data !== null) {
+  if (data !== null) {
     data.forEach((names, index) => addCrewDOM(index, names));
   }
-}
+};

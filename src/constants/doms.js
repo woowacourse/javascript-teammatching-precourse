@@ -1,4 +1,4 @@
-//crew DOM
+// crew DOM
 export const start = `
   <section>
   <h1>우테코 크루와 팀 매칭 관리 보드</h1>
@@ -56,7 +56,7 @@ export const crewManage_table = `
   </section>
 `;
 
-//team DOM
+// team DOM
 export const selectMission = `
   <section id="team-select-mission" class="team">
   <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>

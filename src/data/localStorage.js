@@ -1,14 +1,14 @@
-export const setCrewLocalStorage = (value) => {
-  let info = getCrewLocalStorage("crew");
+export const setCrewLocalStorage = value => {
+  let info = getCrewLocalStorage('crew');
 
-  info = info !== null ? info + `${value},` : value;
-  localStorage.setItem("crew", info);
+  info = info !== null ? `${info}${value},` : value;
+  localStorage.setItem('crew', info);
 
-  return info.split(",").length;
+  return info.split(',').length;
 };
 
 export const getCrewLocalStorage = () => {
-  const data = localStorage.getItem("crew");
+  const data = localStorage.getItem('crew');
 
-  return data === null ? null : data.split(",");
+  return data === null ? null : data.split(',');
 };

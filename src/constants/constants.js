@@ -1,2 +1,2 @@
-export const $crewTable = document.querySelector("#crew-table");
+export const $crewTable = document.querySelector('#crew-table');
 
