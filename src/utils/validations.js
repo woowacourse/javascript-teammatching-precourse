@@ -1,7 +1,10 @@
 const MIN_CREW_NAME = 1;
 const MAX_CREW_NAME = 5;
 
-const isThereSpaceBeforeOrAfter = (value) => value.length !== value.trim().length;
+const notSpaceBeforeOrAfter = (value) => {
+  if (value.length !== value.trim().length) return alert('크루 이름의 앞뒤로 공백이 올 수 없습니다.');
+  return true;
+};
 
 const isValidCrewNameLength = (name) => {
   if (MIN_CREW_NAME > name.length) return alert(`크루 이름은 ${MIN_CREW_NAME}자 이상이어야합니다.`);
@@ -27,6 +30,7 @@ const isSmallerThanTotalCrewNumber = (count, crew) => {
 
 function isValidCrewName(name, crew) {
   return isValidCrewNameLength(name)
+    && notSpaceBeforeOrAfter(name)
     && isNotDuplicatedName(name, crew);
 }
 
