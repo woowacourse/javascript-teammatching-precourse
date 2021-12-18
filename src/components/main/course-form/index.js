@@ -16,15 +16,15 @@ export default class CourseForm extends Component {
       </div>
     `;
   }
-  mounted() {}
+
   setEvent() {
     const { setCourse } = this.$props;
-
-    this.addEvent('click', `#${ID.FE_RADIO_INPUT}`, ({ target }) => {
+    const { target } = this;
+    this.addEvent('click', `#${ID.FE_RADIO_INPUT}`, () => {
       setCourse({ frontend: 'checked', backend: '' });
     });
 
-    this.addEvent('click', `#${ID.BE_RADIO_INPUT}`, ({ target }) => {
+    this.addEvent('click', `#${ID.BE_RADIO_INPUT}`, () => {
       setCourse({ frontend: '', backend: 'checked' });
     });
   }
