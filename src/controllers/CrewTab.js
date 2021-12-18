@@ -42,6 +42,7 @@ export default class CrewTab {
     if (!isValidCrewName(crewName, this.storage.crew[this.course])) return;
     this.storage.addCrew(this.course, crewName);
     this.view.updateOnManageCrew(this.storage.crew[this.course]);
+    this.crewNameInput.value = '';
     this.setCrewDeleteButtonEvent();
   }
 
