@@ -1,4 +1,5 @@
 import CrewManager from './crewManager.js';
+import TeamMatchingManager from './teamMatchingManager.js';
 
 export default function Header() {
   this.headerContainer = document.querySelector('#app');
@@ -26,9 +27,17 @@ export default function Header() {
     crewManager.render();
   };
 
+  this.onClickTeamTabButton = () => {
+    const teamMatchingManager = new TeamMatchingManager();
+    teamMatchingManager.render();
+  };
+
   this.addEvent = () => {
     const crewTab = document.querySelector('#crew-tab');
+    const teamTab = document.querySelector('#team-tab');
+
     crewTab.addEventListener('click', this.onClickCrewTabButton.bind(this));
+    teamTab.addEventListener('click', this.onClickTeamTabButton.bind(this));
   };
 
   this.render = () => {
