@@ -10,7 +10,7 @@ export default class Menu {
   }
 
   manageCrewInitialize() {
-    this.manageCrewView.render();
+    this.manageCrewView.initialize();
     this.manageCrewController.initialize();
   }
 

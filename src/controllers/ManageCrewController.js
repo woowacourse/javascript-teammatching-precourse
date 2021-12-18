@@ -1,8 +1,11 @@
 import { setData, getData } from "../utils/localStorage.js";
+import { isExistProductName } from "../utils/validation.js";
+import ManageCrewView from "../views/ManageCrewView.js";
 
 export default class ManageCrewController {
   constructor() {
     this.main = document.querySelector("#content-container");
+    this.manageCrewView = new ManageCrewView();
   }
 
   initialize() {
@@ -63,8 +66,10 @@ export default class ManageCrewController {
     const crewInputValue = document.querySelector(
       ".front #crew-name-input"
     ).value;
+    if (!isExistProductName(getData("frontend"), crewInputValue)) return;
     frontendCrew.push(crewInputValue);
     setData("frontend", frontendCrew);
+    this.manageCrewView.render();
   }
 
   addBackCrew(event) {
@@ -73,7 +78,9 @@ export default class ManageCrewController {
     const crewInputValue = document.querySelector(
       ".back #crew-name-input"
     ).value;
+    if (!isExistProductName(getData("backend"), crewInputValue)) return;
     backendCrew.push(crewInputValue);
     setData("backend", backendCrew);
+    this.manageCrewView.render();
   }
 }

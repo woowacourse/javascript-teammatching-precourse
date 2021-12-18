@@ -19,7 +19,7 @@ const manageCrew = {
     </section>
     <section class="front">
       <h3>프론트엔드 크루 목록</h3>
-      <table border="1">
+      <table border="1" class="crew-table">
         <thead>
           <tr>
             <th></th>
@@ -28,13 +28,6 @@ const manageCrew = {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>준</td>
-            <td>
-              <button>삭제</button>
-            </td>
-          </tr>
         </tbody>
       </table>
     </section>
@@ -48,7 +41,7 @@ const manageCrew = {
     </section>
     <section class="back">
       <h3>백엔드 크루 목록</h3>
-      <table border="1">
+      <table border="1" class="crew-table">
         <thead>
           <tr>
             <th></th>
@@ -57,17 +50,18 @@ const manageCrew = {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>준</td>
-            <td>
-              <button>삭제</button>
-            </td>
-          </tr>
         </tbody>
       </table>
     </section>
-
+  `,
+  table: (crew, index) => `
+  <tr>
+    <td>${index + 1}</td>
+    <td>${crew}</td>
+    <td>
+      <button class="delete-crew-buttton">삭제</button>
+    </td>
+  </tr>
   `,
 };
 
