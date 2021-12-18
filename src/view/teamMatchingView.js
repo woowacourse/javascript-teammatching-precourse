@@ -44,4 +44,17 @@ export default class TeamMatchingView {
       $crewList.innerHTML += `<li>${crew}</li>`;
     });
   }
+
+  renderMadeTeam(team) {
+    if (team === undefined) {
+      return;
+    }
+    hideElement(document.querySelector("#make-team-matching"));
+    showElement(document.querySelector("#matching-result"));
+    const $table = document.querySelector("#team-match-result");
+    $table.innerHTML = "";
+    team.forEach((el, idx) => {
+      $table.innerHTML += `<li>${el.name}</li>`;
+    });
+  }
 }

@@ -58,18 +58,14 @@ export default class CrewModel {
       return;
     }
     const arr = type === "frontend" ? [...this.frontCrew] : [...this.backCrew];
-    const team = new Array(parseInt(arr.length / number, 10)).fill(["나"]);
+    const team = new Array(parseInt(arr.length / number, 10)).fill([]);
 
     const pickArray = MissionUtils.Random.shuffle(
       Array.from({ length: this.frontCrew.length }, (v, i) => i)
     );
-    team.push(team[1], "H");
-    // pickArray.forEach((el, idx) => {
-
-    //   // team.push({ index: parseInt(idx % number, 10), name: arr[el] });
-    //   team[0].
-    // });
-
+    pickArray.forEach((el, idx) => {
+      team.push({ index: parseInt(idx % number, 10), name: arr[el] });
+    });
     return team;
   }
 

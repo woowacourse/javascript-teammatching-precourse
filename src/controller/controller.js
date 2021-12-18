@@ -122,7 +122,9 @@ export default class Controller {
     $match.addEventListener("click", (e) => {
       e.preventDefault();
       const number = document.querySelector("#team-member-count-input").value;
-      this.crewModel.matchTeam(type, parseInt(number, 10));
+      this.teamMathcingView.renderMadeTeam(
+        this.crewModel.matchTeam(type, parseInt(number, 10))
+      );
     });
   }
 }

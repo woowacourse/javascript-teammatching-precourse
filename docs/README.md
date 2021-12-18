@@ -61,5 +61,5 @@
 # Controller
 > 버튼들과 관련하여 이벤트 핸들러를 구현한다.
 
-- [ ] 이벤트 핸들러
-- [ ] localStorage 이용
+- [x] 이벤트 핸들러
+- [x] localStorage 이용
