@@ -26,10 +26,22 @@ export default class Controller {
     this.render.crewBackendTemplate();
   };
 
+  crewTableTemplateRender = (targetCrew) => {
+    this.render.crewTableTemplate(targetCrew);
+  };
+
+  setCrewList = ($crewNameInput, targetCrew) => {
+    targetCrew.setCrew($crewNameInput.value);
+    this.crewTableTemplateRender(targetCrew);
+  };
+
   isValidateInput = (targetCrew) => {
     const input = new Input(this.render, targetCrew);
     const $crewNameInput = document.querySelector('#crew-name-input');
-    !input.isBlank($crewNameInput) && !input.isOverLengthSix($crewNameInput) && !input.isDuplicate($crewNameInput);
+    !input.isBlank($crewNameInput) &&
+      !input.isOverLengthSix($crewNameInput) &&
+      !input.isDuplicate($crewNameInput) &&
+      this.setCrewList($crewNameInput, targetCrew);
   };
 
   onClickAddCrewButton = (targetCrew) => {

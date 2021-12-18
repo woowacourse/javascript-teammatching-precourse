@@ -3,6 +3,7 @@ export const DOM = {
   $CREW_TAP: '#crew-tab',
   $MAIN: 'main',
   $SECTION: 'section',
+  $TBODY: '#crew-table tbody',
   $$RADIO_INPUTS: 'input[name="course"]',
 };
 
@@ -66,15 +67,7 @@ export const TEMPLATE = {
           <th>관리</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>준</td>
-          <td>
-            <button class="delete-crew-button">삭제</button>
-          </td>
-        </tr>
-      </tbody>
+      <tbody></tbody>
     </table>
   </section>
   `,
@@ -97,16 +90,15 @@ export const TEMPLATE = {
           <th>관리</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>준</td>
-          <td>
-            <button class="delete-crew-button">삭제</button>
-          </td>
-        </tr>
-      </tbody>
+      <tbody></tbody>
     </table>
   </section>
   `,
+  CREW_TD(targetCrewIndex, targetCrewName) {
+    return `
+    <td>${targetCrewIndex}</td>
+    <td>${targetCrewName}</td>
+    <td><button data-target-name="${targetCrewName}" class="delete-crew-button">삭제</button></td>
+    `;
+  },
 };

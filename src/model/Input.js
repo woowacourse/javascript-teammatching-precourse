@@ -24,7 +24,7 @@ export default class Input {
   };
 
   isDuplicate = ($crewNameInput) => {
-    if (!this.targetCrew.getCrew().find((crew) => crew === $crewNameInput.value)) {
+    if (this.targetCrew.getCrewList().find((crew) => crew === $crewNameInput.value)) {
       this.render.alertMessage('이미 존재하는 크루의 이름을 추가할 수 없습니다.');
 
       return true;

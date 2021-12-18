@@ -42,4 +42,13 @@ export default class Render {
     $section.innerHTML = TEMPLATE.CREW_BACKEND;
     this.checkLastChild($main, $section);
   };
+
+  crewTableTemplate = (targetCrew) => {
+    const $tbody = document.querySelector(DOM.$TBODY);
+    const $tr = document.createElement('tr');
+    const targetName = targetCrew.getLastCrew();
+    $tr.dataset.targetName = targetName;
+    $tr.innerHTML = TEMPLATE.CREW_TD(targetCrew.getLastCrewIndex(), targetName);
+    $tbody.appendChild($tr);
+  };
 }

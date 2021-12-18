@@ -1,11 +1,19 @@
 export default class Crew {
   constructor() {
     this.crewList = [];
+    this.crewIndex = 1;
+    this.lastCrew = '';
   }
 
   setCrew = (newCrew) => {
-    this.crewList.append(newCrew);
+    this.crewList.push([this.crewIndex, newCrew]);
+    this.lastCrew = newCrew;
+    this.crewIndex += 1;
   };
 
-  getCrew = () => this.crewList;
+  getCrewList = () => this.crewList;
+
+  getLastCrew = () => this.lastCrew;
+
+  getLastCrewIndex = () => this.crewIndex - 1;
 }
