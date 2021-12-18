@@ -3,6 +3,7 @@ import Panel from '../common/Panel.js';
 import { COURSE, DICT_COURSE } from '../../../data/course.js';
 import { MISSION, DICT_MISSION } from '../../../data/mission.js';
 import removeChildren from '../../dom/utils/removeChildren.js';
+import { ID_SELECT_COURSE, ID_SELECT_MISSION } from './const.js';
 
 export default class TeamPanel extends Panel {
 	constructor(panel) {
@@ -20,6 +21,8 @@ export default class TeamPanel extends Panel {
 		const form = this.selectSection.getElementsByTagName('form').item(0);
 		const selects = form.getElementsByTagName('select');
 		[this.courseSelect, this.missionSelect] = selects;
+		this.courseSelect.id = ID_SELECT_COURSE;
+		this.missionSelect.id = ID_SELECT_MISSION;
 		removeChildren(this.courseSelect);
 		removeChildren(this.missionSelect);
 		COURSE.forEach((course) => {
