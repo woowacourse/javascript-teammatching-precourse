@@ -20,7 +20,9 @@ export const InitialPresenter = function () {
     const addListener = (button, view, presenter) => {
         button.addEventListener("click", function (e) {
             e.preventDefault();
+
             $app.insertAdjacentHTML("beforeend", view);
+
             presenter.init();
         });
     };
