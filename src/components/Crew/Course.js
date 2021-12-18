@@ -18,7 +18,12 @@ export default class Course extends Component {
   }
 
   getInput() {
-    return $("#crew-name-input").value;
+    const input = $("#crew-name-input").value;
+    if (input.length >= 6) {
+      alert("너무 긴 크루 명입니다.");
+      return;
+    }
+    return input;
   }
 
   mount() {

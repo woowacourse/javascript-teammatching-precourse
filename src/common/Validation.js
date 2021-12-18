@@ -1,6 +1,8 @@
 import { ALERT, CONFIRM } from "../constants/const.js";
 
 export default class Validation {
+  isMaxLength() {}
+
   isEmtpyInput(name) {
     if (name === "") {
       alert(ALERT.DEFAULT + ALERT.EMPTY);
