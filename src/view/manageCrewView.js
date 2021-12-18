@@ -28,4 +28,18 @@ export default class ManageCrewView {
     showElement(document.querySelector("#crew-name"));
     showElement(document.querySelector("#crew-list"));
   }
+
+  reloadTable(crewList) {
+    const $table = document.querySelector("#crew-table").children[1];
+    $table.innerHTML = "";
+    crewList.forEach((crew, idx) => {
+      $table.innerHTML += `<tr>
+            <td>${idx}</td>
+            <td>${crew}</td>
+            <td>
+              <button id="delete-crew-buttton">삭제</button>
+            </td>
+          </tr>`;
+    });
+  }
 }

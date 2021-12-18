@@ -46,6 +46,11 @@ export default class Controller {
       e.preventDefault();
       const name = document.querySelector("#crew-name-input").value;
       this.crewModel.addCrew(type, name);
+      if (type === "frontend") {
+        this.manageCrewView.reloadTable(this.crewModel.frontCrew);
+        return;
+      }
+      this.manageCrewView.reloadTable(this.crewModel.backCrew);
     });
   }
 
