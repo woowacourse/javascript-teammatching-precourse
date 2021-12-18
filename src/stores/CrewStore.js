@@ -24,11 +24,13 @@ class CrewStore extends Store {
     if (isExistedName(name, crewList))
       return REDCUER_RESULT.FAIL(ERROR_MESSAGES.EXISTED_NAME);
     this.setState({ [course]: [...crewList, name] });
+    return REDCUER_RESULT.SUCCESS();
   }
 
   removeCrew(course, name) {
-    console.log(course, name);
-    // const crews = [...this.state.crews].filter(name);
+    const updatedCrewList = removeCrew(name, this.state[course]);
+    this.setState({ [course]: updatedCrewList });
+    return REDCUER_RESULT.SUCCESS();
   }
 }
 
