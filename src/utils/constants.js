@@ -3,7 +3,9 @@ export const INDEX = {
   TEAM_TAB: 1,
 };
 
-export const ERROR_MSG = {};
+export const ERROR_MSG = {
+  CREW_TAB: `중복된 이름을 입력하지 마세요.\n다섯 글자를 초과하지 마세요.`,
+};
 
 export const ID = {
   APP: 'app',

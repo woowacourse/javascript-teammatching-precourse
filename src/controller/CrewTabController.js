@@ -17,6 +17,36 @@ export default class CrewTabController {
 
     this.loadRecentChoice(this.choice);
     $(`div`).addEventListener('click', this.handleCourseBarClick);
+    $('form').addEventListener('submit', this.handleCrewNameSubmit);
+  };
+
+  handleCrewNameSubmit = (e) => {
+    e.preventDefault();
+    this.$nameInput = $(`#${ID.CREW_NAME_INPUT}`);
+    this.validate(this.$nameInput.value, this.choice);
+  };
+
+  validate = (name, choice) => {
+    const isValid = this.validateHelper(name, choice);
+    if (!isValid) {
+      alert(ERROR_MSG.CREW_TAB);
+    }
+    if (isValid) {
+      console.log('valid');
+    }
+  };
+
+  validateHelper = (name, choice) => {
+    if (name.length > 5) {
+      return false;
+    }
+    if (choice === '0') {
+      return !this.feCrews.includes(name);
+    }
+    if (choice === '1') {
+      return !this.beCrews.includes(name);
+    }
+    return true;
   };
 
   loadRecentChoice = (choice) => {
@@ -42,11 +72,13 @@ export default class CrewTabController {
 
   initMenu = (btnId) => {
     if (btnId === ID.FRONTEND_COURSE) {
+      this.choice = '0';
       console.log('this.feCrews');
       console.log(this.feCrews);
       setLocalStorage('choice', '0');
     }
     if (btnId === ID.BACKEND_COURSE) {
+      this.choice = '1';
       console.log('this.beCrews');
       console.log(this.beCrews);
       setLocalStorage('choice', '1');
