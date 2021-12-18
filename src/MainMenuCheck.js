@@ -1,4 +1,5 @@
 import CrewView from "./CrewView.js";
+import TeamView from "./TeamView.js"
 
 export default class MainMenuCheck {
     static checkFirstMenu(targetId) {
@@ -9,7 +10,7 @@ export default class MainMenuCheck {
 
     static checkSecondMenu(targetId) {
         if(targetId === 'team-tab') {
-            console.log("팀");
+            TeamView.render();
         }
     }
 }
