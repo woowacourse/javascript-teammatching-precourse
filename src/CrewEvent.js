@@ -21,16 +21,20 @@ export default class CrewEvent {
 
     static checkResult(crewCheck, name) {
         if(crewCheck.checkAll()) {
-            if(this.getCourse() === "frontend") {
-                this.storeFrontCrew(name, this.getCourse());
-                CrewView.showFrontTable();
-            } else if(this.getCourse() === "backend") {
-                this.storeBackCrew(name, this.getCourse());
-                CrewView.showBackTable();
-            }    
+            this.checkFrontBack(name);   
         } else {
             alert(ERROR_MESSAGE);
         } 
+    }
+
+    static checkFrontBack(name) {
+        if(this.getCourse() === "frontend") {
+            this.storeFrontCrew(name, this.getCourse());
+            CrewView.showFrontTable();
+        } else if(this.getCourse() === "backend") {
+            this.storeBackCrew(name, this.getCourse());
+            CrewView.showBackTable();
+        }  
     }
 
     static getCourse() {
