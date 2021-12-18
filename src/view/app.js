@@ -54,6 +54,9 @@ export default class App {
     this.$crewManage.updateTable(course, crew);
   }
 
+  reportError(error) {
+    alert(error);
+  }
   appendChild() {
     this.$app.append(this.$header.component, this.$emptyContainer);
   }

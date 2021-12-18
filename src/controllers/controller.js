@@ -1,4 +1,5 @@
 import { ID } from '../constants/selector.js';
+import { validateName } from '../utils/validate.js';
 
 export default class Controller {
   constructor(view, model) {
@@ -52,8 +53,11 @@ export default class Controller {
   addCrew = (e) => {
     e.preventDefault();
     const member = document.getElementById(ID.CREW_NAME_INPUT).value;
+    const error = validateName(member, this.model.names);
+    if (error) {
+      return this.view.reportError(error);
+    }
     this.model.addMember(this.field, member);
-    console.log(this.model.getCrew(this.field));
     this.view.updateCrewTable(this.field, this.model.getCrew(this.field));
   };
 }

@@ -15,4 +15,8 @@ export default class Model {
       .filter((member) => member.type === type)
       .map((member) => member.name);
   }
+
+  get names() {
+    return this.members.map((member) => member.name);
+  }
 }
