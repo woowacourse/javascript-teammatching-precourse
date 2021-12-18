@@ -65,8 +65,7 @@ export default class MatchingManageView {
     </section>
     `;
 
-    container.innerHTML = "";
-    container.innerHTML = template;
+    container.insertAdjacentHTML("beforeend", template);
   };
 
   renderMatchingCrewList = (shuffledCrews, container) => {
