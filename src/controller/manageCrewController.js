@@ -20,12 +20,21 @@ import {
   checkFrontEndCrewInput,
 } from "../util/validation.js";
 
+const saveFrontEndMembers = () => {
+  localStorage.setItem("frontEnd", crew.frontEndMembers);
+};
+
+const saveBackEndMembers = () => {
+  localStorage.setItem("backEnd", crew.backEndMembers);
+};
+
 export const onClickAddFrontEnd = event => {
   event.preventDefault();
   const input = event.target.parentElement.querySelector("input");
   if (checkFrontEndCrewInput(input.value)) {
     crew.frontEndMembers.push(input.value);
     input.value = "";
+    saveFrontEndMembers();
     renderFrontEndMembers(crew.frontEndMembers);
   }
 };
@@ -36,6 +45,7 @@ export const onClickAddBackEnd = event => {
   if (checkBackEndCrewInput(input.value)) {
     crew.backEndMembers.push(input.value);
     input.value = "";
+    saveBackEndMembers();
     renderBackEndMembers(crew.backEndMembers);
   }
 };
@@ -67,6 +77,7 @@ export const onClickFrontEndDeleteButton = event => {
     crew.frontEndMembers = crew.frontEndMembers.filter(
       member => member !== name
     );
+    saveFrontEndMembers();
     renderFrontEndMembers(crew.frontEndMembers);
   }
 };
@@ -78,6 +89,7 @@ export const onClickBackEndDeleteButton = event => {
     const name =
       event.target.parentElement.parentElement.querySelector("#name").innerText;
     crew.backEndMembers = crew.backEndMembers.filter(member => member !== name);
+    saveBackEndMembers();
     renderBackEndMembers(crew.backEndMembers);
   }
 };
