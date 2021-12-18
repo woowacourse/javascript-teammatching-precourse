@@ -1,5 +1,6 @@
 import Component from "../../core/Component.js";
 import SelectOption from "./SelectOption.js";
+import InputMatch from "./InputMatch.js";
 
 import Api from "../../libs/api.js";
 
@@ -18,24 +19,8 @@ export default class TeamTab extends Component {
   template() {
     return `
       <section id="select-option"></section>
-
       <section id="input-match">
-        <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
-        <div>
-          <div>
-            <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
-            <form>
-              <label>1팀당 인원 수</label>
-              <input type="number" id="team-member-count-input"/>
-              <button id="match-team-button">팀 매칭</button>
-            </form>
-          </div>
-          <h4>크루 목록</h4>
-          <ul>
-            <li>준</li>
-            <li>포코</li>
-          </ul>
-        </div>
+        
       </section>
 
       <!-- 팀 매칭이 된 경우 -->
@@ -56,10 +41,13 @@ export default class TeamTab extends Component {
   mounted() {
     const { setSelectedOption } = this;
     const $selectOption = document.querySelector("#select-option");
+    const $inputMatch = document.querySelector("#input-match");
 
     new SelectOption($selectOption, {
       setSelectedOption: setSelectedOption.bind(this),
     });
+
+    new InputMatch($inputMatch);
   }
 
   setSelectedOption(props) {

@@ -38,8 +38,16 @@ export default class SelectOption extends Component {
     const [course, mission] = e.target;
 
     setSelectedOption({
-      selectedCourse: course.value,
-      selectedMission: mission.value,
+      selectedCourse: {
+        value: course.value,
+        text: course[course.selectedIndex].innerText,
+        selectedIndex: course.selectedIndex,
+      },
+      selectedMission: {
+        value: mission.value,
+        text: mission[mission.selectedIndex].innerText,
+        selectedIndex: mission.selectedIndex,
+      },
     });
   }
 }
