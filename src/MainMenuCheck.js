@@ -1,7 +1,9 @@
+import CrewView from "./CrewView.js";
+
 export default class MainMenuCheck {
     static checkFirstMenu(targetId) {
         if(targetId === 'crew-tab') {
-            console.log("크루");
+            CrewView.render();
         }
     }
 
