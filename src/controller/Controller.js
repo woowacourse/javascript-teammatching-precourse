@@ -1,4 +1,5 @@
 import Crew from '../model/Crew.js';
+import Input from '../model/Input.js';
 import { DOM, EVENT, RADIO_SELECT } from '../utils/constant.js';
 import Render from '../view/Render.js';
 
@@ -6,6 +7,7 @@ export default class Controller {
   constructor() {
     this.render = new Render();
     this.frontCrew = new Crew();
+    this.backCrew = new Crew();
   }
 
   mainTemplateRender = () => {
@@ -24,19 +26,29 @@ export default class Controller {
     this.render.crewBackendTemplate();
   };
 
+  isValidateInput = (targetCrew) => {
+    const input = new Input(this.render, targetCrew);
+    const $crewNameInput = document.querySelector('#crew-name-input');
+    !input.isBlank($crewNameInput) && !input.isOverLengthSix($crewNameInput) && !input.isDuplicate($crewNameInput);
+  };
+
+  onClickAddCrewButton = (targetCrew) => {
+    const $addCrewButton = document.querySelector('#add-crew-button');
+    $addCrewButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.isValidateInput(targetCrew);
+    });
+  };
+
   isCheckedRadioInput = ($radioInput) => {
     if ($radioInput.value === RADIO_SELECT.FRONTEND) {
-      console.log('front');
       this.crewFrontendTemplateRender();
-
-      return;
+      this.onClickAddCrewButton(this.frontCrew);
     }
 
     if ($radioInput.value === RADIO_SELECT.BACKEND) {
-      console.log('back');
       this.crewBackendTemplateRender();
-
-      return;
+      this.onClickAddCrewButton(this.backCrew);
     }
   };
 

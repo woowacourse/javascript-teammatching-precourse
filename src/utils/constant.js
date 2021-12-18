@@ -52,13 +52,13 @@ export const TEMPLATE = {
     <h3>프론트엔드 크루 관리</h3>
     <form>
       <label>크루 이름</label>
-      <input type="text" />
-      <button>확인</button>
+      <input type="text" id="crew-name-input" />
+      <button id="add-crew-button">확인</button>
     </form>
   </section>
   <section>
     <h3>프론트엔드 크루 목록</h3>
-    <table border="1">
+    <table border="1" id="crew-table">
       <thead>
         <tr>
           <th></th>
@@ -71,7 +71,7 @@ export const TEMPLATE = {
           <td>1</td>
           <td>준</td>
           <td>
-            <button>삭제</button>
+            <button class="delete-crew-button">삭제</button>
           </td>
         </tr>
       </tbody>
@@ -83,13 +83,13 @@ export const TEMPLATE = {
     <h3>백엔드 크루 관리</h3>
     <form>
       <label>크루 이름</label>
-      <input type="text" />
-      <button>확인</button>
+      <input type="text" id="crew-name-input" />
+      <button id="add-crew-button">확인</button>
     </form>
   </section>
   <section>
     <h3>백엔드 크루 목록</h3>
-    <table border="1">
+    <table border="1" id="crew-table">
       <thead>
         <tr>
           <th></th>
@@ -102,7 +102,7 @@ export const TEMPLATE = {
           <td>1</td>
           <td>준</td>
           <td>
-            <button>삭제</button>
+            <button class="delete-crew-button">삭제</button>
           </td>
         </tr>
       </tbody>

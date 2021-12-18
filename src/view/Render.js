@@ -5,6 +5,10 @@ export default class Render {
     this.$app = document.querySelector(DOM.$APP);
   }
 
+  alertMessage = (message) => {
+    alert(message);
+  };
+
   mainTemplate = () => {
     this.$app.innerHTML = TEMPLATE.MAIN;
   };
