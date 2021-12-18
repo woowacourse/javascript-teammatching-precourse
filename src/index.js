@@ -1,13 +1,7 @@
 import { fetchHtmlView } from './fetch.js';
 import ManageModel from './model/manage-model.js';
 import CrewController from './controller/crew-controller.js';
-
-function onShowTeamClick() {
-    const courseSelected = document.querySelector("#course-select").value;
-    const missionSelected = document.querySelector("#mission-select").value;
-
-    console.log(courseSelected, missionSelected);
-}
+import TeamController from './controller/team-controller.js';
 
 async function renderView(fileName) {
     const view = await fetchHtmlView(fileName);
@@ -23,12 +17,12 @@ function eventHandler(e) {
 
     const handlers = {
         "crew-tab"() { crewController.onCrewTabClick(); },
-        "team-tab"() { onTeamTabClick(); },
+        "team-tab"() { teamController.onTeamTabClick(); },
         "frontend-course"() { crewController.onCourseRadioClick(e) },
         "backend-course"() { crewController.onCourseRadioClick(e) },
         "add-crew-buttton"() { crewController.onAddCrewClick(); },
         "delete-crew-buttton"() { crewController.onDeleteCrewClick(e.target); },
-        "show-team-matcher-button"() { onShowTeamClick(); },
+        "show-team-matcher-button"() { teamController.onShowTeamClick(); },
     };
     const handlerKeys = Object.keys(handlers);
     if(handlerKeys.includes(e.target.id)) handlers[e.target.id]();
@@ -40,6 +34,7 @@ const app = document.querySelector("#app");
 const manageModel = new ManageModel();
 
 const crewController = new CrewController(manageModel, app);
+const teamController = new TeamController(manageModel, app);
 
 renderView('tab.html')
     .then(_ => {
