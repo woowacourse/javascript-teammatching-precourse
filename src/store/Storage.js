@@ -1,14 +1,5 @@
 import { isEquals, isNull } from '../common/valid.js';
 
-const initialState = {
-  currentTab: '',
-  crew_tab: { front: [{ index: 0, id: '', name: '' }], back: [{ index: 0, id: '', name: '' }] },
-  team_tab: {
-    front: [{ id: 0, mission: '', members: '' }],
-    back: [{ id: 0, mission: '', members: '' }],
-  },
-};
-
 class Storage {
   constructor() {
     this.state = localStorage;

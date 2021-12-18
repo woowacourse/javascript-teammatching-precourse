@@ -73,21 +73,20 @@ export const isPositiveInteger = (target, description) => {
  * @param {string} placeholder
  * @returns {number}
  */
-const numbersValidate = (value, placeholder) => {
+export const numbersValidate = (value, placeholder) => {
   const parsed = isPositiveInteger(value, placeholder);
   if (isEmpty(parsed)) return EMPTY;
   return parsed;
 };
 
 /**
- * 모든 입력에 대한 유효성을 검사합니다.
+ * 숫자가 아닌 입력에 대한 유효성을 검사합니다.
  *
  * @param {object} param
  * @param {any[]} items
  * @returns {boolean}
  */
-export const isValidate = ({ type, placeholder, value }, items = []) => {
-  if (type === 'number') return numbersValidate(value, placeholder);
+export const isValidate = ({ placeholder, value }, items = []) => {
   const trimedValue = value.trim();
   if (trimedValue.length >= 6) return $showAlert('lengthOverError', placeholder);
   if (isEmpty(trimedValue)) return $showAlert('notDefined', placeholder);

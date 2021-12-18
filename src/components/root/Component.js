@@ -1,5 +1,5 @@
 import Storage from '../../store/Storage.js';
-import {$, $addEvent} from '../../common/dom.js';
+import { $, $addEvent } from '../../common/dom.js';
 
 export default class Component {
   constructor(selector, props) {

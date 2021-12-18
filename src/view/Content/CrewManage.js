@@ -1,17 +1,17 @@
-import { DOM } from '../../constants/index.js';
-import { radioChecked } from '../../common/parsed.js';
+import { DOM, EMPTY } from '../../constants/index.js';
+import { setSelected } from '../../common/parsed.js';
 
-const CrewManage = checked => `
+const CrewManage = ({ checked, data }) => `
   <section>
     <h3>크루를 관리할 코스를 선택해주세요</h3>
     <div>
       <input type="radio" name="course" value="frontend"
         id="${DOM.FRONTEND_COURSE}"
-        ${radioChecked(checked, DOM.FRONTEND_COURSE)}/>
+        ${setSelected(checked, DOM.FRONTEND_COURSE, 'checked')}/>
       <label for="frontend">프론트엔드</label>
       <input type="radio" name="course" value="backend"
         id="${DOM.BACKEND_COURSE}"
-        ${radioChecked(checked, DOM.BACKEND_COURSE)}/>
+        ${setSelected(checked, DOM.BACKEND_COURSE, 'checked')}/>
       <label for="backend">백엔드</label>
     </div>
   </section>
@@ -34,13 +34,19 @@ const CrewManage = checked => `
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>준</td>
-          <td>
-            <button class="${DOM.DELETE_CREW_BUTTON}">삭제</button>
-          </td>
-        </tr>
+        ${data
+          .map(
+            ({ index, name }) => `
+          <tr>
+            <td>${index}</td>
+            <td>${name}</td>
+            <td>
+              <button class="${DOM.DELETE_CREW_BUTTON}">삭제</button>
+            </td>
+          </tr>
+          `,
+          )
+          .join(EMPTY)}
       </tbody>
     </table>
   </section>

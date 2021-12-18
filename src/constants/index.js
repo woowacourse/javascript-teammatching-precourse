@@ -21,12 +21,22 @@ export const ERROR_MESSAGES = Object.freeze({
   notDefined: '을(를) 입력해 주세요.',
   dupError: '은(는) 이미 존재합니다.',
   lengthOverError: '은(는) 5자 이하여야 합니다.',
+  zeroError: '은(는) 0이 아닌 양의 정수입니다.',
+  negativeError: '은(는) 음수가 아닌 양의 정수입니다.',
+  decimalError: '은(는) 소수가 아닌 양의 정수입니다.',
 });
 
 export const EVENT_TYPE_CLICK = 'click';
+export const EVENT_TYPE_CHANGE = 'change';
 
-export const RADIO_TAB = 'radioTab';
+export const HIDDEN = 'display:none';
+
 export const CURRENT_TAB = 'currentTab';
+export const SELECTED = 'selected';
+export const MISSION = 'mission';
+export const DISPLAY_MATCHED = 'matched';
+export const DISPLAY_NON_MATCHED = 'nonMatched';
+export const TEAMS = 'TEAMS';
 
 export const DOM = Object.freeze({
   CREW_TAB: 'crew-tab',
