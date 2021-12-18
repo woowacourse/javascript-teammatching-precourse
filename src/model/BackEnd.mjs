@@ -5,8 +5,12 @@ export default class BackEnd {
     this.crew = localStorage.getItem('FrontEndUser')?.split(',') ?? [];
   }
 
-  getCrew(crew) {
+  setCrew(crew) {
     this.crew = [...this.crew, crew];
     setUserLocalStorage('BackEndUser', this.crew);
+  }
+
+  getCrew() {
+    return this.crew;
   }
 }

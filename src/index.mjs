@@ -47,7 +47,7 @@ window.addEventListener('click', e => {
   const frontEndOrBackEndString = valueToString(curCourse);
   if (!validateName(crewNameInput)) return;
 
-  if (curCourse === 'frontend') FE.getCrew(crewNameInput);
-  if (curCourse === 'backend') BE.getCrew(crewNameInput);
+  if (curCourse === 'frontend') FE.setCrew(crewNameInput);
+  if (curCourse === 'backend') BE.setCrew(crewNameInput);
   renderInputCrewNameAndList(frontEndOrBackEndString);
 });
