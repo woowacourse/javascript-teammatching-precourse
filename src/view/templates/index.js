@@ -15,3 +15,7 @@ export const createBoardHeader = () => `
 	</nav>
 	</header>
 `;
+
+export const createMain = () => `
+	<main id="${SELECTOR.tabContentMain}"></main>
+`;

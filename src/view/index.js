@@ -1,5 +1,5 @@
 import { $ } from '../utils/dom.js';
-import { createBoardHeader } from './templates/index.js';
+import { createBoardHeader, createMain } from './templates/index.js';
 
 import { SELECTOR } from '../constants.js';
 
@@ -9,7 +9,7 @@ class TeamMatchingView {
   }
 
   initializeView() {
-    $(`#${SELECTOR.teamMatchingAppId}`).innerHTML = createBoardHeader();
+    $(`#${SELECTOR.teamMatchingAppId}`).innerHTML = createBoardHeader() + createMain();
   }
 }
 

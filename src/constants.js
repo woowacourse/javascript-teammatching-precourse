@@ -3,6 +3,7 @@ export const SELECTOR = Object.freeze({
   // 탭
   crewTabButtonId: 'crew-tab',
   teamTabButtonId: 'team-tab',
+  tabContentMain: 'tab-content-main',
 
   // 크루 관리 탭
   frontendCourseRadioInputId: 'frontend-course',
