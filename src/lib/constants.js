@@ -25,6 +25,20 @@ export const DOM = Object.freeze({
 
   CREW_FORM_SECTION: 'crew-form-section',
   CREW_LIST_SECTION: 'crew-list-section',
+
+  /** 팀매칭 */
+  SHOW_TEAM_MATCHER_FORM_ID: 'show-team-matcher-form',
+  COURSE_SELECT_ID: 'course-select',
+  MISSION_SELECT_ID: 'mission-select',
+  SHOW_TEAM_MATCHER_BUTTON_ID: 'show-team-matcher-button',
+
+  TEAM_MEMBER_COUNT_FORM_ID: 'team-member-count-form',
+  TEAM_MEMBER_COUNT_INPUT_ID: 'team-member-count-input',
+  MATCH_TEAM_BUTTON: 'match-team-button',
+  TEAM_MATCH_RESULT: 'team-match-result',
+  REMATCH_TEAM_BUTTON: 'rematch-team-button',
+
+  CREW_TEAM_MACHING_SECTION: 'crew-team-matching-section',
 });
 
 export const TAB = {
@@ -37,6 +51,7 @@ export const MODEL_KEYS = {
   GLOBAL: 'global',
   INPUTS: 'inputs',
   CREW: 'crew',
+  TEAM: 'team',
 };
 
 export const COURSE = {
@@ -48,4 +63,21 @@ export const ERROR_MESSAGE = Object.freeze({
   IS_DUPLICATED_NAME: '이름이 중복되었습니다.',
   IS_NONE_INPUT: '글자가 입력되지 않았습니다',
   IS_STRING_GREATHER_THAN_5: '글자수는 5글자 이하입니다.',
+
+  IS_COUNT_NEGATIVE_NUMBER: '음수일 수 없습니다',
+  IS_COUNT_ZERO: '0일 수 없습니다.',
+});
+export const COURSE_SELECT_MAP = Object.freeze({
+  프론트엔드: 'frontend',
+  백엔드: 'backend',
+});
+export const MISSION_SELECT_MAP = Object.freeze({
+  베이스볼: 'baseball',
+  레이싱카: 'racingcar',
+  로또: 'lotto',
+  장바구니: 'shopping-cart',
+  결제: 'payments',
+  지하철노선도: 'subway',
+  퍼포먼스: 'performance',
+  배포: 'deploy',
 });

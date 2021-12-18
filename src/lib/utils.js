@@ -31,3 +31,18 @@ export const isValidCrewName = (name, list) => {
 export const isDeleteButtonClick = (className) => {
   return className === DOM.DELETE_CREW_BUTTON_CLASSNAME;
 };
+export const isCountZero = (count) => {
+  return count === 0;
+};
+export const isCountNegativeNumber = (count) => {
+  return count < 0;
+};
+export const isValidCount = (count) => {
+  if (isCountZero(count)) {
+    throw new Error(ERROR_MESSAGE.IS_COUNT_ZERO);
+  }
+  if (isCountNegativeNumber(count)) {
+    throw new Error(ERROR_MESSAGE.IS_COUNT_NEGATIVE_NUMBER);
+  }
+  return true;
+};

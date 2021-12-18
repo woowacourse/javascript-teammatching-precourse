@@ -46,13 +46,18 @@ class Crew extends Model {
   deleteCrew(courseName, position) {
     if (courseName === COURSE.FRONTEND) {
       const crewList = this.getFrontendCrewList();
-      console.log(crewList.filter((_, index) => index !== position));
       this.setFrontendCrew(crewList.filter((_, index) => index !== position));
     }
     if (courseName === COURSE.BACKEND) {
       const crewList = this.getBackendCrewList();
       this.setBackendCrew(crewList.filter((_, index) => index !== position));
     }
+  }
+
+  getAllCrewList() {
+    const frontendList = this.getFrontendCrewList();
+    const backendList = this.getBackendCrewList();
+    return [...frontendList, ...backendList];
   }
 }
 export default Crew;
