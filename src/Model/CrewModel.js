@@ -24,7 +24,6 @@ export default class CrewModel {
 
   addStorage(selectValue, crewName) {
     const storage = this.getStorage(selectValue);
-    console.log(storage);
     const lastCrew = storage[storage.length - 1];
     const newCrew = { index: lastCrew.index + 1, name: crewName };
     const newStorage = [...storage, newCrew];
