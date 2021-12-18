@@ -1,5 +1,5 @@
 import { fetchHtmlView } from './fetch.js';
-import { INCORRECT_CREW_NAME } from './constants/alert-messages.js';
+import { CONFIRM_MESSAGE, INCORRECT_CREW_NAME } from './constants/alert-messages.js';
 
 import Crew from './model/crew.js';
 
@@ -50,23 +50,26 @@ function isSameName(name) {
 }
 
 function onDeleteCrewClick(target) {
-    const row = target.parentElement.parentElement;
-    renderDeleteRow(row.rowIndex);
+    if(confirm(CONFIRM_MESSAGE)) {
+        deleteFromCrewList(crewList, target);
+        renderCrewList(crewList);
+    }
 }
 
-function renderDeleteRow(rowIndex) {
-    const crewTable = document.querySelector("#crew-table");
-    crewTable.deleteRow(rowIndex);
+function deleteFromCrewList(crews, target) {
+    const index = target.parentElement.parentElement.rowIndex - 1;
+    crews.splice(index, 1);
 }
 
 //
-function renderView(fileName) {
-    fetchHtmlView(fileName).then(view => app.innerHTML = view);
+async function renderView(fileName) {
+    const view = await fetchHtmlView(fileName);
+    app.innerHTML = view;
 }
 
 function onCrewTabClick() {
-    renderView('crew-manage.html');
-    renderCrewList(crewList);
+    renderView('crew-manage.html')
+        .then(_ => renderCrewList(crewList));
 }
 
 function onTeamTabClick() {
