@@ -41,10 +41,7 @@ const renderCrewTable = () => {
         );
 };
 
-const isUniqueCrewNameOfCourse = (crewName) =>
-    isFrontCourse()
-        ? isUniqueCrewNameOnCourse('frontCrews', crewName)
-        : isUniqueCrewNameOnCourse('backCrews', crewName);
+const isUniqueCrewNameOfCourse = (crewName) => createCrew(crewName).isUniqueCrewName();
 
 const checkUniqueCrewName = (crewName) => {
     if (!isUniqueCrewNameOfCourse(crewName)) {

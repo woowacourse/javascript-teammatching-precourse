@@ -13,7 +13,7 @@ export default class Crew {
         return getCrewsOnCourse(this.keyOfCrews);
     }
 
-    isUniqueCrewName(crewName) {
-        return isUniqueCrewNameOnCourse(this.keyOfCrews, crewName);
+    isUniqueCrewName() {
+        return isUniqueCrewNameOnCourse(this.keyOfCrews, this.name);
     }
 }
