@@ -8,4 +8,11 @@ export default class Render {
   mainTemplate = () => {
     this.$app.innerHTML = TEMPLATE.MAIN;
   };
+
+  crewManageTemplate = () => {
+    const $main = document.querySelector('main');
+    const $section = document.createElement('section');
+    $section.innerHTML = TEMPLATE.CREW_MANAGE;
+    $main.appendChild($section);
+  };
 }
