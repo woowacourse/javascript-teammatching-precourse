@@ -1,3 +1,5 @@
+import CrewManager from './crewManager.js';
+
 export default function Header() {
   this.headerContainer = document.querySelector('#app');
 
@@ -19,7 +21,18 @@ export default function Header() {
     `;
   };
 
+  this.onClickCrewTabButton = () => {
+    const crewManager = new CrewManager();
+    crewManager.render();
+  };
+
+  this.addEvent = () => {
+    const crewTab = document.querySelector('#crew-tab');
+    crewTab.addEventListener('click', this.onClickCrewTabButton.bind(this));
+  };
+
   this.render = () => {
     this.headerContainer.innerHTML = this.template();
+    this.addEvent();
   };
 }
