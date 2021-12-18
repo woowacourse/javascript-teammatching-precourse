@@ -6,7 +6,7 @@ export default class InputMatch extends Component {
   }
 
   template() {
-    const { selectedCourse, selectedMission } = this.$props;
+    const { selectedCourse, selectedMission, currentCrews } = this.$props;
     return `
         <h3>${selectedCourse.text} ${selectedMission.text} 미션의 팀 매칭</h3>
         <div>
@@ -20,8 +20,11 @@ export default class InputMatch extends Component {
         </div>
         <h4>크루 목록</h4>
         <ul>
-            <li>준</li>
-            <li>포코</li>
+            ${currentCrews
+              .map((crew) => {
+                return `<li>${crew}</li>`;
+              })
+              .join("")}
         </ul>
         </div>
     `;
