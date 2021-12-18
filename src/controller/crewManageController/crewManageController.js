@@ -70,9 +70,9 @@ export default class CrewManageController {
       const targetIdx = closestTR.children[0].innerText;
       this.model.deleteCrew(targetIdx, course);
     }
-    // this.renderCrewTableByCourse(course);
-    // this.view.selectCrewManageDOM();
-    // this.attachCrewManageEvents();
+    this.renderCrewTableByCourse(course);
+    this.view.selectCrewManageDOM();
+    this.attachCrewManageEvents();
   }
 
   renderCrewTableByCourse(course) {
@@ -82,10 +82,3 @@ export default class CrewManageController {
     return this.view.renderCrewTable(this.model.frontCrews);
   }
 }
-
-// 여러 테이블 리스트 있는데 거기서 하나 고를때
-
-//  const closestTR = e.target.closest(STRING.TR);
-// this.view.$$purchaseButton.forEach((element) => {
-//   element.addEventListener('click', this.handlePurchase.bind(this));
-// });
