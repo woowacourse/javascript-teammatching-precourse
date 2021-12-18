@@ -29,6 +29,8 @@ export default class SelectOption extends Component {
   }
 
   mounted() {
+    this.setSelectedIndex(this.$props);
+
     this.addEvent("submit", this.$target, (e) => this.onSubmitHandler(e));
   }
 
@@ -49,5 +51,13 @@ export default class SelectOption extends Component {
         selectedIndex: mission.selectedIndex,
       },
     });
+  }
+
+  setSelectedIndex($props) {
+    const { selectedCourse, selectedMission } = $props;
+    document.querySelector("#course-select").selectedIndex =
+      selectedCourse.selectedIndex;
+    document.querySelector("#mission-select").selectedIndex =
+      selectedMission.selectedIndex;
   }
 }

@@ -39,12 +39,17 @@ export default class TeamTab extends Component {
   }
 
   mounted() {
-    const { setSelectedOption } = this;
+    const {
+      setSelectedOption,
+      $state: { selectedCourse, selectedMission },
+    } = this;
     const $selectOption = document.querySelector("#select-option");
     const $inputMatch = document.querySelector("#input-match");
 
     new SelectOption($selectOption, {
       setSelectedOption: setSelectedOption.bind(this),
+      selectedCourse,
+      selectedMission,
     });
 
     new InputMatch($inputMatch);
