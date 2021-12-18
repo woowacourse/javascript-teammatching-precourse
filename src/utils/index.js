@@ -26,6 +26,11 @@ function matchTeam(crew, memberCount) {
   return result;
 }
 
+function getNameFromValue(data, value) {
+  return data.find((item) => item.value === value).name;
+}
+
 export {
   matchTeam,
+  getNameFromValue,
 };

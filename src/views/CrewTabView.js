@@ -1,5 +1,6 @@
-import { NAME } from '../constants/string.js';
+import data from '../constants/data.js';
 import crewTabTemplate from '../templates/crew-tab-template.js';
+import { getNameFromValue } from '../utils/index.js';
 
 export default class CrewTabView {
   constructor() {
@@ -29,8 +30,8 @@ export default class CrewTabView {
     this.renderCrewTableItem(crew);
   }
 
-  updateOnSelectRadio(course, crew) {
-    const courseName = NAME[course];
+  updateOnSelectRadio(courseValue, crew) {
+    const courseName = getNameFromValue(data.course, courseValue);
     this.renderCrewAddSection(courseName);
     this.renderCrewListSection(courseName, crew);
   }

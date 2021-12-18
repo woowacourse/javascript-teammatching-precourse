@@ -44,8 +44,6 @@ const mission = [
   },
 ];
 
-const optionData = { course, mission };
+const data = { course, mission };
 
-export {
-  optionData,
-};
+export default data;

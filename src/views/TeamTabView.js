@@ -1,5 +1,6 @@
-import { optionData } from '../constants/data.js';
+import data from '../constants/data.js';
 import teamTabTemplate from '../templates/team-tab-template.js';
+import { getNameFromValue } from '../utils/index.js';
 
 export default class TeamTabView {
   constructor() {
@@ -15,17 +16,17 @@ export default class TeamTabView {
   renderOption() {
     const courseSelect = document.querySelector('#course-select');
     const missionSelect = document.querySelector('#mission-select');
-    optionData.course.forEach((item) => {
+    data.course.forEach((item) => {
       courseSelect.innerHTML += teamTabTemplate.option(item.name, item.value);
     });
-    optionData.mission.forEach((item) => {
+    data.mission.forEach((item) => {
       missionSelect.innerHTML += teamTabTemplate.option(item.name, item.value);
     });
   }
 
   renderMatcher(courseValue, missionValue, crew) {
-    const courseName = optionData.course.find((item) => item.value === courseValue).name;
-    const missionName = optionData.mission.find((item) => item.value === missionValue).name;
+    const courseName = getNameFromValue(data.course, courseValue);
+    const missionName = getNameFromValue(data.mission, missionValue);
     this.resultContainer.innerHTML = teamTabTemplate.matcher(courseName, missionName);
     this.renderCrewList(crew);
   }
@@ -39,8 +40,8 @@ export default class TeamTabView {
   }
 
   renderMatchResult(courseValue, missionValue, teams) {
-    const courseName = optionData.course.find((item) => item.value === courseValue).name;
-    const missionName = optionData.mission.find((item) => item.value === missionValue).name;
+    const courseName = getNameFromValue(data.course, courseValue);
+    const missionName = getNameFromValue(data.mission, missionValue);
     this.resultContainer.innerHTML = teamTabTemplate.matchResult(courseName, missionName);
     const teamList = document.querySelector('#team-match-result');
     teamList.innerHTML = '';
