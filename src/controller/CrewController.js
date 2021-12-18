@@ -1,3 +1,5 @@
+import { isNameInputValid } from '../utils/validator.js';
+
 export class CrewController {
   constructor(model, coreView) {
     this.model = model;
@@ -29,6 +31,9 @@ export class CrewController {
   }
 
   onCrewAddButtonClick(crewName, course) {
+    if (!isNameInputValid(crewName)) {
+      return;
+    }
     const crewList = this.model.addCrewList(crewName, course);
     this.coreView.crewView.showCrewList(crewList);
   }
