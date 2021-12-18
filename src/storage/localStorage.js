@@ -1,5 +1,6 @@
 const setFrontCrew = (frontCrew) => {
   localStorage.setItem("frontCrew", JSON.stringify(frontCrew));
+  return JSON.parse(localStorage.getItem("frontCrew"));
 };
 
 const getFrontCrew = () => {
@@ -12,6 +13,7 @@ const getFrontCrew = () => {
 
 const setBackCrew = (backCrew) => {
   localStorage.setItem("backCrew", JSON.stringify(backCrew));
+  return JSON.parse(localStorage.getItem("backCrew"));
 };
 
 const getBackCrew = () => {

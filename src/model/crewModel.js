@@ -1,13 +1,21 @@
+import {
+  getBackCrew,
+  setBackCrew,
+  getFrontCrew,
+  setFrontCrew,
+} from "../storage/localStorage.js";
+
 export default class CrewModel {
   constructor() {
-    this.frontCrew = [];
-    this.backCrew = [];
+    this.frontCrew = getFrontCrew();
+    this.backCrew = getBackCrew();
   }
 
   addCrew(type, name) {
     if (type === "frontend") {
       if (!this.frontCrew.includes(name)) {
         this.frontCrew.push(name);
+        this.frontCrew = setFrontCrew(this.frontCrew);
         return;
       }
       alert("동명 이인이 있습니다.");
@@ -15,23 +23,20 @@ export default class CrewModel {
     }
     if (!this.backCrew.includes(name)) {
       this.backCrew.push(name);
+      this.backCrew = setBackCrew(this.backCrew);
       return;
     }
     alert("동명 이인이 있습니다.");
   }
 
   deleteCrew(type, name) {
-    console.log(type);
     if (type === "frontend") {
       this.frontCrew.forEach((crew, idx) => {
-        console.log(crew, name);
         if (crew === name) {
-          console.log(this.frontCrew);
           this.frontCrew.splice(idx, 1);
-          console.log(this.frontCrew);
         }
       });
-
+      this.frontCrew = setFrontCrew(this.frontCrew);
       return;
     }
     this.backCrew.forEach((crew, idx) => {
@@ -39,5 +44,6 @@ export default class CrewModel {
         this.backCrew.splice(idx, 1);
       }
     });
+    this.backCrew = setBackCrew(this.backCrew);
   }
 }

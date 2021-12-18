@@ -5,10 +5,10 @@ import TeamMatchingView from "../view/teamMatchingView.js";
 
 export default class Controller {
   constructor() {
+    this.crewModel = new CrewModel();
     this.commonView = new CommonView().init();
     this.manageCrewView = new ManageCrewView();
     this.teamMathcingView = new TeamMatchingView();
-    this.crewModel = new CrewModel();
     this.onClickCrewManageBtn(); // 크루 관리 버튼 클릭 시
     this.onClickTeamTab(); // 팀 매칭 관리 클릭 시
   }
