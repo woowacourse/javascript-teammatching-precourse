@@ -22,3 +22,7 @@ export const isValidCrewName = value => {
 
   return true;
 };
+
+export const isValidCount = value => {
+  return true;
+};

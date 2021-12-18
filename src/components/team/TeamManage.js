@@ -1,4 +1,5 @@
 import { ID } from '../../constants/index.js';
+import { $ } from '../../utils/selector.js';
 import { crewLists } from '../../utils/template.js';
 
 class TeamManage {
@@ -43,6 +44,8 @@ class TeamManage {
 
   clickButton(e) {
     e.preventDefault();
+
+    const count = Number(this.$countInput.value);
   }
 }
 
