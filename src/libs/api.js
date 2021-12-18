@@ -8,8 +8,16 @@ export default class Api {
       checkedCrewCourse: undefined,
       frontends: [],
       backends: [],
-      selectedCourse: undefined,
-      selectedMission: undefined,
+      selectedCourse: {
+        value: "frontend",
+        text: "프론트엔드",
+        selectedIndex: 0,
+      },
+      selectedMission: {
+        value: "baseball",
+        text: "숫자야구게임",
+        selectedIndex: 0,
+      },
       teamNumbers: undefined,
       matchedTeam: [],
     };
