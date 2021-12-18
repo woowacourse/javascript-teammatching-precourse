@@ -119,13 +119,17 @@ export default class TeamManageContainer extends Component {
       event.preventDefault();
 
       const headCount = this.$target.querySelector('#team-member-count-input').value;
-
+      const teams = this.$state.teams;
       if (isValidTeamHeadCount(headCount, this.$state.crews[this.$state.selectedCourse].length)) {
         const shuffledTeam = matchRandomTeam(this.$state.crews[this.$state.selectedCourse], headCount);
-        this.$state.teams[this.$state.selectedCourse][this.$state.selectedMission] = shuffledTeam;
-        this.setState({
-          teams: this.$state.teams
-        });
+        if (teams[this.$state.selectedCourse]) {
+          teams[this.$state.selectedCourse][this.$state.selectedMission] = shuffledTeam;
+        } else {
+          teams[this.$state.selectedCourse] = {};
+          teams[this.$state.selectedCourse][this.$state.selectedMission] = shuffledTeam;
+        }
+
+        this.setState({ teams });
         this.saveTeamsInStroage();
       }
     });
