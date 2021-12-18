@@ -29,11 +29,12 @@ function selectMatchTeamCourse() {
 }
 
 function eventBinding() {
-    const selectBox = document.getElementById("mission-select");
+    const courseSelectBox = document.getElementById("course-select");
+    const missionSelectBox = document.getElementById("mission-select");
 
     document.getElementById("show-team-matcher-button").onclick = (e) => {
         e.preventDefault();
-        matchTeam(selectBox.options[selectBox.selectedIndex].text);
+        matchTeam(courseSelectBox.options[courseSelectBox.selectedIndex].text, missionSelectBox.options[missionSelectBox.selectedIndex].text);
     };
 }
 
