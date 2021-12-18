@@ -30,8 +30,6 @@ export const getCrewListLength = course => {
 
 export const addCrewLocalStorage = (index, name, course) => {
   const crewList = store.getItem(course);
-
-  console.log(crewList);
   const totalCrew = [];
   if (crewList !== null) {
     for (let crew in crewList) {

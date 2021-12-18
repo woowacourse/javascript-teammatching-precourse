@@ -3,6 +3,7 @@ import {
   renderAddCrewForm,
   renderCrewTable,
   renderMain,
+  renderCrewTableItems,
 } from './view/render.js';
 import { $ } from './util/dom.js';
 import { FRONT_END, BACK_END } from './constants/constants.js';
@@ -17,10 +18,12 @@ function App() {
       case 'frontend-course':
         renderAddCrewForm(FRONT_END);
         renderCrewTable(FRONT_END);
+        renderCrewTableItems('frontCrew');
         break;
       case 'backend-course':
         renderAddCrewForm(BACK_END);
         renderCrewTable(BACK_END);
+        renderCrewTableItems('backCrew');
         break;
     }
   };

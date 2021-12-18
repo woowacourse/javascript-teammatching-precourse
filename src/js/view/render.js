@@ -1,4 +1,5 @@
 import { $ } from '../util/dom.js';
+import { store } from '../store/store.js';
 
 export const renderMain = () => {
   const template = () => {
@@ -59,4 +60,15 @@ export const renderCrewTable = course => {
   $('#crew-table').innerHTML = template();
 };
 
-export const renderCrewTableItems = () => {};
+export const renderCrewTableItems = course => {
+  const crewList = store.getItem(course);
+  const template = crewList.map(crew => {
+    return `
+      <tr>
+        <td>${crew.index}</td>
+        <td>${crew.name}</td>
+        <td><button>삭제</button></td>
+      </tr>`;
+  });
+  $('tbody').innerHTML = template.join('');
+};
