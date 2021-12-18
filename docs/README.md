@@ -81,6 +81,7 @@ ex) <option value="baseball">숫자야구게임</option>
 
 - 팀 매칭을 위한 인원 입력 요소의 id는 `team-member-count-input`이다.
 - 팀 매칭을 위한 버튼의 id는 `match-team-button`이다.
+- 코스에 해당하는 크루 목록을 출력한다
 
 ## [ ] 팀 매칭
 
