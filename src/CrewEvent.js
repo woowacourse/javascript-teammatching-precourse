@@ -49,7 +49,7 @@ export default class CrewEvent {
             if (document.getElementsByName("course")[i].checked === true) {
                 courseType = document.getElementsByName("course")[i].value;
                 console.log(courseType);
-                break;
+                return courseType;
             }
         }
     }
