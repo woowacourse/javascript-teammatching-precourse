@@ -151,7 +151,7 @@ class CrewManageController {
       },
     } = e;
 
-    if (isDeleteButtonClick(className)) {
+    if (isDeleteButtonClick(className) && confirm('정말 삭제하시겠습니까?')) {
       this.mutateModelToDeleteCrew(Number(position));
       this.renderViewWithNewCrewList();
     }
