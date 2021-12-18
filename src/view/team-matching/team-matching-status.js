@@ -22,7 +22,6 @@ export default class MatchingStatus {
   }
 
   get component() {
-    console.log(this.$section);
     return this.$section;
   }
 }

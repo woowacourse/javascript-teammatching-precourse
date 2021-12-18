@@ -12,11 +12,25 @@ export default class App {
 
   init() {
     this.$header = new Header();
+    this.$emptyContainer = createElement('div');
     this.$crewManage = new CrewManage();
     this.$teamMatching = new TeamManage();
   }
 
+  renderCrewManage() {
+    this.$app.replaceChild(
+      this.$crewManage.component,
+      this.$app.lastElementChild
+    );
+  }
+
+  renderTeamMathcing() {
+    this.$app.replaceChild(
+      this.$teamMatching.component,
+      this.$app.lastElementChild
+    );
+  }
   appendChild() {
-    this.$app.append(this.$header.component, this.$teamMatching.component);
+    this.$app.append(this.$header.component, this.$emptyContainer);
   }
 }
