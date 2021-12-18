@@ -4,7 +4,8 @@ import {
   getFrontCrew,
   setFrontCrew,
 } from "../storage/localStorage.js";
-import { isNaturalNumber } from "../utils/validCheck.js";
+import { ERROR } from "../utils/constants.js";
+import { isNaturalNumber, isValidLengthName } from "../utils/validCheck.js";
 
 export default class CrewModel {
   constructor() {
@@ -13,13 +14,17 @@ export default class CrewModel {
   }
 
   addCrew(type, name) {
+    if (!isValidLengthName(name)) {
+      alert(ERROR.LONG_NAME);
+      return;
+    }
     if (type === "frontend") {
       if (!this.frontCrew.includes(name)) {
         this.frontCrew.push(name);
         this.frontCrew = setFrontCrew(this.frontCrew);
         return;
       }
-      alert("동명 이인이 있습니다.");
+      alert(ERROR.SAME_NAME);
       return;
     }
     if (!this.backCrew.includes(name)) {
@@ -27,7 +32,7 @@ export default class CrewModel {
       this.backCrew = setBackCrew(this.backCrew);
       return;
     }
-    alert("동명 이인이 있습니다.");
+    alert(ERROR.LONG_NAME);
   }
 
   deleteCrew(type, name) {
@@ -70,11 +75,11 @@ export default class CrewModel {
 
   isValidMember(number) {
     if (!isNaturalNumber(number)) {
-      alert("올바른 값을 입력하세요.");
+      alert(ERROR.RIGHT_NUMBER);
       return false;
     }
     if (parseInt(this.frontCrew.length / number, 10) < number) {
-      alert("현재 인원으로 팀을 짤 수가 없습니다. 인원 수를 줄여보세요.");
+      alert(ERROR.RIGHT_MEMBER);
       return false;
     }
     return true;

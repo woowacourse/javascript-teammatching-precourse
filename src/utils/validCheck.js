@@ -6,4 +6,10 @@ const isNaturalNumber = (number) => {
   return false;
 };
 
-export { isNaturalNumber };
+const isValidLengthName = (name) => {
+  if (name.length > 5 || name.length <= 0) {
+    return false;
+  }
+  return true;
+};
+export { isNaturalNumber, isValidLengthName };
