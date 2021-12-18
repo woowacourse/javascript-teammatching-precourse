@@ -57,15 +57,21 @@ export default class Controller {
     let crewNumber = this.model.front.length;
     if (course === "backend") crewNumber = this.model.back.length;
     const teamList = this.findTeamNumber(number, crewNumber);
-    this.view.dispalyMatchTeam(
-      this.changeToName(this.findTeamMember(teamList, course), course)
+    const result = this.changeToName(
+      this.findTeamMember(teamList, course),
+      course
     );
+    this.view.dispalyMatchTeam(result);
   };
 
   findTeamNumber = (number, crewNumber) => {
     let list = [];
-    for (let i = 1; i < crewNumber / number; i++) {
+    for (let i = 0; i < Math.floor(crewNumber / number); i++) {
       list.push(+number);
+    }
+    if (list.length === 0) {
+      list = [+crewNumber];
+      return list;
     }
     for (let i = 0; i < crewNumber % number; i++) {
       list[i] += 1;

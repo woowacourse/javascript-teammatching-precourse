@@ -139,8 +139,7 @@ export default class View {
   displayRematch(crew) {
     this.main.addEventListener("click", (event) => {
       if (event.target.id === ID.REMATCH) {
-        this.resetMain(this.teamManageForm);
-        this.displayTeamForm(crew);
+        this.resetMain(this.teamManage);
       }
     });
   }
