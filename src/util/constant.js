@@ -58,3 +58,22 @@ export const PUBLIC_HEADER = `
 
 export const SELECT_TEAM_COURSE_TITLE =
   "팀 매칭을 관리할 코스, 미션을 선택하세요.";
+
+export const COURSE_ID = "course-select";
+export const COURSES = [
+  ["프론트엔드", "frontend"],
+  ["백엔드", "backend"],
+];
+export const MISSION_ID = "mission-select";
+export const MISSIONS = [
+  ["숫자야구게임", "baseball"],
+  ["자동차경주", "racingcar"],
+  ["로또", "lotto"],
+  ["장바구니", "shopping-cart"],
+  ["결제", "payments"],
+  ["지하철노선도", "subway"],
+  ["성능개선", "performance"],
+  ["배포", "deploy"],
+];
+export const CHECK_BUTTON_ID = "show-team-matcher-button";
+export const CHECK_BUTTON_TEXT = "확인";

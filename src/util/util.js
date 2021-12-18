@@ -21,6 +21,12 @@ import {
   CREW_NAME_INPUT,
   ADD_CREW_BUTTON,
   DELETE_CREW_BUTTON,
+  COURSE_ID,
+  COURSES,
+  MISSION_ID,
+  MISSIONS,
+  CHECK_BUTTON_ID,
+  CHECK_BUTTON_TEXT,
 } from "./constant.js";
 import {
   onClickBackEndDeleteButton,
@@ -57,6 +63,8 @@ const onClickCrewTab = event => {
 
 const onClickTeamTab = event => {
   event.preventDefault();
+  resetSections();
+  renderSelectMatchingSection();
 };
 
 const createInputFormLabel = () => {
@@ -239,6 +247,40 @@ const resetSelectCourseSection = () => {
   $section.innerHTML = "";
   $section.appendChild(createTitle(SELECT_COURSE_TITLE));
   $section.appendChild(createRadioInputContainer());
+};
+
+const createOption = optionInformation => {
+  const [text, value] = optionInformation;
+  const option = document.createElement("option");
+  option.value = value;
+  option.innerText = text;
+
+  return option;
+};
+
+const createSelect = (id, options) => {
+  const select = document.createElement("select");
+  select.id = id;
+  options.forEach(option => select.append(createOption(option)));
+
+  return select;
+};
+
+const createCheckButton = () => {
+  const button = document.createElement("button");
+  button.id = CHECK_BUTTON_ID;
+  button.innerText = CHECK_BUTTON_TEXT;
+
+  return button;
+};
+
+const createSelectForm = () => {
+  const form = document.createElement("form");
+  form.appendChild(createSelect(COURSE_ID, COURSES));
+  form.appendChild(createSelect(MISSION_ID, MISSIONS));
+  form.appendChild(createCheckButton());
+
+  return form;
 };
 
 const renderSelectMatchingSection = () => {
