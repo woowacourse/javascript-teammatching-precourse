@@ -1,4 +1,4 @@
-import { HEADER_ID as ID } from "./constant.js";
+import { HEADER_ID, CREW_TAB, TEAM_TAB } from "./constant.js";
 
 export const Header = () => {
     return `
@@ -7,10 +7,10 @@ export const Header = () => {
     <nav>
         <ul>
             <li>
-                <button id = ${ID.CREW_TAB}>크루 관리</button>
+                <button id = ${HEADER_ID.CREW_TAB}>크루 관리</button>
             </li>
             <li>
-                <button id = ${ID.TEAM_TAB}>팀 매칭 관리</button>
+                <button id = ${HEADER_ID.TEAM_TAB}>팀 매칭 관리</button>
             </li>
         </ul>
     </nav>
@@ -40,13 +40,13 @@ export const CrewSecnodView = (section) => {
         <h3>${section} 크루 관리</h3>
         <form>
             <label>크루 이름</label>
-            <input type="text" />
-            <button>확인</button>
+            <input type="text" id=${CREW_TAB.CREW_INPUT} />
+            <button id = ${CREW_TAB.CREW_ADD_BTN}>확인</button>
         </form>
         </section>
         <section>
         <h3>${section} 크루 목록</h3>
-        <table border="1">
+        <table id=${CREW_TAB.CREW_TABLE} border="1">
             <thead>
             <tr>
                 <th></th>
