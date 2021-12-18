@@ -25,3 +25,7 @@ export const SELECTOR = Object.freeze({
   teamMatchResultUlId: 'team-match-result',
   rematchTeamButton: 'rematch-team-button',
 });
+
+export const STORAGE_KEY = Object.freeze({
+  currentTab: 'current-tab',
+});

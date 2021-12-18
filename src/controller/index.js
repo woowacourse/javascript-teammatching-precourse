@@ -9,11 +9,20 @@ import { SELECTOR } from '../constants.js';
 class TeamMatchingController {
   constructor() {
     this.$teamMatchingView = new TeamMatchingView();
+    this.$tabModel = new TabModel();
     this.$crewManageView = new CrewManageView();
     this.$teamMatchingManageView = new TeamMatchingManageView();
-    this.$tabModel = new TabModel();
 
+    this.renderWithCurrentTab();
     this.initEventListeners();
+  }
+
+  renderWithCurrentTab() {
+    if (this.$tabModel.getCurrentTab() === SELECTOR.crewTabButtonId) {
+      this.$crewManageView.render();
+    } else if (this.$tabModel.getCurrentTab() === SELECTOR.teamTabButtonId) {
+      this.$teamMatchingManageView.render();
+    }
   }
 
   initEventListeners() {

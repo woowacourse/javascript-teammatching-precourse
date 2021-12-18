@@ -1,8 +1,9 @@
-import { SELECTOR } from '../constants.js';
+import { SELECTOR, STORAGE_KEY } from '../constants.js';
+import Store from '../utils/store.js';
 
 class TabModel {
   constructor() {
-    this.$currentTab = SELECTOR.crewTabButtonId;
+    this.$currentTab = Store.getLocalStorage(STORAGE_KEY.currentTab) || SELECTOR.crewTabButtonId;
   }
 
   getCurrentTab() {
@@ -11,6 +12,7 @@ class TabModel {
 
   setCurrentTab(tabName) {
     this.$currentTab = tabName;
+    Store.setLocalStorage(STORAGE_KEY.currentTab, tabName);
   }
 }
 
