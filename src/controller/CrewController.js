@@ -11,10 +11,10 @@ export class CrewController {
   onRadioClick(course) {
     if (course === 'frontend') {
       const crewList = this.model.frontEndCrewList;
-      this.coreView.crewView.showCrewList('프론트엔드', crewList);
+      this.coreView.crewView.showCourse('프론트엔드', crewList);
       return;
     }
     const crewList = this.model.backEndCrewList;
-    this.coreView.crewView.showCrewList('백엔드', crewList);
+    this.coreView.crewView.showCourse('백엔드', crewList);
   }
 }

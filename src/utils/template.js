@@ -55,11 +55,12 @@ export const CREW_HEAD = `
     <th>관리</th>
   </tr>
   </thead>
+  <tbody id="crew-table-body">
+  </tbody>
 `;
 
 export function getCrewRow(index, name) {
   return `
-    <tbody>
     <tr>
       <td>${index}</td>
       <td>${name}</td>
@@ -67,7 +68,6 @@ export function getCrewRow(index, name) {
         <button id="delete-crew-button" >삭제</button>
       </td>
     </tr>
-    </tbody>
   `;
 }
 

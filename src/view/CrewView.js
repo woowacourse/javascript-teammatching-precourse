@@ -1,5 +1,5 @@
 import { $ } from '../utils/DOM.js';
-import { CREW_TEMPLATE, getCrewList } from '../utils/template.js';
+import { CREW_HEAD, CREW_TEMPLATE, getCrewList, getCrewRow } from '../utils/template.js';
 
 export class CrewView {
   constructor() {
@@ -16,8 +16,20 @@ export class CrewView {
     });
   }
 
-  showCrewList(course, crewList) {
+  showCourse(course, crewList) {
     this.$crewMain.innerHTML += getCrewList(course);
+    console.log(`getCrewList(course)`, getCrewList(course));
+    this.$crewTable = $('#crew-table');
+    this.$crewTableBody = $('#crew-table-body');
+    this.showCrewList(crewList);
+  }
+
+  showCrewList(crewList) {
+    if (crewList.length !== 0) {
+      let crewTableBody = '';
+      crewList.map((crew, index) => (crewTableBody += getCrewRow(index + 1, crew)));
+      this.$crewTableBody.innerHTML = crewTableBody;
+    }
   }
 
   addElements() {
