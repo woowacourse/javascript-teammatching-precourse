@@ -55,7 +55,7 @@ export const crewTable = `
   <table id = 'crew-table' border="1">
     <thead>
       <tr>
-        <th>index</th>
+        <th></th>
         <th>크루</th>
         <th>관리</th>
       </tr>

@@ -33,10 +33,12 @@ const showCrewTable = (course) => {
   document.getElementById('CrewAdd').insertAdjacentHTML('afterend', crewTable);
   const crews = getCrewsFromLocalStorage('crew');
   const crew_Table = document.getElementById('crew-table');
+  let index = 0;
 
-  for (let i of crews) {
-    if (i.course === course) {
-      crew_Table.insertAdjacentHTML('beforeend', crewTableRow(i));
+  for (let crew of crews) {
+    if (crew.course === course) {
+      index += 1;
+      crew_Table.insertAdjacentHTML('beforeend', crewTableRow(index, crew));
     }
   }
 
@@ -46,19 +48,21 @@ const showCrewTable = (course) => {
 const addCrew = (course) => {
   const crewName = document.getElementById('crew-name-input').value;
   const crewTable = document.getElementById('crew-table');
+  let crews = getCrewsFromLocalStorage('crew');
 
   const newCrew = new Crew(crewName, course);
 
   if (isNameValid(newCrew.name)) {
-    crewTable.insertAdjacentHTML('beforeend', crewTableRow(newCrew));
     saveCrewToLocalStorage('crew', newCrew);
+    cleanTable();
+    showCrewTable(course);
   }
   event.preventDefault();
 };
 
-const crewTableRow = (crew) => `
+const crewTableRow = (index, crew) => `
 <tr>
-    <td class = 'index'> '1' </td>
+    <td class = 'index'> ${index} </td>
     <td class = 'td-crew-name'> ${crew.name}</td>
     <td>
           <button id = 'delete-crew-buttton' name = 'delete-crew-buttton'>삭제</button>
