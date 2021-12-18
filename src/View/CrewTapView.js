@@ -1,4 +1,4 @@
-import { CREW_TAP_ID, TAP_BUTTON_ID } from '../constants.js';
+import { CREW_TAP_ID, ERR_MSG, TAP_BUTTON_ID } from '../constants.js';
 import TapView from './TapView.js';
 
 export default class CrewTapView extends TapView {
@@ -25,9 +25,9 @@ export default class CrewTapView extends TapView {
     <section>
       <h3>크루를 관리할 코스를 선택해주세요</h3>
       <div>
-        <input type="radio" name="course" value="frontend" id=${CREW_TAP_ID.radioFront}/>
+        <input type="radio" name="course" id=${CREW_TAP_ID.radioFront} value="frontend" />
         <label for="frontend">프론트엔드</label>
-        <input type="radio" name="course" value="backend" id=${CREW_TAP_ID.radioBack}/>
+        <input type="radio" name="course" id=${CREW_TAP_ID.radioBack} value="backend" />
         <label for="backend">백엔드</label>
       </div>
     </section>
@@ -39,22 +39,39 @@ export default class CrewTapView extends TapView {
     `;
   }
 
-  teamView(radioValue) {
-    // radio 값에 따라서 팀 이름과 목록 출력.
+  sectionView(selectValue, storage) {
+    this.teamView(selectValue);
+    this.crewListView(selectValue, storage);
+  }
+
+  teamView(selectValue) {
+    let team = '';
+    if (selectValue === 'frontend') {
+      team = '프론트엔드 크루 관리';
+    }
+    if (selectValue === 'backend') {
+      team = '백엔드 크루 관리';
+    }
     document.getElementById('team-view').innerHTML = `
-    <h3></h3>
+    <h3>${team}</h3>
     <form>
       <label>크루 이름</label>
-      <input type="text" id=${CREW_TAP_ID.crewName}/>
-      <button id=${CREW_TAP_ID.crewButton}>확인</button>
+      <input id=${CREW_TAP_ID.crewName} type="text" />
+      <button id=${CREW_TAP_ID.crewAddButton} >확인</button>
     </form>
     `;
   }
 
-  crewListView(radioValue) {
-    // radioValue에 따라서 프론트 or back 크루 목록 출력.
+  crewListView(selectValue, storage) {
+    let team = '';
+    if (selectValue === 'frontend') {
+      team = '프론트엔드 크루 목록';
+    }
+    if (selectValue === 'backend') {
+      team = '백엔드 크루 목록';
+    }
     document.getElementById('crew-list-view').innerHTML = `
-    <h3>프론트엔드 크루 목록</h3>
+    <h3>${team}</h3>
     <table border="1" id=${CREW_TAP_ID.crewTable}>
       <thead>
         <tr>
@@ -64,15 +81,28 @@ export default class CrewTapView extends TapView {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>준</td>
-          <td>
-            <button>삭제</button>
-          </td>
-        </tr>
+      ${storage
+        .map(({ index, name }) => {
+          if (index) {
+            return `
+          <tr>
+            <td class="index">${index}</td>
+            <td class="name">${name}</td>
+            <td>
+            <button id=${CREW_TAP_ID.crewDeleteButton}>삭제</button>
+            </td>
+          </tr>
+          `;
+          }
+          return null;
+        })
+        .join('')}
       </tbody>
     </table>
     `;
+  }
+
+  errView(errNum) {
+    alert(ERR_MSG[errNum]);
   }
 }
