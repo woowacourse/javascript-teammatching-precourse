@@ -16,9 +16,9 @@ const crewInfo = `<main>
     <section id="choose-crew">
       <h3>크루를 관리할 코스를 선택해주세요</h3>
       <div>
-        <input type="radio" name="course" value="frontend" />
+        <input type="radio" name="course" value="frontend" id="frontend-course"/>
         <label for="frontend">프론트엔드</label>
-        <input type="radio" name="course" value="backend" />
+        <input type="radio" name="course" value="backend" id="backend-course"/>
         <label for="backend">백엔드</label>
       </div>
     </section>
@@ -26,13 +26,13 @@ const crewInfo = `<main>
       <h3>프론트엔드 크루 관리</h3>
       <form>
         <label>크루 이름</label>
-        <input type="text" />
-        <button>확인</button>
+        <input type="text" id="crew-name-input"/>
+        <button id="add-crew-buttton">확인</button>
       </form>
     </section>
     <section id="crew-list">
       <h3>프론트엔드 크루 목록</h3>
-      <table border="1">
+      <table border="1" id="crew-table">
         <thead>
           <tr>
             <th></th>
@@ -45,7 +45,7 @@ const crewInfo = `<main>
             <td>1</td>
             <td>준</td>
             <td>
-              <button>삭제</button>
+              <button id="delete-crew-buttton">삭제</button>
             </td>
           </tr>
         </tbody>
