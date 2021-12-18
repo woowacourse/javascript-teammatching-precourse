@@ -33,3 +33,7 @@ export const CREW_MANAGE_DOM_SELECTOR = {
   crewNameInput: 'crew-name-input',
   addCrewButton: 'add-crew-button',
 };
+
+export const ERROR_MESSAGE = {
+  invalidName: '이름을 확인해주세요',
+};
