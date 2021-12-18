@@ -21,15 +21,17 @@ export default class TeamManageContainer extends Component {
   }
 
   mounted() {
-    this.$target.querySelector('#select-course-mission').innerHTML = this.printSelectCourseSection();
+    this.$target.querySelector('#select-course-mission').innerHTML = this.printSelectSection();
   }
 
-  setEvent() {}
+  setEvent() {
+    this.showTeamMatcherClickHandler();
+  }
 
-  printSelectCourseSection() {
+  printSelectSection() {
     return `
     <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
-      <form>
+      <form id="select-course-mission-form">
         <select id="course-select">
           ${COURSE_SELECT_OPTIONS.map(({ name, value }) => `<option value="${value}">${name}</option>`)}
         </select>
@@ -39,5 +41,16 @@ export default class TeamManageContainer extends Component {
         <button id="show-team-matcher-button">확인</button>
       </form>
     `;
+  }
+
+  showTeamMatcherClickHandler() {
+    this.addEvent('click', '#show-team-matcher-button', (event) => {
+      event.preventDefault();
+
+      this.setState({
+        selectedCourse: this.$target.querySelector('#course-select').value,
+        selectedMission: this.$target.querySelector('#mission-select').value
+      });
+    });
   }
 }
