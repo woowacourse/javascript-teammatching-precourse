@@ -2,8 +2,9 @@ import Validator from '../validator/Validator.js';
 import Crew from './Crew.js';
 import {
   STORAGE_KEY,
+  TEAM_INPUT_ID,
 } from '../constant/constant.js';
-import tabHandler from '../eventHandler/tabHandler.js';
+import $ from '../util/$.js';
 
 function getCrewsFromStorage() {
   const copy = JSON.parse(localStorage.getItem(STORAGE_KEY.CREWS));
@@ -69,12 +70,28 @@ export default class Manager {
     return result;
   }
 
+  getTeamTemplate(team) {
+    const names = team.map((crew) => crew.name);
+    const result = names.join(',');
+    return `<li>${result}</li>`;
+  }
+
+  renderResult(newTeam) {
+    const $ul = $(`#${TEAM_INPUT_ID.MATCH_RESULT}`);
+    let template = '';
+    newTeam.map((team) => {
+      template += this.getTeamTemplate(team);
+    });
+    $ul.innerHTML = template;
+  }
+
   matchTeam({ course, mission }, number) {
     const crews = this.getCourseCrews(course);
     const indexes = crews.map((crew) => crew.index);
     const randomIndex = window.MissionUtils.Random.shuffle(indexes);
     const randomCrews = this.getCrewsByIndex(randomIndex);
     const newTeam = this.getRandomCrews(number, randomCrews);
+    this.renderResult(newTeam);
   }
 
   renderUpdate($nodeToDelete) {

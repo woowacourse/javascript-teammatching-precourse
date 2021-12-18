@@ -12,6 +12,7 @@ export const SECTION_ID = {
   CREW_ADD: 'crew-add-id',
   CREW_LIST: 'crew-list-id',
   TEAM_MATCH: 'team-match-id',
+  TEAM_MATCHED: 'team-matched-id',
 };
 export const CREW_INPUT_ID = {
   FRONT_COURSE_INPUT: 'frontend-course',

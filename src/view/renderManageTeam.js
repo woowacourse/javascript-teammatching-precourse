@@ -64,12 +64,10 @@ export default function renderManageTeam(manager) {
         </div>
       </section>
       <!-- 팀 매칭이 된 경우 -->
-      <section id="${TEAM_INPUT_ID.MATCH_RESULT}" style="display: none">
+      <section id="${SECTION_ID.TEAM_MATCHED}" style="display: none">
         <h3>프론트엔드 숫자야구게임 조회</h3>
         <p>팀이 매칭되었습니다.</p>
-        <ul>
-          <li>준,포코</li>
-        </ul>
+        <ul id="${TEAM_INPUT_ID.MATCH_RESULT}"></ul>
         <p>
           팀을 재매칭 하시겠습니까?
           <button id="${TEAM_INPUT_ID.REMATCH_BUTTON}">재매칭</button>
