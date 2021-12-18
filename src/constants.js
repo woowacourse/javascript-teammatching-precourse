@@ -1,4 +1,5 @@
 export const SELECTOR = Object.freeze({
+  teamMatchingAppId: 'app',
   // 탭
   crewTabButtonId: 'crew-tab',
   teamTabButtonId: 'team-tab',
