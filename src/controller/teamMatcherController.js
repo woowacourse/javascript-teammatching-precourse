@@ -2,6 +2,7 @@ import { $ } from '../utils/domElementTool.js';
 import { SELECTOR } from '../data/selector.js';
 import { getCrewInputErrorMessage } from './getErrorMessage.js';
 import { showAlert } from '../utils/showAlert.js';
+import TeamMatcherView from '../view/teamMatcherView.js';
 import CrewManager from '../model/crewManager.js';
 import TabMenuController from './tabMenuController.js';
 
@@ -13,6 +14,7 @@ export default class TeamMatcherController {
   init() {
     this.tabMenu = new TabMenuController();
     this.createModels();
+    this.veiw = new TeamMatcherView(this.crewManager.crew);
     this.setEvent();
   }
 
@@ -38,6 +40,7 @@ export default class TeamMatcherController {
     }
 
     this.crewManager.add(course, name);
+    this.veiw.renderCrewList(crewList); 
   }
 
   getCourse() {
