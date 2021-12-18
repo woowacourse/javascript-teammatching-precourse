@@ -1,6 +1,6 @@
 import { ID, CLASS, COURSE, MISSION } from '../constants/constants.js';
 
-const TEMPLATES = Object.freeze({
+const templates = Object.freeze({
   topMenuContainerHTML: `
 <header>
     <h1>우테코 크루와 팀 매칭 관리 보드</h1>
@@ -48,18 +48,22 @@ const TEMPLATES = Object.freeze({
         </thead>
         <tbody id=${ID.crewTableTbody}> 
         
-          <tr>
-            <td>1</td>
-            <td>준</td>
-            <td>
-              <button class=${CLASS.deleteCrewButton}>삭제</button>
-            </td>
-          </tr>
+        <!-- 추가된 크루 테이블 표시 crewTableTbodyHTML --!>
 
         </tbody>
       </table>
     </section>
   </main>
+`,
+
+  crewTableTbodyHTML: (order, crewName) => `
+    <tr>
+        <td>${order}</td>
+        <td>${crewName}</td>
+        <td>
+            <button class=${CLASS.deleteCrewButton}>삭제</button>
+        </td>
+    </tr>
 `,
 
   teamMatchingTabHTML: `
@@ -129,6 +133,11 @@ const TEMPLATES = Object.freeze({
       </p>
     </section>
     `,
+
+  app: () => document.getElementById(`${ID.app}`),
+  crewTab: () => document.querySelector(`.${CLASS.crewTabBox}`),
+  teamTab: () => document.querySelector(`.${CLASS.teamTabBox}`),
+  allTab: () => document.querySelectorAll(`.${CLASS.tab}`),
 });
 
-export { TEMPLATES };
+export { templates };

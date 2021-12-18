@@ -1,15 +1,9 @@
+import { templates as $ } from '../view/templates.js';
 import { ID, CLASS } from '../constants/constants.js';
 
 export default class SubwayView {
   constructor(model, templates) {
     this.model = model;
-    this.templates = templates;
-    this.$ = {
-      app: () => document.getElementById(`${ID.app}`),
-      crewTab: () => document.querySelector(`.${CLASS.crewTabBox}`),
-      teamTab: () => document.querySelector(`.${CLASS.teamTabBox}`),
-      allTab: () => document.querySelectorAll(`.${tab}`),
-    };
   }
 
   renderInTarget(target, html) {
@@ -17,10 +11,11 @@ export default class SubwayView {
   }
 
   hideAllTabs() {
-    this.$.allTab().forEach((tab) => tab.classList.remove(CLASS.show));
+    $.allTab().forEach((tab) => tab.classList.remove(CLASS.show));
   }
 
   showTab(tab) {
+    this.hideAllTabs();
     tab.classList.add(CLASS.show);
   }
 

@@ -1,4 +1,5 @@
-import { TEMPLATES } from '../view/templates.js';
+import { templates as $ } from '../view/templates.js';
+import { ID, CLASS, COURSE, MISSION } from '../constants/constants.js';
 
 export default class TeamController {
   constructor(model, view) {
@@ -7,20 +8,23 @@ export default class TeamController {
   }
 
   app() {
-    console.log('Hello world');
-    this.model.test();
-    this.view.renderInTarget(this.view.$.app(), TEMPLATES.topMenuContainerHTML);
-    this.view.renderInTarget(this.view.$.app(), TEMPLATES.crewManagerTabHTML);
-    this.view.renderInTarget(this.view.$.app(), TEMPLATES.teamMatchingTabHTML);
+    this.view.renderInTarget($.app(), $.topMenuContainerHTML);
+    this.view.renderInTarget($.app(), $.crewManagerTabHTML);
+    this.view.renderInTarget($.app(), $.teamMatchingTabHTML);
+    this.setEventListeners();
     this.loadCrewManagerTab();
-    // this.loadTeamManagerTab();
+  }
+
+  setEventListeners() {
+    document.getElementById(`${ID.crewTabButton}`).addEventListener('click', () => this.loadCrewManagerTab());
+    document.getElementById(`${ID.teamTabButton}`).addEventListener('click', () => this.loadTeamManagerTab());
   }
 
   loadCrewManagerTab() {
-    this.view.showTab(this.view.$.crewTab());
+    this.view.showTab($.crewTab());
   }
 
   loadTeamManagerTab() {
-    this.view.showTab(this.view.$.teamTab());
+    this.view.showTab($.teamTab());
   }
 }
