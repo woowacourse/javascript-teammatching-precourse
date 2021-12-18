@@ -6,11 +6,7 @@ import { renderCrew } from './renderCrew.js';
 export const addCrew = (state, value) => {
   const crewName = $('#crew-name-input').value.trim();
   const crewArray = state.crew[value];
-  const { isError, inValidText } = inputCrewNameValidation(
-    crewName,
-    state,
-    value,
-  );
+  const { isError, inValidText } = inputCrewNameValidation(crewName, crewArray);
 
   if (isError) {
     alert(inValidText);
