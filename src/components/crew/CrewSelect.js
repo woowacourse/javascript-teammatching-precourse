@@ -3,9 +3,10 @@ import { $ } from '../../utils/selector.js';
 import CrewInput from './CrewInput.js';
 
 class CrewSelect {
-  constructor($selectSection, $manageSection) {
+  constructor($selectSection, $manageSection, $resultSection) {
     this.$selectSection = $selectSection;
     this.$manageSection = $manageSection;
+    this.$resultSection = $resultSection;
 
     this.addTemplate();
     this.selectDom();
@@ -43,7 +44,7 @@ class CrewSelect {
     const { id } = e.target;
 
     if (id === ID.FRONTEND_COURSE || id === ID.BACKEND_COURSE) {
-      new CrewInput(this.$manageSection, textContent);
+      new CrewInput(this.$manageSection, this.$resultSection, textContent);
     }
   }
 }

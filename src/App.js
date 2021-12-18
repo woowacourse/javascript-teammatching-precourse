@@ -49,7 +49,11 @@ class App {
     const { id } = e.target;
 
     if (id === ID.CREW_TAB) {
-      new CrewSelect(this.$selectSection, this.$manageSection);
+      new CrewSelect(
+        this.$selectSection,
+        this.$manageSection,
+        this.$resultSection
+      );
     }
     if (id === ID.TEAM_TAB) {
       //
