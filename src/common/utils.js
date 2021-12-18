@@ -20,6 +20,8 @@ export const matchTeam = (_members, number) => {
     const members = shuffleArray(_members);
     const teams = [];
 
+    if(_members.length < number) return [[...members]];
+
     while (members.length >= number) {
         teams.push(members.splice(0, number));
     }
