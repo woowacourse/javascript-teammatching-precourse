@@ -20,13 +20,23 @@ export default class Controller {
     this.render.crewFrontendTemplate();
   };
 
+  crewBackendTemplateRender = () => {
+    this.render.crewBackendTemplate();
+  };
+
   isCheckedRadioInput = ($radioInput) => {
     if ($radioInput.value === RADIO_SELECT.FRONTEND) {
+      console.log('front');
       this.crewFrontendTemplateRender();
+
+      return;
     }
 
     if ($radioInput.value === RADIO_SELECT.BACKEND) {
-      console.log('backend');
+      console.log('back');
+      this.crewBackendTemplateRender();
+
+      return;
     }
   };
 
