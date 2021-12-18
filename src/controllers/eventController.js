@@ -10,8 +10,10 @@ import {
 } from "./eventHandlers/crewManageEvent.js";
 import {
   clickCourseMissionButton,
-  clickTeamMatching,
+  clickFrontTeamMatching,
+  clickBackTeamMatching
 } from "./eventHandlers/teamMatchingEvent.js";
+import { FRONT_END_CREW_LIST_KEY } from "../constants/constants.js";
 
 export function initialEvent() {
   tabEvent();
@@ -56,8 +58,10 @@ export function choiceCourseMission() {
   $showTeamMatcherButton.addEventListener("click", clickCourseMissionButton);
 }
 
-export function choicePeopleNumber() {
+export function choicePeopleNumber(crewType) {
   const $matchTeamButton = document.getElementById("match-team-button");
 
-  $matchTeamButton.addEventListener("click", clickTeamMatching);
+  if (crewType === FRONT_END_CREW_LIST_KEY)
+    $matchTeamButton.addEventListener("click", clickFrontTeamMatching);
+  else  $matchTeamButton.addEventListener("click", clickBackTeamMatching);
 }

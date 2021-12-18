@@ -7,6 +7,8 @@ import {
 export let state = {
   frontEndCrewList: [],
   backEndCrewList: [],
+  course: null,
+  mission: null,
 };
 
 export function updateState() {
