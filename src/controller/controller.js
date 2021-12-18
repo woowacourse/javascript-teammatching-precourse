@@ -67,11 +67,13 @@ export default class Controller {
         if (type === "frontend" && result) {
           this.crewModel.deleteCrew(type, name);
           this.manageCrewView.reloadTable(this.crewModel.frontCrew);
+          this.onClickDelete(type);
           return;
         }
         if (result) {
           this.crewModel.deleteCrew(type, name);
           this.manageCrewView.reloadTable(this.crewModel.backCrew);
+          this.onClickDelete(type);
         }
       });
     });
