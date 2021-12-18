@@ -1,5 +1,6 @@
 import { $ } from '../Utils/common.js';
 import { ID } from '../Utils/constants.js';
+import LocalStorageUtils from '../Utils/localStorageUtils.js';
 import CrewManageView from '../Views/crewManageView.js';
 
 export default class CrewManageController {
@@ -19,5 +20,17 @@ export default class CrewManageController {
 
   onClickRadio = (event) => {
     this.crewManageView.bodyMainRender();
+    const data = this.getSelectedData(event.target.id);
+    this.crewManageView.renderTable(data);
   };
+
+  getSelectedData(id) {
+    let data;
+    if (id === ID.FRONT_RADIO) {
+      data = LocalStorageUtils.getItem(LocalStorageUtils.keys.frontCrewManage);
+    } else {
+      data = LocalStorageUtils.getItem(LocalStorageUtils.keys.BackendCrewManage);
+    }
+    return data ? data : [];
+  }
 }
