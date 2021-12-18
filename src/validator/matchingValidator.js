@@ -20,10 +20,18 @@ class MatchingValidator {
     }
   }
 
+  static isNotANumber(memberCount) {
+    if (isNaN(Number(memberCount))) {
+      alert('1 이상의 정수를 입력해주세요.');
+      return true;
+    }
+  }
+
   static isInvalidMemberCount(memberCount) {
     if (this.isNegative(memberCount)) return true;
     if (this.isFloat(memberCount)) return true;
     if (this.isBlank(memberCount)) return true;
+    if (this.isNotANumber(memberCount)) return true;
     return false;
   }
 }
