@@ -31,7 +31,7 @@ ex) <option value="frontend">프론트엔드</option>
 ex) <option value="baseball">숫자야구게임</option>
 ```
 
-- [ ] 위 데이터를 별도의 파일로 저장하여 불러올 수 있도록 한다.
+- [x] 위 데이터를 별도의 파일로 저장하여 불러올 수 있도록 한다.
 
 
 
