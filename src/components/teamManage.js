@@ -1,7 +1,11 @@
+import { teamTemplate } from '../templates/team-template.js';
+import { $ } from '../utils/selector.js';
+import { SELECTOR } from '../constant/constant.js';
+
 export default class TeamManage {
-  constructor($target) {
-    this.$target = $target;
-    this.$state;
+  constructor($state) {
+    this.$target = $(`#${SELECTOR.ID.MAIN}`);
+    this.$state = $state;
     this.setup();
     this.render();
   }
@@ -10,10 +14,12 @@ export default class TeamManage {
 
   setEvent() {}
 
-  template() {}
+  template() {
+    return teamTemplate();
+  }
 
   render() {
-    this.$target.innerHTML += this.template();
+    this.$target.innerHTML = this.template();
     this.setEvent();
   }
 }
