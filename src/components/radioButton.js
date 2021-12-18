@@ -13,7 +13,13 @@ export default class RadioButton extends Component {
 
   getRadioButton(buttonInfo) {
     return `
-    <input type="radio" id= ${buttonInfo.id} name=${this.$props.name} value=${buttonInfo.value} />
+    <input 
+      type="radio" 
+      id= ${buttonInfo.id} 
+      name=${this.$props.name} 
+      value=${buttonInfo.value}
+      ${buttonInfo.id === this.$props.selected ? "checked" : ""}
+    />
     <label for=${buttonInfo.value}>${buttonInfo.label}</label>`;
   }
 }
