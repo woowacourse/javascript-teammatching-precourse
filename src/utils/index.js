@@ -1,3 +1,5 @@
+import { FRONTEND_COURSE, FRONTEND_KR, BACKEND_KR, FRONTEND, BACKEND } from '../constants/index.js';
+
 export const htmlToElement = (html) => {
   const template = document.createElement('template');
   template.innerHTML = html.trim();
@@ -23,4 +25,12 @@ export const clearInputs = ($inputs) => {
   $inputs.forEach(($input) => {
     $input.value = '';
   });
+};
+
+export const getCourseNameById = (activeCourseId) => {
+  return activeCourseId === FRONTEND_COURSE ? FRONTEND_KR : BACKEND_KR;
+};
+
+export const getCourseById = (activeCourseId) => {
+  return activeCourseId === FRONTEND_COURSE ? FRONTEND : BACKEND;
 };

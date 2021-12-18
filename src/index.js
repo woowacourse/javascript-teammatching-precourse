@@ -26,6 +26,7 @@ class TeamMatchingBoard {
       tabPane: (data && data.tabPane) || { activeTabPaneId: CREW_MANAGE.PANE },
       crewManage: (data && data.crewManage) || {
         activeCourseId: CREW_MANAGE.FRONTEND_COURSE_RADIO,
+        crews: [],
       },
     };
   }

@@ -2,6 +2,7 @@ import { ELEMENT_SELECTOR } from '../../constants/index.js';
 import { $ } from '../../utils/index.js';
 import Component from '../../abstracts/component.js';
 import CourseSelectForm from './CourseSelectForm.js';
+import AddCrewForm from './AddCrewForm.js';
 
 class CrewManage extends Component {
   static template = () => {
@@ -11,10 +12,12 @@ class CrewManage extends Component {
 
   mountChildren() {
     this.courseSelect = new CourseSelectForm(this.$view).mount();
+    this.addCrewForm = new AddCrewForm(this.$view).mount();
   }
 
   unmountChildren() {
     this.courseSelect.unmount();
+    this.addCrewForm.unmount();
   }
 
   bindingElements() {
