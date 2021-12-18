@@ -31,7 +31,7 @@ export const CONFIRM = '확인';
 
 export const CREW_MANAGE_DOM_SELECTOR = {
   crewNameInput: 'crew-name-input',
-  addCrewButton: 'add-crew-button',
+  addCrewButton: 'add-crew-buttton',
 };
 
 export const ERROR_MESSAGE = {
@@ -40,9 +40,11 @@ export const ERROR_MESSAGE = {
 
 export const CREW_TABLE = ['', '크루', '관리'];
 
-export const DELETE_BUTTON = { className: 'delete-crew-button', text: '삭제' };
+export const DELETE_BUTTON = { className: 'delete-crew-buttton', text: '삭제' };
 
 export const CREW_LIST_TITLE = '크루 목록';
+
+export const CREW_TABLE_ID = 'crew-table';
 
 export const SELECT_COURSE_OPTION = [
   { value: 'frontend', text: '프론트엔드' },

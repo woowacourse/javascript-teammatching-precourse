@@ -1,4 +1,4 @@
-import { CREW_LIST_TITLE, CREW_TABLE, DELETE_BUTTON, MAIN } from '../constants.js';
+import { CREW_LIST_TITLE, CREW_TABLE, DELETE_BUTTON, MAIN, CREW_TABLE_ID } from '../constants.js';
 import makeElement from './makeElement.js';
 import makeSection from './makeSection.js';
 
@@ -49,6 +49,7 @@ const makeTableBody = (crewList) => {
 
 const makeTable = (course, crewManager) => {
   const $table = makeElement('table');
+  $table.setAttribute('id', CREW_TABLE_ID);
   $table.setAttribute('border', 1);
   $table.appendChild(makeTableHeader());
   $table.appendChild(makeTableBody(crewManager.getCrewList(course)));
