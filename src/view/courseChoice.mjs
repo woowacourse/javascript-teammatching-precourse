@@ -1,5 +1,4 @@
 const $app = document.querySelector('#app');
-
 const $main = document.createElement('main');
 
 export const renderCourseChoice = () => {
