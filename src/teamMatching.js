@@ -35,12 +35,14 @@ const showCrews = () => {
 };
 
 const onClickTeamMatch = () => {
-  const teamNumer = document.getElementById('team-member-count-input').value;
+  const teamNubmer = document.getElementById('team-member-count-input').value;
   const course = document.getElementById('course-select').value;
   const mission = document.getElementById('mission-select').value;
 
   cleanShowTeam();
-  teamMatch(course, mission, teamNumer);
+  if (isTeamNumberValid(course, teamNubmer)) {
+    teamMatch(course, teamNubmer);
+  }
   event.preventDefault();
 };
 
@@ -51,7 +53,7 @@ const cleanShowTeam = () => {
   }
 };
 
-const teamMatch = (course, mission, teamNumer) => {
+const teamMatch = (course, teamNumer) => {
   const crews = getCrewsFromLocalStorage('crew');
   let crewsOfCourse = [];
   let crewsOfCourseIndex = [];
@@ -121,4 +123,23 @@ const setRematch = () => {
 const rematch = () => {
   document.getElementById('afterTeamMatch').innerHTML = '';
   showTeamMatch();
+};
+
+const isTeamNumberValid = (course, number) => {
+  const crews = getCrewsFromLocalStorage('crew');
+  const crewsOfCourse = [];
+  course = courseTypeChange(course);
+
+  for (let i = 0; i < crews.length; i++) {
+    if (crews[i].course === course) {
+      crewsOfCourse.push(crews[i]);
+    }
+  }
+
+  const numberCrewsOfCourse = crewsOfCourse.length;
+  if (number > parseInt(numberCrewsOfCourse / 2)) {
+    alert('인원수가 너무 작아요');
+    return false;
+  }
+  return true;
 };
