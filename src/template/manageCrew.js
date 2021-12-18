@@ -1,10 +1,14 @@
+import Crew from "../domain/Crew/Crew.js";
+
+const crew = new Crew();
+
 function manageCrew(value) {
     const main = document.querySelector("main");
     const selectCourse = document.createElement("section");
 
     selectCourse.innerHTML = `
           <h3>${value} 크루 목록</h3>
-          <table border="1">
+          <table id="crew-table" border="1">
             <thead>
               <tr>
                 <th></th>
@@ -13,13 +17,6 @@ function manageCrew(value) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>준</td>
-                <td>
-                  <button>삭제</button>
-                </td>
-              </tr>
             </tbody>
           </table>`
 
@@ -30,5 +27,25 @@ function manageCrew(value) {
         document.querySelectorAll("section")[1].innerHTML = selectCourse.innerHTML;
     }
 }
+
+function deleteCrew(index) {
+}
+
+function displayCrewList() {
+    const tbody = document.querySelector("tbody");
+    tbody.innerHTML = "";
+
+    crew.getCrewList().map((item) => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${item.index}</td>
+                <td>${item.name}</td>
+                <td>
+                    <button onclick="deleteCrew(${item.index})">삭제</button>
+                </td>
+            </tr>`
+    });
+}
+
 
 export default manageCrew;
