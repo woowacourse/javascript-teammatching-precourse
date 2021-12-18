@@ -21,12 +21,16 @@ const DOMUtils = {
     $('#crew-list-title').innerHTML = `${courseType} 크루 목록`;
   },
 
-  showMatchedComponent: id => {
+  showMatchedComponent: (id, courseType, missionType) => {
     Array.from($('#case-mached-component').children).forEach(
       component => (component.style.display = 'none'),
     );
 
     $(id).style.display = 'block';
+
+    $('#team-matching-title').innerHTML = `
+        ${UT.EnglishToKorean(courseType)} ${UT.EnglishToKorean(missionType)} 미션의 팀 매칭
+      `;
   },
 
   getCourseType: () => {

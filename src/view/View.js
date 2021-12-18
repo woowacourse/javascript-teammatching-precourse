@@ -101,14 +101,14 @@ export default class View {
 
     <div id="case-mached-component" >
         <section id="not-mached-component" style="display: none;">
-        <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
+        <h3 id="team-matching-title">프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
         <div>
             <div>
             <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
             <form>
                 <label>1팀당 인원 수</label>
                 <input id="team-member-count-input" type="number" />
-                <button id="match-team-button">팀 매칭</button>
+                <button data-action="matchTeam" id="match-team-button">팀 매칭</button>
             </form>
             </div>
             <h4>크루 목록</h4>

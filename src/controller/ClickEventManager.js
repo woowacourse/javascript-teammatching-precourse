@@ -63,10 +63,18 @@ export default class ClickEventManager {
 
     const hasCrew = DB.load(`${courseType}Mission`)[missionType].length;
 
-    hasCrew
-      ? DOM.showMatchedComponent('#ok-mached-component')
-      : DOM.showMatchedComponent('#not-mached-component');
+    if (hasCrew) {
+      DOM.showMatchedComponent('#ok-mached-component', courseType, missionType);
+    } else {
+      DOM.showMatchedComponent('#not-mached-component', courseType, missionType);
+    }
   }
+
+  // matchTeam() {
+  //   console.log($('#team-member-count-input').value);
+
+  //   console.log(DB.load(`${$('#course-select').value}Crew`));
+  // }
 
   onClick(event) {
     event.preventDefault();
