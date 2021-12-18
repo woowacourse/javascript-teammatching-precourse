@@ -49,7 +49,7 @@ export function printPage() {
           <th>관리</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="crew-table-tbody">
         <tr>
           <td>1</td>
           <td>준</td>
