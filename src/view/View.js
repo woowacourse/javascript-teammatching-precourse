@@ -46,7 +46,7 @@ export default class View {
 
       <div id="crew-manager-component" style="display: none;">
         <section >
-            <h3>프론트엔드 크루 관리</h3>
+            <h3 id="crew-manage-title">프론트엔드 크루 관리</h3>
             <form>
             <label>크루 이름</label>
             <input id="crew-name-input" type="text" />
@@ -55,7 +55,7 @@ export default class View {
         </section>
 
         <section >
-            <h3>프론트엔드 크루 목록</h3>
+            <h3 id="crew-list-title">프론트엔드 크루 목록</h3>
             <table id="crew-table" border="1">
             <thead>
                 <tr>

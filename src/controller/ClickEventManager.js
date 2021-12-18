@@ -1,3 +1,5 @@
+import { default as DOM } from '../utils/DOMUtils.js';
+
 export default class ClickEventManager {
   constructor(element, controller) {
     this._element = element;
@@ -13,12 +15,12 @@ export default class ClickEventManager {
     this.controller.handleMenuClick(event);
   }
 
-  frontendRadioButton(event) {
-    console.log('frontendRadioButton');
+  frontendRadioButton() {
+    DOM.showModuleComponent('#crew-manager-component', '프론트엔드');
   }
 
-  backendRadioButton(event) {
-    console.log('backendRadioButton');
+  backendRadioButton() {
+    DOM.showModuleComponent('#crew-manager-component', '백엔드');
   }
 
   onClick(event) {

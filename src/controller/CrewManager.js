@@ -4,9 +4,7 @@ export default class CrewManager {
     this.manage();
   }
 
-  render() {
-    console.log('hi');
-  }
+  render() {}
 
   manage() {}
 }
