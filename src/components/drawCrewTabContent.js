@@ -54,16 +54,20 @@ function addCrewNameToList(mode, name) {
   crew.push(name);
   localStorage.setItem(course, JSON.stringify(crew));
 }
+function creatCrewTable(course) {
+  ClearSection('#crew-member-table');
+  const section = $('#crew-member-table');
+  const sectionTitle = h3ElementCreate(`${course} 크루 목록`);
+  const table = crewTableBasic(course);
+  section.append(sectionTitle, table);
+  $('main').appendChild(section);
+  activateDeleteCrewButton(course);
+}
 function drawCrewTableSelection(course) {
   const name = $('#crew-name-input').value;
   if (CrewNameValidity(course, name)) {
     addCrewNameToList(course, name);
-    ClearSection('#crew-member-table');
-    const section = $('#crew-member-table');
-    const sectionTitle = h3ElementCreate(`${course} 크루 목록`);
-    const table = crewTableBasic(course);
-    section.append(sectionTitle, table);
-    $('main').appendChild(section);
+    creatCrewTable(course);
   }
 }
 function crewTableBasic(course) {
@@ -76,7 +80,6 @@ function crewTableBasic(course) {
     tbody.appendChild(crewTableContent(i, crew[i]));
   }
   table.append(thead, tbody);
-  activateDeleteCrewButton();
   return table;
 }
 function crewTableContent(i, name) {
@@ -91,14 +94,19 @@ function crewTableContent(i, name) {
   tr.append(countTd, nameTd, buttonTd);
   return tr;
 }
-function activateDeleteCrewButton() {
+function activateDeleteCrewButton(course) {
   let deleteBtns = document.querySelectorAll('.delete-crew-button');
   for (let i = 0; i < deleteBtns.length; i++){
-    deleteBtns[i].addEventListener('click', deleteCrew);
+    deleteBtns[i].addEventListener('click', function (e) { deleteCrew(e,course) });
   }
 }
-function deleteCrew(e) {
-  console.log(e.path);
+function deleteCrew(e,course) {
+  const target = e.path[2].childNodes[1].innerText;
+  let crew = (course === '프론트엔드') ? frontEndCrew : backEndCrew;
+  crew.splice(crew.indexOf(target), 1);
+  const storage = (course === '프론트엔드') ? 'frontend' : 'backend';
+  localStorage.setItem(storage, JSON.stringify(crew));  
+  creatCrewTable(course);
 }
 export default function DrawCrewTabContent() {
   drawCourseSection();
