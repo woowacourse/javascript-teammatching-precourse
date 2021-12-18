@@ -19,7 +19,7 @@ export default function renderCourseSelctor() {
           <option value="performance">성능개선</option>
           <option value="deploy">배포</option>
         </select>
-        <button id="show-team-matcher-button">확인</button>
+        <button type="button" id="show-team-matcher-button">확인</button>
       </form>
     </section>
     <section class="team-matching-container"></section>
