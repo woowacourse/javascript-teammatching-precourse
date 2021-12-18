@@ -2,7 +2,7 @@ import { $ } from '../util/dom.js';
 import { check } from '../util/checkValue.js';
 import { ALERT, CONFIRM } from '../constants/constants.js';
 import { store } from '../store/store.js';
-import { renderCrewTableItems } from '../view/render.js';
+import { renderCrewTableItems } from '../view/renderCrewTab.js';
 
 export const makeCrewTemplate = e => {
   e.preventDefault();

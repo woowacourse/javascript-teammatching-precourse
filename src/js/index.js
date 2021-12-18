@@ -4,7 +4,11 @@ import {
   renderCrewTable,
   renderCrewMain,
   renderCrewTableItems,
-} from './view/render.js';
+} from './view/renderCrewTab.js';
+import {
+  renderTeamMain,
+  renderSelectCourseAndMission,
+} from './view/renderTeamTab.js';
 import { $ } from './util/dom.js';
 import { FRONT_END, BACK_END } from './constants/constants.js';
 import { makeCrewTemplate, confirmDeleteCrew } from './core/manageCrew.js';
@@ -51,6 +55,8 @@ function App() {
         renderAddCrewRadio();
         break;
       case 'team-tab':
+        renderTeamMain();
+        renderSelectCourseAndMission();
         break;
     }
   };

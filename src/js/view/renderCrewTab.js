@@ -2,6 +2,9 @@ import { $ } from '../util/dom.js';
 import { store } from '../store/store.js';
 
 export const renderCrewMain = () => {
+  if ($('main') !== null) {
+    $('main').innerHTML = '';
+  }
   const template = () => {
     return `
         <main>
@@ -61,6 +64,7 @@ export const renderCrewTable = course => {
 };
 
 export const renderCrewTableItems = course => {
+  $('tbody').innerHTML = '';
   const crewList = store.getItem(course);
   const template = index => {
     return `
