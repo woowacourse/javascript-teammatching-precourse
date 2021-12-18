@@ -5,13 +5,16 @@ class Crew {
     }
 
     addCrew(name) {
-        this.list.push(name);
-        //console.log(this.list);
+        if(this.list.indexOf(name) === -1) {
+            this.list.push(name);
+        }
+        else {
+            alert("중복된 크루 이름입니다.");
+        }
     }
 
     deleteCrew(index) {
         this.list.splice(index, 1);
-        //console.log(this.list);
     }
 
     getCrewList() {
