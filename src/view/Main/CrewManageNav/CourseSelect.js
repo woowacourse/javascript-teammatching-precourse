@@ -7,9 +7,9 @@ function createCourseSelectHeader() {
 
 function createCourseSelectRadioButtons() {
   return `
-    <input type="radio" name="course" value="frontend" />
+    <input id="frontend-course" type="radio" name="course" value="frontend" />
     <label for="frontend">${COURSE.FRONTEND}</label>
-    <input type="radio" name="course" value="backend" />
+    <input id="backend-course" type="radio" name="course" value="backend" />
     <label for="backend">${COURSE.BACKEND}</label>
   `;
 }

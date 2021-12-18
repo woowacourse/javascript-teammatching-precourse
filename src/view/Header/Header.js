@@ -11,10 +11,10 @@ function createNav() {
     <nav>
       <ul>
         <li>
-          <button>${BUTTON.CREW_MANAGE}</button>
+          <button id="crew-tab">${BUTTON.CREW_MANAGE}</button>
         </li>
         <li>
-          <button>${BUTTON.TEAM_MATCHING_MANAGE}</button>
+          <button id="team-tab">${BUTTON.TEAM_MATCHING_MANAGE}</button>
         </li>
       </ul>
     </nav>

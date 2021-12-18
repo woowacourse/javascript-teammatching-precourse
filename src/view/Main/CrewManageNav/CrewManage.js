@@ -9,8 +9,8 @@ export default function createCourseManage() {
       <h3>${course} ${HEADER.CREW_MANAGE}</h3>
       <form>
         <label>${TEXT.CREW_NAME}</label>
-        <input type="text" />
-        <button>${BUTTON.CONFIRM}</button>
+        <input id="crew-name-input" type="text" />
+        <button id="add-crew-buttton">${BUTTON.CONFIRM}</button>
       </form>
     </section>
   `;
