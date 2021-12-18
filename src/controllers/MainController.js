@@ -11,7 +11,8 @@ export default {
     TabView.setup($('#tab-view')).on('@changeTab', (e) => this.onChangeTabView(e.detail.tab));
     CrewManageView.setup($('main'))
       .on('@changeCourse', (e) => this.onChangeCourse(e.detail.course))
-      .on('@submitCrewName', (e) => this.onSubmitCrew(e.detail));
+      .on('@submitCrewName', (e) => this.onSubmitCrew(e.detail))
+      .on('@deleteCrew', (e) => this.onDeleteCrew(e.detail));
 
     this.selectedTab = '크루 관리';
     this.renderView();
@@ -39,6 +40,15 @@ export default {
 
   onSubmitCrew(crew) {
     CrewManageModel.add(crew);
+    this.renderView();
+  },
+
+  onDeleteCrew(crew) {
+    const confirmFlag = confirm('정말 삭제하시겠습니까?');
+    if (!confirmFlag) {
+      return;
+    }
+    CrewManageModel.delete(crew);
     this.renderView();
   },
 };

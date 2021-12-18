@@ -21,6 +21,12 @@ CrewManageView.bindEvent = function () {
     if (e.target.id === 'add-crew-button') {
       e.preventDefault();
       this.onSubmitCrewName(this.child('#crew-name-input').value);
+      return;
+    }
+    if (e.target.className === 'delete-crew-button') {
+      e.preventDefault();
+      const { 1: nameNode } = e.target.closest('tr').children;
+      this.onDeleteCrew(nameNode.innerText);
     }
   });
 };
@@ -35,6 +41,10 @@ CrewManageView.onChangeCourse = function (course) {
 
 CrewManageView.onSubmitCrewName = function (name) {
   this.emit('@submitCrewName', { course: this.course, name });
+};
+
+CrewManageView.onDeleteCrew = function (name) {
+  this.emit('@deleteCrew', { course: this.course, name });
 };
 
 CrewManageView.render = function () {
