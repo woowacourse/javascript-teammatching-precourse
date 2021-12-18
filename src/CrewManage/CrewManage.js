@@ -96,8 +96,10 @@ export default class CrewManage {
 
   deleteCrew(e, index) {
     e.preventDefault();
-    this.crew.deleteCrew(index, this.kindOfCrew);
-    this.makeTable();
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      this.crew.deleteCrew(index, this.kindOfCrew);
+      this.makeTable();
+    }
   }
 
   tabSection() {
