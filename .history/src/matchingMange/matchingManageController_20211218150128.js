@@ -8,28 +8,19 @@ export default class matchingManageController {
 
   init = () => {
     this.initPage();
-    this.initDOMS();
-    this.setEvent();
   };
 
   initDOMS = () => {
     this.$courseSelect = document.getElementById("course-select");
     this.$missionSelect = document.getElementById("mission-select");
-    this.$selectForm = document.getElementById("course-select").closest("form");
+    this.$showTeamMatcherButton = document.getElementById("show-team-matcher-button");
   };
 
   initPage = () => {
     this.view.renderPage(this.$container);
   };
 
-  setEvent = () => {
-    this.$selectForm.addEventListener("submit", this.setSelectOptionEvent);
-  };
+  setEvent = () => {};
 
-  setSelectOptionEvent = (e) => {
-    e.preventDefault();
-    const course = this.$courseSelect.options[this.$courseSelect.selectedIndex].value;
-    const mission = this.$missionSelect.options[this.$missionSelect.selectedIndex].value;
-    console.log(course, mission);
-  };
+  setSelectOptionEvent = () => {};
 }

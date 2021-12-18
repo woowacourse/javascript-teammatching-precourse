@@ -9,7 +9,6 @@ export default class matchingManageController {
   init = () => {
     this.initPage();
     this.initDOMS();
-    this.setEvent();
   };
 
   initDOMS = () => {
@@ -28,8 +27,7 @@ export default class matchingManageController {
 
   setSelectOptionEvent = (e) => {
     e.preventDefault();
-    const course = this.$courseSelect.options[this.$courseSelect.selectedIndex].value;
-    const mission = this.$missionSelect.options[this.$missionSelect.selectedIndex].value;
-    console.log(course, mission);
+    const course = this.$courseSelect.options[this.$courseSelect.selectedIndex];
+    const mission = this.$missionSelect.options[this.$missionSelect.selectedIndex];
   };
 }
