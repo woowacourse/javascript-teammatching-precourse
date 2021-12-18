@@ -1,0 +1,1 @@
+export const fetchHtmlView = async (htmlFileName) => (await fetch(`../html/${htmlFileName}`)).text();
