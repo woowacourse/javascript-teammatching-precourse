@@ -19,7 +19,7 @@ export function printPage() {
 </header>
 
 <main ic="crew-tab-content">
-  <section id='crew-tab-select-course' class="show">
+  <div id='crew-tab-select-course' class="show">
     <h3>크루를 관리할 코스를 선택해주세요</h3>
     <div>
       <input type="radio" name="course" value="frontend" id="frontend-course" />
@@ -27,9 +27,40 @@ export function printPage() {
       <input type="radio" name="course" value="backend" id="backend-course" />
       <label for="backend">백엔드</label>
     </div>
-  </section>
+  </div>
 
+<div id="selected-course">
+<div id="crew-manage" class="hide">
+    <h3 id="crew-manage-title"> 크루 관리</h3>
+    <div>
+      <label>크루 이름</label>
+      <input type="text" id="crew-name-input" />
+      <button id="add-crew-buttton">확인</button>
+    </div>
+  </div>
 
+  <div id="crew-list" class="hide">
+    <h3 id="crew-list-title">크루 목록</h3>
+    <table border="1" id="crew-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>크루</th>
+          <th>관리</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>준</td>
+          <td>
+            <button class="delete-crew-buttton">삭제</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 </main>
 
@@ -49,7 +80,7 @@ export function printPage() {
   </form>
 </section>
 
-<div id="selected-course"></div>
+
 
 <section class="hide">
   <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
@@ -87,37 +118,37 @@ export function printPage() {
 }
 
 
-export function selectCrew(){
-    //const $crewTabContent = document.querySelector('#crew-tab-content')
-    const $selectedCourse = document.querySelector('#selected-course')
-    $selectedCourse.innerHTML = `  <section id="crew-manage">
-    <h3>${CREW.COURSE} 크루 관리</h3>
-    <form>
-      <label>크루 이름</label>
-      <input type="text" id="crew-name-input" />
-      <button id="add-crew-buttton">확인</button>
-    </form>
-  </section>
+// export function selectCrew(){
+//     //const $crewTabContent = document.querySelector('#crew-tab-content')
+//     const $selectedCourse = document.querySelector('#selected-course')
+//     $selectedCourse.innerHTML = `  <section id="crew-manage">
+//     <h3>${CREW.COURSE} 크루 관리</h3>
+//     <form>
+//       <label>크루 이름</label>
+//       <input type="text" id="crew-name-input" />
+//       <button id="add-crew-buttton">확인</button>
+//     </form>
+//   </section>
 
-  <section id="crew-list">
-    <h3>${CREW.COURSE} 크루 목록</h3>
-    <table border="1" id="crew-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>크루</th>
-          <th>관리</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>준</td>
-          <td>
-            <button class="delete-crew-buttton">삭제</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>`
-}
+//   <section id="crew-list">
+//     <h3>${CREW.COURSE} 크루 목록</h3>
+//     <table border="1" id="crew-table">
+//       <thead>
+//         <tr>
+//           <th></th>
+//           <th>크루</th>
+//           <th>관리</th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         <tr>
+//           <td>1</td>
+//           <td>준</td>
+//           <td>
+//             <button class="delete-crew-buttton">삭제</button>
+//           </td>
+//         </tr>
+//       </tbody>
+//     </table>
+//   </section>`
+// }

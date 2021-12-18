@@ -1,3 +1,10 @@
 export const CREW = {
-    COURSE : ''
+    COURSE : '',
+    FRONTCREWLIST : []
+}
+
+export class FRONTCREW{
+    constructor(name){
+        this.name = name;
+    }
 }
