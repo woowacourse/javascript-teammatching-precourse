@@ -4,6 +4,8 @@ export const SELECTOR = {
 
   crewManageButton: 'crew-tab',
   teamManageButton: 'team-tab',
+  radioName: 'course',
+  selectedCourseContents: 'crew-selected-course-contents',
 
   radioFrontendInput: 'frontend-course',
   radioBackendInput: 'backend-course',

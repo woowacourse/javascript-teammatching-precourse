@@ -1,11 +1,13 @@
 import { $ } from './utils.js';
 import { SELECTOR } from '../constants/constants.js';
+import CrewManager from './crewManageController.js';
 
 export default class Controller {
   constructor(view, model) {
     this.view = view;
     this.model = model;
-    this.view.renderCrewManageTab();
+    this.crewManager = new CrewManager(this.view, this.model);
+    this.renderCrewManageTab();
   }
 
   addEventListeners() {
@@ -17,6 +19,7 @@ export default class Controller {
 
   renderCrewManageTab() {
     this.view.renderCrewManageTab();
+    this.crewManager.init();
   }
 
   renderTeamMatchingManageTab() {
