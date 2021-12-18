@@ -20,6 +20,7 @@ export const BLANK = ' ';
 export const ERROR_MESSAGES = Object.freeze({
   notDefined: '을(를) 입력해 주세요.',
   dupError: '은(는) 이미 존재합니다.',
+  lengthOverError: '은(는) 5자 이하여야 합니다.',
 });
 
 export const EVENT_TYPE_CLICK = 'click';

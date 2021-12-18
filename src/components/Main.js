@@ -1,4 +1,5 @@
 import { $ } from '../common/dom.js';
+import { isValidate } from '../common/valid.js';
 import { CURRENT_TAB, EVENT_TYPE_CLICK, DOM, RADIO_TAB } from '../constants/index.js';
 import { Content } from '../view/index.js';
 import Component from './root/Component.js';
@@ -27,7 +28,10 @@ export default class Main extends Component {
         callback: event => {
           if (!event.target.matches(`#${DOM.ADD_CREW_BUTTON}`)) return;
           event.preventDefault();
-          // const { value } = $(`#${DOM.CREW_NAME_INPUT}`);
+          const key = this.$storage.read(CURRENT_TAB);
+          const items = this.$storage.read(key);
+          const item = isValidate($(`#${DOM.CREW_NAME_INPUT}`), items);
+          if (item) this.$storage.create(key, [...items, { name: item, index: items.length + 1 }]);
         },
       },
       // button : 삭제

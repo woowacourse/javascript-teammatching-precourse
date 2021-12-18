@@ -19,7 +19,7 @@ const CrewManage = checked => `
     <h3>프론트엔드 크루 관리</h3>
     <form>
       <label>크루 이름</label>
-      <input type="text" id="${DOM.CREW_NAME_INPUT}"/>
+      <input type="text" id="${DOM.CREW_NAME_INPUT}" placeholder="크루 이름"/>
       <button id="${DOM.ADD_CREW_BUTTON}">확인</button>
     </form>
   </section>
