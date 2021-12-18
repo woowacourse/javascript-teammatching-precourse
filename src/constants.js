@@ -27,6 +27,7 @@ export const SELECTOR = Object.freeze({
   courseSelectId: 'course-select',
   missionSelectId: 'mission-select',
 
+  teamMatchingContainer: 'team-matching-container',
   showTeamMatcherButtonId: 'show-team-matcher-button',
   teamMemberCountInputId: 'team-member-count-input',
   matchTeamButtonId: 'match-team-button',
@@ -50,4 +51,18 @@ export const MESSAGE = Object.freeze({
   crewNameIsRequired: '크루 이름을 입력해주세요.',
   crewNameHaveToUnique: '존재하는 크루 이름입니다.',
   crewNameHaveToUnderFiveLetter: '크루 이름은 5글자까지 가능합니다.',
+});
+
+export const OPTION = Object.freeze({
+  frontend: 'frontend',
+  backend: 'backend',
+
+  baseball: 'baseball',
+  racingcar: 'racingcar',
+  lotto: 'lotto',
+  shoppingCart: 'shopping-cart',
+  payments: 'payments',
+  subway: 'subway',
+  performance: 'performance',
+  deploy: 'deploy',
 });
