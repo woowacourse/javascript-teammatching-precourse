@@ -1,3 +1,4 @@
+import { feCrewList, beCrewList } from '../model/store.js';
 import { $, $$ } from '../utils/dom.js';
 
 class crewView {
@@ -6,23 +7,43 @@ class crewView {
   }
 
   getFECrewList() {
-    return `<tr>
-    <td>1</td>
-    <td>준</td>
-    <td>
-      <button class="delete-crew-buttton">삭제</button>
-    </td>
-  </tr>`;
+    const feCrew = feCrewList;
+    return feCrew
+      .map((name, index) => {
+        return `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${name}</td>
+      <td>
+        <button class="delete-crew-buttton">삭제</button>
+      </td>
+      </tr>`;
+      })
+      .join('');
+  }
+
+  renderFECrewList() {
+    $('#crew-table-tbody').innerHTML = this.getFECrewList();
   }
 
   getBECrewList() {
-    return `<tr>
-    <td>1</td>
-    <td>준</td>
-    <td>
-      <button class="delete-crew-buttton">삭제</button>
-    </td>
-  </tr>`;
+    const beCrew = beCrewList;
+    return beCrew
+      .map((name, index) => {
+        return `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${name}</td>
+      <td>
+        <button class="delete-crew-buttton">삭제</button>
+      </td>
+      </tr>`;
+      })
+      .join('');
+  }
+
+  renderBECrewList() {
+    $('#crew-table-tbody').innerHTML = this.getBECrewList();
   }
 
   manageCourseTemplate() {
