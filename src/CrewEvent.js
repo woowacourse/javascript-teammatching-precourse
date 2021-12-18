@@ -22,7 +22,6 @@ export default class CrewEvent {
     static checkResult(crewCheck, name) {
         if(crewCheck.checkAll()) {
             if(this.getCourse() === "frontend") {
-                console.log(name);
                 this.storeFrontCrew(name, this.getCourse());
                 CrewView.showFrontTable();
             } else if(this.getCourse() === "backend") {
