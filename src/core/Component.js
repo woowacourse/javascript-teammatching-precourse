@@ -1,7 +1,7 @@
 import { storeObserver } from './Store.js';
 import { $ } from '../utils/dom.js';
-import { EVENT_TYPE } from '../utils/constants';
-import { isObjectEmpty } from '../utils/general';
+import { EVENT_TYPE } from '../utils/constants.js';
+import { isObjectEmpty } from '../utils/general.js';
 
 export default class Component {
   constructor(htmlElement, props = {}) {
