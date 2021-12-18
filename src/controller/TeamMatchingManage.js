@@ -1,5 +1,6 @@
 import TeamMatchingView from '../view/TeamMatchingManage.js';
 import CrewManageModel from '../model/CrewManage.js';
+import { validateTeamNumberNull } from './validators/TeamMatching.js';
 import { $ } from '../utils/dom.js';
 import { changeMissionNameToKorean, suffleCrewMemberTeam } from '../utils/index.js';
 
@@ -64,6 +65,8 @@ class TeamMatchingManageController {
     const memberTeamCount = $(`#${SELECTOR.teamMemberCountInputId}`).value;
     const courseName = $(`#${SELECTOR.courseSelectId}`).value;
     const missionName = changeMissionNameToKorean($(`#${SELECTOR.missionSelectId}`).value);
+
+    if (!validateTeamNumberNull(memberTeamCount)) return;
 
     if (courseName === OPTION.frontend) {
       const memberCount = this.$crewManageModel.getFrontEndMember().length;

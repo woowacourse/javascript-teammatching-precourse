@@ -51,6 +51,9 @@ export const MESSAGE = Object.freeze({
   crewNameIsRequired: '크루 이름을 입력해주세요.',
   crewNameHaveToUnique: '존재하는 크루 이름입니다.',
   crewNameHaveToUnderFiveLetter: '크루 이름은 5글자까지 가능합니다.',
+
+  // 팀 매칭 관련
+  teamNumberHaveToRequired: '1팀당 인원 수를 입력해주세요.',
 });
 
 export const OPTION = Object.freeze({
