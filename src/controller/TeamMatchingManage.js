@@ -4,14 +4,7 @@ import { validateTeamNumberNull } from './validators/TeamMatching.js';
 import { $ } from '../utils/dom.js';
 import { changeMissionNameToKorean, suffleCrewMemberTeam } from '../utils/index.js';
 
-import {
-  SELECTOR,
-  FRONT_END,
-  BACK_END,
-  FRONT_END_COURSE,
-  BACK_END_COURSE,
-  OPTION,
-} from '../constants.js';
+import { SELECTOR, FRONT_END, BACK_END, OPTION } from '../constants.js';
 
 class TeamMatchingManageController {
   constructor() {
@@ -35,7 +28,13 @@ class TeamMatchingManageController {
       this.onClickTeamMatcherButton(event);
     } else if (id === SELECTOR.matchTeamButtonId) {
       this.onCLickMatchTeamButton(event);
+    } else if (id === SELECTOR.rematchTeamButton) {
+      this.onClickRematchTeamButton(event);
     }
+  }
+
+  onClickRematchTeamButton(event) {
+    this.onClickTeamMatcherButton(event);
   }
 
   onClickTeamMatcherButton(event) {
