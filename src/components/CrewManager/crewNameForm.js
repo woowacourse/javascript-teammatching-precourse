@@ -1,3 +1,5 @@
+import { woowaCrew } from '../../woowaCrew.js';
+
 export default function CrewNameForm(container) {
   this.template = (course) => {
     return `
@@ -10,18 +12,17 @@ export default function CrewNameForm(container) {
         `;
   };
 
-  this.onClickAddCrewButton = (e) => {
-    e.preventDefault();
-  };
-
-  this.addEvent = () => {
+  this.addEvent = (course) => {
     const addCrewButton = document.querySelector('#add-crew-button');
-    addCrewButton.addEventListener('click', this.onClickAddCrewButton);
+    addCrewButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const crewName = document.querySelector('#crew-name-input').value;
+      woowaCrew.addCrew(course, crewName);
+    });
   };
 
   this.render = (course) => {
-    console.log(container);
     container.innerHTML = this.template(course);
-    this.addEvent();
+    this.addEvent(course);
   };
 }
