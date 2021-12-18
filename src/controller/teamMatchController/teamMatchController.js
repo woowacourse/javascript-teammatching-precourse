@@ -47,9 +47,9 @@ export default class TeamMatchController {
 
     if (isValidMemberCount(memberCount, this.model.selectedCrews.length)) {
       const finalteams = matchTeam(this.model.selectedCrews, memberCount);
-      this.view.renderMatchResult(course, missionText, this.model.changeToNames(finalteams));
-      // console.log(finalteams);
-      // console.log(this.model);
+      this.view.renderMatchResult(course, missionText);
+      this.view.renderResult(this.model.changeToNames(finalteams));
+
       return this.attachMatchResultEvents();
     }
     return showError();

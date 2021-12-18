@@ -1,6 +1,7 @@
 import { $ } from '../../utils/DOMHelper.js';
 import {
   matchResultTemplate,
+  resultTemplate,
   selectCourseMissionTemplate,
   teamMatchTemplate,
 } from '../../utils/template.js';
@@ -46,5 +47,11 @@ export default class TeamMatchView {
 
   selectMatchResultDOM() {
     this.$rematchTeamButton = $('#rematch-team-button');
+  }
+
+  renderResult(teams) {
+    this.$teamMatchResult = $('#team-match-result');
+
+    this.$teamMatchResult.innerHTML = resultTemplate(teams);
   }
 }
