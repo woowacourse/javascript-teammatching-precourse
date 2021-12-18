@@ -1,5 +1,6 @@
 import { BUTTON, HEADER, LIST } from '../../../common/constant.js';
 import { $, createHeader, createSection } from '../../../common/element.js';
+import { getLocalStorage } from '../../../common/localStorage.js';
 
 function createCrewListSection() {
   const crewListSection = createSection();
@@ -25,12 +26,12 @@ function createCrewListTable() {
   `;
 }
 
-function createCrewListTableBody() {
+function createCrewListTableData(idx, name) {
   return `
     <tbody>
       <tr>
-        <td></td>
-        <td></td>
+        <td>${idx}</td>
+        <td>${name}</td>
         <td>
           <button id="delete-crew-buttton">${BUTTON.DELETE}</button>
         </td>
@@ -38,15 +39,44 @@ function createCrewListTableBody() {
   `;
 }
 
-export default function createCrewList() {
+function createCrewListTableBodyRows() {
+  let crewListTableBodyRows = '';
+  let idx = 1;
+
+  const crews = JSON.parse(getLocalStorage('crew'));
+  crews.forEach((crew) => {
+    // eslint-disable-next-line prefer-destructuring
+    const name = crew.name;
+    const data = createCrewListTableData(idx, name);
+    crewListTableBodyRows += data;
+    idx += 1;
+  });
+
+  return crewListTableBodyRows;
+}
+
+function createProductListTableBody() {
+  if (getLocalStorage('crew')) {
+    return createCrewListTableBodyRows();
+  }
+  return '';
+}
+
+export function createCrewList() {
   const crewList = createCrewListSection();
   const crewListHeader = createCrewListHeader();
   crewList.append(crewListHeader);
 
   let crewListTable = createCrewListTable();
-  const crewListTableBody = createCrewListTableBody();
+  const crewListTableBody = createProductListTableBody();
   crewListTable += crewListTableBody;
   crewList.innerHTML += crewListTable;
 
   $('crew-manage-nav').append(crewList);
+}
+
+export function updateCrewList() {
+  const oldCrewList = $('crew-manage-nav').lastChild;
+  oldCrewList.remove();
+  createCrewList();
 }
