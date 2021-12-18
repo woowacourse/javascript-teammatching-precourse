@@ -23,6 +23,12 @@ export const isValidCrewName = value => {
   return true;
 };
 
-export const isValidCount = value => {
+export const isValidCount = (crewCount, matchCount) => {
+  if (crewCount - matchCount < matchCount) {
+    alert(ERROR.COUNT_IS_WRONG);
+
+    return false;
+  }
+
   return true;
 };

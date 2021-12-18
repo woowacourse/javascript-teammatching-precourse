@@ -27,7 +27,7 @@ class TeamManage {
         </form>
       </div>
       <h4>크루 목록</h4>
-      <ul>
+      <ul id=${ID.TEAM_CREW_LISTS}>
         ${crewLists(this.course)} 
       </ul>
     </div>
@@ -37,7 +37,7 @@ class TeamManage {
   selectDom() {
     this.$countInput = $(`#${ID.TEAM_MEMBER_COUNT_INPUT}`);
     this.$matchButton = $(`#${ID.MATCH_TEAM_BUTTON}`);
-    this.$ul = $('ul');
+    this.$teamCrewList = $(`#${ID.TEAM_CREW_LISTS}`);
   }
 
   addEvent() {
@@ -47,11 +47,12 @@ class TeamManage {
   clickButton(e) {
     e.preventDefault();
 
+    const crewCount = this.$teamCrewList.childElementCount;
     const matchCount = Number(this.$countInput.value);
-    const crewCount = this.$ul.childElementCount;
-    console.log(matchCount, crewCount);
 
-    if (!isValidCount(matchCount)) {
+    console.log(crewCount, matchCount);
+
+    if (!isValidCount(crewCount, matchCount)) {
       return;
     }
   }
