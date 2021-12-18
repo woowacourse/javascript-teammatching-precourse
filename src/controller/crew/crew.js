@@ -4,17 +4,15 @@ import { addCrewOnCourse, isUniqueCrewNameOnCourse, getCrewsOnCourse } from '../
 
 const isFrontCourse = $('#frontend-course').checked;
 
+const selectCourse = (title) => () => {
+    $('#crew-section').classList.add('on');
+    $('#course-manage-title').innerText = title;
+    $('#course-list-title').innerText = title;
+};
+
 const triggerSelectCourse = () => {
-    $('#frontend-course').addEventListener('click', () => {
-        $('#crew-section').classList.add('on');
-        $('#course-manage-title').innerText = '프론트';
-        $('#course-list-title').innerText = '프론트';
-    });
-    $('#backend-course').addEventListener('click', () => {
-        $('#crew-section').classList.add('on');
-        $('#course-manage-title').innerText = '백';
-        $('#course-list-title').innerText = '백';
-    });
+    $('#frontend-course').addEventListener('click', selectCourse('프론트'));
+    $('#backend-course').addEventListener('click', selectCourse('백'));
 };
 
 const addCrewToCourse = (crewName) => {
