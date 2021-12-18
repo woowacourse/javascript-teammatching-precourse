@@ -1,5 +1,6 @@
 export const CONSTANTS = Object.freeze({
   STORAGE_KEY_CREW: 'TEAM_MATCHING_CREW_LIST',
+  STORAGE_KEY_TEAM: 'TEAM_MATCHING_TEMA_LIST',
 });
 
 export const ERROR = Object.freeze({

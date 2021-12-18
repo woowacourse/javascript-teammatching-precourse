@@ -4,6 +4,10 @@ import {
 } from '../../constants/select-option.js';
 
 import Component from '../../core/Component.js';
+import Crew from '../../models/Crew.js';
+import { $, visibleElement } from '../../utils/element-tools.js';
+import { storageManager } from '../../utils/data-tools.js';
+import { CONSTANTS } from '../../constants/constants.js';
 
 export default class MatchTypeSelect extends Component {
   htmlTemplate() {
@@ -23,5 +27,34 @@ export default class MatchTypeSelect extends Component {
       <button id="show-team-matcher-button">확인</button>
     </form>
     `;
+  }
+
+  bindEvents() {
+    this.addEvent(
+      'click',
+      '#show-team-matcher-button',
+      this.handleTeamTypeSelect.bind(this)
+    );
+  }
+
+  handleTeamTypeSelect(event) {
+    event.preventDefault();
+
+    const { teamManager, state } = this._props;
+
+    const crewData = storageManager.get(CONSTANTS.STORAGE_KEY_CREW, []);
+    const crewList = new Crew(crewData).setCourse(
+      $('#course-select').value
+    ).filterList;
+
+    const $teamMatcher = $('.component[data-component="team-matcher"]');
+    visibleElement([$teamMatcher]);
+
+    const teamList = teamManager
+      .setCrewList(crewList)
+      .setTeamType(
+        $('#course-select').value,
+        $('#mission-select').value
+      ).result;
   }
 }

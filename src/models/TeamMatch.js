@@ -1,9 +1,25 @@
 export default class TeamMatch {
-  constructor(crewList) {}
+  constructor(teamList) {
+    this._teamList = teamList;
+    this._crewList = [];
+  }
 
-  setTeamType(course, mission) {}
+  setCrewList(crewList) {
+    this._crewList = [...crewList];
+    return this;
+  }
+
+  setTeamType(course, mission) {
+    this._course = course;
+    this._mission = mission;
+
+    console.log(this);
+    return this;
+  }
 
   setMemberCount(memberNumber) {}
 
-  get result() {}
+  get result() {
+    return this._teamList[this._course][this._mission];
+  }
 }
