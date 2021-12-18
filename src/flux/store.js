@@ -28,7 +28,6 @@ class Store extends Singleton {
 
   dispatch(action) {
     this.state = this.reducer(this.state, action);
-    console.log('this.state', this.state);
     this.saveDataToLocalStorage(this.state);
     this.subscribers.forEach((listener) => listener.shouldNotify() && listener.notify());
   }
