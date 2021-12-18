@@ -34,9 +34,11 @@ export default {
 
   onChangeCourse(course) {
     CrewManageView.setCourse(course);
+    CrewManageView.render();
   },
 
   onSubmitCrew(crew) {
     CrewManageModel.add(crew);
+    this.renderView();
   },
 };

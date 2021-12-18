@@ -1,5 +1,6 @@
 import CrewManageModel from '../models/CrewManageModel.js';
 import View from './View.js';
+import { COURSE } from '../utils/constants.js';
 
 const CrewManageView = { ...View };
 
@@ -41,45 +42,55 @@ CrewManageView.render = function () {
     <section>
       <h3>크루를 관리할 코스를 선택해주세요</h3>
       <div id="course-select-form">
-        <input id="frontend-course" type="radio" name="course" value="frontend" />
+        <input id="frontend-course" type="radio" name="course" value="frontend" ${
+          this.course === 'frontend' ? 'checked' : ''
+        }/>
         <label for="frontend">프론트엔드</label>
-        <input id="backend-course" type="radio" name="course" value="backend" />
+        <input id="backend-course" type="radio" name="course" value="backend" ${
+          this.course === 'backend' ? 'checked' : ''
+        }/>
         <label for="backend">백엔드</label>
       </div>
     </section>
-    <section>
-      <h3>프론트엔드 크루 관리</h3>
-      <form>
-        <label>크루 이름</label>
-        <input id="crew-name-input" type="text" />
-        <button id="add-crew-button" >확인</button>
-      </form>
-    </section>
-    <section>
-      <h3>프론트엔드 크루 목록</h3>
-      <table id="crew-table" border="1">
-        <thead>
-          <tr>
-            <th></th>
-            <th>크루</th>
-            <th>관리</th>
-          </tr>
-        </thead>
-        <tbody>
-        ${CrewManageModel.list()['frontend'].map(
+    ${
+      this.course !== undefined
+        ? `<section>
+    <h3>${COURSE[this.course]} 크루 관리</h3>
+    <form>
+      <label>크루 이름</label>
+      <input id="crew-name-input" type="text" />
+      <button id="add-crew-button" >확인</button>
+    </form>
+  </section>
+  <section>
+    <h3>${COURSE[this.course]} 크루 목록</h3>
+    <table id="crew-table" border="1">
+      <thead>
+        <tr>
+          <th></th>
+          <th>크루</th>
+          <th>관리</th>
+        </tr>
+      </thead>
+      <tbody>
+      ${CrewManageModel.list()
+        [this.course].map(
           (name, idx) => `
-          <tr>
-              <td>${idx + 1}</td>
-              <td>${name}</td>
-              <td>
-                <button class="delete-crew-button">삭제</button>
-              </td>
-            </tr>
-          `,
-        )}
-        </tbody>
-      </table>
-    </section>
+        <tr>
+            <td>${idx + 1}</td>
+            <td>${name}</td>
+            <td>
+              <button class="delete-crew-button">삭제</button>
+            </td>
+          </tr>
+        `,
+        )
+        .join('')}
+      </tbody>
+    </table>
+  </section>`
+        : ''
+    }
     `;
 };
 
