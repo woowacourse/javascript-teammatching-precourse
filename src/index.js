@@ -2,7 +2,13 @@ import { fetchHtmlView } from './fetch.js';
 import ManageModel from './model/manage-model.js';
 import CrewController from './controller/crew-controller.js';
 
-//
+function onShowTeamClick() {
+    const courseSelected = document.querySelector("#course-select").value;
+    const missionSelected = document.querySelector("#mission-select").value;
+
+    console.log(courseSelected, missionSelected);
+}
+
 async function renderView(fileName) {
     const view = await fetchHtmlView(fileName);
     app.innerHTML = view;
@@ -22,6 +28,7 @@ function eventHandler(e) {
         "backend-course"() { crewController.onCourseRadioClick(e) },
         "add-crew-buttton"() { crewController.onAddCrewClick(); },
         "delete-crew-buttton"() { crewController.onDeleteCrewClick(e.target); },
+        "show-team-matcher-button"() { onShowTeamClick(); },
     };
     const handlerKeys = Object.keys(handlers);
     if(handlerKeys.includes(e.target.id)) handlers[e.target.id]();
