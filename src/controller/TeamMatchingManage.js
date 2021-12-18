@@ -75,6 +75,16 @@ class TeamMatchingManageController {
         Number(memberTeamCount),
       );
       this.$teamMatchinManageView.renderTeamMatchingResult(FRONT_END, missionName, teamArray);
+    } else if (courseName === OPTION.backend) {
+      const memberCount = this.$crewManageModel.getBackEndMember().length;
+      const memberIndexArray = this.suffleMemberIndex(memberCount);
+      const suffleMemberIndexArray = suffleCrewMemberTeam(memberIndexArray);
+      const teamArray = this.matchingTeamMemberWithSuffle(
+        this.$crewManageModel.getBackEndMember(),
+        suffleMemberIndexArray,
+        Number(memberTeamCount),
+      );
+      this.$teamMatchinManageView.renderTeamMatchingResult(BACK_END, missionName, teamArray);
     }
   }
 
