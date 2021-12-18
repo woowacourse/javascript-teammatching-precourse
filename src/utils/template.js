@@ -1,4 +1,4 @@
-import { LOCAL_DB } from '../constants/index.js';
+import { CLASS, LOCAL_DB } from '../constants/index.js';
 import { getLocalStorage } from './localStorage.js';
 
 export const crewTableHeader = () => {
@@ -24,13 +24,13 @@ export const crewTableContents = courseName => {
   list.forEach((name, i) => {
     html += `
       <tr>
-        <td>${i + 1}</td>
+        <td data-index=${i}>${i + 1}</td>
         <td>${name}</td>
         <td>
-          <button>삭제</button>
+          <button class=${CLASS.DELETE_CREW_BUTTON}>삭제</button>
         </td>
       </tr>
-        `;
+    `;
   });
 
   return html;
