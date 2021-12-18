@@ -21,6 +21,10 @@ const isPositiveInteger = (value) => {
   return value >= 1;
 };
 
+const isBelowGivenNum = (value, givenNum) => {
+  return value <= givenNum;
+};
+
 export const isValidCrewName = (name, course, model) => {
   if (isEmpty(name)) return setErrorMessage(ERROR_MESSAGE.NO_EMPTY_ALLOWED);
   if (!isBelowGivenLength(name, NUMBER.MAX_CREW_NAME_LENGTH) || model.isCrewExist(name, course))
@@ -29,8 +33,13 @@ export const isValidCrewName = (name, course, model) => {
   return true;
 };
 
-export const isValidMemberCount = (memberCount) => {
-  if (isEmpty(memberCount) || !isPositiveInteger(memberCount))
+export const isValidMemberCount = (memberCount, crewsNum) => {
+  console.log(crewsNum);
+  if (
+    isEmpty(memberCount) ||
+    !isPositiveInteger(memberCount) ||
+    !isBelowGivenNum(memberCount, crewsNum)
+  )
     return setErrorMessage(ERROR_MESSAGE.NOT_PROPER_MEMBER_COUNT);
 
   return true;

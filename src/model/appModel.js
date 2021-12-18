@@ -7,6 +7,7 @@ export default class AppModel {
   constructor() {
     this.frontCrews = this.loadFrontCrews() || [];
     this.backCrews = this.loadBackCrews() || [];
+    this.selectedCrews = [];
     // this.currentTab = this.loadCurrentTab() || 'crewManage';
   }
 
@@ -75,8 +76,8 @@ export default class AppModel {
   }
 
   getCrews(course) {
-    if (course === 'backend') return this.backCrews;
+    this.selectedCrews = course === 'backend' ? this.backCrews : this.frontCrews;
 
-    return this.frontCrews;
+    return this.selectedCrews;
   }
 }

@@ -1,4 +1,5 @@
 import { showError } from '../../utils/error.js';
+import { matchTeam } from '../../utils/matchTeam.js';
 import { isValidMemberCount } from '../../utils/validator.js';
 import TeamMatchView from '../../view/teamMatchView/teamMatchView.js';
 
@@ -12,7 +13,6 @@ export default class TeamMatchController {
     this.view.init();
     this.view.renderSelectCourseMission();
     this.view.selectSelectCourseMissionDOM();
-    console.log(this.view.$courseSelect);
 
     this.attachSelectCourseMissionEvents();
   }
@@ -45,7 +45,9 @@ export default class TeamMatchController {
 
     const memberCount = this.view.$teamMemberCountInput.value;
 
-    if (isValidMemberCount(memberCount)) {
+    if (isValidMemberCount(memberCount, this.model.selectedCrews.length)) {
+      console.log(matchTeam(this.model.selectedCrews, memberCount));
+
       return console.log(memberCount);
     }
 
