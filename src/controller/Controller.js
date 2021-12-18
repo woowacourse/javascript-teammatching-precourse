@@ -1,5 +1,7 @@
+import View from '../view/View.js';
+
 export default class Controller {
   constructor() {
-    console.log('hi');
+    this.view = new View();
   }
 }
