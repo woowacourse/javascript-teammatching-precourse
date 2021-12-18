@@ -29,4 +29,8 @@ export default class CrewManager {
 
     return false;
   }
+
+  getCrewList(course) {
+    return this[course].map((crew) => crew.name);
+  }
 }

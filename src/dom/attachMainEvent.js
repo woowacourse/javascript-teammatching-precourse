@@ -2,16 +2,20 @@ import { MAIN, COURSE, CREW_MANAGE_DOM_SELECTOR } from '../constants.js';
 import Crew from '../Crew.js';
 import printAddCrewForm from './printAddCrewForm.js';
 import isValidName from '../utils/isValidName.js';
+import printCrewList from './printCrewList.js';
 
-const selectCourseEvent = (event) => {
-  if (event.target.name !== COURSE) return;
+const selectCourseEvent = (crewManager) => {
+  return (event) => {
+    if (event.target.name !== COURSE) return;
 
-  const $courseSelectionSection = event.target.closest('section');
-  while ($courseSelectionSection.nextSibling) {
-    $courseSelectionSection.nextSibling.remove();
-  }
+    const $courseSelectionSection = event.target.closest('section');
+    while ($courseSelectionSection.nextSibling) {
+      $courseSelectionSection.nextSibling.remove();
+    }
 
-  printAddCrewForm(event.target.value);
+    printAddCrewForm(event.target.value);
+    printCrewList(event.target.value, crewManager);
+  };
 };
 
 const addCrewEvent = (crewManager) => {
@@ -26,12 +30,13 @@ const addCrewEvent = (crewManager) => {
 
     const crew = new Crew(course, name);
     crewManager.add(crew);
+    printCrewList(course, crewManager);
   };
 };
 
 const attachMainEvent = (crewManager) => {
   const $main = document.querySelector(MAIN);
-  $main.addEventListener('click', selectCourseEvent);
+  $main.addEventListener('click', selectCourseEvent(crewManager));
   $main.addEventListener('click', addCrewEvent(crewManager));
 };
 

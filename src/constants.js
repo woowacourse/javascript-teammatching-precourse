@@ -37,3 +37,9 @@ export const CREW_MANAGE_DOM_SELECTOR = {
 export const ERROR_MESSAGE = {
   invalidName: '이름을 확인해주세요',
 };
+
+export const CREW_TABLE = ['', '크루', '관리'];
+
+export const DELETE_BUTTON = { className: 'delete-crew-button', text: '삭제' };
+
+export const CREW_LIST_TITLE = '크루 목록';
