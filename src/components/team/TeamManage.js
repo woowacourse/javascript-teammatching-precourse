@@ -1,6 +1,7 @@
 import { ID } from '../../constants/index.js';
 import { $ } from '../../utils/selector.js';
 import { crewLists } from '../../utils/template.js';
+import { isValidCount } from '../../utils/valid.js';
 
 class TeamManage {
   constructor($target, course, mission) {
@@ -36,6 +37,7 @@ class TeamManage {
   selectDom() {
     this.$countInput = $(`#${ID.TEAM_MEMBER_COUNT_INPUT}`);
     this.$matchButton = $(`#${ID.MATCH_TEAM_BUTTON}`);
+    this.$ul = $('ul');
   }
 
   addEvent() {
@@ -45,7 +47,13 @@ class TeamManage {
   clickButton(e) {
     e.preventDefault();
 
-    const count = Number(this.$countInput.value);
+    const matchCount = Number(this.$countInput.value);
+    const crewCount = this.$ul.childElementCount;
+    console.log(matchCount, crewCount);
+
+    if (!isValidCount(matchCount)) {
+      return;
+    }
   }
 }
 
