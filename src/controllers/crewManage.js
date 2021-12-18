@@ -21,7 +21,7 @@ export default function HandleFrontEndCoures() {
     event.preventDefault();
     const inputName = $('#crew-name-input').value;
 
-    if (!isValidInputName(inputName)) {
+    if (!isValidInputName(STORAGE_NAME.FRONT, inputName)) {
       return;
     }
 
