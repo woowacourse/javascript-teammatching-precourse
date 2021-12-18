@@ -1,3 +1,4 @@
+import $ from './utils/common/selector.js';
 import { renderTabs } from './utils/common/renderTabs.js';
 
 function teamMatching() {
@@ -8,7 +9,13 @@ function teamMatching() {
     this.initEventListeners();
   };
 
-  this.initEventListeners = () => {};
+  this.initEventListeners = () => {
+    $('nav').addEventListener('click', e => {
+      if (e.target.classList.contains('nav-tab')) {
+        console.log('버튼');
+      }
+    });
+  };
 }
 
 const team = new teamMatching();
