@@ -3,7 +3,8 @@ export const ERROR_MESSAGE = Object.freeze({
   OUT_OF_RANGE: '이름은 최대 5글자까지 작성가능합니다.',
   EMPTY: '값을 입력해주세요.',
   NOT_FOUND: '크루 목록이 비었습니다. 먼저 크루를 추가해주세요.',
-  NOT_POSITIVE_INTEGER: '양수인 정수만 입력해주세요.'
+  NOT_POSITIVE_INTEGER: '양수인 정수만 입력해주세요.',
+  NOT_VALID_HEADCOUNT: '1팀당 인원 수에 입력한 값보다 더 적은 수의 크루들로 구성된 팀은 없어야 합니다.'
 });
 
 export const STORAGE_KEY = Object.freeze({
