@@ -62,5 +62,6 @@ export default {
   onSubmitCourseAndMission({ course, mission }) {
     MatchingManageView.setCourse(course);
     MatchingManageView.setMission(mission);
+    this.renderView();
   },
 };

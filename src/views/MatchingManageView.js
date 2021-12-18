@@ -1,3 +1,6 @@
+import CrewManageModel from '../models/CrewManageModel.js';
+import MissionModel from '../models/MissionModel.js';
+import { COURSE } from '../utils/constants.js';
 import View from './View.js';
 
 const MatchingManageView = { ...View };
@@ -44,30 +47,40 @@ MatchingManageView.render = function () {
           <option>백엔드</option>
         </select>
         <select id="mission-select">
-          <option>숫자야구게임</option>
+        ${MissionModel.list()
+          .map((mission) => `<option>${mission}</option>`)
+          .join('')}
         </select>
         <button id="show-team-matcher-button">확인</button>
       </form>
     </section>
-    <section>
-      <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
+    ${
+      this.course
+        ? `<section>
+    <h3>${this.course} 숫자야구게임 미션의 팀 매칭</h3>
+    <div>
       <div>
-        <div>
-          <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
-          <form>
-            <label>1팀당 인원 수</label>
-            <input id="team-member-count-input" type="number" />
-            <button id="match-team-button">팀 매칭</button>
-          </form>
-        </div>
-        <h4>크루 목록</h4>
-        <ul>
-        </ul>
+        <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
+        <form>
+          <label>1팀당 인원 수</label>
+          <input id="team-member-count-input" type="number" />
+          <button id="match-team-button">팀 매칭</button>
+        </form>
       </div>
-    </section>
+      <h4>크루 목록</h4>
+      <ul>
+      ${CrewManageModel.list()
+        [COURSE[this.course]].map((crew) => `<li>${crew}</li>`)
+        .join('')}
+      </ul>
+    </div>
+  </section>`
+        : ''
+    }
+
     <!-- 팀 매칭이 된 경우 -->
     <section>
-      <h3>프론트엔드 숫자야구게임 조회</h3>
+      <h3>${this.course} 숫자야구게임 조회</h3>
       <p>팀이 매칭되었습니다.</p>
       <ul id="team-match-result">
       </ul>
