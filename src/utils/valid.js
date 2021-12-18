@@ -1,4 +1,5 @@
-import { ERR_MSG_NO_INPUT, ERR_MSG_OVER_5WORDS } from "../constants/constants.js";
+import { ERR_MSG_DUPLICATE_NAME, ERR_MSG_NO_INPUT, ERR_MSG_OVER_5WORDS } from "../constants/constants.js";
+import { getLocalStorageItem } from "./localStorage.js";
 
 export function isOver5Words(text) {
   if(text.length === 0) {
@@ -10,4 +11,14 @@ export function isOver5Words(text) {
     return true;
   }
   else return false;
+}
+
+export function isDuplicateCrew(key, crew) {
+  const crewList = getLocalStorageItem(key);
+  let isDuplicate = false;
+  crewList.map((item) => {
+    if(item === crew) isDuplicate = true;
+  })
+  if(isDuplicate) alert(ERR_MSG_DUPLICATE_NAME);
+  return isDuplicate;
 }
