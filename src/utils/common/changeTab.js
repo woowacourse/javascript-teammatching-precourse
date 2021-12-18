@@ -10,7 +10,11 @@ export const changeTab = (e, state) => {
   if (tab === TABS.CREW_TAB) {
     renderRadioButtons();
     $('#frontend-course').addEventListener('click', e => {
-      renderCrew(state);
+      renderCrew(state, e.target.value);
+    });
+
+    $('#backend-course').addEventListener('click', e => {
+      renderCrew(state, e.target.value);
     });
     return;
   }

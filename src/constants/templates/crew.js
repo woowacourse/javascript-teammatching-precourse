@@ -1,3 +1,5 @@
+import { FIELDS } from '../constants.js';
+
 export const templates = {
   common: `
     <section id="section_1"></section>
@@ -14,17 +16,25 @@ export const templates = {
         <label for="backend-course">백엔드</label>
       </div>
       `,
-  inputCrew: `
-      <h3>프론트엔드 크루 관리</h3>
+  inputCrew(value) {
+    return `
+      <h3>${
+        value === 'frontend' ? FIELDS.FRONT_END : FIELDS.BACK_END
+      } 크루 관리</h3>
       <form onsubmit="return false">
         <label>크루 이름</label>
         <input id="crew-name-input" type="text" />
         <button id="add-crew-buttton">확인</button>
-      </form>`,
+      </form>
+    `;
+  },
 
-  crewTable: `
-   <section id="section_3">
-      <h3>프론트엔드 크루 목록</h3>
+  crewTable(value) {
+    return `  
+     <section id="section_3">
+      <h3>${
+        value === 'frontend' ? FIELDS.FRONT_END : FIELDS.BACK_END
+      } 크루 목록</h3>
       <table border="1">
         <thead>
           <tr>
@@ -36,7 +46,8 @@ export const templates = {
         <tbody id="crew_list">
         </tbody>
       </table>
-   </section>`,
+     </section>`;
+  },
 
   crew(item, index) {
     return `
