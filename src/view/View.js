@@ -43,35 +43,39 @@ export default class View {
           <label for="backend">백엔드</label>
         </div>
       </section>
-      <section>
-        <h3>프론트엔드 크루 관리</h3>
-        <form>
-          <label>크루 이름</label>
-          <input id="crew-name-input" type="text" />
-          <button id="add-crew-buttton">확인</button>
-        </form>
-      </section>
-      <section>
-        <h3>프론트엔드 크루 목록</h3>
-        <table id="crew-table" border="1">
-          <thead>
-            <tr>
-              <th></th>
-              <th>크루</th>
-              <th>관리</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>준</td>
-              <td>
-                <button id="delete-crew-buttton">삭제</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+
+      <div id="crew-manager-component" style="display: none;">
+        <section >
+            <h3>프론트엔드 크루 관리</h3>
+            <form>
+            <label>크루 이름</label>
+            <input id="crew-name-input" type="text" />
+            <button id="add-crew-buttton">확인</button>
+            </form>
+        </section>
+
+        <section >
+            <h3>프론트엔드 크루 목록</h3>
+            <table id="crew-table" border="1">
+            <thead>
+                <tr>
+                <th></th>
+                <th>크루</th>
+                <th>관리</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>1</td>
+                <td>준</td>
+                <td>
+                    <button id="delete-crew-buttton">삭제</button>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </section>
+      </div>
     </main>
         `,
     );
