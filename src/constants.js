@@ -13,7 +13,9 @@ export const CREW_PAGE = {
 }
 
 export const COURSE_PAGE = {
+    CREW_TABLE: 'crew-table',
     CREW_INPUT: 'crew-name-input',
     ADD_BUTTON: 'add-crew-buttton',
-    DELETE_BUTTON: 'delete-crew-buttton'
+    DELETE_BUTTON: 'delete-crew-buttton',
+    FRONT_TABLE: 'front-table'
 }

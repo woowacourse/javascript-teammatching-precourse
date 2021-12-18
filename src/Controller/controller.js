@@ -1,8 +1,8 @@
-import crewPage from "../components/crew-page.js";
 import Crew from "../Model/crew.js";
 import { getStorage, updateStorage } from "../utils/storage.js";
+import { displayAddCrew } from "../View/display.js";
 import * as validator from "./validate.js";
-
+import * as displayer from "../View/display.js"
 export default class Controller{
 
     addCrew(input){
@@ -15,7 +15,7 @@ export default class Controller{
             matcher.crews.push(crew);
             updateStorage(matcher);
 
-            //TODO: change display
+            displayer.displayAddCrew();
         }
     }
 }

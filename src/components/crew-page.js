@@ -23,7 +23,7 @@ export default () => {
       <button id=${COURSE_PAGE.ADD_BUTTON} >확인</button>
     </form>
     <h3>프론트엔드 크루 목록</h3>
-    <table border="1">
+    <table id=${COURSE_PAGE.CREW_TABLE} border="1">
       <thead>
         <tr>
           <th></th>
@@ -31,6 +31,8 @@ export default () => {
           <th>관리</th>
         </tr>
       </thead>
+      <tbody id=${COURSE_PAGE.FRONT_TABLE}>
+      </tbody>
     </table>
     </div>
     `
