@@ -1,5 +1,10 @@
 import CrewManageView from '../view/CrewManage.js';
 import CrewManageModel from '../model/CrewManage.js';
+import {
+  validateMemberNameNull,
+  validateMemberNameUnique,
+  validateMemberNameUnderFiveLetter,
+} from './validators/CrewMember.js';
 import { $ } from '../utils/dom.js';
 
 import { SELECTOR, FRONT_END, BACK_END, FRONT_END_COURSE, BACK_END_COURSE } from '../constants.js';
@@ -47,6 +52,8 @@ class CrewManageController {
     const crewName = $(`#${SELECTOR.crewNameInputId}`).value;
     const currentCourse = this.$crewManageModel.getCrewCourse();
 
+    if (!this.validateCrewName(crewName)) return;
+
     if (currentCourse === FRONT_END_COURSE) {
       const frontendMembers = this.$crewManageModel.getFrontEndMember();
       const addedFrontendMembers = [...frontendMembers, { name: crewName }];
@@ -58,6 +65,17 @@ class CrewManageController {
       this.$crewManageModel.setBackEndMember(addedBackendMembers);
       this.$crewManageView.renderCrewManageTable(BACK_END, addedBackendMembers);
     }
+
+    $(`#${SELECTOR.crewNameInputId}`).value = null;
+  }
+
+  validateCrewName(name) {
+    return (
+      validateMemberNameNull(name) &&
+      validateMemberNameUnique(name, this.$crewManageModel.getFrontEndMember()) &&
+      validateMemberNameUnique(name, this.$crewManageModel.getBackEndMember()) &&
+      validateMemberNameUnderFiveLetter(name)
+    );
   }
 }
 

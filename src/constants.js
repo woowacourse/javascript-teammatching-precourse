@@ -42,3 +42,10 @@ export const STORAGE_KEY = Object.freeze({
   crewFrontEndMember: 'crew-front-end-member',
   crewBackEndMember: 'crew-back-end-member',
 });
+
+export const MESSAGE = Object.freeze({
+  // 크루 이름 관련
+  crewNameIsRequired: '크루 이름을 입력해주세요.',
+  crewNameHaveToUnique: '존재하는 크루 이름입니다.',
+  crewNameHaveToUnderFiveLetter: '크루 이름은 5글자까지 가능합니다.',
+});
