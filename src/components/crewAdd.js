@@ -2,6 +2,7 @@ import { $ } from '../utils/selector.js';
 import { SELECTOR } from '../constant/constant.js';
 
 export const setCrewTable = (crews) => {
+  console.log(crews);
   if (crews.length != 0) {
     let i = 1;
     $(`#${SELECTOR.ID.CREW_TABLE}`).innerHTML += crews

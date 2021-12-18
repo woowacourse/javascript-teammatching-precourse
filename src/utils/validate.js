@@ -1,6 +1,7 @@
 import { ERROR_MESSAGE, LIMIT } from '../constant/constant.js';
 
-export const isValidCrewName = (name, course) => {
+export const isValidCrewName = (name, crews) => {
+  console.log(name, crews);
   let validation = { valid: true, ERROR_MESSAGE: '' };
   if (!isNotNull(name)) {
     validation.valid = false;
@@ -10,7 +11,7 @@ export const isValidCrewName = (name, course) => {
     validation.valid = false;
     validation.ERROR_MESSAGE = ERROR_MESSAGE.CREW_NAME_MAX;
   }
-  if (!isNotDuplicate(name, course)) {
+  if (!isNotDuplicate(name, crews)) {
     validation.valid = false;
     validation.ERROR_MESSAGE = ERROR_MESSAGE.CREW_NAME_DUPLICATE;
   }
@@ -25,7 +26,6 @@ const isInLimit = (input) => {
   return LIMIT.NAME_MAX_LENGTH >= input.length;
 };
 
-const isNotDuplicate = (name, course) => {
-  console.log(course);
-  return !course.crews.includes(name);
+const isNotDuplicate = (name, crews) => {
+  return !crews.includes(name);
 };

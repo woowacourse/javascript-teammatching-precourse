@@ -16,7 +16,7 @@ export const crewTemplate = () => {
       <form>
         <label>크루 이름</label>
         <input type="text" id="${SELECTOR.ID.CREW_NAME_INPUT}"/>
-        <button id="${SELECTOR.ID.ADD_CREW_BUTTON}">확인</button>
+        <button type="button" id="${SELECTOR.ID.ADD_CREW_BUTTON}">확인</button>
       </form>
     </section>
     <section id="crew-table-section" style="display:none">
