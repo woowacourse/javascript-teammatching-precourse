@@ -99,18 +99,26 @@ class TeamMatchingManageController {
   }
 
   matchingTeamMemberWithSuffle(crewMembers, suffleMemberIndexArray, memberTeamCount) {
-    const teamCount = Math.floor(crewMembers.length / memberTeamCount);
-    let memberCount = 0;
     const team = [];
-    for (let i = 0; i < teamCount; i += 1) {
+
+    while (
+      suffleMemberIndexArray.length > 0 &&
+      suffleMemberIndexArray.length % memberTeamCount !== 0
+    ) {
       const oneTeam = [];
-      for (let j = 0; j < memberTeamCount; j += 1) {
-        oneTeam.push(crewMembers[suffleMemberIndexArray[memberCount]]);
-        memberCount += 1;
+      for (let i = 0; i < memberTeamCount + 1; i += 1) {
+        oneTeam.push(crewMembers[suffleMemberIndexArray.pop() - 1]);
       }
       team.push(oneTeam);
     }
 
+    while (suffleMemberIndexArray.length > 0) {
+      const oneTeam = [];
+      for (let i = 0; i < memberTeamCount; i += 1) {
+        oneTeam.push(crewMembers[suffleMemberIndexArray.pop() - 1]);
+      }
+      team.push(oneTeam);
+    }
     return team;
   }
 }
