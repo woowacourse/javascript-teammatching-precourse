@@ -32,4 +32,16 @@ export default class Model {
       this.commitAddCrew(course);
     }
   }
+
+  deleteCrew(index, course) {
+    if (course === "frontend") {
+      this.front.splice(index, 1);
+      this.crew = { front: this.front, back: this.back };
+      this.commitAddCrew(course);
+    } else {
+      this.back.splice(index, 1);
+      this.crew = { front: this.front, back: this.back };
+      this.commitAddCrew(course);
+    }
+  }
 }

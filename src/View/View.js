@@ -58,13 +58,24 @@ export default class View {
   }
 
   bindAddCrew(handler) {
-    document.getElementById(`main`).addEventListener("click", (event) => {
+    this.main.addEventListener("click", (event) => {
       if (event.target.id === ID.ADD_BUTTON) {
         handler(
           document.getElementById(ID.INPUT).value,
           document.querySelector("input[name=course]:checked").value
         );
         document.getElementById(ID.INPUT).value = "";
+      }
+    });
+  }
+
+  bindDeleteCrew(handler) {
+    this.main.addEventListener("click", (event) => {
+      if (event.target.id === ID.DELETE_BUTTON) {
+        handler(
+          event.target.parentNode.parentNode.children[0].textContent,
+          document.querySelector("input[name=course]:checked").value
+        );
       }
     });
   }

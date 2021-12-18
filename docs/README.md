@@ -42,7 +42,7 @@
 - 크루 이름을 입력한 후 input 값이 비도록 한다.
 - 예외 발생 상황은 `alert`메서드를 이용하여 알려준다
 
-## [ ] 크루 삭제
+## [✅] 크루 삭제
 
 - 코스별로 크루를 삭제할 수 있다.
   - 삭제할 때는 [confirm](https://developer.mozilla.org/ko/docs/Web/API/Window/confirm)을 사용하여, 사용자가 한번 더 확인할 수 있게 한다.

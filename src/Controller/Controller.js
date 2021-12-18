@@ -5,6 +5,7 @@ export default class Controller {
 
     this.view.displayCrewManage(this.model.crew);
     this.view.bindAddCrew(this.addCrewHandler);
+    this.view.bindDeleteCrew(this.deleteCrewHandler);
     this.model.bindCrew(this.crewHandler);
   }
 
@@ -19,6 +20,12 @@ export default class Controller {
     }
 
     this.model.addCrew(name, course);
+  };
+
+  deleteCrewHandler = (index, course) => {
+    if (confirm("정말 삭제하시겠습니까?")) {
+      this.model.deleteCrew(index - 1, course);
+    }
   };
 
   crewHandler = (course, crew) => {

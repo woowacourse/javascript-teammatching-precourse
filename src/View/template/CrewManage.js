@@ -41,7 +41,7 @@ const crewTable = (course, crews) => `
 
 const crewTableTr = (crew, index) => ` 
 <tr>
-<td>${index}</td>
+<td>${index + 1}</td>
 <td>${crew}</td>
 <td>
   <button id=${ID.DELETE_BUTTON}>삭제</button>
