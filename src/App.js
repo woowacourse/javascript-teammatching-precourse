@@ -1,5 +1,6 @@
 import CrewSelect from './components/crew/CrewSelect.js';
 import { ID } from './constants/index.js';
+import { $ } from './utils/selector.js';
 
 class App {
   constructor($target) {
@@ -34,10 +35,10 @@ class App {
   }
 
   selectDom() {
-    this.$tabContainer = document.querySelector(`#${ID.TAB_CONTAINER}`);
-    this.$selectSection = document.querySelector(`#${ID.SELECT_SECTION}`);
-    this.$manageSection = document.querySelector(`#${ID.MANAGE_SECITON}`);
-    this.$resultSection = document.querySelector(`#${ID.RESULT_SECTION}`);
+    this.$tabContainer = $(`#${ID.TAB_CONTAINER}`);
+    this.$selectSection = $(`#${ID.SELECT_SECTION}`);
+    this.$manageSection = $(`#${ID.MANAGE_SECITON}`);
+    this.$resultSection = $(`#${ID.RESULT_SECTION}`);
   }
 
   addEvent() {
