@@ -42,15 +42,14 @@ export default class TeamMatchController {
 
   handleMatchTeam(e) {
     e.preventDefault();
-
     const memberCount = this.view.$teamMemberCountInput.value;
-
+    const { course, missionText } = this.view.getSelectedValue();
     if (isValidMemberCount(memberCount, this.model.selectedCrews.length)) {
-      console.log(matchTeam(this.model.selectedCrews, memberCount));
+      const finalteams = matchTeam(this.model.selectedCrews, memberCount);
+      console.log(finalteams);
 
-      return console.log(memberCount);
+      return this.view.renderMatchResult(course, missionText, this.model.changeToNames(finalteams));
     }
-
     return showError();
   }
 }

@@ -80,4 +80,8 @@ export default class AppModel {
 
     return this.selectedCrews;
   }
+
+  changeToNames(teamsIdxArray) {
+    return teamsIdxArray.map((teamsIdx) => teamsIdx.map((idx) => this.selectedCrews[idx].name));
+  }
 }

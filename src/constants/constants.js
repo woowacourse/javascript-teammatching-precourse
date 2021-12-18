@@ -2,6 +2,7 @@ export const STRING = {
   EMPTY: '',
   FRONT: '프론트엔드',
   BACK: '백엔드',
+  COMMA: ',',
 };
 
 export const NUMBER = {

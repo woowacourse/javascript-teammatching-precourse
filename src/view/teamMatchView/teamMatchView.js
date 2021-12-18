@@ -1,5 +1,9 @@
 import { $ } from '../../utils/DOMHelper.js';
-import { selectCourseMissionTemplate, teamMatchTemplate } from '../../utils/template.js';
+import {
+  matchResultTemplate,
+  selectCourseMissionTemplate,
+  teamMatchTemplate,
+} from '../../utils/template.js';
 
 export default class TeamMatchView {
   init() {
@@ -34,5 +38,9 @@ export default class TeamMatchView {
   selectTeamMatchDOM() {
     this.$teamMemberCountInput = $('#team-member-count-input');
     this.$matchTeamButton = $('#match-team-button');
+  }
+
+  renderMatchResult(course, missionText, teams) {
+    this.$teamMatchSection.innerHTML = matchResultTemplate(course, missionText, teams);
   }
 }
