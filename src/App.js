@@ -1,11 +1,11 @@
 import CrewTab from './CrewTab/CrewTab.js';
 import TeamTab from './TeamTab/TeamTab.js';
-import { NAV_TEMPLATE } from './globalConstants.js';
+import Header from './Header/Header.js';
 
 const App = () => {
   const AppContainer = document.createElement('div');
-  AppContainer.innerHTML = NAV_TEMPLATE;
-  AppContainer.append(CrewTab(), TeamTab());
+
+  AppContainer.append(Header(), CrewTab(), TeamTab());
 
   return AppContainer;
 };
