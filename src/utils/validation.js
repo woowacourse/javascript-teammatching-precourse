@@ -11,7 +11,7 @@ export const isMoreThanNameLength = (inputValue) => {
 
 export const isDuplicatedName = (inputValue, course) => {
   const crews = getLocalStorage(STORAGE_KEY.CREW);
-  if (crews[course]) {
+  if (crews && crews[course]) {
     return crews[course].includes(inputValue);
   }
 
