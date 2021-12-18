@@ -31,7 +31,6 @@ class Store {
 }
 
 const store = new Store(initialState);
-
 export default store;
 
 export function setState(key, value) {
