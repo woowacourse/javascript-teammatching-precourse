@@ -1,11 +1,14 @@
 import { $ } from "./common/dom.js";
 import App from "./components/App.js";
+import store from "./storage/Store.js";
 
 class ManageBoard {
   constructor() {
     this.$target = $("#app");
     this.app = new App(this.$target);
-    this.app.render();
+    store.subscribe(() => {
+      this.app.render();
+    });
   }
 }
 
