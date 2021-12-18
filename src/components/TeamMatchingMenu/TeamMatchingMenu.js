@@ -6,7 +6,6 @@ import MatchTeam from './sections/MatchTeam.js';
 import MatchResult from './sections/MatchResult.js';
 import LocalStore from '../../store/LocalStore.js';
 import { $ } from '../../utils/helper.js';
-import divmod from '../../utils/utils.js';
 
 export default class TeamMatchingMenu extends Component {
   setup() {
@@ -80,20 +79,23 @@ export default class TeamMatchingMenu extends Component {
       (crew) => crew.course === teamMatchCourse
     );
 
-    const result = divmod(filteredCrewList.length, count);
+    const result = parseInt(filteredCrewList.length / count, 10);
     const indexArray = filteredCrewList.map((crew, index) => index);
     const shuffledIndex = MissionUtils.Random.shuffle(indexArray);
 
-    let { remainder } = result;
-
-    for (let i = 0; i < result.result; i += 1) {
-      const memberNumber = count + (remainder > 0 ? 1 : 0);
+    for (let i = 0; i < result; i += 1) {
+      const memberNumber = count;
       const teamIndexList = shuffledIndex.splice(0, memberNumber);
       const team = teamIndexList.map((index) => filteredCrewList[index]);
 
       teamList.push([...team]);
-      remainder -= 1;
     }
+
+    filteredCrewList
+      .filter((crew, index) => shuffledIndex.includes(index))
+      .forEach((crew, index) => {
+        teamList[index].push(crew);
+      });
 
     const matchedTeam = {
       course: teamMatchCourse,
