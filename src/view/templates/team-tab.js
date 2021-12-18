@@ -3,7 +3,7 @@ import { ID } from '../../utils/constants.js';
 export const template = `
 <section>
   <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
-  <form>
+  <form id=${ID.CHOICE_FORM}>
     <select id=${ID.COURSE_SELECT}>
       <option value="frontend">프론트엔드</option>
       <option value="backend">백엔드</option>
@@ -42,7 +42,6 @@ export const template = `
   <h3>프론트엔드 숫자야구게임 조회</h3>
   <p>팀이 매칭되었습니다.</p>
   <ul id=${ID.TEAM_MATCH_RESULT}>
-    <li>준,포코</li>
   </ul>
   <p>
     팀을 재매칭 하시겠습니까?

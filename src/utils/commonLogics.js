@@ -3,9 +3,9 @@ export const getLocalStorage = (LS_KEY) => {
   if (!loaded) return [];
   return JSON.parse(loaded);
 };
-export const getLocalStorage__Coice = (LS_KEY) => {
+export const getLocalStorage__Choice = (LS_KEY) => {
   const loaded = localStorage.getItem(LS_KEY);
-  if (!loaded) return '0';
+  if (!loaded) return;
   return JSON.parse(loaded);
 };
 

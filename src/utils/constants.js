@@ -28,6 +28,7 @@ export const ID = {
   CREW_TABLE: 'crew-table',
 
   // 팀 매칭 관리 탭
+  CHOICE_FORM: 'choice-form',
   CREW_LIST: 'crew-list',
   COURSE_SELECT: 'course-select',
   MISSION_SELECT: 'mission-select',
