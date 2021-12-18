@@ -51,3 +51,19 @@ window.addEventListener('click', e => {
   if (curCourse === 'backend') BE.setCrew(crewNameInput);
   renderInputCrewNameAndList(frontEndOrBackEndString);
 });
+
+// [크루 관리 - 코스 선택 - 삭제]
+// 해당 행 삭제, 크루 삭제
+window.addEventListener('click', e => {
+  [...document.querySelectorAll('.delete-crew-button')].forEach(button => {
+    if (e.target === button && window.confirm('정말 지우시겠습니까?')) {
+      const deleteCrew = e.target.parentNode.previousElementSibling.textContent;
+      const curCourse = getCourseFrontEndOrBackEnd();
+      const frontEndOrBackEndString = valueToString(curCourse);
+
+      if (curCourse === 'frontend') FE.deleteCrew(deleteCrew);
+      if (curCourse === 'backend') BE.deleteCrew(deleteCrew);
+      renderInputCrewNameAndList(frontEndOrBackEndString);
+    }
+  });
+});

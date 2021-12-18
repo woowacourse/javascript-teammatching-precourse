@@ -13,4 +13,9 @@ export default class BackEnd {
   getCrew() {
     return this.crew;
   }
+
+  deleteCrew(deleteCrew) {
+    this.crew = this.crew.filter(crew => crew !== deleteCrew);
+    setUserLocalStorage('FrontEndUser', this.crew);
+  }
 }

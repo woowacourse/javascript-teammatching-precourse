@@ -10,7 +10,12 @@ export default class FrontEnd {
     setUserLocalStorage('FrontEndUser', this.crew);
   }
 
-  getCrew(crew) {
-    console.log(this.crew);
+  getCrew() {
+    return this.crew;
+  }
+
+  deleteCrew(deleteCrew) {
+    this.crew = this.crew.filter(crew => crew !== deleteCrew);
+    setUserLocalStorage('FrontEndUser', this.crew);
   }
 }

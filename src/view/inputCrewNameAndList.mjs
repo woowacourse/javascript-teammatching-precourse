@@ -1,3 +1,5 @@
+import { renderCourseChoice } from './courseChoice.mjs';
+
 const $app = document.querySelector('#app');
 const $main = document.createElement('main');
 
