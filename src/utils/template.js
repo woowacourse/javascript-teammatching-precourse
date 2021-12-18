@@ -54,11 +54,20 @@ export const crewManageTemplate = (crews) => {
           </tr>
         </thead>
         <tbody>
-          ${
-            crews &&
-            crews
-              .map((crew, idx) => {
-                return `
+          ${crewTableTemplate(crews)}
+        </tbody>
+      </table>
+    </section>
+    `;
+};
+
+export const crewTableTemplate = (crews) => {
+  return `
+    ${
+      crews &&
+      crews
+        .map((crew, idx) => {
+          return `
               <tr>
                 <td>${idx + 1}</td>
                 <td>${crew.name}</td>
@@ -66,11 +75,8 @@ export const crewManageTemplate = (crews) => {
                 </td>
               </tr>
             `;
-              })
-              .join(STRING.EMPTY)
-          }
-        </tbody>
-      </table>
-    </section>
-    `;
+        })
+        .join(STRING.EMPTY)
+    }
+  `;
 };

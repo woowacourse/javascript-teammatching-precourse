@@ -1,3 +1,6 @@
+import { STORAGE_KEY } from '../constants/constants.js';
+import Crew from '../model/crew.js';
+
 export const setDataOnLocalStorage = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
@@ -7,9 +10,9 @@ export const loadDataFromLocalStorage = (key) => {
 
   if (!parsedData) return false;
 
-  // if (key === STORAGE_KEY.COINS) {
-  //   return parsedData.map(({ unit, amount }) => new Coin(unit, amount));
-  // }
+  if (key === STORAGE_KEY.CREWS) {
+    return parsedData.map(({ name }) => new Crew(name));
+  }
 
   return parsedData;
 };

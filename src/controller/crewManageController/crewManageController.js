@@ -45,6 +45,7 @@ export default class CrewManageController {
 
     if (isValidCrewName(crewName, this.model)) {
       this.model.addCrew(crewName);
+      this.view.renderCrewTable(this.model.crews);
       console.log(this.model);
       return console.log(crewName);
     }

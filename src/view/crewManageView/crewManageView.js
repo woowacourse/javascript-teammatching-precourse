@@ -1,5 +1,9 @@
 import { $, $$ } from '../../utils/DOMHelper.js';
-import { crewManageTemplate, selectCourseTemplate } from '../../utils/template.js';
+import {
+  crewManageTemplate,
+  crewTableTemplate,
+  selectCourseTemplate,
+} from '../../utils/template.js';
 
 export default class CrewManageView {
   init() {
@@ -23,6 +27,10 @@ export default class CrewManageView {
   selectCrewManageDOM() {
     this.$crewNameInput = $('#crew-name-input');
     this.$addCrewButton = $('#add-crew-button');
-    console.log(this.$addCrewButton, this.$crewNameInput);
+    this.$tbody = $('tbody');
+  }
+
+  renderCrewTable(crews) {
+    this.$tbody.innerHTML = crewTableTemplate(crews);
   }
 }
