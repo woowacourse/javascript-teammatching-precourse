@@ -1,6 +1,6 @@
 # 📝 구현할 기능 목록
 
-1. [ ] 메인 template render
+1. [x] 메인 template render
 2. [ ] 크루 관리 클릭시 template render
 3. [ ] 프론트엔드 radio 클릭시 template render
 4. [ ] 백엔드 radio 클릭시 template render
