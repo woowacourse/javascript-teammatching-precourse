@@ -19,13 +19,13 @@ export const displayCrewTable = (courseName) => {
 };
 
 const addEvent = (btn, courseName) => {
-    console.log(btn)
     for (let i = 0; i < btn.length; i++) {
         btn[i].addEventListener('click', (e) => {
             e.preventDefault();
             let tmp = JSON.parse(localStorage.getItem(`${courseName}`));
-            let idx = parseInt(btn[i].parentElement.parentElement.firstElementChild.innerText)
-            tmp.pop(idx)
+            let idx = btn[i].parentElement.parentElement.children[1].innerText
+            console.log(tmp, idx)
+            tmp.splice(tmp.indexOf(idx), 1);
             localStorage.setItem(`${courseName}`, JSON.stringify(tmp));
             displayCrewTable(courseName)
         })
