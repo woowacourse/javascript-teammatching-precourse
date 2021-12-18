@@ -12,15 +12,14 @@ export default class CrewView {
     }
 
     static showFrontTable() {
-        // CrewEvent.addCrewEvent();
         const crewFront = JSON.parse(localStorage.getItem("CrewFront"));
 
             document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
             ${Object.keys(crewFront)
               .map(
-                (name) => `            
+                (name, index) => `            
             <tr class="product-manage-item">
-            <td>1</td>
+            <td>${index + 1}</td>
             <td>${name}</td>
             <td>
               <button id="delete-crew-buttton">삭제</button>
@@ -31,16 +30,14 @@ export default class CrewView {
     }
 
     static showBackTable() {
-        // CrewEvent.addCrewEvent();
-        console.log("asd");
         const crewBack = JSON.parse(localStorage.getItem("CrewBack"));
 
         document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
         ${Object.keys(crewBack)
           .map(
-            (name) => `            
+            (name, index) => `            
         <tr class="product-manage-item">
-        <td>1</td>
+        <td>${index + 1}</td>
         <td>${name}</td>
         <td>
           <button id="delete-crew-buttton">삭제</button>
@@ -49,4 +46,6 @@ export default class CrewView {
           )
           .join('')}`;
     }
+
+    
 }

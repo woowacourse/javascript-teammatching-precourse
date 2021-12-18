@@ -38,13 +38,6 @@ export default class CrewEvent {
         for (let i = 0; i < courseLength; i++) {
             if (document.getElementsByName("course")[i].checked === true) {
                 courseType = document.getElementsByName("course")[i].value;
-                // console.log(courseType);
-                // if(i === 0) {
-                //     document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
-                // }
-                // if(i === 1) {
-                //     document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
-                // }
                 return courseType;
             }
         }
@@ -71,32 +64,6 @@ export default class CrewEvent {
             localStorage.setItem("CrewBack", JSON.stringify(crew));
         }
     }
-
-       //이거 조금 이상함
-    // static addFrontEndEvent() {
-    //     document.getElementById('frontend-course').addEventListener('click', (e) => {
-    //         console.log("프론트");
-    //         document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
-    //         this.addCrewEvent();
-
-    //         if(localStorage.getItem("CrewFront") !== null){
-    //             CrewView.showFrontTable();
-    //         }
-    //     })
-    // }
-
-    // static addBackEndEvent() {
-    //     document.getElementById('backend-course').addEventListener('click', (e) => {
-    //         console.log("백");
-    //         document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
-    //         this.addCrewEvent();
-
-    //         if(localStorage.getItem("CrewFront") !== null){
-    //             CrewView.showBackTable();
-    //         }
-            
-    //     })
-    // }
 
     static addRadioEvent() {
         document.addEventListener('click', (e) => {
@@ -125,6 +92,28 @@ export default class CrewEvent {
             }
         });
     }
+
+
+    static deleteEvent() {
+        document.addEventListener('click', (e) => {
+            const { idName } = e.target;
+            const target = e.target.parentElement.parentElement;
+
+            this.checkIdName(idName, target);
+        })
+    }
+
+    static checkIdName(idName, target) {
+        if (idName === 'delete-crew-buttton') {
+
+            console.log(target.childNodes)
+        //   const name = target.childNodes[1].dataset.productName;
+        //   const price = target.childNodes[3].dataset.productPrice;
+        //   const quantity = target.childNodes[5].dataset.productQuantity;
+    
+        //   this.purchase(name, price, quantity);
+        }
+      }
     
 
 
