@@ -33,7 +33,7 @@ export function crewNameForm() {
 }
 
 export function crewStatusTable(crews) {
-  let table = `<table id="crew-table" border="1">
+  let table = `<table id=${ID.CREW_STATUS_TABLE} border="1">
     <thead>
       <tr>
         <th></th>
@@ -97,7 +97,7 @@ export function showMatchingCrew(crew) {
     crewNameList += `<li>${member}`;
   });
   crewNameList += '</li>';
-  return `<ul id="team-match-result">
+  return `<ul id=${ID.MATCH_RESULT} >
   ${crewNameList}
     </ul>`;
 }

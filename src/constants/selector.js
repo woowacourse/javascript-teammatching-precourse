@@ -12,7 +12,8 @@ export const ID = {
   TEAM_MATCHING_SEARCH_BUTTON: 'show-team-matcher-button',
   TEAM_MEMEBER_COUNT_INPUT: 'team-member-count-input',
   TEAM_MATCH_BUTTON: 'match-team-button',
-  REMATCH_BUTTON: 'rematch-team-button'
+  REMATCH_BUTTON: 'rematch-team-button',
+  MATCH_RESULT: 'team-match-result'
 };
 
 export const CLASS = {
