@@ -135,8 +135,10 @@ export default class App extends Component {
       title: "팀 매칭을 관리할 코스, 미션을 선택하세요.",
       courseSelectId: COURSE_SELECT_ID,
       courseOptions,
+      courseSelected: this.$state.activeSelectCourse,
       missionSelectId: MISSION_SELECT_ID,
       missionOptions,
+      missionSelected: this.$state.activeSelectMission,
     });
   }
 
