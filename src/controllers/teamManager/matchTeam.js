@@ -1,3 +1,5 @@
+import { ALERT_MSG } from "../../utils/constants.js";
+
 const match = (crews, minCount) => {
   const newCrewArr = window.MissionUtils.Random.shuffle(crews);
   let newCrews = [];
@@ -70,9 +72,12 @@ const matchTeam = (course, mission, minCount) => {
     }
   }
 
-  const team = convertIndexToName(match(crewsIndex, minCount));
-
-  localStorage.setItem(`${course}-${mission}`, JSON.stringify(team));
+  if (crewsIndex.length < minCount) {   // 입력한 인원 수가 현재 존재하는 크루 수보다 적을 경우
+    alert(ALERT_MSG.wrongMemberCount);
+  } else {
+    const team = convertIndexToName(match(crewsIndex, minCount));
+    localStorage.setItem(`${course}-${mission}`, JSON.stringify(team));
+  }
 };
 
 export { matchTeam };
