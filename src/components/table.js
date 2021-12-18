@@ -13,11 +13,12 @@ export default class Table extends Component {
   }
 
   getTableHeader() {
+    const headers = ["크루", "관리"];
     return `
     <thead>
       <tr>
       <td></td>
-      ${this.headers.map((e) => `<td>${e}</td>`)}
+      ${headers.map((e) => `<td>${e}</td>`)}
       </tr>
     </thead>`;
   }
@@ -28,11 +29,12 @@ export default class Table extends Component {
     </tbody>`;
   }
 
-  getTableRow(entries, index) {
+  getTableRow(entry, index) {
     return `
     <tr>
     <td>${index + 1}</td>
-    ${entries.map((e) => `<td>${e}</td>`)}
+    <td>${entry}</td>
+    <button>삭제</button>
     </tr>`;
   }
 }
