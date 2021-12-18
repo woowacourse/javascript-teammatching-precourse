@@ -1,6 +1,8 @@
 import Component from '../core/Component.js';
 import NavBar from './NavBar/NavBar.js';
 import Router from './Router.js';
+import CrewMenu from './CrewMenu/CrewMenu.js';
+import TeamMatchingMenu from './TeamMatchingMenu/TeamMatchingMenu.js';
 import { $ } from '../utils/helper.js';
 
 export default class App extends Component {
@@ -15,8 +17,8 @@ export default class App extends Component {
       <nav id='nav-bar'></nav>
     </header>
     <main id='main-wrapper'>
-      <section id='crew-container' data-path='crew'>crew</section>
-      <section id='team-container' data-path='team'>team</section> 
+      <section id='crew-menu' data-path='crew'></section>
+      <section id='team-container' data-path='team'></section> 
     </main>
     `;
   }
@@ -28,6 +30,8 @@ export default class App extends Component {
     new Router($('#main-wrapper'), {
       location: this.state.location,
     });
+    new CrewMenu($('#crew-menu'));
+    new TeamMatchingMenu($('#team-container'));
   }
 
   navigate(to) {
