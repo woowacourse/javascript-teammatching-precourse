@@ -1,3 +1,5 @@
+import { showError } from '../../utils/error.js';
+import { isValidMemberCount } from '../../utils/validator.js';
 import TeamMatchView from '../../view/teamMatchView/teamMatchView.js';
 
 export default class TeamMatchController {
@@ -28,10 +30,25 @@ export default class TeamMatchController {
     const { course, mission, missionText } = this.view.getSelectedValue();
 
     const crews = this.model.getCrews(course);
-    console.log(crews);
 
     this.view.renderTeamMatch(course, missionText, crews);
+    this.view.selectTeamMatchDOM();
+    return this.attachTeamMatchEvents();
+  }
 
-    console.log(course, mission);
+  attachTeamMatchEvents() {
+    this.view.$matchTeamButton.addEventListener('click', this.handleMatchTeam.bind(this));
+  }
+
+  handleMatchTeam(e) {
+    e.preventDefault();
+
+    const memberCount = this.view.$teamMemberCountInput.value;
+
+    if (isValidMemberCount(memberCount)) {
+      return console.log(memberCount);
+    }
+
+    return showError();
   }
 }

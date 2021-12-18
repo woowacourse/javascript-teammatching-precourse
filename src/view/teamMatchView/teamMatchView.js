@@ -30,4 +30,9 @@ export default class TeamMatchView {
   renderTeamMatch(course, missionText, crews) {
     this.$teamMatchSection.innerHTML = teamMatchTemplate(course, missionText, crews);
   }
+
+  selectTeamMatchDOM() {
+    this.$teamMemberCountInput = $('#team-member-count-input');
+    this.$matchTeamButton = $('#match-team-button');
+  }
 }

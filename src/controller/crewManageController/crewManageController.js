@@ -18,7 +18,6 @@ export default class CrewManageController {
   }
 
   attachSelectCourseEvents() {
-    // this.view.$frontendCourseRadio.addEventListener('checked', this.handleSelectCourse.bind(this));
     this.view.$$courseRadio.forEach((element) =>
       element.addEventListener('change', this.handleSelectCourse.bind(this))
     );
