@@ -14,13 +14,13 @@
 
 [x] 크루 관리 탭 버튼은 crew-tab id를 가진다
 
-[ ] 크루 관리 탭을 클릭하면, 크루를 관리할 코스를 선택하는 element가 렌더링 된다
+[x] 크루 관리 탭을 클릭하면, 크루를 관리할 코스를 선택하는 element가 렌더링 된다
 
-[ ] 코스를 선택할 때에는 radio input를 사용한다
+[x] 코스를 선택할 때에는 radio input를 사용한다
 
-    [ ] 프론트 엔드 코스 radio input 의 id 는 frontend-course이다
+    [x] 프론트 엔드 코스 radio input 의 id 는 frontend-course이다
 
-    [ ] 백엔드 코스 radio input의 id 는 backend-course이다
+    [x] 백엔드 코스 radio input의 id 는 backend-course이다
 
 [ ] 크루 코스가 선택될 경우 쿠루 이름을 입력할 element가 render 된다
 
