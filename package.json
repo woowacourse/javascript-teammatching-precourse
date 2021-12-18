@@ -4,7 +4,8 @@
   "description": "우아한테크코스 프리코스 팀 매칭 미션",
   "dependencies": {},
   "devDependencies": {
-    "cypress": "8.7.0"
+    "cypress": "8.7.0",
+    "eslint": "^8.5.0"
   },
   "scripts": {
     "test": "cypress run --browser chrome"
