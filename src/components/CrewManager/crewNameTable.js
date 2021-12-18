@@ -37,7 +37,7 @@ export default function CrewTable(container) {
     `;
   };
 
-  this.initNames = (names) => {
+  this.renderNames = (names) => {
     const tableBody = document.querySelector('#crew-table-body');
     const tableData = names
       .map((name, index) => this.crewTableData(index + 1, name))
@@ -50,7 +50,7 @@ export default function CrewTable(container) {
     if (getLocalStorage(course)) {
       woowaCrew.initCrew(course);
     }
-    this.initNames(woowaCrew.getCrew(course));
+    this.renderNames(woowaCrew.getCrew(course));
   };
 
   this.render = (course) => {
