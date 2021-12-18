@@ -1,6 +1,7 @@
 import { $, $$ } from '../Utils/common.js';
 import { CLASS, ID } from '../Utils/constants.js';
 import LocalStorageUtils from '../Utils/localStorageUtils.js';
+import ValidationUtils from '../Utils/validationUtils.js';
 import CrewManageView from '../Views/crewManageView.js';
 
 export default class CrewManageController {
@@ -37,10 +38,7 @@ export default class CrewManageController {
   onClickAddButton = (event) => {
     event.preventDefault();
     const name = $(`#${ID.CREW_NAME_INPUT}`).value;
-    this.saveInputName(name);
-    const data = this.getSelectedData();
-    this.crewManageView.renderTable(data);
-    this.configureButton();
+    this.AddNewName(name);
   };
 
   onClickDelete = (event) => {
@@ -74,5 +72,18 @@ export default class CrewManageController {
     let data = this.getSelectedData();
     data.push(name);
     this.saveNewData(data);
+  }
+
+  AddNewName(name) {
+    try {
+      const originData = this.getSelectedData();
+      ValidationUtils.checkInputName(name, originData);
+      this.saveInputName(name);
+      const data = this.getSelectedData();
+      this.crewManageView.renderTable(data);
+      this.configureButton();
+    } catch (error) {
+      alert(error.message);
+    }
   }
 }
