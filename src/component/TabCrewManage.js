@@ -1,5 +1,6 @@
 import Component from '../core/Component.js';
 import SelectionCourse from './TabCrewManage/SelectionCourse.js';
+import NameForm from './TabCrewManage/NameForm.js';
 import navigator from '../store/Navigator.js';
 import { ID } from '../constant/selector.js';
 import { TAB } from '../constant/data.js';
@@ -11,6 +12,7 @@ export default class TabCrewManage extends Component {
 
   mount() {
     this.selectionCourse = new SelectionCourse(this.$element.querySelector(`#${ID.SECTION_SELECTION_COURSE}`));
+    this.nameForm = new NameForm(this.$element.querySelector(`#${ID.SECTION_NAME_FORM}`));
   }
 
   template() {
@@ -18,6 +20,7 @@ export default class TabCrewManage extends Component {
     return `
       <div ${focusedTab === TAB.CREW ? '' : 'hidden'}>
         <section id="${ID.SECTION_SELECTION_COURSE}"></section>
+        <section id="${ID.SECTION_NAME_FORM}"></section>
       </div>
     `;
   }
