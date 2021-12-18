@@ -1,5 +1,5 @@
 import { $ } from '../utils/dom.js';
-import { renderCrewManage, renderFrontEnd, renderCrewList } from '../views/crewManageView.js';
+import { renderFrontEnd, renderCrewList } from '../views/crewManageView.js';
 import { isValidInputName } from '../utils/validation.js';
 import { getLocalStorage, setLocalStorage } from '../utils/storage.js';
 import { DELETE_MESSAGE, STORAGE_NAME } from '../utils/constants.js';
@@ -46,9 +46,3 @@ export default function HandleFrontEndCoures() {
 
   this.init();
 }
-
-export const handleCrewManageTap = () => {
-  renderCrewManage();
-
-  $('#frontend-course').addEventListener('click', () => new HandleFrontEndCoures());
-};
