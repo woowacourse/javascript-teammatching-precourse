@@ -1,5 +1,6 @@
 export function onTabButton(e) {
   if (e.target.id === 'crew-tab') {
+    e.stopPropagation();
     const $crew = document.getElementById('crew-content');
     const $team = document.getElementById('team-content');
     $crew.classList.remove('hide');
@@ -8,6 +9,7 @@ export function onTabButton(e) {
     $team.classList.remove('show');
   }
   if (e.target.id === 'team-tab') {
+    e.stopPropagation();
     const $crew = document.getElementById('crew-content');
     const $team = document.getElementById('team-content');
     $team.classList.remove('hide');
