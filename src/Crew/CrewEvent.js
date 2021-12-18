@@ -53,9 +53,9 @@ export default class CrewEvent {
     const crew = JSON.parse(localStorage.getItem(CREW_FRONT));
 
     if (localStorage.getItem(CREW_FRONT) === null) {
-      localStorage.setItem(CREW_FRONT, JSON.stringify({ [name]: { course } })); // 새로 저장
+      localStorage.setItem(CREW_FRONT, JSON.stringify({ [name]: { course } }));
     } else {
-      crew[name] = { course }; // 중복 체크
+      crew[name] = { course };
       localStorage.setItem(CREW_FRONT, JSON.stringify(crew));
     }
   }
@@ -64,9 +64,9 @@ export default class CrewEvent {
     const crew = JSON.parse(localStorage.getItem(CREW_BACK));
 
     if (localStorage.getItem(CREW_BACK) === null) {
-      localStorage.setItem(CREW_BACK, JSON.stringify({ [name]: { course } })); // 새로 저장
+      localStorage.setItem(CREW_BACK, JSON.stringify({ [name]: { course } }));
     } else {
-      crew[name] = { course }; // 중복 체크
+      crew[name] = { course };
       localStorage.setItem(CREW_BACK, JSON.stringify(crew));
     }
   }

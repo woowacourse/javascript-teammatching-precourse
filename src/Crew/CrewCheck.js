@@ -6,11 +6,11 @@ export default class CrewCheck {
   }
 
   checkEmpty() {
-    return this.name !== '' && this.name.indexOf(' ') === NOT_EXIST; // 상수로 분리
+    return this.name !== '' && this.name.indexOf(' ') === NOT_EXIST;
   }
 
   checkLength() {
-    return this.name.length <= MAX_LENGTH_NAME; // 상수로 분리
+    return this.name.length <= MAX_LENGTH_NAME;
   }
 
   // 중복 체크하는거 추가해야됨
