@@ -1,7 +1,11 @@
 import { beCrewList, feCrewList } from '../model/store.js';
 import { $ } from '../utils/dom.js';
 
-class matchingView {
+class MatchingView {
+  getMemberCountInput() {
+    return $('#team-member-count-input').value;
+  }
+
   matchingSelectTemplate() {
     return `
     <section id="matching-select">
@@ -85,4 +89,4 @@ class matchingView {
   }
 }
 
-export default matchingView;
+export default MatchingView;

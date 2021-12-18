@@ -1,8 +1,8 @@
 import { $, $$, showCrewManage } from '../utils/dom.js';
 import { feCrewList, beCrewList, store } from '../model/store.js';
-import crewValidator from '../validator/crewValidator.js';
+import CrewValidator from '../validator/crewValidator.js';
 
-class crewController {
+class CrewController {
   constructor(view) {
     this.view = view;
     this.bindEvent();
@@ -11,7 +11,7 @@ class crewController {
   addCrew() {
     const crewName = this.view.getInput();
     const crewList = $('#frontend-course').checked ? feCrewList : beCrewList;
-    if (crewValidator.isInvalidCrewName({ crewName, crewList })) {
+    if (CrewValidator.isInvalidCrewName({ crewName, crewList })) {
       return;
     }
 
@@ -87,4 +87,4 @@ class crewController {
   }
 }
 
-export default crewController;
+export default CrewController;

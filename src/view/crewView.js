@@ -1,7 +1,7 @@
 import { feCrewList, beCrewList } from '../model/store.js';
 import { $, $$ } from '../utils/dom.js';
 
-class crewView {
+class CrewView {
   getInput() {
     return $('#crew-name-input').value;
   }
@@ -91,4 +91,4 @@ class crewView {
   }
 }
 
-export default crewView;
+export default CrewView;

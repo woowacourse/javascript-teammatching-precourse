@@ -1,5 +1,5 @@
-import crewView from './view/crewView.js';
-import crewController from './controller/crewController.js';
+import CrewView from './view/crewView.js';
+import CrewController from './controller/crewController.js';
 import {
   $,
   $$,
@@ -8,8 +8,8 @@ import {
   showMatchingSelect,
   showSelectManageCourse,
 } from './utils/dom.js';
-import matchingView from './view/matchingView.js';
-import matchingController from './controller/matchingController.js';
+import MatchingView from './view/matchingView.js';
+import MatchingController from './controller/matchingController.js';
 
 class App {
   constructor() {
@@ -21,13 +21,13 @@ class App {
   }
 
   initView() {
-    this.crewView = new crewView();
-    this.matchingView = new matchingView();
+    this.crewView = new CrewView();
+    this.matchingView = new MatchingView();
   }
 
   initController() {
-    this.crewController = new crewController(this.crewView);
-    this.matchingController = new matchingController(this.matchingView);
+    this.crewController = new CrewController(this.crewView);
+    this.matchingController = new MatchingController(this.matchingView);
   }
 
   renderTab() {
