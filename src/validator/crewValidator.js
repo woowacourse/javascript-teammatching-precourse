@@ -6,8 +6,16 @@ class crewValidator {
     }
   }
 
+  static isOverFiveCharacter(crewName) {
+    if (crewName.length > 5) {
+      alert('크루 이름은 최대 5글자까지 가능합니다.');
+      return true;
+    }
+  }
+
   static isInvalidCrewName({ crewName, crewList }) {
     if (this.isDuplicate({ crewName, crewList })) return true;
+    if (this.isOverFiveCharacter(crewName)) return true;
     return false;
   }
 }
