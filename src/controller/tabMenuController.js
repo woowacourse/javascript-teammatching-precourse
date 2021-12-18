@@ -1,4 +1,5 @@
 import { $App } from '../data/domElement.js';
+import { SELECTOR } from '../data/selector.js';
 import TabMenu from '../components/tabMenu.js';
 import CrewTab from '../components/tab/crewTab.js';
 import TeamTab from '../components/tab/teamTab.js';
@@ -12,6 +13,7 @@ export default class TabMenuController {
     this.createView();
     this.renderInitPage();
     this.appendTabMenuItems();
+    this.setEvent();
   }
 
   setEvent() {
@@ -30,5 +32,20 @@ export default class TabMenuController {
   appendTabMenuItems() {
     $App.append(this.crewTab.$main);
     $App.append(this.teamTab.$main);
+  }
+
+  hideAllTab() {
+    this.crewTab.hide();
+    this.teamTab.hide();
+  }
+
+  handleClickTab(e) {
+    if (e.target.id === SELECTOR.CREW_TAB) {
+      this.hideAllTab();
+      this.crewTab.show();
+    } else if (e.target.id === SELECTOR.TEAM_TAB) {
+      this.hideAllTab();
+      this.teamTab.show();
+    }
   }
 }
