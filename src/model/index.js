@@ -20,3 +20,10 @@ const addCrew = (crewsOfcourse) => (crewName) => appendToJsonItem(crewsOfcourse,
 export const addFronCrew = addCrew('frontCrews');
 
 export const addBackCrew = addCrew('backCrews');
+
+const isUniqueCrewName = (crewsOfcourse) => (findCrewName) =>
+    getJsonItem(crewsOfcourse).findIndex((crewName) => crewName === findCrewName) === -1;
+
+export const isUniqueFrontCrewName = isUniqueCrewName('frontCrews');
+
+export const isUniqueBackCrewName = isUniqueCrewName('backCrews');
