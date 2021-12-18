@@ -12,6 +12,10 @@ export default class TeamMatchView {
     $(`#${ID.TEAM_MATCH_BODY_MAIN}`).innerHTML = teamMatchTemplate.bodyMain;
   }
 
+  matchedMainRender() {
+    $(`#${ID.TEAM_MATCH_BODY_MAIN}`).innerHTML = teamMatchTemplate.matchedMain;
+  }
+
   crewListRender(list) {
     let crewListHTML = '';
     list.forEach((item) => {
@@ -22,5 +26,14 @@ export default class TeamMatchView {
 
   createListRow(name) {
     return `<li>${name}</li>`;
+  }
+
+  matchedListRender(list) {
+    let listHTML = '';
+    list.forEach((item) => {
+      const text = item.join(',');
+      listHTML += this.createListRow(text);
+    });
+    $(`#${ID.TEAM_MATCH_RESULT}`).innerHTML = listHTML;
   }
 }
