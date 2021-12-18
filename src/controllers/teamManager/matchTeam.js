@@ -1,13 +1,29 @@
 const match = (crews, minCount) => {
   const newCrewArr = window.MissionUtils.Random.shuffle(crews);
-  const newCrews = [];
+  let newCrews = [];
+  let i = 0;
 
-  for (let i = 0; i < newCrewArr.length; i += minCount) {
+  for (i = 0; i < newCrewArr.length; i += minCount) {
     const tmpCrew = [];
-    for (let j = i; j < i + minCount; j++) {
-      tmpCrew.push(newCrewArr[j]);
+
+    // 남은 인원 처리
+    if (crews.length - i < minCount) {
+      break;
+    } else {
+      for (let j = i; j < i + minCount; j++) {
+        tmpCrew.push(newCrewArr[j]);
+      }
     }
     newCrews.push(tmpCrew.join("/"));
+  }
+
+  if (i < newCrewArr.length) {
+    for (let j = i; j < newCrewArr.length; j++) {
+      const index = j - i;
+      const newCrew = newCrews[index].split("/");
+      newCrew.push(newCrewArr[i]);
+      newCrews[index] = newCrew.join("/");
+    }
   }
 
   return newCrews;
