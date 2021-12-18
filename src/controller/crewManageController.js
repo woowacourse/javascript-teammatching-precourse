@@ -58,6 +58,18 @@ export default class CrewManager {
 
   addAllDeleteCrewButtonEvent() {
     const allButtons = document.querySelectorAll(`.${SELECTOR.crewDeleteButton}`);
-    console.log(allButtons);
+    allButtons.forEach(button =>
+      button.addEventListener('click', () => this.deleteCrew(button.dataset.target)),
+    );
+  }
+
+  deleteCrew(crewName) {console.log(crewName)
+    const allCourse = this.model.getAllCourse();
+    const selectedCourse = allCourse.find(e => e.name === this.model.selectedCourse);
+    const deletedCrewList = selectedCourse.crewList.filter(e => e !== crewName);
+    selectedCourse.crewList = deletedCrewList;
+    console.log(deletedCrewList)
+    this.model.setAllCourse(allCourse);
+    
   }
 }
