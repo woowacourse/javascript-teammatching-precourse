@@ -3,6 +3,7 @@ import { SELECTOR } from '../constant/constant.js';
 import CrewManage from './crewManage.js';
 import TeamManage from './teamManage.js';
 import { headerTemplate } from '../templates/header-template.js';
+import { getStateFromLocalStorage } from '../utils/localStorage.js';
 
 export default class Menu {
   constructor($target) {
@@ -12,7 +13,9 @@ export default class Menu {
     this.render();
   }
 
-  setup() {}
+  setup() {
+    this.$state = getStateFromLocalStorage();
+  }
 
   setEvent() {
     $(`#${SELECTOR.ID.CREW_TAB}`).addEventListener('click', () => {
