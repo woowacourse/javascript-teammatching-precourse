@@ -9,10 +9,10 @@ export default class Manager {
 
   addCrew(crew) {
     if (Validator.IsValidCrewAdd(crew.name, this.crews)) {
-      this.crews.push(new Crew(crew, this.index));
+      const newCrew = this.crews.push(new Crew(crew, this.index));
       this.index += 1;
-      return true;
+      return this.crews[newCrew - 1];
     }
-    return false;
+    return null;
   }
 }

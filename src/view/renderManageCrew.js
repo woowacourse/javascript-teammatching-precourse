@@ -4,6 +4,7 @@ import {
   TAB_ID,
   SECTION_ID,
   CREW_INPUT_ID,
+  TABLE_ID,
 } from '../constant/constant.js';
 import tabHandler from '../eventHandler/tabHandler.js';
 
@@ -52,14 +53,7 @@ export default function renderManageCrew(manager) {
               <th>관리</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>준</td>
-              <td>
-                <button>삭제</button>
-              </td>
-            </tr>
+          <tbody id="${TABLE_ID}">
           </tbody>
         </table>
       </section>

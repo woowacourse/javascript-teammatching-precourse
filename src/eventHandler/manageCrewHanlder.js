@@ -2,6 +2,7 @@ import $ from '../util/$.js';
 import {
   CREW_INPUT_ID,
   SECTION_ID,
+  TABLE_ID,
 } from '../constant/constant.js';
 
 function showNextSection(dom) {
@@ -29,7 +30,10 @@ function onCrewAdd(event, manager) {
   const name = $(`#${CREW_INPUT_ID.NAME_INPUT}`).value;
   const course = $('input[name="course"]:checked').value;
 
-  manager.addCrew({ course, name });
+  const newCrew = manager.addCrew({ course, name });
+  if (newCrew) {
+    newCrew.renderTable($(`#${TABLE_ID}`));
+  }
 }
 
 function nameHanlder(manager) {
