@@ -1,19 +1,17 @@
-import { $, $$ } from '../../util/index.js';
+import { $ } from '../../util/index.js';
 import { checkCrewName } from '../../validation/index.js';
 import { addCrewOnCourse, isUniqueCrewNameOnCourse, getCrewsOnCourse } from '../../model/index.js';
 
-export const triggerSelectCourse = () => {
+const triggerSelectCourse = () => {
     $('#frontend-course').addEventListener('click', () => {
         $('#crew-section').classList.add('on');
-        $$('.course-title').forEach((courseTitle) => {
-            courseTitle.innerText = '프론트';
-        });
+        $('#course-manage-title').innerText = '프론트';
+        $('#course-list-title').innerText = '프론트';
     });
     $('#backend-course').addEventListener('click', () => {
         $('#crew-section').classList.add('on');
-        $$('.course-title').forEach((courseTitle) => {
-            courseTitle.innerText = '백';
-        });
+        $('#course-manage-title').innerText = '백';
+        $('#course-list-title').innerText = '백';
     });
 };
 
@@ -56,12 +54,16 @@ const checkUniqueCrewName = (crewName) => {
     return true;
 };
 
-$('#add-crew-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const crewName = $('#crew-name-input').value;
+const triggerAddCrew = () => {
+    $('#add-crew-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const crewName = $('#crew-name-input').value;
 
-    if (checkCrewName(crewName) && checkUniqueCrewName(crewName)) {
-        addCrewToCourse(crewName);
-        renderCrewTable();
-    }
-});
+        if (checkCrewName(crewName) && checkUniqueCrewName(crewName)) {
+            addCrewToCourse(crewName);
+            renderCrewTable();
+        }
+    });
+};
+
+export { triggerSelectCourse, triggerAddCrew };
