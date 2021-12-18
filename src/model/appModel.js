@@ -35,10 +35,25 @@ export default class AppModel {
     return this.addFrontCrew(name, course);
   }
 
-  // deleteCrew(idx) {
-  //   this.crews.splice(idx - 1, 1);
-  //   console.log(this.crews);
-  // }
+  deleteCrew(idx, course) {
+    if (course === 'backend') {
+      return this.deleteBackCrew(idx);
+    }
+
+    return this.deleteFrontCrew(idx);
+  }
+
+  deleteBackCrew(idx) {
+    this.backCrews.splice(idx - 1, 1);
+
+    return setDataOnLocalStorage(STORAGE_KEY.BACK_CREWS, this.backCrews);
+  }
+
+  deleteFrontCrew(idx) {
+    this.frontCrews.splice(idx - 1, 1);
+
+    return setDataOnLocalStorage(STORAGE_KEY.FRONT_CREWS, this.frontCrews);
+  }
 
   isCrewExist(name, course) {
     if (course === 'backend') {

@@ -28,7 +28,6 @@ export default class CrewManageController {
     e.preventDefault();
 
     const course = $('input[name="course"]:checked').value;
-    console.log(course);
 
     if (course === 'backend') {
       this.view.renderCrewManage(this.model.backCrews, STRING.BACK);
@@ -42,9 +41,9 @@ export default class CrewManageController {
 
   attachCrewManageEvents() {
     this.view.$addCrewButton.addEventListener('click', this.handleAddCrew.bind(this));
-    // this.view.$$deleteCrewButton.forEach((element) => {
-    //   element.addEventListener('click', this.handleDeleteCrew.bind(this));
-    // });
+    this.view.$$deleteCrewButton.forEach((element) => {
+      element.addEventListener('click', this.handleDeleteCrew.bind(this));
+    });
   }
 
   handleAddCrew(e) {
@@ -63,14 +62,21 @@ export default class CrewManageController {
     return showError();
   }
 
-  // handleDeleteCrew(e) {
-  //   e.preventDefault();
+  handleDeleteCrew(e) {
+    e.preventDefault();
+    const course = $('input[name="course"]:checked').value;
+    const isDelete = confirm('삭제하시겠습니까?');
 
-  //   const closestTR = e.target.closest('tr');
-  //   const targetIdx = closestTR.children[0].innerText;
-
-  //   this.model.deleteCrew(targetIdx);
-  // }
+    if (isDelete) {
+      const closestTR = e.target.closest('tr');
+      const targetIdx = closestTR.children[0].innerText;
+      this.model.deleteCrew(targetIdx, course);
+    }
+    if (course === 'backend') {
+      return this.view.renderCrewTable(this.model.backCrews);
+    }
+    return this.view.renderCrewTable(this.model.frontCrews);
+  }
 }
 
 // 여러 테이블 리스트 있는데 거기서 하나 고를때
