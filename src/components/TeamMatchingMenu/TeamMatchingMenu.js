@@ -1,51 +1,136 @@
+/* global MissionUtils */
+
 import Component from '../../core/Component.js';
+import SelectCourseMission from './sections/SelectCourseMission.js';
+import MatchTeam from './sections/MatchTeam.js';
+import MatchResult from './sections/MatchResult.js';
+import LocalStore from '../../store/LocalStore.js';
+import { $ } from '../../utils/helper.js';
+import divmod from '../../utils/utils.js';
 
 export default class TeamMatchingMenu extends Component {
+  setup() {
+    const { crewList, matchedTeamList } = LocalStore.load();
+
+    this.state = {
+      crewList,
+      teamMatchCourse: null,
+      teamMatchMission: null,
+      matchedTeamList,
+    };
+  }
+
   template() {
     return `
-      <section>
-      <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
-      <form>
-        <select>
-          <option>프론트엔드</option>
-          <option>백엔드</option>
-        </select>
-        <select>
-          <option>숫자야구게임</option>
-        </select>
-        <button>확인</button>
-      </form>
-    </section>
-    <section>
-      <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
-      <div>
-        <div>
-          <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
-          <form>
-            <label>1팀당 인원 수</label>
-            <input type="number" />
-            <button>팀 매칭</button>
-          </form>
-        </div>
-        <h4>크루 목록</h4>
-        <ul>
-          <li>준</li>
-          <li>포코</li>
-        </ul>
-      </div>
-    </section>
-    <!-- 팀 매칭이 된 경우 -->
-    <section>
-      <h3>프론트엔드 숫자야구게임 조회</h3>
-      <p>팀이 매칭되었습니다.</p>
-      <ul>
-        <li>준,포코</li>
-      </ul>
-      <p>
-        팀을 재매칭 하시겠습니까?
-        <button>재매칭</button>
-      </p>
-    </section>
-  `;
+      <section id='team-matching-select-course-mission'></section>
+      <section id='team-matching-match-team'></section>
+      <section id='team-matching-result-section'></section>
+    `;
+  }
+
+  afterMounted() {
+    const {
+      selectCourseMission,
+      matchTeam,
+      rematch,
+      state: { crewList, teamMatchCourse, teamMatchMission, matchedTeamList },
+    } = this;
+
+    const index = matchedTeamList.findIndex(
+      (elem) =>
+        elem.course === teamMatchCourse && elem.mission === teamMatchMission
+    );
+
+    new SelectCourseMission($('#team-matching-select-course-mission'), {
+      teamMatchCourse,
+      teamMatchMission,
+      selectCourseMission: selectCourseMission.bind(this),
+    });
+
+    if (teamMatchCourse && teamMatchMission && index === -1) {
+      new MatchTeam($('#team-matching-match-team'), {
+        crewList,
+        teamMatchCourse,
+        teamMatchMission,
+        matchTeam: matchTeam.bind(this),
+      });
+    }
+
+    if (index > -1) {
+      new MatchResult($('#team-matching-result-section'), {
+        matchedTeamList: matchedTeamList[index],
+        rematch: rematch.bind(this),
+      });
+    }
+  }
+
+  selectCourseMission(course, mission) {
+    const req = { teamMatchCourse: course, teamMatchMission: mission };
+    LocalStore.save(req);
+    this.setState(req);
+  }
+
+  matchTeam(count) {
+    const { crewList, teamMatchCourse, teamMatchMission, matchedTeamList } =
+      this.state;
+    const teamList = [];
+
+    const filteredCrewList = crewList.filter(
+      (crew) => crew.course === teamMatchCourse
+    );
+
+    const result = divmod(filteredCrewList.length, count);
+    const indexArray = filteredCrewList.map((crew, index) => index);
+    const shuffledIndex = MissionUtils.Random.shuffle(indexArray);
+
+    let { remainder } = result;
+
+    for (let i = 0; i < result.result; i += 1) {
+      const memberNumber = count + (remainder > 0 ? 1 : 0);
+      const teamIndexList = shuffledIndex.splice(0, memberNumber);
+      const team = teamIndexList.map((index) => filteredCrewList[index]);
+      teamList.push([...team]);
+      remainder -= 1;
+    }
+
+    const matchedTeam = {
+      course: teamMatchCourse,
+      mission: teamMatchMission,
+      teamList,
+    };
+
+    const index = matchedTeamList.findIndex(
+      (elem) =>
+        elem.course === teamMatchCourse && elem.mission === teamMatchMission
+    );
+
+    if (index > -1) {
+      matchedTeamList[index] = {
+        ...matchedTeamList[index],
+        ...matchedTeam,
+      };
+    } else {
+      matchedTeamList.push(matchedTeam);
+    }
+
+    LocalStore.save({ matchedTeamList });
+    console.log(matchedTeamList);
+    this.setState({
+      matchedTeamList,
+    });
+  }
+
+  rematch(course, mission) {
+    const { matchedTeamList } = this.state;
+    const index = matchedTeamList.findIndex(
+      (elem) => elem.course === course && elem.mission === mission
+    );
+
+    console.log(index);
+
+    matchedTeamList.splice(index, 1);
+
+    LocalStore.save({ matchedTeamList });
+    this.setState({ matchedTeamList });
   }
 }

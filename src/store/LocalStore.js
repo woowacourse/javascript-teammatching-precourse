@@ -1,7 +1,13 @@
 import STORAGE_KEY from '../configs/key.js';
 import { cloneObject } from '../utils/helper.js';
 
-const INIT_DATA = { course: null, crewList: [] };
+const INIT_DATA = {
+  course: null,
+  crewList: [],
+  teamMatchCourse: null,
+  teamMatchMission: null,
+  matchedTeamList: [],
+};
 
 export default class LocalStore {
   static load() {
