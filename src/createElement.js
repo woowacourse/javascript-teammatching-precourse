@@ -10,32 +10,32 @@ export function pElementCreate(text) {
 }
 export function buttonIdElementCreate(condition) {
   const button = document.createElement('button');
-  button.setAttribute('type','button');
-  button.id = condition.id;
+  button.setAttribute('type', 'button');
+  button.setAttribute('id', condition.id);
   button.innerText = condition.text;
   return button;
 }
 export function buttonClassElementCreate(condition) {
   const button = document.createElement('button');
-  button.class = condition.class;
+  button.setAttribute('class', condition.class);
   button.innerText = condition.text;
   return button;
 }
 export function inputElementCreate(condition) {
   const input = document.createElement('input');
-  input.id = condition.id;
+  input.setAttribute('id', condition.id);
   input.type = condition.type;
   return input;
 }
 export function labelElemntCreate(condition) {
   const label = document.createElement('label');
-  label.setAttribute("for", condition.for);
+  label.setAttribute('for', condition.for);
   label.innerText = condition.text;
   return label;
 }
 export function selectElementCreate(condition) {
   const select = document.createElement('select');
-  select.id = condition.id;
+  select.setAttribute('id', condition.id);
   return select;
 }
 export function theadElementCreate(text) {
