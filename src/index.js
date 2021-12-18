@@ -2,6 +2,9 @@ import { $ } from './dom.js';
 import { HEADER, MAIN } from './markup.js';
 import DrawCrewTabContent from './components/drawCrewTabContent.js';
 import DrawTeamTabContent from './components/drawTeamTabContent.js';
+import Crew from './components/crew.js';
+
+export let CREW = new Crew();
 
 export class Board {
   drawMainTitle(){
@@ -15,6 +18,9 @@ export class Board {
   start() {
     this.drawMainTitle();
     this.tabButtonsEventListener();
+    if (localStorage.getItem('crewList')) {
+      CREW = JSON.parse(localStorage.getItem('crewList'));
+    }
   }
 }
 const board = new Board();
