@@ -8,10 +8,6 @@ async function renderView(fileName) {
     app.innerHTML = view;
 }
 
-function onTeamTabClick() {
-    renderView('team-manage.html');
-}
-
 function eventHandler(e) {
     e.preventDefault();
 

@@ -20,7 +20,7 @@ class TeamController {
         const missionSelected = document.querySelector("#mission-select").value;
     
         const crew = this.filterCrewListByCourse(courseSelected);
-        console.log(crew);
+        
     }
 
     filterCrewListByCourse(course) {
