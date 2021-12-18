@@ -18,7 +18,7 @@ export function printPage() {
   </nav>
 </header>
 
-<main ic="crew-tab-content">
+<main id="crew-tab-content">
   <div id='crew-tab-select-course' class="show">
     <h3>크루를 관리할 코스를 선택해주세요</h3>
     <div>
@@ -64,9 +64,9 @@ export function printPage() {
 
 </main>
 
-<main id="team-tab-content">
+<main id="team-tab-content" class="hide">
 
-<section id="team-tab-select-mission" class="hide">
+<section id="team-tab-select-mission">
   <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
   <form>
     <select id="course-select">
