@@ -33,11 +33,15 @@ ${teamMatchHeader(course, mission)}
       </div>
         <h4>크루 목록</h4>
       <ul>
-        ${crew
-          .map((crew) => {
-            return `<li>${crew}</li>`;
-          })
-          .join("")}
+        ${
+          crew
+            ? crew
+                .map((crew) => {
+                  return `<li>${crew}</li>`;
+                })
+                .join("")
+            : ""
+        }
       </ul>
   </div>
 `;

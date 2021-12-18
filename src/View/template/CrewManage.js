@@ -3,9 +3,9 @@ import { ID, TEXT } from "../../constant/constant.js";
 const crewManage = `
     <h3>크루를 관리할 코스를 선택해주세요</h3>
     <div id="radio-form">
-      <input type="radio" name="course" value="frontend" id=${ID.FRONTEND}/>
+      <input type="radio" name="course" value="frontend" id=${ID.FRONTEND} />
       <label for="frontend">프론트엔드</label>
-      <input type="radio" name="course" value="backend" id=${ID.BACKEND}/>
+      <input type="radio" name="course" value="backend" id=${ID.BACKEND} />
       <label for="backend">백엔드</label>
     </div>
 `;
@@ -21,7 +21,7 @@ const addCrew = (course) => `
 
 const crewTable = (course, crews) => `
   <h3>${course === "frontend" ? TEXT.FRONT : TEXT.BACK} 크루 목록</h3>
-    <table border="1">
+    <table border="1" id="crew-table">
       <thead>
         <tr>
           <th> </th>
@@ -30,11 +30,15 @@ const crewTable = (course, crews) => `
         </tr>
       </thead>
       <tbody>
-      ${crews
-        .map((crew, index) => {
-          return crewTableTr(crew, index);
-        })
-        .join("")}
+      ${
+        crews
+          ? crews
+              .map((crew, index) => {
+                return crewTableTr(crew, index);
+              })
+              .join("")
+          : ""
+      }
       </tbody>
     </table>
 `;

@@ -33,6 +33,7 @@ export default class Controller {
 
   crewHandler = (course, crew) => {
     this.view.displayCrewTable(course, crew);
+    this.view.displayTeamManage(this.model.crew);
   };
 
   teamMatchHandler = (course, number) => {
