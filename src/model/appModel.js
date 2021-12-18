@@ -1,7 +1,6 @@
 import { STORAGE_KEY } from '../constants/constants.js';
 import { loadDataFromLocalStorage, setDataOnLocalStorage } from '../utils/storage.js';
 import Crew from './crew.js';
-// import { STRING } from '../constants/constants.js';
 
 export default class AppModel {
   constructor() {

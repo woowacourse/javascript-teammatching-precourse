@@ -34,7 +34,6 @@ export const isValidCrewName = (name, course, model) => {
 };
 
 export const isValidMemberCount = (memberCount, crewsNum) => {
-  console.log(crewsNum);
   if (
     isEmpty(memberCount) ||
     !isPositiveInteger(memberCount) ||

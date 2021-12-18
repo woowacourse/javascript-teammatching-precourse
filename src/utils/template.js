@@ -156,7 +156,6 @@ export const matchResultTemplate = (course, missionText, teams) => {
 };
 
 export const resultTemplate = (teams) => {
-  console.log(teams);
   return `
   ${
     teams &&
