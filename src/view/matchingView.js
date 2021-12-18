@@ -24,6 +24,8 @@ class matchingView {
     `;
   }
 
+  renderMatchingInput() {}
+
   matchingInputTemplate() {
     return `
     <section id="matching-input">
@@ -38,7 +40,7 @@ class matchingView {
           </form>
         </div>
         <h4>크루 목록</h4>
-        <ul id="team-match-result">
+        <ul>
           <li>준</li>
           <li>포코</li>
         </ul>
@@ -53,7 +55,7 @@ class matchingView {
     <section id="matching-result">
       <h3>프론트엔드 숫자야구게임 조회</h3>
       <p>팀이 매칭되었습니다.</p>
-      <ul>
+      <ul id="team-match-result">
         <li>준,포코</li>
       </ul>
       <p>
