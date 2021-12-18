@@ -12,6 +12,8 @@ export const HEADER =
       </ul>
     </nav>
   </header>`
+export const MAIN = 
+  `<main></main>`
 
 export const CREW_MANAGE_MAIN =
 `<main>
