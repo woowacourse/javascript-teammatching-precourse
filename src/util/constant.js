@@ -1,7 +1,8 @@
 export const CREW = {
     COURSE: '',
     FRONTCREWLIST: [],
-    BACKCREWLIST: []
+    BACKCREWLIST: [],
+    TEAMCOUNT : 0
 };
 
 export const ERROR = {

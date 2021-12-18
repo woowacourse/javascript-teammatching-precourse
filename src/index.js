@@ -3,6 +3,7 @@ import { useTabButton } from './util/useTabButton.js';
 import { courseSelect } from './courseSelect.js';
 import { addCrew } from './addCrew.js';
 import { deleteCrew } from './deleteCrew.js';
+import { teamMemberCount } from './teamMemberCount.js'
 
 printPage();
 
@@ -17,4 +18,9 @@ window.onload = function () {
 
     const $crewTable = document.querySelector('#crew-table');
     $crewTable.addEventListener('click', function (e) { deleteCrew(e) });
+
+    const $showTeamMatcherButton = document.querySelector('#show-team-matcher-button')
+    $showTeamMatcherButton.addEventListener('click', function(){
+        teamMemberCount()
+    })
 }
