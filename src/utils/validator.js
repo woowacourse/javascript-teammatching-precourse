@@ -1,18 +1,20 @@
+import { MESSAGE } from "./constant.js";
+
 export const checkValidName = (crews, name) => {
   if (isDuplicatedName(crews, name)) {
-    throw Error("이름이 중복되었습니다");
+    throw Error(MESSAGE.DUPLICATED_NAME);
   }
   if (isEmpty(name)) {
-    throw Error("이름은 공백이 될수 없습니다");
+    throw Error(MESSAGE.NO_NAME_SPACE);
   }
   if (isOverValidLength(name)) {
-    throw Error("이름은 5글자 이하로 입력해주세요");
+    throw Error(MESSAGE.OVER_VALID_LENGTH);
   }
 };
 
 export const checkValidCount = (count) => {
   if (isNotPositiveCount(count)) {
-    throw Error("1이상의 숫자를 입력해주세요");
+    throw Error(MESSAGE.POSITIVE_COUNT);
   }
 };
 

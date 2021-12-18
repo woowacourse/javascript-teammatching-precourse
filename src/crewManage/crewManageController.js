@@ -1,3 +1,4 @@
+import { COURSE_KEY, MESSAGE } from "../utils/constant.js";
 import CrewManageModel from "./crewManageModel.js";
 import CrewManageView from "./crewManageView.js";
 
@@ -54,7 +55,7 @@ export default class CrewManageController {
   setDeleteCrewEvent = ({ target }) => {
     if (target.id !== "delete-crew-button") return;
 
-    if (!confirm("정말 삭제하시겠습니까?")) return;
+    if (!confirm(MESSAGE.CONFIRM_DELETE)) return;
 
     const name = target.closest("tr").querySelector("#crew-name").innerText;
     const selectedState = this.checkRadioState();
@@ -84,9 +85,9 @@ export default class CrewManageController {
   };
 
   renderCoursePage = (id) => {
-    if (id === "frontend") {
+    if (id === COURSE_KEY.FRONTEND) {
       this.view.renderFrontendCourse(this.$coursePage);
-    } else if (id === "backend") {
+    } else if (id === COURSE_KEY.BACKEND) {
       this.view.renderBackendCourse(this.$coursePage);
     }
     this.initAfterRenderCourse();

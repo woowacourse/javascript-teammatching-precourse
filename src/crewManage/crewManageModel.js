@@ -1,16 +1,17 @@
+import { COURSE_KEY } from "../utils/constant.js";
 import { getLocalStorage, setLocalStorage } from "../utils/localStorage.js";
 import { checkValidName } from "../utils/validator.js";
 
 export default class CrewManageModel {
   constructor() {
-    this.frontendCrews = getLocalStorage("frontend") ?? [];
-    this.backendCrews = getLocalStorage("backend") ?? [];
+    this.frontendCrews = getLocalStorage(COURSE_KEY.FRONTEND) ?? [];
+    this.backendCrews = getLocalStorage(COURSE_KEY.BACKEND) ?? [];
   }
 
   getCrewsById = (id) => {
-    if (id === "frontend") {
+    if (id === COURSE_KEY.FRONTEND) {
       return this.frontendCrews;
-    } else if (id === "backend") {
+    } else if (id === COURSE_KEY.BACKEND) {
       return this.backendCrews;
     }
   };
@@ -18,9 +19,9 @@ export default class CrewManageModel {
   addCrew = (id, name) => {
     checkValidName(this.getCrewsById(id), name);
 
-    if (id === "frontend") {
+    if (id === COURSE_KEY.FRONTEND) {
       this.frontendCrews.push(name);
-    } else if (id === "backend") {
+    } else if (id === COURSE_KEY.BACKEND) {
       this.backendCrews.push(name);
     }
     setLocalStorage(id, this.getCrewsById(id));
