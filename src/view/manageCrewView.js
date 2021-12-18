@@ -1,8 +1,10 @@
 import { crewInfo } from "./utils/constants.js";
+import { hideElement, showElement } from "./utils/setElement.js";
 
 export default class ManageCrewView {
   constructor() {
     this.render();
+    this.hideAll();
   }
 
   render() {
@@ -10,5 +12,15 @@ export default class ManageCrewView {
     const $render = document.createElement("main");
     $render.innerHTML = crewInfo;
     $header.after($render);
+  }
+
+  hideAll() {
+    hideElement(document.querySelector("#choose-crew"));
+    hideElement(document.querySelector("#crew-name"));
+    hideElement(document.querySelector("#crew-list"));
+  }
+
+  showChooseCrew() {
+    showElement(document.querySelector("#choose-crew"));
   }
 }
