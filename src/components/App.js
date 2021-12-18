@@ -1,11 +1,20 @@
 import { $ } from "../common/dom.js";
 import Component from "../core/Component.js";
+import store, { setState } from "../storage/Store.js";
 import Crew from "./Crew.js";
 import Team from "./Team.js";
 
 export default class App extends Component {
-  mount() {
+  setup() {
     this.components = { ["crew-tab"]: Crew, ["team-tab"]: Team };
+  }
+
+  mount() {
+    const state = store.getState();
+    const sectionID = state.sectionID;
+    if (sectionID) {
+      new this.components[sectionID]($("main"));
+    }
     this.setEvent();
   }
 
@@ -18,8 +27,7 @@ export default class App extends Component {
   onClick(e) {
     const { target } = e;
     if (target.nodeName === "BUTTON") {
-      console.log(target.id, this.components);
-      new this.components[target.id]($("main"));
+      setState("sectionID", target.id);
     }
   }
 
