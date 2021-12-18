@@ -1,5 +1,7 @@
+/* eslint-disable no-undef */
 import { $, default as DOM } from '../utils/DOMUtils.js';
 import { default as DB } from '../model/database.js';
+import { default as UT } from '../utils/utils.js';
 
 export default class ClickEventManager {
   constructor(element, controller) {
@@ -74,11 +76,26 @@ export default class ClickEventManager {
     }
   }
 
-  // matchTeam() {
-  //   console.log($('#team-member-count-input').value);
+  matchTeam() {
+    const [courseType, missionType] = [$('#course-select').value, $('#mission-select').value];
 
-  //   console.log(DB.load(`${$('#course-select').value}Crew`));
-  // }
+    const temporaryCrew = [...DB.load(`${courseType}Crew`)];
+    const targetAmount = $('#team-member-count-input').value;
+
+    const indexArray = Array.from({ length: temporaryCrew.length }, (_, i) => i + 1);
+    const shuffledIndex = MissionUtils.Random.shuffle(indexArray);
+    const shuffledCrew = shuffledIndex.map(index => temporaryCrew[index - 1]);
+
+    const divisionCrewArray = UT.divisionCrew(shuffledCrew, targetAmount);
+    const result = UT.checkLastArray(divisionCrewArray, targetAmount);
+
+    const temporaryMisson = { ...DB.load(`${courseType}Mission`) };
+    temporaryMisson[$('#mission-select').value].push(...result);
+    DB.overwrite(`${courseType}Mission`, temporaryMisson);
+
+    DOM.showMatchedComponent('#ok-mached-component', courseType, missionType);
+    DOM.showMatchedCrewUnorderedList(courseType, missionType);
+  }
 
   onClick(event) {
     event.preventDefault();

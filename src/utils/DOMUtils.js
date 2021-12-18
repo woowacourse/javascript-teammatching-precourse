@@ -47,7 +47,7 @@ const DOMUtils = {
 
   showCrewList: courseType => {
     $('#crew-list-tbody').innerHTML = DB.load(`${courseType}Crew`)
-      .map(
+      ?.map(
         (name, index) => `
           <tr>
             <td>${index + 1}</td>
@@ -64,6 +64,12 @@ const DOMUtils = {
   showCrewUnorderedList: courseType => {
     $('#crew-ul').innerHTML = DB.load(`${courseType}Crew`)
       .map(name => `<li>${name}</li>`)
+      .join('');
+  },
+
+  showMatchedCrewUnorderedList: (courseType, missionType) => {
+    $('#team-match-result').innerHTML = DB.load(`${courseType}Mission`)
+      [missionType].map(name => `<li>${name}</li>`)
       .join('');
   },
 };

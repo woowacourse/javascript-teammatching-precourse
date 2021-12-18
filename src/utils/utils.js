@@ -23,6 +23,32 @@ const utils = {
 
     return result[string];
   },
+
+  divisionCrew: (array, number) => {
+    const len = array.length;
+    const cnt = Math.floor(len / number) + (Math.floor(len % number) > 0 ? 1 : 0);
+    const result = [];
+
+    for (let i = 0; i < cnt; i++) {
+      result.push(array.splice(0, number));
+    }
+
+    return result;
+  },
+
+  checkLastArray: (array, targetAmount) => {
+    const temporaryArray = array[array.length - 1];
+
+    if (temporaryArray.length >= targetAmount) return;
+
+    const lastArray = array.pop();
+
+    array.forEach(element => {
+      if (lastArray.length > 0) element.push(lastArray.pop());
+    });
+
+    return array;
+  },
 };
 
 export default utils;
