@@ -2,11 +2,13 @@
   "name": "javascript-team-matching-precourse",
   "version": "1.0.0",
   "description": "우아한테크코스 프리코스 팀 매칭 미션",
-  "dependencies": {},
   "devDependencies": {
-    "cypress": "8.7.0"
+    "cypress": "8.7.0",
+    "eslint": "^7.32.0",
+    "eslint-config-tui": "^4.2.0"
   },
   "scripts": {
+    "start": "npx http-server -c-1 -p 8001 -a localhost",
     "test": "cypress run --browser chrome"
   },
   "repository": {
