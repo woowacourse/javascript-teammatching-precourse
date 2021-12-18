@@ -44,6 +44,7 @@ window.addEventListener('click', e => {
   const crewNameInput = document.querySelector('#crew-name-input').value;
   const curCourse = getCourseFrontEndOrBackEnd();
   const frontEndOrBackEndString = valueToString(curCourse);
+  e.preventDefault();
   if (!validateName(crewNameInput)) return;
 
   if (curCourse === 'frontend') FE.setCrew(crewNameInput);
