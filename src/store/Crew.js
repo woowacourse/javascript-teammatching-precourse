@@ -21,6 +21,12 @@ class Crew extends Store {
     }
   }
 
+  removeCrew(removedName) {
+    const updatedCrews = this.getSelectedCourseCrews().filter((name) => name !== removedName);
+
+    this.setValue({ [this.getSelectedCourse()]: updatedCrews });
+  }
+
   getSelectedCourse() {
     return this.value.selectedCourse;
   }

@@ -18,3 +18,7 @@ export const isUniqueName = (name, crewList) => {
 
   return true;
 };
+
+export const isRealRemove = () => {
+  return window.confirm(MESSAGE.REMOVE);
+};
