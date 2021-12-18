@@ -13,12 +13,14 @@ export default class CrewEvent {
 
 
             const name = document.getElementById("crew-name-input").value;
-            console.log(name);
+            // console.log(name);
             const crewCheck = new CrewCheck(name);
 
             if(crewCheck.checkAll()) {
                 // //이름 저장
-                if(this.getCourse() === "frontend") {
+                if(this.getCourse() === "frontend" && this.checkFrontName(name)) {
+                    // this.checkFrontName(name);
+                    console.log(name);
                     this.storeFrontCrew(name, this.getCourse());
                     CrewView.showFrontTable();
                 } else if(this.getCourse() === "backend") {
@@ -29,6 +31,18 @@ export default class CrewEvent {
                 alert("유효하지 않은 입력입니다!"); // 상수로 변경
             } 
         })
+    }
+
+    static checkFrontName(name) {
+        const crew = JSON.parse(localStorage.getItem("CrewFront"));
+
+        if(crew[name].course !== "frontend") {
+            return true;
+        } else {
+            alert("중복된 이름입니다!");
+        }
+
+        return false;
     }
 
     static getCourse() {
