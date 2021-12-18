@@ -1,10 +1,10 @@
 import { ELEMENT_SELECTOR } from '../constants/index.js';
 import createAction from '../flux/actionCreator.js';
 
-export const SET_ACTIVE_TAB_PANE = 'team-matching/tab-pane/SET_ACTIVE_TAB_PANE';
+export const UPDATE_ACTIVE_TAB_PANE = 'team-matching/tab-pane/UPDATE_ACTIVE_TAB_PANE';
 
 export const updateActiveTabPaneAction = (tabPaneId) => {
-  return createAction(SET_ACTIVE_TAB_PANE, tabPaneId);
+  return createAction(UPDATE_ACTIVE_TAB_PANE, tabPaneId);
 };
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
 
 const tabPaneReducer = (state = initialState, { type, data }) => {
   switch (type) {
-    case SET_ACTIVE_TAB_PANE:
+    case UPDATE_ACTIVE_TAB_PANE:
       return {
         ...state,
         activeTabPaneId: data,
