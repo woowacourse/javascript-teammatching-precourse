@@ -12,6 +12,8 @@ import {
   DELETE_BUTTON,
   FIRST_SECTION,
   THIRD_SECTION,
+  SECOND_SECTION,
+  SELECT_TEAM_COURSE_TITLE,
 } from "./constant.js";
 import {
   onClickBackEndDeleteButton,
@@ -33,6 +35,16 @@ export const initialize = () => {
 const onClickCrewTab = event => {
   event.preventDefault();
   resetSelectCourseSection();
+
+  const clickedRadio = localStorage.getItem("radio-button");
+  if (clickedRadio) {
+    document.getElementById(clickedRadio).checked = true;
+    if (clickedRadio === FRONT_END) {
+      onClickFrontEndInput();
+    } else if (clickedRadio === BACK_END) {
+      onClickBackEndInput();
+    }
+  }
 };
 
 const onClickTeamTab = event => {
@@ -82,6 +94,7 @@ const createRadioInput = (value, event) => {
   const input = document.createElement("input");
   input.type = "radio";
   input.name = "course";
+  input.id = value;
   input.value = value;
   input.addEventListener("click", event);
 
@@ -197,9 +210,28 @@ export const resetListSection = title => {
   $section.appendChild(createMemberTable());
 };
 
+const resetSections = () => {
+  const $first = document.getElementById(FIRST_SECTION);
+  const $second = document.getElementById(SECOND_SECTION);
+  const $third = document.getElementById(THIRD_SECTION);
+  $first.innerHTML = "";
+  $second.innerHTML = "";
+  $third.innerHTML = "";
+};
+
 const resetSelectCourseSection = () => {
   const $section = document.getElementById(FIRST_SECTION);
   $section.innerHTML = "";
   $section.appendChild(createTitle(SELECT_COURSE_TITLE));
   $section.appendChild(createRadioInputContainer());
+};
+
+const createSelectForm = () => {
+  const form = document.createElement("form");
+};
+
+const renderSelectMatchingSection = () => {
+  const $section = document.getElementById(FIRST_SECTION);
+  $section.appendChild(createTitle(SELECT_TEAM_COURSE_TITLE));
+  $section.appendChild(createSelectForm());
 };

@@ -1,7 +1,9 @@
 import {
+  BACK_END,
   BACK_END_INPUT_TITLE,
   BACK_END_TABLE_TITLE,
   CONFIRM_MESSAGE,
+  FRONT_END,
   FRONT_END_INPUT_TITLE,
   FRONT_END_TABLE_TITLE,
   SECOND_SECTION,
@@ -58,6 +60,7 @@ export const onClickFrontEndInput = () => {
   $section.appendChild(createInputForm(onClickAddFrontEnd));
   resetListSection(FRONT_END_TABLE_TITLE);
   renderFrontEndMembers(crew.frontEndMembers);
+  localStorage["radio-button"] = FRONT_END;
 };
 
 export const onClickBackEndInput = () => {
@@ -67,6 +70,7 @@ export const onClickBackEndInput = () => {
   $section.appendChild(createInputForm(onClickAddBackEnd));
   resetListSection(BACK_END_TABLE_TITLE);
   renderBackEndMembers(crew.backEndMembers);
+  localStorage["radio-button"] = BACK_END;
 };
 
 export const onClickFrontEndDeleteButton = event => {
