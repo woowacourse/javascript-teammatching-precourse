@@ -22,9 +22,9 @@ export const crewManageTemplate = `
     <section>
       <h3>크루를 관리할 코스를 선택해주세요</h3>
       <div>
-        <input type="radio" name="course" value="frontend" id=${SELECTOR.radioFrontendInput}/>
+        <input type="radio" name=${SELECTOR.radioName} value="frontend" id=${SELECTOR.radioFrontendInput}/>
         <label for="frontend">프론트엔드</label>
-        <input type="radio" name="course" value="backend" id=${SELECTOR.radioBackendInput}/>
+        <input type="radio" name=${SELECTOR.radioName} value="backend" id=${SELECTOR.radioBackendInput}/>
         <label for="backend">백엔드</label>
       </div>
     </section>
@@ -37,8 +37,8 @@ export const crewInputAndTableTemplate = course => `
 <h3>${course} 크루 관리</h3>
 <form>
 <label>크루 이름</label>
-<input type="text" />
-<button>확인</button>
+<input type="text" id=${SELECTOR.crewNameInput}/>
+<button id=${SELECTOR.crewAddButton}>확인</button>
 </form>
 </section>
 <section>

@@ -21,10 +21,23 @@ export default class CrewManager {
     );
   }
 
+  addCrewAddButtonEvent() {
+    $(SELECTOR.crewAddButton).addEventListener('click', event => this.addCrew(event));
+  }
+
   selectCourse() {
-    const selected = document.querySelector(`input[name=${SELECTOR.radioName}]:checked`).value;
-    this.view.renderSelectedCourseContents(
-      document.querySelector(`label[for=${selected}]`).innerHTML,
-    );
+    const selectedRadioValue = document.querySelector(
+      `input[name=${SELECTOR.radioName}]:checked`,
+    ).value;
+    const selectedCourseName = document.querySelector(`label[for=${selectedRadioValue}]`).innerHTML;
+    this.view.renderSelectedCourseContents(selectedCourseName);
+    this.model.selectCourse(selectedCourseName);
+    this.addCrewAddButtonEvent();
+  }
+
+  addCrew(event) {
+    event.preventDefault();
+    const crewName = document.querySelector('input[type="text"]').value;
+    this.model.addCrewInSelectedCourse(crewName);
   }
 }
