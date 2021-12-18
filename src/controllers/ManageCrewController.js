@@ -1,7 +1,13 @@
+import { setData, getData } from "../utils/localStorage.js";
+
 export default class ManageCrewController {
-  constructor() {}
+  constructor() {
+    this.main = document.querySelector("#content-container");
+  }
 
   initialize() {
+    this.frontend = getData("frontend");
+    this.backend = getData("backend");
     this.radioClickEvent();
   }
 
@@ -15,11 +21,59 @@ export default class ManageCrewController {
     backendRadio.addEventListener("click", this.onClickBackendRadio.bind(this));
   }
 
-  onClickFrontendRadio(event) {
-    console.log("front");
+  onClickFrontendRadio() {
+    if (this.frontend === null) {
+      setData("frontend", []);
+    }
+    const front = document.querySelectorAll(".front");
+    const back = document.querySelectorAll(".back");
+    front.forEach((ele) => {
+      ele.style.display = "block";
+    });
+    back.forEach((ele) => {
+      ele.style.display = "none";
+    });
+    const frontendAddBtn = document.querySelector(
+      "section.front #add-crew-buttton"
+    );
+    frontendAddBtn.addEventListener("click", this.addFrontCrew.bind(this));
   }
 
-  onClickBackendRadio(event) {
-    console.log("back");
+  onClickBackendRadio() {
+    if (this.backend === null) {
+      setData("backend", []);
+    }
+    const front = document.querySelectorAll(".front");
+    const back = document.querySelectorAll(".back");
+    front.forEach((ele) => {
+      ele.style.display = "none";
+    });
+    back.forEach((ele) => {
+      ele.style.display = "block";
+    });
+    const backendAddBtn = document.querySelector(
+      "section.back #add-crew-buttton"
+    );
+    backendAddBtn.addEventListener("click", this.addBackCrew.bind(this));
+  }
+
+  addFrontCrew(event) {
+    event.preventDefault();
+    let frontendCrew = getData("frontend");
+    const crewInputValue = document.querySelector(
+      ".front #crew-name-input"
+    ).value;
+    frontendCrew.push(crewInputValue);
+    setData("frontend", frontendCrew);
+  }
+
+  addBackCrew(event) {
+    event.preventDefault();
+    let backendCrew = getData("backend");
+    const crewInputValue = document.querySelector(
+      ".back #crew-name-input"
+    ).value;
+    backendCrew.push(crewInputValue);
+    setData("backend", backendCrew);
   }
 }

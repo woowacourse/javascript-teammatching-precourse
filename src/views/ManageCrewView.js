@@ -6,5 +6,14 @@ export default class ManageCrewView {
   }
   render() {
     this.contentContainer.innerHTML = manageCrew.body;
+
+    const front = document.querySelectorAll(".front");
+    const back = document.querySelectorAll(".back");
+    front.forEach((ele) => {
+      ele.style.display = "none";
+    });
+    back.forEach((ele) => {
+      ele.style.display = "none";
+    });
   }
 }
