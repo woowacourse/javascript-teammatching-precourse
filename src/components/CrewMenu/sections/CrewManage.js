@@ -23,7 +23,7 @@ export default class CrewManage extends Component {
   setEvent() {
     this.addEvent('click', '#add-crew-buttton', () => {
       const { course, crewList, addCrew } = this.props;
-      const name = $('#crew-name-input').value;
+      const name = $('#crew-name-input').value.trim();
 
       if (name.length < 1 || name.length > 5) {
         alert('크루 이름은 1 이상, 최대 5글자까지 가능합니다.');

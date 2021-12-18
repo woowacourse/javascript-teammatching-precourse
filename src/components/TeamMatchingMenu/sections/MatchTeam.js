@@ -34,8 +34,12 @@ export default class MatchTeam extends Component {
         (crew) => crew.course === teamMatchCourse
       );
 
-      if (count < 1 || count > filteredCrewList.length) {
-        alert('1팀당 인원 수는 1 이상, 총 크루 수 이하여야 합니다.');
+      if (
+        count < 1 ||
+        count > filteredCrewList.length ||
+        !Number.isInteger(count)
+      ) {
+        alert('1팀당 인원 수는 1 이상, 총 크루 수 이하의 정수여야 합니다.');
 
         return;
       }
