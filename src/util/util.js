@@ -138,9 +138,17 @@ const createMemberTable = () => {
   return table;
 };
 
-const createTd = text => {
+const createIndexTd = text => {
   const td = document.createElement("td");
   td.innerText = text;
+
+  return td;
+};
+
+const createNameTd = text => {
+  const td = document.createElement("td");
+  td.innerText = text;
+  td.id = "name";
 
   return td;
 };
@@ -161,8 +169,8 @@ const createButtonTd = () => {
 
 export const createTableRaw = (member, index) => {
   const tr = document.createElement("tr");
-  tr.appendChild(createTd(index));
-  tr.appendChild(createTd(member));
+  tr.appendChild(createIndexTd(index));
+  tr.appendChild(createNameTd(member));
   tr.appendChild(createButtonTd());
 
   return tr;
