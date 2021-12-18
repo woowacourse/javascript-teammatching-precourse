@@ -23,6 +23,9 @@ class crewController {
   }
 
   removeCrew(e) {
+    if (!confirm('정말 삭제하시겠습니까?')) {
+      return;
+    }
     const crewArrIndex = Number(e.target.closest('tr').querySelector('td').innerText) - 1;
     if ($('#frontend-course').checked) {
       this.removeFECrew(crewArrIndex);
