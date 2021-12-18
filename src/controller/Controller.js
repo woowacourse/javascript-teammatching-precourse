@@ -1,5 +1,6 @@
 import View from '../view/View.js';
 import ClickEventManager from './ClickEventManager.js';
+import CrewManager from './CrewManager.js';
 import { $, default as DOM } from '../utils/DOMUtils.js';
 
 export default class Controller {
