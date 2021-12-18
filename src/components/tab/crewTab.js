@@ -25,8 +25,8 @@ export default class CrewTab {
     <div>
       <input id="${SELECTOR.FRONTEND_COURSE_INPUT}" type="radio" name="course" value="frontend" />
       <label for="frontend">프론트엔드</label>
-      <input type="radio" name="course" value="backend" />
-      <label  id="${SELECTOR.BACKEND_COURSE_INPUT}" for="backend">백엔드</label>
+      <input id="${SELECTOR.BACKEND_COURSE_INPUT}" type="radio" name="course" value="backend" />
+      <label for="backend">백엔드</label>
     </div>
   </section>
   <section>
