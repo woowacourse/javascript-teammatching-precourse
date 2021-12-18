@@ -15,9 +15,10 @@ const appendToJsonItem = (key, item) => {
     setJsonItem(key, json);
 };
 
-export const addCrew = (crewsOfcourse, crewName) => appendToJsonItem(crewsOfcourse, crewName);
+export const addCrewOnCourse = (crewsOfcourse, crewName) =>
+    appendToJsonItem(crewsOfcourse, crewName);
 
-export const isUniqueCrewName = (crewsOfcourse, findCrewName) =>
+export const isUniqueCrewNameOnCourse = (crewsOfcourse, findCrewName) =>
     getJsonItem(crewsOfcourse).findIndex((crewName) => crewName === findCrewName) === -1;
 
-export const getCrews = (course) => getJsonItem(course);
+export const getCrewsOnCourse = (course) => getJsonItem(course);

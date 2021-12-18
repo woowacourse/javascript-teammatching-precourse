@@ -1,6 +1,6 @@
-import { $, $$ } from '../util/index.js';
-import { checkCrewName } from '../validation/index.js';
-import { addCrew, isUniqueCrewName, getCrews } from '../model/index.js';
+import { $, $$ } from '../../util/index.js';
+import { checkCrewName } from '../../validation/index.js';
+import { addCrewOnCourse, isUniqueCrewNameOnCourse, getCrewsOnCourse } from '../../model/index.js';
 
 export const triggerSelectCourse = () => {
     $('#frontend-course').addEventListener('click', () => {
@@ -17,16 +17,16 @@ export const triggerSelectCourse = () => {
     });
 };
 
-const addCrewOnCourse = (crewName) => {
+const addCrewToCourse = (crewName) => {
     if ($('#frontend-course').checked) {
-        addCrew('frontCrews', crewName);
+        addCrewOnCourse('frontCrews', crewName);
     } else {
-        addCrew('backCrews', crewName);
+        addCrewOnCourse('backCrews', crewName);
     }
 };
 
 const renderCrewTable = () => {
-    $('#crew-table-tbody').innerHTML = getCrews(
+    $('#crew-table-tbody').innerHTML = getCrewsOnCourse(
         $('#frontend-course').checked ? 'frontCrews' : 'backCrews',
     ).reduce(
         (m, crewName, idx) =>
@@ -42,13 +42,13 @@ const renderCrewTable = () => {
     );
 };
 
-const isUniqueCrewNameOnCourse = (crewName) =>
+const isUniqueCrewNameOfCourse = (crewName) =>
     $('#frontend-course').checked
-        ? isUniqueCrewName('frontCrews', crewName)
-        : isUniqueCrewName('backCrews', crewName);
+        ? isUniqueCrewNameOnCourse('frontCrews', crewName)
+        : isUniqueCrewNameOnCourse('backCrews', crewName);
 
 const checkUniqueCrewName = (crewName) => {
-    if (!isUniqueCrewNameOnCourse(crewName)) {
+    if (!isUniqueCrewNameOfCourse(crewName)) {
         alert('이미 같은 이름의 크루가 있습니다.');
         return false;
     }
@@ -61,7 +61,7 @@ $('#add-crew-form').addEventListener('submit', (e) => {
     const crewName = $('#crew-name-input').value;
 
     if (checkCrewName(crewName) && checkUniqueCrewName(crewName)) {
-        addCrewOnCourse(crewName);
+        addCrewToCourse(crewName);
         renderCrewTable();
     }
 });
