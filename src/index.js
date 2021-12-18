@@ -1,3 +1,5 @@
+import CrewPanel from './components/crewPanel/index.js';
+
 import { KEY_TAB_CREW, KEY_TAB_TEAM, ACTION_ONCLICK } from './const.js';
 import { TEMPLATE_TEAM, TEMPLATE_CREW } from './components/template/index.js';
 import setVisibility from './dom/utils/setVisibility.js';
@@ -8,8 +10,10 @@ export default class TeamMathcing {
 		this.app.insertAdjacentHTML('beforeend', this.initNav());
 		this.app.insertAdjacentHTML('beforeend', this.initPanel());
 
-		this.panel = document.getElementsByTagName('main');
-		[...this.panel].forEach((content, i) => setVisibility(content, i === 0));
+		this.panels = document.getElementsByTagName('main');
+		[...this.panels].forEach((panel, i) => setVisibility(panel, i === 0));
+
+		this.crewPanel = new CrewPanel(this.panels.item(0));
 
 		this.app.onclick = this.onClick.bind(this);
 	}
@@ -40,8 +44,8 @@ export default class TeamMathcing {
 	}
 
 	[ACTION_ONCLICK](e, key) {
-		[...this.panel].forEach((content) =>
-			setVisibility(content, content.dataset.key === key)
+		[...this.panels].forEach((panel) =>
+			setVisibility(panel, panel.dataset.key === key)
 		);
 	}
 
