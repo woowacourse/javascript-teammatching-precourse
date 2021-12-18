@@ -42,6 +42,6 @@ export default class SelectCourse extends Component {
 
   setChecked(course, $frontendCourseRadio, $backendCourseRadio) {
     if (course === "frontend") return ($frontendCourseRadio.checked = true);
-    if (course === "backend") return ($backendCourseRadio = true);
+    if (course === "backend") return ($backendCourseRadio.checked = true);
   }
 }
