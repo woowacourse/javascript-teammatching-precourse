@@ -1,7 +1,7 @@
 export default class CrewModel {
   constructor() {
-    this.frontStorage = this.setStorage('frontCrew');
-    this.backStorage = this.setStorage('backCrew');
+    this.frontStorage = this.setStorage('frontend');
+    this.backStorage = this.setStorage('backend');
   }
 
   setStorage(storageName) {
@@ -10,7 +10,7 @@ export default class CrewModel {
       return storage;
     }
     const init = [{ index: 0, name: null }];
-    localStorage.setItem('frontcrew', JSON.stringify(init));
+    localStorage.setItem(storageName, JSON.stringify(init));
     return init;
   }
 
