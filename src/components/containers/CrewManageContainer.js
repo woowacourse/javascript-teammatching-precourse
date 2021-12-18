@@ -25,7 +25,7 @@ export default class CrewManageContainer extends Component {
     if (this.$state.selectedCourse) {
       this.$target.querySelector('#crew-manage').innerHTML = this.printCrewManageSection();
     }
-    if (this.$state.selectedCourse) {
+    if (this.$state.selectedCourse && Object.keys(this.$state.crews).length !== 0) {
       this.$target.querySelector('#crew-list').innerHTML = this.printCrewListSection();
     }
   }
@@ -53,7 +53,7 @@ export default class CrewManageContainer extends Component {
     <h3>${this.$state.selectedCourse === 'frontend' ? '프론트엔드' : '백엔드'} 크루 관리</h3>
     <form id="add-crew-form">
       <label>크루 이름</label>
-      <input type="text" id="crew-name-input" />
+      <input id="crew-name-input" type="text" />
       <button id="add-crew-buttton">확인</button>
     </form>
     `;
