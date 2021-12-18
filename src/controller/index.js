@@ -19,4 +19,7 @@ export default class Controller {
     this.view.renderCrewManageTab();
   }
 
+  renderTeamMatchingManageTab() {
+    this.view.renderTeamMatchingManageTab();
+  }
 }
