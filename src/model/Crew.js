@@ -8,7 +8,7 @@ export default class Crew {
   }
 
   static setCrewList(course, crewList) {
-    localStorage.setItem(course, crewList);
+    localStorage.setItem(course, JSON.stringify(crewList));
   }
 
   static insertCrew(course, name) {

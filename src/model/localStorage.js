@@ -7,6 +7,6 @@ const initialSetData = (key, value) => {
 };
 
 export const setLocalStorage = () => {
-  initialSetData(COURSE.FRONTEND, []);
-  initialSetData(COURSE.BACKEND, []);
+  initialSetData(COURSE.FRONTEND.ENGLISH, []);
+  initialSetData(COURSE.BACKEND.ENGLISH, []);
 };

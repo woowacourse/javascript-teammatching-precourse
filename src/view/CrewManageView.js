@@ -1,5 +1,6 @@
 import { clearTextContent } from "../controller/utils.js";
 import { COURSE } from "../constant/teammatching.js";
+import Crew from "../model/Crew.js";
 
 export default class CrewManageView {
   constructor(container) {
@@ -36,8 +37,8 @@ export default class CrewManageView {
 
   handleSelectCourse(e) {
     const courseToSelect = e.target.value;
-    // local 해당 키로, 크루 가져오기
     this.renderCrewAddFormCrewList(courseToSelect);
+    // 추가 이벤트 바인딩, 삭제이벤트
   }
 
   renderCrewAddFormCrewList(course) {
@@ -58,6 +59,7 @@ export default class CrewManageView {
   }
 
   crewListTemplate(course) {
+    const currentCrewList = Crew.getCurrentCrewList(course);
     return `
     <section>
       <h3>프론트엔드 크루 목록</h3>
@@ -70,13 +72,17 @@ export default class CrewManageView {
           </tr>
         </thead>
         <tbody>
+        ${currentCrewList.map(
+          (crew, index) => `
           <tr>
-            <td>1</td>
-            <td>준</td>
+            <td>${index}</td>
+            <td>${crew.name}</td>
             <td>
-              <button>삭제</button>
+              <button class="delete-crew-button">삭제</button>
             </td>
           </tr>
+        `
+        )}
         </tbody>
       </table>
     </section>
