@@ -1,18 +1,25 @@
 import $ from './utils/common/selector.js';
 import { renderTabs } from './utils/common/renderTabs.js';
+import { changeTab } from './utils/common/changeTab.js';
 
 function teamMatching() {
-  this.state = {};
+  this.state = {
+    crew: {
+      frontEnd: [],
+      backEnd: [],
+    },
+    teamMatching: {},
+  };
 
   this.init = () => {
-    renderTabs();
+    renderTabs(this.state);
     this.initEventListeners();
   };
 
   this.initEventListeners = () => {
     $('nav').addEventListener('click', e => {
       if (e.target.classList.contains('nav-tab')) {
-        console.log('버튼');
+        changeTab(e, this.state);
       }
     });
   };
