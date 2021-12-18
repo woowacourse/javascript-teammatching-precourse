@@ -1,9 +1,11 @@
-import CrewManageModel from '../models/CrewManageModel.js';
 import { $ } from '../utils/dom.js';
 
-import CrewManageView from '../views/CrewManageView.js';
 import LayoutView from '../views/LayoutView.js';
 import TabView from '../views/TabView.js';
+import CrewManageView from '../views/CrewManageView.js';
+import MatchingManageView from '../views/MatchingManageView.js';
+
+import CrewManageModel from '../models/CrewManageModel.js';
 
 export default {
   init() {
@@ -13,7 +15,7 @@ export default {
       .on('@changeCourse', (e) => this.onChangeCourse(e.detail.course))
       .on('@submitCrewName', (e) => this.onSubmitCrew(e.detail))
       .on('@deleteCrew', (e) => this.onDeleteCrew(e.detail));
-
+    MatchingManageView.setup($('main'));
     this.selectedTab = '크루 관리';
     this.renderView();
   },
@@ -22,6 +24,9 @@ export default {
     switch (this.selectedTab) {
       case '크루 관리':
         CrewManageView.render();
+        break;
+      case '팀 매칭 관리':
+        MatchingManageView.render();
         break;
       default:
         break;
