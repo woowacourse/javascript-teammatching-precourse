@@ -9,6 +9,7 @@ export default class Crew {
         backEnd: [],
       };
     else this.crew = JSON.parse(localStorage.getItem("crew"));
+    Crew.instance = this;
   }
 
   compareName(name, kindOfCrew) {
@@ -44,7 +45,6 @@ export default class Crew {
   }
 
   getCrew(kindOfCrew) {
-    console.log(this.crew.frontEnd);
     if (kindOfCrew === 0) return this.crew.frontEnd;
     return this.crew.backEnd;
   }

@@ -65,11 +65,17 @@ export default class TeamManage {
     const crewMembersList = document.getElementById("crew_list");
     crewMembersList.innerHTML = "";
     const crewMembers = this.crew.getCrew(this.kindOfCrew);
+    console.log(crewMembers);
     crewMembers.forEach((name) => {
       const crewRow = document.createElement("li");
       crewRow.innerHTML = name;
       crewMembersList.append(crewRow);
     });
+  }
+
+  update() {
+    this.makeCrewList();
+    return this.mainScreen;
   }
 
   tabSection() {

@@ -7,6 +7,7 @@ export default class Woowacourse {
     this.constructor.makeHeader();
     this.makeMain();
     this.connectEvent();
+    this.checkUpdate();
   }
 
   static makeHeader() {
@@ -37,6 +38,19 @@ export default class Woowacourse {
     e.preventDefault();
     this.crewManageScreen.style.display = "none";
     this.teamManageScreen.style.display = "block";
+  }
+
+  checkUpdate() {
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+      button.addEventListener("click", this.updateScreen.bind(this));
+    });
+  }
+
+  updateScreen(e) {
+    console.log(1);
+    e.preventDefault();
+    this.teamManageScreen = this.teamManage.update();
   }
 }
 
