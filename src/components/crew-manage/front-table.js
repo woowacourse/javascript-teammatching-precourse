@@ -26,15 +26,15 @@ const BODY = crews =>
   `${crews
     .map(
       ({ name, course }, index) => `
-<tr class="crew-manage">
-  <td class="crew-manage-index">${index}</td>
-  <td class="crew-manage-name">${name}</td>
-  <td
-  data-crew-index="${index}" data-crew-name="${name}"
-  data-crew-course="${course}">
-  <input type="button" class="remove-button" value="삭제하기" />
-  </td>
-</tr>`,
+      <tr class="crew-manage">
+        <td class="crew-manage-index">${Number(index) + 1}</td>
+        <td class="crew-manage-name">${name}</td>
+        <td
+        data-crew-index="${index}" data-crew-name="${name}"
+        data-crew-course="${course}">
+        <input type="button" class="remove-button" value="삭제하기" />
+        </td>
+      </tr>`,
     )
     .join('')}`;
 
