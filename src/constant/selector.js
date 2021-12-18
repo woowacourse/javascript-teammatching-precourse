@@ -10,8 +10,11 @@ export const ID = Object.freeze({
   SECTION_NAME_FORM: 'section-name-form',
   NAME_INPUT: 'crew-name-input',
   NAME_SUBMIT: 'add-crew-buttton',
+  SECTION_CREW_TABLE: 'section-crew-table',
+  CREW_TABLE: 'crew-table',
 });
 
 export const CLASS = Object.freeze({
   TAB_BUTTON: 'tab-button',
+  DELETE_CREW_BUTTON: 'delete-crew-buttton',
 });
