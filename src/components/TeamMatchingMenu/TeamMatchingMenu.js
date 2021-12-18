@@ -91,11 +91,18 @@ export default class TeamMatchingMenu extends Component {
       teamList.push([...team]);
     }
 
-    filteredCrewList
-      .filter((crew, index) => shuffledIndex.includes(index))
-      .forEach((crew, index) => {
-        teamList[index].push(crew);
-      });
+    const remain = filteredCrewList.filter((crew, index) =>
+      shuffledIndex.includes(index)
+    );
+
+    let i = 0;
+
+    remain.forEach((crew) => {
+      teamList[i].push(crew);
+      i += 1;
+
+      if (i >= teamList.length) i = 0;
+    });
 
     const matchedTeam = {
       course: teamMatchCourse,
