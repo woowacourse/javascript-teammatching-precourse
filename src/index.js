@@ -12,10 +12,15 @@ class App {
     const teamController = new TeamController(model, this.coreView);
     this.controllerArray = [crewController, teamController];
     this.triggerAllEvents();
+    this.triggerTabEvent();
   }
 
   triggerAllEvents() {
     this.controllerArray.map((controller) => controller.triggerEvent());
+  }
+
+  triggerTabEvent() {
+    this.coreView.setOnTabClick();
   }
 }
 
