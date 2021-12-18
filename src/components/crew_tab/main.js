@@ -32,6 +32,7 @@ export default class CrewTab extends Component {
       getCourseName,
       getCurrentCrews,
       addCrew,
+      deleteCrew,
     } = this;
     const [$selectCourse, $crewManage, $crewList] =
       document.querySelectorAll("section");
@@ -55,7 +56,12 @@ export default class CrewTab extends Component {
       addCrew: addCrew.bind(this),
     });
 
-    new CrewList($crewList, { courseName, checkedCrewCourse, currentCrews });
+    new CrewList($crewList, {
+      courseName,
+      checkedCrewCourse,
+      currentCrews,
+      deleteCrew: deleteCrew.bind(this),
+    });
   }
 
   setChangeCourse(newCourse) {
@@ -75,6 +81,12 @@ export default class CrewTab extends Component {
   }
 
   addCrew(props) {
+    const payload = { ...props };
+    this.callAPI.setTeamMatching(payload);
+    this.setState(payload);
+  }
+
+  deleteCrew(props) {
     const payload = { ...props };
     this.callAPI.setTeamMatching(payload);
     this.setState(payload);

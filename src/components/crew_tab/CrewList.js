@@ -25,7 +25,7 @@ export default class CrewList extends Component {
             ${currentCrews
               .map((crewName, index) => {
                 return `
-                <tr >
+                <tr data-key=${index}>
                     <td>${index + 1}</td>
                     <td>${crewName}</td>
                     <td>
@@ -49,6 +49,22 @@ export default class CrewList extends Component {
   }
 
   onClickDeleteCrew(e) {
-    console.log(e.target);
+    const { checkedCrewCourse, currentCrews, deleteCrew } = this.$props;
+    const parentTr = e.target.closest("tr");
+    const CrewKey = parentTr.getAttribute("data-key");
+
+    currentCrews.splice(CrewKey, 1);
+
+    this.setDeleteCrew({
+      crews: currentCrews,
+      checkedCrewCourse,
+      deleteCrew,
+    });
+  }
+
+  setDeleteCrew({ crews, checkedCrewCourse, deleteCrew }) {
+    if (checkedCrewCourse === "frontend")
+      return deleteCrew({ frontends: crews });
+    if (checkedCrewCourse === "backend") return deleteCrew({ backends: crews });
   }
 }
