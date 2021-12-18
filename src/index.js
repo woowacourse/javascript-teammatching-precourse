@@ -1,1 +1,3 @@
-console.log("연결확인");
+import CommonView from "./view/commonView.js";
+
+new CommonView().init();
