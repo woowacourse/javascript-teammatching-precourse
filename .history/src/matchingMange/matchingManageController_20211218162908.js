@@ -80,13 +80,17 @@ export default class matchingManageController {
   createTeamMemberClass = (count, remainingCount, teamCount) => {
     let teamMemberClass = new Array(teamCount).fill(count);
     let remainAmount = remainingCount;
-    while (remainAmount > 0) {
-      teamMemberClass = teamMemberClass.map((team) => {
-        remainAmount -= 1;
-        return team + 1;
-      });
-    }
+    let teamAmount = teamCount;
 
+    teamMemberClass = teamMemberClass.map((team, idx) => {
+      if (remainAmount === 0) {
+        return team;
+      } else {
+        const value = Math.ceil(remainAmount / teamAmount);
+        remainAmount -= value;
+        return team + value;
+      }
+    });
     return teamMemberClass;
   };
 
