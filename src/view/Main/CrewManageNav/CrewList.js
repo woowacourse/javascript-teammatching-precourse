@@ -1,5 +1,12 @@
 import { BUTTON, HEADER, LIST } from '../../../common/constant.js';
-import { createHeader, createSection } from '../../../common/element.js';
+import { $, createHeader, createSection } from '../../../common/element.js';
+
+function createCrewListSection() {
+  const crewListSection = createSection();
+  crewListSection.setAttribute('id', 'crew-list');
+
+  return crewListSection;
+}
 
 function createCrewListHeader() {
   return createHeader('h3', HEADER.CREW_LIST);
@@ -32,7 +39,7 @@ function createCrewListTableBody() {
 }
 
 export default function createCrewList() {
-  const crewList = createSection();
+  const crewList = createCrewListSection();
   const crewListHeader = createCrewListHeader();
   crewList.append(crewListHeader);
 
@@ -41,5 +48,5 @@ export default function createCrewList() {
   crewListTable += crewListTableBody;
   crewList.innerHTML += crewListTable;
 
-  return crewList;
+  $('crew-manage-nav').append(crewList);
 }
