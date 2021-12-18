@@ -27,3 +27,5 @@ const isUniqueCrewName = (crewsOfcourse) => (findCrewName) =>
 export const isUniqueFrontCrewName = isUniqueCrewName('frontCrews');
 
 export const isUniqueBackCrewName = isUniqueCrewName('backCrews');
+
+export const getCrews = (course) => getJsonItem(course);

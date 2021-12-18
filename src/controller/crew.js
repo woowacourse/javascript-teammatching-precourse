@@ -5,6 +5,7 @@ import {
     addBackCrew,
     isUniqueFrontCrewName,
     isUniqueBackCrewName,
+    getCrews,
 } from '../model/index.js';
 
 export const triggerSelectCourse = () => {
@@ -31,18 +32,20 @@ const addCrewOnCourse = (crewName) => {
     }
 };
 
-const appendCrewOnTable = (crewName) => {
-    $('#crew-table-tbody').insertAdjacentHTML(
-        'beforeend',
-        `
-        <tr>
-            <td>1</td>
-            <td>${crewName}</td>
-            <td>
+const renderCrewTable = () => {
+    $('#crew-table-tbody').innerHTML = getCrews(
+        $('#frontend-course').checked ? 'frontCrews' : 'backCrews',
+    ).reduce(
+        (m, crewName, idx) =>
+            `${m}
+            <tr>
+                <td>${idx + 1}</td>
+                <td>${crewName}</td>
+                <td>
                 <button>삭제</button>
-            </td>
-        </tr>
-    `,
+                </td>
+            </tr>`,
+        '',
     );
 };
 
@@ -66,6 +69,6 @@ $('#add-crew-form').addEventListener('submit', (e) => {
 
     if (checkCrewName(crewName) && checkUniqueCrewName(crewName)) {
         addCrewOnCourse(crewName);
-        appendCrewOnTable(crewName);
+        renderCrewTable();
     }
 });
