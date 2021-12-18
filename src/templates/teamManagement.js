@@ -7,6 +7,11 @@ const crewListGenerator = crew =>
     })
     .join('');
 
+const teamListGenerator = teamList =>
+  teamList.map(team => {
+    return `<li>${team.join(',')}</li>`;
+  });
+
 export const matchTeamForm = crew => `
   <div>
     <div>
@@ -23,11 +28,6 @@ export const matchTeamForm = crew => `
     </ul>
   </div>
 `;
-
-export const teamListGenerator = teamList =>
-  teamList.map(team => {
-    return `<li>${team.join(',')}</li>`;
-  });
 
 export const matchedTeams = teamList => `
   <p>팀이 매칭되었습니다.</p>
