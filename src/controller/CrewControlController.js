@@ -4,9 +4,13 @@ export default class CrewControlController {
   constructor($app) {
     this.$app = $app;
     this.crewControlView = new CrewControlModel();
-    this.crewControlField = document.createElement('div');
+    this.crewControlField = document.createElement('main');
     this.render();
     this.selectCourse();
+  }
+
+  crewContolMenuClick() {
+    this.crewControlField.style = ("display: block");
   }
 
   setLocalCrewName() {

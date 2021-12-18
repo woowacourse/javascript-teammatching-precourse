@@ -6,10 +6,9 @@ export default class App {
   constructor($app) {
     this.$app = $app;
     this.render();
-    this.tabButtonEvent();
     this.crewControl = new CrewControlView($app);
     this.teamMatch = new TeamMatchView($app);
-
+    this.tabButtonEvent();
   }
 
   render() {
@@ -19,12 +18,15 @@ export default class App {
   }
 
   tabButtonEvent() {
+    console.log(this.$app.childNodes);
+    [...this.$app.querySelectorAll('main')].map(content => content.style = ("display: none"));
     [...this.$app.querySelectorAll('button')].map(button => 
       button.addEventListener('click', ({ target }) => {
+        [...this.$app.querySelectorAll('main')].map(content => content.style = ("display: none"));
         if (target.id === 'control-button') {
-          console.log(target.id)
+          this.crewControl.crewContolMenuClick();
         } else if (target.id === 'match-button') {
-          console.log(target.id)
+          this.teamMatch.teamMatchMenuClick();
         }
       })
     )
