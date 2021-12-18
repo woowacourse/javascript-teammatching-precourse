@@ -25,6 +25,11 @@ MatchingManageView.bindEvent = function () {
     if (e.target.id === 'match-team-button') {
       e.preventDefault();
       this.onSubmitMinCrewCount();
+      return;
+    }
+    if (e.target.id === 'rematch-team-button') {
+      e.preventDefault();
+      this.onClickRematchTeam();
     }
   });
 };
@@ -41,6 +46,10 @@ MatchingManageView.onSubmitMinCrewCount = function () {
     count: this.child('#team-member-count-input').value,
     course: COURSE[this.course],
   });
+};
+
+MatchingManageView.onClickRematchTeam = function () {
+  this.emit('@rematchTeam', {});
 };
 
 MatchingManageView.setMission = function (mission) {
