@@ -64,6 +64,21 @@ export const TEAM_MISSION_DOM_SELECTOR = {
   courseSelect: 'course-select',
   missionSelect: 'mission-select',
   showTeamMatcherButton: 'show-team-matcher-button',
+  teamMemberCountInput: 'team-member-count-input',
+  matchTeamButton: 'match-team-button',
+};
+
+export const SELECTED_COURSE_TITLE = {
+  frontend: '프론트엔드',
+  backend: '백엔드',
 };
 
 export const SELECT_COURSE_MISSION_TITLE = '팀 매칭을 관리할 코스, 미션을 선택하세요.';
+
+export const TEAM_MATCHING_TITLE = '미션의 팀 매칭';
+
+export const PERSON_COUNT_PER_TEAM = '1팀당 인원 수';
+
+export const TEAM_MATCHING = '팀 매칭';
+
+export const TEAM_MATCHING_SUBTITLE = '아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?';

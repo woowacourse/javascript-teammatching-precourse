@@ -1,9 +1,10 @@
-import { MAIN, COURSE, CREW_MANAGE_DOM_SELECTOR, DELETE_BUTTON } from '../constants.js';
+import { MAIN, COURSE, CREW_MANAGE_DOM_SELECTOR, DELETE_BUTTON, TEAM_MISSION_DOM_SELECTOR } from '../constants.js';
 import Crew from '../Crew.js';
 import printAddCrewForm from './printAddCrewForm.js';
 import isValidName from '../utils/isValidName.js';
 import printCrewList from './printCrewList.js';
 import removeInputValue from './removeInputValue.js';
+import printTeamMatchingSection from './printTeamMatchingSection.js';
 
 const selectCourseEvent = (crewManager) => {
   return (event) => {
@@ -47,11 +48,28 @@ const deleteCrewEvent = (crewManager) => {
   };
 };
 
+const selectCourseAndMissionEvent = (crewManager) => {
+  return (event) => {
+    if (event.target.id !== TEAM_MISSION_DOM_SELECTOR.showTeamMatcherButton) return;
+    event.preventDefault();
+
+    const $selectCourseAndMissionSection = event.target.closest('section');
+    while ($selectCourseAndMissionSection.nextSibling) {
+      $selectCourseAndMissionSection.nextSibling.remove();
+    }
+    const course = document.getElementById(TEAM_MISSION_DOM_SELECTOR.courseSelect).value;
+    const mission = document.getElementById(TEAM_MISSION_DOM_SELECTOR.missionSelect).value;
+
+    printTeamMatchingSection(course, mission, crewManager);
+  };
+};
+
 const attachMainEvent = (crewManager) => {
   const $main = document.querySelector(MAIN);
   $main.addEventListener('click', selectCourseEvent(crewManager));
   $main.addEventListener('click', addCrewEvent(crewManager));
   $main.addEventListener('click', deleteCrewEvent(crewManager));
+  $main.addEventListener('click', selectCourseAndMissionEvent(crewManager));
 };
 
 export default attachMainEvent;
