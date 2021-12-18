@@ -1,4 +1,5 @@
 import { $ } from "../../common/dom.js";
+import Validation from "../../common/Validation.js";
 import { COURSE } from "../../constants/const.js";
 import Component from "../../core/Component.js";
 import store, { setState } from "../../storage/Store.js";
@@ -6,6 +7,7 @@ import store, { setState } from "../../storage/Store.js";
 export default class Course extends Component {
   setup() {
     const state = store.getState();
+    this.validation = new Validation();
     this.currentCourse = state.currentCourse;
 
     if (this.currentCourse === "frontend") {
@@ -33,14 +35,23 @@ export default class Course extends Component {
   }
 
   addCrew(e) {
-    e.preventDefault();
     const index = this.crewList.length + 1;
     const name = this.getInput();
+
+    e.preventDefault();
+    if (!this.validation.isEmtpyInput(name)) {
+      return;
+    }
+
     this.crewList.push({ index, name });
     setState(this.currentCourse, this.crewList);
   }
 
   deleteCrew(e) {
+    if (!this.validation.isConfirm()) {
+      return;
+    }
+
     e.preventDefault();
     this.index = Number(e.target.closest("[data-seq]").dataset.seq);
     const newCrewList = this.crewList.filter((v) => {
