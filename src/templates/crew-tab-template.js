@@ -9,27 +9,27 @@ const crewTabTemplate = {
       <label for="backend">백엔드</label>
     </div>
   </section>
+  <section id="crew-add-section"></section>
+  <section id="crew-list-section"></section>
   `,
-  manageByCourse: (course) => `
-  <section>
-    <h3>${course} 크루 관리</h3>
-    <form>
-      <label>크루 이름</label>
-      <input id="crew-name-input" type="text" />
-      <button id="add-crew-buttton" >확인</button>
-    </form>
-  </section>
-  <section>
-    <h3>${course} 크루 목록</h3>
-    <table border="1" id="crew-table">
-      <thead>
-        <tr>
-          <th></th><th>크루</th><th>관리</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </section>
+  addCrew: (course) => `
+  <h3>${course} 크루 관리</h3>
+  <form>
+    <label>크루 이름</label>
+    <input id="crew-name-input" type="text" />
+    <button id="add-crew-buttton" >확인</button>
+  </form>
+  `,
+  crewList: (course) => `
+  <h3>${course} 크루 목록</h3>
+  <table border="1" id="crew-table">
+    <thead>
+      <tr>
+        <th></th><th>크루</th><th>관리</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
   `,
   tableItem: (index, name) => `
   <tr>

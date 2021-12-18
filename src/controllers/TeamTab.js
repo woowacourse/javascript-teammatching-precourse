@@ -1,8 +1,9 @@
 import TeamTabView from '../views/TeamTabView.js';
 
 export default class TeamTab {
-  constructor() {
+  constructor(storage) {
     this.view = new TeamTabView();
+    this.storage = storage;
   }
 
   initialize() {

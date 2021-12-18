@@ -1,10 +1,12 @@
 import TeamMatchingView from './views/TeamMatchingView.js';
+import Storage from './Storage.js';
 import CrewTab from './controllers/CrewTab.js';
 import TeamTab from './controllers/TeamTab.js';
 
 export default class TeamMatching {
   constructor() {
     this.view = new TeamMatchingView();
+    this.storage = new Storage();
   }
 
   initialize() {
@@ -15,8 +17,8 @@ export default class TeamMatching {
   }
 
   initTabs() {
-    this.crewTab = new CrewTab();
-    this.teamTab = new TeamTab();
+    this.crewTab = new CrewTab(this.storage);
+    this.teamTab = new TeamTab(this.storage);
   }
 
   initElements() {
