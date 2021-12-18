@@ -41,13 +41,7 @@ const crewInfo = `<main>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>준</td>
-            <td>
-              <button id="delete-crew-buttton">삭제</button>
-            </td>
-          </tr>
+          
         </tbody>
       </table>
     </section>
