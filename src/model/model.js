@@ -16,6 +16,10 @@ export default class Model {
       .map((member) => member.name);
   }
 
+  removeMember(name) {
+    this.members = this.members.filter((member) => member.name !== name);
+  }
+
   get names() {
     return this.members.map((member) => member.name);
   }

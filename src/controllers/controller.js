@@ -1,4 +1,4 @@
-import { ID } from '../constants/selector.js';
+import { CLASS, ID } from '../constants/selector.js';
 import { validateName } from '../utils/validate.js';
 
 export default class Controller {
@@ -59,5 +59,24 @@ export default class Controller {
     }
     this.model.addMember(this.field, member);
     this.view.updateCrewTable(this.field, this.model.getCrew(this.field));
+    this.addEventsToRemoveButton();
+  };
+
+  addEventsToRemoveButton() {
+    document
+      .querySelectorAll(`.${CLASS.DELETE_CREW_BUTTON}`)
+      .forEach((button) => {
+        button.addEventListener('click', this.removeCrew);
+      });
+  }
+
+  removeCrew = (e) => {
+    const memberNameToRemove = e.target.value;
+    let result = confirm('정말로 삭제하시겠습니까?');
+    if (result) {
+      this.model.removeMember(memberNameToRemove);
+      this.view.updateCrewTable(this.field, this.model.getCrew(this.field));
+      this.addEventsToRemoveButton();
+    }
   };
 }
