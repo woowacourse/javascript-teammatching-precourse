@@ -53,13 +53,19 @@ export default class CrewList extends Component {
     const parentTr = e.target.closest("tr");
     const CrewKey = parentTr.getAttribute("data-key");
 
-    currentCrews.splice(CrewKey, 1);
+    if (this.isDeleteCrew()) {
+      currentCrews.splice(CrewKey, 1);
 
-    this.setDeleteCrew({
-      crews: currentCrews,
-      checkedCrewCourse,
-      deleteCrew,
-    });
+      this.setDeleteCrew({
+        crews: currentCrews,
+        checkedCrewCourse,
+        deleteCrew,
+      });
+    }
+  }
+
+  isDeleteCrew() {
+    return window.confirm(`제거 하나요?`);
   }
 
   setDeleteCrew({ crews, checkedCrewCourse, deleteCrew }) {
