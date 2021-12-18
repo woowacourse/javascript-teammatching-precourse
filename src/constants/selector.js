@@ -7,7 +7,9 @@ export const ID = {
   CREW_STATUS_TABLE: 'crew-table',
   TEAM_MATCHING_COURSE_CHOICE: 'course-select',
   TEAM_MATCHING_MISSION_CHOICE: 'mission-select',
-  TEAM_MATCHING_SEARCH_BUTTON: 'show-team-matcher-button'
+  TEAM_MATCHING_SEARCH_BUTTON: 'show-team-matcher-button',
+  TEAM_MEMEBER_COUNT_INPUT: 'team-member-count-input',
+  TEAM_MATCH_BUTTON: 'match-team-button'
 };
 
 export const CLASS = {

@@ -69,3 +69,18 @@ export function selectMissionForm() {
   )}</select>
   <button id=${ID.TEAM_MATCHING_SEARCH_BUTTON}>확인</button>`;
 }
+
+export function selectNumberOfCrew() {
+  return `<form>
+    <label>1팀당 인원 수</label>
+    <input type="number" id = ${ID.TEAM_MEMEBER_COUNT_INPUT}/>
+    <button id = ${ID.TEAM_MATCH_BUTTON}>팀 매칭</button>
+  </form>`;
+}
+
+export function showCrew(crew) {
+  return `<h4>크루 목록</h4>
+    <ul>
+      ${crew.reduce((acc, cur) => `${acc}<li>${cur}<li/>`, '')}
+    </ul>`;
+}
