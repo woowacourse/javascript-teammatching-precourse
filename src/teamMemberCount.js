@@ -1,3 +1,5 @@
+import { CREW } from './util/constant.js';
+
 function checkCourse(i, $courseSelect) {
     if ($courseSelect.options[i].selected === true) {
         console.log($courseSelect.options[i].name)
@@ -22,5 +24,7 @@ export function teamMemberCount() {
     $matchTeamButton.addEventListener('click', function () {
         const $teamMemberCountInput = document.querySelector('#team-member-count-input');
         CREW.TEAMCOUNT = $teamMemberCountInput.value
+
+        console.log($teamMemberCountInput.value)
     })
 }
