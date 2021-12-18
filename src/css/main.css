@@ -1,7 +1,7 @@
 table,
 th,
-tr,
 td {
   border: 1px solid black;
-  padding: 5px 20px;
+  padding: 5px;
+  text-align: center;
 }
