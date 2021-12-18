@@ -20,6 +20,8 @@ export const renderInitHTML = () => {
     </main>
   </div>
   `;
+
+  $('head').insertAdjacentHTML('beforeend', '<link href="./src/css/style.css" rel="stylesheet" type="text/css" />');
 };
 
 export const renderCrewManager = () => {
@@ -33,16 +35,16 @@ export const renderCrewManager = () => {
       <label for="backend">백엔드</label>
     </div>
   </section>
-  <section>
-    <h3>프론트엔드 크루 관리</h3>
+  <section id="add-crew-wrapper">
+    <h3 id="add-crew-title"></h3>
     <form>
       <label>크루 이름</label>
       <input id="crew-name-input" type="text" />
       <button id="add-crew-buttton">확인</button>
     </form>
   </section>
-  <section>
-    <h3>프론트엔드 크루 목록</h3>
+  <section id="crew-list-wrapper">
+    <h3 id="crew-list-title"></h3>
     <table id="crew-table" border="1">
       <thead>
         <tr>
@@ -51,14 +53,8 @@ export const renderCrewManager = () => {
           <th>관리</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>준</td>
-          <td>
-            <button id="delete-crew-buttton">삭제</button>
-          </td>
-        </tr>
+      <tbody id="crew-list">
+        
       </tbody>
     </table>
   </section>
