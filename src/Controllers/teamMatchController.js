@@ -1,3 +1,4 @@
+import { teamMatchModel } from '../Models/teamMatchModel.js';
 import { $, $$ } from '../Utils/common.js';
 import { CLASS, ID, OPTIONS } from '../Utils/constants.js';
 import LocalStorageUtils from '../Utils/localStorageUtils.js';
@@ -99,5 +100,15 @@ export default class TeamMatchController {
     const list = randomList.splice(0, number);
     list.forEach((item) => tempList.push(data[item]));
     return tempList;
+  }
+
+  saveTeamData() {
+    if (!data) data = teamMatchModel;
+    return data[course][mission];
+  }
+
+  checkData(course, mission) {
+    const data = LocalStorageUtils.getItem(LocalStorageUtils.keys.teamMatcher);
+    return data[course][mission];
   }
 }
