@@ -21,3 +21,7 @@ export const ERROR_MESSAGE = {
   NAME_ERROR: '크루의 이름은 공백없이 5자 이하이고 중복이 불가합닌다.',
 };
 export const TABLE_ID = 'table-id';
+export const CREW_TABLE_INDEX = {
+  CREW_INDEX: 0,
+  NAME_INDEX: 1,
+};

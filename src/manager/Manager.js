@@ -15,4 +15,11 @@ export default class Manager {
     }
     return null;
   }
+
+  deleteCrew($nodeToDelete, crewToDelete) {
+    const index = this.crews.findIndex((crew) => crew.index === +crewToDelete.index);
+
+    this.crews[index].renderUpdate($nodeToDelete);
+    this.crews.splice(index, 1);
+  }
 }
