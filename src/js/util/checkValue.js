@@ -47,7 +47,7 @@ export const check = {
     if (crews !== null) {
       numberOfCrew = crews.length;
     }
-    const numberOfPeople = $('#number-of-people-per-team-input').value;
+    const numberOfPeople = $('#team-member-count-input').value;
     return numberOfPeople * 2 > numberOfCrew;
   },
 };

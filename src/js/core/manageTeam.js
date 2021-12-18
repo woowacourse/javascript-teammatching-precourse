@@ -2,7 +2,7 @@ import { $ } from '../util/dom.js';
 import { store } from '../store/store.js';
 import { renderNotExistTeam, renderExistTeam } from '../view/renderTeamTab.js';
 import { check } from '../util/checkValue.js';
-import { ALERT } from '../constants/constants.js';
+import { ALERT, DECIMAL } from '../constants/constants.js';
 
 export const checkExistTeam = e => {
   e.preventDefault();
@@ -33,10 +33,35 @@ export const makeTeamTemplate = e => {
     window.alert(ALERT);
     return;
   }
-  makeTeam(checkcourseTeam(), checkMission());
+  makeRandomTeam(checkcourseTeam(), checkMission(), numberOfPeople);
 };
 
-export const makeTeam = (course, mission) => {};
+export const makeRandomTeam = (course, mission, people) => {
+  const crewList = store.getItem(checkcourseCrew());
+  const teamPeople = parseInt(people, DECIMAL);
+  let crewIndexList = [];
+  for (let i = 0; i < crewList.length; i++) {
+    crewIndexList.push(i);
+  }
+  const shffledcrewIndexList = MissionUtils.Random.shuffle(crewIndexList);
+  const localStorageKey = `${course}-${mission}`;
+  let totalTeam = [];
+  let start = 0;
+  for (let j = 0; j < parseInt(crewList.length / teamPeople, DECIMAL); j++) {
+    let newTeam = [];
+    for (let i = start; i < start + teamPeople; i++) {
+      newTeam.push(crewList[shffledcrewIndexList[i]]);
+    }
+    start += teamPeople;
+    totalTeam.push(newTeam);
+  }
+  let index = 0;
+  for (let i = start; i < crewList.length; i++) {
+    totalTeam[index].push(crewList[shffledcrewIndexList[i]]);
+    index += 1;
+  }
+  store.setItem(localStorageKey, totalTeam);
+};
 
 export const checkcourseTeam = () => {
   let target = $('#course-select');
