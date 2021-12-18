@@ -25,3 +25,11 @@ export function createDeleteBtn(text) {
 
   return button;
 }
+
+export function createLi(element, peopleList) {
+  peopleList.forEach(person => {
+    const li = document.createElement('li');
+    li.innerHTML = person;
+    element.appendChild(li);
+  });
+}

@@ -1,5 +1,6 @@
 import Model from './Model.js';
 import View from './View.js';
+import { checkName } from '../storage/validator.js';
 
 export default class Controller {
   constructor() {
@@ -20,7 +21,7 @@ export default class Controller {
 
   selectFront() {
     this.$frontRadio.addEventListener('click', e => {
-      this.course = 'front';
+      this.course = '프론트엔드';
       this.$renderDiv.style.visibility = 'visible';
       this.view.showList(this.model.FrontPeopleList);
       this.view.showHead(this.course);
@@ -29,7 +30,7 @@ export default class Controller {
 
   selectBack() {
     this.$backRadio.addEventListener('click', e => {
-      this.course = 'back';
+      this.course = '백엔드';
       this.$renderDiv.style.visibility = 'visible';
       this.view.showList(this.model.BackPeopleList);
       console.log(this.course);
@@ -39,26 +40,43 @@ export default class Controller {
 
   addPerson() {
     this.$addBtn.addEventListener('click', e => {
-      console.log(this.ourse);
-      // 이름 검증 함수 필요
+      e.preventDefault();
       const name = this.$nameInput.value;
 
-      if (this.course == 'front') {
-        this.model.addPerson(this.frontAddIndex, name, 'front');
-        this.frontAddIndex += 1;
-        console.log(this.model.FrontPeopleList);
-        this.view.showList(this.model.FrontPeopleList);
-        this.deleteBtn = document.querySelectorAll('.delete-crew-button');
-        this.setDelete();
-      } else if (this.course == 'back') {
-        this.model.addPerson(this.backAddIndex, name, 'back');
-        this.backAddIndex += 1;
-        console.log(this.model.BackPeopleList);
-        this.view.showList(this.model.BackPeopleList);
-        this.deleteBtn = document.querySelectorAll('.delete-crew-button');
-        this.setDelete();
+      if (this.course == '프론트엔드') {
+        this.addFrontendCrew(name);
+      } else if (this.course == '백엔드') {
+        this.addBackendCrew(name);
       }
     });
+  }
+
+  addFrontendCrew(name) {
+    console.log('프론트');
+    if (!checkName(name, this.model.FrontPeopleList)) {
+      return;
+    }
+
+    this.model.addPerson(this.frontAddIndex, name, '프론트엔드');
+    this.frontAddIndex += 1;
+
+    this.view.showList(this.model.FrontPeopleList);
+    this.deleteBtn = document.querySelectorAll('.delete-crew-button');
+    this.setDelete();
+  }
+
+  addBackendCrew(name) {
+    console.log('백');
+    if (!checkName(name, this.model.BackPeopleList)) {
+      return;
+    }
+
+    this.model.addPerson(this.backAddIndex, name, '백엔드');
+    this.backAddIndex += 1;
+
+    this.view.showList(this.model.BackPeopleList);
+    this.deleteBtn = document.querySelectorAll('.delete-crew-button');
+    this.setDelete();
   }
 
   setDelete() {
@@ -73,10 +91,10 @@ export default class Controller {
         console.log('delete');
         this.model.removePerson(idx, this.course);
 
-        if (this.course == 'front') {
+        if (this.course == '프론트엔드') {
           this.view.showList(this.model.FrontPeopleList);
         }
-        if (this.course == 'back') {
+        if (this.course == '백엔드') {
           this.view.showList(this.model.BackPeopleList);
         }
       });

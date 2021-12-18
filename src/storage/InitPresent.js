@@ -29,10 +29,8 @@ export default class InitPresent {
   }
 
   setCrewDiv() {
-    console.log(this.$tabDiv.crewBtn);
     this.$tabDiv.crewBtn.addEventListener('click', e => {
       e.preventDefault();
-      console.log('click');
 
       this.$crewDiv.style.visibility = 'visible';
       this.$crewSection.style.visibility = 'visible';
@@ -43,10 +41,9 @@ export default class InitPresent {
   }
 
   setTeamDiv() {
-    console.log(this.$tabDiv.teamBtn);
     this.$tabDiv.teamBtn.addEventListener('click', e => {
-      console.log('click');
       e.preventDefault();
+
       this.teamCon.addPeopleList(this.crewCon.getPeopleList);
       this.$teamDiv.style.visibility = 'visible';
       this.$crewSection.style.visibility = 'hidden';
