@@ -36,6 +36,7 @@ export default Object.freeze({
         },
         ERROR_MESSAGE: {
             SELECT: '코스와 미션을 선택해야 합니다.',
+            MEMBER_INPUT: '1 팀당 인원은 1명 이상이어야 합니다',
         },
     },
 });
