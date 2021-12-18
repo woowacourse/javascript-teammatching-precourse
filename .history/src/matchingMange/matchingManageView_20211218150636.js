@@ -22,32 +22,31 @@ export default class MatchingManageView {
           <button id="show-team-matcher-button">확인</button>
         </form>
       </section>
-      <section id="matching-section"></section>
     </main>
     `;
     container.insertAdjacentHTML("beforeend", template);
   };
 
-  renderMatchingPage = (course, mission, container) => {
+  renderMatchingPage = () => {
     const template = `
       <section>
-      <h3>${course} ${mission} 미션의 팀 매칭</h3>
+      <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
       <div>
         <div>
           <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
           <form>
             <label>1팀당 인원 수</label>
-            <input type="number" id="team-member-count-input"/>
-            <button id="match-team-button">팀 매칭</button>
+            <input type="number" />
+            <button>팀 매칭</button>
           </form>
         </div>
         <h4>크루 목록</h4>
-        <ul id="crew-list">
+        <ul>
+          <li>준</li>
+          <li>포코</li>
         </ul>
       </div>
     </section>
     `;
-    container.innerHTML = "";
-    container.innerHTML = template;
   };
 }

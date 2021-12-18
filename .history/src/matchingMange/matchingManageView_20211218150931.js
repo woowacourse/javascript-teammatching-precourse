@@ -22,7 +22,6 @@ export default class MatchingManageView {
           <button id="show-team-matcher-button">확인</button>
         </form>
       </section>
-      <section id="matching-section"></section>
     </main>
     `;
     container.insertAdjacentHTML("beforeend", template);
@@ -47,7 +46,6 @@ export default class MatchingManageView {
       </div>
     </section>
     `;
-    container.innerHTML = "";
-    container.innerHTML = template;
+    container.insertAdjacentHTML("beforeend", template);
   };
 }

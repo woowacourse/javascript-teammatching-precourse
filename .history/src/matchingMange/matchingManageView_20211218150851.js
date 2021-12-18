@@ -22,13 +22,12 @@ export default class MatchingManageView {
           <button id="show-team-matcher-button">확인</button>
         </form>
       </section>
-      <section id="matching-section"></section>
     </main>
     `;
     container.insertAdjacentHTML("beforeend", template);
   };
 
-  renderMatchingPage = (course, mission, container) => {
+  renderMatchingPage = (course, mission) => {
     const template = `
       <section>
       <h3>${course} ${mission} 미션의 팀 매칭</h3>
@@ -47,7 +46,5 @@ export default class MatchingManageView {
       </div>
     </section>
     `;
-    container.innerHTML = "";
-    container.innerHTML = template;
   };
 }

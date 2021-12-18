@@ -31,6 +31,6 @@ export default class matchingManageController {
     e.preventDefault();
     const course = this.$courseSelect.options[this.$courseSelect.selectedIndex].text;
     const mission = this.$missionSelect.options[this.$missionSelect.selectedIndex].text;
-    this.view.renderMatchingPage(course, mission, this.$matchingSection);
+    this.view.renderMatchingPage(course, mission, this.$container);
   };
 }

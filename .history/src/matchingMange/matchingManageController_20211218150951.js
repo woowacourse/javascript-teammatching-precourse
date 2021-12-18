@@ -16,7 +16,6 @@ export default class matchingManageController {
     this.$courseSelect = document.getElementById("course-select");
     this.$missionSelect = document.getElementById("mission-select");
     this.$selectForm = document.getElementById("course-select").closest("form");
-    this.$matchingSection = document.getElementById("matching-section");
   };
 
   initPage = () => {
@@ -31,6 +30,6 @@ export default class matchingManageController {
     e.preventDefault();
     const course = this.$courseSelect.options[this.$courseSelect.selectedIndex].text;
     const mission = this.$missionSelect.options[this.$missionSelect.selectedIndex].text;
-    this.view.renderMatchingPage(course, mission, this.$matchingSection);
+    this.view.renderMatchingPage(course, mission, this.$container);
   };
 }
