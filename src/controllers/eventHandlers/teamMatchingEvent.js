@@ -13,3 +13,12 @@ export function clickCourseMissionButton(e) {
   e.preventDefault();
   teamMatchingChoiceView();
 }
+
+export function clickTeamMatching(e) {
+  e.preventDefault();
+  const $teamMemberCountInput = document.getElementById(
+    "team-member-count-input"
+  );
+
+  console.log($teamMemberCountInput.value);
+}

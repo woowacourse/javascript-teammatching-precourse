@@ -8,7 +8,10 @@ import {
   checkedBackendButton,
   clickDeleteCrewButton,
 } from "./eventHandlers/crewManageEvent.js";
-import { clickCourseMissionButton } from "./eventHandlers/teamMatchingEvent.js";
+import {
+  clickCourseMissionButton,
+  clickTeamMatching,
+} from "./eventHandlers/teamMatchingEvent.js";
 
 export function initialEvent() {
   tabEvent();
@@ -51,4 +54,10 @@ export function choiceCourseMission() {
   );
 
   $showTeamMatcherButton.addEventListener("click", clickCourseMissionButton);
+}
+
+export function choicePeopleNumber() {
+  const $matchTeamButton = document.getElementById("match-team-button");
+
+  $matchTeamButton.addEventListener("click", clickTeamMatching);
 }

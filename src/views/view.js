@@ -3,7 +3,10 @@ import {
   FRONT_END_CREW_LIST_KEY,
   BACK_END_CREW_LIST_KEY,
 } from "../constants/constants.js";
-import { deleteCrewButton } from "../controllers/eventController.js";
+import {
+  deleteCrewButton,
+  choicePeopleNumber,
+} from "../controllers/eventController.js";
 
 const $app = document.getElementById("app");
 
@@ -151,8 +154,8 @@ export function teamMatchingChoiceView() {
     </ul>
   </div>
 </section>
-
   `;
+  choicePeopleNumber();
 }
 
 /*
