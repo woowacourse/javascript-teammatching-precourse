@@ -9,13 +9,11 @@ export default class CrewManageController {
   init = () => {
     this.initPage();
     this.initDOMS();
-    this.setEvent();
   };
 
   initDOMS = () => {
     this.$crewNameInput = document.getElementById("crew-name-input");
     this.$addCrewButton = document.getElementById("add-crew-button");
-    this.$crewNameForm = this.$crewNameInput.closest("form");
     this.$crewTableBody = document.getElementById("crew-table-body");
     this.$frontendCourseRadio = document.getElementById("frontend-course");
     this.$backendCourseRadio = document.getElementById("backend-course");
@@ -26,7 +24,7 @@ export default class CrewManageController {
   };
 
   setEvent = () => {
-    this.$crewNameForm.addEventListener("submit", this.setClickAddButtonEvent);
+    this.$addCrewButton.addEventListener("click", this.setClickAddButtonEvent);
   };
 
   setClickAddButtonEvent = (e) => {

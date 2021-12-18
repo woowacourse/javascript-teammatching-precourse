@@ -9,7 +9,6 @@ export default class CrewManageController {
   init = () => {
     this.initPage();
     this.initDOMS();
-    this.setEvent();
   };
 
   initDOMS = () => {
@@ -26,7 +25,7 @@ export default class CrewManageController {
   };
 
   setEvent = () => {
-    this.$crewNameForm.addEventListener("submit", this.setClickAddButtonEvent);
+    this.$addCrewButton.addEventListener("click", this.setClickAddButtonEvent);
   };
 
   setClickAddButtonEvent = (e) => {

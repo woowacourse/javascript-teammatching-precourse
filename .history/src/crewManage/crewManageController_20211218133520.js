@@ -9,7 +9,6 @@ export default class CrewManageController {
   init = () => {
     this.initPage();
     this.initDOMS();
-    this.setEvent();
   };
 
   initDOMS = () => {

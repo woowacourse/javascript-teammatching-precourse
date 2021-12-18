@@ -43,7 +43,13 @@ export default class CrewManageView {
             </tr>
           </thead>
           <tbody id="crew-table-body">
-
+            <tr>
+              <td>1</td>
+              <td>준</td>
+              <td>
+                <button id="delete-crew-buttton">삭제</button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </section>
