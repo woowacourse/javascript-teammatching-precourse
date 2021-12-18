@@ -1,3 +1,4 @@
+import Crew from "../Model/Crew.js";
 import TeamManageTemplate from "./TeamManageTemplate.js";
 
 export default class TeamManage {
@@ -5,6 +6,7 @@ export default class TeamManage {
     this.template = TeamManageTemplate();
     this.mainScreen = document.createElement("main");
     this.mainScreen.innerHTML = this.template;
+    this.crew = new Crew();
     this.kindOfCrew = 0;
     document.getElementById("app").append(this.mainScreen);
     document.getElementById("not-match").style.visibility = "hidden";
@@ -25,6 +27,7 @@ export default class TeamManage {
     this.setMission(missionValue);
     this.changeTitle();
     document.getElementById("not-match").style.visibility = "visible";
+    this.makeCrewList();
   }
 
   setCourse(courseValue) {
@@ -56,6 +59,17 @@ export default class TeamManage {
     document.getElementById(
       "match-title"
     ).innerHTML = `${this.course} ${this.mission} 조회`;
+  }
+
+  makeCrewList() {
+    const crewMembersList = document.getElementById("crew_list");
+    crewMembersList.innerHTML = "";
+    const crewMembers = this.crew.getCrew(this.kindOfCrew);
+    crewMembers.forEach((name) => {
+      const crewRow = document.createElement("li");
+      crewRow.innerHTML = name;
+      crewMembersList.append(crewRow);
+    });
   }
 
   tabSection() {

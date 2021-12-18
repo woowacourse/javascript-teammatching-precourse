@@ -32,7 +32,7 @@ export default function TeamManageTemplate() {
           </form>
         </div>
         <h4>크루 목록</h4>
-        <ul>
+        <ul id="crew_list">
           <li>준</li>
           <li>포코</li>
         </ul>
