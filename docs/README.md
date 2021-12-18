@@ -77,7 +77,7 @@ ex) <option value="frontend">프론트엔드</option>
 ex) <option value="baseball">숫자야구게임</option>
 ```
 
-## [ ] ${코스} ${미션}의 팀 매칭 화면
+## [✅] ${코스} ${미션}의 팀 매칭 화면
 
 - 팀 매칭을 위한 인원 입력 요소의 id는 `team-member-count-input`이다.
 - 팀 매칭을 위한 버튼의 id는 `match-team-button`이다.

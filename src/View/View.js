@@ -1,6 +1,6 @@
 import Tab from "./template/Tab.js";
 import { crewManage, addCrew, crewTable } from "./template/CrewManage.js";
-import { teamMatch } from "./template/TeamMatch.js";
+import { teamMatch, teamMatchForm } from "./template/TeamMatch.js";
 import { ID } from "../constant/constant.js";
 
 export default class View {
@@ -83,13 +83,33 @@ export default class View {
   }
 
   //team
-  displayTeamManage() {
+  displayTeamManage(crew) {
     document.getElementById(ID.TEAM_TAB).addEventListener("click", () => {
       if (!this.teamManage) {
         this.teamManage = document.createElement("section");
         this.teamManage.innerHTML = teamMatch;
       }
       this.resetMain(this.teamManage);
+      this.displayTeamForm(crew);
+    });
+  }
+
+  displayTeamForm(crews) {
+    this.main.addEventListener("click", (event) => {
+      if (event.target.id === ID.SHOW_TEAM_MATCHER) {
+        if (!this.teamManageForm) {
+          this.teamManageForm = document.createElement("section");
+        }
+        let crew = crews.front;
+        if (document.getElementById(ID.COURSE_SELECT).value === "backend")
+          crew = crews.back;
+        this.teamManageForm.innerHTML = teamMatchForm(
+          document.getElementById(ID.COURSE_SELECT).value,
+          document.getElementById(ID.MISSION_SELECT).value,
+          crew
+        );
+        this.main.append(this.teamManageForm);
+      }
     });
   }
 }

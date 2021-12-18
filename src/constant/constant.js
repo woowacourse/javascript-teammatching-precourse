@@ -10,6 +10,8 @@ const ID = {
   COURSE_SELECT: "course-select",
   MISSION_SELECT: "mission-select",
   SHOW_TEAM_MATCHER: "show-team-matcher-button",
+  TEAM_INPUT: "team-member-count-input",
+  TEAM_MATCH_BUTTON: "match-team-button",
 };
 
 const TEXT = {
