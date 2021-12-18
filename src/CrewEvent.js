@@ -21,15 +21,10 @@ export default class CrewEvent {
                 if(this.getCourse() === "frontend") {
                     this.storeFrontCrew(name, this.getCourse());
                     CrewView.showFrontTable();
-                    console.log(name);
-                }
-                if(this.getCourse() === "backend") {
+                } else if(this.getCourse() === "backend") {
                     this.storeBackCrew(name, this.getCourse());
                     CrewView.showBackTable();
-                }
-
-                
-                
+                }    
             } else {
                 alert("유효하지 않은 입력입니다!"); // 상수로 변경
             } 
@@ -105,29 +100,29 @@ export default class CrewEvent {
 
     static addRadioEvent() {
         document.addEventListener('click', (e) => {
+            e.preventDefault();
             const targetId = e.target.id;
       
             if(targetId === 'frontend-course') {
                 document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
-                // this.addCrewEvent();
 
                 if(localStorage.getItem("CrewFront") !== null){
                     CrewView.showFrontTable();
-                }
+                    // this.addCrewEvent();
+                } 
+                this.addCrewEvent();
             }
 
 
 
             if(targetId === 'backend-course') {
                 document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
-                // this.addCrewEvent();
 
                 if(localStorage.getItem("CrewBack") !== null){
                     CrewView.showBackTable();
-                }
+                } 
+                this.addCrewEvent();
             }
-
-            // this.addCrewEvent();
         });
     }
     

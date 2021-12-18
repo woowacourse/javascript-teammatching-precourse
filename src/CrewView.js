@@ -12,7 +12,7 @@ export default class CrewView {
     }
 
     static showFrontTable() {
-        CrewEvent.addCrewEvent();
+        // CrewEvent.addCrewEvent();
         const crewFront = JSON.parse(localStorage.getItem("CrewFront"));
 
             document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
@@ -27,13 +27,12 @@ export default class CrewView {
             </td>
             </tr>`
               )
-              .join('')}`;
-
-        
+              .join('')}`;  
     }
 
     static showBackTable() {
-        CrewEvent.addCrewEvent();
+        // CrewEvent.addCrewEvent();
+        console.log("asd");
         const crewBack = JSON.parse(localStorage.getItem("CrewBack"));
 
         document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
