@@ -46,21 +46,27 @@ export default class CrewTab extends Component {
 
   mounted() {
     const {
-      $state: { checkedCrewCourse },
+      $state: { checkedCrewCourse, frontends, backends },
       setChangeCourse,
       getCourseName,
+      getCurrentCrews,
     } = this;
     const [$selectCourse, $crewManage, $crewList] =
       document.querySelectorAll("section");
 
     const courseName = getCourseName(checkedCrewCourse);
+    const currentCrews = getCurrentCrews(
+      checkedCrewCourse,
+      frontends,
+      backends
+    );
 
     new SelectCourse($selectCourse, {
       checkedCrewCourse,
       setChangeCourse: setChangeCourse.bind(this),
     });
 
-    new CrewManage($crewManage, { courseName });
+    new CrewManage($crewManage, { courseName, currentCrews });
   }
 
   setChangeCourse(newCourse) {
@@ -72,5 +78,10 @@ export default class CrewTab extends Component {
   getCourseName(course) {
     if (course === "frontend") return "프론트엔드";
     if (course === "backend") return "백엔드";
+  }
+
+  getCurrentCrews(course, frontends, backends) {
+    if (course === "frontend") return frontends;
+    if (course === "backend") return backends;
   }
 }

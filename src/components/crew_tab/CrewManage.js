@@ -1,5 +1,7 @@
 import Component from "../../core/Component.js";
 
+import { isValidCrewName } from "../../utils/validation.js";
+
 export default class CrewManage extends Component {
   setup() {
     console.log("CrewManage", this);
@@ -24,8 +26,11 @@ export default class CrewManage extends Component {
 
   onSubmitHandler(e) {
     e.preventDefault();
+    const { currentCrews } = this.$props;
+    const crewName = e.target[0].value.trim();
 
-    const name = e.target[0].value;
-    console.log(name);
+    if (isValidCrewName(crewName, currentCrews)) {
+      console.log("correct");
+    }
   }
 }
