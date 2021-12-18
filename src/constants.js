@@ -1,3 +1,8 @@
+export const FRONT_END = '프론트엔드';
+export const BACK_END = '백엔드';
+export const FRONT_END_COURSE = 'frontend-course';
+export const BACK_END_COURSE = 'backend-course';
+
 export const SELECTOR = Object.freeze({
   teamMatchingAppId: 'app',
   // 탭
@@ -7,8 +12,8 @@ export const SELECTOR = Object.freeze({
 
   // 크루 관리 탭
   courseSelectContainer: 'course-select-container',
-  frontendCourseRadioInputId: 'frontend-course',
-  backendCourseRadioInputId: 'backend-course',
+  frontendCourseRadioInputId: FRONT_END_COURSE,
+  backendCourseRadioInputId: BACK_END_COURSE,
 
   crewManageFormContainer: 'crew-manage-container',
   crewNameInputId: 'crew-name-input',
@@ -34,7 +39,6 @@ export const STORAGE_KEY = Object.freeze({
 
   // 크루 관리
   crewCourse: 'crew-course',
+  crewFrontEndMember: 'crew-front-end-member',
+  crewBackEndMember: 'crew-back-end-member',
 });
-
-export const FRONT_END = '프론트엔드';
-export const BACK_END = '백엔드';

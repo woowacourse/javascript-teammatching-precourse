@@ -16,8 +16,8 @@ class CrewManageTabView {
     $(`#${SELECTOR.crewManageFormContainer}`).innerHTML = createCrewCreateForm(course);
   }
 
-  renderCrewManageTable(course) {
-    $(`#${SELECTOR.crewTableContainer}`).innerHTML = createCrewTable(course);
+  renderCrewManageTable(course, crewMembers) {
+    $(`#${SELECTOR.crewTableContainer}`).innerHTML = createCrewTable(course, crewMembers);
   }
 }
 

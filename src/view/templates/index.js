@@ -47,7 +47,23 @@ export const createCrewCreateForm = course => `
   </section>
 `;
 
-export const createCrewTable = course => `
+export const createCrewTableBodyWithData = crewMembers => `
+	${crewMembers
+    .map(
+      (crewMember, index) => `
+		<tr>
+			<td>${index + 1}</td>
+			<td>${crewMember.name}</td>
+			<td>
+				<button id="${SELECTOR.deleteCrewButttonId}">삭제</button>
+			</td>
+		</tr>
+		`,
+    )
+    .join('')}
+`;
+
+export const createCrewTable = (course, crewMembers) => `
 	<h3>${course} 크루 목록</h3>
 	<table id="${SELECTOR.crewTableId}" border="1">
 		<thead>
@@ -58,13 +74,7 @@ export const createCrewTable = course => `
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>준</td>
-				<td>
-					<button id="${SELECTOR.deleteCrewButttonId}">삭제</button>
-				</td>
-			</tr>
+			${createCrewTableBodyWithData(crewMembers)}
 		</tbody>
 	</table>
 `;
