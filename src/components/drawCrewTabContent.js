@@ -40,14 +40,14 @@ function drawCrewManageSelction(e) {
   const sectionForm = document.createElement('form');
   const label = labelElemntCreate({ "text": "크루이름" });
   const crewNameInput = inputElementCreate({ "id": "crew-name-input", "type": "text" });
-  const crewNameButton = buttonIdElementCreate({ "id": "add-crew-button", "text": "확인" });
+  const crewNameButton = buttonIdElementCreate({ "id": "add-crew-buttton", "text": "확인" });
   sectionForm.append(label,crewNameInput,crewNameButton);
   section.append(sectionTitle, sectionForm);
   $('main').appendChild(section);
   const nextSection = document.createElement('section');
   nextSection.id = 'crew-member-table';
   $('main').appendChild(nextSection);
-  $('#add-crew-button').addEventListener('click', function () { drawCrewTableSelection(course); });
+  $('#add-crew-buttton').addEventListener('click', function () { drawCrewTableSelection(course); });
 }
 function addCrewNameToList(mode, name) {
   let crew = (mode === "프론트엔드") ? frontEndCrew : backEndCrew;
@@ -69,6 +69,7 @@ function drawCrewTableSelection(course) {
 }
 function crewTableBasic(course) {
   const table = document.createElement('table');
+  table.setAttribute('id', 'crew-table');
   const thead = theadElementCreate(['', '크루', '관리']);
   const tbody = document.createElement('tbody');
   const crew = (course === "프론트엔드") ? frontEndCrew : backEndCrew;
