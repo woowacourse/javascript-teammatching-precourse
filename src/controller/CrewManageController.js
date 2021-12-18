@@ -21,27 +21,32 @@ class CrewManageController {
   triggerCourseInputRadioClickEvent() {
     $id(ID.FRONTEND_COURSE).addEventListener('click', (e) => {
       const course = e.target.value;
-      const tabMenu = this.model.getLocalStorage();
-      tabMenu['crewManageMenu']['currentCourse'] = course;
-      this.model.setLocalStorage(tabMenu);
+      this.changeTabMenuLocalStorage(course);
 
       const crewList = this.model.getCrewListInCrewMenu();
       this.view.showCrewManageScreen(crewList, course);
-      this.triggerCrewNameAddFormSubmitEvent();
-      this.triggerDeleteCrewNameEvent();
+      this.initCrewManageEventListener();
     });
 
     $id(ID.BACKEND_COURSE).addEventListener('click', (e) => {
       const course = e.target.value;
-      const tabMenu = this.model.getLocalStorage();
-      tabMenu['crewManageMenu']['currentCourse'] = course;
-      this.model.setLocalStorage(tabMenu);
+      this.changeTabMenuLocalStorage(course);
 
       const crewList = this.model.getCrewListInCrewMenu();
       this.view.showCrewManageScreen(crewList, course);
-      this.triggerCrewNameAddFormSubmitEvent();
-      this.triggerDeleteCrewNameEvent();
+      this.initCrewManageEventListener();
     });
+  }
+
+  initCrewManageEventListener() {
+    this.triggerCrewNameAddFormSubmitEvent();
+    this.triggerDeleteCrewNameEvent();
+  }
+
+  changeTabMenuLocalStorage(course) {
+    const tabMenu = this.model.getLocalStorage();
+    tabMenu['crewManageMenu']['currentCourse'] = course;
+    this.model.setLocalStorage(tabMenu);
   }
 
   triggerCrewNameAddFormSubmitEvent() {
