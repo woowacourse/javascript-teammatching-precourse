@@ -44,7 +44,8 @@ export default class CrewManageController {
       const name = this.$crewNameInput.value;
       const selectedState = this.checkRadioState();
       this.model.addCrew(selectedState, name);
-      this.renderCrews(selectedState, this.model.getElementById(selectedState));
+      const crews = this.model.getCrewsById(selectedState);
+      this.view.renderCrewsTable(crews, this.$crewTableBody);
     } catch (err) {
       alert(err);
     }
@@ -63,11 +64,7 @@ export default class CrewManageController {
   setChangeRadioEvent = () => {
     const selectedState = this.checkRadioState();
     this.renderCoursePage(selectedState);
-  };
-
-  renderCrews = (id, crews) => {
-    const crews = this.model.getCrewsById(id);
-    this.view.renderCrewsTable(crews, this.$crewTableBody);
+    this.renderCoursePage(selectedState);
   };
 
   renderCoursePage = (id) => {

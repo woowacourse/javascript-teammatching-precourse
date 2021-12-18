@@ -66,7 +66,7 @@ export default class CrewManageController {
   };
 
   renderCrews = (id, crews) => {
-    const crews = this.model.getCrewsById(id);
+    const crews = this.model.getCrewsById(selectedState);
     this.view.renderCrewsTable(crews, this.$crewTableBody);
   };
 
