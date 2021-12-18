@@ -133,14 +133,16 @@ export const createTeamMemberCountForm = (course, mission, crewMembers) => `
 `;
 
 const createMatchingResults = matchResults => `
-	${matchResults.map(
-    result => `
+	${matchResults
+    .map(
+      result => `
 			<li>${result.map(member => {
         if (!member) return '';
         return member.name;
       })}</li>
 		`,
-  )}
+    )
+    .join('')}
 `;
 
 export const createTeamMatchingResult = (course, mission, matchResults) => `
