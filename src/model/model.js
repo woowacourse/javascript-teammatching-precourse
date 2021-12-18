@@ -33,11 +33,9 @@ export default class Model {
   }
 
   removeTeams(type, mission) {
-    console.log(type, mission);
     this.teams = this.teams.filter(
       (team) => team.type !== type || team.mission !== mission
     );
-    console.log(this.teams);
   }
 
   teamMatch(type, mission, number) {
