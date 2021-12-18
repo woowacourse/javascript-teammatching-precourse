@@ -5,7 +5,6 @@ import { renderCrew } from '../manageCrew/renderCrew.js';
 
 export const changeTab = (e, state) => {
   const tab = e.target.innerText;
-  console.log('tab: ', tab);
 
   if (tab === TABS.CREW_TAB) {
     renderRadioButtons();
