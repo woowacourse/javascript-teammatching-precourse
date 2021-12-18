@@ -79,8 +79,8 @@ ex) <option value="baseball">숫자야구게임</option>
 
 ### 팀 매칭을 관리할 코스, 미션 선택하기
 
-- [ ] 관리할 코스를 select로 선택할 수 있다.
-- [ ] 관리할 미션을 select로 선택할 수 있다.
+- [x] 관리할 코스를 select로 선택할 수 있다.
+- [x] 관리할 미션을 select로 선택할 수 있다.
 
 
 
