@@ -23,4 +23,9 @@ export default class ManageCrewView {
   showChooseCrew() {
     showElement(document.querySelector("#choose-crew"));
   }
+
+  showCrewList(course) {
+    showElement(document.querySelector("#crew-name"));
+    showElement(document.querySelector("#crew-list"));
+  }
 }

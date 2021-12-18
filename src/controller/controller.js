@@ -15,6 +15,18 @@ export default class Controller {
     const $crewManageBtn = document.querySelector("#crew-tab");
     $crewManageBtn.addEventListener("click", () => {
       this.manageCrewView.showChooseCrew();
+      this.onClickCourseRadio();
+    });
+  }
+
+  onClickCourseRadio() {
+    const $frontend = document.querySelector('input[value="frontend"]');
+    const $backend = document.querySelector('input[value="backend"]');
+    $frontend.addEventListener("click", () => {
+      this.manageCrewView.showCrewList("frontend");
+    });
+    $backend.addEventListener("click", () => {
+      this.manageCrewView.showCrewList("backend");
     });
   }
 }
