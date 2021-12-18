@@ -1,4 +1,4 @@
-import { $ } from '../utils/DOM.js';
+import { $, siblings } from '../utils/DOM.js';
 import { CREW_HEAD, CREW_TEMPLATE, getCrewList, getCrewRow } from '../utils/template.js';
 
 export class CrewView {
@@ -25,6 +25,17 @@ export class CrewView {
     });
   }
 
+  setOnCrewDeleteButtonClick(fn, course) {
+    this.$crewTableBody.addEventListener('click', (e) => {
+      const $deleteButton = e.target.closest('#delete-crew-button');
+      const $deleteButtonSiblings = siblings($deleteButton.parentNode);
+      const crewName = $deleteButtonSiblings[1].innerText;
+      if (window.confirm('정말 삭제하시겠습니까?')) {
+        fn(crewName, course);
+      }
+    });
+  }
+
   showCourse(course, crewList) {
     this.$crewMain.innerHTML += getCrewList(course);
     this.$crewTable = $('#crew-table');
@@ -33,11 +44,13 @@ export class CrewView {
   }
 
   showCrewList(crewList) {
-    if (crewList.length !== 0) {
-      let crewTableBody = '';
-      crewList.map((crew, index) => (crewTableBody += getCrewRow(index + 1, crew)));
-      this.$crewTableBody.innerHTML = crewTableBody;
+    if (crewList.length === 0) {
+      this.$crewTableBody.innerHTML = '';
+      return;
     }
+    let crewTableBody = '';
+    crewList.map((crew, index) => (crewTableBody += getCrewRow(index + 1, crew)));
+    this.$crewTableBody.innerHTML = crewTableBody;
   }
 
   addElements() {

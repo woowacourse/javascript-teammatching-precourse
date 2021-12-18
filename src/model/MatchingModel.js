@@ -10,4 +10,15 @@ export class MatchingModel {
     this.backsEndCrewList.push(crewName);
     return this.backEndCrewList;
   }
+
+  deleteCrewList(crewName, course) {
+    if (course === 'frontend') {
+      const index = this.frontEndCrewList.indexOf(crewName);
+      this.frontEndCrewList.splice(index, 1);
+      return this.frontEndCrewList;
+    }
+    const index = this.backsEndCrewList.indexOf(crewName);
+    this.backsEndCrewList.splice(index, 1);
+    return this.backEndCrewList;
+  }
 }
