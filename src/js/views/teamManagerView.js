@@ -6,7 +6,6 @@ export const renderExistTeam = (course, mission) => {
     <h3>${course} ${mission} 조회</h3>
     <p>팀이 매칭되었습니다.</p>
     <ul>
-      <li>준,포코</li>
     </ul>
     <p>
       팀을 재매칭 하시겠습니까?

@@ -1,4 +1,5 @@
 import { backTeam, frontTeam } from '../../../data.js';
+import { ERROR } from '../utils/constants.js';
 import { findTeam, matchTeam, getSelectCourse, getSelectMission } from '../models/teamManagerModel.js';
 import { renderExistTeam, renderMatchTeam, resetMeberCountInput } from '../views/teamManagerView.js';
 import alertError from '../views/alertError.js';
@@ -31,10 +32,10 @@ export default function HandleTeamManager() {
 
   const isValidMemberCount = memberCount => {
     if (memberCount === '') {
-      return alertError('인원수를 입력하지 않았습니다. 다시 입력하세요.');
+      return alertError(ERROR.NOT_INPUT_MEMBER_COUNT);
     }
     if (Number(memberCount) < 1) {
-      return alertError('인원수는 최소 1명 이상을 입력해야합니다. 다시 입력하세요.');
+      return alertError(ERROR.INPUT_MEMBER_COUNT_LEAST_ONE);
     }
     return true;
   };

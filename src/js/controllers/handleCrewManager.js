@@ -1,5 +1,6 @@
 import $ from '../utils/dom.js';
 import store from '../utils/store.js';
+import { ERROR, CONFIRM } from '../utils/constants.js';
 import { Crew, deleteCrew } from '../models/crewManagerModel.js';
 import { renderFrontManager, renderBackManager, resetCrewInput, renderFrontCrew, renderBackCrew } from '../views/crewManagerView.js';
 import alertError from '../views/alertError.js';
@@ -34,13 +35,13 @@ export default function HandleCrewManager() {
 
   const isValidName = crewName => {
     if (crewName === '') {
-      return alertError('크루명을 입력하지 않았습니다. 다시 입력하세요.');
+      return alertError(ERROR.INPUT_BLANK);
     }
     if (isDuplicate(crewName)) {
-      return alertError('동일한 이름의 크루가 있습니다. 다시 입력하세요.');
+      return alertError(ERROR.SAME_NAME_EXISTS);
     }
     if (isOverFive(crewName)) {
-      return alertError('이름은 5자를 초과할 수 없습니다. 다시 입력하세요.');
+      return alertError(ERROR.NAME_CANT_OVER_FIVE_LENGTH);
     }
     return true;
   };
@@ -78,7 +79,7 @@ export default function HandleCrewManager() {
   });
 
   $('#crew-list').addEventListener('click', e => {
-    if (e.target.id === 'delete-crew-buttton' && confirm('정말 삭제하시겠습니까?')) {
+    if (e.target.id === 'delete-crew-buttton' && confirm(CONFIRM.REALLY_DELETE)) {
       deleteCrew(e, this.course);
     }
     if (this.course === 'front') {
