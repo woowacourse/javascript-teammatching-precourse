@@ -14,11 +14,19 @@ const DOMUtils = {
     $(UT.changeIdToComponent(id)).style.display = 'block';
   },
 
-  showModuleComponent: (id, courseType) => {
+  showCourseManageComponent: (id, courseType) => {
     $(id).style.display = 'block';
 
     $('#crew-manage-title').innerHTML = `${courseType} 크루 관리`;
     $('#crew-list-title').innerHTML = `${courseType} 크루 목록`;
+  },
+
+  showMatchedComponent: id => {
+    Array.from($('#case-mached-component').children).forEach(
+      component => (component.style.display = 'none'),
+    );
+
+    $(id).style.display = 'block';
   },
 
   getCourseType: () => {

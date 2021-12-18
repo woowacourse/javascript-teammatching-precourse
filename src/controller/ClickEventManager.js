@@ -17,7 +17,7 @@ export default class ClickEventManager {
   }
 
   frontendRadioButton() {
-    DOM.showModuleComponent('#crew-manager-component', '프론트엔드');
+    DOM.showCourseManageComponent('#crew-manager-component', '프론트엔드');
 
     $('#frontend-course').setAttribute('checked', 'checked');
     $('#backend-course').removeAttribute('checked');
@@ -26,7 +26,7 @@ export default class ClickEventManager {
   }
 
   backendRadioButton() {
-    DOM.showModuleComponent('#crew-manager-component', '백엔드');
+    DOM.showCourseManageComponent('#crew-manager-component', '백엔드');
 
     $('#backend-course').setAttribute('checked', 'checked');
     $('#frontend-course').removeAttribute('checked');
@@ -63,11 +63,9 @@ export default class ClickEventManager {
 
     const hasCrew = DB.load(`${courseType}Mission`)[missionType].length;
 
-    if (hasCrew) {
-      console.log('있지롱');
-    } else {
-      console.log('없지롱');
-    }
+    hasCrew
+      ? DOM.showMatchedComponent('#ok-mached-component')
+      : DOM.showMatchedComponent('#not-mached-component');
   }
 
   onClick(event) {
