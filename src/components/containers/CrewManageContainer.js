@@ -1,5 +1,6 @@
 import { STORAGE_KEY } from '../../utils/constants.js';
-import { getLocalStorage } from '../../utils/LocalStorage.js';
+import { getLocalStorage, setLocalStorage } from '../../utils/LocalStorage.js';
+import { isValidCrewName } from '../../utils/validation.js';
 import Component from '../core/Component.js';
 
 export default class CrewManageContainer extends Component {
@@ -8,6 +9,8 @@ export default class CrewManageContainer extends Component {
       crews: getLocalStorage(STORAGE_KEY.CREW, {}),
       selected: ''
     };
+
+    console.log(this.$state);
   }
 
   template() {
@@ -41,7 +44,7 @@ export default class CrewManageContainer extends Component {
 
   printCrewManageSection() {
     return `
-    <h3>프론트엔드 크루 관리</h3>
+    <h3>${this.$state.selected === 'frontend' ? '프론트엔드' : '백엔드'} 크루 관리</h3>
     <form id="add-crew-form">
       <label>크루 이름</label>
       <input type="text" id="crew-name-input" />
@@ -63,7 +66,19 @@ export default class CrewManageContainer extends Component {
       event.preventDefault();
 
       const name = this.$target.querySelector('#crew-name-input').value;
-      console.log(name);
+      const course = this.$state.selected;
+      if (isValidCrewName(name, course)) {
+        this.setState({
+          crews: Object.assign(this.$state.crews, {
+            [course]: this.$state.crews[course] ? [...this.$state.crews[course], name] : [name]
+          })
+        });
+        this.saveCrewsInStroage();
+      }
     });
+  }
+
+  saveCrewsInStroage() {
+    setLocalStorage(STORAGE_KEY.CREW, this.$state.crews);
   }
 }
