@@ -13,12 +13,12 @@ function tabMove($selectedContent) {
 export function useTabButton(e) {
     let $selectedContent = '';
     if (e.target.id === 'crew-tab') {
-        $selectedContent = document.querySelector('#crew-tab-content');
+        $selectedContent = document.querySelector('#crew-tab-select-course');
         tabMove($selectedContent);
     }
     if (e.target.id === 'team-tab') {
         console.log('클릭')
-        $selectedContent = document.querySelector('#team-tab-content');
+        $selectedContent = document.querySelector('#team-tab-select-mission');
         tabMove($selectedContent);
     }
 }
