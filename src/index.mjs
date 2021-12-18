@@ -1,14 +1,15 @@
-import { renderHeader } from './view/component/index.mjs';
 import {
+  renderHeader,
   renderCourseChoice,
   renderInputCrewNameAndList
 } from './view/index.mjs';
 
-import { valueToString } from './util/valueToString.mjs';
 import {
+  valueToString,
   setLogetCourseFrontEndOrBackEndcalStorage,
-  getCourseFrontEndOrBackEnd
-} from './util/localStorage.mjs';
+  getCourseFrontEndOrBackEnd,
+  validateName
+} from './util/index.mjs';
 
 import FrontEnd from './model/FrontEnd.mjs';
 import BackEnd from './model/BackEnd.mjs';
@@ -30,6 +31,7 @@ window.addEventListener('click', e => {
 window.addEventListener('click', e => {
   if (e.target.type !== 'radio') return;
   const frontEndOrBackEndString = valueToString(e.target.value);
+
   renderInputCrewNameAndList(frontEndOrBackEndString);
   setLogetCourseFrontEndOrBackEndcalStorage(e.target.value);
 });
@@ -38,10 +40,12 @@ window.addEventListener('click', e => {
 // 현재 선택한 코스가 어디인지 파악 후 해당 코스에 이름을 추가한다.
 window.addEventListener('click', e => {
   e.preventDefault();
+
   if (e.target !== document.querySelector('#add-crew-button')) return;
   const crewNameInput = document.querySelector('#crew-name-input').value;
   const curCourse = getCourseFrontEndOrBackEnd();
   const frontEndOrBackEndString = valueToString(curCourse);
+  if (!validateName(crewNameInput)) return;
 
   if (curCourse === 'frontend') FE.getCrew(crewNameInput);
   if (curCourse === 'backend') BE.getCrew(crewNameInput);
