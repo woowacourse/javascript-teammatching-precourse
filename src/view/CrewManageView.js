@@ -1,6 +1,7 @@
 import { clearTextContent } from "../controller/utils.js";
 import { COURSE } from "../constant/teammatching.js";
 import Crew from "../model/Crew.js";
+import { checkValidCrewName } from "../controller/checkCrewName.js";
 
 export default class CrewManageView {
   constructor(container) {
@@ -35,34 +36,52 @@ export default class CrewManageView {
       .forEach(radioInput => radioInput.addEventListener("click", e => this.handleSelectCourse(e)));
   }
 
+  bindInsertCrewClickEvent() {
+    document
+      .getElementById("crew-name-form")
+      .addEventListener("submit", e => this.handleInsertCrew(e));
+  }
+
   handleSelectCourse(e) {
-    const courseToSelect = e.target.value;
-    this.renderCrewAddFormCrewList(courseToSelect);
-    // 추가 이벤트 바인딩, 삭제이벤트
+    this.courseToSelect = e.target.value;
+    this.renderCrewAddFormCrewList(this.courseToSelect);
+    this.bindInsertCrewClickEvent();
+  }
+
+  handleInsertCrew(e) {
+    e.preventDefault();
+    const crewNameToInput = document.getElementById("crew-name-input").value;
+    if (!checkValidCrewName(crewNameToInput, this.courseToSelect)) {
+      return false;
+    }
+    Crew.insertCrew(this.courseToSelect, crewNameToInput);
+    this.renderCrewAddFormCrewList();
+    this.bindInsertCrewClickEvent();
   }
 
   renderCrewAddFormCrewList(course) {
     clearTextContent(this.subContainer);
-    this.subContainer.innerHTML = this.crewAddFormTemplate(course) + this.crewListTemplate(course);
+    const courseName = course === "frontend" ? COURSE.FRONTEND.KOREAN : COURSE.BACKEND.KOREAN;
+    this.subContainer.innerHTML =
+      this.crewAddFormTemplate(courseName) + this.crewListTemplate(courseName);
   }
 
   crewAddFormTemplate(course) {
-    const courseName = course === "frontend" ? COURSE.FRONTEND.KOREAN : COURSE.BACKEND.KOREAN;
     return `
-      <h3>${courseName} 크루 관리</h3>
-      <form>
+      <h3>${course} 크루 관리</h3>
+      <form id="crew-name-form">
         <label>크루 이름</label>
-        <input type="text" id="crew-name-input "/>
+        <input type="text" id="crew-name-input"/>
         <button id="add-crew-button">확인</button>
       </form>
     `;
   }
 
   crewListTemplate(course) {
-    const currentCrewList = Crew.getCurrentCrewList(course);
+    const currentCrewList = Crew.getCurrentCrewList(this.courseToSelect);
     return `
     <section>
-      <h3>프론트엔드 크루 목록</h3>
+      <h3>${course} 크루 목록</h3>
       <table border="1" class="crew-table">
         <thead>
           <tr>
