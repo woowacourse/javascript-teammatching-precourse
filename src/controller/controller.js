@@ -48,9 +48,32 @@ export default class Controller {
       this.crewModel.addCrew(type, name);
       if (type === "frontend") {
         this.manageCrewView.reloadTable(this.crewModel.frontCrew);
+        this.onClickDelete(type);
         return;
       }
       this.manageCrewView.reloadTable(this.crewModel.backCrew);
+      this.onClickDelete(type);
+    });
+  }
+
+  // 크루 관리 탭 - 크루 삭제 버튼 클릭
+  onClickDelete(type) {
+    document.querySelectorAll("#delete-crew-buttton").forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        const name = e.target.parentNode.parentNode.children[1].innerHTML;
+        const result = window.confirm("정말 삭제하시겠습니까?");
+
+        if (type === "frontend" && result) {
+          this.crewModel.deleteCrew(type, name);
+          this.manageCrewView.reloadTable(this.crewModel.frontCrew);
+          return;
+        }
+        if (result) {
+          this.crewModel.deleteCrew(type, name);
+          this.manageCrewView.reloadTable(this.crewModel.backCrew);
+        }
+      });
     });
   }
 
