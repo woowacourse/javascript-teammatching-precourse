@@ -36,7 +36,10 @@ MatchingManageView.onSubmitMissionAndCourse = function () {
 };
 
 MatchingManageView.onSubmitMinCrewCount = function () {
-  this.emit('@submitMinCrewCount', { count: this.child('#team-member-count-input').value });
+  this.emit('@submitMinCrewCount', {
+    count: this.child('#team-member-count-input').value,
+    course: COURSE[this.course],
+  });
 };
 
 MatchingManageView.setMission = function (mission) {

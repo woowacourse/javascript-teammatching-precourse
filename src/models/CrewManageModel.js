@@ -1,3 +1,4 @@
+import CourseModel from './CourseModel.js';
 const initCrews = () => {
   return JSON.parse(localStorage.getItem('crews'))
     ? JSON.parse(localStorage.getItem('crews'))
@@ -34,5 +35,18 @@ export default {
   setMinCrewLength(count) {
     this.minCrewLength = count;
   },
-  match() {},
+  match(course) {
+    const shuffledCrewsIndex = getShuffledCrewsIndex(this.crews[course].length);
+    const teamsCount = parseInt(this.crews[course].length / this.minCrewLength);
+    const teams = Array.from(Array(teamsCount), () => []);
+    while (shuffledCrewsIndex.length) {
+      teams.forEach((team) => team.push(this.crews[course][shuffledCrewsIndex.shift()]));
+    }
+    return teams;
+  },
+};
+
+const getShuffledCrewsIndex = (length) => {
+  const crewsAsIndex = Array.from({ length }, (undefined, i) => i);
+  return MissionUtils.Random.shuffle(crewsAsIndex);
 };
