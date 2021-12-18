@@ -7,10 +7,8 @@ export default class TeamMatching {
   }
 
   init = () => {
-    this.initPage();
     this.initComponents();
     this.renderCrewManagePage();
-    this.setEvent();
   };
 
   initPage = () => {
@@ -29,7 +27,6 @@ export default class TeamMatching {
       </nav>
     </header>
     `;
-    this.$container.insertAdjacentHTML("beforeend", template);
   };
 
   initComponents = () => {
@@ -51,16 +48,9 @@ export default class TeamMatching {
 
   setClickMenuButtonEvent = ({ target }) => {
     if (target.id === "crew-tab") {
-      this.resetPage();
       this.renderCrewManagePage();
     } else if (target.id === "team-tab") {
-      this.resetPage();
       this.renderMatchingManagePage();
     }
-  };
-
-  resetPage = () => {
-    this.$container.innerHTML = "";
-    this.initPage();
   };
 }

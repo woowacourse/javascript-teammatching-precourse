@@ -50,17 +50,11 @@ export default class TeamMatching {
   };
 
   setClickMenuButtonEvent = ({ target }) => {
+    console.log("a");
     if (target.id === "crew-tab") {
-      this.resetPage();
       this.renderCrewManagePage();
     } else if (target.id === "team-tab") {
-      this.resetPage();
       this.renderMatchingManagePage();
     }
-  };
-
-  resetPage = () => {
-    this.$container.innerHTML = "";
-    this.initPage();
   };
 }
