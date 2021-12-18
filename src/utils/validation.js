@@ -21,7 +21,7 @@ export const isValidInputName = (name, inputName) => {
   if (isBlank(inputName)) {
     return alert(ERROR_MESSAGE.CANNOT_BE_BLANK);
   }
-  if (isExistStation(storedCrew, inputName)) {
+  if (storedCrew && isExistStation(storedCrew, inputName)) {
     return alert(ERROR_MESSAGE.CAN_NOT_OVERLAP);
   }
   return true;
