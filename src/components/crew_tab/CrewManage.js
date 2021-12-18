@@ -7,7 +7,7 @@ export default class CrewManage extends Component {
 
   template() {
     const { courseName } = this.$props;
-    console.log("courseName", courseName);
+
     return `
         <h3>${courseName} 크루 관리</h3>
         <form>
@@ -16,5 +16,16 @@ export default class CrewManage extends Component {
             <button id="add-crew-buttton">확인</button>
         </form>
     `;
+  }
+
+  mounted() {
+    this.addEvent("submit", this.$target, (e) => this.onSubmitHandler(e));
+  }
+
+  onSubmitHandler(e) {
+    e.preventDefault();
+
+    const name = e.target[0].value;
+    console.log(name);
   }
 }
