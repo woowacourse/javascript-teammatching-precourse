@@ -33,7 +33,7 @@ export default class Table extends Component {
     <tr>
     <td>${index + 1}</td>
     <td>${entry}</td>
-    <td><button class="delete-crew-buttton">삭제</button></td>
+    <td><button value="${entry}" class="delete-crew-buttton">삭제</button></td>
     </tr>`;
   }
 }
