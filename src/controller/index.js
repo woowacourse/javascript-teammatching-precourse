@@ -26,8 +26,8 @@ class TeamMatchingController {
   }
 
   initEventListeners() {
-    $(`#${SELECTOR.crewTabButtonId}`).addEventListener('click', this.renderTeamTab.bind(this));
-    $(`#${SELECTOR.teamTabButtonId}`).addEventListener('click', this.renderCrewTab.bind(this));
+    $(`#${SELECTOR.crewTabButtonId}`).addEventListener('click', this.renderCrewTab.bind(this));
+    $(`#${SELECTOR.teamTabButtonId}`).addEventListener('click', this.renderTeamTab.bind(this));
   }
 
   renderCrewTab() {
