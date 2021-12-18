@@ -6,5 +6,6 @@ export default class TeamController {
 
   app() {
     console.log('Hello world');
+    this.model.test();
   }
 }

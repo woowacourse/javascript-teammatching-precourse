@@ -37,4 +37,9 @@ const KEY = Object.freeze({
   localKey: 'teamMatchingData',
 });
 
-export { ID, CLASS, COURSE, MISSION, KEY };
+const DIR = Object.freeze({
+  crew: 'crew',
+  team: 'team',
+});
+
+export { ID, CLASS, COURSE, MISSION, KEY, DIR };
