@@ -1,19 +1,18 @@
-import CrewEvent from "./CrewEvent.js";
-import { HTML_OF_HEADER, HTML_OF_CREW_RADIO, HTML_OF_CREW_TABLE} from "./utils/html.js";
+import { HTML_OF_HEADER, HTML_OF_CREW_RADIO, HTML_OF_CREW_TABLE } from './utils/html.js';
 
 export default class CrewView {
-    static render() {
-        this.showPage();
-    }
+  static render() {
+    this.showPage();
+  }
 
-    static showPage() {
-        document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_CREW_RADIO;
-    }
+  static showPage() {
+    document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_CREW_RADIO;
+  }
 
-    static showFrontTable() {
-        const crewFront = JSON.parse(localStorage.getItem("CrewFront"));
+  static showFrontTable() {
+    const crewFront = JSON.parse(localStorage.getItem('CrewFront'));
 
-            document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
+    document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
             ${Object.keys(crewFront)
               .map(
                 (name, index) => `            
@@ -25,13 +24,13 @@ export default class CrewView {
             </td>
             </tr>`
               )
-              .join('')}`;  
-    }
+              .join('')}`;
+  }
 
-    static showBackTable() {
-        const crewBack = JSON.parse(localStorage.getItem("CrewBack"));
+  static showBackTable() {
+    const crewBack = JSON.parse(localStorage.getItem('CrewBack'));
 
-        document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
+    document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
         ${Object.keys(crewBack)
           .map(
             (name, index) => `            
@@ -44,5 +43,5 @@ export default class CrewView {
         </tr>`
           )
           .join('')}`;
-    }
+  }
 }

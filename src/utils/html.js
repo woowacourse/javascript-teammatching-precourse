@@ -13,8 +13,6 @@ export const HTML_OF_HEADER = `
 </nav>
 </header>`;
 
-
-
 export const HTML_OF_CREW_RADIO = `
 <div id="app">
   <main>
@@ -73,7 +71,6 @@ export const HTML_OF_FRONT_CREW_INPUT = `
     <h3>프론트엔드 크루 목록</h3>
     </section>`;
 
-
 export const HTML_OF_BACK_CREW_INPUT = `
     <section>
       <h3>백엔드 크루 관리</h3>
@@ -87,7 +84,6 @@ export const HTML_OF_BACK_CREW_INPUT = `
     <h3>백엔드 크루 목록</h3>
     </section>`;
 
-
 export const HTML_OF_CREW_TABLE = `
 <section>  
       <table border="1" id="crew-table">
@@ -100,8 +96,6 @@ export const HTML_OF_CREW_TABLE = `
         </thead>
       </table>
     </section>`;
-
-
 
 export const HTML_OF_TEAM_TAB = `
 <div id="app">

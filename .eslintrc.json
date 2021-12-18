@@ -18,6 +18,6 @@
         "radix": "off",
         "no-param-reassign": "off",
         "class-methods-use-this": "warn",
-        "import/prefer-default-export": "off",
+        "import/prefer-default-export": "off"
     }
 }
