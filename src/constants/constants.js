@@ -19,4 +19,5 @@ export const ERROR_MESSAGE = {
 export const STORAGE_KEY = {
   FRONT_CREWS: 'frontCrews',
   BACK_CREWS: 'backCrews',
+  CURRENT_TAB: 'currentTab',
 };

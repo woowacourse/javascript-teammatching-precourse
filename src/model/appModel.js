@@ -8,14 +8,16 @@ export default class AppModel {
     this.frontCrews = this.loadFrontCrews() || [];
     this.backCrews = this.loadBackCrews() || [];
     this.selectedCrews = [];
-    // this.currentTab = this.loadCurrentTab() || 'crewManage';
+    this.currentTab = this.loadCurrentTab() || 'crewManage';
   }
 
-  // loadCurrentTab
+  setCurrentTab(tab) {
+    setDataOnLocalStorage(STORAGE_KEY.CURRENT_TAB, tab);
+  }
 
-  // setCurrentTab() {
-
-  // }
+  loadCurrentTab() {
+    return loadDataFromLocalStorage(STORAGE_KEY.CURRENT_TAB);
+  }
 
   loadFrontCrews() {
     return loadDataFromLocalStorage(STORAGE_KEY.FRONT_CREWS);

@@ -18,8 +18,14 @@ export default class AppController {
     this.view.renderHeader();
     this.view.selectHeaderDOM();
 
-    this.teamMatchController.init();
+    this.renderTab();
     this.attachEvents();
+  }
+
+  renderTab() {
+    if (this.model.currentTab === 'teamMatch') return this.teamMatchController.init();
+
+    return this.crewManageController.init();
   }
 
   attachEvents() {
@@ -31,11 +37,13 @@ export default class AppController {
     e.preventDefault();
 
     this.crewManageController.init();
+    this.model.setCurrentTab('crewManage');
   }
 
   changeToTeamTab(e) {
     e.preventDefault();
 
     this.teamMatchController.init();
+    this.model.setCurrentTab('teamMatch');
   }
 }
