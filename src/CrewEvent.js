@@ -18,7 +18,7 @@ export default class CrewEvent {
 
             if(crewCheck.checkAll()) {
                 // //이름 저장
-                if(this.getCourse() === "frontend" && this.checkFrontName(name)) {
+                if(this.getCourse() === "frontend") {
                     // this.checkFrontName(name);
                     console.log(name);
                     this.storeFrontCrew(name, this.getCourse());
@@ -33,17 +33,29 @@ export default class CrewEvent {
         })
     }
 
-    static checkFrontName(name) {
-        const crew = JSON.parse(localStorage.getItem("CrewFront"));
+    // static checkFrontName(name) {
+    //     const crew = JSON.parse(localStorage.getItem("CrewFront"));
 
-        if(crew[name].course !== "frontend") {
-            return true;
-        } else {
-            alert("중복된 이름입니다!");
-        }
+    //     if(crew[name].course === null) {
+    //         return true;
+    //     } else {
+    //         alert("중복된 이름입니다!");
+    //     }
 
-        return false;
-    }
+    //     return false;
+    // }
+
+    // static checkBackName(name) {
+    //     const crew = JSON.parse(localStorage.getItem("CrewBack"));
+
+    //     if(crew[name].course !== "backend") {
+    //         return true;
+    //     } else {
+    //         alert("중복된 이름입니다!");
+    //     }
+
+    //     return false;
+    // }
 
     static getCourse() {
         const courseLength = document.getElementsByName("course").length;
