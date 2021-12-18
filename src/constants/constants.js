@@ -31,6 +31,7 @@ export const ALERT_MESSAGE = {
   BLANK_EXIST: '공백이거나 공백이 포함될 수 없습니다.',
   DUPLICATED_NAME: '이미 같은 이름의 크루명이 존재합니다.',
   CREW_NAME_NOT_INLENGTH: '크루명은 5자까지 허용됩니다.',
+  NOT_POSITIVE: '1이상의 양수를 작성해주세요.',
 };
 
 export const LOCALSTORAGE_KEY = {

@@ -72,10 +72,12 @@ export default class TeamMatchManager {
     );
     console.log($(SELECTOR.memberCountInput));
     const memberCountPerTeam = $(SELECTOR.memberCountInput).value;
-    if (!validation.isBlankExist(memberCountPerTeam)) {
+    if (validation.isMemberCountValid(memberCountPerTeam)) {
       this.matchTeamByCount(memberCountPerTeam, selectedCourse, selectedMission);
       this.model.setAllCourse(allCourse);
+      return;
     }
+    this.view.clearInput($(SELECTOR.memberCountInput));
   }
 
   matchTeamByCount(memberCount, selectedCourse, selectedMission) {

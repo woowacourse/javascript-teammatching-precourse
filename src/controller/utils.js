@@ -40,11 +40,17 @@ export const validation = {
     return memberList.length !== 0;
   },
 
-  isMemberCountValid(count) {
-    const isValid = !this.isBlankExist(count);
-    if (isValid) {
-      alert(ALERT_MESSAGE.BLANK_EXIST);
+  isPositiveNumber(count) {
+    const isPositive = parseInt(count) >= 1;
+    if (!isPositive) {
+      alert(ALERT_MESSAGE.NOT_POSITIVE);
     }
+
+    return isPositive;
+  },
+  isMemberCountValid(count) {
+    const isValid = !this.isBlankExist(count) && this.isPositiveNumber(count);
+    return isValid;
   },
 };
 
