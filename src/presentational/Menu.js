@@ -5,9 +5,9 @@ const Menu = ({ APP_TITLE, APP_MENU }) => `
 <nav>
   <ul>
     ${APP_MENU.map(
-      menu => `
+      ({ id, text }) => `
       <li>
-        <button>${menu}</button>
+        <button id=${id}>${text}</button>
       </li>
       `,
     ).join(EMPTY)}
