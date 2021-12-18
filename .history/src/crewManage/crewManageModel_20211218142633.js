@@ -24,11 +24,7 @@ export default class CrewManageModel {
     }
   };
 
-  deleteCrew = (id, name) => {
-    const idx = this.findIndexByName(id, name);
-    const crews = this.getCrewsById(id);
-    crews.splice(idx, 1);
-  };
+  deleteCrew = (id, name) => {};
 
   findIndexByName = (id, name) => {
     return this.getCrewsById(id).findIndex((crew) => crew === name);

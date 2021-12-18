@@ -53,8 +53,8 @@ export default class CrewManageController {
 
   setDeleteCrewEvent = ({ target }) => {
     if (target.id !== "delete-crew-button") return;
-
-    const name = target.closest("tr").querySelector("#crew-name").innerText;
+    console.log(target.closest("tr").getElementById("crew-name"));
+    const name = target.closest("tr").getElementById("crew-name").innerText;
     const selectedState = this.checkRadioState();
 
     this.model.deleteCrew(selectedState, name);

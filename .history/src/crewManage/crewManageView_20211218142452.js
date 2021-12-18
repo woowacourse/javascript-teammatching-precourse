@@ -92,7 +92,7 @@ export default class CrewManageView {
         return `
         <tr>
           <td>${idx}</td>
-          <td id="crew-name">${crew}</td>
+          <td>${crew}</td>
           <td>
             <button id="delete-crew-button">삭제</button>
           </td>
