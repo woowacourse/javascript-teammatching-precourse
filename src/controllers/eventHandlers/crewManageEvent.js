@@ -54,13 +54,14 @@ export function clickAddCrewButton(e) {
 
 export function clickDeleteCrewButton(e) {
   e.preventDefault();
-  console.log("click");
   const isCourseFrontEnd = document.getElementById("frontend-course").checked;
   const targetCrew = e.target.id;
-  if (isCourseFrontEnd) {
-    deleteCrew(FRONT_END_CREW_LIST_KEY, targetCrew);
-  } else {
-    deleteCrew(BACK_END_CREW_LIST_KEY, targetCrew);
+  if (confirm("정말 삭제하시겠습니까?")) {
+    if (isCourseFrontEnd) {
+      deleteCrew(FRONT_END_CREW_LIST_KEY, targetCrew);
+    } else {
+      deleteCrew(BACK_END_CREW_LIST_KEY, targetCrew);
+    }
   }
 }
 
