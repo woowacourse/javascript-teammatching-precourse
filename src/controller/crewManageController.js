@@ -9,6 +9,7 @@ export default class CrewManager {
   }
 
   init() {
+    this.model.clearSelectedCourse();
     this.addEventListeners();
   }
 

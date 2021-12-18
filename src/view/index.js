@@ -70,11 +70,21 @@ export default class View {
     );
   }
 
-  renderTeamMatchingSettingTemplate(course, mission) {
+  renderTeamMatchingSettingTemplate(course, mission, crewList) {
     $(SELECTOR.teamCourseAndMissionContents).innerHTML = '';
     $(SELECTOR.teamCourseAndMissionContents).insertAdjacentHTML(
       'afterbegin',
       teamMatchingSettingTemplate(KEY_VALUE[course], KEY_VALUE[mission]),
     );
+    this.addListInUL($(SELECTOR.matchResult), crewList);
+  }
+
+  addListInUL(ul, list) {
+      console.log(list)
+    list.forEach(crew => {
+      const liTag = document.createElement('li');
+      liTag.innerHTML = crew;
+      ul.appendChild(liTag);
+    });
   }
 }

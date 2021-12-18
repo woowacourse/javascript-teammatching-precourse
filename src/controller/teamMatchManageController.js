@@ -1,5 +1,5 @@
 import { $ } from './utils.js';
-import { SELECTOR, COURSE_OPTIONS, MISSION_OPTIONS } from '../constants/constants.js';
+import { SELECTOR, COURSE_OPTIONS, MISSION_OPTIONS, KEY_VALUE } from '../constants/constants.js';
 
 export default class TeamMatchManager {
   constructor(view, model) {
@@ -29,6 +29,8 @@ export default class TeamMatchManager {
     event.preventDefault();
     const selectedCourse = $(SELECTOR.courseSelect).value;
     const selectedMission = $(SELECTOR.missionSelect).value;
-    this.view.renderTeamMatchingSettingTemplate(selectedCourse, selectedMission);
+    this.model.selectCourse(KEY_VALUE[selectedCourse]);
+    const { crewList } = this.model.getSelectedCourse();
+    this.view.renderTeamMatchingSettingTemplate(selectedCourse, selectedMission, crewList);
   }
 }

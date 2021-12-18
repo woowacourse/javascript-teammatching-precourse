@@ -26,6 +26,10 @@ export default class Model {
     localStorage.setItem(LOCALSTORAGE_KEY.course, JSON.stringify(allCourse));
   }
 
+  clearSelectedCourse() {
+    this.selectedCourse = '';
+  }
+
   getAllCourse() {
     return JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY.course)) || [];
   }
