@@ -6,7 +6,7 @@ export const getCrewInputErrorMessage = (crewList, name) => {
     return ERROR_MESSAGE.CHOOSE_COURSE;
   }
 
-  if (Validator.isEmpty) {
+  if (Validator.isEmpty(name)) {
     return ERROR_MESSAGE.EMPTY_INPUT;
   }
 
