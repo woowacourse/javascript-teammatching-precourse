@@ -4,14 +4,27 @@ const CrewManageView = { ...View };
 
 CrewManageView.setup = function (element) {
   this.init(element);
+  this.bindEvent();
   return this;
+};
+
+CrewManageView.bindEvent = function () {
+  this.element.addEventListener('click', (e) => {
+    if (e.target.closest('div').id === 'course-select-form' && e.target.tagName === 'INPUT') {
+      this.onChangeCourse(e.target.value);
+    }
+  });
+};
+
+CrewManageView.onChangeCourse = function (course) {
+  this.emit('@changeCourse', { course });
 };
 
 CrewManageView.render = function () {
   this.element.innerHTML = `
     <section>
       <h3>크루를 관리할 코스를 선택해주세요</h3>
-      <div>
+      <div id="course-select-form">
         <input id="frontend-course" type="radio" name="course" value="frontend" />
         <label for="frontend">프론트엔드</label>
         <input id="backend-course" type="radio" name="course" value="backend" />

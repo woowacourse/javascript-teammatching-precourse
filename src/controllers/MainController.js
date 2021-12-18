@@ -8,7 +8,9 @@ export default {
   init() {
     LayoutView.setup($('#app'));
     TabView.setup($('#tab-view')).on('@changeTab', (e) => this.onChangeTabView(e.detail.tab));
-    CrewManageView.setup($('main'));
+    CrewManageView.setup($('main')).on('@changeCourse', (e) =>
+      this.onChangeCourse(e.detail.course),
+    );
 
     this.selectedTab = '크루 관리';
     this.renderView();
@@ -27,5 +29,9 @@ export default {
   onChangeTabView(tab) {
     this.selectedTab = tab;
     this.renderView();
+  },
+
+  onChangeCourse(course) {
+    console.log(course);
   },
 };
