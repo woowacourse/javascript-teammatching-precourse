@@ -12,6 +12,7 @@ import {
 import { $ } from './util/dom.js';
 import { FRONT_END, BACK_END } from './constants/constants.js';
 import { makeCrewTemplate, confirmDeleteCrew } from './core/manageCrew.js';
+import { checkExistTeam } from './core/manageTeam.js';
 
 function App() {
   //$('head').innerHTML = `<link rel="stylesheet" href="src/css/style.css"/>`;
@@ -29,6 +30,9 @@ function App() {
     switch (e.target.id) {
       case 'add-crew-form':
         makeCrewTemplate(e);
+        break;
+      case 'select-course-and-mission':
+        checkExistTeam(e);
         break;
     }
   };
