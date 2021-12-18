@@ -10,12 +10,6 @@ export const checkValidName = (crews, name) => {
   }
 };
 
-export const checkValidCount = (count) => {
-  if (isNotPositiveCount(count)) {
-    throw Error("1이상의 숫자를 입력해주세요");
-  }
-};
-
 const isDuplicatedName = (crews, name) => {
   return crews.includes(name);
 };

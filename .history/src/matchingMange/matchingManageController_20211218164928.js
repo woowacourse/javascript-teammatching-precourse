@@ -1,4 +1,3 @@
-import { checkValidCount } from "../utils/validator.js";
 import MatchingManageView from "./matchingManageView.js";
 
 export default class matchingManageController {
@@ -60,8 +59,6 @@ export default class matchingManageController {
       const count = Number(this.$teamMemverCountInput.value);
       const courseValue = this.$courseSelect.options[this.$courseSelect.selectedIndex].value;
       const crews = this.crews.model.getCrewsById(courseValue);
-
-      checkValidCount(count); // 예외처리
       this.matchCrews(count, crews);
     } catch (err) {
       alert(err);
