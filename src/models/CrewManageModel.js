@@ -1,5 +1,5 @@
 export default {
-  crews: [],
+  crews: { frontend: [], backend: [] },
   add(name) {
     this.crews.push(name);
   },
