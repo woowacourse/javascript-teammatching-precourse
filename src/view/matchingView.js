@@ -1,3 +1,6 @@
+import { beCrewList, feCrewList } from '../model/store.js';
+import { $ } from '../utils/dom.js';
+
 class matchingView {
   matchingSelectTemplate() {
     return `
@@ -24,7 +27,23 @@ class matchingView {
     `;
   }
 
-  renderMatchingInput() {}
+  getFECrew = () => {
+    return feCrewList.map((crew) => `<li>${crew}</li>`).join('');
+  };
+
+  getBECrew = () => {
+    return beCrewList.map((crew) => `<li>${crew}</li>`).join('');
+  };
+
+  renderMatchingInput() {
+    const selectedCourse = $('#course-select').options[$('#course-select').selectedIndex].innerText;
+    const selectedMission =
+      $('#mission-select').options[$('#mission-select').selectedIndex].innerText;
+
+    $('#matching-input > h3').textContent = `${selectedCourse} ${selectedMission} 미션의 팀 매칭`;
+    $('#matching-crew-list').innerHTML =
+      selectedCourse === '프론트엔드' ? this.getFECrew() : this.getBECrew();
+  }
 
   matchingInputTemplate() {
     return `
@@ -40,7 +59,7 @@ class matchingView {
           </form>
         </div>
         <h4>크루 목록</h4>
-        <ul>
+        <ul id="matching-crew-list">
           <li>준</li>
           <li>포코</li>
         </ul>
