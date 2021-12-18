@@ -5,7 +5,13 @@ const init = () => {
   $main.innerHTML = '';
 };
 
+const completeRender = () => {
+  $app.appendChild($main);
+};
+
 const renderInputCrewName = frontEndOrBackEnd => {
+  const $section = document.createElement('section');
+
   $main.innerHTML += `
     <section>
       <h3>${frontEndOrBackEnd} 크루 관리</h3>
@@ -17,11 +23,37 @@ const renderInputCrewName = frontEndOrBackEnd => {
     </section>
   `;
 
-  $app.appendChild($main);
+  $main.appendChild($section);
 };
 
-const renderCrewList = frontEndOrBackEnd => {
-  $main.innerHTML += `
+const renderCrewListRow = frontEndOrBackEnd => {
+  let users = [];
+  if (frontEndOrBackEnd === '프론트엔드') {
+    if (!localStorage.getItem('FrontEndUser')) users = [];
+    else users = localStorage.getItem('FrontEndUser')?.split(',');
+  }
+  if (frontEndOrBackEnd === '백엔드') {
+    if (!localStorage.getItem('BackEndUser')) users = [];
+    else users = localStorage.getItem('BackEndUser')?.split(',');
+  }
+
+  return users
+    .map(
+      (user, i) => `<tr>
+        <td>${i + 1}</td>
+        <td>${user}</td>
+        <td>
+          <button class="delete-crew-button">삭제</button>
+        </td>
+      </tr>
+    `
+    )
+    .join('');
+};
+
+export const renderCrewList = frontEndOrBackEnd => {
+  const $section = document.createElement('section');
+  $section.innerHTML = `
     <section>
       <h3>${frontEndOrBackEnd} 크루 목록</h3>
       <table id="crew-table" border="1">
@@ -33,19 +65,14 @@ const renderCrewList = frontEndOrBackEnd => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>준</td>
-            <td>
-              <button class="delete-crew-button">삭제</button>
-            </td>
-          </tr>
+          ${renderCrewListRow(frontEndOrBackEnd)}
         </tbody>
       </table>
     </section>
   `;
 
-  $app.appendChild($main);
+  $main.appendChild($section);
+  completeRender();
 };
 
 export const renderInputCrewNameAndList = frontEndOrBackEnd => {

@@ -41,7 +41,9 @@ window.addEventListener('click', e => {
   if (e.target !== document.querySelector('#add-crew-button')) return;
   const crewNameInput = document.querySelector('#crew-name-input').value;
   const curCourse = getCourseFrontEndOrBackEnd();
+  const frontEndOrBackEndString = valueToString(curCourse);
 
   if (curCourse === 'frontend') FE.getCrew(crewNameInput);
   if (curCourse === 'backend') BE.getCrew(crewNameInput);
+  renderInputCrewNameAndList(frontEndOrBackEndString);
 });
