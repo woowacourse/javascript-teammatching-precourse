@@ -1,10 +1,6 @@
 import Component from "../core/Component.js";
 
 export default class Nav extends Component {
-  setup() {
-    console.log("Nav", this);
-  }
-
   template() {
     return `
       <ul>
