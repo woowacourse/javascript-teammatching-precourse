@@ -1,5 +1,9 @@
 export const ID_CONTAINER = 'crew-tab-section';
 export const ID_FORM_SECTION = 'form-section';
+export const ID_ADD_CREW_INPUT = 'crew-name-input';
+export const ID_ADD_CREW_BUTTON = 'add-crew-buttton';
+export const ID_TABLE_SECTION = 'table-section';
+export const ID_TABLE_BODY = 'crew-table-body';
 export const STRING_COURSE_FRONT = '프론트엔드';
 export const STRING_COURSE_BACK = '백엔드';
 export const CLASS_NAME_SPAN = 'selected-crew';
@@ -20,7 +24,7 @@ export const TEMPLATE_BASE = `
         <label for="backend">백엔드</label>
       </div>
     </section>
-    <section id="form-section"></section>
+    <section id="form-section" data-course-name=""></section>
   </main>`;
 
 export const TEMPLATE_FORM = `
@@ -32,34 +36,36 @@ export const TEMPLATE_FORM = `
     <form>
       <label>크루 이름</label>
       <input type="text" id="crew-name-input"/>
-      <button id="add-crew-buttton">확인</button>
+      <button type="button" id="add-crew-buttton">확인</button>
     </form>
+    <section id="table-section">
+    </section>
   </section>
 `;
 
 export const TEMPLATE_TABLE = `
-  <section>
-    <h3>
-      <span class="selected-crew"></span>
-      크루 목록
-    </h3>
-    <table border="1" id="crew-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>크루</th>
-          <th>관리</th>
-        </tr>
-      </thead>
-      <tbody id="crew-table-body">
-        <tr>
-          <td>1</td>
-          <td>준</td>
-          <td>
-            <button id="delete-crew-buttton">삭제</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+  <h3>
+    <span class="selected-crew"></span>
+    크루 목록
+  </h3>
+  <table border="1" id="crew-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>크루</th>
+        <th>관리</th>
+      </tr>
+    </thead>
+    <tbody id="crew-table-body">
+      
+    </tbody>
+  </table>
+`;
+
+export const TEMPLATE_TABLE_ROW = `
+  <td class="crew-index">1</td>
+  <td class="crew-name">준</td>
+  <td>
+    <button id="delete-crew-buttton">삭제</button>
+  </td>
 `;
