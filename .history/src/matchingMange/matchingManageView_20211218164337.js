@@ -77,9 +77,4 @@ export default class MatchingManageView {
 
     container.innerHTML = resultTemplate;
   };
-
-  renderAllCrewList = (crews, container) => {
-    const template = crews.map((crew) => `<li>${crew}</li>`).join("");
-    container.innerHTML = template;
-  };
 }

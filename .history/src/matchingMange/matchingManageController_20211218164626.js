@@ -35,7 +35,7 @@ export default class matchingManageController {
     const missionText = this.$missionSelect.options[this.$missionSelect.selectedIndex].text;
     this.view.renderMatchingPage(courseText, missionText, this.$matchingSection);
     const $crewList = document.getElementById("crew-list");
-    this.view.renderAllCrewList(this.crews.model.getCrewsById(courseValue), $crewList);
+    this.view.renderAllCrewList(this.crews.model.getCrewsById(courseValue));
     this.initAfterRenderMatching();
   };
 
