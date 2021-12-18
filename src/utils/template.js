@@ -1,4 +1,4 @@
-import { CLASS, LOCAL_DB } from '../constants/index.js';
+import { CLASS, ID, LOCAL_DB } from '../constants/index.js';
 import { getLocalStorage } from './localStorage.js';
 
 export const crewTableHeader = () => {
@@ -63,4 +63,10 @@ export const crewLists = courseName => {
   });
 
   return html;
+};
+
+export const resultContents = list => {
+  return ` 
+      <li>${list.join(',')}</li>
+  `;
 };

@@ -1,7 +1,7 @@
 import { ID, LOCAL_DB } from '../../constants/index.js';
 import { getLocalStorage } from '../../utils/localStorage.js';
 import { $ } from '../../utils/selector.js';
-import { crewLists } from '../../utils/template.js';
+import { crewLists, resultContents } from '../../utils/template.js';
 import { isValidCount } from '../../utils/valid.js';
 
 class TeamManage {
@@ -35,6 +35,19 @@ class TeamManage {
     `;
   }
 
+  setResultTemplate() {
+    this.$target.innerHTML = `
+      <h3>${this.course} ${this.mission} 조회</h3>
+      <p>팀이 매칭되었습니다.</p>
+      <ul id=${ID.TEAM_MATCH_RESULT}>
+      </ul>
+      <p>
+        팀을 재매칭 하시겠습니까?
+        <button>재매칭</button>
+      </p>
+    `;
+  }
+
   selectDom() {
     this.$countInput = $(`#${ID.TEAM_MEMBER_COUNT_INPUT}`);
     this.$matchButton = $(`#${ID.MATCH_TEAM_BUTTON}`);
@@ -57,9 +70,19 @@ class TeamManage {
 
     const teamCountArray = this.getTeamCountArray(crewCount, matchCount);
     const teamShuffleArray = this.getTeamShuffleList(crewCount, teamCountArray);
+
+    this.setResultTemplate();
+    this.$matchResult = $(`#${ID.TEAM_MATCH_RESULT}`);
+
     teamShuffleArray.forEach(arr => {
-      console.log(this.getTeamName(arr));
+      this.printResult(this.getTeamName(arr));
     });
+  }
+
+  printResult(arr) {
+    this.$matchResult.innerHTML += `
+       ${resultContents(arr)}
+    `;
   }
 
   getTeamCountArray(crewCount, matchCount) {
