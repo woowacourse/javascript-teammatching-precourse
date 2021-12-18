@@ -18,10 +18,7 @@ const addCrewManager = () => {
   $main.innerHTML += `
     <div id="crew-manager" hidden>
       ${selectCourseSection()}
-      <section>
-        <h3>프론트엔드 크루 목록</h3>
-        <table id="crew-table" border="1"></table>
-      </section>
+      <div id="crew-area"></div>
     </div>
   `;
 };

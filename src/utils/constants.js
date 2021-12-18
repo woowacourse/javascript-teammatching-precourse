@@ -12,4 +12,8 @@ const OPTIONS = {
   ],
 };
 
-export { OPTIONS };
+const ALERT_MSG = {
+  wrongName: "이름을 잘못 입력하셨습니다. 다시 입력해주세요.",
+};
+
+export { OPTIONS, ALERT_MSG };
