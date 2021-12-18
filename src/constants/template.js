@@ -81,7 +81,12 @@ export const teamMatchingManageTemplate = `
         <button>확인</button>
       </form>
     </section>
-    <section>
+    
+  </main>
+`;
+
+export const teamMatchingSettingTemplate = `
+<section>
       <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
       <div>
         <div>
@@ -99,7 +104,10 @@ export const teamMatchingManageTemplate = `
         </ul>
       </div>
     </section>
-    <!-- 팀 매칭이 된 경우 -->
+`;
+
+export const teamMatchingResultTemplate = `
+<!-- 팀 매칭이 된 경우 -->
     <section>
       <h3>프론트엔드 숫자야구게임 조회</h3>
       <p>팀이 매칭되었습니다.</p>
@@ -111,5 +119,4 @@ export const teamMatchingManageTemplate = `
         <button>재매칭</button>
       </p>
     </section>
-  </main>
 `;
