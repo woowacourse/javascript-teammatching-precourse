@@ -53,13 +53,16 @@ function addCrew(name, value) {
 }
 
 window.deleteCrew = (index, value) => {
-    if(value === "프론트엔드") {
-        frontCrew.deleteCrew(index);
+    let res = window.confirm("정말 삭제하시겠습니까?");
+
+    if(res) {
+        if (value === "프론트엔드") {
+            frontCrew.deleteCrew(index);
+        } else {
+            backCrew.deleteCrew(index);
+        }
+        displayCrewList(value);
     }
-    else {
-        backCrew.deleteCrew(index);
-    }
-    displayCrewList(value);
 }
 
 function displayFrontCrewList() {
