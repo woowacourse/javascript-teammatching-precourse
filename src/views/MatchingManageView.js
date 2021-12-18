@@ -11,6 +11,7 @@ MatchingManageView.setup = function (element) {
   this.bindEvent();
   this.course;
   this.mission;
+  this.matchResult = false;
   return this;
 };
 
@@ -50,6 +51,13 @@ MatchingManageView.setCourse = function (course) {
   this.course = course;
 };
 
+MatchingManageView.showMatchResult = function () {
+  this.matchResult = true;
+};
+MatchingManageView.hideMatchResult = function () {
+  this.matchResult = false;
+};
+
 MatchingManageView.render = function () {
   this.element.innerHTML = `
     <section>
@@ -72,7 +80,7 @@ MatchingManageView.render = function () {
       </form>
     </section>
     ${
-      this.course
+      this.course && !this.matchResult
         ? `<section>
     <h3>${this.course} ${this.mission} 미션의 팀 매칭</h3>
     <div>
@@ -96,16 +104,23 @@ MatchingManageView.render = function () {
     }
 
     <!-- 팀 매칭이 된 경우 -->
-    <section>
-      <h3>${this.course} 숫자야구게임 조회</h3>
-      <p>팀이 매칭되었습니다.</p>
-      <ul id="team-match-result">
-      </ul>
-      <p>
-        팀을 재매칭 하시겠습니까?
-        <button id="rematch-team-button">재매칭</button>
-      </p>
-    </section>
+    ${
+      this.matchResult
+        ? `<section>
+    <h3>${this.course} 숫자야구게임 조회</h3>
+    <p>팀이 매칭되었습니다.</p>
+    <ul id="team-match-result">
+    ${CrewManageModel.match(COURSE[this.course])
+      .map((crew) => `<li>${crew}</li>`)
+      .join('')}
+    </ul>
+    <p>
+      팀을 재매칭 하시겠습니까?
+      <button id="rematch-team-button">재매칭</button>
+    </p>
+  </section>`
+        : ''
+    }
     `;
 };
 
