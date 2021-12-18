@@ -23,17 +23,11 @@ export default class InputSection extends Component {
     return `<label>${this.$props.label}</label>`;
   }
 
-  getTableHeader() {
-    return this.$props.tableHeaders
-      .map((header) => `<th>${header}</th>`)
-      .join("");
-  }
-
   getInputTextbox() {
-    return `<input type=${this.$props.buttonType} />`;
+    return `<input type=${this.$props.inputType} id=${this.$props.inputId}/>`;
   }
 
   getSubmitButton() {
-    return `<button id="${this.$props.id}">확인</button>`;
+    return `<button id="${this.$props.buttonId}">확인</button>`;
   }
 }
