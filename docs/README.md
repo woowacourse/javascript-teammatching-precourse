@@ -7,6 +7,7 @@
 
 ### 크루 관리 탭
 
+- [ ] 크루 관리 탭 기본 마크업 작성
 - [ ] 코스별로 크루를 추가할 수 있다. (FE, BE)
 - [ ] [예외] 동일한 이름의 크루는 추가할 수 없다.
 - [ ] [예외] 크루 이름은 최대 5글자까지 가능하다.
@@ -33,14 +34,14 @@
 
 ### DOM 선택자
 
-- [ ] `크루 관리` 버튼의 메뉴 id는 `crew-tab`이다.
-- [ ] `팀 관리` 버튼의 메뉴 id는 `team-tab`이다.
-- [ ] 프론트엔드 코스 선택 radio input의 id는 `frontend-course`이다.
-- [ ] 백엔드 코스 선택 radio input의 id는 `backend-course`이다.
-- [ ] 크루 이름을 입력하기 위한 input의 id는`crew-name-input`이다.
-- [ ] 크루 추가를 위한 확인 버튼의 id는 `add-crew-buttton`이다.
-- [ ] 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-buttton`이다.
-- [ ] 크루 목록을 보여주기 위한 table의 id는 `crew-table`이다.
+- [x] `크루 관리` 버튼의 메뉴 id는 `crew-tab`이다.
+- [x] `팀 관리` 버튼의 메뉴 id는 `team-tab`이다.
+- [x] 프론트엔드 코스 선택 radio input의 id는 `frontend-course`이다.
+- [x] 백엔드 코스 선택 radio input의 id는 `backend-course`이다.
+- [x] 크루 이름을 입력하기 위한 input의 id는`crew-name-input`이다.
+- [x] 크루 추가를 위한 확인 버튼의 id는 `add-crew-buttton`이다.
+- [x] 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-buttton`이다.
+- [x] 크루 목록을 보여주기 위한 table의 id는 `crew-table`이다.
 - [ ] 코스를 선택하는 select의 id는 `course-select`이다.
 - [ ] 미션을 선택하는 select의 id는 `mission-select`이다.
 - [ ] 미션에 해당하는 팀을 관리하기 위한 확인 버튼의 id는 `show-team-matcher-button`이다.
