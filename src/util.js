@@ -19,9 +19,7 @@ export const initialize = () => {
 
 const onClickCrewTab = event => {
   event.preventDefault();
-  const $main = document.querySelector("main");
-  $main.innerHTML = "";
-  $main.appendChild(createSelectCourseSection());
+  resetSelectCourseSection();
 };
 
 const onClickTeamTab = event => {
@@ -62,10 +60,9 @@ const createRadioInputContainer = () => {
   return div;
 };
 
-const createSelectCourseSection = () => {
-  const section = document.createElement("section");
-  section.appendChild(createTitle(SELECT_COURSE_TITLE));
-  section.appendChild(createRadioInputContainer());
-
-  return section;
+const resetSelectCourseSection = () => {
+  const $section = document.getElementById("course-section");
+  $section.innerHTML = "";
+  $section.appendChild(createTitle(SELECT_COURSE_TITLE));
+  $section.appendChild(createRadioInputContainer());
 };

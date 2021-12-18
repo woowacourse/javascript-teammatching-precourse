@@ -18,4 +18,8 @@ export const PUBLIC_HEADER = `
   </ul>
 </nav>
 </header>
-<main></main>`;
+<main>
+  <section id="course-section"></section>
+  <section id="input-section"></section>
+  <section id="list-section"></section>
+</main>`;
