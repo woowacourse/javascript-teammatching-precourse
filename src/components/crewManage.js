@@ -2,6 +2,7 @@ import { $ } from '../utils/selector.js';
 import { SELECTOR } from '../constant/constant.js';
 import { crewTemplate } from '../templates/crew-template.js';
 import { isValidCrewName } from '../utils/validate.js';
+import { setStateToLocalStorage } from '../utils/localStorage.js';
 
 export default class CrewManage {
   constructor($state) {
@@ -11,6 +12,11 @@ export default class CrewManage {
     this.render();
   }
 
+  setStateOfCrew(crew, course) {
+    course.crews.push(crew);
+    setStateToLocalStorage(this.$state);
+  }
+
   addCrew(course) {
     const name = $(`#${SELECTOR.ID.CREW_NAME_INPUT}`).value.trim();
     const validation = isValidCrewName(name, course);
@@ -18,6 +24,7 @@ export default class CrewManage {
       alert(validation.ERROR_MESSAGE);
       return;
     }
+    this.setStateOfCrew(name, course);
   }
 
   setup() {}
