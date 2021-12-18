@@ -27,7 +27,7 @@ export default class TeamMatchController {
   handleSelectCourseMission(e) {
     e.preventDefault();
 
-    const { course, mission, missionText } = this.view.getSelectedValue();
+    const { course, missionText } = this.view.getSelectedValue();
 
     const crews = this.model.getCrews(course);
 
