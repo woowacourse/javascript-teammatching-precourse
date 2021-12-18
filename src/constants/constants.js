@@ -15,6 +15,8 @@ const ID = Object.freeze({
   rematchTeamButton: 'rematch-team-button',
   app: 'app',
   crewTableTbody: 'crew-table-tbody',
+  matchTeamSection: 'match-team-section',
+  showMatchedTeamSection: 'show-matched-team-section',
 });
 
 const CLASS = Object.freeze({

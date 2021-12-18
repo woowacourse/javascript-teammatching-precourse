@@ -6,8 +6,8 @@ export default class SubwayView {
     this.templates = templates;
     this.$ = {
       app: () => document.getElementById(`${ID.app}`),
-      teamTab: () => document.querySelector(`.${CLASS.teamTabBox}`),
       crewTab: () => document.querySelector(`.${CLASS.crewTabBox}`),
+      teamTab: () => document.querySelector(`.${CLASS.teamTabBox}`),
       allTab: () => document.querySelectorAll(`.${tab}`),
     };
   }

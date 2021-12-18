@@ -12,5 +12,15 @@ export default class TeamController {
     this.view.renderInTarget(this.view.$.app(), TEMPLATES.topMenuContainerHTML);
     this.view.renderInTarget(this.view.$.app(), TEMPLATES.crewManagerTabHTML);
     this.view.renderInTarget(this.view.$.app(), TEMPLATES.teamMatchingTabHTML);
+    this.loadCrewManagerTab();
+    // this.loadTeamManagerTab();
+  }
+
+  loadCrewManagerTab() {
+    this.view.showTab(this.view.$.crewTab());
+  }
+
+  loadTeamManagerTab() {
+    this.view.showTab(this.view.$.teamTab());
   }
 }

@@ -63,7 +63,7 @@ const TEMPLATES = Object.freeze({
 `,
 
   teamMatchingTabHTML: `
-  <main>
+  <main class="${CLASS.tab} ${CLASS.teamTabBox}">
     <section>
       <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
       <form>
@@ -85,7 +85,11 @@ const TEMPLATES = Object.freeze({
       </form>
     </section>
 
+<!--팀매칭 관리할 코스와 미션을 선택한 경우 matchTeamHTML를 innerHTML--!>
+    <section id="${ID.matchTeamSection}"></section>
 
+<!--팀매칭이 된 경우 showMatchedTeamHTML를 innerHTML--!>
+    <section id="${ID.showMatchedTeamSection}></section>
 
   </main>
 `,

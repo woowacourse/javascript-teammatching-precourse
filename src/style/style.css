@@ -2,19 +2,11 @@ button {
   cursor: pointer;
 }
 
-.station-manager-tab {
+.crew-tab-box {
   display: none;
 }
 
-.line-manager-tab {
-  display: none;
-}
-
-.section-manager-tab {
-  display: none;
-}
-
-.map-print-manager-tab {
+.team-tab-box {
   display: none;
 }
 
