@@ -80,19 +80,13 @@ export default class CrewEvent {
         document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
 
         this.checkCanShowFront();
-        // if (localStorage.getItem(CREW_FRONT) !== null) {
-        //   CrewView.showFrontTable();
-        //   // this.addCrewEvent();
-        // }
         this.addCrewEvent();
       }
 
       if (targetId === 'backend-course') {
         document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
 
-        if (localStorage.getItem(CREW_BACK) !== null) {
-          CrewView.showBackTable();
-        }
+        this.checkCanShowBack();
         this.addCrewEvent();
       }
     });
@@ -100,7 +94,13 @@ export default class CrewEvent {
 
   static checkCanShowFront() {
     if (localStorage.getItem(CREW_FRONT) !== null) {
-        CrewView.showFrontTable();
-      }
+      CrewView.showFrontTable();
+    }
+  }
+
+  static checkCanShowBack() {
+    if (localStorage.getItem(CREW_BACK) !== null) {
+      CrewView.showBackTable();
+    }
   }
 }
