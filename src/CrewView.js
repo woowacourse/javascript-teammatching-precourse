@@ -1,3 +1,4 @@
+import CrewEvent from "./CrewEvent.js";
 import { HTML_OF_HEADER, HTML_OF_CREW_RADIO, HTML_OF_CREW_TABLE} from "./utils/html.js";
 
 export default class CrewView {
@@ -11,6 +12,7 @@ export default class CrewView {
     }
 
     static showFrontTable() {
+        CrewEvent.addCrewEvent();
         const crewFront = JSON.parse(localStorage.getItem("CrewFront"));
 
             document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
@@ -31,6 +33,7 @@ export default class CrewView {
     }
 
     static showBackTable() {
+        CrewEvent.addCrewEvent();
         const crewBack = JSON.parse(localStorage.getItem("CrewBack"));
 
         document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}

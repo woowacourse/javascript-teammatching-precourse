@@ -4,10 +4,6 @@ import { HTML_OF_FRONT_CREW_INPUT, HTML_OF_BACK_CREW_INPUT, HTML_OF_CREW_TABLE, 
 export default class CrewEvent {
     static addEvent() {
         this.addRadioEvent();
-        // this.addFrontEndEvent();
-        // this.addBackEndEvent();
-        // this.addCrewEvent();
-        // this.getCourse();
         
     }
  
@@ -17,19 +13,20 @@ export default class CrewEvent {
 
 
             const name = document.getElementById("crew-name-input").value;
+            console.log(name);
             const crewCheck = new CrewCheck(name);
 
             if(crewCheck.checkAll()) {
                 // //이름 저장
-                // if(this.getCourse() === "frontend") {
-                //     this.storeFrontCrew(name, this.getCourse());
-                //     CrewView.showFrontTable();
-                //     console.log(name);
-                // }
-                // if(this.getCourse() === "backend") {
-                //     this.storeBackCrew(name, this.getCourse());
-                //     CrewView.showBackTable();
-                // }
+                if(this.getCourse() === "frontend") {
+                    this.storeFrontCrew(name, this.getCourse());
+                    CrewView.showFrontTable();
+                    console.log(name);
+                }
+                if(this.getCourse() === "backend") {
+                    this.storeBackCrew(name, this.getCourse());
+                    CrewView.showBackTable();
+                }
 
                 
                 
@@ -46,13 +43,13 @@ export default class CrewEvent {
         for (let i = 0; i < courseLength; i++) {
             if (document.getElementsByName("course")[i].checked === true) {
                 courseType = document.getElementsByName("course")[i].value;
-                console.log(courseType);
-                if(i === 0) {
-                    document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_CREW_INPUT + HTML_OF_CREW_TABLE;
-                }
-                if(i === 1) {
-                    document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_CREW_INPUT + HTML_OF_CREW_TABLE;
-                }
+                // console.log(courseType);
+                // if(i === 0) {
+                //     document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
+                // }
+                // if(i === 1) {
+                //     document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
+                // }
                 return courseType;
             }
         }
@@ -112,26 +109,27 @@ export default class CrewEvent {
       
             if(targetId === 'frontend-course') {
                 document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
-            this.addCrewEvent();
+                // this.addCrewEvent();
 
-            if(localStorage.getItem("CrewFront") !== null){
-                CrewView.showFrontTable();
-            }
+                if(localStorage.getItem("CrewFront") !== null){
+                    CrewView.showFrontTable();
+                }
             }
 
 
 
             if(targetId === 'backend-course') {
                 document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
-            this.addCrewEvent();
+                // this.addCrewEvent();
 
-            if(localStorage.getItem("CrewFront") !== null){
-                CrewView.showBackTable();
+                if(localStorage.getItem("CrewBack") !== null){
+                    CrewView.showBackTable();
+                }
             }
-            
-            }
-          });
-        }
+
+            // this.addCrewEvent();
+        });
+    }
     
 
 

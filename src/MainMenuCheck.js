@@ -6,7 +6,7 @@ export default class MainMenuCheck {
     static checkFirstMenu(targetId) {
         if(targetId === 'crew-tab') {
             CrewView.render();
-            CrewEvent.addEvent();
+            // CrewEvent.addEvent();
         }
     }
 
