@@ -1,4 +1,9 @@
-import { addCrewOnCourse, isUniqueCrewNameOnCourse, getCrewsOnCourse } from '../../model/index.js';
+import {
+    addCrewOnCourse,
+    isUniqueCrewNameOnCourse,
+    getCrewsOnCourse,
+    deleteCrewOnCourse,
+} from '../../model/index.js';
 
 export default class Crew {
     constructor(name) {
@@ -15,5 +20,9 @@ export default class Crew {
 
     isUniqueCrewName() {
         return isUniqueCrewNameOnCourse(this.keyOfCrews, this.name);
+    }
+
+    deleteCrew() {
+        deleteCrewOnCourse(this.keyOfCrews, this.name);
     }
 }

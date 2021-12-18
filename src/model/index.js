@@ -22,3 +22,9 @@ export const isUniqueCrewNameOnCourse = (crewsOfcourse, findCrewName) =>
     getJsonItem(crewsOfcourse).findIndex((crewName) => crewName === findCrewName) === -1;
 
 export const getCrewsOnCourse = (course) => getJsonItem(course);
+
+export const deleteCrewOnCourse = (course, findCrewName) =>
+    setJsonItem(
+        course,
+        getCrewsOnCourse(course).filter((crewName) => crewName !== findCrewName),
+    );

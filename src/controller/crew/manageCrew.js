@@ -18,7 +18,7 @@ const renderCrewTable = () => {
                     <td>${idx + 1}</td>
                     <td>${crewName}</td>
                     <td>
-                    <button class='delete-crew-buttton' dataset-id='${idx}'>삭제</button>
+                        <button class='delete-crew-buttton' data-crewname='${crewName}'>삭제</button>
                     </td>
                 </tr>`,
             '',
@@ -47,6 +47,8 @@ const checkUniqueCrewName = (crewName) => {
     return true;
 };
 
+const deleteCrew = (crewName) => createCrew(crewName).deleteCrew();
+
 // 코스 선택 이벤트
 export const triggerSelectCourse = () => {
     $('#frontend-course').addEventListener('click', selectCourse('프론트'));
@@ -61,6 +63,19 @@ export const triggerAddCrew = () => {
 
         if (checkCrewName(crewName) && checkUniqueCrewName(crewName)) {
             addCrewToCourse(crewName);
+            renderCrewTable();
+        }
+    });
+};
+
+// 크루 삭제 이벤트
+export const triggerDeleteCrew = () => {
+    $('#crew-table-tbody').addEventListener('click', (e) => {
+        if (
+            e.target.className === 'delete-crew-buttton' &&
+            confirm('해당 크루를 삭제하시겠습니까?')
+        ) {
+            deleteCrew(e.target.dataset.crewname);
             renderCrewTable();
         }
     });
