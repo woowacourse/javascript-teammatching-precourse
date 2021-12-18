@@ -1,6 +1,7 @@
 import { beCrewList, feCrewList } from '../model/store.js';
 import { $, showMatchingInput } from '../utils/dom.js';
 import { shuffleArray } from '../utils/shuffleArray.js';
+import MatchingValidator from '../validator/matchingValidator.js';
 
 class MatchingController {
   constructor(view) {
@@ -9,9 +10,12 @@ class MatchingController {
   }
 
   matchTeam() {
+    const memberCount = this.view.getMemberCountInput();
+    if (MatchingValidator.isInvalidMemberCount(memberCount)) {
+      return;
+    }
     const selectedCourse = $('#course-select').options[$('#course-select').selectedIndex].innerText;
     const crewList = selectedCourse === '프론트엔드' ? feCrewList : beCrewList;
-    console.log(crewList);
   }
 
   bindEvent() {
