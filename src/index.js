@@ -1,5 +1,9 @@
+import HeaderController from './Controllers/headerController.js';
+
 export default class App {
-  constructor() {}
+  constructor() {
+    new HeaderController();
+  }
 }
 
 new App();
