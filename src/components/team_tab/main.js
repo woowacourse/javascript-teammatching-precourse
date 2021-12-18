@@ -39,6 +39,7 @@ export default class TeamTab extends Component {
         frontends,
         backends,
         matchedTeam,
+        teamNumbers,
       },
     } = this;
     const $selectOption = document.querySelector("#select-option");
@@ -68,7 +69,12 @@ export default class TeamTab extends Component {
       currentCrews,
     });
 
-    new MatchedTeam($matchedTeam, { matchedTeam });
+    new MatchedTeam($matchedTeam, {
+      matchedTeam,
+      setMatchedTeam: setMatchedTeam.bind(this),
+      teamNumbers,
+      currentCrews,
+    });
   }
 
   setSelectedOption(props) {
