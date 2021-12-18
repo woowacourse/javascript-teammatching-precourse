@@ -19,7 +19,7 @@ const insertCrew = (index, name) => {
       <td>${index}</td>
       <td>${name}</td>
       <td>
-        <button class="delete-crew-button" id=${name}>삭제</button>
+        <button class="delete-crew-buttton" id=${name}>삭제</button>
       </td>
     </tr>
   `;

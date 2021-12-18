@@ -10,7 +10,7 @@ import {
 } from "../../views/crewManager/showTable.js";
 
 const onClickAddCrewButton = () => {
-  const $addButton = document.getElementById("add-crew-button");
+  const $addButton = document.getElementById("add-crew-buttton");
 
   $addButton.onclick = e => {
     e.preventDefault();
