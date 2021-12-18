@@ -1,7 +1,7 @@
 export default class CrewModel {
   constructor() {
-    this.frontStorage = this.setStorage('frontend');
-    this.backStorage = this.setStorage('backend');
+    this.frontStorage = this.setStorage('frontCrew');
+    this.backStorage = this.setStorage('backCrew');
   }
 
   setStorage(storageName) {
