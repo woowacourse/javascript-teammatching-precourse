@@ -1,11 +1,11 @@
 import { templates as $ } from '../view/templates.js';
-import { ID, CLASS, COURSE, MISSION } from '../constants/constants.js';
+import { ID, CLASS, COURSE, MISSION, KEY } from '../constants/constants.js';
 
 export default class TeamController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
-    this.course;
+    this.courseName = COURSE.frontend;
   }
 
   app() {
@@ -13,6 +13,7 @@ export default class TeamController {
     this.view.renderInTarget($.app(), $.crewManagerTabHTML);
     this.view.renderInTarget($.app(), $.teamMatchingTabHTML);
     this.setEventListeners();
+    this.model.loadAllDataFromLocalStorage();
     this.loadCrewManagerBtnHandler();
   }
 
@@ -23,31 +24,42 @@ export default class TeamController {
 
   loadCrewManagerBtnHandler() {
     this.view.showCourseSelectSection(COURSE.frontendKor);
-    $.addCrewButton().addEventListener('click', (e) => this.getCrewNameInput(e));
     this.view.showTab($.crewTab());
     const courses = document.getElementsByName(COURSE.course);
-
-    courses.forEach((course) => course.addEventListener('click', () => this.convertRadioIdToName(course)));
+    courses.forEach((course) => course.addEventListener('click', () => this.loadCourseSelectSection(course)));
+    $.addCrewButton().addEventListener('click', (e) => this.getCrewNameInput(e));
+    this.showCrewTable();
   }
 
-  convertRadioIdToName(course) {
-    this.course = course.value;
+  loadCourseSelectSection(course) {
+    this.courseName = course.value;
     if (course.value === 'frontend') {
       this.view.showCourseSelectSection(COURSE.frontendKor);
     } else if (course.value === 'backend') {
       this.view.showCourseSelectSection(COURSE.backendKor);
     }
-  }
-
-  loadTeamManagerBtnHandler() {
-    this.view.showTab($.teamTab());
+    $.addCrewButton().addEventListener('click', (e) => this.getCrewNameInput(e));
+    this.showCrewTable();
   }
 
   getCrewNameInput(e) {
     e.preventDefault();
     const crewName = $.crewNameInput().value;
+    this.model.addNewCrew(crewName, this.courseName);
+    this.model.setLocalStorage(KEY.localKey, this.model.teamObj);
+    this.showCrewTable();
+  }
 
-    const order = 1;
-    this.view.renderTable($.crewTableTbody(), $.crewTableTbodyHTML(order, crewName));
+  showCrewTable() {
+    console.log(this.model.teamObj);
+    console.log(this.courseName);
+    this.view.clearTarget($.crewTableTbody());
+    this.model.teamObj[this.courseName]['crew'].forEach((crewName, index) => {
+      this.view.renderTable($.crewTableTbody(), $.crewTableTbodyHTML(index + 1, crewName));
+    });
+  }
+
+  loadTeamManagerBtnHandler() {
+    this.view.showTab($.teamTab());
   }
 }

@@ -22,7 +22,7 @@ const templates = Object.freeze({
     <section>
       <h3>크루를 관리할 코스를 선택해주세요</h3>
       <div>
-        <input id=${ID.frontendCourse}   type="radio" name=${COURSE.course} value=${COURSE.frontend} />
+        <input id=${ID.frontendCourse}   type="radio" name=${COURSE.course} value=${COURSE.frontend} checked />
         <label for=${COURSE.frontend}>프론트엔드</label>
         <input id=${ID.backendCourse}  type="radio" name=${COURSE.course} value=${COURSE.backend} />
         <label for=${COURSE.backend}>백엔드</label>
