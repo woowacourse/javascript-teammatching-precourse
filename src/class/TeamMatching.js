@@ -27,10 +27,20 @@ export default class TeamMatching {
     this.updateCrewView(type);
   }
 
+  deleteCrew(crewName, type) {
+    this.updateCrewModel('삭제', type, crewName);
+    this.updateCrewModel('저장', type, crewName);
+    this.updateCrewView(type);
+  }
+
   updateCrewModel(action, course, name) {
     switch (action) {
       case '추가':
         this.crews[course].push(name);
+        break;
+
+      case '삭제':
+        this.crews[course] = this.crews[course].filter(crew => crew !== name);
         break;
 
       case '저장':

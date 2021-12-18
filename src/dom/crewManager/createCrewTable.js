@@ -51,13 +51,13 @@ const createTableBody = type => {
   const tableBody = document.createElement('tbody');
 
   teamMatching.crews[type].forEach((crew, index) => {
-    tableBody.appendChild(createTableDataRow(crew, index));
+    tableBody.appendChild(createTableDataRow(crew, index, type));
   });
 
   return tableBody;
 };
 
-const createTableDataRow = (crewName, index) => {
+const createTableDataRow = (crewName, index, type) => {
   const row = document.createElement('tr');
   const indexCell = document.createElement('td');
   const nameCell = document.createElement('td');
@@ -65,18 +65,20 @@ const createTableDataRow = (crewName, index) => {
 
   indexCell.innerHTML = index + 1;
   nameCell.innerHTML = crewName;
-  buttonCell.appendChild(createDeleteButton(crewName));
+  buttonCell.appendChild(createDeleteButton(crewName, type));
   row.append(indexCell, nameCell, buttonCell);
 
   return row;
 };
 
-const createDeleteButton = crewName => {
+const createDeleteButton = (crewName, type) => {
   const deleteButton = document.createElement('button');
 
   deleteButton.innerHTML = '삭제';
   deleteButton.setAttribute('class', 'delete-crew-buttton');
-  // TODO : 크루 삭제 버튼을 눌렀을 때
+  deleteButton.addEventListener('click', () => {
+    teamMatching.deleteCrew(crewName, type);
+  });
 
   return deleteButton;
 };
