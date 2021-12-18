@@ -11,51 +11,27 @@ export default class CrewEvent {
         document.getElementById('add-crew-buttton').addEventListener('click', (e) => {
             e.preventDefault();
 
-
             const name = document.getElementById("crew-name-input").value;
-            // console.log(name);
             const crewCheck = new CrewCheck(name);
 
-            if(crewCheck.checkAll()) {
-                // //이름 저장
-                if(this.getCourse() === "frontend") {
-                    // this.checkFrontName(name);
-                    console.log(name);
-                    this.storeFrontCrew(name, this.getCourse());
-                    CrewView.showFrontTable();
-                } else if(this.getCourse() === "backend") {
-                    this.storeBackCrew(name, this.getCourse());
-                    CrewView.showBackTable();
-                }    
-            } else {
-                alert("유효하지 않은 입력입니다!"); // 상수로 변경
-            } 
+            this.checkResult(crewCheck, name);
         })
     }
 
-    // static checkFrontName(name) {
-    //     const crew = JSON.parse(localStorage.getItem("CrewFront"));
-
-    //     if(crew[name].course === null) {
-    //         return true;
-    //     } else {
-    //         alert("중복된 이름입니다!");
-    //     }
-
-    //     return false;
-    // }
-
-    // static checkBackName(name) {
-    //     const crew = JSON.parse(localStorage.getItem("CrewBack"));
-
-    //     if(crew[name].course !== "backend") {
-    //         return true;
-    //     } else {
-    //         alert("중복된 이름입니다!");
-    //     }
-
-    //     return false;
-    // }
+    static checkResult(crewCheck, name) {
+        if(crewCheck.checkAll()) {
+            if(this.getCourse() === "frontend") {
+                console.log(name);
+                this.storeFrontCrew(name, this.getCourse());
+                CrewView.showFrontTable();
+            } else if(this.getCourse() === "backend") {
+                this.storeBackCrew(name, this.getCourse());
+                CrewView.showBackTable();
+            }    
+        } else {
+            alert("유효하지 않은 입력입니다!"); // 상수로 변경
+        } 
+    }
 
     static getCourse() {
         const courseLength = document.getElementsByName("course").length;
@@ -118,29 +94,4 @@ export default class CrewEvent {
             }
         });
     }
-
-
-    static deleteEvent() {
-        document.addEventListener('click', (e) => {
-            const { idName } = e.target;
-            const target = e.target.parentElement.parentElement;
-
-            this.checkIdName(idName, target);
-        })
-    }
-
-    static checkIdName(idName, target) {
-        if (idName === 'delete-crew-buttton') {
-
-            console.log(target.childNodes)
-        //   const name = target.childNodes[1].dataset.productName;
-        //   const price = target.childNodes[3].dataset.productPrice;
-        //   const quantity = target.childNodes[5].dataset.productQuantity;
-    
-        //   this.purchase(name, price, quantity);
-        }
-      }
-    
-
-
 }

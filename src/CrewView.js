@@ -6,7 +6,6 @@ export default class CrewView {
         this.showPage();
     }
 
-    // 순서대로 나오도록 수정
     static showPage() {
         document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_CREW_RADIO;
     }
@@ -38,14 +37,12 @@ export default class CrewView {
             (name, index) => `            
         <tr class="product-manage-item">
         <td>${index + 1}</td>
-        <td>${name}</td>
+        <td class="name" data-name="${name}">${name}</td>
         <td>
-          <button id="delete-crew-buttton">삭제</button>
+          <button class="delete-button" id="delete-crew-buttton">삭제</button>
         </td>
         </tr>`
           )
           .join('')}`;
     }
-
-    
 }

@@ -13,8 +13,6 @@ export default class CrewCheck {
 
     // 중복 체크하는거 추가해야됨
 
-    // 체크하지 않으면
-
     checkAll() {
         return this.checkEmpty() && this.checkLength();
     }

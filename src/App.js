@@ -6,8 +6,5 @@ export default class App {
         showMain();
         MenuButtonController.menuButtonEvent();
         CrewEvent.addEvent();
-        CrewEvent.deleteEvent();
-
-
     }
 }
