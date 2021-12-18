@@ -21,7 +21,7 @@ export function createPeopleTbody(peopleList, tbody) {
 export function createDeleteBtn(text) {
   const button = document.createElement('button');
   button.innerText = text;
-  button.className = 'delete-crew-button';
+  button.className = 'delete-crew-buttton';
 
   return button;
 }

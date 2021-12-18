@@ -23,7 +23,7 @@ export default class CrewPresent {
         <form>
           <label>크루 이름</label>
           <input type="text" id='crew-name-input' />
-          <button type='button' id='add-crew-button'>확인</button>
+          <button type='button' id='add-crew-buttton'>확인</button>
         </form>
       </section>
       <section>

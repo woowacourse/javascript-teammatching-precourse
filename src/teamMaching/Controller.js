@@ -58,6 +58,8 @@ export default class Controller {
     }
   }
 
+  setRandomTeam() {}
+
   addPeopleList(peopleList) {
     this.model.FrontPeopleList = peopleList.front;
     this.model.BackPeopleList = peopleList.back;

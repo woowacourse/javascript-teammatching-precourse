@@ -7,7 +7,7 @@ export default class Controller {
     this.model = new Model();
     this.view = new View();
     this.$nameInput = document.querySelector('#crew-name-input');
-    this.$addBtn = document.querySelector('#add-crew-button');
+    this.$addBtn = document.querySelector('#add-crew-buttton');
     this.$frontRadio = document.querySelector('#frontend-course');
     this.$backRadio = document.querySelector('#backend-course');
     this.$renderDiv = document.querySelector('#crew-section');
@@ -61,7 +61,7 @@ export default class Controller {
     this.frontAddIndex += 1;
 
     this.view.showList(this.model.FrontPeopleList);
-    this.deleteBtn = document.querySelectorAll('.delete-crew-button');
+    this.deleteBtn = document.querySelectorAll('.delete-crew-buttton');
     this.setDelete();
   }
 
