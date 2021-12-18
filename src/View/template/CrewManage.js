@@ -14,32 +14,38 @@ const addCrew = (course) => `
 <h3>${course === "frontend" ? TEXT.FRONT : TEXT.BACK} 크루 관리</h3>
 <form>
   <label>크루 이름</label>
-  <input type="text" id=${ID.INPUT}/>
-  <button id=${ID.ADD_BUTTON}>확인</button>
+  <input type="text" id=${ID.INPUT} />
+  <button id=${ID.ADD_BUTTON} type="button">확인</button>
 </form>
 `;
 
-const crewTable = (course) => `
+const crewTable = (course, crews) => `
   <h3>${course === "frontend" ? TEXT.FRONT : TEXT.BACK} 크루 목록</h3>
     <table border="1">
       <thead>
         <tr>
-          <th></th>
+          <th> </th>
           <th>크루</th>
           <th>관리</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>준</td>
-          <td>
-            <button id=${ID.DELETE_BUTTON}>삭제</button>
-          </td>
-        </tr>
+      ${crews
+        .map((crew, index) => {
+          return crewTableTr(crew, index);
+        })
+        .join("")}
       </tbody>
     </table>
-
 `;
+
+const crewTableTr = (crew, index) => ` 
+<tr>
+<td>${index}</td>
+<td>${crew}</td>
+<td>
+  <button id=${ID.DELETE_BUTTON}>삭제</button>
+</td>
+</tr>`;
 
 export { crewManage, addCrew, crewTable };
