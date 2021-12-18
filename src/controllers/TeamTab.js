@@ -1,3 +1,4 @@
+import { matchTeam } from '../utils/index.js';
 import TeamTabView from '../views/TeamTabView.js';
 
 export default class TeamTab {
@@ -8,18 +9,34 @@ export default class TeamTab {
 
   initialize() {
     this.view.initialRender();
-    this.setEvent();
+    this.setShowMatcherEvent();
   }
 
-  setEvent() {
-    const teamMatchButton = document.querySelector('#show-team-matcher-button');
-    teamMatchButton.addEventListener('click', this.onClickShowTeamMatch.bind(this));
+  setShowMatcherEvent() {
+    const showTeamMatchButton = document.querySelector('#show-team-matcher-button');
+    showTeamMatchButton.addEventListener('click', this.onClickShowTeamMatcher.bind(this));
   }
 
-  onClickShowTeamMatch(e) {
+  setMatchTeamEvent() {
+    const matchTeamButton = document.querySelector('#match-team-button');
+    matchTeamButton.addEventListener('click', this.onClickMatchTeam.bind(this));
+  }
+
+  onClickShowTeamMatcher(e) {
     e.preventDefault();
     const courseSelect = document.querySelector('#course-select');
     const missionSelect = document.querySelector('#mission-select');
-    this.view.renderInitMatch(courseSelect.value, missionSelect.value, this.storage.crew[courseSelect.value]);
+    this.course = courseSelect.value;
+    this.mission = missionSelect.value;
+    this.view.renderMatcher(this.course, this.mission, this.storage.crew[courseSelect.value]);
+    this.setMatchTeamEvent();
+  }
+
+  onClickMatchTeam(e) {
+    e.preventDefault();
+    const memberCountInput = document.querySelector('#team-member-count-input');
+    const memberCount = Number(memberCountInput.value);
+    const matchResult = matchTeam(this.storage.crew[this.course], memberCount);
+    this.view.renderMatchResult(this.course, this.mission, matchResult);
   }
 }

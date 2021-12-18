@@ -23,10 +23,10 @@ export default class TeamTabView {
     });
   }
 
-  renderInitMatch(courseValue, missionValue, crew) {
+  renderMatcher(courseValue, missionValue, crew) {
     const courseName = optionData.course.find((item) => item.value === courseValue).name;
     const missionName = optionData.mission.find((item) => item.value === missionValue).name;
-    this.resultContainer.innerHTML = teamTabTemplate.initMatch(courseName, missionName);
+    this.resultContainer.innerHTML = teamTabTemplate.matcher(courseName, missionName);
     this.renderCrewList(crew);
   }
 
@@ -35,6 +35,17 @@ export default class TeamTabView {
     crewList.innerHTML = '';
     crew.forEach((name) => {
       crewList.innerHTML += teamTabTemplate.listItem(name);
+    });
+  }
+
+  renderMatchResult(courseValue, missionValue, teams) {
+    const courseName = optionData.course.find((item) => item.value === courseValue).name;
+    const missionName = optionData.mission.find((item) => item.value === missionValue).name;
+    this.resultContainer.innerHTML = teamTabTemplate.matchResult(courseName, missionName);
+    const teamList = document.querySelector('#team-match-result');
+    teamList.innerHTML = '';
+    teams.forEach((team) => {
+      teamList.innerHTML += teamTabTemplate.listItem(team.join(','));
     });
   }
 }

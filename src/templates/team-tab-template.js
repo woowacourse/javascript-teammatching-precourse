@@ -12,7 +12,7 @@ const teamTabTemplate = {
   </section>
   <section id="team-matching-result"></section>
   `,
-  initMatch: (course, mission) => `
+  matcher: (course, mission) => `
     <h3>${course} ${mission} 미션의 팀 매칭</h3>
     <div>
       <div>
@@ -27,7 +27,7 @@ const teamTabTemplate = {
       <ul id="crew-list"></ul>
     </div>
   `,
-  matchingResult: (course, mission) => `
+  matchResult: (course, mission) => `
     <h3>${course} ${mission} 조회</h3>
     <p>팀이 매칭되었습니다.</p>
     <ul id="team-match-result"></ul>
