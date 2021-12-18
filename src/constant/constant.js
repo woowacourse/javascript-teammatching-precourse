@@ -20,7 +20,7 @@ export const CREW_INPUT_ID = {
   DELETE_BUTTON: 'delete-crew-buttton',
 };
 export const ERROR_MESSAGE = {
-  NAME_ERROR: '크루의 이름은 공백없이 5자 이하이고 중복이 불가합닌다.',
+  NAME_ERROR: '크루의 이름은 공백없이 5자 이하이고 중복이 불가합니다.',
 };
 export const TBODY_ID = 'table-id';
 export const TABLE_ID = 'crew-table';
