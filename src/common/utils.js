@@ -22,7 +22,6 @@ export const matchTeam = (_members, number) => {
 
     while (members.length >= number) {
         teams.push(members.splice(0, number));
-        console.log(teams);
     }
 
     members.forEach((member, idx) => teams[idx % teams.length].push(member));
