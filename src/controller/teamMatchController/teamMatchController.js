@@ -5,4 +5,9 @@ export default class TeamMatchController {
     this.model = model;
     this.view = new TeamMatchView();
   }
+
+  init() {
+    this.view.init();
+    this.view.renderSelectCourseMission();
+  }
 }

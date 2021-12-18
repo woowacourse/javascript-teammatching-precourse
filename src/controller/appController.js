@@ -24,12 +24,18 @@ export default class AppController {
 
   attachEvents() {
     this.view.$crewTab.addEventListener('click', this.changeToCrewTab.bind(this));
-    // this.view.$teamTab.addEventListener('click', this.changeToTeamTab.bind(this));
+    this.view.$teamTab.addEventListener('click', this.changeToTeamTab.bind(this));
   }
 
   changeToCrewTab(e) {
     e.preventDefault();
 
     this.crewManageController.init();
+  }
+
+  changeToTeamTab(e) {
+    e.preventDefault();
+
+    this.teamMatchController.init();
   }
 }
