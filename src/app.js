@@ -2,6 +2,8 @@ import Component from './essential/component.js';
 import { initStorageIfNull } from './utils/storage.js';
 import Header from './components/header.js';
 import CrewManage from './components/crew-manage/index.js';
+import TeamMatching from './components/team-matching/index.js';
+import { STORAGE_CREWS_KEY } from './utils/constants.js';
 
 const CONTENT = `
   <header></header>
@@ -42,7 +44,7 @@ export default class App extends Component {
   }
 
   initAllStorageIfNull() {
-    //initStorageIfNull(crews, []);
+    initStorageIfNull(STORAGE_CREWS_KEY, []);
   }
 
   selectMenu(currMenu) {
