@@ -128,7 +128,7 @@ export default class View {
         </ul>
         <p>
             팀을 재매칭 하시겠습니까?
-            <button id="rematch-team-button">재매칭</button>
+            <button data-action="rematch" id="rematch-team-button">재매칭</button>
         </p>
         </section>
     </div>

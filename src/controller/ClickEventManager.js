@@ -95,11 +95,21 @@ export default class ClickEventManager {
     const result = UT.checkLastArray(divisionCrewArray, targetAmount);
 
     const temporaryMisson = { ...DB.load(`${courseType}Mission`) };
-    temporaryMisson[$('#mission-select').value].push(...result);
+    temporaryMisson[missionType].push(...result);
     DB.overwrite(`${courseType}Mission`, temporaryMisson);
 
     DOM.showMatchedComponent('#ok-mached-component', courseType, missionType);
     DOM.showMatchedCrewUnorderedList(courseType, missionType);
+  }
+
+  rematch() {
+    const [courseType, missionType] = [$('#course-select').value, $('#mission-select').value];
+
+    const temporaryMisson = { ...DB.load(`${courseType}Mission`) };
+    temporaryMisson[missionType] = [];
+    DB.overwrite(`${courseType}Mission`, temporaryMisson);
+
+    DOM.showMatchedComponent('#not-mached-component', courseType, missionType);
   }
 
   onClick(event) {
