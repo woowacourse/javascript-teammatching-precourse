@@ -32,12 +32,14 @@ export default class Controller {
       this.manageCrewView.showCrewList("frontend");
       this.manageCrewView.reloadTable(this.crewModel.frontCrew);
       this.onClickCrewAdd("frontend");
+      this.onClickDelete("frontend");
     });
     $backend.addEventListener("click", (e) => {
       e.preventDefault();
       this.manageCrewView.showCrewList("backend");
       this.manageCrewView.reloadTable(this.crewModel.backCrew);
       this.onClickCrewAdd("backend");
+      this.onClickDelete("backend");
     });
   }
 
