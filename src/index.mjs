@@ -24,6 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // [크루 관리]
 window.addEventListener('click', e => {
   if (e.target !== document.querySelector('#crew-tab')) return;
+  if (window.document.querySelector('main')) return;
   renderCourseChoice();
 });
 
