@@ -73,4 +73,19 @@ const teamMatchHeader = (course, mission) => {
     </h3>`;
 };
 
-export { teamMatch, teamMatchForm };
+const teamMatchResult = (member) => `
+<h3>프론트엔드 숫자야구게임 조회</h3>
+      <p>팀이 매칭되었습니다.</p>
+      <ul id=${ID.RESULT}>
+        ${member
+          .map((team) => {
+            return `<li>${team}</li>`;
+          })
+          .join("")}
+      </ul>
+      <p>
+        팀을 재매칭 하시겠습니까?
+        <button id=${ID.REMATCH}>재매칭</button>
+      </p>`;
+
+export { teamMatch, teamMatchForm, teamMatchResult };

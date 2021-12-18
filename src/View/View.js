@@ -1,6 +1,10 @@
 import Tab from "./template/Tab.js";
 import { crewManage, addCrew, crewTable } from "./template/CrewManage.js";
-import { teamMatch, teamMatchForm } from "./template/TeamMatch.js";
+import {
+  teamMatch,
+  teamMatchForm,
+  teamMatchResult,
+} from "./template/TeamMatch.js";
 import { ID } from "../constant/constant.js";
 
 export default class View {
@@ -120,7 +124,23 @@ export default class View {
           document.getElementById(ID.COURSE_SELECT).value,
           document.getElementById(ID.TEAM_INPUT).value
         );
-        document.getElementById(ID.TEAM_INPUT).value = "";
+      }
+    });
+  }
+
+  dispalyMatchTeam(team) {
+    if (!this.teamMatchResult) {
+      this.teamMatchResult = document.createElement("section");
+      this.teamMatchResult.innerHTML = teamMatchResult(team);
+    }
+    this.resetMain(this.teamMatchResult);
+  }
+
+  displayRematch(crew) {
+    this.main.addEventListener("click", (event) => {
+      if (event.target.id === ID.REMATCH) {
+        this.resetMain(this.teamManageForm);
+        this.displayTeamForm(crew);
       }
     });
   }

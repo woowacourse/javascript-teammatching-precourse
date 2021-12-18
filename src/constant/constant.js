@@ -12,6 +12,8 @@ const ID = {
   SHOW_TEAM_MATCHER: "show-team-matcher-button",
   TEAM_INPUT: "team-member-count-input",
   TEAM_MATCH_BUTTON: "match-team-button",
+  RESULT: "team-match-result",
+  REMATCH: "rematch-team-button",
 };
 
 const TEXT = {

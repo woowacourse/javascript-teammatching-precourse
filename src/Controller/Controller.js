@@ -8,6 +8,7 @@ export default class Controller {
     this.view.bindAddCrew(this.addCrewHandler);
     this.view.bindDeleteCrew(this.deleteCrewHandler);
     this.view.bindTeamMatch(this.teamMatchHandler);
+    this.view.displayRematch(this.model.crew);
     this.model.bindCrew(this.crewHandler);
   }
 
@@ -35,7 +36,6 @@ export default class Controller {
   };
 
   teamMatchHandler = (course, number) => {
-    console.log(course, number);
     if (number < 2) {
       alert("1보다 큰 수를 입력해주세요");
       return;
@@ -56,7 +56,7 @@ export default class Controller {
     let crewNumber = this.model.front.length;
     if (course === "backend") crewNumber = this.model.back.length;
     const teamList = this.findTeamNumber(number, crewNumber);
-    console.log(
+    this.view.dispalyMatchTeam(
       this.changeToName(this.findTeamMember(teamList, course), course)
     );
   };
@@ -66,7 +66,6 @@ export default class Controller {
     for (let i = 1; i < crewNumber / number; i++) {
       list.push(+number);
     }
-    console.log(list);
     for (let i = 0; i < crewNumber % number; i++) {
       list[i] += 1;
     }
