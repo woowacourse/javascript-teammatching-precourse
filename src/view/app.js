@@ -1,5 +1,5 @@
 import { createElement } from '../utils/dom-utils.js';
-import CrewManage from './crew-manage.js/index.js';
+import CrewManage from './crew-manage/index.js';
 import Header from './header/header.js';
 
 export default class App {
