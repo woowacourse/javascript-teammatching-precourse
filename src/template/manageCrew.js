@@ -8,6 +8,9 @@ function manageCrew(value) {
     const main = document.querySelector("main");
     const selectCourse = document.createElement("section");
 
+    frontCrew.getFromLocalStorage("프론트엔드");
+    backCrew.getFromLocalStorage("백엔드");
+
     selectCourse.innerHTML = `
           <h3>${value} 크루 관리</h3>
           <form>
@@ -49,10 +52,10 @@ function addCrew(name, value) {
     }
     else {
         if(value === "프론트엔드") {
-            frontCrew.addCrew(name);
+            frontCrew.addCrew(name, value);
         }
         else {
-            backCrew.addCrew(name);
+            backCrew.addCrew(name, value);
         }
         displayCrewList(value);
     }
@@ -63,9 +66,9 @@ window.deleteCrew = (index, value) => {
 
     if(res) {
         if (value === "프론트엔드") {
-            frontCrew.deleteCrew(index);
+            frontCrew.deleteCrew(index, value);
         } else {
-            backCrew.deleteCrew(index);
+            backCrew.deleteCrew(index, value);
         }
         displayCrewList(value);
     }
