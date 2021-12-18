@@ -34,7 +34,10 @@ function matchTeam(course, mission) {
         document.querySelectorAll("section")[1].innerHTML = selectCourse.innerHTML;
     }
 
-    document.getElementById("match-team-button").onclick = () => displayMatchTeam(selectCourse);
+    document.getElementById("match-team-button").onclick = (e) => {
+        e.preventDefault();
+        displayMatchTeam(course, mission, selectCourse);
+    }
     displayCrewList(course);
 }
 
@@ -57,11 +60,11 @@ function displayCrewList(course) {
     }
 }
 
-function displayMatchTeam(selectCourse) {
+function displayMatchTeam(type, mission, selectCourse) {
     const memberCount = document.getElementById("team-member-count-input");
 
-    if(!memberCountValid(memberCount.value)) {
-        alert("잘못된 입력입니다.");
+    if(!memberCountValid(Number(memberCount.value))) {
+        alert(memberCount.value);
         return false;
     }
 
@@ -69,7 +72,7 @@ function displayMatchTeam(selectCourse) {
     backCrew.getFromLocalStorage("백엔드");
 
     selectCourse.innerHTML = `
-      <h3>${course} ${mission} 팀 조회</h3>
+      <h3>${type} ${mission} 팀 조회</h3>
       <div>
         <div>
           <p>팀이 매칭되었습니다.</p>
@@ -82,10 +85,27 @@ function displayMatchTeam(selectCourse) {
         </div>
       </div>`
 
-    randomMatchTeam(memberCount.value);
+    randomMatchTeam(type, memberCount.value);
 }
 
-function randomMatchTeam(input) {
+function randomMatchTeam(type, input) {
+    const uls = document.querySelectorAll("ul");
+
+    if(type === "프론트엔드") {
+        frontCrew.getMatchedTeam(input).map((item) => {
+            uls[1].innerHTML += `
+            <li>${item}</li>
+        `
+        });
+    }
+    else {
+        backCrew.getMatchedTeam(input).map((item) => {
+            uls[1].innerHTML += `
+            <li>${item}</li>
+        `
+        });
+    }
+
     const ul = document.querySelectorAll("ul");
     ul[1].innerHTML += "";
 }
