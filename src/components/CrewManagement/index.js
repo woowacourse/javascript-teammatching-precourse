@@ -11,15 +11,11 @@ export default class CrewManagement extends Component {
     };
   }
 
-  onChangeCourse(course) {
-    this.setState({ selectedCourse: course });
-  }
-
   initChildren() {
     const { selectedCourse } = this.state;
     this.children = [
       new CourseSection(newElement('<section id="course-section"/>'), {
-        onChangeCourse: course => this.onChangeCourse(course),
+        onChangeCourse: course => this.setState({ selectedCourse: course }),
       }),
       new CrewAddForm(newElement('<section id="crew-add-form"/>'), {
         selectedCourse,

@@ -14,8 +14,7 @@ export default class TeamManagement extends Component {
   initChildren() {
     this.children = [
       new OptionSection(newElement('<section id="option-section"/>'), {
-        onChangeOption: (course, mission) =>
-          this.onChangeOption(course, mission),
+        onChangeOption: (course, mission) => this.setState({ course, mission }),
       }),
       new TeamMatchingStatus(
         newElement('<section id="team-status-section"/>'),
@@ -25,9 +24,5 @@ export default class TeamManagement extends Component {
         }
       ),
     ];
-  }
-
-  onChangeOption(course, mission) {
-    this.setState({ course, mission });
   }
 }

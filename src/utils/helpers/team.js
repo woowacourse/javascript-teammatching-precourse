@@ -1,19 +1,19 @@
 const generateCrewArrayAndMap = crew => {
   const crewMap = new Map();
-  const crewArray = Array.from(Array(crew.length).keys());
+  const crewIndexArray = Array.from(Array(crew.length).keys());
   for (let i = 0; i < crew.length; i += 1) {
     crewMap.set(i, crew[i]);
   }
 
-  return { crewMap, crewArray };
+  return { crewMap, crewIndexArray };
 };
 
-const convertIndexToName = (teamList, crewMap) =>
+const parseTeamList = (teamList, crewMap) =>
   teamList.map(list => list.map(index => crewMap.get(index)));
 
 export const matchRandomTeam = (crew, headCount) => {
-  const { crewMap, crewArray } = generateCrewArrayAndMap(crew);
-  const shuffledCrew = MissionUtils.Random.shuffle(crewArray);
+  const { crewMap, crewIndexArray } = generateCrewArrayAndMap(crew);
+  const shuffledCrew = MissionUtils.Random.shuffle(crewIndexArray);
   const teamCount = Math.floor(crew.length / headCount);
   const teamList = [];
 
@@ -27,5 +27,5 @@ export const matchRandomTeam = (crew, headCount) => {
     index += 1;
     if (index === teamCount) index = 0;
   }
-  return convertIndexToName(teamList, crewMap);
+  return parseTeamList(teamList, crewMap);
 };
