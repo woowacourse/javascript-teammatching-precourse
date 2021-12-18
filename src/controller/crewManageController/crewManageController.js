@@ -39,7 +39,18 @@ export default class CrewManageController {
   }
 
   attachCrewManageEvents() {
-    this.view.$addCrewButton.addEventListener('click', this.handleAddCrew.bind(this));
+    if (this.view.$addCrewButton.getAttribute('listener') !== true) {
+      this.view.$addCrewButton.addEventListener('click', this.handleAddCrew.bind(this));
+    }
+
+    this.view.$$deleteCrewButton.forEach((element) => {
+      if (element.getAttribute('listener') !== true) {
+        element.addEventListener('click', this.handleDeleteCrew.bind(this));
+      }
+    });
+  }
+
+  attachCrewManageDeleteEvent() {
     this.view.$$deleteCrewButton.forEach((element) => {
       element.addEventListener('click', this.handleDeleteCrew.bind(this));
     });
@@ -51,11 +62,9 @@ export default class CrewManageController {
     const course = $('input[name="course"]:checked').value;
     if (isValidCrewName(crewName, course, this.model)) {
       this.model.addCrew(crewName, course);
-      if (course === 'backend') {
-        this.view.renderCrewTable(this.model.backCrews);
-      } else {
-        this.view.renderCrewTable(this.model.frontCrews);
-      }
+      this.renderCrewTableByCourse(course);
+      this.view.selectDeleteCrewButtonDOM();
+      this.attachCrewManageDeleteEvent();
       return true;
     }
     return showError();
@@ -71,7 +80,7 @@ export default class CrewManageController {
       this.model.deleteCrew(targetIdx, course);
     }
     this.renderCrewTableByCourse(course);
-    this.view.selectCrewManageDOM();
+    this.view.selectDeleteCrewButtonDOM();
     this.attachCrewManageEvents();
   }
 

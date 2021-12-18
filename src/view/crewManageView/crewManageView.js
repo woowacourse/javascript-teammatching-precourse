@@ -27,8 +27,12 @@ export default class CrewManageView {
 
   selectCrewManageDOM() {
     this.$crewNameInput = $('#crew-name-input');
-    this.$addCrewButton = $('#add-crew-button');
+    this.$addCrewButton = $('#add-crew-buttton');
     this.$tbody = $('tbody');
+    this.$$deleteCrewButton = $$('#delete-crew-button');
+  }
+
+  selectDeleteCrewButtonDOM() {
     this.$$deleteCrewButton = $$('#delete-crew-button');
   }
 
