@@ -1,4 +1,4 @@
-import { ELEMENT_SELECTOR, ELEMENT_DATA_ATTRIBUTES } from '../../constants/index.js';
+import { ELEMENT_SELECTOR, ELEMENT_DATA_ATTRIBUTES, REMOVE_CREW_CONFIRM_MESSAGE, FRONTEND, FRONTEND_KR, BACKEND_KR } from '../../constants/index.js';
 import Store from '../../flux/store.js';
 import Component from '../../abstracts/component.js';
 import { crewListTemplate } from '../../templates/crew-manage/crewListTemplate.js';
@@ -26,7 +26,11 @@ class CrewList extends Component {
     const $button = e.target;
     const name = $button.getAttribute(`${CREW_NAME}`);
     const course = $button.getAttribute(`${CREW_COURSE}`);
-    Store.instance.dispatch(removeCrewAction({ name, course }));
+    const courseName = course === FRONTEND ? FRONTEND_KR : BACKEND_KR;
+    const result = confirm(REMOVE_CREW_CONFIRM_MESSAGE(name, courseName));
+    if (result) {
+      Store.instance.dispatch(removeCrewAction({ name, course }));
+    }
   }
 }
 
