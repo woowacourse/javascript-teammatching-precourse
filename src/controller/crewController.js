@@ -22,6 +22,29 @@ class crewController {
     this.addBECrew(crewName);
   }
 
+  removeCrew(e) {
+    const crewArrIndex = Number(e.target.closest('tr').querySelector('td').innerText) - 1;
+    if ($('#frontend-course').checked) {
+      this.removeFECrew(crewArrIndex);
+      return;
+    }
+    this.removeBECrew(crewArrIndex);
+  }
+
+  removeFECrew(crewArrIndex) {
+    console.log(feCrewList);
+    feCrewList.splice(crewArrIndex, 1);
+    store.setLocalStorage('feCrewList', feCrewList);
+    this.view.renderFECrewList();
+  }
+
+  removeBECrew(crewArrIndex) {
+    console.log(beCrewList);
+    beCrewList.splice(crewArrIndex, 1);
+    store.setLocalStorage('beCrewList', beCrewList);
+    this.view.renderBECrewList();
+  }
+
   addFECrew(crewName) {
     feCrewList.push(crewName);
     store.setLocalStorage('feCrewList', feCrewList);
@@ -32,6 +55,15 @@ class crewController {
     beCrewList.push(crewName);
     store.setLocalStorage('beCrewList', beCrewList);
     this.view.renderBECrewList();
+  }
+
+  bindRemoveEvent() {
+    $('#crew-table').addEventListener('click', (e) => {
+      if (!e.target.classList.contains('delete-crew-buttton')) {
+        return;
+      }
+      this.removeCrew(e);
+    });
   }
 
   bindEvent() {
@@ -48,6 +80,7 @@ class crewController {
       this.view.renderBECrewList();
     });
     $('#add-crew-buttton').addEventListener('click', this.addCrew.bind(this));
+    this.bindRemoveEvent();
   }
 }
 
