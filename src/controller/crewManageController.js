@@ -63,13 +63,15 @@ export default class CrewManager {
     );
   }
 
-  deleteCrew(crewName) {console.log(crewName)
+  deleteCrew(crewName) {
     const allCourse = this.model.getAllCourse();
-    const selectedCourse = allCourse.find(e => e.name === this.model.selectedCourse);
-    const deletedCrewList = selectedCourse.crewList.filter(e => e !== crewName);
-    selectedCourse.crewList = deletedCrewList;
-    console.log(deletedCrewList)
-    this.model.setAllCourse(allCourse);
-    
+    const deleteConfirm = window.confirm('정말 삭제하시겠습니까?');
+    if (deleteConfirm) {
+      const selectedCourse = allCourse.find(e => e.name === this.model.selectedCourse);
+      const deletedCrewList = selectedCourse.crewList.filter(e => e !== crewName);
+      selectedCourse.crewList = deletedCrewList;
+      this.model.setAllCourse(allCourse);
+      this.initTable();
+    }
   }
 }
