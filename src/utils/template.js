@@ -22,3 +22,11 @@ export function choiceCourseRadioBox() {
       <label for="backend">백엔드</label>
     </div>`;
 }
+
+export function crewNameForm() {
+  return `<form>
+        <label>크루 이름</label>
+        <input type="text" id=${ID.CREW_NAME_INPUT}/>
+        <button>확인</button>
+      </form>`;
+}
