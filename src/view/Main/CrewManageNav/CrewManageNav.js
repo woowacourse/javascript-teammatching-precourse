@@ -4,6 +4,7 @@ import createCourseManage from './CrewManage.js';
 
 export default function createCrewManageNav() {
   const crewManageNav = document.createElement('div');
+  crewManageNav.setAttribute('id', 'crew-manage-nav');
   const courseSelect = createCourseSelect();
   crewManageNav.append(courseSelect);
 
