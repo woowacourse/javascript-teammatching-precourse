@@ -17,6 +17,23 @@ export default class CrewEvent {
             } else {
                 alert("유효하지 않은 입력입니다!"); // 상수로 변경
             }
+
+            this.getCourse();
+
+            
         })
+    }
+
+    static getCourse() {
+        const courseLength = document.getElementsByName("course").length;
+        let courseType = "";
+
+        for (let i = 0; i < courseLength; i++) {
+            if (document.getElementsByName("course")[i].checked === true) {
+                courseType = document.getElementsByName("course")[i].value;
+                console.log(courseType);
+                break;
+            }
+        }
     }
 }
