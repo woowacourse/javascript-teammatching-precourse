@@ -1,3 +1,5 @@
+import { STRING } from '../constants/constants.js';
+
 export const headerTemplate = () => {
   return `
    <header>
@@ -31,7 +33,7 @@ export const selectCourseTemplate = () => {
   `;
 };
 
-export const crewManageTemplate = () => {
+export const crewManageTemplate = (crews) => {
   return `
     <section>
       <h3>프론트엔드 크루 관리</h3>
@@ -52,13 +54,21 @@ export const crewManageTemplate = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>준</td>
-            <td>
-              <button id="delete-crew-button">삭제</button>
-            </td>
-          </tr>
+          ${
+            crews &&
+            crews
+              .map((crew, idx) => {
+                return `
+              <tr>
+                <td>${idx + 1}</td>
+                <td>${crew.name}</td>
+                <td><button id="delete-crew-button">삭제</button>
+                </td>
+              </tr>
+            `;
+              })
+              .join(STRING.EMPTY)
+          }
         </tbody>
       </table>
     </section>

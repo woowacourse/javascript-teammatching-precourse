@@ -26,7 +26,7 @@ export default class CrewManageController {
   handleSelectCourse(e) {
     e.preventDefault();
 
-    this.view.renderCrewManage();
+    this.view.renderCrewManage(this.model.crews);
     this.view.selectCrewManageDOM();
     this.attachCrewManageEvents();
     // const checkedValue = $('input[name="course"]:checked').value;

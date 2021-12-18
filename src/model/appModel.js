@@ -4,7 +4,7 @@ import Crew from './crew.js';
 
 export default class AppModel {
   constructor() {
-    this.crews = [];
+    this.crews = [{ name: '제임스' }, { name: '심바' }];
   }
 
   addCrew(name) {
