@@ -105,9 +105,6 @@ export default class matchingManageController {
     let remainAmount = remainingCount;
     while (remainAmount > 0) {
       teamMemberClass = teamMemberClass.map((team) => {
-        if (remainAmount === 0) {
-          return team;
-        }
         remainAmount -= 1;
         return team + 1;
       });
