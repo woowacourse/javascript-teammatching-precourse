@@ -35,7 +35,7 @@ export default class TeamPresent {
             <form>
               <label>1팀당 인원 수</label>
               <input type="number" id='team-member-count-input'/>
-              <button id='match-team-button'>팀 매칭</button>
+              <button type='button' id='match-team-button'>팀 매칭</button>
             </form>
           </div>
           <h4>크루 목록</h4>
@@ -52,7 +52,7 @@ export default class TeamPresent {
         </ul>
         <p>
           팀을 재매칭 하시겠습니까?
-          <button id = 'rematch-team-button'>재매칭</button>
+          <button type='button' id = 'rematch-team-button'>재매칭</button>
         </p>
       </section>
     </main>
