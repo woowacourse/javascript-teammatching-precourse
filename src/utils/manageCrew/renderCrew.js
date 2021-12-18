@@ -1,8 +1,9 @@
 import $ from '../common/selector.js';
 import { templates } from '../../constants/templates/crew.js';
 import { addCrew } from './addCrew.js';
+import { removeCrew } from './removeCrew.js';
 
-export const renderCrew = (state, value) => {
+export const renderCrew = async (state, value) => {
   const { inputCrew, crewTable, crew } = templates;
   const crewList = state.crew[value].map((item, i) => crew(item, i)).join('');
 
@@ -13,5 +14,11 @@ export const renderCrew = (state, value) => {
   $('#add-crew-buttton').addEventListener('click', e => {
     e.preventDefault();
     addCrew(state, value);
+  });
+
+  $('#crew_list').addEventListener('click', e => {
+    if (e.target.classList.contains('delete-crew-buttton')) {
+      removeCrew(e, state, value);
+    }
   });
 };

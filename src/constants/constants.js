@@ -14,4 +14,6 @@ export const ERROR_MSG = {
   DUPLICATE_NAME: '중복된 크루원 이름입니다.',
 };
 
+export const CONFIRM_MSG = '정말 이 크루원을 삭제하시겠습니까?';
+
 export const NAME_MAX_LENGTH = 5;

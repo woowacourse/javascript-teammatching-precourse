@@ -51,13 +51,13 @@ export const templates = {
 
   crew(item, index) {
     return `
-        <tr>
+        <tr data-crew-id=${item.id}>
             <td>${index + 1}</td>
             <td>${item.name}</td>
             <td>
-              <button>삭제</button>
+              <button id="delete-crew-buttton" class="delete-crew-buttton">삭제</button>
             </td>
-          </tr>
+        </tr>
      `;
   },
 };
