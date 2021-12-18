@@ -54,7 +54,12 @@ export default class TeamMatchingView {
     const $table = document.querySelector("#team-match-result");
     $table.innerHTML = "";
     team.forEach((el, idx) => {
-      $table.innerHTML += `<li>${el.name}</li>`;
+      $table.innerHTML += `<li>${el.join(",")}</li>`;
     });
+  }
+
+  renderRetry() {
+    showElement(document.querySelector("#make-team-matching"));
+    hideElement(document.querySelector("#matching-result"));
   }
 }

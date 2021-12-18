@@ -125,6 +125,14 @@ export default class Controller {
       this.teamMathcingView.renderMadeTeam(
         this.crewModel.matchTeam(type, parseInt(number, 10))
       );
+      this.onClickRetry();
+    });
+  }
+
+  onClickRetry() {
+    const $btn = document.querySelector("#rematch-team-button");
+    $btn.addEventListener("click", () => {
+      this.teamMathcingView.renderRetry();
     });
   }
 }

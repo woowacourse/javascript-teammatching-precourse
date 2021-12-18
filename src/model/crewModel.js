@@ -64,7 +64,7 @@ export default class CrewModel {
       Array.from({ length: this.frontCrew.length }, (v, i) => i)
     );
     pickArray.forEach((el, idx) => {
-      team.push({ index: parseInt(idx % number, 10), name: arr[el] });
+      team[parseInt(idx % number, 10)].push(arr[el]);
     });
     return team;
   }
