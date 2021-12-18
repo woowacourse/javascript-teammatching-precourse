@@ -108,7 +108,9 @@ ex) <option value="baseball">숫자야구게임</option>
 
 ## 3. 사용할 마크업
 
-- [ ] 크루 관리 탭에서 사용할 마크업
+- [x] 해당 마크업 코드를 view/templates.js 에 객체로 저장 후 이후 import하여 사용
+
+- [x] 크루 관리 탭에서 사용할 마크업
 
 ```html
 <div id="app">
@@ -168,7 +170,7 @@ ex) <option value="baseball">숫자야구게임</option>
 </div>
 ```
 
-- [ ] 팀 매칭 관리 탭에서 사용할 마크업
+- [x] 팀 매칭 관리 탭에서 사용할 마크업
 
 ```html
 <div id="app">
