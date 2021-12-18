@@ -36,14 +36,27 @@ export default class InputMatch extends Component {
 
   onSubmitHandler(e) {
     e.preventDefault();
-    const { setTeamNumbers } = this.$props;
+    const { setTeamNumbers, currentCrews } = this.$props;
     const numbers = document.querySelector("#team-member-count-input").value;
     console.log(numbers);
     if (numbers === "") {
       window.alert(`인원 수를 입력해주세요.`);
       return;
     }
+    if (Number(numbers) <= 0) {
+      window.alert(`1이상의 인원 수를 입력해주세요.`);
+      return;
+    }
+
+    // this.getMatchedTeam({ numbers: Number(numbers), currentCrews });
 
     setTeamNumbers({ teamNumbers: Number(numbers) });
   }
+
+  //   getMatchedTeam({ numbers, currentCrews }) {
+  //     console.log("----------", numbers, currentCrews);
+  //     console.log(currentCrews.length);
+  //     const a = MissionUtils.Random.shuffle([1, 2, 3, 4, 5]);
+  //     console.log(a);
+  //   }
 }
