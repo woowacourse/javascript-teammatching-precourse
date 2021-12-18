@@ -41,7 +41,7 @@ export const CrewSecnodView = (section) => {
         <form>
             <label>크루 이름</label>
             <input type="text" id=${CREW_TAB.CREW_INPUT} />
-            <button id = ${CREW_TAB.CREW_ADD_BTN}>확인</button>
+            <button class = ${CREW_TAB.CREW_ADD_BTN}>확인</button>
         </form>
         </section>
         <section>
