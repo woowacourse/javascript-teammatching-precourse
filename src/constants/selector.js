@@ -1,9 +1,11 @@
 export const ID = {
   TAB_CREW: 'crew-tab',
   TAB_TEAM: 'team-tab',
+  CHOICE_CREW: 'choice-crew-div',
   COURSE_CHOICE_FRONT: 'frontend-course',
   COURSE_CHOCIE_BACK: 'backend-course',
   CREW_NAME_INPUT: 'crew-name-input',
+  ADD_CREW_BUTTON: 'add-crew-buttton',
   CREW_STATUS_TABLE: 'crew-table',
   TEAM_MATCHING_COURSE_CHOICE: 'course-select',
   TEAM_MATCHING_MISSION_CHOICE: 'mission-select',

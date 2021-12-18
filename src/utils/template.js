@@ -16,10 +16,10 @@ export function navBar() {
 
 export function choiceCourseRadioBox() {
   return `<h3>크루를 관리할 코스를 선택해주세요</h3>
-    <div>
-      <input type="radio" name="course" value="frontend" id=${ID.COURSE_CHOICE_FRONT} checked/>
+    <div id = ${ID.CHOICE_CREW}>
+      <input type="radio" name="course" value="frontend" id=${ID.COURSE_CHOICE_FRONT} />
       <label for="frontend">프론트엔드</label>
-      <input type="radio" name="course" value="backend" id=${ID.COURSE_CHOCIE_BACK}/>
+      <input type="radio" name="course" value="backend" id=${ID.COURSE_CHOCIE_BACK} />
       <label for="backend">백엔드</label>
     </div>`;
 }
@@ -28,7 +28,7 @@ export function crewNameForm() {
   return `<form>
         <label>크루 이름</label>
         <input type="text" id=${ID.CREW_NAME_INPUT}/>
-        <button>확인</button>
+        <button type="submit" id=${ID.ADD_CREW_BUTTON} >확인</button>
       </form>`;
 }
 

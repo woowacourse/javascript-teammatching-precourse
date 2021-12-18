@@ -1,3 +1,4 @@
+import { ID } from '../constants/selector.js';
 import { createElement } from '../utils/dom-utils.js';
 import CrewManage from './crew-manage/index.js';
 import Header from './header/header.js';
@@ -29,6 +30,10 @@ export default class App {
       this.$teamMatching.component,
       this.$app.lastElementChild
     );
+  }
+
+  crewShow(type, crew) {
+    this.$crewManage.crewShow(type, crew);
   }
   appendChild() {
     this.$app.append(this.$header.component, this.$emptyContainer);

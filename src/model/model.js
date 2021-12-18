@@ -1,3 +1,8 @@
 export default class Model {
-  constructor() {}
+  constructor() {
+    this.frontEnd = [];
+    this.backEnd = [];
+  }
+
+  addMemeber(type, member) {}
 }
