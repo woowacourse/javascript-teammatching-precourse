@@ -33,7 +33,7 @@ export const renderAddCrewForm = course => {
   const template = () => {
     return `
       <h3>${course} 크루 관리</h3>
-      <form>
+      <form id='add-crew-form'>
         <label>크루 이름</label>
         <input type="text" id='crew-name-input' />
         <button id='add-crew-button'>확인</button>
