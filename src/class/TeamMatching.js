@@ -88,11 +88,18 @@ export default class TeamMatching {
   divideTeam(course, suffledIndexList, memberCount) {
     const teams = [];
     const teamCount = parseInt(this.crews[course].length / memberCount);
-    let selectedCount = 0;
 
     for (let index = 0; index < teamCount; index++) {
       teams.push([]);
     }
+
+    this.memberDivide(suffledIndexList, teamCount, memberCount, course, teams);
+
+    return teams;
+  }
+
+  memberDivide(suffledIndexList, teamCount, memberCount, course, teams) {
+    let selectedCount = 0;
 
     while (selectedCount < suffledIndexList.length) {
       for (let _index = 0; _index < teamCount; _index++) {
@@ -105,13 +112,10 @@ export default class TeamMatching {
             break;
           }
         }
-
         if (selectedCount >= suffledIndexList.length) {
           break;
         }
       }
     }
-
-    return teams;
   }
 }
