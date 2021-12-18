@@ -16,6 +16,8 @@ export const ID = Object.freeze({
   COURSE_SELECTOR: 'course-select',
   MISSION_SELECTOR: 'mission-select',
   TEAM_MATCHER_BUTTON: 'show-team-matcher-button',
+  SECTION_MATCHING_TEAM: 'section-matching-team',
+  MEMBER_COUNT_INPUT: 'team-member-count-input',
 });
 
 export const CLASS = Object.freeze({

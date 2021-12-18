@@ -39,6 +39,14 @@ class Crew extends Store {
 
     return this.value[this.getSelectedCourse()];
   }
+
+  getCrewsByCourse(course) {
+    if (course === null) {
+      return [];
+    }
+
+    return this.value[course];
+  }
 }
 
 export default new Crew();
