@@ -49,6 +49,10 @@ export default class CrewManagementView extends View {
   handleAddCrewButton() {
     on(this.addCrewButton, EVENT_LISTENER_TYPE.CLICK, (event) => {
       event.preventDefault();
+      if (this.crewNameInput.value.length > 5) {
+        alert('이름은 5글자 이하로 설정해주세요.');
+        return;
+      }
       const request = {
         selectedCourse: this.selectedCourse,
         name: this.crewNameInput.value
@@ -111,7 +115,7 @@ class Template {
       <h3>${
         course === CREW_COURSE.FRONTEND ? '프론트엔드' : '백엔드'
       } 크루 목록</h3>
-      <table border="1">
+      <table border="1" id="${SELECTOR.CREW_TABLE}">
         <thead>
           <th></th>
           <th>크루</th>
