@@ -1,5 +1,14 @@
 export class MatchingModel {
-  frontEndCrewList = [];
+  frontEndCrewList = [
+    '김의진',
+    '오정은',
+    '히히히',
+    '하하하',
+    '호호호',
+    '헤헤헤',
+    '휴휴휴',
+    '뉴뉴뉴',
+  ];
   backEndCrewList = [];
 
   addCrewList(crewName, course) {

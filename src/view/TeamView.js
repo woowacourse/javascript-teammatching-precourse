@@ -21,7 +21,7 @@ export class TeamView {
   setOnMatchButtonClick(fn, selectedCourse, selectedMission) {
     $('#match-team-button').addEventListener('click', (e) => {
       e.preventDefault();
-      const headCountPerTeam = $('#team-member-count-input').value;
+      const headCountPerTeam = Number($('#team-member-count-input').value);
 
       fn(headCountPerTeam, selectedCourse, selectedMission);
     });
@@ -37,8 +37,15 @@ export class TeamView {
     crewList.map((crew) => ($crewList.innerHTML += `<li>${crew}</li>`));
   }
 
-  showTeamMatchResult(selectedCourse, selectedMission) {
+  showTeamMatchResult(selectedCourse, selectedMission, teamList) {
     this.$teamMatchingSection.innerHTML = getMatchingResult(selectedCourse, selectedMission);
+    this.$teamMatchResult = $('#team-match-result');
+    this.showTeamList(teamList);
+  }
+  showTeamList(teamList) {
+    for (let i = 0; i < teamList.length; i++) {
+      this.$teamMatchResult.innerHTML += `<li>${teamList[i].join(',')}</li>`;
+    }
   }
 
   addElements() {
