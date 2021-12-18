@@ -15,5 +15,7 @@ export const headerTemplate = () => {
       </ul>
     </nav>
   </header>
+  <main id="${SELECTOR.ID.MAIN}">
+  </main>
   `;
 };
