@@ -25,10 +25,12 @@ class View {
   <main id="${DOM.MAIN_SECTION}"></main>`;
   }
 
-  renderCrewManageMenu({ inputs }) {
+  renderCrewManageMenu({ inputs, frontendCrewList, backendCrewList }) {
     this.mainSection = new CrewManageView({
       mainSection: $(DOM.MAIN_SECTION),
-      inputs,
+      inputs: inputs,
+      frontendCrewList: frontendCrewList,
+      backendCrewList: backendCrewList,
     });
   }
 

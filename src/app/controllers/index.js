@@ -15,6 +15,7 @@ class TeamMatchingController {
   initializeModels() {
     this.$globalModel = this.$model.getGlobalModel();
     this.$inputsModel = this.$model.getInputsModel();
+    this.$crewModel = this.$model.getCrewModel();
   }
 
   bindEventHandler() {
@@ -42,22 +43,32 @@ class TeamMatchingController {
     }
     if (tab === TAB.TEAM) {
       this.renderTeamMatchingMenu();
+      this.bindTeamMatchingMenuController();
     }
   }
 
   renderCrewManageMenu() {
-    this.$view.renderCrewManageMenu({ inputs: this.$inputsModel.getCrewInputsModel() });
+    this.$view.renderCrewManageMenu({
+      inputs: this.$inputsModel.getCrewInputsModel(),
+      frontendCrewList: this.$crewModel.getFrontendCrewList(),
+      backendCrewList: this.$crewModel.getBackendCrewList(),
+    });
   }
 
   bindCrewManageMenuController() {
     this.$controller = new CrewManageController({
       view: this.$view.mainSection,
       inputsModel: this.$inputsModel,
+      crewModel: this.$crewModel,
     });
   }
 
   renderTeamMatchingMenu() {
     this.$view.renderTeamMatchingMenu();
+  }
+
+  bindTeamMatchingMenuController() {
+    this.$controller = new TeamMatchingController({});
   }
 }
 export default TeamMatchingController;

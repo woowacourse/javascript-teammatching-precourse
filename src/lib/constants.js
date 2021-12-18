@@ -17,10 +17,14 @@ export const DOM = Object.freeze({
   DELETE_CREW_BUTTON_CLASSNAME: 'delete-crew-buttton',
 
   CREW_TABLE_ID: 'crew-table',
+  CREW_TABLE_BODY: 'crew-table-body',
 
-  COURSE_SELECT_SECTION: 'course-select-section',
-  CREW_INPUT_FORM: 'crew-input-form',
-  CREW_LIST: 'crew-list',
+  COURSE_SELECT_SECTION_ID: 'course-select-section',
+  CREW_INPUT_FORM_ID: 'crew-input-form',
+  CREW_LIST_ID: 'crew-list',
+
+  CREW_FORM_SECTION: 'crew-form-section',
+  CREW_LIST_SECTION: 'crew-list-section',
 });
 
 export const TAB = {
@@ -32,9 +36,16 @@ export const TAB = {
 export const MODEL_KEYS = {
   GLOBAL: 'global',
   INPUTS: 'inputs',
+  CREW: 'crew',
 };
 
 export const COURSE = {
   FRONTEND: 'frontend',
   BACKEND: 'backend',
 };
+
+export const ERROR_MESSAGE = Object.freeze({
+  IS_DUPLICATED_NAME: '이름이 중복되었습니다.',
+  IS_NONE_INPUT: '글자가 입력되지 않았습니다',
+  IS_STRING_GREATHER_THAN_5: '글자수는 5글자 이하입니다.',
+});
