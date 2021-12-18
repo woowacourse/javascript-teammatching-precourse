@@ -1,36 +1,28 @@
-import { HEADER_ID as ID } from "./constant.js";
 import { CrewPresenter } from "../Crew/CrewPresenter.js";
 import { TeamPresenter } from "../Team/teamPresenter.js";
+import { HEADER_ID as ID } from "./constant.js";
+
+import * as View from "../Storage/view.js";
+
 export const InitialPresenter = function () {
     const $app = document.getElementById("app");
-
+    const crewPresenter = new CrewPresenter();
+    const teamPresenter = new TeamPresenter();
     this.init = () => {
-        $app.innerHTML += header;
+        $app.insertAdjacentHTML("afterbegin", View.Header());
         const $crewTab = document.getElementById(ID.CREW_TAB);
         const $teamTab = document.getElementById(ID.TEAM_TAB);
-        addListener($crewTab, CrewPresenter());
-        addListener($teamTab, TeamPresenter());
+        addListener($crewTab, View.CrewFirstView(), crewPresenter);
+        addListener($teamTab, "");
     };
 
-    const addListener = (button, presenter) => {
+    const addListener = (button, view, presenter) => {
         button.addEventListener("click", function (e) {
             e.preventDefault();
-            $app.innerHTML += presenter;
+            $app.insertAdjacentHTML("beforeend", view);
+            presenter.init();
         });
     };
 
-    const header = `<header>
-    <h1>우테코 크루와 팀 매칭 관리 보드</h1>
-    <nav>
-        <ul>
-            <li>
-                <button id = ${ID.CREW_TAB}>크루 관리</button>
-            </li>
-            <li>
-                <button id = ${ID.TEAM_TAB}>팀 매칭 관리</button>
-            </li>
-        </ul>
-    </nav>
-    </header>`;
-    this.init();
+    const header = this.init();
 };
