@@ -58,7 +58,13 @@ export default class Controller {
     }
   }
 
-  setRandomTeam() {}
+  setRandomTeam(peopleList, course, count) {
+    let personArr = [];
+    peopleList.forEach(person => {
+      personArr.append(person.name);
+    });
+    let team = MissionUtils.Random.shuffle(personArr);
+  }
 
   addPeopleList(peopleList) {
     this.model.FrontPeopleList = peopleList.front;
