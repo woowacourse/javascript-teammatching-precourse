@@ -1,6 +1,7 @@
 import { BUTTON, HEADER, LIST } from '../../../common/constant.js';
 import { $, createHeader, createSection } from '../../../common/element.js';
 import { getLocalStorage } from '../../../common/localStorage.js';
+import { getStandard } from '../../../control/Main/CrewManageDiv/CourseSelect.js';
 import { crewDelete } from '../../../control/Main/CrewManageDiv/CrewManage.js';
 
 function createCrewListSection() {
@@ -11,7 +12,8 @@ function createCrewListSection() {
 }
 
 function createCrewListHeader() {
-  return createHeader('h3', HEADER.CREW_LIST);
+  const course = getStandard();
+  return createHeader('h3', `${course} ${HEADER.CREW_LIST}`);
 }
 
 function createCrewListTable() {
