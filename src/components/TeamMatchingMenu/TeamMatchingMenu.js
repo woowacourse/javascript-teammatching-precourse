@@ -10,12 +10,13 @@ import divmod from '../../utils/utils.js';
 
 export default class TeamMatchingMenu extends Component {
   setup() {
-    const { crewList, matchedTeamList } = LocalStore.load();
+    const { crewList, teamMatchCourse, teamMatchMission, matchedTeamList } =
+      LocalStore.load();
 
     this.state = {
       crewList,
-      teamMatchCourse: null,
-      teamMatchMission: null,
+      teamMatchCourse,
+      teamMatchMission,
       matchedTeamList,
     };
   }
@@ -89,6 +90,7 @@ export default class TeamMatchingMenu extends Component {
       const memberNumber = count + (remainder > 0 ? 1 : 0);
       const teamIndexList = shuffledIndex.splice(0, memberNumber);
       const team = teamIndexList.map((index) => filteredCrewList[index]);
+
       teamList.push([...team]);
       remainder -= 1;
     }
@@ -114,7 +116,6 @@ export default class TeamMatchingMenu extends Component {
     }
 
     LocalStore.save({ matchedTeamList });
-    console.log(matchedTeamList);
     this.setState({
       matchedTeamList,
     });
@@ -125,8 +126,6 @@ export default class TeamMatchingMenu extends Component {
     const index = matchedTeamList.findIndex(
       (elem) => elem.course === course && elem.mission === mission
     );
-
-    console.log(index);
 
     matchedTeamList.splice(index, 1);
 
