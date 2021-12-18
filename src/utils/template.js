@@ -12,3 +12,13 @@ export function navBar() {
     </ul>
   </nav>`;
 }
+
+export function choiceCourseRadioBox() {
+  return `<h3>크루를 관리할 코스를 선택해주세요</h3>
+    <div>
+      <input type="radio" name="course" value="frontend" id=${ID.COURSE_CHOICE_FRONT} checked/>
+      <label for="frontend">프론트엔드</label>
+      <input type="radio" name="course" value="backend" id=${ID.COURSE_CHOCIE_BACK}/>
+      <label for="backend">백엔드</label>
+    </div>`;
+}
