@@ -3,6 +3,7 @@ import { $ } from '../../utils/index.js';
 import Component from '../../abstracts/component.js';
 import CourseSelectForm from './CourseSelectForm.js';
 import AddCrewForm from './AddCrewForm.js';
+import CrewList from './CrewList.js';
 
 class CrewManage extends Component {
   static template = () => {
@@ -13,11 +14,13 @@ class CrewManage extends Component {
   mountChildren() {
     this.courseSelect = new CourseSelectForm(this.$view).mount();
     this.addCrewForm = new AddCrewForm(this.$view).mount();
+    this.crewList = new CrewList(this.$view).mount();
   }
 
   unmountChildren() {
     this.courseSelect.unmount();
     this.addCrewForm.unmount();
+    this.crewList.unmount();
   }
 
   bindingElements() {
