@@ -1,4 +1,4 @@
-import { ALERT_MESSAGE } from "../constants/constants";
+import { ALERT_MESSAGE } from '../constants/constants.js';
 
 export const $ = id => document.getElementById(id);
 
@@ -10,8 +10,8 @@ export const validation = {
   },
   isDuplicatedName(selectedCourseCrewList, crewName) {
     const isDuplicated = selectedCourseCrewList.includes(crewName);
-    if(isDuplicated){
-        alert(ALERT_MESSAGE)
+    if (isDuplicated) {
+      alert(ALERT_MESSAGE.DUPLICATED_NAME);
     }
   },
 };
