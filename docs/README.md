@@ -77,24 +77,24 @@ const dataObj = {
 
 ### 2) 크루 관리 기능 탭
 
-- [ ] `크루 관리` 탭에서, 다음과 같은 규칙으로 크루를 추가하거나 삭제할 수 있다.
+- [x] `크루 관리` 탭에서, 다음과 같은 규칙으로 크루를 추가하거나 삭제할 수 있다.
 
 - [x] 코스별로 크루를 추가할 수 있다.
   - crewManagerTabHTML에 crewTableTbodyHTML를 입력
-  - [ ] 동일한 이름의 크루는 추가할 수 없다.
-  - [ ] 크루 이름은 최대 5글자까지 가능하다.
-- [ ] 코스별로 크루를 삭제할 수 있다.
-  - [ ] 삭제할 때는 [confirm](https://developer.mozilla.org/ko/docs/Web/API/Window/confirm)을 사용하여, 사용자가 한번 더 확인할 수 있게 한다.
-- [ ] 크루 table의 첫번째 열에는 index를 넣어 순서를 표시한다. index는 '1'부터 시작한다.
-- [ ] 제공하는 마크업을 활용하여 프로그램을 구현한다.
-- [ ] DOM 선택자
+  - [x] 동일한 이름의 크루는 추가할 수 없다.
+  - [x] 크루 이름은 최대 5글자까지 가능하다.
+- [x] 코스별로 크루를 삭제할 수 있다.
+  - [x] 삭제할 때는 [confirm](https://developer.mozilla.org/ko/docs/Web/API/Window/confirm)을 사용하여, 사용자가 한번 더 확인할 수 있게 한다.
+- [x] 크루 table의 첫번째 열에는 index를 넣어 순서를 표시한다. index는 '1'부터 시작한다.
+- [x] 제공하는 마크업을 활용하여 프로그램을 구현한다.
+- [x] DOM 선택자
 
-  - [ ] [] **코스 선택 radio input**
+  - [x] **코스 선택 radio input**
 
     - [x] 프론트엔드 코스 선택 radio input의 id는 `frontend-course`이다.
     - [x] 백엔드 코스 선택 radio input의 id는 `backend-course`이다.
 
-  - [ ] **크루 추가/삭제 button**
+  - [x] **크루 추가/삭제 button**
 
     - [x] 크루 이름을 입력하기 위한 input의 id는`crew-name-input`이다.
     - [x] 크루 추가를 위한 확인 버튼의 id는 `add-crew-buttton`이다.
@@ -102,7 +102,7 @@ const dataObj = {
     - [x] 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-buttton`이다.
       - 제시된 id가 오타인 것으로 판단되어 button으로 수정
 
-  - [ ] **크루 table**
+  - [x] **크루 table**
     - [x] 크루 목록을 보여주기 위한 table의 id는 `crew-table`이다.
 
 ### 3) 팀 매칭 관리 기능

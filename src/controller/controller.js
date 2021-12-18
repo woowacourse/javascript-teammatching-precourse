@@ -49,9 +49,23 @@ export default class TeamController {
   getCrewNameInput(e) {
     e.preventDefault();
     const crewName = $.crewNameInput().value;
+    if (this.checkCrewBeforeRegister(crewName)) {
+      return;
+    }
     this.model.addNewCrew(crewName, this.courseName);
     this.model.setLocalStorage(KEY.localKey, this.model.teamObj);
     this.showCrewTable();
+  }
+
+  checkCrewBeforeRegister(crewName) {
+    if (crewName.length > 5 || crewName.length < 1) {
+      alert(MESSAGE.alertOfLongName);
+      return true;
+    }
+    if (this.model._teamObj[this.courseName]['crew'].includes(crewName)) {
+      alert(MESSAGE.alertOfSameName);
+      return true;
+    }
   }
 
   showCrewTable() {

@@ -61,6 +61,8 @@ const KEY = Object.freeze({
 
 const MESSAGE = Object.freeze({
   confirmDeleteCrew: '해당 크루를 정말로 삭제하시겠습니까?',
+  alertOfSameName: '동일한 이름이 존재합니다',
+  alertOfLongName: '1글자 이상부터 5글자 이하의 이름을 입력해주세요.',
 });
 
 export { ID, CLASS, COURSE, MISSION, KEY, MESSAGE };

@@ -27,11 +27,6 @@ export default class TeamModel {
 
   deleteCrewData(courseName, index) {
     this._teamObj[courseName]['crew'].splice(index, 1);
-    // this._teamObj[courseName]['crew'].forEach((target, index) => {
-    //   if (target === crewName) {
-    //     return this._teamObj[courseName]['crew'].splice(index, 1);
-    //   }
-    // });
     this.setLocalStorage(KEY.localKey, this._teamObj);
   }
 }
