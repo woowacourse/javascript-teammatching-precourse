@@ -1,5 +1,6 @@
 import { $, $$, showCrewManage } from '../utils/dom.js';
 import { feCrewList, beCrewList, store } from '../model/store.js';
+import crewValidator from '../validator/crewValidator.js';
 
 class crewController {
   constructor(view) {
@@ -9,11 +10,13 @@ class crewController {
 
   addCrew() {
     const crewName = this.view.getInput();
-    // 예외처리 작업 필요
+    const crewList = $('#frontend-course').checked ? feCrewList : beCrewList;
+    if (crewValidator.isInvalidCrewName({ crewName, crewList })) {
+      return;
+    }
 
     if ($('#frontend-course').checked) {
       this.addFECrew(crewName);
-
       return;
     }
     this.addBECrew(crewName);
