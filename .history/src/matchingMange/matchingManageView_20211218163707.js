@@ -51,12 +51,13 @@ export default class MatchingManageView {
     container.innerHTML = template;
   };
 
-  renderMatchingResult = (container) => {
+  renderMatchingResult = (shuffledCrews, container) => {
     const template = `
       <section>
       <h3>프론트엔드 숫자야구게임 조회</h3>
       <p>팀이 매칭되었습니다.</p>
       <ul id="team-match-result">
+        {result}
       </ul>
       <p>
         팀을 재매칭 하시겠습니까?
@@ -64,17 +65,11 @@ export default class MatchingManageView {
       </p>
     </section>
     `;
+    const resultTemplate = shuffledCrews.map((crews) => {
+      return `<li>${crews.join(",")}</li>`;
+    });
+    template.replace("{result}", resultTemplate);
 
-    container.insertAdjacentHTML("beforeend", template);
-  };
-
-  renderMatchingCrewList = (shuffledCrews, container) => {
-    const resultTemplate = shuffledCrews
-      .map((crews) => {
-        return `<li>${crews.join(",")}</li>`;
-      })
-      .join("");
-
-    container.innerHTML = resultTemplate;
+    container.innerHTML = template;
   };
 }

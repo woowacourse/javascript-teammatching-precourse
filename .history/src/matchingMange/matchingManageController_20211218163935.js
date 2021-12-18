@@ -44,6 +44,7 @@ export default class matchingManageController {
   initDOMSAfterRenderMatching = () => {
     this.$teamMemverCountInput = document.getElementById("team-member-count-input");
     this.$teamMatchForm = document.getElementById("match-team-button").closest("form");
+    this.$teamMatchingResult = document.getElementById("team-match-result");
   };
 
   setEventAfterRenderMatching = () => {
@@ -69,9 +70,7 @@ export default class matchingManageController {
 
     const shuffledCrews = this.createSuffledCrews(crews, shuffledCrewsIdx, teamMemberClass);
     this.view.renderMatchingResult(this.$container);
-    const $teamMatchingResult = document.getElementById("team-match-result");
-    console.log($teamMatchingResult);
-    this.view.renderMatchingCrewList(shuffledCrews, $teamMatchingResult);
+    this.view.renderMatchingCrewList(shuffledCrews, this.$teamMatchingResult);
   };
 
   createCrewIndexArray = (crewsAmount) => {

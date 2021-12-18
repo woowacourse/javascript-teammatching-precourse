@@ -69,11 +69,9 @@ export default class MatchingManageView {
   };
 
   renderMatchingCrewList = (shuffledCrews, container) => {
-    const resultTemplate = shuffledCrews
-      .map((crews) => {
-        return `<li>${crews.join(",")}</li>`;
-      })
-      .join("");
+    const resultTemplate = shuffledCrews.map((crews) => {
+      return `<li>${crews.join(",")}</li>`;
+    });
 
     container.innerHTML = resultTemplate;
   };

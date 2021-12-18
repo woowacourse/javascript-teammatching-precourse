@@ -70,7 +70,6 @@ export default class matchingManageController {
     const shuffledCrews = this.createSuffledCrews(crews, shuffledCrewsIdx, teamMemberClass);
     this.view.renderMatchingResult(this.$container);
     const $teamMatchingResult = document.getElementById("team-match-result");
-    console.log($teamMatchingResult);
     this.view.renderMatchingCrewList(shuffledCrews, $teamMatchingResult);
   };
 
