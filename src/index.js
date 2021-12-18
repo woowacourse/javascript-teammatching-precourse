@@ -3,6 +3,7 @@ import { $ } from './utils/index.js';
 import createStore from './flux/index.js';
 import rootReducer from './reducers/index.js';
 import Header from './components/Header.js';
+import TabContent from './components/TabContent.js';
 
 class TeamMatchingBoard {
   constructor() {
@@ -14,6 +15,7 @@ class TeamMatchingBoard {
 
   mountViews() {
     new Header(this.$app).mount();
+    new TabContent(this.$app).mount();
   }
 
   loadDataFromLocalStorage() {
