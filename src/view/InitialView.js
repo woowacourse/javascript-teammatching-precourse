@@ -1,3 +1,5 @@
+import { handleClickCrewTab, handleClickTeamTab } from "../controller/InitialViewHandler.js";
+
 export default class InitialView {
   constructor(container) {
     this.container = container;
@@ -5,7 +7,9 @@ export default class InitialView {
 
   render() {
     this.container.innerHTML = this.template();
-    // 이벤트 바인딩
+    this.bindClickEvent();
+    this.contentContainer = document.createElement("main");
+    this.container.append(this.contentContainer);
   }
 
   template() {
@@ -24,5 +28,12 @@ export default class InitialView {
       </nav>
     </header>
     `;
+  }
+
+  bindClickEvent() {
+    document
+      .getElementById("crew-tab")
+      .addEventListener("click", () => handleClickCrewTab(this.contentContainer));
+    document.getElementById("team-tab").addEventListener("click", handleClickTeamTab);
   }
 }
