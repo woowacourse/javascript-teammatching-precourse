@@ -1,5 +1,5 @@
 import { KEY_TAB_CREW, KEY_TAB_TEAM, ACTION_ONCLICK } from './const.js';
-import { TEMPLATE_TEAM, TEMPLATE_CREW } from './components/markup/index.js';
+import { TEMPLATE_TEAM, TEMPLATE_CREW } from './components/template/index.js';
 import setVisibility from './dom/utils/setVisibility.js';
 
 export default class TeamMathcing {
