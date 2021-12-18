@@ -54,19 +54,7 @@ export const CREW_MANAGE_TEMPLATE = (crewList, course) => {
           </tr>
         </thead>
         <tbody id="crewList">
-        ${crewList
-          .map(
-            (crew, index) => `
-          <tr>
-            <td>${index + 1}</td>
-            <td>${crew}</td>
-            <td>
-              <button id=${index} class=${CLASS.DELETE_CREW_BUTTON}>삭제</button>
-            </td>
-          </tr>
-        `
-          )
-          .join('')}
+      ${getCrewListTemplate(crewList)}
         </tbody>
       </table>
     </section>
