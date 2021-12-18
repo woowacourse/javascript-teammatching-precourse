@@ -8,6 +8,6 @@ export default class CrewManageController {
 
   init() {
     this.view.init();
-    // this.view.renderSelectCourse();
+    this.view.renderSelectCourse();
   }
 }

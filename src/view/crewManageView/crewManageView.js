@@ -6,7 +6,7 @@ export default class CrewManageView {
     this.$main = $('main');
   }
 
-  // renderSelectCourse() {
-  //   this.$main.innerHTML = selectCourseTemplate();
-  // }
+  renderSelectCourse() {
+    this.$main.innerHTML = selectCourseTemplate();
+  }
 }
