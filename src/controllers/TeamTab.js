@@ -1,4 +1,5 @@
 import { matchTeam } from '../utils/index.js';
+import { isValidTeamMemberCount } from '../utils/validations.js';
 import TeamTabView from '../views/TeamTabView.js';
 
 export default class TeamTab {
@@ -41,6 +42,7 @@ export default class TeamTab {
     e.preventDefault();
     const memberCountInput = document.querySelector('#team-member-count-input');
     const memberCount = Number(memberCountInput.value);
+    if (!isValidTeamMemberCount(memberCount, this.storage.crew[this.course])) return;
     const matchResult = matchTeam(this.storage.crew[this.course], memberCount);
     this.view.renderMatchResult(this.course, this.mission, matchResult);
     this.setRematchTeamEvent();
