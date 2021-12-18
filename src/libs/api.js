@@ -10,6 +10,7 @@ export default class Api {
       backends: [],
       selectedCourse: undefined,
       selectedMission: undefined,
+      teamNumbers: undefined,
     };
 
     if (!this.getTeamMatching()) {

@@ -41,6 +41,7 @@ export default class TeamTab extends Component {
   mounted() {
     const {
       setSelectedOption,
+      setTeamNumbers,
       $state: { selectedCourse, selectedMission },
     } = this;
     const $selectOption = document.querySelector("#select-option");
@@ -52,10 +53,16 @@ export default class TeamTab extends Component {
       selectedMission,
     });
 
-    new InputMatch($inputMatch);
+    new InputMatch($inputMatch, { setTeamNumbers: setTeamNumbers.bind(this) });
   }
 
   setSelectedOption(props) {
+    const payload = { ...props };
+    this.callAPI.setTeamMatching(payload);
+    this.setState(payload);
+  }
+
+  setTeamNumbers(props) {
     const payload = { ...props };
     this.callAPI.setTeamMatching(payload);
     this.setState(payload);

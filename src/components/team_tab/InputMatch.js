@@ -32,11 +32,14 @@ export default class InputMatch extends Component {
 
   onSubmitHandler(e) {
     e.preventDefault();
+    const { setTeamNumbers } = this.$props;
     const numbers = document.querySelector("#team-member-count-input").value;
     console.log(numbers);
     if (numbers === "") {
       window.alert(`인원 수를 입력해주세요.`);
       return;
     }
+
+    setTeamNumbers({ teamNumbers: Number(numbers) });
   }
 }
