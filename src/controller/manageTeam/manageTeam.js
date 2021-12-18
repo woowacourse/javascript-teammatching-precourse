@@ -72,9 +72,9 @@ const makeResultForm = (crewsCount, teamMemberCount) => {
 
 const getShuffledTeam = (teamMemberCount) => {
     const crews = createCrew().getCrews();
-
+    const randoms = MissionUtils.Random.shuffle([...Array(crews.length)].map((v, i) => i));
     return MissionUtils.Random.shuffle(makeResultForm(crews.length, teamMemberCount)).map((count) =>
-        crews.splice(0, count),
+        randoms.splice(0, count).map((idx) => crews[idx]),
     );
 };
 
