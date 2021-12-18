@@ -13,7 +13,9 @@ export default class TeamMatchManager {
   }
 
   addEventListeners() {
-    $(SELECTOR.teamMatcherButton).addEventListener('click', () => this.selectCourseAndMission());
+    $(SELECTOR.teamMatcherButton).addEventListener('click', event =>
+      this.selectCourseAndMission(event),
+    );
   }
 
   addSelectOptions() {
@@ -23,9 +25,11 @@ export default class TeamMatchManager {
     this.view.addOptionsInSelect(missionSelect, MISSION_OPTIONS);
   }
 
-  selectCourseAndMission() {
+  selectCourseAndMission(event) {
+    event.preventDefault();
     const selectedCourse = $(SELECTOR.courseSelect).value;
     const selectedMission = $(SELECTOR.missionSelect).value;
-    
+    console.log(selectedCourse, selectedMission)
+    this.view.renderTeamMatchingSettingTemplate(selectedCourse, selectedMission);
   }
 }

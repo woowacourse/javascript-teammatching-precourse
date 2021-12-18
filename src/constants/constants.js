@@ -21,6 +21,7 @@ export const SELECTOR = {
   matchTeamButton: 'match-team-button',
   matchResult: 'team-match-result',
   rematchButton: 'rematch-team-button',
+  teamCourseAndMissionContents: 'team-course-mission-contents',
 };
 
 export const WORDS = {};
@@ -50,3 +51,16 @@ export const MISSION_OPTIONS = [
   { name: '성능개선', value: 'performance' },
   { name: '배포', value: 'deploy' },
 ];
+
+export const KEY_VALUE = {
+  frontend: '프론트엔드',
+  backend: '백엔드',
+  baseball: '숫자야구게임',
+  racingcar: '자동차경주',
+  lotto: '로또',
+  'shopping-cart': '장바구니',
+  payments: '결제',
+  subway: '지하철노선도',
+  performance: '성능개선',
+  deploy: '배포',
+};

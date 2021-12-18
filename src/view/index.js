@@ -5,6 +5,7 @@ import {
   crewManageTemplate,
   teamMatchingManageTemplate,
   crewInputAndTableTemplate,
+  teamMatchingSettingTemplate,
 } from '../constants/template.js';
 
 export default class View {
@@ -66,6 +67,14 @@ export default class View {
     $(SELECTOR.selectedCourseContents).insertAdjacentHTML(
       'afterbegin',
       crewInputAndTableTemplate(course),
+    );
+  }
+
+  renderTeamMatchingSettingTemplate(course, mission) {
+    $(SELECTOR.teamCourseAndMissionContents).innerHTML = '';
+    $(SELECTOR.teamCourseAndMissionContents).insertAdjacentHTML(
+      'afterbegin',
+      teamMatchingSettingTemplate(course, mission),
     );
   }
 }
