@@ -14,7 +14,7 @@ export default function CrewManageTemplate() {
       <form>
         <label>크루 이름</label>
         <input type="text" id="crew-name-input" />
-        <button type="button" id="add-crew-buttton">확인</button>
+        <button id="add-crew-buttton">확인</button>
       </form>
     </section>
     <section id="detailed_crew_manage_contents">
