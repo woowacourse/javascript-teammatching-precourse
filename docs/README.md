@@ -90,6 +90,9 @@ ex) <option value="baseball">숫자야구게임</option>
   - 팀을 랜덤하게 매칭하는 기능은 `[MissionUtils` 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.shuffle`을 사용해 구현한다.
 - 팀 매칭 시 `1팀당 인원 수`에 입력한 값 보다 더 적은 수의 크루들로 구성된 팀이 없어야 한다. 남은 인원은 앞 팀부터 순서대로 배정한다.
   - 예를 들어, 크루가 11명일 때 `1팀당 인원 수`로 3명을 입력 하면, **4 4 3**으로 팀이 구성되어야 한다.
+- 1팀당 인원 수는 1보다 커야 한다.
+- 1팀당 인원 수는 크루 전체 인원수보다 작아야 한다.
+- 예외 발생 상황은 `alert`메서드를 이용하여 알려준다
 
 ## [ ] 매칭된 팀 조회
 
