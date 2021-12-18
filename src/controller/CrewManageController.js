@@ -22,16 +22,13 @@ class CrewManageController {
     $id(ID.FRONTEND_COURSE).addEventListener('click', (e) => {
       const course = e.target.value;
       this.changeTabMenuLocalStorage(course);
-
       const crewList = this.model.getCrewListInCrewMenu();
       this.view.showCrewManageScreen(crewList, course);
       this.initCrewManageEventListener();
     });
-
     $id(ID.BACKEND_COURSE).addEventListener('click', (e) => {
       const course = e.target.value;
       this.changeTabMenuLocalStorage(course);
-
       const crewList = this.model.getCrewListInCrewMenu();
       this.view.showCrewManageScreen(crewList, course);
       this.initCrewManageEventListener();
@@ -52,7 +49,6 @@ class CrewManageController {
   triggerCrewNameAddFormSubmitEvent() {
     $id(ID.CREW_NAME_FORM).addEventListener('submit', (e) => {
       e.preventDefault();
-
       const crewName = $id(ID.CREW_NAME_INPUT).value;
       const tabMenu = this.model.getLocalStorage();
       const crewList = this.model.getCrewListInCrewMenu();

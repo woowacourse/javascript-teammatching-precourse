@@ -33,7 +33,7 @@ class View {
   }
 
   changeCrewListScreen(crewList) {
-    $id('crewList').innerHTML = getCrewListTemplate(crewList);
+    $id(ID.CREW_LIST).innerHTML = getCrewListTemplate(crewList);
   }
 
   showTeamManageScreen() {

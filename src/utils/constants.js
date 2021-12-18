@@ -11,6 +11,7 @@ export const ID = Object.freeze({
   CREW_NAME_INPUT: 'crew-name-input',
   ADD_CREW_BUTTON: 'add-crew-button',
   CREW_TABLE: 'crew-table',
+  CREW_LIST: 'crew-list',
 });
 
 export const CLASS = Object.freeze({

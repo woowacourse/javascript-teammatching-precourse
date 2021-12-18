@@ -53,7 +53,7 @@ export const CREW_MANAGE_TEMPLATE = (crewList, course) => {
             <th>관리</th>
           </tr>
         </thead>
-        <tbody id="crewList">
+        <tbody id=${ID.CREW_LIST}>
       ${getCrewListTemplate(crewList)}
         </tbody>
       </table>
