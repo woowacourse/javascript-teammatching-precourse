@@ -6,9 +6,14 @@ export default class Controller {
   constructor() {
     this.view = new View();
     new ClickEventManager($('#app'), this);
+    this.generateManagers();
   }
 
   handleMenuClick(event) {
     DOM.showComponent(event.target.id);
+  }
+
+  generateManagers() {
+    new CrewManager();
   }
 }

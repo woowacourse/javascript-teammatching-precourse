@@ -13,6 +13,14 @@ export default class ClickEventManager {
     this.controller.handleMenuClick(event);
   }
 
+  frontendRadioButton(event) {
+    console.log('frontendRadioButton');
+  }
+
+  backendRadioButton(event) {
+    console.log('backendRadioButton');
+  }
+
   onClick(event) {
     event.preventDefault();
 
