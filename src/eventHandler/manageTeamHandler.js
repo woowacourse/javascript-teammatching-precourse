@@ -17,12 +17,13 @@ function courseMissionHandler() {
 }
 
 function onMatch(manager) {
+  const number = $(`#${TEAM_INPUT_ID.TEAM_NUMBER_INPUT}`).value;
   const team = {
     course: $(`#${TEAM_INPUT_ID.COURSE}`).value,
     mission: $(`#${TEAM_INPUT_ID.MISSION}`).value,
-  }
+  };
 
-  manager.matchTeam(team);
+  manager.matchTeam(team, number);
 }
 
 function memberNumberHander(manager) {

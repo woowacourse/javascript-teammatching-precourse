@@ -7,16 +7,16 @@ import renderManageTeam from '../view/renderManageTeam.js';
 import manageCrewHandler from './manageCrewHanlder.js';
 import manageTeamHandler from './manageTeamHandler.js';
 
-export default function tabHandler() {
+export default function tabHandler(manager) {
   const $crew = $(`#${TAB_ID.MANAGE_CREW}`);
   const $team = $(`#${TAB_ID.MANAGE_TEAM}`);
 
   $crew.addEventListener('click', () => {
-    renderManageCrew();
-    manageCrewHandler();
+    renderManageCrew(manager);
+    manageCrewHandler(manager);
   });
   $team.addEventListener('click', () => {
-    renderManageTeam();
-    manageTeamHandler();
+    renderManageTeam(manager);
+    manageTeamHandler(manager);
   });
 }

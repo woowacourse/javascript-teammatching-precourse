@@ -77,5 +77,5 @@ export default function renderManageTeam(manager) {
       </section>
     </main>
   `;
-  tabHandler();
+  tabHandler(manager);
 }

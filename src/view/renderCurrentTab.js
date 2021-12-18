@@ -5,6 +5,7 @@ import {
 import renderManageCrew from '../view/renderManageCrew.js';
 import renderManageTeam from './renderManageTeam.js';
 import manageCrewHandler from '../eventHandler/manageCrewHanlder.js';
+import manageTeamHandler from '../eventHandler/manageTeamHandler.js';
 
 export default function renderCurrentTab(manager) {
   const id = localStorage.getItem(STORAGE_KEY);
@@ -15,6 +16,6 @@ export default function renderCurrentTab(manager) {
   }
   if (id === TAB_ID.MANAGE_TEAM) {
     renderManageTeam(manager);
-    // manageTeamHandler(manager);
+    manageTeamHandler(manager);
   }
 }
