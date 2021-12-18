@@ -122,12 +122,9 @@ export default class TeamManageContainer extends Component {
 
       if (isValidTeamHeadCount(headCount, this.$state.crews[this.$state.selectedCourse].length)) {
         const shuffledTeam = matchRandomTeam(this.$state.crews[this.$state.selectedCourse], headCount);
+        this.$state.teams[this.$state.selectedCourse][this.$state.selectedMission] = shuffledTeam;
         this.setState({
-          teams: Object.assign(this.$state.teams, {
-            [this.$state.selectedCourse]: {
-              [this.$state.selectedMission]: shuffledTeam
-            }
-          })
+          teams: this.$state.teams
         });
         this.saveTeamsInStroage();
       }
@@ -136,12 +133,9 @@ export default class TeamManageContainer extends Component {
 
   reMatchClickHandler() {
     this.addEvent('click', '#rematch-team-button', () => {
+      this.$state.teams[this.$state.selectedCourse][this.$state.selectedMission] = null;
       this.setState({
-        teams: Object.assign(this.$state.teams, {
-          [this.$state.selectedCourse]: {
-            [this.$state.selectedMission]: null
-          }
-        })
+        teams: this.$state.teams
       });
       setLocalStorage(STORAGE_KEY.TEAM, this.$state.teams);
     });
