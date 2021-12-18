@@ -1,3 +1,4 @@
+import CrewCheck from "./CrewCheck.js";
 export default class CrewEvent {
     static addEvent() {
         this.addCrewEvent();
