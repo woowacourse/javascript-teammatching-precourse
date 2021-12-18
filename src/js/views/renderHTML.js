@@ -83,7 +83,7 @@ export const renderTeamManager = () => {
       <button id="show-team-matcher-button">확인</button>
     </form>
   </section>
-  
-  
+  <section id="team-result-wrapper">
+  <section>
   `;
 };
