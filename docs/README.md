@@ -42,19 +42,19 @@
 - [x] 크루 추가를 위한 확인 버튼의 id는 `add-crew-buttton`이다.
 - [x] 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-buttton`이다.
 - [x] 크루 목록을 보여주기 위한 table의 id는 `crew-table`이다.
-- [ ] 코스를 선택하는 select의 id는 `course-select`이다.
-- [ ] 미션을 선택하는 select의 id는 `mission-select`이다.
-- [ ] 미션에 해당하는 팀을 관리하기 위한 확인 버튼의 id는 `show-team-matcher-button`이다.
-- [ ] 팀 매칭을 위한 인원 입력 요소의 id는 `team-member-count-input`이다.
-- [ ] 팀 매칭을 위한 버튼의 id는 `match-team-button`이다.
-- [ ] 팀 매칭 결과를 보여주기 위한 ul의 id는 `team-match-result`이다.
-- [ ] 팀 재매칭을 위한 버튼의 id는 `rematch-team-button`이다.
+- [x] 코스를 선택하는 select의 id는 `course-select`이다.
+- [x] 미션을 선택하는 select의 id는 `mission-select`이다.
+- [x] 미션에 해당하는 팀을 관리하기 위한 확인 버튼의 id는 `show-team-matcher-button`이다.
+- [x] 팀 매칭을 위한 인원 입력 요소의 id는 `team-member-count-input`이다.
+- [x] 팀 매칭을 위한 버튼의 id는 `match-team-button`이다.
+- [x] 팀 매칭 결과를 보여주기 위한 ul의 id는 `team-match-result`이다.
+- [x] 팀 재매칭을 위한 버튼의 id는 `rematch-team-button`이다.
 
 <br>
 
 ### 데이터
 
-- [ ] 팀 매칭을 위한 select option에 아래 데이터를 반드시 예시와 같이 괄호안에 있는 값을 option의 value로 추가해야 한다.
+- [x] 팀 매칭을 위한 select option에 아래 데이터를 반드시 예시와 같이 괄호안에 있는 값을 option의 value로 추가해야 한다.
 
   ```html
   # 코스

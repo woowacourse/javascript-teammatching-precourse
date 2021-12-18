@@ -1,6 +1,15 @@
 import crewView from './view/crewView.js';
 import crewController from './controller/crewController.js';
-import { $, $$, hideCrewManage, showSelectManageCourse } from './utils/dom.js';
+import {
+  $,
+  $$,
+  hideCrewManage,
+  hideMatchingTab,
+  showMatchingSelect,
+  showSelectManageCourse,
+} from './utils/dom.js';
+import matchingView from './view/matchingView.js';
+import matchingController from './controller/matchingController.js';
 
 class App {
   constructor() {
@@ -13,10 +22,12 @@ class App {
 
   initView() {
     this.crewView = new crewView();
+    this.matchingView = new matchingView();
   }
 
   initController() {
     this.crewController = new crewController(this.crewView);
+    this.matchingController = new matchingController(this.matchingView);
   }
 
   renderTab() {
@@ -27,7 +38,11 @@ class App {
     $('main').insertAdjacentHTML('beforeend', this.crewView.manageCourseTemplate());
     $('main').insertAdjacentHTML('beforeend', this.crewView.manageCrewTemplate());
     $('main').insertAdjacentHTML('beforeend', this.crewView.crewListTemplate());
+    $('main').insertAdjacentHTML('beforeend', this.matchingView.matchingSelectTemplate());
+    $('main').insertAdjacentHTML('beforeend', this.matchingView.matchingInputTemplate());
+    $('main').insertAdjacentHTML('beforeend', this.matchingView.matchingResultTemplate());
     hideCrewManage();
+    hideMatchingTab();
   }
 
   template() {
@@ -50,7 +65,14 @@ class App {
   }
 
   bindEvent() {
-    $('#crew-tab').addEventListener('click', showSelectManageCourse);
+    $('#crew-tab').addEventListener('click', () => {
+      showSelectManageCourse();
+      hideMatchingTab();
+    });
+    $('#team-tab').addEventListener('click', () => {
+      showMatchingSelect();
+      hideCrewManage();
+    });
     this.preventFormsubmit();
   }
 

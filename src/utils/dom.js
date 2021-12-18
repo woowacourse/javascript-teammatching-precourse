@@ -18,3 +18,33 @@ export const hideCrewManage = () => {
   hide('#manage-crew');
   hide('#crew-list');
 };
+
+export const hideMatchingSelect = () => {
+  hide('#matching-select');
+};
+
+export const showMatchingSelect = () => {
+  show('#matching-select');
+};
+
+export const hideMatchingInput = () => {
+  hide('#matching-input');
+};
+
+export const showMatchingInput = () => {
+  show('#matching-input');
+};
+
+export const hideMatchingResult = () => {
+  hide('#matching-result');
+};
+
+export const showMatchingResult = () => {
+  show('#matching-result');
+};
+
+export const hideMatchingTab = () => {
+  hideMatchingSelect();
+  hideMatchingInput();
+  hideMatchingResult();
+};
