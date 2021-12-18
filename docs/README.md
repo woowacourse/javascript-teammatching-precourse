@@ -2,8 +2,8 @@
 
 ## 개발 환경 설정하기
 
-- [ ] `eslint` with airbnb
-- [ ] prettier
+- [x] `eslint` with airbnb
+- [x] prettier
 
 
 
