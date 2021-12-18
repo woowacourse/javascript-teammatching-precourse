@@ -28,11 +28,20 @@ export default class CrewManage extends Component {
 
   onSubmitHandler(e) {
     e.preventDefault();
-    const { currentCrews } = this.$props;
+    const { currentCrews, addCrew, checkedCrewCourse } = this.$props;
     const crewName = e.target[0].value.trim();
 
     if (isValidCrewName(crewName, currentCrews)) {
-      console.log("correct");
+      this.setAddCrew({
+        crews: [...currentCrews, crewName],
+        checkedCrewCourse,
+        addCrew,
+      });
     }
+  }
+
+  setAddCrew({ crews, checkedCrewCourse, addCrew }) {
+    if (checkedCrewCourse === "frontend") return addCrew({ frontends: crews });
+    if (checkedCrewCourse === "backend") return addCrew({ backends: crews });
   }
 }
