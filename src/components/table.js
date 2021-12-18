@@ -4,7 +4,6 @@ export default class Table extends Component {
   template() {
     return `
       <h3>${this.$props.title}</h3>
-      ${this.getOptionalButton()}
       <table border="1">
         ${this.getTableHeader()}
         ${this.getTableContents()}
@@ -18,7 +17,7 @@ export default class Table extends Component {
     <thead>
       <tr>
       <td></td>
-      ${headers.map((e) => `<td>${e}</td>`)}
+      ${headers.map((e) => `<td>${e}</td>`).join("")}
       </tr>
     </thead>`;
   }
