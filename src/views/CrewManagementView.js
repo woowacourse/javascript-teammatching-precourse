@@ -69,8 +69,11 @@ export default class CrewManagementView extends View {
   }
 
   handleDelete(value, course) {
-    const request = { value, course };
-    this.emit(CUSTOM_EVENT_NAME.DELETE_CREW, { request });
+    if (confirm('삭제하시겠습니까?')) {
+      const request = { value, course };
+      this.emit(CUSTOM_EVENT_NAME.DELETE_CREW, { request });
+    }
+    return;    
   }
 }
 
