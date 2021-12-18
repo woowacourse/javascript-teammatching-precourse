@@ -1,4 +1,4 @@
-import { CREW } from '..';
+import CREW from '../index.js';
 
 function lengthValidity(name) {
   if (name.length < 1) {
@@ -10,16 +10,14 @@ function lengthValidity(name) {
   return true;
 }
 function duplicationValidity(name) {
-  let flag = true;
-  CREW.some((crew) => {
-    if (crew === name) {
-      flag = false;
+  for (let i = 0; i < CREW.length; i++){
+    if (CREW.crewList[i] === name) {
       return alert('이미 존재하는 크루 이름입니다.');
     }
-  });
-  return flag;
+  }
+  return true;
 }
-export function CrewNameValidity(name) {
+export default function CrewNameValidity(name) {
   if (!lengthValidity(name)) {
     return false;
   }
