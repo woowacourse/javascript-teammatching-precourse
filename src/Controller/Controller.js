@@ -4,6 +4,7 @@ export default class Controller {
     this.view = view;
 
     this.view.displayCrewManage(this.model.crew);
+    this.view.displayTeamManage();
     this.view.bindAddCrew(this.addCrewHandler);
     this.view.bindDeleteCrew(this.deleteCrewHandler);
     this.model.bindCrew(this.crewHandler);

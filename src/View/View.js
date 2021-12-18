@@ -1,5 +1,6 @@
 import Tab from "./template/Tab.js";
 import { crewManage, addCrew, crewTable } from "./template/CrewManage.js";
+import { teamMatch } from "./template/TeamMatch.js";
 import { ID } from "../constant/constant.js";
 
 export default class View {
@@ -13,12 +14,13 @@ export default class View {
   }
 
   resetMain(page) {
-    while (this.main.children.length > 1) {
-      this.main.removeChild();
+    while (this.main.children.length !== 0) {
+      this.main.removeChild(this.main.lastChild);
     }
     this.main.append(page);
   }
 
+  // crew
   resetCrewTable() {
     while (this.crewTable.length > 1) {
       this.crewTable.removeChild();
@@ -77,6 +79,17 @@ export default class View {
           document.querySelector("input[name=course]:checked").value
         );
       }
+    });
+  }
+
+  //team
+  displayTeamManage() {
+    document.getElementById(ID.TEAM_TAB).addEventListener("click", () => {
+      if (!this.teamManage) {
+        this.teamManage = document.createElement("section");
+        this.teamManage.innerHTML = teamMatch;
+      }
+      this.resetMain(this.teamManage);
     });
   }
 }
