@@ -4,6 +4,7 @@ class ManageModel {
     constructor() {
         this.crewList = [];
         this.selectedCourse = 'frontend';
+        this.matchedTeams = [];
     }
 
     setSelectedCourse(e) {
