@@ -1,4 +1,5 @@
 import $ from '../util/domSelector.js';
+import TeamManagement from './teamManagement.js';
 import header from '../templates/header.js';
 import crewManagement from '../templates/crewManagement.js';
 import crewPrint from '../templates/crewPrint.js';
@@ -46,7 +47,7 @@ export default class CrewManagement {
       this.initialize('frontend');
     });
     $(`#${NAVIGATION.ID.TEAM_TAB}`).addEventListener('click', () => {
-      console.log('team');
+      new TeamManagement(this.$target);
     });
   }
 
