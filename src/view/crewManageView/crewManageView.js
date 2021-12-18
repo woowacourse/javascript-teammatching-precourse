@@ -19,4 +19,10 @@ export default class CrewManageView {
   renderCrewManage() {
     this.$main.insertAdjacentHTML('beforeend', crewManageTemplate());
   }
+
+  selectCrewManageDOM() {
+    this.$crewNameInput = $('#crew-name-input');
+    this.$addCrewButton = $('#add-crew-button');
+    console.log(this.$addCrewButton, this.$crewNameInput);
+  }
 }
