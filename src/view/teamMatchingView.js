@@ -21,6 +21,7 @@ export default class TeamMatchingView {
   }
 
   showSelected(selector) {
-    showElement(selector);
+    const $selected = document.querySelector(selector);
+    showElement($selected);
   }
 }

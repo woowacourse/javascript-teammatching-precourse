@@ -5,7 +5,7 @@ import TeamMatchingView from "../view/teamMatchingView.js";
 export default class Controller {
   constructor() {
     this.commonView = new CommonView().init();
-    // this.manageCrewView = new ManageCrewView();
+    this.manageCrewView = new ManageCrewView();
     this.teamMathcingView = new TeamMatchingView();
 
     this.onClickCrewManageBtn(); // 크루 관리 버튼 클릭 시
@@ -16,6 +16,7 @@ export default class Controller {
   onClickCrewManageBtn() {
     const $crewManageBtn = document.querySelector("#crew-tab");
     $crewManageBtn.addEventListener("click", () => {
+      this.teamMathcingView.hideAll();
       this.manageCrewView.showChooseCrew();
       this.onClickCourseRadio();
     });
@@ -35,9 +36,20 @@ export default class Controller {
   // 팀 매칭 관리
   onClickTeamTab() {
     const $teamTab = document.querySelector("#team-tab");
-    $teamTab.addEventListener("click", () => {
-      const $selected = document.querySelector("#choose-course-mission");
-      this.teamMathcingView.showSelected($selected);
+    $teamTab.addEventListener("click", (e) => {
+      e.preventDefault();
+      this.manageCrewView.hideAll();
+      this.teamMathcingView.showSelected("#choose-course-mission");
+      this.onClickMatcherBtn();
+    });
+  }
+
+  // 팀 매칭 관리 - 확인 버튼 클릭 시
+  onClickMatcherBtn() {
+    const $matcherBtn = document.querySelector("#show-team-matcher-button");
+    $matcherBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      this.teamMathcingView.showSelected("#make-team-matching");
     });
   }
 }
