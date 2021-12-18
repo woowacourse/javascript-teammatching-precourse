@@ -101,6 +101,8 @@ export default class Controller {
       e.preventDefault();
       const course = document.querySelector("#course-select").value;
       const mission = document.querySelector("#mission-select").value;
+      this.onClickDoMatching(course);
+
       this.teamMathcingView.showSelectedMissionCourse(
         "#make-team-matching",
         course,
@@ -111,6 +113,16 @@ export default class Controller {
         return;
       }
       this.teamMathcingView.renderCrewList(this.crewModel.backCrew);
+    });
+  }
+
+  // 팀 매칭 관리 - 팀 매칭 클릭 시
+  onClickDoMatching(type) {
+    const $match = document.querySelector("#match-team-button");
+    $match.addEventListener("click", (e) => {
+      e.preventDefault();
+      const number = document.querySelector("#team-member-count-input").value;
+      this.crewModel.matchTeam(type, parseInt(number, 10));
     });
   }
 }

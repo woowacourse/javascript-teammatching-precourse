@@ -4,6 +4,7 @@ import {
   getFrontCrew,
   setFrontCrew,
 } from "../storage/localStorage.js";
+import { isNaturalNumber } from "../utils/validCheck.js";
 
 export default class CrewModel {
   constructor() {
@@ -45,5 +46,37 @@ export default class CrewModel {
       }
     });
     this.backCrew = setBackCrew(this.backCrew);
+  }
+
+  matchTeam(type, number) {
+    if (!this.isValidMember(number)) {
+      return;
+    }
+    const team = new Array(parseInt(this.frontCrew.length / number, 10)).fill(
+      []
+    );
+    const arr = type === "frontend" ? [...this.frontCrew] : [...this.backCrew];
+    const pickArray = MissionUtils.Random.shuffle(
+      Array.from({ length: this.frontCrew.length }, (v, i) => i)
+    );
+
+    pickArray.forEach((el, idx) => {
+      team[idx % number].push(arr[el]);
+      console.log(team);
+    });
+    console.log(team);
+    return team;
+  }
+
+  isValidMember(number) {
+    if (!isNaturalNumber(number)) {
+      alert("올바른 값을 입력하세요.");
+      return false;
+    }
+    if (parseInt(this.frontCrew.length / number, 10) < number) {
+      alert("현재 인원으로 팀을 짤 수가 없습니다. 인원 수를 줄여보세요.");
+      return false;
+    }
+    return true;
   }
 }
