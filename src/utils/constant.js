@@ -4,6 +4,7 @@ export const DOM = {
   $MAIN: 'main',
   $SECTION: 'section',
   $TBODY: '#crew-table tbody',
+  $TR: 'tr',
   $$RADIO_INPUTS: 'input[name="course"]',
 };
 

@@ -45,7 +45,7 @@ export default class Render {
 
   crewTableTemplate = (targetCrew) => {
     const $tbody = document.querySelector(DOM.$TBODY);
-    const $tr = document.createElement('tr');
+    const $tr = document.createElement(DOM.$TR);
     const targetName = targetCrew.getLastCrew();
     $tr.dataset.targetName = targetName;
     $tr.innerHTML = TEMPLATE.CREW_TD(targetCrew.getLastCrewIndex(), targetName);
