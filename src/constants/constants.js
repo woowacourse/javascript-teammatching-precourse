@@ -34,3 +34,16 @@ export const ALERT_MESSAGE = {
 export const LOCALSTORAGE_KEY = {
   course: 'course',
 };
+
+export const COURSE_OPTIONS = ['프론트엔드', '백엔드'];
+
+export const MISSION_OPTIONS = [
+  '숫자야구게임(baseball)',
+  '자동차경주(racingcar)',
+  '로또(lotto)',
+  '장바구니(shopping-cart)',
+  '결제(payments)',
+  '지하철노선도(subway)',
+  '성능개선(performance)',
+  '배포(deploy)',
+];
