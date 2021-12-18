@@ -40,8 +40,6 @@ window.addEventListener('click', e => {
 // [크루 관리 - 코스 선택 - 크루 이름 등록]
 // 현재 선택한 코스가 어디인지 파악 후 해당 코스에 이름을 추가한다.
 window.addEventListener('click', e => {
-  e.preventDefault();
-
   if (e.target !== document.querySelector('#add-crew-button')) return;
   const crewNameInput = document.querySelector('#crew-name-input').value;
   const curCourse = getCourseFrontEndOrBackEnd();
