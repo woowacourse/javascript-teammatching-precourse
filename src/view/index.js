@@ -14,8 +14,8 @@ export default class View {
     this.$container = $(SELECTOR.container);
   }
 
-  getTableById(id) {
-    return $(SELECTOR.id);
+  getTable() {
+    return document.querySelector('tbody');
   }
 
   clearTable(table) {

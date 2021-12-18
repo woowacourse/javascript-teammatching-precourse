@@ -42,7 +42,7 @@ export default class CrewManager {
     const crewName = document.querySelector('input[type="text"]').value;
     this.model.addCrewInSelectedCourse(crewName);
     this.initTable();
-    this.view.clearInput(document.querySelector('input[type="text"]'))
+    this.view.clearInput(document.querySelector('input[type="text"]'));
   }
 
   initTable() {
@@ -53,5 +53,11 @@ export default class CrewManager {
     selectedCourseCrewList.forEach((crew, index) =>
       this.view.addTableRow(table, crewTableRowTemplate(index + 1, crew)),
     );
+    this.addAllDeleteCrewButtonEvent();
+  }
+
+  addAllDeleteCrewButtonEvent() {
+    const allButtons = document.querySelectorAll(`.${SELECTOR.crewDeleteButton}`);
+    console.log(allButtons);
   }
 }

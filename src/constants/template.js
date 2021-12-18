@@ -55,15 +55,15 @@ export const crewTableHeaderTemplate = `
     <th>관리</th>
     </tr>
 </thead>
-`;
-export const crewTableRowTemplate = (index, name) =>`
 <tbody>
+</tbody>
+`;
+export const crewTableRowTemplate = (index, name) => `
 <tr>
     <td>${index}</td>
     <td>${name}</td>
-    <td><button class=${SELECTOR.crewDeleteButton}>삭제</button></td>
+    <td><button class=${SELECTOR.crewDeleteButton} data-target=${name}>삭제</button></td>
 </tr>
-</tbody>
 `;
 
 export const teamMatchingManageTemplate = `
