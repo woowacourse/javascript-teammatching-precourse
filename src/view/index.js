@@ -1,5 +1,5 @@
 import { $ } from '../controller/utils.js';
-import { SELECTOR } from '../constants/constants.js';
+import { SELECTOR, KEY_VALUE } from '../constants/constants.js';
 import {
   headerTemplate,
   crewManageTemplate,
@@ -74,7 +74,7 @@ export default class View {
     $(SELECTOR.teamCourseAndMissionContents).innerHTML = '';
     $(SELECTOR.teamCourseAndMissionContents).insertAdjacentHTML(
       'afterbegin',
-      teamMatchingSettingTemplate(course, mission),
+      teamMatchingSettingTemplate(KEY_VALUE[course], KEY_VALUE[mission]),
     );
   }
 }

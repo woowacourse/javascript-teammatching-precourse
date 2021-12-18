@@ -29,7 +29,6 @@ export default class TeamMatchManager {
     event.preventDefault();
     const selectedCourse = $(SELECTOR.courseSelect).value;
     const selectedMission = $(SELECTOR.missionSelect).value;
-    console.log(selectedCourse, selectedMission)
     this.view.renderTeamMatchingSettingTemplate(selectedCourse, selectedMission);
   }
 }
