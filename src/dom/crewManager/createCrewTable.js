@@ -2,13 +2,23 @@ import { teamMatching } from '../../index.js';
 import { app } from '../domElement.js';
 
 export const createCrewTable = type => {
-  app.append(createTitle(type), createTable(type));
+  const prevManager = document.getElementById('crew-manager-crew-list');
+  prevManager?.remove();
+
+  const manager = document.createElement('div');
+
+  manager.append(createTitle(type), createTable(type));
+  manager.setAttribute('id', 'crew-manager-crew-list');
+
+  return manager;
 };
 
 const createTitle = type => {
   const title = document.createElement('h3');
 
-  title.innerHTML = `${type} 크루 목록`;
+  title.innerHTML = `${
+    type === 'frontend' ? '프론트엔드' : '백엔드'
+  } 크루 목록`;
 
   return title;
 };

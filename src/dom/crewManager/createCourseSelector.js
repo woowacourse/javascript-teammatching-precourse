@@ -1,4 +1,6 @@
 import { app, getCrewManager } from '../domElement.js';
+import { createCrewManager } from './createCrewManager.js';
+import { createCrewTable } from './createCrewTable.js';
 
 export const createCourseSelector = () => {
   const section = document.createElement('section');
@@ -20,12 +22,57 @@ const createTitle = () => {
 const createSelector = () => {
   const courseSelector = document.createElement('div');
 
-  courseSelector.innerHTML = `
-    <input type="radio" name="course" value="frontend" id="frontend-course"/>
-    <label for="frontend-course">프론트엔드</label>
-    <input type="radio" name="course" value="backend" id="backend-course"/>
-    <label for="backend-course">백엔드</label>
-  `;
+  selectFrontend(courseSelector);
+  selectBackend(courseSelector);
 
   return courseSelector;
+};
+
+const selectFrontend = courseSelector => {
+  const input = document.createElement('input');
+  const label = document.createElement('label');
+
+  input.type = 'radio';
+  input.name = 'course';
+  input.value = 'frontend';
+  input.setAttribute('id', 'frontend-course');
+  input.onclick = () => {
+    selectCourse();
+  };
+  label.innerHTML = '프론트엔드';
+  label.setAttribute('for', 'frontend-course');
+
+  courseSelector.append(input, label);
+};
+
+const selectBackend = courseSelector => {
+  const input = document.createElement('input');
+  const label = document.createElement('label');
+
+  input.type = 'radio';
+  input.name = 'course';
+  input.value = 'backend';
+  input.setAttribute('id', 'backend-course');
+  input.onclick = () => {
+    selectCourse();
+  };
+  label.innerHTML = '백엔드';
+  label.setAttribute('for', 'backend-course');
+
+  courseSelector.append(input, label);
+};
+
+const selectCourse = () => {
+  const crewManager = getCrewManager();
+  const selectedCourse = document.querySelector(
+    'input[name="course"]:checked'
+  ).value;
+
+  const prevForm = document.getElementById('crew-add-form');
+  prevForm?.remove();
+
+  crewManager.append(
+    createCrewManager(selectedCourse),
+    createCrewTable(selectedCourse)
+  );
 };

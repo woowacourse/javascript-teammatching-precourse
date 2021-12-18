@@ -6,5 +6,5 @@ export const saveCrews = () =>
 export const loadCrews = () => {
   const crews = JSON.parse(localStorage.getItem('crews'));
 
-  teamMatching.crews = !crews ? [] : crews;
+  teamMatching.crews = !crews ? { frontend: [], backend: [] } : crews;
 };
