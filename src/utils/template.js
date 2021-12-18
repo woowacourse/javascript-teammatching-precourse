@@ -19,7 +19,7 @@ export function choiceCourseRadioBox() {
     <div id = ${ID.CHOICE_CREW}>
       <input type="radio" name="course" value="frontend" id=${ID.COURSE_CHOICE_FRONT} />
       <label for="frontend">프론트엔드</label>
-      <input type="radio" name="course" value="backend" id=${ID.COURSE_CHOCIE_BACK} />
+      <input type="radio" name="course" value="backend" id=${ID.COURSE_CHOICE_BACK} />
       <label for="backend">백엔드</label>
     </div>`;
 }
@@ -27,7 +27,7 @@ export function choiceCourseRadioBox() {
 export function crewNameForm() {
   return `<form>
         <label>크루 이름</label>
-        <input type="text" id=${ID.CREW_NAME_INPUT}/>
+        <input type="text" id=${ID.CREW_NAME_INPUT} />
         <button type="submit" id=${ID.ADD_CREW_BUTTON} >확인</button>
       </form>`;
 }

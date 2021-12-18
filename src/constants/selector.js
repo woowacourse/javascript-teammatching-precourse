@@ -3,7 +3,7 @@ export const ID = {
   TAB_TEAM: 'team-tab',
   CHOICE_CREW: 'choice-crew-div',
   COURSE_CHOICE_FRONT: 'frontend-course',
-  COURSE_CHOCIE_BACK: 'backend-course',
+  COURSE_CHOICE_BACK: 'backend-course',
   CREW_NAME_INPUT: 'crew-name-input',
   ADD_CREW_BUTTON: 'add-crew-buttton',
   CREW_STATUS_TABLE: 'crew-table',

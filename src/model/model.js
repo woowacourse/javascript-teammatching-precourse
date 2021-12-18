@@ -1,8 +1,18 @@
+import { ID } from '../constants/selector.js';
+import Member from './member.js';
+
 export default class Model {
   constructor() {
-    this.frontEnd = [];
-    this.backEnd = [];
+    this.members = [];
   }
 
-  addMemeber(type, member) {}
+  addMember(type, name) {
+    this.members.push(new Member(type, name));
+  }
+
+  getCrew(type) {
+    return this.members
+      .filter((member) => member.type === type)
+      .map((member) => member.name);
+  }
 }

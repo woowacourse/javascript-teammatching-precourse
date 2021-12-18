@@ -33,8 +33,27 @@ export default class App {
   }
 
   crewShow(type, crew) {
-    this.$crewManage.crewShow(type, crew);
+    let course = '';
+    if (type === ID.COURSE_CHOICE_FRONT) {
+      course = '프론트엔드';
+    }
+    if (type === ID.COURSE_CHOICE_BACK) {
+      course = '백엔드';
+    }
+    this.$crewManage.crewShow(course, crew);
   }
+
+  updateCrewTable(type, crew) {
+    let course = '';
+    if (type === ID.COURSE_CHOICE_FRONT) {
+      course = '프론트엔드';
+    }
+    if (type === ID.COURSE_CHOICE_BACK) {
+      course = '백엔드';
+    }
+    this.$crewManage.updateTable(course, crew);
+  }
+
   appendChild() {
     this.$app.append(this.$header.component, this.$emptyContainer);
   }

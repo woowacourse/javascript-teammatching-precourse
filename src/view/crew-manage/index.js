@@ -31,6 +31,15 @@ export default class CrewManage {
     this.$main.replaceChild(this.$container, this.$main.lastElementChild);
   }
 
+  updateTable(type, crew) {
+    this.$crewStatus = new CrewStatus(type);
+    this.$crewStatus.createTable(crew);
+    this.$container.replaceChild(
+      this.$crewStatus.component,
+      this.$container.lastElementChild
+    );
+  }
+
   get component() {
     return this.$main;
   }
