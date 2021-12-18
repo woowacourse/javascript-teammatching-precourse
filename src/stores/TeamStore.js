@@ -4,7 +4,7 @@ import { generateObjectWithKey } from '../utils/general.js';
 import { TEAM_ACTION_TYPE } from '../actions/team.js';
 import { TeamStorage } from '../storages/index.js';
 import { matchRandomTeam } from '../utils/helpers/team.js';
-import { MISSION } from '../utils/constants.js';
+import { MISSION, REDCUER_RESULT } from '../utils/constants.js';
 
 const initialState = {
   frontend: generateObjectWithKey(MISSION, []),
@@ -27,10 +27,12 @@ class TeamStore extends Store {
     this.setState({
       [course]: { ...this.state[course], [mission]: matchedTeamList },
     });
+    return REDCUER_RESULT.SUCCESS();
   }
 
   unMatchTeam(course, mission) {
     this.setState({ [course]: { ...this.state[course], [mission]: [] } });
+    return REDCUER_RESULT.SUCCESS();
   }
 }
 
