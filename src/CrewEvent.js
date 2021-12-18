@@ -22,6 +22,7 @@ export default class CrewEvent {
     //     document.getElementById
     // }
 
+ 
     static addCrewEvent() {
         document.getElementById('add-crew-buttton').addEventListener('click', (e) => {
             e.preventDefault();
@@ -55,22 +56,24 @@ export default class CrewEvent {
         }
     }
 
-    static storeCrew(name, course) {
-        const crew = JSON.parse(localStorage.getItem("Crew"));
+    static storeFrontCrew(name, course) {
+        const crew = JSON.parse(localStorage.getItem("CrewFront"));
 
-        if(localStorage.getItem("Crew") === null) {
-            localStorage.setItem("Crew", JSON.stringify({ [name]: { course: course}})); // 새로 저장
+        if(localStorage.getItem("CrewFront") === null) {
+            localStorage.setItem("CrewFront", JSON.stringify({ [name]: { course: course}})); // 새로 저장
         } else {
             crew[name] = { course: course}; //중복 체크
-            localStorage.setItem("Crew", JSON.stringify(crew));
+            localStorage.setItem("CrewFront", JSON.stringify(crew));
         }
 
     }
 
+       //이거 조금 이상함
     static addFrontEndEvent() {
         document.getElementById('frontend-course').addEventListener('click', (e) => {
             console.log("프론트");
             document.getElementById('app').innerHTML += HTML_OF_CREW_INPUT + HTML_OF_CREW_TABLE;
+            // document.getElementsByName('course')[0].prop("checked", true);
 
             CrewView.showTable();
 
