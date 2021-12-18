@@ -9,6 +9,7 @@ export default class Controller {
     this.teamMathcingView = new TeamMatchingView();
 
     this.onClickCrewManageBtn(); // 크루 관리 버튼 클릭 시
+    this.onClickTeamTab(); // 팀 매칭 관리 클릭 시
   }
 
   // 크루 관리 탭
@@ -32,4 +33,11 @@ export default class Controller {
   }
 
   // 팀 매칭 관리
+  onClickTeamTab() {
+    const $teamTab = document.querySelector("#team-tab");
+    $teamTab.addEventListener("click", () => {
+      const $selected = document.querySelector("#choose-course-mission");
+      this.teamMathcingView.showSelected($selected);
+    });
+  }
 }

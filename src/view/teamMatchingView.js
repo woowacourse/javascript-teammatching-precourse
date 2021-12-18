@@ -1,5 +1,5 @@
 import { matchingInfo } from "./utils/constants.js";
-import { hideElement } from "./utils/setElement.js";
+import { hideElement, showElement } from "./utils/setElement.js";
 
 export default class TeamMatchingView {
   constructor() {
@@ -18,5 +18,9 @@ export default class TeamMatchingView {
     hideElement(document.querySelector("#choose-course-mission"));
     hideElement(document.querySelector("#make-team-matching"));
     hideElement(document.querySelector("#matching-result"));
+  }
+
+  showSelected(selector) {
+    showElement(selector);
   }
 }
