@@ -1,4 +1,4 @@
-import { backEndCrew, frontEndCrew } from '../index.js';
+import { frontEndCrew, backEndCrew } from '../index.js';
 
 function lengthValidity(name) {
   if (name.length < 1) {
