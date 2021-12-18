@@ -1,36 +1,37 @@
 import $ from '../util/domSelector.js';
 import header from '../templates/header.js';
 import crewManagement from '../templates/crewManagement.js';
+import crewPrint from '../templates/crewPrint.js';
 import { NAVIGATION, CREW_MANAGEMENT } from '../constants/selector.js';
-import { NAME } from '../constants/constants.js';
 import { setLocalStorage, getLocalStorage } from '../store.js';
 import { crewInputValid } from '../util/valid.js';
 
 export default class CrewManagement {
   constructor(target) {
     this.$target = target;
-    this.initialize();
+    this.initialize('frontend');
   }
 
-  initialize() {
-    this.crewNames = this.getCrewName();
-    this.render();
+  initialize(course) {
+    this.crewNames = this.getCrewName(course);
+    this.render(course);
   }
 
   template() {
     return `
     ${header()}
     ${crewManagement()}
+    ${crewPrint(this.crewNames)}
     `;
   }
 
-  getCrewName() {
-    return getLocalStorage(NAME.CREW) || [];
+  getCrewName(course) {
+    return getLocalStorage(course) || [];
   }
 
-  setCrewName(crewName) {
-    setLocalStorage(NAME.CREW, [...this.crewNames, crewName]);
-    this.crewNames = this.getCrewName();
+  setCrewName(course, crewName) {
+    setLocalStorage(course, [...this.crewNames, crewName]);
+    this.crewNames = this.getCrewName(course);
   }
 
   getCourse() {
@@ -42,30 +43,41 @@ export default class CrewManagement {
 
   headerEvent() {
     $(`#${NAVIGATION.ID.CREW_TAB}`).addEventListener('click', () => {
-      this.initialize();
+      this.initialize('frontend');
     });
     $(`#${NAVIGATION.ID.TEAM_TAB}`).addEventListener('click', () => {
       console.log('team');
     });
   }
 
-  setEvent() {
+  inputEvent(course) {
     $(`#${CREW_MANAGEMENT.ID.ADD_CREW_BUTTON}`).addEventListener('click', event => {
       event.preventDefault();
-      const crewName = {
-        course: this.getCourse(),
-        name: $(`#${CREW_MANAGEMENT.ID.CREW_NAME_INPUT}`).value,
-      };
+      const crewName = $(`#${CREW_MANAGEMENT.ID.CREW_NAME_INPUT}`).value;
       $(`#${CREW_MANAGEMENT.ID.CREW_NAME_INPUT}`).value = '';
       if (crewInputValid(crewName, this.crewNames)) {
-        this.setCrewName(crewName);
+        this.setCrewName(course, crewName);
       }
+      this.initialize(this.getCourse());
     });
   }
 
-  render() {
-    $(this.$target).innerHTML = this.template();
-    this.setEvent();
+  deleteEvent() {
+    $(`.${CREW_MANAGEMENT.CLASS.DELETE_CREW_BUTTON}`).addEventListener('click', event => {
+      event.preventDefault();
+      console.log('delete');
+      this.initialize(this.getCourse());
+    });
+  }
+
+  setEvent(course) {
     this.headerEvent();
+    this.inputEvent(course);
+    this.deleteEvent();
+  }
+
+  render(course) {
+    $(this.$target).innerHTML = this.template();
+    this.setEvent(course);
   }
 }
