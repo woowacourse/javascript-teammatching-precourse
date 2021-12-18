@@ -1,7 +1,7 @@
 import Component from '../../core/Component.js';
 import CrewStore from '../../stores/CrewStore.js';
 import { addCrewAction } from '../../actions/crew.js';
-import { $ } from '../../utils/dom.js';
+import { $, resetForm } from '../../utils/dom.js';
 import { parseName } from '../../utils/input.js';
 import { isValidCrewName } from '../../utils/validation.js';
 import {
@@ -23,6 +23,7 @@ export default class CrewAddForm extends Component {
       addCrewAction({ course, name })
     );
     if (!SUCCESS) return alert(error);
+    resetForm(this.$container);
   }
 
   render() {

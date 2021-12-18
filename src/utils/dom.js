@@ -19,3 +19,9 @@ export const replaceFirstChild = (parent, newChild) => {
   removeFirstChild(parent);
   parent.appendChild(newChild);
 };
+
+export const resetForm = formElement => {
+  $$('input', formElement).forEach(input => {
+    input.value = '';
+  });
+};
