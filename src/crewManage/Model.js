@@ -7,15 +7,29 @@ class Person {
 
 export default class Model {
   constructor() {
-    this.peopleList = [];
+    this.FrontPeopleList = [];
+    this.BackPeopleList = [];
   }
 
-  addPerson(index, name) {
-    this.person = new Person(index, name);
-    this.peopleList.push(this.person);
+  addPerson(index, name, course) {
+    if (course == 'front') {
+      const person = new Person(index, name);
+      this.FrontPeopleList.push(person);
+      console.log('프론트');
+    } else if (course == 'back') {
+      const person = new Person(index, name);
+      this.BackPeopleList.push(person);
+      console.log('백');
+    }
   }
 
-  removePerson(personIdx) {
-    this.peopleList.splice(personIdx, 1);
+  removePerson(personIdx, course) {
+    if (course == 'front') {
+      this.FrontPeopleList.splice(personIdx, 1);
+      console.log(this.FrontPeopleList);
+    } else if (course == 'back') {
+      this.BackPeopleList.splice(personIdx, 1);
+      console.log(this.BackPeopleList);
+    }
   }
 }

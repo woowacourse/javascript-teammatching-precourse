@@ -18,17 +18,18 @@ export default class CrewPresent {
           <label for="backend">백엔드</label>
         </div>
       </section>
+      <div id = 'crew-section' style ='visibility:hidden'>
       <section>
-        <h3>프론트엔드 크루 관리</h3>
+        <h3>크루 관리</h3>
         <form>
           <label>크루 이름</label>
-          <input type="text" id='cruw-name-input' />
-          <button id='add-crew-button'>확인</button>
+          <input type="text" id='crew-name-input' />
+          <button type='button' id='add-crew-button'>확인</button>
         </form>
       </section>
       <section>
-        <h3>프론트엔드 크루 목록</h3>
-        <table border="1">
+        <h3>크루 목록</h3>
+        <table border="1" id='crew-table'>
           <thead>
             <tr>
               <th></th>
@@ -36,10 +37,11 @@ export default class CrewPresent {
               <th>관리</th>
             </tr>
           </thead>
-          <tbody id='crew-table'>
+          <tbody id='crew-table-body'>
           </tbody>
         </table>
       </section>
+      </div>
     </main>
     </div>`;
 
