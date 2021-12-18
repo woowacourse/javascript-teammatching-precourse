@@ -15,8 +15,26 @@ export const ID = {
   REMATCH_TEAM_BUTTON: 'rematch-team-button',
   CREW_MANAGE_BODY_MAIN: 'crew-manage-body-main',
   TEAM_MATCH_BODY_MAIN: 'team-match-body-main',
+  CREW_LIST: 'crew-list',
 };
 
 export const CLASS = {
   DELETE_CREW_BUTTON: 'delete-crew-buttton',
+};
+
+export const OPTIONS = {
+  COURSE: [
+    { VALUE: 'frontend', TEXT: '프론트엔드' },
+    { VALUE: 'backend', TEXT: '백엔드' },
+  ],
+  MISSION: [
+    { VALUE: 'baseball', TEXT: '숫자야구게임' },
+    { VALUE: 'racingcar', TEXT: '자동차경주' },
+    { VALUE: 'lotto', TEXT: '로또' },
+    { VALUE: 'shopping-cart', TEXT: '장바구니' },
+    { VALUE: 'payments', TEXT: '결제' },
+    { VALUE: 'subway', TEXT: '지하철노선도' },
+    { VALUE: 'performance', TEXT: '성능개선' },
+    { VALUE: 'deploy', TEXT: '배포' },
+  ],
 };

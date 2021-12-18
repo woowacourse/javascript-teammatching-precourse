@@ -2,6 +2,7 @@ export default class LocalStorageUtils {
   static keys = {
     frontCrewManage: 'FrontCrewManage',
     BackendCrewManage: 'BackendCrewManage',
+    teamMatcher: 'teamMatcher',
   };
 
   static getItem = (key) => {
