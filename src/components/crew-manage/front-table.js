@@ -67,6 +67,10 @@ export default class FrontTable extends Component {
 
   setEvent() {
     this.addEvent('click', '.remove-button', ({ target }) => {
+      if (!window.confirm(CONSTANTS.CONFIRM_CREW_DELETE)) {
+        return false;
+      }
+
       let index = target.parentElement.dataset.crewIndex;
       let crews = this.$state.crews;
 
