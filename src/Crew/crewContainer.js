@@ -78,12 +78,18 @@ const setDelButton = (tbody, tr, storage) => {
     button.innerText = "삭제";
     button.addEventListener("click", function (e) {
         e.preventDefault();
-        tbody.deleteRow(checkRowIdx(tbody, tr));
-        const delId = Number(tr.children[0].innerText);
-        deleteStorage(delId, storage);
+        if (window.confirm("삭제하시겠습니까")) {
+            detYes(tbody, tr, storage);
+        }
     });
     btn.append(button);
     return btn;
+};
+
+const detYes = (tbody, tr, storage) => {
+    tbody.deleteRow(checkRowIdx(tbody, tr));
+    const delId = Number(tr.children[0].innerText);
+    deleteStorage(delId, storage);
 };
 
 const checkRowIdx = (body, tr) => {
