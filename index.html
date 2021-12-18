@@ -21,6 +21,14 @@
       .main.team .section.team {
         display: block;
       }
+
+      .section.crew .late {
+        display: none;
+      }
+
+      .section.crew.on .late {
+        display: block;
+      }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@woowacourse/mission-utils@1.0.1/dist/mission-utils.min.js"></script>
   </head>
@@ -40,7 +48,7 @@
         </nav>
       </header>
       <main id="main" class="main crew">
-        <div class="section crew">
+        <div class="section crew" id="crew-section">
           <section>
             <h3>크루를 관리할 코스를 선택해주세요</h3>
             <div>
@@ -50,16 +58,16 @@
               <label for="backend">백엔드</label>
             </div>
           </section>
-          <section>
-            <h3>프론트엔드 크루 관리</h3>
-            <form>
+          <section class="late">
+            <h3><span class="course-title">프론트</span>엔드 크루 관리</h3>
+            <form id="add-crew-form">
               <label>크루 이름</label>
               <input type="text" id="crew-name-input" />
               <button id="add-crew-buttton">확인</button>
             </form>
           </section>
-          <section>
-            <h3>프론트엔드 크루 목록</h3>
+          <section class="late">
+            <h3><span class="course-title">프론트</span>엔드 크루 목록</h3>
             <table border="1" id="crew-table">
               <thead>
                 <tr>
