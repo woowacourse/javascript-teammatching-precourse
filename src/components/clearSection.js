@@ -1,4 +1,4 @@
-import { $ } from '../dom.js'
+import { $ } from '../dom.js';
 
 export default function ClearSection(selctionName) {
   let container = $(`${selctionName}`);

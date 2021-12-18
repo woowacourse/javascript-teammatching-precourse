@@ -10,7 +10,7 @@ function lengthValidity(name) {
   return true;
 }
 function duplicationValidity(mode, name) {
-  const crew = (mode === "프론트엔드") ? frontEndCrew : backEndCrew;
+  const crew = (mode === '프론트엔드') ? frontEndCrew : backEndCrew;
   for (let i = 0; i < crew.length; i++){
     if (crew[i] === name) {
       return alert('이미 존재하는 크루 이름입니다.');
