@@ -6,16 +6,12 @@ export default class TeamMatching {
   }
 
   init = () => {
+    this.renderPage();
     this.initComponents();
-    this.renderCrewManagePage();
   };
 
   initComponents = () => {
     this.crewManage = new CrewManageController();
-  };
-
-  renderCrewManagePage = () => {
-    this.crewManage.init();
   };
 
   setEvent = () => {
@@ -24,7 +20,6 @@ export default class TeamMatching {
 
   setClickMenuButtonEvent = ({ target }) => {
     if (target.id === "crew-tab") {
-      this.renderCrewManagePage();
     }
   };
 }
