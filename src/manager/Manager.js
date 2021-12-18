@@ -85,12 +85,21 @@ export default class Manager {
     $ul.innerHTML = template;
   }
 
+  putRemain(crews, newTeam) {
+    newTeam.forEach((team) => {
+      team.push(crews.shift());
+    });
+  }
+
   matchTeam({ course, mission }, number) {
     const crews = this.getCourseCrews(course);
     const indexes = crews.map((crew) => crew.index);
     const randomIndex = window.MissionUtils.Random.shuffle(indexes);
     const randomCrews = this.getCrewsByIndex(randomIndex);
     const newTeam = this.getRandomCrews(number, randomCrews);
+    if (randomCrews.length !== 0) {
+      this.putRemain(randomCrews, newTeam);
+    }
     this.renderResult(newTeam);
   }
 
