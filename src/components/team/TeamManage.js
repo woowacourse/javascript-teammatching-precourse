@@ -43,7 +43,7 @@ class TeamManage {
       </ul>
       <p>
         팀을 재매칭 하시겠습니까?
-        <button>재매칭</button>
+        <button id=${ID.REMATCH_TEAM_BUTTON}>재매칭</button>
       </p>
     `;
   }
