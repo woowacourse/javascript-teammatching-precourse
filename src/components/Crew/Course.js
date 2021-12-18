@@ -1,4 +1,5 @@
 import { $ } from "../../common/dom.js";
+import { COURSE } from "../../constants/const.js";
 import Component from "../../core/Component.js";
 import store, { setState } from "../../storage/Store.js";
 
@@ -51,7 +52,7 @@ export default class Course extends Component {
   template() {
     return `  
         <div>
-        <h3>${this.currentCourse} 크루 관리</h3>
+        <h3>${COURSE[this.currentCourse]} 크루 관리</h3>
             <form>
             <label>크루 이름</label>
             <input id="crew-name-input" type="text" />
@@ -59,7 +60,7 @@ export default class Course extends Component {
             </form>
         </div>
         <div>
-            <h3>${this.currentCourse} 크루 목록</h3>
+            <h3>${COURSE[this.currentCourse]} 크루 목록</h3>
             <table id="screw-table" border="1">
             <thead>
                 <tr>
