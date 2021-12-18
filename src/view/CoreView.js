@@ -19,7 +19,6 @@ export class CoreView {
 
   setOnTabClick() {
     const $tabArray = Array.from(this.$nav.children);
-    console.log(`$tabArray`, $tabArray);
     $tabArray.map(($tab, i) => {
       $tab.addEventListener('click', () => {
         this.handleSectionDisplay(i);

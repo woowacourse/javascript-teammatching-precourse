@@ -10,7 +10,6 @@ export class MatchingModel {
       if (this.isSameName(this.frontEndCrewList, crewName)) {
         return;
       }
-      console.log(`1`);
       this.frontEndCrewList.push(crewName);
       setLocalStorage('frontEndCrewList', this.frontEndCrewList);
       return this.frontEndCrewList;
