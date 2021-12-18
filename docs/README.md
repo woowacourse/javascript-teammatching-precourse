@@ -16,7 +16,7 @@
 - 프론트엔드 코스 선택 radio input의 id는 `frontend-course`이다.
 - 백엔드 코스 선택 radio input의 id는 `backend-course`이다.
 
-## [ ] ${코스} 크루 관리
+## [✅] ${코스} 크루 관리
 
 - 프로트엔드/백엔드 radio를 누르면 관련 크루 관리 창이 나타난다
 - 크루 목록을 출력한다. 크루 목록을 보여주기 위한 table의 id는 `crew-table`이다.
