@@ -4,3 +4,5 @@ export const MAIN_MENU = [
   { id: 'crew-tab', text: '크루 관리' },
   { id: 'team-tab', text: '팀 매칭 관리' },
 ];
+
+export const APP = 'app';

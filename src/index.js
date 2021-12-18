@@ -1,3 +1,3 @@
-import printHeader from './dom/printHeader.js';
+import initialize from './utils/initialize.js';
 
-printHeader();
+initialize();
