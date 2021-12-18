@@ -11,4 +11,4 @@ export const isConfirmedRemove = name =>
   window.confirm(`${name} 크루를 삭제하시겠습니까?`);
 
 export const isValidHeadCount = (headCount, crewCount) =>
-  headCount > 0 || headCount <= crewCount;
+  headCount > 0 && headCount <= crewCount;

@@ -29,6 +29,7 @@ export default class TeamStatus extends Component {
     const { course, mission } = this.props;
     const headCount = parseNumber($('#team-member-count-input').value);
     const crewCount = this.getGlobalState().crewList[course].length;
+
     if (!isValidHeadCount(headCount, crewCount))
       return alert(ERROR_MESSAGES.TEAM_HEADCOUNT);
     return TeamStore.dispatch(matchTeamAction({ course, mission, headCount }));
