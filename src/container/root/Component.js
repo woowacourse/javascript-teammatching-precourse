@@ -1,7 +1,7 @@
 import Storage from './Storage.js';
 import util from '../../common/index.js';
 
-const { $ } = util.dom;
+const { $, $addEvent } = util.dom;
 
 export default class Component {
   constructor(selector, props) {
@@ -12,6 +12,7 @@ export default class Component {
 
     this.initialized();
     this.render();
+    this.setEvents();
   }
 
   initialized() {}
@@ -26,4 +27,15 @@ export default class Component {
   }
 
   mount() {}
+
+  eventSetter() {
+    return [];
+  }
+
+  setEvents() {
+    const registed = this.eventSetter();
+    registed.forEach(({ type, callback }) => {
+      $addEvent(this.$element, type, callback);
+    });
+  }
 }
