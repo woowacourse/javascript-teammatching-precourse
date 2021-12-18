@@ -20,9 +20,8 @@ export default class CrewManageView {
     this.$backendCourseRadio = $('#backend-course');
   }
 
-  renderCrewManage(crews) {
-    console.log(crews);
-    this.$main.insertAdjacentHTML('beforeend', crewManageTemplate(crews));
+  renderCrewManage(crews, course) {
+    this.$main.insertAdjacentHTML('beforeend', crewManageTemplate(crews, course));
   }
 
   selectCrewManageDOM() {

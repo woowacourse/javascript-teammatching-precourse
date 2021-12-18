@@ -33,19 +33,11 @@ export const selectCourseTemplate = () => {
   `;
 };
 
-export const crewManageTemplate = (crews) => {
-  console.log(crews);
+export const crewManageTemplate = (crews, course) => {
   return `
-    <section>
-      <h3>프론트엔드 크루 관리</h3>
-      <form>
-        <label>크루 이름</label>
-        <input id="crew-name-input" type="text" />
-        <button id="add-crew-button">확인</button>
-      </form>
-    </section>
-    <section>
-      <h3>프론트엔드 크루 목록</h3>
+    ${crewInputTemplate(course)}
+    <section >
+      <h3>${course} 크루 목록</h3>
       <table id="crew-table" border="1">
         <thead>
           <tr>
@@ -68,7 +60,6 @@ export const crewTableTemplate = (crews) => {
       crews &&
       crews
         .map((crew, idx) => {
-          console.log(crew);
           return `
               <tr>
                 <td>${idx + 1}</td>
@@ -80,5 +71,18 @@ export const crewTableTemplate = (crews) => {
         })
         .join(STRING.EMPTY)
     }
+  `;
+};
+
+export const crewInputTemplate = (course) => {
+  return `
+    <section id="crew-manage-section">
+      <h3>${course} 크루 관리</h3>
+      <form>
+        <label>크루 이름</label>
+        <input id="crew-name-input" type="text" />
+        <button id="add-crew-button">확인</button>
+      </form>
+    </section>
   `;
 };

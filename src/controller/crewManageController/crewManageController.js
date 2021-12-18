@@ -2,6 +2,7 @@ import CrewManageView from '../../view/crewManageView/crewManageView.js';
 import { $ } from '../../utils/DOMHelper.js';
 import { isValidCrewName } from '../../utils/validator.js';
 import { showError } from '../../utils/error.js';
+import { STRING } from '../../constants/constants.js';
 
 export default class CrewManageController {
   constructor(model) {
@@ -27,11 +28,12 @@ export default class CrewManageController {
     e.preventDefault();
 
     const course = $('input[name="course"]:checked').value;
+    console.log(course);
 
     if (course === 'backend') {
-      this.view.renderCrewManage(this.model.backCrews);
+      this.view.renderCrewManage(this.model.backCrews, STRING.BACK);
     } else {
-      this.view.renderCrewManage(this.model.frontCrews);
+      this.view.renderCrewManage(this.model.frontCrews, STRING.FRONT);
     }
 
     this.view.selectCrewManageDOM();
