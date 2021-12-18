@@ -3,9 +3,9 @@ import { DUPLICATE_ERROR, ERROR_MSG } from '../constants/errorConstants.js';
 import store from '../store/store.js';
 import showAlert from '../views/showAlert.js';
 
-function checkCrewNameWithStorage(userInput, storage) {
+function checkCrewNameWithStorage(userInput, storageList) {
   let isTrue = true;
-  storage.forEach((item) => {
+  storageList.forEach((item) => {
     if (item[NAME_KEY] === userInput) {
       isTrue = false;
     }
@@ -16,7 +16,7 @@ function checkCrewNameWithStorage(userInput, storage) {
 export default function checkUserInputDuplicate(userInput, storeName) {
   const crewNameStorage = store.getLocalStorage(storeName);
   if (crewNameStorage) {
-    if (checkCrewNameWithStorage(userInput, storeName)) {
+    if (checkCrewNameWithStorage(userInput, crewNameStorage)) {
       return true;
     } else {
       showAlert(ERROR_MSG[DUPLICATE_ERROR]);

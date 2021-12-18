@@ -6,9 +6,7 @@ function renderCrewTableElement(courseStorage) {
   return courseStorage
     .map((item, index) => {
       `<tr class="crew-element-${index}">
-      <td class="crew-index" dataset-crew-index='${index}'>${
-        item[INDEX_KEY] + 1
-      }</td>
+      <td class="crew-index" dataset-crew-index='${index}'>${item[INDEX_KEY]}</td>
       <td class="crew-name">${item[NAME_KEY]}</td>
       <td><button class="delete-crew-button">삭제</button></td>
     </tr>
@@ -38,6 +36,6 @@ export default function renderCrewTable(courseTitle, courseType) {
   $('.crew-table-container').innerHTML = renderCrewTableContainer(courseTitle);
   const courseStorage = store.getLocalStorage(courseType);
   if (courseStorage) {
-    $('.crew-table-body').innerHTML = renderCrewTableElement(courseStorageList);
+    $('.crew-table-body').innerHTML = renderCrewTableElement(courseStorage);
   }
 }
