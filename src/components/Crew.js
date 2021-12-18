@@ -5,13 +5,13 @@ export default class App extends Component {
 
   template() {
     return `  
-    <section>
+    <section id="crew-section">
         <div>
             <h3>크루를 관리할 코스를 선택해주세요</h3>
             <div>
-            <input type="radio" name="course" value="frontend" />
+            <input id="frontend-course" type="radio" name="course" value="frontend" />
             <label for="frontend">프론트엔드</label>
-            <input type="radio" name="course" value="backend" />
+            <input id="backend-course" type="radio" name="course" value="backend" />
             <label for="backend">백엔드</label>
             </div>
         </div>
@@ -19,13 +19,13 @@ export default class App extends Component {
         <h3>프론트엔드 크루 관리</h3>
             <form>
             <label>크루 이름</label>
-            <input type="text" />
-            <button>확인</button>
+            <input id="crew-name-input" type="text" />
+            <button id="add-crew-buttton" >확인</button>
             </form>
         </div>
         <div>
             <h3>프론트엔드 크루 목록</h3>
-            <table border="1">
+            <table id="screw-table" border="1">
             <thead>
                 <tr>
                 <th></th>
@@ -38,7 +38,7 @@ export default class App extends Component {
                 <td>1</td>
                 <td>준</td>
                 <td>
-                    <button>삭제</button>
+                    <button id="delete-crew-buttton">삭제</button>
                 </td>
                 </tr>
             </tbody>
