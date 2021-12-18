@@ -3,8 +3,9 @@ import CrewView from "./CrewView.js";
 import { HTML_OF_FRONT_CREW_INPUT, HTML_OF_BACK_CREW_INPUT, HTML_OF_CREW_TABLE, HTML_OF_FRONT_CHECKED_RADIO , HTML_OF_HEADER, HTML_OF_TEAM_TAB, HTML_OF_BACK_CHECKED_RADIO} from "./utils/html.js";
 export default class CrewEvent {
     static addEvent() {
-        this.addFrontEndEvent();
-        this.addBackEndEvent();
+        this.addRadioEvent();
+        // this.addFrontEndEvent();
+        // this.addBackEndEvent();
         // this.addCrewEvent();
         // this.getCourse();
         
@@ -80,30 +81,58 @@ export default class CrewEvent {
     }
 
        //이거 조금 이상함
-    static addFrontEndEvent() {
-        document.getElementById('frontend-course').addEventListener('click', (e) => {
-            console.log("프론트");
-            document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
+    // static addFrontEndEvent() {
+    //     document.getElementById('frontend-course').addEventListener('click', (e) => {
+    //         console.log("프론트");
+    //         document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
+    //         this.addCrewEvent();
+
+    //         if(localStorage.getItem("CrewFront") !== null){
+    //             CrewView.showFrontTable();
+    //         }
+    //     })
+    // }
+
+    // static addBackEndEvent() {
+    //     document.getElementById('backend-course').addEventListener('click', (e) => {
+    //         console.log("백");
+    //         document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
+    //         this.addCrewEvent();
+
+    //         if(localStorage.getItem("CrewFront") !== null){
+    //             CrewView.showBackTable();
+    //         }
+            
+    //     })
+    // }
+
+    static addRadioEvent() {
+        document.addEventListener('click', (e) => {
+            const targetId = e.target.id;
+      
+            if(targetId === 'frontend-course') {
+                document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
             this.addCrewEvent();
 
             if(localStorage.getItem("CrewFront") !== null){
                 CrewView.showFrontTable();
             }
-        })
-    }
+            }
 
-    static addBackEndEvent() {
-        document.getElementById('backend-course').addEventListener('click', (e) => {
-            console.log("백");
-            document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
+
+
+            if(targetId === 'backend-course') {
+                document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
             this.addCrewEvent();
 
             if(localStorage.getItem("CrewFront") !== null){
                 CrewView.showBackTable();
             }
             
-        })
-    }
+            }
+          });
+        }
+    
 
 
 }
