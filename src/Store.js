@@ -40,4 +40,12 @@ export default class Store {
     }
     this.setCrewList(crewList);
   }
+
+  teamMatching({ number, course }) {
+    console.log(number, course);
+    const crewList = this.getCrewList();
+    console.log(crewList[course]);
+    const foo = MissionUtils.Random.shuffle(crewList[course]);
+    console.log(foo);
+  }
 }

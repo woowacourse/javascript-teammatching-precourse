@@ -27,6 +27,9 @@ export default class Controller {
     ).on(CUSTOM_EVENT_NAME.DELETE_CREW, (event) => 
       this.handleDeleteCrew(event),
     );
+    this.teamManagementView.on(CUSTOM_EVENT_NAME.TEAM_MATCHING, (event) => {
+      this.store.teamMatching(event.detail.request);
+    })
   }
 
   handleAddCrew(event) {
@@ -56,7 +59,7 @@ export default class Controller {
 
   showTeamTab() {
     this.crewManagementView.hide();
-    this.teamManagementView.show();
+    this.teamManagementView.show(this.store.getCrewList());
   }
 
   hideAllView() {

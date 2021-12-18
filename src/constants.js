@@ -16,6 +16,7 @@ export const CUSTOM_EVENT_NAME = {
   SHOW_TEAM_TAB: '@showTeamTab',
   ADD_CREW: '@addCrew',
   DELETE_CREW: '@deleteCrew',
+  TEAM_MATCHING: '@teamMatching',
 };
 
 export const LOCAL_STORAGE_KEY = {
