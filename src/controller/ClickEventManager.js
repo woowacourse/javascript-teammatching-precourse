@@ -40,6 +40,10 @@ export default class ClickEventManager {
     }
 
     DB.save(`${courseType}Crew`, $('#crew-name-input').value);
+
+    $('#crew-name-input').value = '';
+
+    DOM.showCrewList(courseType);
   }
 
   onClick(event) {

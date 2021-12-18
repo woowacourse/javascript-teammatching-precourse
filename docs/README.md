@@ -28,9 +28,9 @@
   - [ ] 동일한 이름의 크루는 추가할 수 없다
   - [ ] 크루 이름은 최대 5글자까지 가능하다
   
-- [ ] localStorage에 이름을 저장한다
-- [ ] `프론트엔드 크루 목록` 테이블을 보여준다
-  - [ ] 크루 table의 첫번째 열에는 index를 넣어 순서를 표시한다. index는 '1'부터 시작한다
+- [x] localStorage에 이름을 저장한다
+- [x] `프론트엔드 크루 목록` 테이블을 보여준다
+  - [x] 크루 table의 첫번째 열에는 index를 넣어 순서를 표시한다. index는 '1'부터 시작한다
   - [ ] 코스별로 크루를 삭제할 수 있다
     - [ ] 삭제할 때는 [confirm](https://developer.mozilla.org/ko/docs/Web/API/Window/confirm)을 사용하여, 사용자가 한번 더 확인할 수 있게 한다
 

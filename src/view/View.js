@@ -64,15 +64,7 @@ export default class View {
                 <th>관리</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                <td>1</td>
-                <td>준</td>
-                <td>
-                    <button id="delete-crew-buttton">삭제</button>
-                </td>
-                </tr>
-            </tbody>
+            <tbody id="crew-list-tbody"></tbody>
             </table>
         </section>
       </div>
