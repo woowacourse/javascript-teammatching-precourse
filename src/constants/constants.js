@@ -12,5 +12,6 @@ export const ERROR_MESSAGE = {
 };
 
 export const STORAGE_KEY = {
-  CREWS: 'crews',
+  FRONT_CREWS: 'frontCrews',
+  BACK_CREWS: 'backCrews',
 };

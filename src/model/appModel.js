@@ -5,26 +5,49 @@ import Crew from './crew.js';
 
 export default class AppModel {
   constructor() {
-    this.crews = this.loadCrews() || [];
+    this.frontCrews = this.loadFrontCrews() || [];
+    this.backCrews = this.loadBackCrews() || [];
   }
 
-  loadCrews() {
-    return loadDataFromLocalStorage(STORAGE_KEY.CREWS);
+  loadFrontCrews() {
+    return loadDataFromLocalStorage(STORAGE_KEY.FRONT_CREWS);
   }
 
-  addCrew(name) {
-    this.crews.push(new Crew(name));
-
-    setDataOnLocalStorage(STORAGE_KEY.CREWS, this.crews);
+  loadBackCrews() {
+    return loadDataFromLocalStorage(STORAGE_KEY.BACK_CREWS);
   }
 
-  deleteCrew(idx) {
-    this.crews.splice(idx - 1, 1);
-    console.log(this.crews);
+  addBackCrew(name, course) {
+    this.backCrews.push(new Crew(name, course));
+
+    return setDataOnLocalStorage(STORAGE_KEY.BACK_CREWS, this.backCrews);
   }
 
-  isCrewExist(name) {
-    return this.crews.some((crew) => {
+  addFrontCrew(name, course) {
+    this.frontCrews.push(new Crew(name, course));
+
+    return setDataOnLocalStorage(STORAGE_KEY.FRONT_CREWS, this.frontCrews);
+  }
+
+  addCrew(name, course) {
+    if (course === 'backend') return this.addBackCrew(name, course);
+
+    return this.addFrontCrew(name, course);
+  }
+
+  // deleteCrew(idx) {
+  //   this.crews.splice(idx - 1, 1);
+  //   console.log(this.crews);
+  // }
+
+  isCrewExist(name, course) {
+    if (course === 'backend') {
+      return this.backCrews.some((crew) => {
+        return crew.name === name;
+      });
+    }
+
+    return this.frontCrews.some((crew) => {
       return crew.name === name;
     });
   }

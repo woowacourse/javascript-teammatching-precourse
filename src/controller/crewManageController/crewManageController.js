@@ -26,44 +26,49 @@ export default class CrewManageController {
   handleSelectCourse(e) {
     e.preventDefault();
 
-    this.view.renderCrewManage(this.model.crews);
+    const course = $('input[name="course"]:checked').value;
+
+    if (course === 'backend') {
+      this.view.renderCrewManage(this.model.backCrews);
+    } else {
+      this.view.renderCrewManage(this.model.frontCrews);
+    }
+
     this.view.selectCrewManageDOM();
     this.attachCrewManageEvents();
-    // const checkedValue = $('input[name="course"]:checked').value;
-
-    // console.log(checkedValue);
   }
 
   attachCrewManageEvents() {
     this.view.$addCrewButton.addEventListener('click', this.handleAddCrew.bind(this));
-    this.view.$$deleteCrewButton.forEach((element) => {
-      element.addEventListener('click', this.handleDeleteCrew.bind(this));
-    });
+    // this.view.$$deleteCrewButton.forEach((element) => {
+    //   element.addEventListener('click', this.handleDeleteCrew.bind(this));
+    // });
   }
 
   handleAddCrew(e) {
     e.preventDefault();
-
     const crewName = this.view.$crewNameInput.value;
-
-    if (isValidCrewName(crewName, this.model)) {
-      this.model.addCrew(crewName);
-
-      return this.view.renderCrewTable(this.model.crews);
+    const course = $('input[name="course"]:checked').value;
+    if (isValidCrewName(crewName, course, this.model)) {
+      this.model.addCrew(crewName, course);
+      if (course === 'backend') {
+        this.view.renderCrewTable(this.model.backCrews);
+      } else {
+        this.view.renderCrewTable(this.model.frontCrews);
+      }
+      return true;
     }
-
     return showError();
   }
 
-  handleDeleteCrew(e) {
-    e.preventDefault();
+  // handleDeleteCrew(e) {
+  //   e.preventDefault();
 
-    const closestTR = e.target.closest('tr');
-    const targetIdx = closestTR.children[0].innerText;
-    console.log(targetIdx);
+  //   const closestTR = e.target.closest('tr');
+  //   const targetIdx = closestTR.children[0].innerText;
 
-    this.model.deleteCrew(targetIdx);
-  }
+  //   this.model.deleteCrew(targetIdx);
+  // }
 }
 
 // 여러 테이블 리스트 있는데 거기서 하나 고를때

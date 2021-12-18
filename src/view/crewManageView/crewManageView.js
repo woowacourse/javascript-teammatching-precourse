@@ -21,6 +21,7 @@ export default class CrewManageView {
   }
 
   renderCrewManage(crews) {
+    console.log(crews);
     this.$main.insertAdjacentHTML('beforeend', crewManageTemplate(crews));
   }
 

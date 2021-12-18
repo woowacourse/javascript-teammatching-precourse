@@ -10,7 +10,7 @@ export const loadDataFromLocalStorage = (key) => {
 
   if (!parsedData) return false;
 
-  if (key === STORAGE_KEY.CREWS) {
+  if (key === STORAGE_KEY.FRONT_CREWS || key === STORAGE_KEY.BACK_CREWS) {
     return parsedData.map(({ name }) => new Crew(name));
   }
 

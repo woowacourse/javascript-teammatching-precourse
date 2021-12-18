@@ -34,6 +34,7 @@ export const selectCourseTemplate = () => {
 };
 
 export const crewManageTemplate = (crews) => {
+  console.log(crews);
   return `
     <section>
       <h3>프론트엔드 크루 관리</h3>
@@ -67,6 +68,7 @@ export const crewTableTemplate = (crews) => {
       crews &&
       crews
         .map((crew, idx) => {
+          console.log(crew);
           return `
               <tr>
                 <td>${idx + 1}</td>

@@ -17,9 +17,9 @@ const isBelowGivenLength = (value, givenLength) => {
   return value.length <= givenLength;
 };
 
-export const isValidCrewName = (name, model) => {
+export const isValidCrewName = (name, course, model) => {
   if (isEmpty(name)) return setErrorMessage(ERROR_MESSAGE.NO_EMPTY_ALLOWED);
-  if (!isBelowGivenLength(name, NUMBER.MAX_CREW_NAME_LENGTH) || model.isCrewExist(name))
+  if (!isBelowGivenLength(name, NUMBER.MAX_CREW_NAME_LENGTH) || model.isCrewExist(name, course))
     return setErrorMessage(ERROR_MESSAGE.NOT_PROPER_CREW_NAME);
 
   return true;
