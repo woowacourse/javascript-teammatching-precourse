@@ -1,8 +1,8 @@
 import { $ } from "../common/dom.js";
 import Component from "../core/Component.js";
 import store, { setState } from "../storage/Store.js";
-import Crew from "./Crew.js";
-import Team from "./Team.js";
+import Crew from "./Crew/index.js";
+import Team from "./Team/index.js";
 
 export default class App extends Component {
   setup() {
@@ -26,9 +26,10 @@ export default class App extends Component {
 
   onClick(e) {
     const { target } = e;
-    if (target.nodeName === "BUTTON") {
-      setState("sectionID", target.id);
+    if (target.nodeName !== "BUTTON") {
+      return;
     }
+    setState("sectionID", target.id);
   }
 
   template() {
