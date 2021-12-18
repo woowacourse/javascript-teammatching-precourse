@@ -26,11 +26,27 @@ const addCrewOnCourse = (crewName) => {
     }
 };
 
+const appendCrewOnTable = (crewName) => {
+    $('#crew-table-tbody').insertAdjacentHTML(
+        'beforeend',
+        `
+        <tr>
+            <td>1</td>
+            <td>${crewName}</td>
+            <td>
+                <button>삭제</button>
+            </td>
+        </tr>
+    `,
+    );
+};
+
 $('#add-crew-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const crewName = $('#crew-name-input').value;
 
     if (checkCrewName(crewName)) {
         addCrewOnCourse(crewName);
+        appendCrewOnTable(crewName);
     }
 });
