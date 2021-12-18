@@ -1,0 +1,33 @@
+import {
+  renderAddCrewRadio,
+  renderAddCrewForm,
+  renderCrewTable,
+  renderMain,
+} from './view/render.js';
+import { $ } from './util/dom.js';
+import { FRONT_END, BACK_END } from './constants/constants.js';
+
+function App() {
+  //$('head').innerHTML = `<link rel="stylesheet" href="src/css/style.css"/>`;
+  renderMain();
+  const handleClick = e => {
+    switch (e.target.id) {
+      case 'crew-tab':
+        renderAddCrewRadio();
+        break;
+      case 'team-tab':
+        break;
+      case 'frontend-course':
+        renderAddCrewForm(FRONT_END);
+        renderCrewTable(FRONT_END);
+        break;
+      case 'backend-course':
+        renderAddCrewForm(BACK_END);
+        renderCrewTable(BACK_END);
+        break;
+    }
+  };
+
+  $('#app').addEventListener('click', handleClick);
+}
+new App();

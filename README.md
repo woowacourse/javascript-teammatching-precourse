@@ -213,8 +213,8 @@
 **크루 추가/삭제 button**
 
 - 크루 이름을 입력하기 위한 input의 id는`crew-name-input`이다.
-- 크루 추가를 위한 확인 버튼의 id는 `add-crew-buttton`이다.
-- 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-buttton`이다.
+- 크루 추가를 위한 확인 버튼의 id는 `add-crew-button`이다.
+- 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-button`이다.
 
 **크루 table**
 
