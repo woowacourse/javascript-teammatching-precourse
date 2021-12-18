@@ -52,7 +52,7 @@ export class TeamController {
   matchTeam(headCountPerTeam, selectedCourse) {
     let crewList = this.getCrewListFromModel(selectedCourse);
     const teamNumber = Math.floor(crewList.length / headCountPerTeam);
-    const teamList = create2DArray(teamNumber, headCountPerTeam);
+    const teamList = create2DArray(teamNumber);
     let shuffleNumber = MissionUtils.Random.shuffle(sequenceArray(crewList.length));
     for (let i = 0; i < shuffleNumber.length; i++) {
       teamList[i % teamNumber].push(crewList[shuffleNumber[i]]);

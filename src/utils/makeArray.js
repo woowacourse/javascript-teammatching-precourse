@@ -1,4 +1,4 @@
-export function create2DArray(rows, columns) {
+export function create2DArray(rows) {
   let arr = new Array(rows);
   for (let i = 0; i < rows; i++) {
     arr[i] = [];
