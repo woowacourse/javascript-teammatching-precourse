@@ -3,6 +3,7 @@ import Crew from '../Crew.js';
 import printAddCrewForm from './printAddCrewForm.js';
 import isValidName from '../utils/isValidName.js';
 import printCrewList from './printCrewList.js';
+import removeInputValue from './removeInputValue.js';
 
 const selectCourseEvent = (crewManager) => {
   return (event) => {
@@ -25,11 +26,11 @@ const addCrewEvent = (crewManager) => {
 
     const course = event.target.closest('section').dataset.course;
     const name = document.getElementById(CREW_MANAGE_DOM_SELECTOR.crewNameInput).value;
-
     if (!isValidName(name, crewManager)) return;
 
     const crew = new Crew(course, name);
     crewManager.add(crew);
+    removeInputValue(CREW_MANAGE_DOM_SELECTOR.crewNameInput);
     printCrewList(course, crewManager);
   };
 };
