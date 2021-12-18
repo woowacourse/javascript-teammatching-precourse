@@ -9,6 +9,16 @@ export default class CrewControlController {
     this.selectCourse();
   }
 
+  setLocalCrewName() {
+    this.crewControlView.toLocalCrewName(this.course, this.crewName);
+  }
 
+  getLocalFrontCrew() {
+    this.frontCrew = this.crewControlView.fromLocalFrontCrew();
+  }
+
+  getLocalBackCrew() {
+    this.backCrew = this.crewControlView.fromLocalBackCrew();
+  }
 
 }

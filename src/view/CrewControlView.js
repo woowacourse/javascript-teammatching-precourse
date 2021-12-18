@@ -1,5 +1,5 @@
 import CrewControlController from "../controller/CrewControlController.js";
-import { controlCrewListTemplete, crewControlTemplete } from "../util/dom/crewControlTemplete.js";
+import { controlCrewListTemplete, crewControlTemplete, CrewListTemplete } from "../util/dom/crewControlTemplete.js";
 
 export default class CrewControlView extends CrewControlController {
 
@@ -14,8 +14,10 @@ export default class CrewControlView extends CrewControlController {
       select.addEventListener('click', ({ target }) => {
         if (target.id === 'frontend-course') {
           this.course = '프론트엔드';
+          this.getLocalFrontCrew();
         } else if (target.id === 'backend-course') {
           this.course = '백엔드';
+          this.getLocalBackCrew();
         }
         this.renderControlCrew();
       })
@@ -23,8 +25,9 @@ export default class CrewControlView extends CrewControlController {
   }
 
   renderControlCrew() {
-    const $contrlCrewList = document.querySelector('#control-crew-list');
-    $contrlCrewList.innerHTML = controlCrewListTemplete(this.course);
+    const contrlCrewList = document.querySelector('#control-crew-list');
+    contrlCrewList.innerHTML = controlCrewListTemplete(this.course);
+    this.renderCrewList();
     this.addCrew();
   }
 
@@ -32,9 +35,19 @@ export default class CrewControlView extends CrewControlController {
     this.crewControlField.querySelector('#add-crew-buttton').addEventListener('click', (e) => {
       e.preventDefault();
       this.crewName = e.target.previousSibling.previousSibling.value;
-      console.log(this.course)
-      console.log(e);
+      this.setLocalCrewName();
+      this.course === '프론트엔드' ? this.getLocalFrontCrew() : this.getLocalBackCrew();
+      this.renderCrewList();
     })
+  }
+
+  renderCrewList() {
+    const crewListField = document.querySelector('#crew-list-field')
+    crewListField.innerHTML = "";
+    this.course === '프론트엔드'
+    ? this.crewListTemplete = CrewListTemplete(this.frontCrew)
+    : this.crewListTemplete = CrewListTemplete(this.backCrew);
+    this.crewListTemplete && crewListField.append(this.crewListTemplete);
   }
 
 }
