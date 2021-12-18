@@ -1,12 +1,17 @@
+import $ from './selector.js';
 import { TABS } from '../../constants/constants.js';
-import { renderCrew } from './manageCrew/renderCrew.js';
+import { renderRadioButtons } from '../manageCrew/renderRadioButtons.js';
+import { renderCrew } from '../manageCrew/renderCrew.js';
 
-export const changeTab = e => {
+export const changeTab = (e, state) => {
   const tab = e.target.innerText;
   console.log('tab: ', tab);
 
   if (tab === TABS.CREW_TAB) {
-    renderCrew();
+    renderRadioButtons();
+    $('#frontend-course').addEventListener('click', e => {
+      renderCrew(state);
+    });
     return;
   }
 

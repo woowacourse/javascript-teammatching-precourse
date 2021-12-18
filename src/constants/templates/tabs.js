@@ -12,5 +12,6 @@ export const templates = {
         </ul>
       </nav>
     </header>
-    <main></main>`,
+    <main>  
+    </main>`,
 };
