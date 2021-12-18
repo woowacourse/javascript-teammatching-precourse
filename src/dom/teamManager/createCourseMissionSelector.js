@@ -1,5 +1,7 @@
+import { noCrewException } from '../../exception.js';
 import { teamMatching } from '../../index.js';
 import { app, getTeamManager } from '../domElement.js';
+import { createTeamManager } from './createTeamManager.js';
 
 export const createCourseMissionSelector = () => {
   const manager = document.createElement('div');
@@ -66,6 +68,25 @@ const createSelectButton = () => {
 
   button.innerHTML = '확인';
   button.setAttribute('id', 'show-team-matcher-button');
+  button.addEventListener('click', () => {
+    if (noCrewException()) {
+      return;
+    }
+
+    printTeamMatchingView();
+  });
 
   return button;
+};
+
+const printTeamMatchingView = () => {
+  const courseSelector = document.getElementById('course-select');
+  const missionSelector = document.getElementById('mission-select');
+
+  createTeamManager(
+    courseSelector.options[courseSelector.selectedIndex].value,
+    missionSelector.options[missionSelector.selectedIndex].value,
+    courseSelector.options[courseSelector.selectedIndex].innerHTML,
+    missionSelector.options[missionSelector.selectedIndex].innerHTML
+  );
 };

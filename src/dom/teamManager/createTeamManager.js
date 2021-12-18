@@ -1,15 +1,19 @@
 import { teamMatching } from '../../index.js';
-import { app } from '../domElement.js';
+import { app, getTeamManager } from '../domElement.js';
 
-export const createTeamManager = (course, mission) => {
+export const createTeamManager = (course, mission, courseName, missionName) => {
+  const teamManager = getTeamManager();
+  const prevManager = document.getElementById('team-matching-form');
+  prevManager?.remove();
   const manager = document.createElement('section');
 
+  manager.setAttribute('id', 'team-matching-form');
   manager.append(
-    createTitle(course, mission),
+    createTitle(courseName, missionName),
     createForm(course, mission),
     createCrewList(course)
   );
-  app.appendChild(manager);
+  teamManager.append(manager);
 };
 
 const createTitle = (course, mission) => {
@@ -42,6 +46,9 @@ const createTeamMatchingButton = (course, mission) => {
 
   matchingButton.innerHTML = '팀 매칭';
   matchingButton.setAttribute('id', 'match-team-button');
+  matchingButton.addEventListener('click', () => {
+    teamMatching.matchingTeam(course, mission);
+  });
 
   return matchingButton;
 };

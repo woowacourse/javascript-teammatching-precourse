@@ -3,7 +3,7 @@ import { missions } from '../data/mission.js';
 import { createCrewTable } from '../dom/crewManager/createCrewTable.js';
 import { getCrewManager } from '../dom/domElement.js';
 import { saveCrews } from '../storage/crew.js';
-import { getCrewNameInput } from '../user.js';
+import { getCrewNameInput, getMemberCountInput } from '../user.js';
 
 export default class TeamMatching {
   constructor() {
@@ -56,4 +56,82 @@ export default class TeamMatching {
 
     crewManager.append(createCrewTable(course));
   }
+
+  matchingTeam(course, mission) {
+    const memberCount = getMemberCountInput();
+
+    if (!memberCount) {
+      return;
+    }
+
+    console.log(
+      this.divideTeam(course, this.getSuffledIndexList(course), memberCount)
+    );
+  }
+
+  getSuffledIndexList(course) {
+    const indexList = [];
+
+    let index = 0;
+    for (index = 0; index < this.crews[course].length; index++) {
+      indexList.push(index);
+    }
+
+    return MissionUtils.Random.shuffle(indexList);
+  }
+
+  divideTeam(course, suffledIndexList, memberCount) {
+    const teams = [];
+    const teamCount = parseInt(this.crews[course].length / memberCount);
+    let selectedCount = 0;
+
+    for (let index = 0; index < teamCount; index++) {
+      teams.push([]);
+    }
+
+    while (selectedCount < suffledIndexList.length) {
+      for (let _index = 0; _index < teamCount; _index++) {
+        for (let i = 0; i < memberCount; i++) {
+          teams[_index].push(
+            this.crews[course][suffledIndexList[selectedCount++]]
+          );
+
+          if (selectedCount >= suffledIndexList.length) {
+            break;
+          }
+        }
+
+        if (selectedCount >= suffledIndexList.length) {
+          break;
+        }
+      }
+    }
+
+    return teams;
+  }
+
+  // selectMember(
+  //   course,
+  //   teams,
+  //   teamCount,
+  //   memberCount,
+  //   selectedCount,
+  //   suffledIndexList
+  // ) {
+  //   for (let _index = 0; _index < teamCount; _index++) {
+  //     for (let i = 0; i < memberCount; i++) {
+  //       teams[_index].push(
+  //         this.crews[course][suffledIndexList[selectedCount++]]
+  //       );
+
+  //       if (selectedCount >= suffledIndexList.length) {
+  //         break;
+  //       }
+  //     }
+
+  //     if (selectedCount >= suffledIndexList.length) {
+  //       break;
+  //     }
+  //   }
+  // }
 }

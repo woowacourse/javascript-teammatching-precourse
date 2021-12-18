@@ -2,6 +2,9 @@ import {
   noInputException,
   duplicatedCrewException,
   outRangeName,
+  littleMemberCountException,
+  outRangeMemberCountException,
+  noIntegerException,
 } from './exception.js';
 
 export const getCrewNameInput = () => {
@@ -16,4 +19,21 @@ export const getCrewNameInput = () => {
   }
 
   return nameInput;
+};
+
+export const getMemberCountInput = () => {
+  const numberCountInput = document.getElementById(
+    'team-member-count-input'
+  ).value;
+
+  if (
+    noInputException(numberCountInput) ||
+    littleMemberCountException(Number(numberCountInput)) ||
+    outRangeMemberCountException(Number(numberCountInput)) ||
+    noIntegerException(Number(numberCountInput))
+  ) {
+    return null;
+  }
+
+  return Number(numberCountInput);
 };
