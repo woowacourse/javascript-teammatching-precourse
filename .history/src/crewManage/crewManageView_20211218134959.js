@@ -52,11 +52,10 @@ export default class CrewManageView {
           <tbody id="crew-table-body">
           </tbody>
     `;
-    this.resetCoursePage(container);
     container.insertAdjacentHTML("beforeend", template);
   };
 
-  renderBackendCourse = (container) => {
+  renderBackendCourse = () => {
     const template = `
       <h3>백엔드 크루 관리</h3>
       <form>
@@ -78,11 +77,5 @@ export default class CrewManageView {
         <tbody id="crew-table-body">
         </tbody>
     `;
-    this.resetCoursePage(container);
-    container.insertAdjacentHTML("beforeend", template);
-  };
-
-  resetCoursePage = (container) => {
-    container.innerHTML = "";
   };
 }

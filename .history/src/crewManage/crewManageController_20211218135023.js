@@ -11,17 +11,15 @@ export default class CrewManageController {
   init = () => {
     this.initPage();
     this.initDOMS();
-    this.setEvent();
   };
 
   initAfterRenderCourse = () => {
     this.initDOMSAfterRenderCourse();
-    this.setEventAfterRenderCourse();
+    this.setEvent();
   };
 
   initDOMS = () => {
     this.$radioButton = document.getElementsByName("course");
-    this.$radioForm = document.getElementById("frontend-course").closest("div");
     this.$coursePage = document.getElementById("course-page");
   };
 
@@ -30,10 +28,6 @@ export default class CrewManageController {
   };
 
   setEvent = () => {
-    this.$radioForm.addEventListener("change", this.checkRadioState);
-  };
-
-  setEventAfterRenderCourse = () => {
     this.$crewNameForm.addEventListener("submit", this.setClickAddButtonEvent);
   };
 

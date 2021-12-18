@@ -30,7 +30,7 @@ export default class CrewManageController {
   };
 
   setEvent = () => {
-    this.$radioForm.addEventListener("change", this.checkRadioState);
+    this.$radioButton.addEventListener("change", this.checkRadioState);
   };
 
   setEventAfterRenderCourse = () => {

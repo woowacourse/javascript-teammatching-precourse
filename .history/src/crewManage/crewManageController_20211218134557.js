@@ -14,14 +14,12 @@ export default class CrewManageController {
     this.setEvent();
   };
 
-  initAfterRenderCourse = () => {
-    this.initDOMSAfterRenderCourse();
-    this.setEventAfterRenderCourse();
-  };
-
   initDOMS = () => {
+    this.$crewNameInput = document.getElementById("crew-name-input");
+    this.$addCrewButton = document.getElementById("add-crew-button");
+    this.$crewNameForm = this.$crewNameInput.closest("form");
+    this.$crewTableBody = document.getElementById("crew-table-body");
     this.$radioButton = document.getElementsByName("course");
-    this.$radioForm = document.getElementById("frontend-course").closest("div");
     this.$coursePage = document.getElementById("course-page");
   };
 
@@ -30,10 +28,6 @@ export default class CrewManageController {
   };
 
   setEvent = () => {
-    this.$radioForm.addEventListener("change", this.checkRadioState);
-  };
-
-  setEventAfterRenderCourse = () => {
     this.$crewNameForm.addEventListener("submit", this.setClickAddButtonEvent);
   };
 
@@ -52,17 +46,7 @@ export default class CrewManageController {
 
   renderCoursePage = (id) => {
     if (id === "frontend") {
-      this.view.renderFrontendCourse(this.$coursePage);
     } else if (id === "backend") {
-      this.view.renderBackendCourse(this.$coursePage);
     }
-    this.initAfterRenderCourse();
-  };
-
-  initDOMSAfterRenderCourse = () => {
-    this.$crewNameInput = document.getElementById("crew-name-input");
-    this.$addCrewButton = document.getElementById("add-crew-button");
-    this.$crewNameForm = document.getElementById("crew-name-input").closest("form");
-    this.$crewTableBody = document.getElementById("crew-table-body");
   };
 }

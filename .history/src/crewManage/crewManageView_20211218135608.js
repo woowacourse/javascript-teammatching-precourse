@@ -52,7 +52,7 @@ export default class CrewManageView {
           <tbody id="crew-table-body">
           </tbody>
     `;
-    this.resetCoursePage(container);
+    this.resetCoursePage();
     container.insertAdjacentHTML("beforeend", template);
   };
 
@@ -78,7 +78,7 @@ export default class CrewManageView {
         <tbody id="crew-table-body">
         </tbody>
     `;
-    this.resetCoursePage(container);
+    this.resetCoursePage();
     container.insertAdjacentHTML("beforeend", template);
   };
 

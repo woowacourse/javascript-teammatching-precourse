@@ -24,13 +24,35 @@ export default class CrewManageView {
           <label for="backend">백엔드</label>
         </div>
       </section>
-      <div id="course-page"></div>
+      <section id="course-manage">
+        <h3>프론트엔드 크루 관리</h3>
+        <form>
+          <label>크루 이름</label>
+          <input type="text" id="crew-name-input"/>
+          <button id="add-crew-buttton">확인</button>
+        </form>
+      </section>
+      <section>
+        <h3>프론트엔드 크루 목록</h3>
+        <table border="1" id="crew-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>크루</th>
+              <th>관리</th>
+            </tr>
+          </thead>
+          <tbody id="crew-table-body">
+
+          </tbody>
+        </table>
+      </section>
     </main>
     `;
     container.insertAdjacentHTML("beforeend", template);
   };
 
-  renderFrontendCourse = (container) => {
+  renderFrontendCourse = () => {
     const template = `
       <h3>프론트엔드 크루 관리</h3>
         <form>
@@ -50,39 +72,8 @@ export default class CrewManageView {
             </tr>
           </thead>
           <tbody id="crew-table-body">
+
           </tbody>
     `;
-    this.resetCoursePage(container);
-    container.insertAdjacentHTML("beforeend", template);
-  };
-
-  renderBackendCourse = (container) => {
-    const template = `
-      <h3>백엔드 크루 관리</h3>
-      <form>
-        <label>크루 이름</label>
-        <input type="text" id="crew-name-input"/>
-        <button id="add-crew-buttton">확인</button>
-      </form>
-    </section>
-    <section>
-      <h3>백엔드 크루 목록</h3>
-      <table border="1" id="crew-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>크루</th>
-            <th>관리</th>
-          </tr>
-        </thead>
-        <tbody id="crew-table-body">
-        </tbody>
-    `;
-    this.resetCoursePage(container);
-    container.insertAdjacentHTML("beforeend", template);
-  };
-
-  resetCoursePage = (container) => {
-    container.innerHTML = "";
   };
 }

@@ -4,14 +4,6 @@ export default class CrewManageModel {
     this.backendCrews = [];
   }
 
-  getFrontendCrews = () => {
-    return this.frontendCrews;
-  };
-
-  getBackendCrews = () => {
-    return this.backendCrews;
-  };
-
   addCrew = (id, name) => {
     if (id === "frontend") {
       this.frontendCrews.push(name);
