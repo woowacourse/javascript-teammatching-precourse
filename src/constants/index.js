@@ -23,6 +23,7 @@ export const NUM = {
 
 export const ERROR = {
   CREW_NAME_IS_LONG: `크루 이름은 ${NUM.MAX_CREW_NAME}자가 초과되지 않도록 입력해주세요.`,
+  CREW_IS_DUPLICATED: '같은 이름을 가진 크루가 존재합니다.',
 };
 
 export const LOCAL_DB = {

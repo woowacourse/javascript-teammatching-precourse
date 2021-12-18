@@ -42,6 +42,10 @@ class CrewInput {
       return;
     }
 
+    this.updateLocalStorage(value);
+  }
+
+  updateLocalStorage(value) {
     if (this.courseName === '프론트엔드') {
       const crew = getLocalStorage(LOCAL_DB.CREW_FRONT);
       saveLocalStorage(LOCAL_DB.CREW_FRONT, [...crew, value]);
