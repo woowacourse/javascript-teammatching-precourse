@@ -30,9 +30,6 @@ class CrewSelect {
 
   selectDom() {
     this.$courseContainer = $(`#${ID.COURSE_SELECT_CONTAINER}`);
-    // this.$label = this.$courseContainer.querySelector('label');
-    // this.$frontInput = $(`#${ID.FRONTEND_COURSE}`);
-    // this.$backInput = $(`#${ID.BACKEND_COURSE}`);
   }
 
   addEvent() {

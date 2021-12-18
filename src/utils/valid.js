@@ -20,6 +20,11 @@ export const isValidCrewName = value => {
     return false;
   }
 
+  if (value.trim() === '') {
+    alert(ERROR.CREW_NAME_IS_BLANK);
+    return false;
+  }
+
   return true;
 };
 

@@ -37,6 +37,7 @@ export const ERROR = {
   CREW_NAME_IS_LONG: `크루 이름은 ${NUM.MAX_CREW_NAME}자가 초과되지 않도록 입력해주세요.`,
   CREW_IS_DUPLICATED: '같은 이름을 가진 우테코 크루가 존재합니다.',
   COUNT_IS_WRONG: '팀을 구성할 수 없는 숫자입니다.',
+  CREW_NAME_IS_BLANK: '이름은 빈값이 될 수 없습니다.',
 };
 
 export const MESSAGE = {
