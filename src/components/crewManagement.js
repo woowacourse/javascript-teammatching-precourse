@@ -43,9 +43,6 @@ export default class CrewManagement {
   }
 
   headerEvent() {
-    $(`#${NAVIGATION.ID.CREW_TAB}`).addEventListener('click', () => {
-      this.initialize('frontend');
-    });
     $(`#${NAVIGATION.ID.TEAM_TAB}`).addEventListener('click', () => {
       new TeamManagement(this.$target);
     });
