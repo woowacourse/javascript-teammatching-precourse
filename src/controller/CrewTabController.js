@@ -54,16 +54,50 @@ export default class CrewTabController {
       clearInputs([this.$nameInput]);
     }
   };
+
+  paintCrewLists = (localStorageKey) => {
+    $(`tbody`).innerHTML = '';
+    const crewLists = getLocalStorage(localStorageKey);
+    crewLists.map((crew) => this.paintCrew(crew));
+  };
+
   paintCrew = ({ id, name }) => {
     const $table = $(`tbody`);
     const $tr = document.createElement('tr');
+    const $td = document.createElement('td');
+    const $btn = document.createElement('button');
+    $btn.innerHTML = '삭제';
+    $btn.classList.add(CLASS.DELETE_CREW_BTN);
+    $btn.addEventListener('click', this.handleDelete);
+    $td.appendChild($btn);
+
     // $tr.classList.add(CLASS.PRODUCT_MANAGE_ITEM);
     $tr.innerHTML = `
       <td>${id}</td>
       <td>${name}</td>
-      <td><button class=${CLASS.DELETE_CREW_BTN}>삭제</button></td>
     `;
+    $tr.appendChild($td);
     $table.appendChild($tr);
+  };
+
+  handleDelete = (e) => {
+    if (window.confirm('정말 삭제하시겠습니까??')) {
+      const clickedId = e.target.parentNode.parentNode.children[0].innerHTML;
+      if (this.choice === '0') {
+        this.feCrews = this.feCrews.filter((crew) => {
+          return crew.id !== parseInt(clickedId);
+        });
+        setLocalStorage('feCrews', this.feCrews);
+        this.paintCrewLists('feCrews');
+      }
+      if (this.choice === '1') {
+        this.beCrews = this.beCrews.filter((crew) => {
+          return crew.id !== parseInt(clickedId);
+        });
+        setLocalStorage('beCrews', this.beCrews);
+        this.paintCrewLists('beCrews');
+      }
+    }
   };
 
   createCrew = (id, name) => {
