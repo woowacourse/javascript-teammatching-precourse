@@ -40,4 +40,5 @@ export const CREW_NAME_RULE = {
 export const ERROR_MESSAGES = {
   EXISTED_NAME: '이미 존재하는 이름입니다! 다른 이름을 선택해주세요!',
   NAME_LENGTH: `이름은 최소 ${CREW_NAME_RULE.MIN_LENGTH}글자, 최대 ${CREW_NAME_RULE.MAX_LENGTH}까지만 가능합니다.`,
+  TEAM_HEADCOUNT: '팀 당 인원수는 0보다 커야하고, 크루 수보다 작아야합니다.',
 };

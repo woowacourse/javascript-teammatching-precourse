@@ -1,7 +1,15 @@
 import Component from '../../core/Component.js';
 import TeamStore from '../../stores/TeamStore.js';
 import CrewStore from '../../stores/CrewStore.js';
-import { COURSE_NAME, EVENT_TYPE } from '../../utils/constants.js';
+import { matchTeamAction } from '../../actions/team.js';
+import { $ } from '../../utils/dom.js';
+import { isValidHeadCount } from '../../utils/validation.js';
+import { parseNumber } from '../../utils/input.js';
+import {
+  COURSE_NAME,
+  EVENT_TYPE,
+  ERROR_MESSAGES,
+} from '../../utils/constants.js';
 import { matchTeamForm, matchedTeams } from '../../templates/teamManagement.js';
 
 export default class TeamStatus extends Component {
@@ -13,7 +21,14 @@ export default class TeamStatus extends Component {
     this.appendRootEvents(EVENT_TYPE.SUBMIT, () => this.onSubmitMatchTeam());
   }
 
-  onSubmitMatchTeam() {}
+  onSubmitMatchTeam() {
+    const { course, mission } = this.props;
+    const headCount = parseNumber($('#team-member-count-input').value);
+    const crewCount = this.getGlobalState().crewList[course].length;
+    if (!isValidHeadCount(headCount, crewCount))
+      return alert(ERROR_MESSAGES.TEAM_HEADCOUNT);
+    return TeamStore.dispatch(matchTeamAction({ course, mission, headCount }));
+  }
 
   render() {
     const { course, mission } = this.props;
