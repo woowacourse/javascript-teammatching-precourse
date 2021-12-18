@@ -1,4 +1,4 @@
-import { $ } from './utils.js';
+import { $, validation } from './utils.js';
 import { SELECTOR } from '../constants/constants.js';
 import { crewTableHeaderTemplate, crewTableRowTemplate } from '../constants/template.js';
 
@@ -40,9 +40,12 @@ export default class CrewManager {
   addCrew(event) {
     event.preventDefault();
     const crewName = document.querySelector('input[type="text"]').value;
-    this.model.addCrewInSelectedCourse(crewName);
-    this.initTable();
-    this.view.clearInput(document.querySelector('input[type="text"]'));
+    const selectedCourseCrewList = this.model.getSelectedCourse().crewList;
+    if (validation.isCrewNameValid(selectedCourseCrewList, crewName)) {
+      this.model.addCrewInSelectedCourse(crewName);
+      this.initTable();
+      this.view.clearInput(document.querySelector('input[type="text"]'));
+    }
   }
 
   initTable() {
