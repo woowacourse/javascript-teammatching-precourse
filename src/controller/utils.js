@@ -39,4 +39,13 @@ export const validation = {
   isAlreadyMatchedTeam(memberList) {
     return memberList.length !== 0;
   },
+
+  isMemberCountValid(count) {
+    const isValid = !this.isBlankExist(count);
+    if (isValid) {
+      alert(ALERT_MESSAGE.BLANK_EXIST);
+    }
+  },
 };
+
+export const onKeyUpOnlyNumberRegex = input => (input.value = input.value.replace(/[^0-9]/g, ''));

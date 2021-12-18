@@ -1,4 +1,4 @@
-import { $, validation } from './utils.js';
+import { $, validation, onKeyUpOnlyNumberRegex } from './utils.js';
 import { SELECTOR, COURSE_OPTIONS, MISSION_OPTIONS, KEY_VALUE } from '../constants/constants.js';
 
 export default class TeamMatchManager {
@@ -58,6 +58,9 @@ export default class TeamMatchManager {
 
   addTeamMatchingSettingEventListeners() {
     $(SELECTOR.matchTeamButton).addEventListener('click', event => this.matchTeam(event));
+    $(SELECTOR.memberCountInput).addEventListener('keyup', () =>
+      onKeyUpOnlyNumberRegex($(SELECTOR.memberCountInput)),
+    );
   }
 
   matchTeam(event) {
@@ -69,8 +72,10 @@ export default class TeamMatchManager {
     );
     console.log($(SELECTOR.memberCountInput));
     const memberCountPerTeam = $(SELECTOR.memberCountInput).value;
-    this.matchTeamByCount(memberCountPerTeam, selectedCourse, selectedMission);
-    this.model.setAllCourse(allCourse);
+    if (!validation.isBlankExist(memberCountPerTeam)) {
+      this.matchTeamByCount(memberCountPerTeam, selectedCourse, selectedMission);
+      this.model.setAllCourse(allCourse);
+    }
   }
 
   matchTeamByCount(memberCount, selectedCourse, selectedMission) {
