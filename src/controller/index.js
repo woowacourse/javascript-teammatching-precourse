@@ -2,6 +2,7 @@ import TeamMatchingView from '../view/index.js';
 import CrewManageView from '../view/CrewManage.js';
 import TeamMatchingManageView from '../view/TeamMatchingManage.js';
 import TabModel from '../model/Tab.js';
+
 import { $ } from '../utils/dom.js';
 
 import { SELECTOR } from '../constants.js';
@@ -9,9 +10,9 @@ import { SELECTOR } from '../constants.js';
 class TeamMatchingController {
   constructor() {
     this.$teamMatchingView = new TeamMatchingView();
-    this.$tabModel = new TabModel();
     this.$crewManageView = new CrewManageView();
     this.$teamMatchingManageView = new TeamMatchingManageView();
+    this.$tabModel = new TabModel();
 
     this.renderWithCurrentTab();
     this.initEventListeners();

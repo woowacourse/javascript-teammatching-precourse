@@ -6,13 +6,16 @@ export const SELECTOR = Object.freeze({
   tabContentMain: 'tab-content-main',
 
   // 크루 관리 탭
+  courseSelectContainer: 'course-select-container',
   frontendCourseRadioInputId: 'frontend-course',
   backendCourseRadioInputId: 'backend-course',
 
+  crewManageFormContainer: 'crew-manage-container',
   crewNameInputId: 'crew-name-input',
   addCrewButttonId: 'add-crew-buttton',
   deleteCrewButttonId: 'delete-crew-buttton',
 
+  crewTableContainer: 'crew-table-container',
   crewTableId: 'crew-table',
 
   // 팀 매칭 관리 탭
@@ -28,4 +31,10 @@ export const SELECTOR = Object.freeze({
 
 export const STORAGE_KEY = Object.freeze({
   currentTab: 'current-tab',
+
+  // 크루 관리
+  crewCourse: 'crew-course',
 });
+
+export const FRONT_END = '프론트엔드';
+export const BACK_END = '백엔드';

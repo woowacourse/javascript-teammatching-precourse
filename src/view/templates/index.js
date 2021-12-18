@@ -25,18 +25,20 @@ export const createMain = () => `
 export const createCourseSelectSection = () => `
 	<section>
 	<h3>크루를 관리할 코스를 선택해주세요</h3>
-	<div>
+	<div id="${SELECTOR.courseSelectContainer}">
 		<input id="${SELECTOR.frontendCourseRadioInputId}" type="radio" name="course" value="frontend" />
 		<label for="frontend">프론트엔드</label>
 		<input id="${SELECTOR.backendCourseRadioInputId}" type="radio" name="course" value="backend" />
 		<label for="backend">백엔드</label>
 	</div>
 	</section>
+	<section id="${SELECTOR.crewManageFormContainer}"></section>
+	<section id="${SELECTOR.crewTableContainer}"></section>
 `;
 
-export const createCrewCreateForm = () => `
+export const createCrewCreateForm = course => `
   <section>
-    <h3>프론트엔드 크루 관리</h3>
+    <h3>${course} 크루 관리</h3>
     <form>
       <label>크루 이름</label>
       <input id="${SELECTOR.crewNameInputId}" type="text" />
@@ -45,9 +47,8 @@ export const createCrewCreateForm = () => `
   </section>
 `;
 
-export const createCrewTable = courseName => `
-	<section>
-	<h3>${courseName} 크루 목록</h3>
+export const createCrewTable = course => `
+	<h3>${course} 크루 목록</h3>
 	<table id="${SELECTOR.crewTableId}" border="1">
 		<thead>
 			<tr>
@@ -66,12 +67,10 @@ export const createCrewTable = courseName => `
 			</tr>
 		</tbody>
 	</table>
-	</section>
 `;
 
 // 팀 매칭 관리 탭 관련 템플릿들
 export const createCourseAndMissionSelectSection = () => `
-	<section>
 	<h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
 	<form>
 		<select>
@@ -83,5 +82,4 @@ export const createCourseAndMissionSelectSection = () => `
 		</select>
 		<button>확인</button>
 	</form>
-	</section>
 `;
