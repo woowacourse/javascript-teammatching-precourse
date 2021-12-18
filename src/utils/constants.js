@@ -28,6 +28,7 @@ export const ID = {
   CREW_TABLE: 'crew-table',
 
   // 팀 매칭 관리 탭
+  CREW_LIST: 'crew-list',
   COURSE_SELECT: 'course-select',
   MISSION_SELECT: 'mission-select',
   SHOW_TEAM_MATCHER_BTN: 'show-team-matcher-button',
@@ -35,6 +36,8 @@ export const ID = {
   MATCH_TEAM_BTN: 'match-team-button',
   TEAM_MATCH_RESULT: 'team-match-result',
   REMATCH_TEAM_BTN: 'rematch-team-button',
+
+  MATCH_FORM: 'match-form',
 };
 
 export const CLASS = {
