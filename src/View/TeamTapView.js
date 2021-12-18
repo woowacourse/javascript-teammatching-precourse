@@ -1,4 +1,5 @@
 import { TAP_BUTTON_ID, TEAM_TAP_ID } from '../constants.js';
+import CrewModel from '../Model/CrewModel.js';
 import TapView from './TapView.js';
 
 export default class TeamTapView extends TapView {
@@ -26,7 +27,7 @@ export default class TeamTapView extends TapView {
       	<h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
       	<form>
         	<select id=${TEAM_TAP_ID.selectCourse}>
-          	<option value="frotend">프론트엔드</option>
+          	<option value="frontend">프론트엔드</option>
           	<option value="backend">백엔드</option>
         	</select>
         	<select id=${TEAM_TAP_ID.selectMission}>
@@ -42,7 +43,7 @@ export default class TeamTapView extends TapView {
         	<button id=${TEAM_TAP_ID.showTeamButton}>확인</button>
       	</form>
     	</section>
-    	<section id="team-match">
+    	<section id="team-matching">
     	</section>
     	<section id="team-matched">
     	</section>
@@ -50,8 +51,8 @@ export default class TeamTapView extends TapView {
 		`;
   }
 
-  teamMatchingView(crewList) {
-    // 크루 목록을 받아서 테이블 표시
+  teamMatchingView(team) {
+    const storage = new CrewModel().getStorage(team);
     document.getElementById('team-matching').innerHTML = `
 		<h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
       <div>
@@ -65,8 +66,16 @@ export default class TeamTapView extends TapView {
         </div>
         <h4>크루 목록</h4>
         <ul id=${TEAM_TAP_ID.teamResult}>
-          <li>준</li>
-          <li>포코</li>
+				${storage
+          .map(({ index, name }) => {
+            if (index) {
+              return `
+						<li>${name}</li>
+						`;
+            }
+            return '';
+          })
+          .join('')}
         </ul>
       </div>`;
   }
