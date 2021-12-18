@@ -135,9 +135,28 @@ const templates = Object.freeze({
     `,
 
   app: () => document.getElementById(`${ID.app}`),
+  crewTabButton: () => document.getElementById(`${ID.crewTabButton}`),
+  teamTabButton: () => document.getElementById(`${ID.teamTabButton}`),
+  frontendCourse: () => document.getElementById(`${ID.frontendCourse}`),
+  backendCourse: () => document.getElementById(`${ID.backendCourse}`),
+  crewNameInput: () => document.getElementById(`${ID.crewNameInput}`),
+  addCrewButton: () => document.getElementById(`${ID.addCrewButton}`),
+  crewTable: () => document.getElementById(`${ID.crewTable}`),
+  courseSelect: () => document.getElementById(`${ID.courseSelect}`),
+  missionSelect: () => document.getElementById(`${ID.missionSelect}`),
+  showTeamMatcherButton: () => document.getElementById(`${ID.showTeamMatcherButton}`),
+  teamMemberCountInput: () => document.getElementById(`${ID.teamMemberCountInput}`),
+  matchTeamButton: () => document.getElementById(`${ID.matchTeamButton}`),
+  teamMatchResult: () => document.getElementById(`${ID.teamMatchResult}`),
+  rematchTeamButton: () => document.getElementById(`${ID.rematchTeamButton}`),
+  crewTableTbody: () => document.getElementById(`${ID.crewTableTbody}`),
+  matchTeamSection: () => document.getElementById(`${ID.matchTeamSection}`),
+  showMatchedTeamSection: () => document.getElementById(`${ID.showMatchedTeamSection}`),
+
   crewTab: () => document.querySelector(`.${CLASS.crewTabBox}`),
   teamTab: () => document.querySelector(`.${CLASS.teamTabBox}`),
   allTab: () => document.querySelectorAll(`.${CLASS.tab}`),
+  deleteCrewButtons: () => document.querySelectorAll(`.${CLASS.deleteCrewButton}`),
 });
 
 export { templates };

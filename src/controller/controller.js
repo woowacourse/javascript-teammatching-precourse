@@ -12,19 +12,25 @@ export default class TeamController {
     this.view.renderInTarget($.app(), $.crewManagerTabHTML);
     this.view.renderInTarget($.app(), $.teamMatchingTabHTML);
     this.setEventListeners();
-    this.loadCrewManagerTab();
+    this.loadCrewManagerBtnHandler();
   }
 
   setEventListeners() {
-    document.getElementById(`${ID.crewTabButton}`).addEventListener('click', () => this.loadCrewManagerTab());
-    document.getElementById(`${ID.teamTabButton}`).addEventListener('click', () => this.loadTeamManagerTab());
+    $.crewTabButton().addEventListener('click', () => this.loadCrewManagerBtnHandler());
+    $.teamTabButton().addEventListener('click', () => this.loadTeamManagerBtnHandler());
+    $.addCrewButton().addEventListener('click', (e) => this.getCrewNameInput(e));
   }
 
-  loadCrewManagerTab() {
+  loadCrewManagerBtnHandler() {
     this.view.showTab($.crewTab());
   }
 
-  loadTeamManagerTab() {
+  loadTeamManagerBtnHandler() {
     this.view.showTab($.teamTab());
+  }
+
+  getCrewNameInput(e) {
+    e.preventDefault();
+    console.log($.crewNameInput().value);
   }
 }
