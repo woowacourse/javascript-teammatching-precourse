@@ -2,7 +2,7 @@ import { $ } from '../utils/dom.js';
 import { renderCrewManage, renderFrontEnd, renderCrewList } from '../views/crewManageView.js';
 import { isValidInputName } from '../utils/validation.js';
 import { getLocalStorage, setLocalStorage } from '../utils/storage.js';
-import { STORAGE_NAME } from '../utils/constants.js';
+import { DELETE_MESSAGE, STORAGE_NAME } from '../utils/constants.js';
 
 // eslint-disable-next-line max-lines-per-function
 export default function HandleFrontEndCoures() {
@@ -14,7 +14,20 @@ export default function HandleFrontEndCoures() {
     if (storedFrontList) {
       this.crews = storedFrontList;
       renderCrewList(storedFrontList);
+      // eslint-disable-next-line no-use-before-define
+      removeCrewId();
     }
+  };
+
+  const handleDeleteButton = () => {
+    if (!confirm(DELETE_MESSAGE)) {
+      return;
+    }
+  };
+
+  const removeCrewId = () => {
+    const $crewId = document.querySelectorAll('#delete-crew-buttton');
+    $crewId.forEach((crew) => crew.addEventListener('click', handleDeleteButton));
   };
 
   $('#add-crew-buttton').addEventListener('click', (event) => {
@@ -28,6 +41,7 @@ export default function HandleFrontEndCoures() {
     this.crews.push(inputName);
     setLocalStorage(STORAGE_NAME.FRONT, this.crews);
     renderCrewList(this.crews);
+    removeCrewId();
   });
 
   this.init();

@@ -13,3 +13,5 @@ export const ERROR_MESSAGE = {
   NAME_TOO_LONG: `이름은 ${NAME_LENGTH.MAX}글자 이하로 입력해 주세요.`,
   CAN_NOT_OVERLAP: '크루명은 중복될 수 없습니다.',
 };
+
+export const DELETE_MESSAGE = '정말 삭제하시겠습니까?';

@@ -2,7 +2,7 @@ import { $ } from '../utils/dom.js';
 import { crewManageTemplate } from '../utils/template.js';
 
 const crewListTemplate = (crewName, index) => `
-  <tr>
+  <tr id="crew-id">
     <td>${index}</td>
     <td>${crewName}</td>
     <td>
