@@ -1,7 +1,7 @@
 import { $ } from '../util/dom.js';
 import { store } from '../store/store.js';
 
-export const renderMain = () => {
+export const renderCrewMain = () => {
   const template = () => {
     return `
         <main>
@@ -62,13 +62,15 @@ export const renderCrewTable = course => {
 
 export const renderCrewTableItems = course => {
   const crewList = store.getItem(course);
-  const template = crewList.map(crew => {
+  const template = index => {
     return `
       <tr>
-        <td>${crew.index}</td>
-        <td>${crew.name}</td>
+        <td>${index}</td>
+        <td>${crewList[index - 1].name}</td>
         <td><button id='crew-delete-button'>삭제</button></td>
       </tr>`;
-  });
-  $('tbody').innerHTML = template.join('');
+  };
+  for (let i = 0; i < crewList.length; i++) {
+    $('tbody').innerHTML += template(i + 1);
+  }
 };

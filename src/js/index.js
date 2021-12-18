@@ -2,7 +2,7 @@ import {
   renderAddCrewRadio,
   renderAddCrewForm,
   renderCrewTable,
-  renderMain,
+  renderCrewMain,
   renderCrewTableItems,
 } from './view/render.js';
 import { $ } from './util/dom.js';
@@ -11,7 +11,6 @@ import { makeCrewTemplate, confirmDeleteCrew } from './core/manageCrew.js';
 
 function App() {
   //$('head').innerHTML = `<link rel="stylesheet" href="src/css/style.css"/>`;
-  renderMain();
   const handleClick = e => {
     changeTab(e);
     selectCourse(e);
@@ -48,6 +47,7 @@ function App() {
   const changeTab = e => {
     switch (e.target.id) {
       case 'crew-tab':
+        renderCrewMain();
         renderAddCrewRadio();
         break;
       case 'team-tab':
