@@ -24,7 +24,7 @@ export default class InputSection extends Component {
   }
 
   getInputTextbox() {
-    return `<input type=${this.$props.inputType} id=${this.$props.inputId}/>`;
+    return `<input type=${this.$props.inputType} id=${this.$props.inputId} />`;
   }
 
   getSubmitButton() {
