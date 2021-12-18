@@ -2,7 +2,7 @@ import $ from '../util/$.js';
 import {
   CREW_INPUT_ID,
   SECTION_ID,
-  TABLE_ID,
+  TBODY_ID,
   CREW_TABLE_INDEX,
 } from '../constant/constant.js';
 
@@ -50,7 +50,7 @@ function onCrewAdd(event, manager) {
 
   const newCrew = manager.addCrew({ course, name });
   if (newCrew) {
-    newCrew.renderTable($(`#${TABLE_ID}`));
+    newCrew.renderTable($(`#${TBODY_ID}`));
     deleteHandler(manager);
   }
 }

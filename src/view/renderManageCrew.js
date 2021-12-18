@@ -4,9 +4,22 @@ import {
   TAB_ID,
   SECTION_ID,
   CREW_INPUT_ID,
+  TBODY_ID,
   TABLE_ID,
 } from '../constant/constant.js';
 import tabHandler from '../eventHandler/tabHandler.js';
+
+function getCrewTemplate(manager) {
+  return manager.crews.map((crew) => `
+    <tr>
+      <td>${crew.index}</td>
+      <td>${crew.name}</td>
+      <td>
+        <button class="${CREW_INPUT_ID.DELETE_BUTTON}">삭제</button>
+      </td>
+    </tr>
+  `).join('');
+}
 
 export default function renderManageCrew(manager) {
   const $app = $(`#${APP_ID}`);
@@ -45,7 +58,7 @@ export default function renderManageCrew(manager) {
       </section>
       <section id="${SECTION_ID.CREW_LIST}" style="display: none">
         <h3>프론트엔드 크루 목록</h3>
-        <table border="1">
+        <table id="${TABLE_ID}" border="1">
           <thead>
             <tr>
               <th></th>
@@ -53,7 +66,8 @@ export default function renderManageCrew(manager) {
               <th>관리</th>
             </tr>
           </thead>
-          <tbody id="${TABLE_ID}">
+          <tbody id="${TBODY_ID}">
+          ${getCrewTemplate(manager)}
           </tbody>
         </table>
       </section>

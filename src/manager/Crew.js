@@ -24,10 +24,4 @@ export default class Crew {
   renderTable(dom) {
     dom.insertAdjacentHTML('beforeend', this.tableTemplate());
   }
-
-  renderUpdate($nodeToDelete) {
-    const $copy = $nodeToDelete;
-
-    $copy.remove();
-  }
 }
