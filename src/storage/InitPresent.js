@@ -13,6 +13,7 @@ export default class InitPresent {
     this.teamCon = new TeamController();
     this.$app = document.querySelector('#app');
     this.$crewSection = document.querySelector('#crew-section');
+    this.$teamSection = document.querySelectorAll('.team-section');
     this.setClickEvent();
   }
 
@@ -35,6 +36,9 @@ export default class InitPresent {
       this.$crewDiv.style.visibility = 'visible';
       this.$crewSection.style.visibility = 'visible';
       this.$teamDiv.style.visibility = 'hidden';
+      this.$teamSection.forEach(section => {
+        section.style.visibility = 'hidden';
+      });
 
       this.$app.insertBefore(this.$crewDiv, this.$app.childNodes[1]);
     });
@@ -44,7 +48,7 @@ export default class InitPresent {
     this.$tabDiv.teamBtn.addEventListener('click', e => {
       e.preventDefault();
 
-      this.teamCon.addPeopleList(this.crewCon.getPeopleList);
+      this.teamCon.addPeopleList(this.crewCon.getPeopleList());
       this.$teamDiv.style.visibility = 'visible';
       this.$crewSection.style.visibility = 'hidden';
       this.$crewDiv.style.visibility = 'hidden';

@@ -15,8 +15,8 @@ export default class View {
   showHead(course) {
     const $headList = document.querySelectorAll('.crew-head');
 
-    $headList.forEach(head => {
-      head.innerHTML = `${course} 크루 관리`;
+    $headList.forEach((head, idx) => {
+      head.innerHTML = `${course} ${this.headTextList[idx]}`;
     });
   }
 }

@@ -29,7 +29,7 @@ export function createDeleteBtn(text) {
 export function createLi(element, peopleList) {
   peopleList.forEach(person => {
     const li = document.createElement('li');
-    li.innerHTML = person;
+    li.innerHTML = person.name;
     element.appendChild(li);
   });
 }
