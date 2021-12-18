@@ -1,8 +1,26 @@
+import { $ } from "../common/dom.js";
 import Component from "../core/Component.js";
+import Crew from "./Crew.js";
+import Team from "./Team.js";
 
 export default class App extends Component {
   mount() {
-    this.components = [];
+    this.components = { ["crew-tab"]: Crew, ["team-tab"]: Team };
+    this.setEvent();
+  }
+
+  setEvent() {
+    $("nav").addEventListener("click", (e) => {
+      this.onClick(e);
+    });
+  }
+
+  onClick(e) {
+    const { target } = e;
+    if (target.nodeName === "BUTTON") {
+      console.log(target.id, this.components);
+      new this.components[target.id]($("main"));
+    }
   }
 
   template() {
