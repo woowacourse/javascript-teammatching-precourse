@@ -1,5 +1,6 @@
 import { $ } from './utils.js';
 import { SELECTOR } from '../constants/constants.js';
+import { crewTableHeaderTemplate, crewTableRowTemplate } from '../constants/template.js';
 
 export default class CrewManager {
   constructor(view, model) {
@@ -33,11 +34,24 @@ export default class CrewManager {
     this.view.renderSelectedCourseContents(selectedCourseName);
     this.model.selectCourse(selectedCourseName);
     this.addCrewAddButtonEvent();
+    this.initTable();
   }
 
   addCrew(event) {
     event.preventDefault();
     const crewName = document.querySelector('input[type="text"]').value;
     this.model.addCrewInSelectedCourse(crewName);
+    this.initTable();
+    this.view.clearInput(document.querySelector('input[type="text"]'))
+  }
+
+  initTable() {
+    const table = $(SELECTOR.crewTable);
+    const selectedCourseCrewList = this.model.getSelectedCourse().crewList;
+    this.view.clearTable(table);
+    this.view.addTableHeader(table, crewTableHeaderTemplate);
+    selectedCourseCrewList.forEach((crew, index) =>
+      this.view.addTableRow(table, crewTableRowTemplate(index + 1, crew)),
+    );
   }
 }

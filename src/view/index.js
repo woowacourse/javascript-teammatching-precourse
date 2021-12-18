@@ -14,6 +14,26 @@ export default class View {
     this.$container = $(SELECTOR.container);
   }
 
+  getTableById(id) {
+    return $(SELECTOR.id);
+  }
+
+  clearTable(table) {
+    table.innerHTML = '';
+  }
+
+  clearInput(input) {
+    input.value = '';
+  }
+
+  addTableHeader(table, headerForm) {
+    table.insertAdjacentHTML('beforeend', headerForm);
+  }
+
+  addTableRow(table, rowForm) {
+    table.insertAdjacentHTML('beforeend', rowForm);
+  }
+
   clearContainer() {
     this.$container.innerHTML = '';
   }

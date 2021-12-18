@@ -43,7 +43,11 @@ export const crewInputAndTableTemplate = course => `
 </section>
 <section>
 <h3>${course} 크루 목록</h3>
-<table border="1">
+<table border="1" id=${SELECTOR.crewTable}>
+</table>
+`;
+
+export const crewTableHeaderTemplate = `
 <thead>
     <tr>
     <th></th>
@@ -51,20 +55,15 @@ export const crewInputAndTableTemplate = course => `
     <th>관리</th>
     </tr>
 </thead>
-<tbody>
-    <tr>
-    <td>1</td>
-    <td>준</td>
-    <td>
-        <button>삭제</button>
-    </td>
-    </tr>
-</tbody>
-</table>
 `;
-
-export const crewTableTemplate = `
-
+export const crewTableRowTemplate = (index, name) =>`
+<tbody>
+<tr>
+    <td>${index}</td>
+    <td>${name}</td>
+    <td><button class=${SELECTOR.crewDeleteButton}>삭제</button></td>
+</tr>
+</tbody>
 `;
 
 export const teamMatchingManageTemplate = `
