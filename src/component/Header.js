@@ -1,4 +1,8 @@
 import Component from '../core/Component.js';
+import navigator from '../store/Navigator.js';
+import { ID, CLASS } from '../constant/selector.js';
+import { TAB } from '../constant/data.js';
+import EVENT from '../constant/event.js';
 
 export default class Header extends Component {
   template() {
@@ -7,13 +11,19 @@ export default class Header extends Component {
     <nav>
       <ul>
         <li>
-          <button>크루 관리</button>
+          <button class="${CLASS.TAB_BUTTON}" id="${ID.CREW_TAB_BUTTON}" data-tab="${TAB.CREW}">크루 관리</button>
         </li>
         <li>
-          <button>팀 매칭 관리</button>
+          <button class="${CLASS.TAB_BUTTON}" id="${ID.TEAM_TAB_BUTTON}" data-tab="${TAB.TEAM}">팀 매칭 관리</button>
         </li>
       </ul>
     </nav>
     `;
+  }
+
+  setEvent() {
+    this.addEvent(EVENT.CLICK, `.${CLASS.TAB_BUTTON}`, (event) => {
+      navigator.navigateTo(event.target.dataset.tab);
+    });
   }
 }
