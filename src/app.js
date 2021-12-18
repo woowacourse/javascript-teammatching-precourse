@@ -1,5 +1,7 @@
+import Header from './components/header.js';
+
 export default function Teammatching() {
-  console.log("run");
+  new Header('#app');
 }
 
 new Teammatching();
