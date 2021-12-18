@@ -21,7 +21,7 @@ export function controlCrewListTemplete(courseName) {
       <button id="add-crew-buttton">확인</button>
     </form>
     <h3>${courseName} 크루 목록</h3>
-    <table border="1">
+    <table border="1" id="crew-table">
       <thead>
         <tr>
           <th></th>

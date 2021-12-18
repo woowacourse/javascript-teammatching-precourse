@@ -23,9 +23,9 @@ export default class App {
     [...this.$app.querySelectorAll('button')].map(button => 
       button.addEventListener('click', ({ target }) => {
         [...this.$app.querySelectorAll('main')].map(content => content.style = ("display: none"));
-        if (target.id === 'control-button') {
+        if (target.id === 'crew-tab') {
           this.crewControl.crewContolMenuClick();
-        } else if (target.id === 'match-button') {
+        } else if (target.id === 'team-tab') {
           this.teamMatch.teamMatchMenuClick();
         }
       })

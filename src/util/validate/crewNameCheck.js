@@ -7,10 +7,11 @@ export function emptyCrewName(crewName) {
 }
 
 export function FiveOverCrewName(crewName) {
-  console.log(crewName.length)
+  let result = true;
   if (crewName.length > 5) {
     alert("크루 이름을 5글자 이하로 적어주세요");
-
-    return false;
+    result = false;
   }
+  
+  return result;
 }

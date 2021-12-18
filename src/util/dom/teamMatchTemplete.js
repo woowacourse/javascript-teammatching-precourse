@@ -1,7 +1,7 @@
 export const teamMatchTemplete = `
   <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
   <form>
-    <select>
+    <select id="course-select">
       <option>프론트엔드</option>
       <option>백엔드</option>
     </select>
