@@ -7,7 +7,7 @@ export default class CrewView {
 
     // 순서대로 나오도록 수정
     static showPage() {
-        document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_CREW_RADIO + HTML_OF_CREW_INPUT + HTML_OF_CREW_TABLE;
+        document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_CREW_RADIO;
     }
 
     static showTable() {

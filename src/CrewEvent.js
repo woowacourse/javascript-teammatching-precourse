@@ -1,10 +1,12 @@
 import CrewCheck from "./CrewCheck.js";
 import CrewView from "./CrewView.js";
-import { HTML_OF_CREW_INPUT } from "./utils/html.js";
+import { HTML_OF_CREW_INPUT, HTML_OF_CREW_TABLE } from "./utils/html.js";
 export default class CrewEvent {
     static addEvent() {
-        this.addCrewEvent();
+        this.addFrontEndEvent();
+        // this.addCrewEvent();
         // this.getCourse();
+        
     }
 
     // static addRadioEvent() {
@@ -36,11 +38,7 @@ export default class CrewEvent {
                 
             } else {
                 alert("유효하지 않은 입력입니다!"); // 상수로 변경
-            }
-
-            
-
-            
+            } 
         })
     }
 
@@ -67,5 +65,16 @@ export default class CrewEvent {
             localStorage.setItem("Crew", JSON.stringify(crew));
         }
 
+    }
+
+    static addFrontEndEvent() {
+        document.getElementById('frontend-course').addEventListener('click', (e) => {
+            console.log("프론트");
+            document.getElementById('app').innerHTML += HTML_OF_CREW_INPUT + HTML_OF_CREW_TABLE;
+
+            CrewView.showTable();
+
+            this.addCrewEvent();
+        })
     }
 }
