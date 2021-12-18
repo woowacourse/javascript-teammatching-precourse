@@ -36,7 +36,7 @@ export default class InputMatch extends Component {
 
   onSubmitHandler(e) {
     e.preventDefault();
-    const { setTeamNumbers, currentCrews } = this.$props;
+    const { setTeamNumbers, currentCrews, setMatchedTeam } = this.$props;
     const numbers = document.querySelector("#team-member-count-input").value;
     console.log(numbers);
     if (numbers === "") {
@@ -48,15 +48,46 @@ export default class InputMatch extends Component {
       return;
     }
 
-    // this.getMatchedTeam({ numbers: Number(numbers), currentCrews });
+    setMatchedTeam({
+      matchedTeam: this.getMatchedTeam({
+        numbers: Number(numbers),
+        currentCrews,
+      }),
+    });
 
     setTeamNumbers({ teamNumbers: Number(numbers) });
   }
 
-  //   getMatchedTeam({ numbers, currentCrews }) {
-  //     console.log("----------", numbers, currentCrews);
-  //     console.log(currentCrews.length);
-  //     const a = MissionUtils.Random.shuffle([1, 2, 3, 4, 5]);
-  //     console.log(a);
-  //   }
+  getMatchedTeam({ numbers, currentCrews }) {
+    const maxLength = currentCrews.length;
+    const shuffleBox = Array(maxLength)
+      .fill(null)
+      .map((v, idx) => idx);
+    const randomShuffleBox = MissionUtils.Random.shuffle(shuffleBox);
+    console.log("randomShuffleBox", randomShuffleBox, maxLength);
+
+    const boxCnt = Math.floor(maxLength / numbers);
+    console.log("boxCnt", boxCnt);
+
+    const result = Array(boxCnt)
+      .fill(null)
+      .map((x) => []);
+
+    while (randomShuffleBox.length) {
+      const spliceBox = randomShuffleBox.splice(0, boxCnt);
+      console.log(spliceBox);
+
+      spliceBox.forEach((num, idx) => {
+        console.log(num, idx);
+
+        if (currentCrews[num]) {
+          result[idx].push(currentCrews[num]);
+        }
+      });
+    }
+
+    console.log("---------result", result);
+
+    return result;
+  }
 }

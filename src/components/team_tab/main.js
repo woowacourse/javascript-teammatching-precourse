@@ -41,7 +41,14 @@ export default class TeamTab extends Component {
       setSelectedOption,
       setTeamNumbers,
       getCurrentCrews,
-      $state: { selectedCourse, selectedMission, frontends, backends },
+      setMatchedTeam,
+      $state: {
+        selectedCourse,
+        selectedMission,
+        frontends,
+        backends,
+        matchedTeam,
+      },
     } = this;
     const $selectOption = document.querySelector("#select-option");
     const $inputMatch = document.querySelector("#input-match");
@@ -62,6 +69,7 @@ export default class TeamTab extends Component {
       selectedCourse,
       selectedMission,
       setTeamNumbers: setTeamNumbers.bind(this),
+      setMatchedTeam: setMatchedTeam.bind(this),
       currentCrews,
     });
   }
@@ -81,5 +89,11 @@ export default class TeamTab extends Component {
   getCurrentCrews({ course, frontends, backends }) {
     if (course === "frontend") return frontends;
     if (course === "backend") return backends;
+  }
+
+  setMatchedTeam(props) {
+    const payload = { ...props };
+    this.callAPI.setTeamMatching(payload);
+    this.setState(payload);
   }
 }

@@ -11,6 +11,7 @@ export default class Api {
       selectedCourse: undefined,
       selectedMission: undefined,
       teamNumbers: undefined,
+      matchedTeam: [],
     };
 
     if (!this.getTeamMatching()) {
