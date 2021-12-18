@@ -1,4 +1,5 @@
 import { fetchHtmlView } from './fetch.js';
+import { INCORRECT_CREW_NAME } from './constants/alert-messages.js';
 
 
 let crewList = [{name: '준', course: '프론트엔드'}];
@@ -11,7 +12,7 @@ function onCourseRadioClick(e) {
 function onAddCrewClick() {
     const newCrewName = document.querySelector("#crew-name-input").value;
     if(checkCrewInput(newCrewName)) console.log('hihi');
-
+    else alert(INCORRECT_CREW_NAME);
 }
 
 function checkCrewInput(name) {
