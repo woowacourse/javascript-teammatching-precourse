@@ -67,4 +67,28 @@ export const renderCrewList = course => {
   }
 };
 
-export const renderExistTeam = course => {};
+export const renderExistTeam = (course, mission, key) => {
+  const template = () => {
+    return `<h3>${course} ${mission} 조회</h3>
+        <p>팀이 매칭되었습니다.</p>
+        <div id='team-result-div></div>
+        <p>
+          팀을 재매칭 하시겠습니까?
+          <button id='rematch-team-button'>재매칭</button>
+        </p>`;
+  };
+  $('#team-list').innerHTML = template();
+  renderTeams(key);
+};
+
+export const renderTeams = key => {
+  const teams = store.getItem(key);
+  for (let i = 0; i < teams.length; i++) {
+    const newUl = document.createElement('ul');
+    newUl.id = 'team-match-result';
+    $('#team-result-div').innerHTML.appendChild(newUl);
+    for (let j = 0; j < teams[i].length; j++) {
+      newUl.innerHTML += `<li>${teams[i][j].name}</li>`;
+    }
+  }
+};
