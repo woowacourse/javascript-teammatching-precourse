@@ -81,3 +81,17 @@ export const MISSION_SELECT_MAP = Object.freeze({
   퍼포먼스: 'performance',
   배포: 'deploy',
 });
+export const COURSE_SELECT_MAP_REVERSE = Object.freeze({
+  frontend: '프론트엔드',
+  backend: '백엔드',
+});
+export const MISSION_SELECT_MAP_REVESE = Object.freeze({
+  baseball: '베이스볼',
+  racingcar: '레이싱카',
+  lotto: '로또',
+  shoppingCart: '장바구니',
+  payments: '결제',
+  subway: '지하철노선도',
+  performance: '퍼포먼스',
+  deploy: '배포',
+});

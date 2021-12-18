@@ -1,4 +1,10 @@
-import { COURSE_SELECT_MAP, DOM, MISSION_SELECT_MAP } from '../../lib/constants.js';
+import {
+  COURSE_SELECT_MAP,
+  COURSE_SELECT_MAP_REVERSE,
+  DOM,
+  MISSION_SELECT_MAP,
+  MISSION_SELECT_MAP_REVESE,
+} from '../../lib/constants.js';
 import { $ } from '../../lib/utils.js';
 
 class TeamMatchingView {
@@ -54,7 +60,9 @@ class TeamMatchingView {
 
   createCrewNotMatchedTemplate(course, mission, crewList) {
     return `
-    <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
+    <h3>${COURSE_SELECT_MAP_REVERSE[course]} ${
+      MISSION_SELECT_MAP_REVESE[mission]
+    }미션의 팀 매칭</h3>
       <div>
         <div><p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
           <form id="${DOM.TEAM_MEMBER_COUNT_FORM_ID}">
@@ -62,14 +70,12 @@ class TeamMatchingView {
             <input id="${DOM.TEAM_MEMBER_COUNT_INPUT_ID}" type="number" />
             <button id="${DOM.MATCH_TEAM_BUTTON}">팀 매칭</button>
           </form>
-        </div><h4>크루 목록</h4>
-        <ul>${this.createCrewListTemplate(crewList)}</ul>
-      </div>
+        </div><h4>크루 목록</h4><ul>${this.createCrewListTemplate(crewList)}</ul></div>
     `;
   }
 
   createCrewMatchedTeamTemplate(course, mission, team) {
-    return ` <h3>프론트엔드 숫자야구게임 조회</h3>
+    return ` <h3>${COURSE_SELECT_MAP_REVERSE[course]} ${MISSION_SELECT_MAP_REVESE[mission]}조회</h3>
     <p>팀이 매칭되었습니다.</p>
     <ul>
       ${this.createTeamTemplate(team)}
