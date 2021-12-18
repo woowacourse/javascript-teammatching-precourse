@@ -3,12 +3,12 @@ import setVisibility from '../../dom/utils/setVisibility.js';
 import getChildrenToList from '../../dom/utils/getChildrenToList.js';
 import removeChildren from '../../dom/utils/removeChildren.js';
 import createDataCell from '../../dom/utils/createDataCell.js';
+import createElement from '../../dom/utils/createElement.js';
 import { ID_BUTTON_ADD, ID_INPUT_NAME, ID_TABLE } from './const.js';
 import { DICT_COURSE } from '../../../data/course.js';
 import isValidName from './utils/isValidName.js';
 import Course from '../../model/Course.js';
 import hasDuplicate from '../../utils/hasDuplicate.js';
-import createElement from '../../dom/utils/createElement.js';
 
 export default class CrewPanel extends Panel {
 	constructor(panel) {
@@ -81,6 +81,9 @@ export default class CrewPanel extends Panel {
 			tr.appendChild(createDataCell(crew));
 			const container = createDataCell('');
 			const button = createElement('button', { innerText: '삭제' });
+			button.addEventListener('click', () => {
+				if (window.confirm('정말 삭제하시겠습니까?')) Course.removeCrew(crew);
+			});
 			container.appendChild(button);
 			tr.appendChild(container);
 
@@ -99,6 +102,6 @@ export default class CrewPanel extends Panel {
 			return;
 		}
 
-		Course.setCrews(newCrews);
+		Course.addCrew(name);
 	}
 }

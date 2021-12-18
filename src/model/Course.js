@@ -48,6 +48,14 @@ const Course = {
 			crews: newCrews,
 		});
 	},
+
+	addCrew(crewName) {
+		this.setCrews([...this.crews, crewName]);
+	},
+
+	removeCrew(crewName) {
+		this.setCrews(this.crews.filter((crew) => crew !== crewName));
+	},
 };
 
 export default Course;
