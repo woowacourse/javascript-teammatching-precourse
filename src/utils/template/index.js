@@ -1,4 +1,4 @@
-import { ID } from '../constants.js';
+import { CLASS, ID } from '../constants.js';
 
 export const TAB_MENUS_TEMPLATE = `
 <header>
@@ -14,30 +14,38 @@ export const TAB_MENUS_TEMPLATE = `
       </ul>
     </nav>
   </header>
+  <main id="content">
+  </main>
 `;
 
-export const CREW_MANAGE_TEMPLATE = `
-  <main>
+export const CREW_COURSE_TEMPLATE = `
+  <section>
+  <h3>크루를 관리할 코스를 선택해주세요</h3>
+  <div>
+    <input id=${ID.FRONTEND_COURSE} type="radio" name="course" value="frontend" />
+    <label for="frontend">프론트엔드</label>
+    <input id=${ID.BACKEND_COURSE} type="radio" name="course" value="backend"/>
+    <label for="backend">백엔드</label>
+  </div>
+  </section>
+  <section id=${ID.CREW_MANAGE_SECTION}>
+  </section> 
+`;
+
+export const CREW_MANAGE_TEMPLATE = (crewList, course) => {
+  const courseName = course === 'frontend' ? '프론트엔드' : '백엔드';
+  return `
     <section>
-      <h3>크루를 관리할 코스를 선택해주세요</h3>
-      <div>
-        <input type="radio" name="course" value="frontend" />
-        <label for="frontend">프론트엔드</label>
-        <input type="radio" name="course" value="backend" />
-        <label for="backend">백엔드</label>
-      </div>
-    </section>
-    <section>
-      <h3>프론트엔드 크루 관리</h3>
-      <form>
+      <h3>${courseName} 크루 관리</h3>
+      <form id=${ID.CREW_NAME_FORM}>
         <label>크루 이름</label>
-        <input type="text" />
-        <button>확인</button>
+        <input id=${ID.CREW_NAME_INPUT} type="text"/>
+        <button id=${ID.ADD_CREW_BUTTON}>확인</button>
       </form>
     </section>
     <section>
-      <h3>프론트엔드 크루 목록</h3>
-      <table border="1">
+      <h3>${courseName} 크루 목록</h3>
+      <table border="1" id=${ID.CREW_TABLE}>
         <thead>
           <tr>
             <th></th>
@@ -46,21 +54,26 @@ export const CREW_MANAGE_TEMPLATE = `
           </tr>
         </thead>
         <tbody>
+        ${crewList
+          .map(
+            (crew, index) => `
           <tr>
-            <td>1</td>
-            <td>준</td>
+            <td>${index + 1}</td>
+            <td>${crew}</td>
             <td>
-              <button>삭제</button>
+              <button class=${CLASS.DELETE_CREW_BUTTON}>삭제</button>
             </td>
           </tr>
+        `
+          )
+          .join('')}
         </tbody>
       </table>
     </section>
-  </main>
 `;
+};
 
 export const TEAM_MATCHING_MANAGE_TEMPLATE = `
-  <main>
     <section>
       <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
       <form>
@@ -104,5 +117,4 @@ export const TEAM_MATCHING_MANAGE_TEMPLATE = `
         <button>재매칭</button>
       </p>
     </section>
-  </main>
 `;

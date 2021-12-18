@@ -4,8 +4,8 @@ import { ID } from '../utils/constants.js';
 class TeamMatchingModel {
   constructor() {
     this.tabMenu = {
-      currentTabMenu: ID.CREW_TAB,
-      crewManageMenu: {},
+      currentTabMenu: '',
+      crewManageMenu: { currentCourse: '', frontend: [], backend: [] },
       teamManageMenu: {},
     };
 
@@ -19,6 +19,31 @@ class TeamMatchingModel {
     }
 
     store.setLocalStorage(this.tabMenu);
+  }
+
+  getLocalStorage() {
+    return this.tabMenu;
+  }
+
+  getCourseInCrewMenu() {
+    return this.tabMenu['crewManageMenu']['currentCourse'];
+  }
+  getCrewListInCrewMenu() {
+    return this.tabMenu['crewManageMenu'][this.getCourseInCrewMenu()];
+  }
+
+  setLocalStorage(tabMenu) {
+    this.tabMenu = tabMenu;
+    store.setLocalStorage(this.tabMenu);
+  }
+
+  setCurrentTabMenu(currentTabMenu) {
+    this.tabMenu['currentTabMenu'] = currentTabMenu;
+    store.setLocalStorage(this.tabMenu);
+  }
+
+  getCurrentTabMenu() {
+    return this.tabMenu['currentTabMenu'];
   }
 }
 
