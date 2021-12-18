@@ -1,4 +1,4 @@
-import { onClickTeamMatchButton } from "../../controllers/teamManager/eventHandlers.js";
+import { onClickRematchButton, onClickTeamMatchButton } from "../../controllers/teamManager/eventHandlers.js";
 import { OPTIONS } from "../../utils/constants.js";
 
 const getCourseName = courseName => {
@@ -94,6 +94,8 @@ const showIfTeamIs = (course, mission, teamStr) => {
       <button id="rematch-team-button">재매칭</button>
     </p>
   `;
+
+  onClickRematchButton();
 };
 
 const showTeam = (course, mission) => {

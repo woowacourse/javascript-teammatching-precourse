@@ -33,4 +33,19 @@ const onClickTeamMatchButton = () => {
   });
 };
 
-export { onClickShowTeamMatcherButton, onClickTeamMatchButton };
+const onClickRematchButton = () => {
+  const $rematchButton = document.getElementById("rematch-team-button");
+
+  $rematchButton.addEventListener("click", () => {
+    const course = document.getElementById("course-select").value;
+    const mission = document.getElementById("mission-select").value;
+    localStorage.removeItem(`${course}-${mission}`);
+    showTeam(course, mission);
+  });
+};
+
+export {
+  onClickShowTeamMatcherButton,
+  onClickTeamMatchButton,
+  onClickRematchButton,
+};
