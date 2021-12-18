@@ -40,3 +40,10 @@ export const VALIDATION_MESSAGES = {
     DUPLICATED: '같은 코스에 중복된 이름이 있습니다',
   },
 };
+
+export const ELEMENT_DATA_ATTRIBUTES = Object.freeze({
+  CREW_MANAGE: {
+    CREW_NAME: 'data-crew-name',
+    CREW_COURSE: 'data-crew-course',
+  },
+});

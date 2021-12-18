@@ -1,14 +1,15 @@
 /* eslint-disable max-lines-per-function */
-import { ELEMENT_SELECTOR } from '../../constants/index.js';
+import { ELEMENT_SELECTOR, ELEMENT_DATA_ATTRIBUTES } from '../../constants/index.js';
 
-const row = ({ index, name }) => {
+const row = ({ index, name, course }) => {
   const { DELETE_CREW_BUTTON } = ELEMENT_SELECTOR.CLASSES.CREW_MANAGE;
+  const { CREW_NAME, CREW_COURSE } = ELEMENT_DATA_ATTRIBUTES.CREW_MANAGE;
   return `
     <tr>
       <td>${index}</td>
       <td>${name}</td>
       <td>
-        <button type="button" class="${DELETE_CREW_BUTTON}">삭제</button>
+        <button ${CREW_NAME}="${name}" ${CREW_COURSE}="${course}" type="button" class="${DELETE_CREW_BUTTON}">삭제</button>
       </td>
     </tr>
   `;
@@ -18,7 +19,7 @@ const list = (crews, course) => {
   let index = 1;
   const rows = crews.reduce((acc, crew) => {
     if (crew.course === course) {
-      acc += row({ index, name: crew.name });
+      acc += row({ index, name: crew.name, course });
       index += 1;
     }
     return acc;

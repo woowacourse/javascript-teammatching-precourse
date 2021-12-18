@@ -10,7 +10,7 @@ class TabContent extends FluxComponent {
   static template = () => tabContentTemplate();
 
   mountChildren() {
-    const {CREW_MANAGE } = ELEMENT_SELECTOR.IDS;
+    const { CREW_MANAGE } = ELEMENT_SELECTOR.IDS;
     const { tabPane } = this.store.getState();
     if (this.activeTabPane) {
       this.activeTabPane.unmount();
@@ -22,6 +22,11 @@ class TabContent extends FluxComponent {
 
   bindingElements() {
     this.$view = $(`#${ELEMENT_SELECTOR.IDS.TAB_CONTENT}`);
+  }
+
+  shouldNotify() {
+    // re-render whole view due to my design mistakes.
+    return true;
   }
 
   notify() {
