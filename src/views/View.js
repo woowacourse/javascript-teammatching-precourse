@@ -12,4 +12,10 @@ export default {
     this.element.dispatchEvent(evt);
     return this;
   },
+  child(selector) {
+    return this.element.querySelector(selector);
+  },
+  children(selector) {
+    return this.element.querySelectorAll(selector);
+  },
 };
