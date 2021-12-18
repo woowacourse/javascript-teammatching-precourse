@@ -67,6 +67,8 @@ export default class ClickEventManager {
       DOM.showMatchedComponent('#ok-mached-component', courseType, missionType);
     } else {
       DOM.showMatchedComponent('#not-mached-component', courseType, missionType);
+
+      DOM.showCrewUnorderedList($('#course-select').value);
     }
   }
 

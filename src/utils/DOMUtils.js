@@ -60,6 +60,12 @@ const DOMUtils = {
       )
       .join('');
   },
+
+  showCrewUnorderedList: courseType => {
+    $('#crew-ul').innerHTML = DB.load(`${courseType}Crew`)
+      .map(name => `<li>${name}</li>`)
+      .join('');
+  },
 };
 
 export default DOMUtils;

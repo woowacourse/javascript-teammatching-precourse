@@ -112,9 +112,9 @@ export default class View {
             </form>
             </div>
             <h4>크루 목록</h4>
-            <ul>
-            <li>준</li>
-            <li>포코</li>
+            <ul id="crew-ul">
+                <li>준</li>
+                <li>포코</li>
             </ul>
         </div>
         </section>
