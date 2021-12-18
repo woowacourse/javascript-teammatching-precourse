@@ -1,6 +1,6 @@
 export const store = {
   getItem(key) {
-    if (localStorage.getItem(key) !== null) {
+    if (localStorage.getItem(key) === null) {
       return null;
     }
     return JSON.parse(localStorage.getItem(key));
