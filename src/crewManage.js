@@ -49,7 +49,7 @@ const addCrew = (course) => {
 
   const newCrew = new Crew(crewName, course);
 
-  if (isNameValid(newCrew)) {
+  if (isNameValid(newCrew.name)) {
     crewTable.insertAdjacentHTML('beforeend', crewTableRow(newCrew));
     saveCrewToLocalStorage('crew', newCrew);
   }
@@ -81,10 +81,6 @@ const cleanTable = () => {
   }
 };
 
-const isNameValid = (name) => {
-  return true;
-};
-
 const initdeleteButton = () => {
   const deleteButtons = document.getElementsByName('delete-crew-buttton');
   for (let button of deleteButtons) {
@@ -110,4 +106,34 @@ const deleteCrew = (element) => {
     cleanTable();
     showCrewTable(course);
   }
+};
+
+const isNameValid = (name) => {
+  if (!isNameLengthUnderMaximum(name)) {
+    return false;
+  }
+  if (!isNameAlreadyExist(name)) {
+    return false;
+  }
+  return true;
+};
+
+const isNameLengthUnderMaximum = (name) => {
+  console.log(name);
+  if (name.length > 5) {
+    alert('이름은 5글자 미만입니다');
+    return false;
+  }
+  return true;
+};
+
+const isNameAlreadyExist = (name) => {
+  let crews = getCrewsFromLocalStorage('crew');
+  for (let i of crews) {
+    if (i.name === name) {
+      alert('이름이 이미 있어요');
+      return false;
+    }
+  }
+  return true;
 };
