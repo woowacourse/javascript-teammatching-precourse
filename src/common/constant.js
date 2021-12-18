@@ -3,6 +3,7 @@ export const HEADER = {
   COURSE_SELECT: '크루가 관리할 코스를 선택해주세요',
   CREW_MANAGE: '크루 관리',
   CREW_LIST: '크루 목록',
+  SELECT: '팀 매칭을 관리할 코스, 미션을 선택하세요.',
 };
 
 export const BUTTON = {
@@ -28,4 +29,8 @@ export const LIST = {
 
 export const MESSAGE = {
   CONFIRM: '정말 삭제하시겠습니까?',
+};
+
+export const MISSION = {
+  BASEBALL: '숫자 야구 게임',
 };

@@ -5,6 +5,10 @@ function onTabClick(event) {
 
   if (target === 'crew-tab') {
     $('crew-manage-nav').style.display = 'block';
+    $('team-manage-nav').style.display = 'none';
+  } else if (target === 'team-tab') {
+    $('team-manage-nav').style.display = 'block';
+    $('crew-manage-nav').style.display = 'none';
   }
 }
 
