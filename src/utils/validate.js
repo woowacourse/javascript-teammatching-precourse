@@ -1,7 +1,6 @@
 import { ERROR_MESSAGE, LIMIT } from '../constant/constant.js';
 
 export const isValidCrewName = (name, crews) => {
-  console.log(name, crews);
   let validation = { valid: true, ERROR_MESSAGE: '' };
   if (!isNotNull(name)) {
     validation.valid = false;

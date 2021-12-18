@@ -31,27 +31,24 @@ export default class CrewManage {
     this.displayBlock();
   }
 
-  getClickedProduct(e, products) {
-    const clickProductName = e.path[2].children[0].childNodes[3];
-    const clickProduct = products.find(
-      (item) => item.name === clickProductName
-    );
-    return clickProduct;
-  }
-
   deleteCrew(e) {
+    if (!confirm('삭제하시겠습니까?')) {
+      return;
+    }
     const clickCrewName = e.path[2].children[1].innerHTML;
-    // const clickCrew = this.$state.find(
-    // (item) => item.name === clickProductName
-    // );
-    // const clickCrew = this.getClickedProduct(e, this.getProducts());
-    // if (!isAbleToPurchase(clickProduct, this.getCharge())) {
-    //   alert(ERROR.PURCHASE);
-    //   return;
-    // }
+    if (this.$state.course == 'front') {
+      const clickIdx = this.$state.front.crews.indexOf(clickCrewName);
+      this.$state.front.crews.splice(clickIdx, 1);
+    } else if (this.$state.course == 'back') {
+      const clickIdx = this.$state.back.crews.indexOf(clickCrewName);
+      this.$state.back.crews.splice(clickIdx, 1);
+    }
 
-    // this.setStateOfCharge(-clickProduct.price);
-    // this.setStateOfProduct(clickProduct);
+    setStateToLocalStorage(this.$state);
+
+    this.render();
+    this.displayBlock();
+    this.setAddEvent();
   }
 
   addCrew() {
@@ -87,7 +84,6 @@ export default class CrewManage {
 
   setEvent() {
     $(`#${SELECTOR.ID.FRONTEND_COURSE}`).addEventListener('click', (e) => {
-      console.log(`f`);
       this.setStateOfCourse('front');
       this.displayBlock();
       this.setAddEvent();
