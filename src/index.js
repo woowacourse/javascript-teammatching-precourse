@@ -3,9 +3,11 @@ import {
     triggerSelectCourse,
     triggerAddCrew,
     triggerDeleteCrew,
-} from './controller/crew/manageCrew.js';
+} from './controller/manageCrew/manageCrew.js';
+import { triggerMatchTeam } from './controller/manageTeam/manageTeam.js';
 
 triggerEvent();
 triggerSelectCourse();
 triggerAddCrew();
 triggerDeleteCrew();
+triggerMatchTeam();

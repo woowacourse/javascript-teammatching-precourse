@@ -1,7 +1,7 @@
 import { $ } from '../../util/index.js';
 import { checkCrewName } from '../../validation/index.js';
-import FrontCrew from './FrontCrew.js';
-import BackCrew from './BackCrew.js';
+import FrontCrew from '../Crew/FrontCrew.js';
+import BackCrew from '../Crew/BackCrew.js';
 
 const isFrontCourse = () => $('#frontend-course').checked;
 
