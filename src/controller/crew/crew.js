@@ -2,6 +2,8 @@ import { $ } from '../../util/index.js';
 import { checkCrewName } from '../../validation/index.js';
 import { addCrewOnCourse, isUniqueCrewNameOnCourse, getCrewsOnCourse } from '../../model/index.js';
 
+const isFrontCourse = $('#frontend-course').checked;
+
 const triggerSelectCourse = () => {
     $('#frontend-course').addEventListener('click', () => {
         $('#crew-section').classList.add('on');
@@ -16,7 +18,7 @@ const triggerSelectCourse = () => {
 };
 
 const addCrewToCourse = (crewName) => {
-    if ($('#frontend-course').checked) {
+    if (isFrontCourse()) {
         addCrewOnCourse('frontCrews', crewName);
     } else {
         addCrewOnCourse('backCrews', crewName);
@@ -25,7 +27,7 @@ const addCrewToCourse = (crewName) => {
 
 const renderCrewTable = () => {
     $('#crew-table-tbody').innerHTML = getCrewsOnCourse(
-        $('#frontend-course').checked ? 'frontCrews' : 'backCrews',
+        isFrontCourse() ? 'frontCrews' : 'backCrews',
     ).reduce(
         (m, crewName, idx) =>
             `${m}
@@ -41,7 +43,7 @@ const renderCrewTable = () => {
 };
 
 const isUniqueCrewNameOfCourse = (crewName) =>
-    $('#frontend-course').checked
+    isFrontCourse()
         ? isUniqueCrewNameOnCourse('frontCrews', crewName)
         : isUniqueCrewNameOnCourse('backCrews', crewName);
 
