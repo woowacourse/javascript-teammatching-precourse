@@ -41,8 +41,12 @@ const renderCrewList = () => {
         .reduce((m, crewName) => `${m}<li>${crewName}</li>`, '');
 };
 
-const renderTeam = () => {
+const renderTeam = (team) => {
     renderBySection('result');
+    $('#team-match-result').innerHTML = team.reduce(
+        (m, members) => `${m}<li>${members.join(',')}</li>`,
+        '',
+    );
 };
 
 const renderMatch = () => {
@@ -50,11 +54,35 @@ const renderMatch = () => {
     renderCrewList();
 };
 
+const makeResultForm = (crewsCount, teamMemberCount) => {
+    const result = [];
+    let count = crewsCount;
+
+    while (teamMemberCount <= count) {
+        result.push(teamMemberCount);
+        count -= teamMemberCount;
+    }
+
+    for (let i = 0; i < count; i += 1) {
+        result[i] += 1;
+    }
+
+    return result;
+};
+
+const getShuffledTeam = (teamMemberCount) => {
+    const crews = createCrew().getCrews();
+
+    return MissionUtils.Random.shuffle(makeResultForm(crews.length, teamMemberCount)).map((count) =>
+        crews.splice(0, count),
+    );
+};
+
 export const triggerShowTeam = () => {
     $('#show-team-matcher-form').addEventListener('submit', (e) => {
         e.preventDefault();
         if (isExistTeam()) {
-            renderTeam();
+            renderTeam(getTeam());
         } else {
             renderMatch();
         }
@@ -67,6 +95,16 @@ export const triggerMatchTeam = () => {
         const teamMemberCount = $('#team-member-count-input').value;
 
         if (checkTeamMemberCount(teamMemberCount) && checkEnableDivideTeam(teamMemberCount)) {
+            const team = getShuffledTeam(Number(teamMemberCount));
+            renderTeam(team);
+            createTeam().saveTeam($('#mission-select').value, team);
         }
+    });
+};
+
+export const triggerRematchTeam = () => {
+    $('#rematch-team-button').addEventListener('click', () => {
+        createTeam().destroyTeam($('#mission-select').value);
+        renderMatch();
     });
 };

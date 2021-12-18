@@ -30,3 +30,8 @@ export const deleteCrewOnCourse = (course, findCrewName) =>
     );
 
 export const getTeamOnCourse = (course, mission) => getJsonItem(`${course}_${mission}`);
+
+export const saveTeamOnCourse = (course, mission, team) =>
+    setJsonItem(`${course}_${mission}`, team);
+
+export const destroyTeamOnCourse = (course, mission) => saveTeamOnCourse(course, mission, []);
