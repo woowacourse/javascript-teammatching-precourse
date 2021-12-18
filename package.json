@@ -26,6 +26,7 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "@woowacourse/mission-utils": "^1.0.1"
+    "@woowacourse/mission-utils": "^1.0.1",
+    "eslint-plugin-react": "^7.27.1"
   }
 }
