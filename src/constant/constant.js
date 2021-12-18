@@ -14,3 +14,13 @@ export const SELECTOR = {
     ADD_CREW_BUTTON: 'add-crew-button',
   },
 };
+
+export const LIMIT = {
+  NAME_MAX_LENGTH: 5,
+};
+
+export const ERROR_MESSAGE = {
+  CREW_NAME_DUPLICATE: '이미 등록된 크루 이름은 등록할 수 없습니다.',
+  CREW_NAME_MAX: '크루 이름은 최대 5글자까지 가능합니다.',
+  CREW_NAME_MIN: '크루 이름을 입력해주세요.',
+};

@@ -1,7 +1,7 @@
 import { $ } from '../utils/selector.js';
 import { SELECTOR } from '../constant/constant.js';
 import { crewTemplate } from '../templates/crew-template.js';
-import Course from './course.js';
+import { isValidCrewName } from '../utils/validate.js';
 
 export default class CrewManage {
   constructor($state) {
@@ -11,31 +11,21 @@ export default class CrewManage {
     this.render();
   }
 
-  addCrew() {
-    const name = $(`#${SELECTOR.ID.CREW_NAME_INPUT}`).value;
-    const validation = isValidCrewName(name);
-    console.log(validation.valid);
-    // if (!validation.valid) {
-    // alert(validation.errorMessage);
-    // return;
-    // }
-    // this.setStateOfCharge(charge);
+  addCrew(course) {
+    const name = $(`#${SELECTOR.ID.CREW_NAME_INPUT}`).value.trim();
+    const validation = isValidCrewName(name, course);
+    if (!validation.valid) {
+      alert(validation.ERROR_MESSAGE);
+      return;
+    }
   }
 
   setup() {}
 
-  setAddEvent(crew) {
-    // if (crew === 'FRONT') {
-    //   this.$state.FRONT = new Course(crew);
-    //   console.log(this.$state);
-    // }
-    // if (crew === 'BACK') {
-    //   this.$state.BACK = new Course(crew);
-    //   console.log(this.$state);
-    // }
+  setAddEvent(course) {
     $(`#${SELECTOR.ID.ADD_CREW_BUTTON}`).addEventListener('click', (e) => {
       e.preventDefault();
-      this.addCrew();
+      this.addCrew(course);
     });
   }
 
@@ -44,13 +34,13 @@ export default class CrewManage {
       $(`#${SELECTOR.ID.CREW_ADD_SECTION}`).style.display = 'block';
       $(`#${SELECTOR.ID.CREW_TABLE_SECTION}`).style.display = 'block';
       $(`#${SELECTOR.ID.FRONTEND_COURSE}`).checked = true;
-      this.setAddEvent('FRONT');
+      this.setAddEvent(this.$state.front);
     });
     $(`#${SELECTOR.ID.BACKEND_COURSE}`).addEventListener('click', (e) => {
       $(`#${SELECTOR.ID.CREW_ADD_SECTION}`).style.display = 'block';
       $(`#${SELECTOR.ID.CREW_TABLE_SECTION}`).style.display = 'block';
       $(`#${SELECTOR.ID.BACKEND_COURSE}`).checked = true;
-      this.setAddEvent('BACK');
+      this.setAddEvent(this.$state.backend);
     });
   }
 

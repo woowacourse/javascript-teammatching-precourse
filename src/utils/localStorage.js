@@ -1,3 +1,5 @@
+import Course from '../components/course.js';
+
 export const setStateToLocalStorage = (state) => {
   setLocalStorage('front', state.front);
   setLocalStorage('back', state.back);
@@ -5,8 +7,8 @@ export const setStateToLocalStorage = (state) => {
 };
 
 export const getStateFromLocalStorage = () => {
-  const front = getLocalStorage('front') || [];
-  const back = getLocalStorage('back') || [];
+  const front = getLocalStorage('front') || new Course();
+  const back = getLocalStorage('back') || new Course();
   const mission = getLocalStorage('mission') || [];
   return { front, back, mission };
 };

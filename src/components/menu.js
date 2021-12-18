@@ -3,7 +3,10 @@ import { SELECTOR } from '../constant/constant.js';
 import CrewManage from './crewManage.js';
 import TeamManage from './teamManage.js';
 import { headerTemplate } from '../templates/header-template.js';
-import { getStateFromLocalStorage } from '../utils/localStorage.js';
+import {
+  getStateFromLocalStorage,
+  setStateToLocalStorage,
+} from '../utils/localStorage.js';
 
 export default class Menu {
   constructor($target) {
@@ -15,6 +18,8 @@ export default class Menu {
 
   setup() {
     this.$state = getStateFromLocalStorage();
+    setStateToLocalStorage(this.$state);
+    console.log(this.$state);
   }
 
   setEvent() {
