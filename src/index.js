@@ -14,8 +14,31 @@ function onAddCrewClick() {
     const newCrewName = document.querySelector("#crew-name-input").value;
     if(checkCrewInput(newCrewName)) {
         crewList.push(new Crew(newCrewName, selectedCourse));
+        renderCrewList(crewList);
+
     }
     else alert(INCORRECT_CREW_NAME);
+}
+
+function renderCrewList(crews) {
+    const tableBody = document.querySelector("#crew-table > tbody");
+    tableBody.innerHTML = '';
+    
+    crews.forEach((crew, index) => {
+        const newCrew = document.createElement('tr');
+        newCrew.innerHTML = renderNewCrewInnerHtml(index, crew.name);
+        tableBody.appendChild(newCrew);
+    });
+}
+
+function renderNewCrewInnerHtml(index, name) {
+    return `
+        <td>${index + 1}</td>
+        <td>${name}</td>
+        <td>
+            <button class="delete-crew-buttton">삭제</button>
+        </td>
+    `;
 }
 
 function checkCrewInput(name) {
@@ -43,6 +66,7 @@ function renderView(fileName) {
 
 function onCrewTabClick() {
     renderView('crew-manage.html');
+    renderCrewList(crewList);
 }
 
 function onTeamTabClick() {
