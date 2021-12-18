@@ -1,5 +1,5 @@
 import triggerEvent from './controller/tap.js';
-import { triggerSelectCourse, triggerAddCrew } from './controller/crew/crew.js';
+import { triggerSelectCourse, triggerAddCrew } from './controller/crew/manageCrew.js';
 
 triggerEvent();
 triggerSelectCourse();
