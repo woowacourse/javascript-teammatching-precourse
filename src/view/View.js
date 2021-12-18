@@ -1,10 +1,11 @@
-import { $ } from '../utils/DOMUtils.js';
+import { $, default as DOM } from '../utils/DOMUtils.js';
 
 export default class View {
   constructor() {
     this.showMainCompoent();
     this.showCrewComponent();
     this.showTeamComponent();
+    DOM.hideComponents();
   }
 
   showMainCompoent() {
@@ -23,12 +24,13 @@ export default class View {
             </li>
           </ul>
         </nav>
-      </header>`,
+      </header>
+      <div id="component"></div>`,
     );
   }
 
   showCrewComponent() {
-    $('#app').insertAdjacentHTML(
+    $('#component').insertAdjacentHTML(
       'beforeend',
       /*html*/ `
         <main id="crew-component">
@@ -76,7 +78,7 @@ export default class View {
   }
 
   showTeamComponent() {
-    $('#app').insertAdjacentHTML(
+    $('#component').insertAdjacentHTML(
       'beforeend',
       /*html*/ `
     <main id="team-component">
