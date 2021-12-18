@@ -14,3 +14,7 @@ export const ID = {
   TEAM_MATCH_RESULT: 'team-match-result',
   REMATCH_TEAM_BUTTON: 'rematch-team-button',
 };
+
+export const CLASS = {
+  DELETE_CREW_BUTTON: 'delete-crew-buttton',
+};
