@@ -25,6 +25,7 @@ export default class Controller {
 
   choiceTabTeam() {
     this.view.renderTeamMathcing();
+    this.addEventChoiceMission();
   }
 
   addEventsToCrewManage() {
@@ -78,5 +79,25 @@ export default class Controller {
       this.view.updateCrewTable(this.field, this.model.getCrew(this.field));
       this.addEventsToRemoveButton();
     }
+  };
+
+  addEventChoiceMission = () => {
+    document
+      .getElementById(ID.TEAM_MATCHING_SEARCH_BUTTON)
+      .addEventListener('click', this.searchTeam);
+  };
+
+  searchTeam = () => {
+    this.matchingType = document.getElementById(
+      ID.TEAM_MATCHING_COURSE_CHOICE
+    ).value;
+    this.matchingMission = document.getElementById(
+      ID.TEAM_MATCHING_MISSION_CHOICE
+    ).value;
+    this.view.matchingStart(
+      this.matchingType,
+      this.matchingMission,
+      this.model.getCrew(this.matchingType)
+    );
   };
 }

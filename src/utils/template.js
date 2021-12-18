@@ -56,8 +56,8 @@ export function crewStatusTable(crews) {
 
 export function selectMissionForm() {
   return `<select id=${ID.TEAM_MATCHING_COURSE_CHOICE}>
-    <option>프론트엔드</option>
-    <option>백엔드</option>
+    <option value=${ID.COURSE_CHOICE_FRONT} >프론트엔드</option>
+    <option value=${ID.COURSE_CHOICE_BACK} >백엔드</option>
   </select>
   <select id = ${ID.TEAM_MATCHING_MISSION_CHOICE}>
   ${MISSION.reduce(
@@ -79,9 +79,14 @@ export function selectNumberOfCrew() {
 }
 
 export function showCrew(crew) {
+  let crewNameList = '';
+  crew.forEach((member) => {
+    crewNameList += `<li>${member}`;
+  });
+  crewNameList += '</li>';
   return `<h4>크루 목록</h4>
     <ul>
-      ${crew.reduce((acc, cur) => `${acc}<li>${cur}<li/>`, '')}
+      ${crewNameList}
     </ul>`;
 }
 

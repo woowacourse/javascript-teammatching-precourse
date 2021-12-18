@@ -1,4 +1,5 @@
 import { ID } from '../constants/selector.js';
+import { MISSION } from '../data/data.js';
 import { createElement } from '../utils/dom-utils.js';
 import CrewManage from './crew-manage/index.js';
 import Header from './header/header.js';
@@ -57,6 +58,24 @@ export default class App {
   reportError(error) {
     alert(error);
   }
+
+  matchingStart(type, mission, crew) {
+    let course = '';
+    if (type === ID.COURSE_CHOICE_FRONT) {
+      course = '프론트엔드';
+    }
+    if (type === ID.COURSE_CHOICE_BACK) {
+      course = '백엔드';
+    }
+    let missionName = '';
+    MISSION.forEach((obj) => {
+      if (Object.keys(obj).includes(mission)) {
+        missionName = obj[mission];
+      }
+    });
+    this.$teamMatching.matchingStart(course, missionName, crew);
+  }
+
   appendChild() {
     this.$app.append(this.$header.component, this.$emptyContainer);
   }
