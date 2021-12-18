@@ -102,7 +102,7 @@ export default class View {
     $(SELECTOR.teamCourseAndMissionContents).innerHTML = '';
     $(SELECTOR.teamCourseAndMissionContents).insertAdjacentHTML(
       'afterbegin',
-      teamMatchingResultTemplate(KEY_VALUE[course], KEY_VALUE[mission]),
+      teamMatchingResultTemplate(course, mission),
     );
     member.forEach(team => this.addListInResultUL($(SELECTOR.matchResult), team));
   }

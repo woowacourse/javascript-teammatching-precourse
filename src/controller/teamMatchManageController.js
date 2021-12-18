@@ -38,7 +38,11 @@ export default class TeamMatchManager {
       this.addTeamMatchingSettingEventListeners();
       return;
     }
-    this.view.renderAlreadyMatchingTemplate(selectedCourse, selectedMission, missionMember);
+    this.view.renderAlreadyMatchingTemplate(
+      KEY_VALUE[selectedCourse],
+      KEY_VALUE[selectedMission],
+      missionMember,
+    );
     this.addAlreadyMatchingEventListeners();
   }
 
@@ -47,7 +51,6 @@ export default class TeamMatchManager {
   }
 
   rematchTeam() {
-    this.view.clearTeamCourseAndMissionContents();
     const allCourse = this.model.getAllCourse();
     const selectedCourse = allCourse.find(e => e.name === this.model.selectedCourse);
     const selectedMission = $(SELECTOR.missionSelect).value;
@@ -75,6 +78,12 @@ export default class TeamMatchManager {
     if (validation.isMemberCountValid(memberCountPerTeam)) {
       this.matchTeamByCount(memberCountPerTeam, selectedCourse, selectedMission);
       this.model.setAllCourse(allCourse);
+      this.view.renderAlreadyMatchingTemplate(
+        selectedCourse.name,
+        selectedMission.name,
+        selectedMission.member,
+      );
+      this.addAlreadyMatchingEventListeners();
       return;
     }
     this.view.clearInput($(SELECTOR.memberCountInput));
