@@ -1,11 +1,15 @@
 import Component from "../../core/Component.js";
 import store, { setState } from "../../storage/Store.js";
+import Matching from "./Matching.js";
 import { $ } from "../../common/dom.js";
 
 export default class Team extends Component {
-  mount() {
+  setup() {
     this.currentCourse = "frontend";
     this.currentPlayGame = "baseball";
+  }
+
+  mount() {
     this.setEvent();
   }
 
@@ -18,8 +22,6 @@ export default class Team extends Component {
     );
   }
 
-  setState;
-
   onChange({ target }) {
     this.currentCourse = target.value;
     console.log(this.currentCourse);
@@ -28,6 +30,9 @@ export default class Team extends Component {
   onClick(e) {
     e.preventDefault();
     console.log(this.currentCourse, this.currentPlayGame);
+    setState("currentTeam", this.currentCourse);
+    setState("currentGame", this.currentPlayGame);
+    new Matching($("#team-div"));
   }
 
   template() {
@@ -44,6 +49,8 @@ export default class Team extends Component {
           </select>
           <button id="show-team-matcher-button">확인</button>
         </form>
+        <div id="team-div">
+        </div>
       </section>
     `;
   }
