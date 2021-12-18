@@ -84,3 +84,17 @@ export function showCrew(crew) {
       ${crew.reduce((acc, cur) => `${acc}<li>${cur}<li/>`, '')}
     </ul>`;
 }
+
+export function showMatchingCrew(crew) {
+  const crewList = crew.map((members) => members.join(''));
+  return `<p>
+  ${crewList.reduce((acc, cur) => `${acc}<li>${cur}<li/>`, '')}
+    </p>`;
+}
+
+export function rematchCrew() {
+  return `<p>
+    팀을 재매칭 하시겠습니까?
+    <button id=${ID.REMATCH_BUTTON}>재매칭</button>
+  </p>`;
+}

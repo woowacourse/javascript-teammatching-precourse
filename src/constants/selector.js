@@ -9,7 +9,8 @@ export const ID = {
   TEAM_MATCHING_MISSION_CHOICE: 'mission-select',
   TEAM_MATCHING_SEARCH_BUTTON: 'show-team-matcher-button',
   TEAM_MEMEBER_COUNT_INPUT: 'team-member-count-input',
-  TEAM_MATCH_BUTTON: 'match-team-button'
+  TEAM_MATCH_BUTTON: 'match-team-button',
+  REMATCH_BUTTON: 'rematch-team-button'
 };
 
 export const CLASS = {
