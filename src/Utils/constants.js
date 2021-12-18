@@ -13,6 +13,7 @@ export const ID = {
   MATCH_TEAM_BUTTON: 'match-team-button',
   TEAM_MATCH_RESULT: 'team-match-result',
   REMATCH_TEAM_BUTTON: 'rematch-team-button',
+  CREW_MANAGE_BODY_MAIN: 'crewManageBodyMain',
 };
 
 export const CLASS = {

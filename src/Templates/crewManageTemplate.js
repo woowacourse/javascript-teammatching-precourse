@@ -11,6 +11,7 @@ export const crewManageTemplate = {
       <label for="backend">백엔드</label>
     </div>
     </section>
+    <div id=${ID.CREW_MANAGE_BODY_MAIN}></div>
     `,
   bodyMain: `
     <section>
