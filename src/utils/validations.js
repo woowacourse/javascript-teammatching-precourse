@@ -32,7 +32,7 @@ function isValidCrewName(name, crew) {
 
 function isValidTeamMemberCount(count, crew) {
   return isPositiveInteger(count)
-    && !isSmallerThanTotalCrewNumber(count, crew);
+    && isSmallerThanTotalCrewNumber(count, crew);
 }
 
 export {
