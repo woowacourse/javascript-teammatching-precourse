@@ -4,7 +4,12 @@ import getChildrenToList from '../../dom/utils/getChildrenToList.js';
 import removeChildren from '../../dom/utils/removeChildren.js';
 import createDataCell from '../../dom/utils/createDataCell.js';
 import createElement from '../../dom/utils/createElement.js';
-import { ID_BUTTON_ADD, ID_INPUT_NAME, ID_TABLE } from './const.js';
+import {
+	CLASS_BUTTON_DELETE,
+	ID_BUTTON_ADD,
+	ID_INPUT_NAME,
+	ID_TABLE,
+} from './const.js';
 import { DICT_COURSE } from '../../../data/course.js';
 import isValidName from './utils/isValidName.js';
 import Course from '../../model/Course.js';
@@ -80,7 +85,10 @@ export default class CrewPanel extends Panel {
 			tr.appendChild(createDataCell(i + 1));
 			tr.appendChild(createDataCell(crew));
 			const container = createDataCell('');
-			const button = createElement('button', { innerText: '삭제' });
+			const button = createElement('button', {
+				innerText: '삭제',
+				className: CLASS_BUTTON_DELETE,
+			});
 			button.addEventListener('click', () => {
 				if (window.confirm('정말 삭제하시겠습니까?')) Course.removeCrew(crew);
 			});

@@ -3,6 +3,7 @@ import CrewPanel from './components/crewPanel/index.js';
 import { KEY_TAB_CREW, KEY_TAB_TEAM, ACTION_ONCLICK } from './const.js';
 import { TEMPLATE_TEAM, TEMPLATE_CREW } from './components/template/index.js';
 import setVisibility from './dom/utils/setVisibility.js';
+import TeamPanel from './components/teamPanel/index.js';
 
 export default class TeamMathcing {
 	constructor() {
@@ -14,7 +15,7 @@ export default class TeamMathcing {
 		[...this.panels].forEach((panel, i) => setVisibility(panel, i === 0));
 
 		this.crewPanel = new CrewPanel(this.panels.item(0));
-
+		this.teamPanel = new TeamPanel(this.panels.item(1));
 		this.app.onclick = this.onClick.bind(this);
 	}
 
