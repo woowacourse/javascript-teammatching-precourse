@@ -11,11 +11,11 @@ export default class Main extends Component {
   }
 
   setDataComponent($target, tabID) {
-    const { data } = this.$props;
+    const { data, setCourse } = this.$props;
 
     switch (tabID) {
       case ID.CREW_TAB:
-        return new CrewTab($target, { data });
+        return new CrewTab($target, { data, setCourse });
 
       case ID.TEAM_TAB:
         return new TeamTab($target, { data });

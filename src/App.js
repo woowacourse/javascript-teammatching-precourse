@@ -13,7 +13,9 @@ export default class App extends Component {
     this.$state = {
       curTab: ID.CREW_TAB,
       tabItems: TAB_MENU.map(({ id, title }, index) => ({ seq: index, id, title })),
-      data: {},
+      data: {
+        crew_course: { frontend: '', backend: '' },
+      },
     };
   }
 
@@ -31,12 +33,12 @@ export default class App extends Component {
 
   mounted() {
     const { curTab, tabItems, data } = this.$state;
-    const { changeTab } = this;
+    const { changeTab, setCourse } = this;
     const $header = this.$target.querySelector('[data-component="header"]');
     const $main = this.$target.querySelector(`[data-component="${curTab}"]`);
 
     new Header($header, { tabItems, changeTab: changeTab.bind(this) });
-    new Main($main, { tabID: curTab, data });
+    new Main($main, { tabID: curTab, data, setCourse: setCourse.bind(this) });
   }
 
   changeTab(seq) {
@@ -45,5 +47,15 @@ export default class App extends Component {
     const tabID = tabItems[index].id;
 
     this.setState({ curTab: tabID });
+  }
+
+  setCourse(course) {
+    const { data } = this.$state;
+    this.setState({
+      data: {
+        ...data,
+        crew_course: course,
+      },
+    });
   }
 }
