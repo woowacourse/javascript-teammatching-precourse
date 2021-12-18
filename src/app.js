@@ -1,7 +1,14 @@
 import Header from './components/header.js';
 
-export default function Teammatching() {
-  new Header('#app');
+export default class Teammatching {
+  constructor() {
+    this.$target = '#app';
+    this.initialize();
+  }
+
+  initialize() {
+    new Header(this.$target);
+  }
 }
 
 new Teammatching();
