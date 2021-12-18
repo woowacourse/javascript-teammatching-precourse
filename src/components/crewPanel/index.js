@@ -1,9 +1,14 @@
 import Panel from '../common/Panel.js';
 import setVisibility from '../../dom/utils/setVisibility.js';
 import getChildrenToList from '../../dom/utils/getChildrenToList.js';
-import { ID_BUTTON_ADD, ID_INPUT_NAME } from './const.js';
 import removeChildren from '../../dom/utils/removeChildren.js';
+import createDataCell from '../../dom/utils/createDataCell.js';
+import { ID_BUTTON_ADD, ID_INPUT_NAME, ID_TABLE } from './const.js';
 import { DICT_COURSE } from '../../../data/course.js';
+import isValidName from './utils/isValidName.js';
+import Course from '../../model/Course.js';
+import hasDuplicate from '../../utils/hasDuplicate.js';
+import createElement from '../../dom/utils/createElement.js';
 
 export default class CrewPanel extends Panel {
 	constructor(panel) {
@@ -15,6 +20,8 @@ export default class CrewPanel extends Panel {
 		this.initCourseSection();
 		this.initCrewSection();
 		this.initTableSection();
+
+		Course.register('crews', this.setTableRows, this.table);
 	}
 
 	initCourseSection() {
@@ -29,15 +36,17 @@ export default class CrewPanel extends Panel {
 
 	initCrewSection() {
 		const form = this.crewSection.getElementsByTagName('form').item(0);
-		const input = form.getElementsByTagName('input').item(0);
-		input.id = ID_INPUT_NAME;
+		this.input = form.getElementsByTagName('input').item(0);
+		this.input.id = ID_INPUT_NAME;
 		const button = form.getElementsByTagName('button').item(0);
 		button.id = ID_BUTTON_ADD;
+		button.addEventListener('click', this.onAddButtonClick.bind(this));
 	}
 
 	initTableSection() {
-		const table = this.tableSection.getElementsByTagName('table').item(0);
-		const tbody = table.getElementsByTagName('tbody').item(0);
+		this.table = this.tableSection.getElementsByTagName('table').item(0);
+		this.table.id = ID_TABLE;
+		const tbody = this.table.getElementsByTagName('tbody').item(0);
 		removeChildren(tbody);
 	}
 
@@ -58,5 +67,38 @@ export default class CrewPanel extends Panel {
 		this.setCrewSection(course);
 		setVisibility(this.tableSection, true);
 		this.setTableSection(course);
+
+		Course.init(course);
+	}
+
+	setTableRows(crews, context) {
+		const tbody = context.getElementsByTagName('tbody').item(0);
+		removeChildren(tbody);
+
+		crews.forEach((crew, i) => {
+			const tr = document.createElement('tr');
+			tr.appendChild(createDataCell(i + 1));
+			tr.appendChild(createDataCell(crew));
+			const container = createDataCell('');
+			const button = createElement('button', { innerText: '삭제' });
+			container.appendChild(button);
+			tr.appendChild(container);
+
+			tbody.appendChild(tr);
+		});
+	}
+
+	onAddButtonClick(e) {
+		e.preventDefault();
+		const name = this.input.value;
+		const newCrews = [...Course.getCrews(), name];
+
+		if (!isValidName(name) || hasDuplicate(newCrews, name)) {
+			alert('잘못된 이름입니다.');
+			this.input.value = '';
+			return;
+		}
+
+		Course.setCrews(newCrews);
 	}
 }
