@@ -2,6 +2,7 @@
 import { $, default as DOM } from '../utils/DOMUtils.js';
 import { default as DB } from '../model/database.js';
 import { default as UT } from '../utils/utils.js';
+import { isValidName } from '../utils/validators.js';
 
 export default class ClickEventManager {
   constructor(element, controller) {
@@ -39,6 +40,8 @@ export default class ClickEventManager {
   createCrew() {
     let courseType = DOM.getCourseType();
 
+    if (!isValidName($('#crew-name-input').value, courseType)) return;
+
     DB.save(`${courseType}Crew`, $('#crew-name-input').value);
 
     $('#crew-name-input').value = '';
@@ -69,6 +72,8 @@ export default class ClickEventManager {
 
     if (hasCrew) {
       DOM.showMatchedComponent('#ok-mached-component', courseType, missionType);
+
+      DOM.showMatchedCrewUnorderedList(courseType, missionType);
     } else {
       DOM.showMatchedComponent('#not-mached-component', courseType, missionType);
 
