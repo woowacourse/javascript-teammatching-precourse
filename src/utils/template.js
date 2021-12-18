@@ -1,4 +1,5 @@
 import { CLASS, ID } from '../constants/selector.js';
+import { MISSION } from '../data/data.js';
 
 export function navBar() {
   return `<nav>
@@ -51,4 +52,20 @@ export function crewStatusTable(crews) {
   });
   table += `</table>`;
   return table;
+}
+
+export function selectMissionForm() {
+  return `<select id=${ID.TEAM_MATCHING_COURSE_CHOICE}>
+    <option>프론트엔드</option>
+    <option>백엔드</option>
+  </select>
+  <select id = ${ID.TEAM_MATCHING_MISSION_CHOICE}>
+  ${MISSION.reduce(
+    (acc, cur) =>
+      `${acc}<option value = ${Object.keys(cur)}>${Object.values(
+        cur
+      )}</option>`,
+    ''
+  )}</select>
+  <button id=${ID.TEAM_MATCHING_SEARCH_BUTTON}>확인</button>`;
 }
