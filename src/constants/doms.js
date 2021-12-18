@@ -16,7 +16,7 @@ export const start = `
 `;
 
 export const selectCourse = `
-  <section id="crew-select-course">
+  <section id="crew-select-course" class="crew">
     <h3>크루를 관리할 코스를 선택해주세요</h3>
     <div>
       <input type="radio" name="course" value="frontend" />
@@ -28,7 +28,7 @@ export const selectCourse = `
 `;
 
 export const crewManage_input = `
-  <section id="crew-manage-input">
+  <section id="crew-manage-input" class="crew">
     <h3>프론트엔드 크루 관리</h3>
     <form>
       <label>크루 이름</label>
@@ -39,7 +39,7 @@ export const crewManage_input = `
 `;
 
 export const crewManage_table = `
-  <section id="crew-manage-table">
+  <section id="crew-manage-table" class="crew">
   <h3>프론트엔드 크루 목록</h3>
   <table border="1" id="crew-table">
     <thead>
@@ -58,7 +58,7 @@ export const crewManage_table = `
 
 //team DOM
 export const selectMission = `
-  <section id="team-select-mission">
+  <section id="team-select-mission" class="team">
   <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
   <form>
     <select id="course-select">
@@ -81,7 +81,7 @@ export const selectMission = `
 `;
 
 export const teamMatching_before = `
-  <section id="team-mathing-before">
+  <section id="team-mathing-before" class="team">
   <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
   <div>
     <div>
@@ -101,7 +101,7 @@ export const teamMatching_before = `
 `;
 
 export const teamMatching_after = `
-  <section id="team-match-result">
+  <section id="team-match-result" class="team">
     <h3>프론트엔드 숫자야구게임 조회</h3>
     <p>팀이 매칭되었습니다.</p>
     <ul id="team-match-done-list">
