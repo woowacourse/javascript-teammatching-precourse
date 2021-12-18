@@ -4,6 +4,9 @@ export const ID = Object.freeze({
   TEAM_TAB_BUTTON: 'team-tab',
   CREW_TAB_CONTAINER: 'crew-tab-container',
   TEAM_TAB_CONTAINER: 'team-tab-container',
+  SECTION_SELECTION_COURSE: 'section-selection-course',
+  COURSE_FRONT: 'frontend-course',
+  COURSE_BACK: 'backend-course',
 });
 
 export const CLASS = Object.freeze({
