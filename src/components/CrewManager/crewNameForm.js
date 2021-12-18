@@ -1,6 +1,7 @@
 import { getLocalStorage } from '../../store.js';
 import { woowaCrew } from '../../woowaCrew.js';
 import { alertNameError, isValidName } from '../../validation.js';
+import CrewTable from './crewNameTable.js';
 
 export default function CrewNameForm(container) {
   this.template = (course) => {
@@ -21,12 +22,14 @@ export default function CrewNameForm(container) {
     addCrewButton.addEventListener('click', (e) => {
       e.preventDefault();
       const crewName = document.querySelector('#crew-name-input').value;
+      const crewTable = new CrewTable('#crew-table-section');
 
       if (!isValidName(getLocalStorage(course), crewName)) {
         alertNameError(getLocalStorage(course), crewName);
         return;
       }
       woowaCrew.addCrew(course, crewName);
+      crewTable.renderNames(woowaCrew.getCrew(course));
     });
   };
 
