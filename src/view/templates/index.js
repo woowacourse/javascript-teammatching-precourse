@@ -133,20 +133,20 @@ export const createTeamMemberCountForm = (course, mission, crewMembers) => `
 `;
 
 const createMatchingResults = matchResults => `
-	${matchResults
-    .map(
-      result => `
-		<li>${result.join(',')}</li>
-	`,
-    )
-    .join('')}
+	${matchResults.map(
+    result => `
+			<li>${result.map(member => {
+        if (!member) return '';
+        return member.name;
+      })}</li>
+		`,
+  )}
 `;
 
 export const createTeamMatchingResult = (course, mission, matchResults) => `
 	<h3>${course} ${mission} 조회</h3>
 	<p>팀이 매칭되었습니다.</p>
 	<ul id="${SELECTOR.teamMatchResultUlId}">
-		<li>준,포코</li>
 		${createMatchingResults(matchResults)}
 	</ul>
 	<p>

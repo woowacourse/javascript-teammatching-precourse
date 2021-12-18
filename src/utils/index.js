@@ -23,3 +23,6 @@ export const changeMissionNameToKorean = mission => {
   }
   return true;
 };
+
+export const suffleCrewMemberTeam = crewMemberIndex =>
+  MissionUtils.Random.shuffle([...crewMemberIndex]);
