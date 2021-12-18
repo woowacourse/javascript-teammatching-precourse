@@ -1,3 +1,9 @@
+import { state } from "../models/state.js";
+import {
+  FRONT_END_CREW_LIST_KEY,
+  BACK_END_CREW_LIST_KEY,
+} from "../constants/constants.js";
+
 const $app = document.getElementById("app");
 
 export function header() {
@@ -42,7 +48,7 @@ export function crewManageComponent() {
     </section>
     <section>
       <h3>프론트엔드 크루 목록</h3>
-      <table border="1">
+      <table border="1" id="crew-table">
         <thead>
           <tr>
             <th></th>
@@ -50,15 +56,6 @@ export function crewManageComponent() {
             <th>관리</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>준</td>
-            <td>
-              <button>삭제</button>
-            </td>
-          </tr>
-        </tbody>
       </table>
     </section>
   </main>
@@ -113,4 +110,41 @@ export function teamGenerateComponent() {
     </section>
   </main>
   `;
+}
+
+export function showCrewList(crewType) {
+  const $crewTable = document.getElementById("crew-table");
+
+  $crewTable.innerHTML = `
+  <thead>
+    <tr>
+      <th></th>
+      <th>크루</th>
+      <th>관리</th>
+    </tr>
+  </thead>
+  `;
+
+  if (crewType === FRONT_END_CREW_LIST_KEY) {
+    state.frontEndCrewList.map((item, index) => {
+      $crewTable.innerHTML += `
+    <tr>
+      <td>${index + 1}</td>
+      <td>${item}</td>
+      <td> <button id="delete-crew-buttton">삭제</button> </td>
+    </tr>
+  `;
+    });
+  }
+  else {
+    state.backEndCrewList.map((item, index) => {
+      $crewTable.innerHTML += `
+    <tr>
+      <td>${index + 1}</td>
+      <td>${item}</td>
+      <td> <button id="delete-crew-buttton">삭제</button> </td>
+    </tr>
+  `;
+    });
+  }
 }

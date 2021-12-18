@@ -3,11 +3,9 @@ import {
   FRONT_END_CREW_LIST_KEY,
   BACK_END_CREW_LIST_KEY,
 } from "../../constants/constants.js";
-import {
-  getLocalStorageItem,
-  setLocalStorageItem,
-  setLocalStorageCrewList,
-} from "../../utils/localStorage.js";
+import { setLocalStorageCrewList } from "../../utils/localStorage.js";
+import { updateState } from "../../models/state.js";
+import { showCrewList } from "../../views/view.js";
 
 export function clickAddCrewButton(e) {
   e.preventDefault();
@@ -18,10 +16,14 @@ export function clickAddCrewButton(e) {
   if (isOver5Words(newCrew)) return;
 
   if (isCourseFrontEnd) {
-    if(isDuplicateCrew(FRONT_END_CREW_LIST_KEY, newCrew)) return;
-    setLocalStorageCrewList(FRONT_END_CREW_LIST_KEY,newCrew);
+    if (isDuplicateCrew(FRONT_END_CREW_LIST_KEY, newCrew)) return;
+    setLocalStorageCrewList(FRONT_END_CREW_LIST_KEY, newCrew);
+    updateState();
+    showCrewList(FRONT_END_CREW_LIST_KEY);
   } else {
-    if(isDuplicateCrew(BACK_END_CREW_LIST_KEY, newCrew)) return;
-    setLocalStorageCrewList(BACK_END_CREW_LIST_KEY,newCrew);
+    if (isDuplicateCrew(BACK_END_CREW_LIST_KEY, newCrew)) return;
+    setLocalStorageCrewList(BACK_END_CREW_LIST_KEY, newCrew);
+    updateState();
+    showCrewList(BACK_END_CREW_LIST_KEY);
   }
 }

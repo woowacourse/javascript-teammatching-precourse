@@ -16,6 +16,7 @@ export function isOver5Words(text) {
 export function isDuplicateCrew(key, crew) {
   const crewList = getLocalStorageItem(key);
   let isDuplicate = false;
+  if(crewList === null) return isDuplicate;
   crewList.map((item) => {
     if(item === crew) isDuplicate = true;
   })
