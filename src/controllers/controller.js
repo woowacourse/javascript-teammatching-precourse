@@ -94,6 +94,12 @@ export default class Controller {
     this.matchingMission = document.getElementById(
       ID.TEAM_MATCHING_MISSION_CHOICE
     ).value;
+    if (this.matchingType === 'frontend') {
+      this.matchingType = ID.COURSE_CHOICE_FRONT;
+    }
+    if (this.matchingType === 'backend') {
+      this.matchingType = ID.COURSE_CHOICE_BACK;
+    }
     this.view.matchingStart(
       this.matchingType,
       this.matchingMission,

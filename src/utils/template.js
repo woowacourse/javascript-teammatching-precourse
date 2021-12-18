@@ -97,9 +97,9 @@ export function showMatchingCrew(crew) {
     crewNameList += `<li>${member}`;
   });
   crewNameList += '</li>';
-  return `<p>
+  return `<ul id="team-match-result">
   ${crewNameList}
-    </p>`;
+    </ul>`;
 }
 
 export function rematchCrew() {
