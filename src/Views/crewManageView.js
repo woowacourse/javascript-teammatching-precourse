@@ -3,6 +3,6 @@ import { $ } from '../Utils/common.js';
 
 export default class CrewManageView {
   render() {
-    $(`main`).innerHTML = crewManageTemplate;
+    $(`main`).innerHTML = crewManageTemplate.topSelect;
   }
 }
