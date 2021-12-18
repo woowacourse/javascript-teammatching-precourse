@@ -1,7 +1,13 @@
 export const DOM = {
   $APP: '#app',
   $CREW_TAP: '#crew-tab',
+  $MAIN: 'main',
+  $SECTION: 'section',
   $$RADIO_INPUTS: 'input[name="course"]',
+};
+
+export const LENGTH_CHECK = {
+  ONE: 1,
 };
 
 export const EVENT = {
