@@ -10,4 +10,10 @@ export default class CrewCheck {
     checkLength() {
         return this.name.length <= 5; // 상수로 분리
     }
+
+    // 중복 체크하는거 추가해야됨
+
+    checkAll() {
+        return this.checkEmpty() && this.checkLength();
+    }
 }

@@ -9,8 +9,14 @@ export default class CrewEvent {
             e.preventDefault();
 
             const name = document.getElementById("crew-name-input").value;
+            const crewCheck = new CrewCheck(name);
 
-            console.log(name);
+            if(crewCheck.checkAll()) {
+                //이름 저장
+                console.log(name);
+            } else {
+                alert("유효하지 않은 입력입니다!"); // 상수로 변경
+            }
         })
     }
 }
