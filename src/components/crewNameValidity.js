@@ -1,4 +1,4 @@
-import CREW from '../index.js';
+import { backEndCrew, frontEndCrew } from '../index.js';
 
 function lengthValidity(name) {
   if (name.length < 1) {
@@ -9,19 +9,20 @@ function lengthValidity(name) {
   }
   return true;
 }
-function duplicationValidity(name) {
-  for (let i = 0; i < CREW.length; i++){
-    if (CREW.crewList[i] === name) {
+function duplicationValidity(mode, name) {
+  const crew = (mode === "프론트엔드") ? frontEndCrew : backEndCrew;
+  for (let i = 0; i < crew.length; i++){
+    if (crew[i] === name) {
       return alert('이미 존재하는 크루 이름입니다.');
     }
   }
   return true;
 }
-export default function CrewNameValidity(name) {
+export default function CrewNameValidity(mode, name) {
   if (!lengthValidity(name)) {
     return false;
   }
-  if (!duplicationValidity(name)) {
+  if (!duplicationValidity(mode, name)) {
     return false;
   }
   return true;
