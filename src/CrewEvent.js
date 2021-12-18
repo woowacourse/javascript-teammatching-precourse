@@ -1,3 +1,4 @@
+import { CREW_BACK, CREW_FRONT, ERROR_MESSAGE } from "./constants.js";
 import CrewCheck from "./CrewCheck.js";
 import CrewView from "./CrewView.js";
 import { HTML_OF_FRONT_CREW_INPUT, HTML_OF_BACK_CREW_INPUT, HTML_OF_CREW_TABLE, HTML_OF_FRONT_CHECKED_RADIO , HTML_OF_HEADER, HTML_OF_TEAM_TAB, HTML_OF_BACK_CHECKED_RADIO} from "./utils/html.js";
@@ -29,7 +30,7 @@ export default class CrewEvent {
                 CrewView.showBackTable();
             }    
         } else {
-            alert("유효하지 않은 입력입니다!"); // 상수로 변경
+            alert(ERROR_MESSAGE);
         } 
     }
 
@@ -46,24 +47,24 @@ export default class CrewEvent {
     }
 
     static storeFrontCrew(name, course) {
-        const crew = JSON.parse(localStorage.getItem("CrewFront"));
+        const crew = JSON.parse(localStorage.getItem(CREW_FRONT));
 
-        if(localStorage.getItem("CrewFront") === null) {
-            localStorage.setItem("CrewFront", JSON.stringify({ [name]: { course: course}})); // 새로 저장
+        if(localStorage.getItem(CREW_FRONT) === null) {
+            localStorage.setItem(CREW_FRONT, JSON.stringify({ [name]: { course: course}})); // 새로 저장
         } else {
             crew[name] = { course: course}; //중복 체크
-            localStorage.setItem("CrewFront", JSON.stringify(crew));
+            localStorage.setItem(CREW_FRONT, JSON.stringify(crew));
         }
     }
 
     static storeBackCrew(name, course) {
-        const crew = JSON.parse(localStorage.getItem("CrewBack"));
+        const crew = JSON.parse(localStorage.getItem(CREW_BACK));
 
-        if(localStorage.getItem("CrewBack") === null) {
-            localStorage.setItem("CrewBack", JSON.stringify({ [name]: { course: course}})); // 새로 저장
+        if(localStorage.getItem(CREW_BACK) === null) {
+            localStorage.setItem(CREW_BACK, JSON.stringify({ [name]: { course: course}})); // 새로 저장
         } else {
             crew[name] = { course: course}; //중복 체크
-            localStorage.setItem("CrewBack", JSON.stringify(crew));
+            localStorage.setItem(CREW_BACK, JSON.stringify(crew));
         }
     }
 
@@ -75,7 +76,7 @@ export default class CrewEvent {
             if(targetId === 'frontend-course') {
                 document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
 
-                if(localStorage.getItem("CrewFront") !== null){
+                if(localStorage.getItem(CREW_FRONT) !== null){
                     CrewView.showFrontTable();
                     // this.addCrewEvent();
                 } 
@@ -87,7 +88,7 @@ export default class CrewEvent {
             if(targetId === 'backend-course') {
                 document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_BACK_CHECKED_RADIO + HTML_OF_BACK_CREW_INPUT + HTML_OF_CREW_TABLE;
 
-                if(localStorage.getItem("CrewBack") !== null){
+                if(localStorage.getItem(CREW_BACK) !== null){
                     CrewView.showBackTable();
                 } 
                 this.addCrewEvent();
