@@ -12,8 +12,6 @@ export default class Component {
 
   setup() {}
 
-  mount() {}
-
   template() {
     return ``;
   }
@@ -22,6 +20,8 @@ export default class Component {
     this.$target.innerHTML = this.template();
     this.mount();
   }
+
+  mount() {}
 
   setEvent() {}
 }
