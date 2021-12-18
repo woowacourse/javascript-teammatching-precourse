@@ -24,7 +24,8 @@ const addEvent = (btn, courseName) => {
         btn[i].addEventListener('click', (e) => {
             e.preventDefault();
             let tmp = JSON.parse(localStorage.getItem(`${courseName}`));
-            tmp.pop(i)
+            let idx = parseInt(btn[i].parentElement.parentElement.firstElementChild.innerText)
+            tmp.pop(idx)
             localStorage.setItem(`${courseName}`, JSON.stringify(tmp));
             displayCrewTable(courseName)
         })
