@@ -12,7 +12,6 @@ export const checkExistTeam = e => {
   const mission = target.options[target.selectedIndex].text;
   const missionValue = target.options[target.selectedIndex].value;
   const courseTeam = checkcourseTeam();
-  console.log(`${courseTeam}-${mission}`);
   const teamList = store.getItem(`${courseTeam}-${missionValue}`);
   if (teamList === null) {
     renderNotExistTeam(course, mission);

@@ -8,11 +8,17 @@ import {
 import {
   renderTeamMain,
   renderSelectCourseAndMission,
+  renderTeams,
 } from './view/renderTeamTab.js';
 import { $ } from './util/dom.js';
 import { FRONT_END, BACK_END } from './constants/constants.js';
 import { makeCrewTemplate, confirmDeleteCrew } from './core/manageCrew.js';
-import { makeTeamTemplate } from './core/manageTeam.js';
+import {
+  makeTeamTemplate,
+  makeRandomTeam,
+  checkcourseTeam,
+  checkMission,
+} from './core/manageTeam.js';
 import { checkExistTeam } from './core/manageTeam.js';
 
 function App() {
@@ -23,6 +29,10 @@ function App() {
     switch (e.target.id) {
       case 'crew-delete-button':
         confirmDeleteCrew(e.target);
+        break;
+      case 'rematch-team-button':
+        makeRandomTeam(checkcourseTeam(), checkMission(), numberOfPeople);
+        renderTeams();
         break;
     }
   };
