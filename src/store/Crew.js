@@ -5,7 +5,8 @@ import { COURSE } from '../constant/data.js';
 class Crew extends Store {
   init() {
     this.value = {
-      selectedCourse: COURSE.FRONTEND,
+      // selectedCourse: COURSE.FRONTEND,
+      selectedCourse: null,
       [COURSE.FRONTEND]: [],
       [COURSE.BACKEND]: [],
     };
@@ -32,6 +33,10 @@ class Crew extends Store {
   }
 
   getSelectedCourseCrews() {
+    if (this.getSelectedCourse() === null) {
+      return [];
+    }
+
     return this.value[this.getSelectedCourse()];
   }
 }

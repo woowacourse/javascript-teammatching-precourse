@@ -14,12 +14,14 @@ export default class NameForm extends Component {
     const { selectedCourse } = crew.getValue();
 
     return `
-    <h3>${selectedCourse === COURSE.FRONTEND ? FRONTEND : BACKEND} 크루 관리</h3>
+    <div ${selectedCourse === null ? 'hidden' : ''}>
+      <h3>${selectedCourse === COURSE.FRONTEND ? FRONTEND : BACKEND} 크루 관리</h3>
       <form>
         <label>크루 이름</label>
         <input type="text" id="${ID.NAME_INPUT}"/>
         <button id="${ID.NAME_SUBMIT}">확인</button>
       </form>
+    </div>
     `;
   }
 

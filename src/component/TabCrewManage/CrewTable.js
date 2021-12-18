@@ -14,15 +14,17 @@ export default class CrewTable extends Component {
     const selectedCourse = crew.getSelectedCourse();
 
     return `
-      <h3>${selectedCourse === COURSE.FRONTEND ? FRONTEND : BACKEND} 크루 목록</he>
-      <table id="${ID.CREW_TABLE}" border="1">
-        <thead>
-          ${this.templateTableHeader()}
-        </thead>
-        <tbody>
-          ${this.templateTableBody()}
-        </tbody>
-      </table>
+      <div ${selectedCourse === null ? 'hidden' : ''}>
+        <h3>${selectedCourse === COURSE.FRONTEND ? FRONTEND : BACKEND} 크루 목록</he>
+        <table id="${ID.CREW_TABLE}" border="1">
+          <thead>
+            ${this.templateTableHeader()}
+          </thead>
+          <tbody>
+            ${this.templateTableBody()}
+          </tbody>
+        </table>
+      </div>
     `;
   }
 
