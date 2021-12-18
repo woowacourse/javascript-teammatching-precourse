@@ -3,6 +3,8 @@ import { app, getTeamManager } from '../domElement.js';
 
 export const createTeamManager = (course, mission, courseName, missionName) => {
   const teamManager = getTeamManager();
+  const prevResult = document.getElementById('result-print');
+  prevResult?.remove();
   const prevManager = document.getElementById('team-matching-form');
   prevManager?.remove();
   const manager = document.createElement('section');

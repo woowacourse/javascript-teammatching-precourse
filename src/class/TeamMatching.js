@@ -114,29 +114,4 @@ export default class TeamMatching {
 
     return teams;
   }
-
-  // selectMember(
-  //   course,
-  //   teams,
-  //   teamCount,
-  //   memberCount,
-  //   selectedCount,
-  //   suffledIndexList
-  // ) {
-  //   for (let _index = 0; _index < teamCount; _index++) {
-  //     for (let i = 0; i < memberCount; i++) {
-  //       teams[_index].push(
-  //         this.crews[course][suffledIndexList[selectedCount++]]
-  //       );
-
-  //       if (selectedCount >= suffledIndexList.length) {
-  //         break;
-  //       }
-  //     }
-
-  //     if (selectedCount >= suffledIndexList.length) {
-  //       break;
-  //     }
-  //   }
-  // }
 }

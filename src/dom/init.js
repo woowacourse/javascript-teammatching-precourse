@@ -13,8 +13,4 @@ export const initView = () => {
   initTeamManager();
   createCourseSelector();
   createCourseMissionSelector();
-
-  // createCrewManager('프론트엔드');
-  // createCrewTable('frontend');
-  // createTeamManager('frontend', '숫자야구');
 };
