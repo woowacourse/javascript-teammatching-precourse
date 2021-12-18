@@ -18,14 +18,14 @@ export default class App {
   }
 
   tabButtonEvent() {
-    console.log(this.$app.childNodes);
     [...this.$app.querySelectorAll('main')].map(content => content.style = ("display: none"));
     [...this.$app.querySelectorAll('button')].map(button => 
       button.addEventListener('click', ({ target }) => {
-        [...this.$app.querySelectorAll('main')].map(content => content.style = ("display: none"));
         if (target.id === 'crew-tab') {
+          [...this.$app.querySelectorAll('main')].map(content => content.style = ("display: none"));
           this.crewControl.crewContolMenuClick();
         } else if (target.id === 'team-tab') {
+          [...this.$app.querySelectorAll('main')].map(content => content.style = ("display: none"));
           this.teamMatch.teamMatchMenuClick();
         }
       })
