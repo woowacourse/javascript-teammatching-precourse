@@ -1,3 +1,5 @@
+import { convertObjectToArray } from '../utils/general.js';
+
 const crewListGenerator = crew =>
   crew
     .map(name => {
@@ -39,7 +41,7 @@ export const matchedTeams = teamList => `
 `;
 
 export const optionGenerator = (optionIdObject, optionNameObject) =>
-  Object.entries(optionIdObject)
+  convertObjectToArray(optionIdObject)
     .map(
       ([, value]) =>
         `<option value=${value}>${optionNameObject[value]}</option>`
