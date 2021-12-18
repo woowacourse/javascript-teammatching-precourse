@@ -1,4 +1,4 @@
-import { LOCALSTORAGE_KEY } from '../constants/constants.js';
+import { LOCALSTORAGE_KEY, MISSION_OPTIONS } from '../constants/constants.js';
 
 export default class Model {
   constructor() {
@@ -12,6 +12,9 @@ export default class Model {
     const course = {
       name: courseName,
       crewList: [],
+      missionList: MISSION_OPTIONS.map(e => {
+        return { name: e.name, member: [] };
+      }),
     };
     allCourse.push(course);
     if (!this.getAllCourse().find(e => e.name === courseName)) {

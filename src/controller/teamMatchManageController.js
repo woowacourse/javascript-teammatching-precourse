@@ -8,16 +8,24 @@ export default class TeamMatchManager {
   }
 
   init() {
-    this.addEventListeners();
     this.addSelectOptions();
+    this.addEventListeners();
   }
 
-  addEventListeners() {}
+  addEventListeners() {
+    $(SELECTOR.teamMatcherButton).addEventListener('click', () => this.selectCourseAndMission());
+  }
 
   addSelectOptions() {
     const courseSelect = $(SELECTOR.courseSelect);
     const missionSelect = $(SELECTOR.missionSelect);
     this.view.addOptionsInSelect(courseSelect, COURSE_OPTIONS);
     this.view.addOptionsInSelect(missionSelect, MISSION_OPTIONS);
+  }
+
+  selectCourseAndMission() {
+    const selectedCourse = $(SELECTOR.courseSelect).value;
+    const selectedMission = $(SELECTOR.missionSelect).value;
+    
   }
 }
