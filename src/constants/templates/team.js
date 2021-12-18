@@ -43,11 +43,17 @@ export const teamTemplates = {
           </form>
         </div>
         <h4>크루 목록</h4>
-        <ul>
+        <ul id="team_crew_list">
           <li>준</li>
           <li>포코</li>
         </ul>
       </div>
+    `;
+  },
+
+  crew(name) {
+    return `
+        <li>${name}</li>
     `;
   },
 };

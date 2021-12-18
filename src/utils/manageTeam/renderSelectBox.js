@@ -1,6 +1,7 @@
 import $ from '../common/selector.js';
 import { teamTemplates } from '../../constants/templates/team.js';
 import { renderTeamMatching } from './renderTeamMatching.js';
+import { store } from '../common/store.js';
 
 export const renderSelectBox = state => {
   const { common, header } = teamTemplates;
