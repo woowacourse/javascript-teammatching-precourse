@@ -7,7 +7,7 @@ import { $ } from '../utils/helper.js';
 
 export default class App extends Component {
   setup() {
-    this.state = { location: 'crew' };
+    this.state = { location: '' };
   }
 
   template() {
