@@ -44,6 +44,20 @@ export default class ClickEventManager {
     DOM.showCrewList(courseType);
   }
 
+  crewDelete(event) {
+    const keyName = `${DOM.getCourseType()}Crew`;
+    const temporaryCrew = [...DB.load(keyName)];
+    const targetIndex = Array.from(event.path[2].children).shift().innerText;
+
+    if (!window.confirm('정말 삭제하시겠습니까?')) return;
+
+    temporaryCrew.splice(targetIndex - 1, 1);
+
+    DB.overwrite(keyName, temporaryCrew);
+
+    DOM.showCrewList(DOM.getCourseType());
+  }
+
   onClick(event) {
     event.preventDefault();
 
