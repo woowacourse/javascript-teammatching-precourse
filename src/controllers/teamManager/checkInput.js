@@ -23,7 +23,7 @@ const isPositiveInteger = num => {
 };
 
 const isValidMemberCount = num => {
-  return num.length > 0 || isPositiveInteger(num);
+  return num.length > 0 && isPositiveInteger(num);
 };
 
 export { isValidMemberCount };
