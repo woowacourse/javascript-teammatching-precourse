@@ -13,4 +13,6 @@ export const SECTION_ID = {
 export const CREW_INPUT_ID = {
   FRONT_COURSE_INPUT: 'frontend-course',
   BACK_COURSE_INPUT: 'backend-course',
+  NAME_INPUT: 'crew-name-input',
+  ADD_BUTTON: 'add-crew-buttton',
 };

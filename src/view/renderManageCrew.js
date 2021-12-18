@@ -38,8 +38,8 @@ export default function renderManageCrew(manager) {
         <h3>프론트엔드 크루 관리</h3>
         <form>
           <label>크루 이름</label>
-          <input type="text" />
-          <button>확인</button>
+          <input id="${CREW_INPUT_ID.NAME_INPUT}" type="text" />
+          <button id="${CREW_INPUT_ID.ADD_BUTTON}">확인</button>
         </form>
       </section>
       <section id="${SECTION_ID.CREW_LIST}" style="display: none">
