@@ -1,4 +1,5 @@
 import CrewNameForm from './crewNameForm.js';
+import CrewTable from './crewNameTable.js';
 
 export default function CrewManager() {
   this.container = document.querySelector('#main-container');
@@ -27,55 +28,22 @@ export default function CrewManager() {
     `;
   };
 
-  this.crewTableTemplate = (course) => {
-    return `
-      <h3>${course} 크루 목록</h3>
-      <table border="1" id="crew-table">
-        <thead>
-         ${this.crewTableHeader()}
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    `;
-  };
-
-  this.crewTableHeader = () => {
-    return `
-      <tr>
-        <th></th>
-        <th>크루</th>
-        <th>관리</th>
-      </tr>
-    `;
-  };
-
-  this.crewTableData = () => {
-    return `
-      <tr>
-        <td>1</td>
-        <td>준</td>
-        <td>
-          <button>삭제</button>
-        </td>
-      </tr>
-    `;
-  };
-
   this.onClickCrewRadioInput = (e) => {
     const crewNameForm = new CrewNameForm(
       document.querySelector('#crew-name-form-section')
     );
-    const crewTableSection = document.querySelector('#crew-table-section');
+    const crewTable = new CrewTable(
+      document.querySelector('#crew-table-section')
+    );
     const course = e.target.value;
 
     if (e.target.id === 'frontend-course') {
       crewNameForm.render(course);
-      crewTableSection.innerHTML = this.crewTableTemplate(course);
+      crewTable.render(course);
     }
     if (e.target.id === 'backend-course') {
       crewNameForm.render(course);
-      crewTableSection.innerHTML = this.crewTableTemplate(course);
+      crewTable.render(course);
     }
   };
 
