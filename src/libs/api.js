@@ -5,7 +5,7 @@ export default class Api {
     const data = {
       currentTabId: "crew-tab",
       tabIdList: ["crew-tab", "team-tab"],
-      checkedCrewCourse: "",
+      checkedCrewCourse: undefined,
       frontends: [],
       backends: [],
     };

@@ -10,6 +10,8 @@ export default class CrewManage extends Component {
   template() {
     const { courseName } = this.$props;
 
+    if (!courseName) return ``;
+
     return `
         <h3>${courseName} 크루 관리</h3>
         <form>
