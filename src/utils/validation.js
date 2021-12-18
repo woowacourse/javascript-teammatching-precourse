@@ -26,6 +26,10 @@ export const isInputNotInteger = (inputValue) => {
   return isNaN(inputValue) || !Number.isInteger(inputValue);
 };
 
+export const isInputMoreThanTeamHeadCount = (inputValue, crewLength) => {
+  return inputValue > Number.parseInt(crewLength / inputValue, 10);
+};
+
 export const isValidCrewName = (inputValue, course) => {
   if (isInputEmpty(inputValue)) {
     alert(ERROR_MESSAGE.EMPTY);
@@ -43,7 +47,7 @@ export const isValidCrewName = (inputValue, course) => {
   return true;
 };
 
-export const isValidTeamHeadCount = (inputValue) => {
+export const isValidTeamHeadCount = (inputValue, crewLength) => {
   inputValue = Number.parseInt(inputValue, 10);
 
   if (isInputEmpty(inputValue)) {
@@ -54,6 +58,9 @@ export const isValidTeamHeadCount = (inputValue) => {
     alert(ERROR_MESSAGE.NOT_POSITIVE_INTEGER);
     return false;
   }
-
+  if (isInputMoreThanTeamHeadCount(inputValue, crewLength)) {
+    alert(ERROR_MESSAGE.NOT_VALID_HEADCOUNT);
+    return false;
+  }
   return true;
 };
