@@ -45,6 +45,7 @@ const addTeamManager = () => {
   $main.innerHTML += `
     <div id="team-manager" hidden>
       ${selectCourseSection()}
+      <section id="team-maching"></section>
     </div>
   `;
 };

@@ -4,6 +4,7 @@ import { addTeamManager } from "./views/teamManager/addTeamManager.js";
 
 import Tab from "./controllers/tabs/tab.js";
 import CrewManager from "./controllers/crewManager/crewManager.js";
+import TeamManager from "./controllers/teamManager/teamManager.js";
 
 class TeamMatching {
   constructor() {
@@ -12,6 +13,7 @@ class TeamMatching {
     addTeamManager();
     new Tab();
     new CrewManager();
+    new TeamManager();
   }
 }
 
