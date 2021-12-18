@@ -51,6 +51,7 @@ class App {
   }
 
   clickButton(e) {
+    this.render();
     const { id } = e.target;
 
     if (id === ID.CREW_TAB) {
@@ -60,6 +61,7 @@ class App {
         this.$resultSection
       );
     }
+
     if (id === ID.TEAM_TAB) {
       new TeamSelect(this.$selectSection, this.$manageSection);
     }
