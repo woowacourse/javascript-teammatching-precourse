@@ -1,3 +1,4 @@
+import { initCrewManage } from './crewManage.js';
 import { tabMenu, crewManage, teamManage } from './dom.js';
 
 export default class View {
@@ -13,6 +14,7 @@ export default class View {
   showCrewManage() {
     this.clearMenu();
     document.getElementById('container').insertAdjacentHTML('afterbegin', crewManage);
+    initCrewManage();
   }
 
   showTeamManage() {
