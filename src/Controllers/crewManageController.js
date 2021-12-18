@@ -42,12 +42,9 @@ export default class CrewManageController {
   };
 
   onClickDelete = (event) => {
-    const targetNumber = Number(event.path[2].childNodes[1].textContent);
-    let data = this.getSelectedData();
-    data.splice(targetNumber - 1, 1);
-    this.saveNewData(data);
-    this.crewManageView.renderTable(data);
-    this.configureButton();
+    if (confirm('정말 삭제하시겠습니까?') === true) {
+      this.deleteItem(event);
+    }
   };
 
   getSelectedData() {
@@ -85,5 +82,14 @@ export default class CrewManageController {
     } catch (error) {
       alert(error.message);
     }
+  }
+
+  deleteItem(event) {
+    const targetNumber = Number(event.path[2].childNodes[1].textContent);
+    let data = this.getSelectedData();
+    data.splice(targetNumber - 1, 1);
+    this.saveNewData(data);
+    this.crewManageView.renderTable(data);
+    this.configureButton();
   }
 }
