@@ -8,6 +8,7 @@ export const ID = {
   MANAGE_SECITON: 'manage-section',
   RESULT_SECTION: 'result-section',
   // crew
+  COURSE_SELECT_CONTAINER: 'course-select-container',
   FRONTEND_COURSE: 'frontend-course',
   BACKEND_COURSE: 'backend-course',
   CREW_NAME_INPUT: 'crew-name-input',
