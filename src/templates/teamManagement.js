@@ -1,4 +1,4 @@
-export const crewListGenerator = crew =>
+const crewListGenerator = crew =>
   crew
     .map(name => {
       return `<li>${name}</li>`;
@@ -37,3 +37,11 @@ export const matchedTeams = teamList => `
   <button id="rematch-team-button">재매칭</button>
 </p>
 `;
+
+export const optionGenerator = (optionIdObject, optionNameObject) =>
+  Object.entries(optionIdObject)
+    .map(
+      ([, value]) =>
+        `<option value=${value}>${optionNameObject[value]}</option>`
+    )
+    .join('');

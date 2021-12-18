@@ -9,6 +9,7 @@ import {
   COURSE_NAME,
   EVENT_TYPE,
   ERROR_MESSAGES,
+  MISSION_NAME,
 } from '../../utils/constants.js';
 import { matchTeamForm, matchedTeams } from '../../templates/teamManagement.js';
 
@@ -49,10 +50,9 @@ export default class TeamStatus extends Component {
 
     this.$container.innerHTML = selectedTeam.length
       ? `
-      <h3> ${COURSE_NAME[course]} ${mission} 조회</h3>
+       <h3> ${COURSE_NAME[course]} ${MISSION_NAME[mission]} 조회</h3>
         ${matchedTeams(selectedTeam)}`
-      : `<h3>${
-          COURSE_NAME[course]
-        } ${mission} 미션의 팀 매칭</h3> ${matchTeamForm(selectedCrew)}`;
+      : `<h3>${COURSE_NAME[course]} ${MISSION_NAME[mission]} 미션의 팀 매칭</h3>
+       ${matchTeamForm(selectedCrew)}`;
   }
 }

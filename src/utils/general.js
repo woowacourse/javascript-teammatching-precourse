@@ -1,11 +1,9 @@
 export const isObjectEmpty = object => Object.keys(object).length === 0;
 
-export const generateCrewArrayAndMap = crew => {
-  const crewMap = new Map();
-  const crewArray = Array.from(Array(crew.length).keys());
-  for (let i = 0; i < crew.length; i += 1) {
-    crewMap.set(i, crew[i]);
+export const generateObjectWithKey = (keyObject, defaultValue) => {
+  const newObject = {};
+  for (const [, value] of Object.entries(keyObject)) {
+    newObject[value] = defaultValue;
   }
-
-  return { crewMap, crewArray };
+  return newObject;
 };

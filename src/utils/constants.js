@@ -23,6 +23,28 @@ export const COURSE_NAME = {
   [COURSE.backend]: '백엔드',
 };
 
+export const MISSION = {
+  BASEBALL: 'baseball',
+  RACINGCAR: 'racingcar',
+  LOTTO: 'lotto',
+  SHOPPING_CART: 'shopping-cart',
+  PAYMENTS: 'payments',
+  SUBWAY: 'subway',
+  PERFORMANCE: 'performance',
+  DEPLOY: 'deploy',
+};
+
+export const MISSION_NAME = {
+  [MISSION.BASEBALL]: '숫자야구게임',
+  [MISSION.RACINGCAR]: '자동차경주',
+  [MISSION.LOTTO]: '로또',
+  [MISSION.SHOPPING_CART]: '장바구니',
+  [MISSION.PAYMENTS]: '결제',
+  [MISSION.SUBWAY]: '지하철노선도',
+  [MISSION.PERFORMANCE]: '성능개선',
+  [MISSION.DEPLOY]: '배포',
+};
+
 export const REDCUER_RESULT = {
   SUCCESS: data => {
     return { SUCCESS: true, data, error: null };

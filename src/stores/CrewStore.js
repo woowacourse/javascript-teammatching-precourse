@@ -1,12 +1,12 @@
 import Store from '../core/Store.js';
 import { isExistedName, removeCrew } from '../utils/helpers/crew.js';
-import { REDCUER_RESULT, ERROR_MESSAGES } from '../utils/constants.js';
+import { REDCUER_RESULT, ERROR_MESSAGES, COURSE } from '../utils/constants.js';
 import { CREW_ACTION_TYPE } from '../actions/crew.js';
 import { CrewStorage } from '../storages/index.js';
 
 const initialState = {
-  frontend: [],
-  backend: [],
+  [COURSE.frontend]: [],
+  [COURSE.backend]: [],
 };
 
 class CrewStore extends Store {

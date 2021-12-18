@@ -1,30 +1,14 @@
 import Store from '../core/Store.js';
 import CrewStore from './CrewStore.js';
+import { generateObjectWithKey } from '../utils/general.js';
 import { TEAM_ACTION_TYPE } from '../actions/team.js';
 import { TeamStorage } from '../storages/index.js';
 import { matchRandomTeam } from '../utils/helpers/team.js';
+import { MISSION } from '../utils/constants.js';
 
 const initialState = {
-  frontend: {
-    baseball: [],
-    racingcar: [],
-    lotto: [],
-    'shopping-cart': [],
-    payments: [],
-    subway: [],
-    performance: [],
-    deploy: [],
-  },
-  backend: {
-    baseball: [],
-    racingcar: [],
-    lotto: [],
-    'shopping-cart': [],
-    payments: [],
-    subway: [],
-    performance: [],
-    deploy: [],
-  },
+  frontend: generateObjectWithKey(MISSION, []),
+  backend: generateObjectWithKey(MISSION, []),
 };
 
 class TeamStore extends Store {
