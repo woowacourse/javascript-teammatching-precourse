@@ -2,6 +2,7 @@ import { courses } from '../data/course.js';
 import { missions } from '../data/mission.js';
 import { createCrewTable } from '../dom/crewManager/createCrewTable.js';
 import { getCrewManager } from '../dom/domElement.js';
+import { printResult } from '../dom/teamManager/printResult.js';
 import { saveCrews } from '../storage/crew.js';
 import { getCrewNameInput, getMemberCountInput } from '../user.js';
 
@@ -13,6 +14,7 @@ export default class TeamMatching {
       frontend: [],
       backend: [],
     };
+    this.teams = [];
   }
 
   addCrew(type) {
@@ -64,9 +66,12 @@ export default class TeamMatching {
       return;
     }
 
-    console.log(
-      this.divideTeam(course, this.getSuffledIndexList(course), memberCount)
+    this.teams = this.divideTeam(
+      course,
+      this.getSuffledIndexList(course),
+      memberCount
     );
+    printResult(course, mission);
   }
 
   getSuffledIndexList(course) {
