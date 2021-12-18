@@ -12,3 +12,32 @@ export const MENU = {
   CREW_MANAGE: 'CREW_MANAGE',
   TEAM_MANAGE: 'TEAM_MANAGE',
 };
+
+export const COURSE = {
+  frontend: 'frontend',
+  backend: 'backend',
+};
+
+export const COURSE_NAME = {
+  [COURSE.frontend]: '프론트엔드',
+  [COURSE.backend]: '백엔드',
+};
+
+export const REDCUER_RESULT = {
+  SUCCESS: data => {
+    return { SUCCESS: true, data, error: null };
+  },
+  FAIL: error => {
+    return { SUCCESS: false, error };
+  },
+};
+
+export const CREW_NAME_RULE = {
+  MIN_LENGTH: 1,
+  MAX_LENGTH: 5,
+};
+
+export const ERROR_MESSAGES = {
+  EXISTED_NAME: '이미 존재하는 이름입니다! 다른 이름을 선택해주세요!',
+  NAME_LENGTH: `이름은 최소 ${CREW_NAME_RULE.MIN_LENGTH}글자, 최대 ${CREW_NAME_RULE.MAX_LENGTH}까지만 가능합니다.`,
+};
