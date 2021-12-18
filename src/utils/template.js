@@ -97,7 +97,7 @@ export const selectCourseMissionTemplate = () => {
           <option value="backend">백엔드</option>
         </select>
         <select id="mission-select">
-          <option value="baseball>숫자야구게임</optionv>
+          <option value="baseball">숫자야구게임</optionv>
           <option value="racingcar">자동차경주</option>
           <option value="lotto">로또</option>
           <option value="shoppping-cart">장바구니</option>
@@ -109,5 +109,35 @@ export const selectCourseMissionTemplate = () => {
         <button id="show-team-matcher-button">확인</button>
       </form>
     </section>
+    <section id="team-match-section"></section>
+  `;
+};
+
+export const teamMatchTemplate = (course, missionText, crews) => {
+  return `
+    <h3>${course === 'frontend' ? '프론트엔드' : '백엔드'}  ${missionText} 미션의 팀 매칭</h3>
+    <div>
+      <div>
+        <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
+        <form>
+          <label>1팀당 인원 수</label>
+          <input id="team-member-count-input" type="number" />
+          <button id="match-team-button">팀 매칭</button>
+        </form>
+      </div>
+      <h4>크루 목록</h4>
+      <ul>
+        ${
+          crews &&
+          crews
+            .map(({ name }) => {
+              return `
+            <li>${name}</li>
+          `;
+            })
+            .join(STRING.EMPTY)
+        }
+      </ul>
+    </div>
   `;
 };

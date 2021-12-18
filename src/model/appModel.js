@@ -7,7 +7,14 @@ export default class AppModel {
   constructor() {
     this.frontCrews = this.loadFrontCrews() || [];
     this.backCrews = this.loadBackCrews() || [];
+    // this.currentTab = this.loadCurrentTab() || 'crewManage';
   }
+
+  // loadCurrentTab
+
+  // setCurrentTab() {
+
+  // }
 
   loadFrontCrews() {
     return loadDataFromLocalStorage(STORAGE_KEY.FRONT_CREWS);
@@ -65,5 +72,11 @@ export default class AppModel {
     return this.frontCrews.some((crew) => {
       return crew.name === name;
     });
+  }
+
+  getCrews(course) {
+    if (course === 'backend') return this.backCrews;
+
+    return this.frontCrews;
   }
 }
