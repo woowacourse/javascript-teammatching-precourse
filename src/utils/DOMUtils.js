@@ -21,6 +21,18 @@ const DOMUtils = {
     $('#crew-list-title').innerHTML = `${courseType} 크루 목록`;
   },
 
+  getCourseType: () => {
+    let courseType = '';
+
+    const ele = document.getElementsByName('course');
+
+    for (let i = 0; i < ele.length; i++) {
+      if (ele[i].getAttribute('checked')) courseType = ele[i].value;
+    }
+
+    return courseType;
+  },
+
   showCrewList: courseType => {
     $('#crew-list-tbody').innerHTML = DB.load(`${courseType}Crew`)
       .map(

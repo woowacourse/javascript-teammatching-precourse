@@ -21,6 +21,8 @@ export default class ClickEventManager {
 
     $('#frontend-course').setAttribute('checked', 'checked');
     $('#backend-course').removeAttribute('checked');
+
+    DOM.showCrewList(DOM.getCourseType());
   }
 
   backendRadioButton() {
@@ -28,16 +30,12 @@ export default class ClickEventManager {
 
     $('#backend-course').setAttribute('checked', 'checked');
     $('#frontend-course').removeAttribute('checked');
+
+    DOM.showCrewList(DOM.getCourseType());
   }
 
   createCrew() {
-    let courseType = '';
-
-    const ele = document.getElementsByName('course');
-
-    for (let i = 0; i < ele.length; i++) {
-      if (ele[i].getAttribute('checked')) courseType = ele[i].value;
-    }
+    let courseType = DOM.getCourseType();
 
     DB.save(`${courseType}Crew`, $('#crew-name-input').value);
 
