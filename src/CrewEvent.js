@@ -32,10 +32,15 @@ export default class CrewEvent {
 
             if(crewCheck.checkAll()) {
                 //이름 저장
-                this.storeCrew(name, this.getCourse());
-                // this.getCourse();
+                if(this.getCourse() === "frontend") {
+                    this.storeFrontCrew(name, this.getCourse());
+                }
+                if(this.getCourse() === "backend") {
+                    this.storeBackCrew(name, this.getCourse());
+                }
+
                 console.log(name);
-                CrewView.showTable();
+                CrewView.showFrontTable();
                 
             } else {
                 alert("유효하지 않은 입력입니다!"); // 상수로 변경
@@ -85,7 +90,7 @@ export default class CrewEvent {
             document.getElementById('app').innerHTML += HTML_OF_CREW_INPUT + HTML_OF_CREW_TABLE;
             // document.getElementsByName('course')[0].prop("checked", true);
 
-            CrewView.showTable();
+            CrewView.showFrontTable();
 
             this.addCrewEvent();
         })

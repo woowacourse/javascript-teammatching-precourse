@@ -10,11 +10,11 @@ export default class CrewView {
         document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_CREW_RADIO;
     }
 
-    static showTable() {
-        const crew = JSON.parse(localStorage.getItem("Crew"));
+    static showFrontTable() {
+        const crewFront = JSON.parse(localStorage.getItem("CrewFront"));
 
         document.getElementById('crew-table').innerHTML = `${HTML_OF_CREW_TABLE}
-        ${Object.keys(crew)
+        ${Object.keys(crewFront)
           .map(
             (name) => `            
         <tr class="product-manage-item">
