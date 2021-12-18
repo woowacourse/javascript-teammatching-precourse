@@ -59,7 +59,7 @@ const manageCrew = {
     <td>${index + 1}</td>
     <td>${crew}</td>
     <td>
-      <button class="delete-crew-buttton">삭제</button>
+      <button class="delete-crew-buttton" data-crew-name="${crew}">삭제</button>
     </td>
   </tr>
   `,

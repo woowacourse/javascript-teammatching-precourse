@@ -12,6 +12,7 @@ export default class ManageCrewController {
     this.frontend = getData("frontend");
     this.backend = getData("backend");
     this.radioClickEvent();
+    this.deleteEvent();
   }
 
   radioClickEvent() {
@@ -82,5 +83,12 @@ export default class ManageCrewController {
     backendCrew.push(crewInputValue);
     setData("backend", backendCrew);
     this.manageCrewView.render();
+  }
+
+  deleteEvent(course, deleteCrew) {
+    const updateCrew = this.crew[course].filter((name) => name !== deleteCrew);
+    const newCrew = this.crew;
+    newCrew[course] = updateCrew;
+    this.setCrew(newCrew);
   }
 }
