@@ -1,4 +1,4 @@
-import { NAVIGATION } from "../constants/selector.js";
+import { NAVIGATION } from '../constants/selector.js';
 
 function navigation() {
   return `

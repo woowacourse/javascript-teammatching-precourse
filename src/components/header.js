@@ -1,20 +1,21 @@
 import header from '../templates/header.js';
 import $ from '../util/domSelector.js';
 import { NAVIGATION } from '../constants/selector.js';
+import crewManagement from '../routes/crewManagement.js';
 
 export default class Header {
-  constructor(app) {
-    this.$target = app;
+  constructor(target) {
+    this.$target = target;
     this.render();
   }
 
   template() {
-    $(this.$target).innerHTML = header();
+    return header();
   }
 
   setEvent() {
     $(`#${NAVIGATION.ID.CREW_TAB}`).addEventListener('click', () => {
-      console.log('crew');
+      new crewManagement(this.$target);
     });
     $(`#${NAVIGATION.ID.TEAM_TAB}`).addEventListener('click', () => {
       console.log('team');
@@ -22,7 +23,7 @@ export default class Header {
   }
 
   render() {
-    this.template();
+    $(this.$target).innerHTML = this.template();
     this.setEvent();
   }
 }
