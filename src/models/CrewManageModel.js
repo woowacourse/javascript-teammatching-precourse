@@ -1,4 +1,3 @@
-import CourseModel from './CourseModel.js';
 const initCrews = () => {
   return JSON.parse(localStorage.getItem('crews'))
     ? JSON.parse(localStorage.getItem('crews'))
@@ -32,6 +31,17 @@ export default {
   setCrews() {
     localStorage.setItem('crews', JSON.stringify(this.crews));
   },
+  isValidMinCrewLengthInput(count) {
+    if (count === '') {
+      alert('입력이 올바르지 않습니다.');
+      return false;
+    }
+    if (parseInt(count) <= 0) {
+      alert('최소 1명 이상이어야 합니다.');
+      return false;
+    }
+    return true;
+  },
   setMinCrewLength(count) {
     this.minCrewLength = count;
   },
@@ -39,8 +49,18 @@ export default {
     const shuffledCrewsIndex = getShuffledCrewsIndex(this.crews[course].length);
     const teamsCount = parseInt(this.crews[course].length / this.minCrewLength);
     const teams = Array.from(Array(teamsCount), () => []);
+    for (const team of teams) {
+      for (let i = 0; i < this.minCrewLength; i += 1) {
+        team.push(this.crews[course][shuffledCrewsIndex.shift()]);
+      }
+    }
     while (shuffledCrewsIndex.length) {
-      teams.forEach((team) => team.push(this.crews[course][shuffledCrewsIndex.shift()]));
+      teams.forEach((team) => {
+        const crew = this.crews[course][shuffledCrewsIndex.shift()];
+        if (crew) {
+          team.push(crew);
+        }
+      });
     }
     return teams;
   },

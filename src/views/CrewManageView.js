@@ -18,12 +18,12 @@ CrewManageView.bindEvent = function () {
       this.onChangeCourse(e.target.value);
       return;
     }
-    if (e.target.id === 'add-crew-button') {
+    if (e.target.id === 'add-crew-buttton') {
       e.preventDefault();
       this.onSubmitCrewName(this.child('#crew-name-input').value);
       return;
     }
-    if (e.target.className === 'delete-crew-button') {
+    if (e.target.className === 'delete-crew-buttton') {
       e.preventDefault();
       const { 1: nameNode } = e.target.closest('tr').children;
       this.onDeleteCrew(nameNode.innerText);
@@ -69,7 +69,7 @@ CrewManageView.render = function () {
     <form>
       <label>크루 이름</label>
       <input id="crew-name-input" type="text" />
-      <button id="add-crew-button" >확인</button>
+      <button id="add-crew-buttton" >확인</button>
     </form>
   </section>
   <section>
@@ -90,7 +90,7 @@ CrewManageView.render = function () {
             <td>${idx + 1}</td>
             <td>${name}</td>
             <td>
-              <button class="delete-crew-button">삭제</button>
+              <button class="delete-crew-buttton">삭제</button>
             </td>
           </tr>
         `,

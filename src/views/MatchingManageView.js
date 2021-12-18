@@ -1,7 +1,7 @@
 import CourseModel from '../models/CourseModel.js';
 import CrewManageModel from '../models/CrewManageModel.js';
 import MissionModel from '../models/MissionModel.js';
-import { COURSE } from '../utils/constants.js';
+import { COURSE, MISSION } from '../utils/constants.js';
 import View from './View.js';
 
 const MatchingManageView = { ...View };
@@ -74,14 +74,19 @@ MatchingManageView.render = function () {
       <form>
         <select id="course-select">
         ${CourseModel.list().map(
-          (course) => `<option ${this.course === course ? 'selected' : ''}>${course}</option>`,
+          (course) =>
+            `<option value=${COURSE[course]} ${
+              this.course === COURSE[course] ? 'selected' : ''
+            }>${course}</option>`,
         )}
         </select>
         <select id="mission-select">
         ${MissionModel.list()
           .map(
             (mission) =>
-              `<option ${this.mission === mission ? 'selected' : ''}>${mission}</option>`,
+              `<option value=${MISSION[mission]} ${
+                MISSION[this.mission] === mission ? 'selected' : ''
+              }>${mission}</option>`,
           )
           .join('')}
         </select>
@@ -91,7 +96,7 @@ MatchingManageView.render = function () {
     ${
       this.course && !this.matchResult
         ? `<section>
-    <h3>${this.course} ${this.mission} 미션의 팀 매칭</h3>
+    <h3>${COURSE[this.course]} ${MISSION[this.mission]} 미션의 팀 매칭</h3>
     <div>
       <div>
         <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
@@ -104,7 +109,7 @@ MatchingManageView.render = function () {
       <h4>크루 목록</h4>
       <ul>
       ${CrewManageModel.list()
-        [COURSE[this.course]].map((crew) => `<li>${crew}</li>`)
+        [this.course].map((crew) => `<li>${crew}</li>`)
         .join('')}
       </ul>
     </div>
@@ -116,11 +121,11 @@ MatchingManageView.render = function () {
     ${
       this.matchResult
         ? `<section>
-    <h3>${this.course} 숫자야구게임 조회</h3>
+    <h3>${COURSE[this.course]} ${MISSION[this.mission]} 조회</h3>
     <p>팀이 매칭되었습니다.</p>
     <ul id="team-match-result">
-    ${CrewManageModel.match(COURSE[this.course])
-      .map((crew) => `<li>${crew}</li>`)
+    ${CrewManageModel.match([this.course])
+      .map((crew) => `<li>${crew.join(',')}</li>`)
       .join('')}
     </ul>
     <p>

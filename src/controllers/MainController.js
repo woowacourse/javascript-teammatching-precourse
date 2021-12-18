@@ -63,12 +63,15 @@ export default {
 
   onSubmitCourseAndMission({ course, mission }) {
     MatchingManageView.setCourse(course);
-    MatchingManageView.setMission(mission);
+    MatchingManageView.setMission(mission.replace('-', ''));
     MatchingManageView.hideMatchResult();
     this.renderView();
   },
 
   onSubmitMinCrewCount(count) {
+    if (!CrewManageModel.isValidMinCrewLengthInput(count)) {
+      return;
+    }
     CrewManageModel.setMinCrewLength(count);
     MatchingManageView.showMatchResult();
     this.renderView();
