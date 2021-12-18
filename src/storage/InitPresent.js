@@ -4,10 +4,11 @@ import TeamPresent from '../teamMaching/present.js';
 
 export default class InitPresent {
   constructor() {
-    this.$crewDiv = new CrewPresent();
     this.$teamDiv = new TeamPresent();
+    this.$crewDiv = new CrewPresent();
     this.$tabDiv = new TabPresent();
-    this.$body = document.querySelector('body');
+    this.$app = document.querySelector('#app');
+    this.$crewSection = document.querySelector('#crew-section');
     this.setClickEvent();
   }
 
@@ -20,7 +21,7 @@ export default class InitPresent {
 
     this.$crewDiv.style.visibility = 'visible';
     this.$teamDiv.style.visibility = 'hidden';
-    this.$body.insertBefore(this.$crewDiv, this.$body.childNodes[1]);
+    this.$app.insertBefore(this.$crewDiv, this.$app.childNodes[1]);
   }
 
   setCrewDiv() {
@@ -30,9 +31,10 @@ export default class InitPresent {
       console.log('click');
 
       this.$crewDiv.style.visibility = 'visible';
+      this.$crewSection.style.visibility = 'visible';
       this.$teamDiv.style.visibility = 'hidden';
 
-      this.$body.insertBefore(this.$crewDiv, this.$body.childNodes[1]);
+      this.$app.insertBefore(this.$crewDiv, this.$app.childNodes[1]);
     });
   }
 
@@ -43,9 +45,10 @@ export default class InitPresent {
       e.preventDefault();
 
       this.$teamDiv.style.visibility = 'visible';
+      this.$crewSection.style.visibility = 'hidden';
       this.$crewDiv.style.visibility = 'hidden';
 
-      this.$body.insertBefore(this.$teamDiv, this.$body.childNodes[1]);
+      this.$app.insertBefore(this.$teamDiv, this.$app.childNodes[1]);
     });
   }
 }

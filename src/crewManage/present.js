@@ -1,6 +1,6 @@
 export default class CrewPresent {
   constructor() {
-    this.$body = document.querySelector('body');
+    this.$app = document.querySelector('#app');
     this.showCrewPresent(true);
   }
 
@@ -45,6 +45,6 @@ export default class CrewPresent {
     </main>
     </div>`;
 
-    this.$body.insertAdjacentHTML('afterbegin', crewHtml);
+    this.$app.insertAdjacentHTML('afterbegin', crewHtml);
   }
 }
