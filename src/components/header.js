@@ -19,6 +19,7 @@ export default function Header() {
           </ul>
         </nav>
       </header>
+      <main id="main-container"></main>
     `;
   };
 

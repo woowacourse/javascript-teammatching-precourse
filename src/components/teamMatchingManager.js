@@ -1,23 +1,21 @@
 export default function TeamMatchingManager() {
-  this.container = document.querySelector('#app');
+  this.container = document.querySelector('#main-container');
 
   this.template = () => {
     return `
-      <main>
+      <section>
         ${this.optionFormTemplate()}
-      </main>
+      </section>
     `;
   };
 
   this.optionFormTemplate = () => {
     return `
-      <section>
-        <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
-        <form>
-          ${this.crewOptionTemplate()}
-          ${this.missionOptionTemplate()}
-        </form>
-      </section>
+      <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
+      <form>
+        ${this.crewOptionTemplate()}
+        ${this.missionOptionTemplate()}
+      </form>
     `;
   };
 
@@ -46,6 +44,6 @@ export default function TeamMatchingManager() {
   };
 
   this.render = () => {
-    this.container.innerHTML += this.template();
+    this.container.innerHTML = this.template();
   };
 }
