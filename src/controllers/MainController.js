@@ -15,7 +15,9 @@ export default {
       .on('@changeCourse', (e) => this.onChangeCourse(e.detail.course))
       .on('@submitCrewName', (e) => this.onSubmitCrew(e.detail))
       .on('@deleteCrew', (e) => this.onDeleteCrew(e.detail));
-    MatchingManageView.setup($('main'));
+    MatchingManageView.setup($('main')).on('@submitCourseAndMission', (e) =>
+      this.onSubmitCourseAndMission(e.detail),
+    );
     this.selectedTab = '크루 관리';
     this.renderView();
   },
@@ -55,5 +57,10 @@ export default {
     }
     CrewManageModel.delete(crew);
     this.renderView();
+  },
+
+  onSubmitCourseAndMission({ course, mission }) {
+    MatchingManageView.setCourse(course);
+    MatchingManageView.setMission(mission);
   },
 };

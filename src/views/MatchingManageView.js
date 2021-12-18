@@ -4,7 +4,34 @@ const MatchingManageView = { ...View };
 
 MatchingManageView.setup = function (element) {
   this.init(element);
+  this.bindEvent();
+  this.course;
+  this.mission;
   return this;
+};
+
+MatchingManageView.bindEvent = function () {
+  this.element.addEventListener('click', (e) => {
+    if (e.target.id === 'show-team-matcher-button') {
+      e.preventDefault();
+      this.onSubmitMissionAndCourse();
+    }
+  });
+};
+
+MatchingManageView.onSubmitMissionAndCourse = function () {
+  this.emit('@submitCourseAndMission', {
+    course: this.child('#course-select').value,
+    mission: this.child('#mission-select').value,
+  });
+};
+
+MatchingManageView.setMission = function (mission) {
+  this.mission = mission;
+};
+
+MatchingManageView.setCourse = function (course) {
+  this.course = course;
 };
 
 MatchingManageView.render = function () {
@@ -35,8 +62,6 @@ MatchingManageView.render = function () {
         </div>
         <h4>크루 목록</h4>
         <ul>
-          <li>준</li>
-          <li>포코</li>
         </ul>
       </div>
     </section>
