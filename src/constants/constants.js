@@ -3,9 +3,20 @@ export const TABS = {
   TEAM_MATCHING_TAB: '팀 매칭 관리',
 };
 
-export const FIELDS = {
-  FRONT_END: '프론트엔드',
-  BACK_END: '백엔드',
+export const COURSES = {
+  frontend: '프론트엔드',
+  backend: '백엔드',
+};
+
+export const MISSIONS = {
+  baseball: '숫자 야구 게임',
+  racingcar: '자동차경주',
+  lotto: '로또',
+  'shopping-cart': '장바구니',
+  payments: '결제',
+  subway: '지하철노선도',
+  performance: '성능개선',
+  deploy: '배포',
 };
 
 export const ERROR_MSG = {

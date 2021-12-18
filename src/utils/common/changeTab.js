@@ -20,7 +20,7 @@ export const changeTab = (e, state) => {
   }
 
   if (tab === TABS.TEAM_MATCHING_TAB) {
-    renderSelectBox();
+    renderSelectBox(state);
     return;
   }
 };

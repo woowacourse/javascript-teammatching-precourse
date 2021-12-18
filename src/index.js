@@ -9,7 +9,10 @@ function teamMatching() {
       frontend: [],
       backend: [],
     },
-    teamMatching: {},
+    teamMatching: {
+      course: '',
+      mission: '',
+    },
   };
 
   this.init = () => {

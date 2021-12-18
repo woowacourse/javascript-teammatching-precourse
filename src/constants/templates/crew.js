@@ -1,4 +1,4 @@
-import { FIELDS } from '../constants.js';
+import { COURSES } from '../constants.js';
 
 export const crewTemplates = {
   common: `
@@ -18,9 +18,7 @@ export const crewTemplates = {
       `,
   inputCrew(value) {
     return `
-      <h3>${
-        value === 'frontend' ? FIELDS.FRONT_END : FIELDS.BACK_END
-      } 크루 관리</h3>
+      <h3>${COURSES[value]} 크루 관리</h3>
       <form onsubmit="return false">
         <label>크루 이름</label>
         <input id="crew-name-input" type="text" />
@@ -32,10 +30,8 @@ export const crewTemplates = {
   crewTable(value) {
     return `  
      <section id="section_3">
-      <h3>${
-        value === 'frontend' ? FIELDS.FRONT_END : FIELDS.BACK_END
-      } 크루 목록</h3>
-      <table border="1">
+      <h3>${COURSES[value]} 크루 목록</h3>
+      <table border="1" id="crew-table">
         <thead>
           <tr>
             <th></th>
