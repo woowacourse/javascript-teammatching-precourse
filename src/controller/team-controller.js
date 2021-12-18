@@ -36,6 +36,15 @@ class TeamController {
         
     }
 
+    matchTeamByCount(count) {
+        const shuffledCrews = this.shuffleCrewList(this.model.crewList)
+        
+    }
+
+    shuffleCrewList(list) {
+        return MissionUtils.Random.shuffle(list);
+    }
+
     checkMemberCount(count) {
         return Number(count) && parseInt(count, 10) >= 1;
     }
