@@ -36,4 +36,12 @@ export default class TeamMatchingView {
     $selected.children[0].innerText = `백엔드 ${mission} 미션의 팀 매칭`;
     showElement($selected);
   }
+
+  renderCrewList(crewList) {
+    const $crewList = document.getElementById("show-list");
+    $crewList.innerHTML = "";
+    crewList.forEach((crew) => {
+      $crewList.innerHTML += `<li>${crew}</li>`;
+    });
+  }
 }

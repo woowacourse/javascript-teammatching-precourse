@@ -102,6 +102,11 @@ export default class Controller {
         course,
         mission
       );
+      if (course === "frontend") {
+        this.teamMathcingView.renderCrewList(this.crewModel.frontCrew);
+        return;
+      }
+      this.teamMathcingView.renderCrewList(this.crewModel.backCrew);
     });
   }
 }

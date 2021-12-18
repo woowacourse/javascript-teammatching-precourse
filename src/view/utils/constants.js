@@ -80,10 +80,7 @@ const matchingInfo = `<main>
           </form>
         </div>
         <h4>크루 목록</h4>
-        <ul>
-          <li>준</li>
-          <li>포코</li>
-        </ul>
+        <ul id="show-list"> </ul>
       </div>
     </section>
     <!-- 팀 매칭이 된 경우 -->
