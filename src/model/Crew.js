@@ -8,7 +8,7 @@ export default class Crew {
   }
 
   removeCrew = (targetCrew) => {
-    console.log(targetCrew);
+    // console.log(targetCrew);
   };
 
   setCrew = (newCrew) => {
