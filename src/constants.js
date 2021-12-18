@@ -43,3 +43,27 @@ export const CREW_TABLE = ['', '크루', '관리'];
 export const DELETE_BUTTON = { className: 'delete-crew-button', text: '삭제' };
 
 export const CREW_LIST_TITLE = '크루 목록';
+
+export const SELECT_COURSE_OPTION = [
+  { value: 'frontend', text: '프론트엔드' },
+  { value: 'backend', text: '백엔드' },
+];
+
+export const SELECT_MISSION_OPTION = [
+  { value: 'baseball', text: '숫자야구게임' },
+  { value: 'racingcar', text: '자동차경주' },
+  { value: 'lotto', text: '로또' },
+  { value: 'shopping-cart', text: '장바구니' },
+  { value: 'payments', text: '결제' },
+  { value: 'subway', text: '지하철노선도' },
+  { value: 'performance', text: '성능개선' },
+  { value: 'deploy', text: '배포' },
+];
+
+export const TEAM_MISSION_DOM_SELECTOR = {
+  courseSelect: 'course-select',
+  missionSelect: 'mission-select',
+  showTeamMatcherButton: 'show-team-matcher-button',
+};
+
+export const SELECT_COURSE_MISSION_TITLE = '팀 매칭을 관리할 코스, 미션을 선택하세요.';
