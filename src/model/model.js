@@ -1,5 +1,3 @@
-import { DIR } from '../constants/constants.js';
-
 export default class TeamModel {
   constructor(dataObj) {
     this._teamObj = dataObj;
@@ -10,7 +8,6 @@ export default class TeamModel {
   }
 
   addNewCrew(crewName, courseName) {
-    this._teamObj[courseName] = {};
-    this._[DIR.crew] = [];
+    this._teamObj[courseName]['crew'].push(crewName);
   }
 }
