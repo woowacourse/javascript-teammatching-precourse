@@ -25,7 +25,6 @@ const showCrews = () => {
   course = courseTypeChange(course);
   let result = ``;
 
-  console.log(crews);
   for (let i of crews) {
     if (i.course === course) {
       result = `<li>` + i.name + `</li>`;
@@ -104,7 +103,6 @@ const courseTypeChange = (course) => {
 const showTeams = (teams) => {
   document.getElementById('teamManage').insertAdjacentHTML('afterend', afterTeamMatch);
 
-  console.log(teams);
   for (let i = 0; i < teams.length; i++) {
     let teamMember = '';
     for (let j = 0; j < teams[i].length; j++) {

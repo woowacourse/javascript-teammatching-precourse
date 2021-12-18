@@ -123,7 +123,6 @@ const isNameValid = (name) => {
 };
 
 const isNameLengthUnderMaximum = (name) => {
-  console.log(name);
   if (name.length > 5) {
     alert('이름은 5글자 미만입니다');
     return false;
