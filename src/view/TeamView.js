@@ -27,6 +27,13 @@ export class TeamView {
     });
   }
 
+  setOnReMatchButtonClick(fn, headCountPerTeam, selectedCourse, selectedMission) {
+    $('#rematch-team-button').addEventListener('click', (e) => {
+      e.preventDefault();
+      fn(headCountPerTeam, selectedCourse, selectedMission);
+    });
+  }
+
   showMatchingQuestion(selectedCourse, selectedMission, crewList) {
     this.$teamMatchingSection.innerHTML = getMatchingQuestion(selectedCourse, selectedMission);
     this.showCrewList(crewList);
@@ -43,6 +50,7 @@ export class TeamView {
     this.showTeamList(teamList);
   }
   showTeamList(teamList) {
+    this.$teamMatchResult.innerHTML = '';
     for (let i = 0; i < teamList.length; i++) {
       this.$teamMatchResult.innerHTML += `<li>${teamList[i].join(',')}</li>`;
     }

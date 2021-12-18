@@ -19,6 +19,15 @@ export class TeamController {
     );
   }
 
+  triggerReMatchClickEvent(headCountPerTeam, selectedCourse, selectedMission) {
+    this.coreView.teamView.setOnReMatchButtonClick(
+      this.onReMatchButtonClick.bind(this),
+      headCountPerTeam,
+      selectedCourse,
+      selectedMission,
+    );
+  }
+
   onOptionsClick(selectedCourse, selectedMission) {
     const crewList = this.getCrewListFromModel(selectedCourse);
     this.coreView.teamView.showMatchingQuestion(selectedCourse, selectedMission, crewList);
@@ -26,6 +35,17 @@ export class TeamController {
   }
 
   onMatchButtonClick(headCountPerTeam, selectedCourse, selectedMission) {
+    const teamList = this.matchTeam(headCountPerTeam, selectedCourse);
+    this.coreView.teamView.showTeamMatchResult(selectedCourse, selectedMission, teamList);
+    this.triggerReMatchClickEvent(headCountPerTeam, selectedCourse, selectedMission);
+  }
+
+  onReMatchButtonClick(headCountPerTeam, selectedCourse) {
+    const teamList = this.matchTeam(headCountPerTeam, selectedCourse);
+    this.coreView.teamView.showTeamList(teamList);
+  }
+
+  matchTeam(headCountPerTeam, selectedCourse) {
     let crewList = this.getCrewListFromModel(selectedCourse);
     const teamNumber = Math.floor(crewList.length / headCountPerTeam);
     const teamList = create2DArray(teamNumber, headCountPerTeam);
@@ -33,7 +53,7 @@ export class TeamController {
     for (let i = 0; i < shuffleNumber.length; i++) {
       teamList[i % teamNumber].push(crewList[shuffleNumber[i]]);
     }
-    this.coreView.teamView.showTeamMatchResult(selectedCourse, selectedMission, teamList);
+    return teamList;
   }
 
   getCrewListFromModel(selectedCourse) {
