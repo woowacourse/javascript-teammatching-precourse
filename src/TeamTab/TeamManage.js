@@ -20,6 +20,15 @@ export default class TeamManage {
       this.matchCourseAndButton.bind(this);
     document.getElementById("match-team-button").onclick =
       this.matchMemeber.bind(this);
+    document.getElementById("rematch-team-button").onclick =
+      this.restart.bind(this); 
+  }
+
+  restart(e) {
+      e.preventDefault() 
+    document.getElementById("not-match").style.display = "block";
+    document.getElementById("match").style.display = "none";
+      
   }
 
   matchCourseAndButton(e) {
@@ -128,9 +137,7 @@ export default class TeamManage {
       const newMemberGroup = document.createElement("li");
       const newMember = lineMembers.splice(0, memberCount);
       const totalMember = this.crew.getCrew(this.kindOfCrew);
-      console.log(newMember);
       const newMeberList = newMember.map((num) => totalMember[num]);
-      console.log(totalMember);
       newMemberGroup.innerHTML = newMeberList.join(",");
       this.newMemberList.append(newMemberGroup);
     }
