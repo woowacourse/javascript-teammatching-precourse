@@ -1,8 +1,11 @@
 import { $ } from '../../common/element.js';
-import createMain from '../../view/Main/Main.js';
 
 function onTabClick(event) {
-  createMain(event.target);
+  const target = event.target.id;
+
+  if (target === 'crew-tab') {
+    $('crew-manage-nav').style.display = 'block';
+  }
 }
 
 export default function selectNav() {
