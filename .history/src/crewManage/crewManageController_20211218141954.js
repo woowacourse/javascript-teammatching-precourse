@@ -44,7 +44,7 @@ export default class CrewManageController {
       const name = this.$crewNameInput.value;
       const selectedState = this.checkRadioState();
       this.model.addCrew(selectedState, name);
-      this.renderCrews(this.model.getElementById(selectedState));
+      this.renderCrews(selectedState, this.model.getElementById(selectedState));
     } catch (err) {
       alert(err);
     }
@@ -65,7 +65,7 @@ export default class CrewManageController {
     this.renderCoursePage(selectedState);
   };
 
-  renderCrews = (crews) => {
+  renderCrews = (id, crews) => {
     this.view.renderCrewsTable(crews, this.$crewTableBody);
   };
 
