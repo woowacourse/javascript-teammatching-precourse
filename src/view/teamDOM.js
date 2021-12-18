@@ -21,7 +21,7 @@ export const teamResultDOM = () => {
 };
 
 
-export const restartDOM = () => {
+export const teamMatchingDOM = () => {
   const $teamMatchBefore = document.querySelector("#team-mathing-before");
   const $teamMatchResult = document.querySelector("#team-match-result");
 

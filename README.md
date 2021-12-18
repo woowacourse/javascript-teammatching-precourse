@@ -127,8 +127,8 @@
 
 [crewManage.js] : crew 관리에서 일어나는 로직에 대한 함수를 관리한다.
 
-- [ ] radio 버튼을 선택했을 때 eventListener, DOM 출력 (크루관리) - `selectCourseRadio`
-- [ ] 크루 관리 확인 버튼의 eventListener, 테이블 데이터 추가. (및 input 초기화) - `addCrewData`
+- [x] radio 버튼을 선택했을 때 eventListener, DOM 출력 (크루관리) - `selectCourseRadio`
+- [x] 크루 관리 확인 버튼의 eventListener, 테이블 데이터 추가. (및 input 초기화) - `addCrewData`
 - [ ] 크루 목록 삭제 버튼의 eventListener, 테이블 데이터 삭제. - `deleteCrewData`
   (삭제 시 confirm 이용하여 안내 창 넣어주기)
 
@@ -136,9 +136,9 @@
 
 [teamManage.js] : team 관리에서 일어나는 로직에 대한 함수를 관리한다.
 
-- [ ] 코스, 미션 선택 후 확인 버튼 eventListener, 팀 조회 창을 출력한다. 
+- [x] 코스, 미션 선택 후 확인 버튼 eventListener, 팀 조회 창을 출력한다. 
   (해당 <백/프론트> 트랙에 대한 팀 출력)
-- [ ] 팀 매칭 버튼 eventListener, input의 값에 의한 team 매칭 로직을 진행한다. -`teamMatching`
+- [x] 팀 매칭 버튼 eventListener, input의 값에 의한 team 매칭 로직을 진행한다. -`teamMatching`
 - [ ] 매칭 로직 함수, 매칭된 team을 return 하여 DOM에 표시해준다.
 
 

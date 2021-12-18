@@ -13,5 +13,5 @@ export const isSame = (value) => {
 };
 
 export const validateInput = (value) => {
-  return isNameLength(value) && isEmpty(value) && isSame(value);
+  return isNameLength(value) && isEmpty(value);
 };

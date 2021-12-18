@@ -2,6 +2,7 @@ import { crewManageDOM, addCrewDOM } from "../view/crewDOM.js";
 import { setCrewLocalStorage, getCrewLocalStorage } from "../data/localStorage.js";
 import { validateInput } from "./validation.js";
 
+//이벤트 리스너 초기화
 export const initCrewManage = () => {
   selectCourseRadio();
   addCrewData();

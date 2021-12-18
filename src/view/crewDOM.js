@@ -1,5 +1,4 @@
 import { selectCourse, crewManage_input, crewManage_table } from "../constants/doms.js";
-import { $crewTable } from "../constants/constants.js";
 
 export const initCrewDOM = () => {
   document.body.innerHTML += selectCourse;
