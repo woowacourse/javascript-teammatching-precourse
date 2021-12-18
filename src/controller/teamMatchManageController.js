@@ -55,8 +55,16 @@ export default class TeamMatchManager {
     const selectedCourse = allCourse.find(e => e.name === this.model.selectedCourse);
     const selectedMission = $(SELECTOR.missionSelect).value;
     const mission = selectedCourse.missionList.find(e => e.name === KEY_VALUE[selectedMission]);
+    const { crewList } = selectedCourse;
     mission.member = [];
     this.model.setAllCourse(allCourse);
+
+    this.view.renderTeamMatchingSettingTemplate(
+      $(SELECTOR.courseSelect).value,
+      selectedMission,
+      crewList,
+    );
+    this.addTeamMatchingSettingEventListeners();
   }
 
   addTeamMatchingSettingEventListeners() {
