@@ -15,12 +15,29 @@ export const DOM = {
   },
 };
 
+export const LOCALSTOTAGE = {
+  CREW_MANAGE: 'crewMange',
+};
+
+export const NUMBER = {
+  ONE: 1,
+};
+
+export const ERROR_MESSSAGE = {
+  BLANK_NAME: '크루 이름을 입력해주세요.',
+  OVER_SIX_LENGTH: '크루 이름은 5글자를 초과할 수 없습니다.',
+  NO_DUPLICATE: '이미 존재하는 크루의 이름을 추가할 수 없습니다.',
+};
+
 export const LENGTH_CHECK = {
   ONE: 1,
+  ZERO: 0,
+  FIVE: 5,
 };
 
 export const EVENT = {
   CLICK: 'click',
+  CHANGE: 'change',
 };
 
 export const RADIO_SELECT = {

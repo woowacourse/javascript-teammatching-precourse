@@ -1,3 +1,5 @@
+import { LENGTH_CHECK, ERROR_MESSSAGE, NUMBER } from '../utils/constant.js';
+
 export default class Input {
   constructor(render, targetCrew) {
     this.render = render;
@@ -5,8 +7,8 @@ export default class Input {
   }
 
   isBlank = ($crewNameInput) => {
-    if ($crewNameInput.value.trim().length === 0) {
-      this.render.alertMessage('크루 이름을 입력해주세요.');
+    if ($crewNameInput.value.trim().length === LENGTH_CHECK.ZERO) {
+      this.render.alertMessage(ERROR_MESSSAGE.BLANK_NAME);
 
       return true;
     }
@@ -14,8 +16,8 @@ export default class Input {
   };
 
   isOverLengthSix = ($crewNameInput) => {
-    if ($crewNameInput.value.length > 5) {
-      this.render.alertMessage('크루 이름은 5글자를 초과할 수 없습니다.');
+    if ($crewNameInput.value.length > LENGTH_CHECK.FIVE) {
+      this.render.alertMessage(ERROR_MESSSAGE.OVER_SIX_LENGTH);
 
       return true;
     }
@@ -24,8 +26,8 @@ export default class Input {
   };
 
   isDuplicate = ($crewNameInput) => {
-    if (this.targetCrew.getCrewList().find((crew) => crew[1] === $crewNameInput.value)) {
-      this.render.alertMessage('이미 존재하는 크루의 이름을 추가할 수 없습니다.');
+    if (this.targetCrew.getCrewList().find((crew) => crew[NUMBER.ONE] === $crewNameInput.value)) {
+      this.render.alertMessage(ERROR_MESSSAGE.NO_DUPLICATE);
 
       return true;
     }

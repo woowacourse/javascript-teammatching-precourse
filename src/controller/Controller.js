@@ -99,6 +99,7 @@ export default class Controller {
     if (eventTargetValue === RADIO_SELECT.BACKEND) {
       this.crewBackendTemplateRender();
       this.onClickAddCrewButton(this.backCrew);
+
       return;
     }
   };

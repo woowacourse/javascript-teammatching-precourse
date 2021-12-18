@@ -1,4 +1,4 @@
-import { DOM, LENGTH_CHECK, TEMPLATE } from '../utils/constant.js';
+import { DOM, LENGTH_CHECK, LOCALSTOTAGE, TEMPLATE } from '../utils/constant.js';
 
 export default class Render {
   constructor() {
@@ -16,7 +16,7 @@ export default class Render {
   crewManageTemplate = () => {
     const $main = document.querySelector(DOM.$MAIN);
     $main.innerHTML = TEMPLATE.CREW_MANAGE;
-    localStorage.setItem('crewManage', this.$app.innerHTML);
+    localStorage.setItem(LOCALSTOTAGE.CREW_MANAGE, this.$app.innerHTML);
   };
 
   checkLastChild = ($main, $section) => {
@@ -35,7 +35,7 @@ export default class Render {
     const $section = document.createElement(DOM.$SECTION);
     $section.innerHTML = TEMPLATE.CREW_FRONTEND;
     this.checkLastChild($main, $section);
-    localStorage.setItem('crewManage', this.$app.innerHTML);
+    localStorage.setItem(LOCALSTOTAGE.CREW_MANAGE, this.$app.innerHTML);
   };
 
   crewBackendTemplate = () => {
@@ -43,7 +43,7 @@ export default class Render {
     const $section = document.createElement(DOM.$SECTION);
     $section.innerHTML = TEMPLATE.CREW_BACKEND;
     this.checkLastChild($main, $section);
-    localStorage.setItem('crewManage', this.$app.innerHTML);
+    localStorage.setItem(LOCALSTOTAGE.CREW_MANAGE, this.$app.innerHTML);
   };
 
   crewTableTemplate = (targetCrew) => {
@@ -53,7 +53,7 @@ export default class Render {
     $tr.dataset.targetName = targetName;
     $tr.innerHTML = TEMPLATE.CREW_TD(targetCrew.getLastCrewIndex(), targetName);
     $tbody.appendChild($tr);
-    localStorage.setItem('crewManage', this.$app.innerHTML);
+    localStorage.setItem(LOCALSTOTAGE.CREW_MANAGE, this.$app.innerHTML);
   };
 
   teamSelectTemplate = () => {
