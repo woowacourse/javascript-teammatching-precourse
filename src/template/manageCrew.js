@@ -1,4 +1,5 @@
 import Crew from "../domain/Crew/Crew.js";
+import crewNameValid from "../util/crewNameValid.js";
 
 const frontCrew = new Crew();
 const backCrew = new Crew();
@@ -43,13 +44,18 @@ function manageCrew(value) {
 }
 
 function addCrew(name, value) {
-    if(value === "프론트엔드") {
-        frontCrew.addCrew(name);
+    if(!crewNameValid(name)) {
+        alert("잘못된 크루 이름입니다.");
     }
     else {
-        backCrew.addCrew(name);
+        if(value === "프론트엔드") {
+            frontCrew.addCrew(name);
+        }
+        else {
+            backCrew.addCrew(name);
+        }
+        displayCrewList(value);
     }
-    displayCrewList(value);
 }
 
 window.deleteCrew = (index, value) => {
