@@ -1,5 +1,13 @@
-import { COURSE_SELECT_OPTIONS, MISSION_SELECT_OPTIONS, STORAGE_KEY } from '../../utils/constants.js';
-import { getLocalStorage } from '../../utils/LocalStorage.js';
+import {
+  COURSE_KOR,
+  COURSE_SELECT_OPTIONS,
+  MISSION_KOR,
+  MISSION_SELECT_OPTIONS,
+  STORAGE_KEY
+} from '../../utils/constants.js';
+import { getLocalStorage, setLocalStorage } from '../../utils/LocalStorage.js';
+import { matchRandomTeam } from '../../utils/util.js';
+import { isValidTeamHeadCount } from '../../utils/validation.js';
 import Component from '../core/Component.js';
 
 export default class TeamManageContainer extends Component {
@@ -26,11 +34,15 @@ export default class TeamManageContainer extends Component {
     if (selectedCourse !== '' && selectedMission !== '') {
       if (!teams[selectedCourse] || (teams[selectedCourse] && !teams[selectedCourse][selectedMission]))
         this.$target.querySelector('#team-not-matched').innerHTML = this.printNotMatchedTeamSection();
+      else {
+        this.$target.querySelector('#team-matched').innerHTML = this.printMatchedTeamSection();
+      }
     }
   }
 
   setEvent() {
     this.showTeamMatcherClickHandler();
+    this.matchTeamClickHandler();
   }
 
   printSelectSection() {
@@ -50,14 +62,14 @@ export default class TeamManageContainer extends Component {
 
   printNotMatchedTeamSection() {
     return `
-    <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
+    <h3>${COURSE_KOR[this.$state.selectedCourse]} ${MISSION_KOR[this.$state.selectedMission]} 미션의 팀 매칭</h3>
     <div>
       <div>
         <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
-        <form>
+        <form id="match-team-form">
           <label>1팀당 인원 수</label>
           <input type="number" id="team-member-count-input"/>
-          <button id="match-team-button">팀 매칭</button>
+          <button id="match-team-button" type="submit">팀 매칭</button>
         </form>
       </div>
       ${this.printCrewList()}
@@ -74,6 +86,22 @@ export default class TeamManageContainer extends Component {
     `;
   }
 
+  printMatchedTeamSection() {
+    return `
+    <h3>${COURSE_KOR[this.$state.selectedCourse]} ${MISSION_KOR[this.$state.selectedMission]} 조회</h3>
+      <p>팀이 매칭되었습니다.</p>
+      <ul>
+        ${this.$state.teams[this.$state.selectedCourse][this.$state.selectedMission]
+          .map((team) => `<li>${team}</li>`)
+          .join('')}
+      </ul>
+      <p>
+        팀을 재매칭 하시겠습니까?
+        <button>재매칭</button>
+      </p>
+    `;
+  }
+
   showTeamMatcherClickHandler() {
     this.addEvent('click', '#show-team-matcher-button', (event) => {
       event.preventDefault();
@@ -83,5 +111,29 @@ export default class TeamManageContainer extends Component {
         selectedMission: this.$target.querySelector('#mission-select').value
       });
     });
+  }
+
+  matchTeamClickHandler() {
+    this.addEvent('submit', '#match-team-form', (event) => {
+      event.preventDefault();
+
+      const headCount = this.$target.querySelector('#team-member-count-input').value;
+
+      if (isValidTeamHeadCount(headCount, this.$state.crews[this.$state.selectedCourse].length)) {
+        const shuffledTeam = matchRandomTeam(this.$state.crews[this.$state.selectedCourse], headCount);
+        this.setState({
+          teams: Object.assign(this.$state.teams, {
+            [this.$state.selectedCourse]: {
+              [this.$state.selectedMission]: shuffledTeam
+            }
+          })
+        });
+        this.saveTeamsInStroage();
+      }
+    });
+  }
+
+  saveTeamsInStroage() {
+    setLocalStorage(STORAGE_KEY.TEAM, this.$state.teams);
   }
 }
