@@ -1,7 +1,7 @@
 import { ELEMENT_SELECTOR } from '../constants/index.js';
 import createAction from '../flux/actionCreator.js';
 
-export const UPDATE_ACTIVE_TAB_PANE = 'team-matching/tab-pane/UPDATE_ACTIVE_TAB_PANE';
+export const UPDATE_ACTIVE_TAB_PANE = 'team-matching-board/tab-pane/UPDATE_ACTIVE_TAB_PANE';
 
 export const updateActiveTabPaneAction = (tabPaneId) => {
   return createAction(UPDATE_ACTIVE_TAB_PANE, tabPaneId);
