@@ -17,6 +17,7 @@ const ID = Object.freeze({
   crewTableTbody: 'crew-table-tbody',
   matchTeamSection: 'match-team-section',
   showMatchedTeamSection: 'show-matched-team-section',
+  courseSelectSection: 'course-select-section',
 });
 
 const CLASS = Object.freeze({
@@ -30,7 +31,9 @@ const CLASS = Object.freeze({
 const COURSE = Object.freeze({
   course: 'course',
   frontend: 'frontend',
+  frontendKor: '프론트엔드',
   backend: 'backend',
+  backendKor: '백엔드',
 });
 
 const MISSION = Object.freeze({

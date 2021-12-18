@@ -5,10 +5,6 @@ export default class TeamModel {
     this._teamObj = dataObj;
   }
 
-  test() {
-    console.log(this.teamObj);
-  }
-
   get teamObj() {
     return this._teamObj ?? {};
   }

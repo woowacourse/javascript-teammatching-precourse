@@ -24,4 +24,18 @@ export default class SubwayView {
       target.innerHTML = '';
     }
   }
+
+  renderTable(table, data) {
+    table.insertAdjacentHTML('beforeend', data);
+    this.clearInput();
+  }
+
+  clearInput() {
+    $.crewNameInput().value = '';
+  }
+
+  showCourseSelectSection(course) {
+    this.clearTarget($.courseSelectSection());
+    this.renderInTarget($.courseSelectSection(), $.courseSelectSectionHTML(course));
+  }
 }

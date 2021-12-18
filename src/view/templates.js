@@ -18,7 +18,7 @@ const templates = Object.freeze({
 `,
 
   crewManagerTabHTML: `
-  <main class="${CLASS.tab} ${CLASS.crewTabBox}">
+<main class="${CLASS.tab} ${CLASS.crewTabBox}">
     <section>
       <h3>크루를 관리할 코스를 선택해주세요</h3>
       <div>
@@ -28,8 +28,15 @@ const templates = Object.freeze({
         <label for=${COURSE.backend}>백엔드</label>
       </div>
     </section>
-    <section>
-      <h3>프론트엔드 크루 관리</h3>
+
+    <section id="${ID.courseSelectSection}"></section>
+
+</main>
+
+`,
+
+  courseSelectSectionHTML: (courseName) => `
+      <h3>${courseName} 크루 관리</h3>
       <form>
         <label>크루 이름</label>
         <input type="text" id=${ID.crewNameInput} />
@@ -37,7 +44,7 @@ const templates = Object.freeze({
       </form>
     </section>
     <section>
-      <h3>프론트엔드 크루 목록</h3>
+      <h3>${courseName} 크루 목록</h3>
       <table id=${ID.crewTable} border="1">
         <thead>
           <tr>
@@ -52,9 +59,8 @@ const templates = Object.freeze({
 
         </tbody>
       </table>
-    </section>
   </main>
-`,
+    `,
 
   crewTableTbodyHTML: (order, crewName) => `
     <tr>
@@ -152,6 +158,7 @@ const templates = Object.freeze({
   crewTableTbody: () => document.getElementById(`${ID.crewTableTbody}`),
   matchTeamSection: () => document.getElementById(`${ID.matchTeamSection}`),
   showMatchedTeamSection: () => document.getElementById(`${ID.showMatchedTeamSection}`),
+  courseSelectSection: () => document.getElementById(`${ID.courseSelectSection}`),
 
   crewTab: () => document.querySelector(`.${CLASS.crewTabBox}`),
   teamTab: () => document.querySelector(`.${CLASS.teamTabBox}`),
