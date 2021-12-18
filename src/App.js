@@ -13,7 +13,7 @@ export default class App extends Component {
     this.$state = {
       curTab: ID.CREW_TAB,
       tabItems: TAB_MENU.map(({ id, title }, index) => ({ seq: index, id, title })),
-      tabData: {},
+      data: {},
     };
   }
 
@@ -30,13 +30,13 @@ export default class App extends Component {
   }
 
   mounted() {
-    const { curTab, tabItems, tabData } = this.$state;
+    const { curTab, tabItems, data } = this.$state;
     const { changeTab } = this;
     const $header = this.$target.querySelector('[data-component="header"]');
     const $main = this.$target.querySelector(`[data-component="${curTab}"]`);
 
     new Header($header, { tabItems, changeTab: changeTab.bind(this) });
-    new Main($main, { tabID: curTab, tabData });
+    new Main($main, { tabID: curTab, data });
   }
 
   changeTab(seq) {
