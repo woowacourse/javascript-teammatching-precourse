@@ -63,11 +63,14 @@ class TeamManage {
 
     const crewCount = this.$teamCrewList.childElementCount;
     const matchCount = Number(this.$countInput.value);
-
     if (!isValidCount(crewCount, matchCount)) {
       return;
     }
 
+    this.printResults(crewCount, matchCount);
+  }
+
+  printResults(crewCount, matchCount) {
     const teamCountArray = this.getTeamCountArray(crewCount, matchCount);
     const teamShuffleArray = this.getTeamShuffleList(crewCount, teamCountArray);
 
@@ -75,11 +78,11 @@ class TeamManage {
     this.$matchResult = $(`#${ID.TEAM_MATCH_RESULT}`);
 
     teamShuffleArray.forEach(arr => {
-      this.printResult(this.getTeamName(arr));
+      this.printResultBlock(this.getTeamName(arr));
     });
   }
 
-  printResult(arr) {
+  printResultBlock(arr) {
     this.$matchResult.innerHTML += `
        ${resultContents(arr)}
     `;
