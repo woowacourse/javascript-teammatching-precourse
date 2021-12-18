@@ -66,14 +66,26 @@ export const COURSES = [
 ];
 export const MISSION_ID = "mission-select";
 export const MISSIONS = [
-  ["숫자야구게임", "baseball"],
-  ["자동차경주", "racingcar"],
+  ["숫자 야구 게임", "baseball"],
+  ["자동차 경주", "racingcar"],
   ["로또", "lotto"],
   ["장바구니", "shopping-cart"],
   ["결제", "payments"],
-  ["지하철노선도", "subway"],
-  ["성능개선", "performance"],
+  ["지하철 노선도", "subway"],
+  ["성능 개선", "performance"],
   ["배포", "deploy"],
 ];
 export const CHECK_BUTTON_ID = "show-team-matcher-button";
 export const CHECK_BUTTON_TEXT = "확인";
+
+export const MATCHING_FORM_LABEL = "1팀당 인원 수";
+export const MATCHING_FORM_INPUT = "team-member-count-input";
+export const MATCHING_FORM_BUTTON = "match-team-button";
+export const MATCHING_FORM_BUTTON_TEXT = "팀 매칭";
+export const NO_MATCHING_P = "아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?";
+export const MATCHING_P = "팀이 매칭되었습니다.";
+export const MATCHING_RESULT = "team-match-result";
+export const CREW_LIST = "크루 목록";
+export const REMATCHING_TEXT = "팀을 재매칭 하기겠습니까?";
+export const REMATCHING_BUTTON = "rematch-team-button";
+export const REMATCHING_BUTTON_TEXT = "재매칭";
