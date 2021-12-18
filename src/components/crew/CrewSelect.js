@@ -1,12 +1,15 @@
 import { ID } from '../../constants/index.js';
+import State from '../../observer/State.js';
 import { $ } from '../../utils/selector.js';
 import CrewInput from './CrewInput.js';
+import CrewTable from './CrewTable.js';
 
 class CrewSelect {
   constructor($selectSection, $manageSection, $resultSection) {
     this.$selectSection = $selectSection;
     this.$manageSection = $manageSection;
     this.$resultSection = $resultSection;
+    this.state = new State();
 
     this.addTemplate();
     this.selectDom();
@@ -44,7 +47,8 @@ class CrewSelect {
     const { id } = e.target;
 
     if (id === ID.FRONTEND_COURSE || id === ID.BACKEND_COURSE) {
-      new CrewInput(this.$manageSection, this.$resultSection, textContent);
+      new CrewInput(this.$manageSection, textContent, this.state);
+      new CrewTable(this.$resultSection, textContent, this.state);
     }
   }
 }

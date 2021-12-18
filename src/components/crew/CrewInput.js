@@ -4,10 +4,10 @@ import { $ } from '../../utils/selector.js';
 import { isValidCrewName } from '../../utils/valid.js';
 
 class CrewInput {
-  constructor($manageSection, $resultSection, courseName) {
+  constructor($manageSection, courseName, state) {
     this.$manageSection = $manageSection;
-    this.$resultSection = $resultSection;
     this.courseName = courseName;
+    this.state = state;
 
     this.addTemplate();
     this.selectDom();
@@ -38,11 +38,12 @@ class CrewInput {
     e.preventDefault();
 
     const { value } = this.$nameInput;
-    if (!isValidCrewName(value)) {
+    if (!isValidCrewName(value, this.courseName)) {
       return;
     }
 
     this.updateLocalStorage(value);
+    this.state.updateState();
   }
 
   updateLocalStorage(value) {
