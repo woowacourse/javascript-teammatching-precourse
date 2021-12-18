@@ -7,7 +7,14 @@ import {
 } from './validators/CrewMember.js';
 import { $ } from '../utils/dom.js';
 
-import { SELECTOR, FRONT_END, BACK_END, FRONT_END_COURSE, BACK_END_COURSE } from '../constants.js';
+import {
+  SELECTOR,
+  FRONT_END,
+  BACK_END,
+  FRONT_END_COURSE,
+  BACK_END_COURSE,
+  MESSAGE,
+} from '../constants.js';
 
 class CrewManageController {
   constructor() {
@@ -43,6 +50,8 @@ class CrewManageController {
       );
     } else if (id === SELECTOR.addCrewButttonId) {
       this.onClickAddCrewButton(event);
+    } else if (id === SELECTOR.deleteCrewButttonId) {
+      this.onClickDeleteCrewButton(event);
     }
   }
 
@@ -76,6 +85,28 @@ class CrewManageController {
       validateMemberNameUnique(name, this.$crewManageModel.getBackEndMember()) &&
       validateMemberNameUnderFiveLetter(name)
     );
+  }
+
+  onClickDeleteCrewButton(event) {
+    const isDelete = window.confirm(MESSAGE.deleteConfirm);
+    if (!isDelete) return;
+
+    const crewName = event.target.closest('tr').children[1].innerHTML;
+    const currentCourse = this.$crewManageModel.getCrewCourse();
+
+    if (currentCourse === FRONT_END_COURSE) {
+      this.$crewManageModel.deleteFrontEndMember(crewName);
+      this.$crewManageView.renderCrewManageTable(
+        FRONT_END,
+        this.$crewManageModel.getFrontEndMember(),
+      );
+    } else if (currentCourse === BACK_END_COURSE) {
+      this.$crewManageModel.deleteBackEndMember(crewName);
+      this.$crewManageView.renderCrewManageTable(
+        BACK_END,
+        this.$crewManageModel.getBackEndMember(),
+      );
+    }
   }
 }
 

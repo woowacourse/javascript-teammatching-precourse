@@ -25,6 +25,18 @@ class CrewManageModel {
   setBackEndMember(members) {
     Store.setLocalStorage(STORAGE_KEY.crewBackEndMember, members);
   }
+
+  deleteFrontEndMember(memberName) {
+    const frontendMembers = this.getFrontEndMember();
+    const filterMembers = frontendMembers.filter(member => member.name !== memberName);
+    Store.setLocalStorage(STORAGE_KEY.crewFrontEndMember, filterMembers);
+  }
+
+  deleteBackEndMember(memberName) {
+    const backendMembers = this.getBackEndMember();
+    const filterMembers = backendMembers.filter(member => member.name !== memberName);
+    Store.setLocalStorage(STORAGE_KEY.crewBackEndMember, filterMembers);
+  }
 }
 
 export default CrewManageModel;

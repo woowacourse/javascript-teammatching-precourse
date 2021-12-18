@@ -44,6 +44,8 @@ export const STORAGE_KEY = Object.freeze({
 });
 
 export const MESSAGE = Object.freeze({
+  deleteConfirm: '정말로 삭제 하시겠습니까?',
+
   // 크루 이름 관련
   crewNameIsRequired: '크루 이름을 입력해주세요.',
   crewNameHaveToUnique: '존재하는 크루 이름입니다.',
