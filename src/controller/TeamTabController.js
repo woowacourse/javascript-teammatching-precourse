@@ -32,7 +32,6 @@ export default class TeamTabController {
 
     // paint
     $(`#${ID.MAIN}`).innerHTML = teamTabTemplate;
-    // this.load
     this.paintCrewsByChoice(this.courseChoice);
 
     if (this.isMatchEnd) {
@@ -65,7 +64,6 @@ export default class TeamTabController {
     e.preventDefault();
     this.$courseChoice = $(`#${ID.COURSE_SELECT}`);
     this.$missionChoice = $(`#${ID.MISSION_SELECT}`);
-    // console.log(this.$courseChoice.value, this.$missionChoice.value);
 
     this.paintCrewsByChoice(this.$courseChoice.value);
 

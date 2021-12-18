@@ -71,7 +71,6 @@ export default class CrewTabController {
     $btn.addEventListener('click', this.handleDelete);
     $td.appendChild($btn);
 
-    // $tr.classList.add(CLASS.PRODUCT_MANAGE_ITEM);
     $tr.innerHTML = `
       <td>${id}</td>
       <td>${name}</td>
