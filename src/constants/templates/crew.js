@@ -1,6 +1,6 @@
 import { FIELDS } from '../constants.js';
 
-export const templates = {
+export const crewTemplates = {
   common: `
     <section id="section_1"></section>
     <section id="section_2"></section>  

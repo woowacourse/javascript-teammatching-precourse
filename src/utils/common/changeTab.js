@@ -2,6 +2,7 @@ import $ from './selector.js';
 import { TABS } from '../../constants/constants.js';
 import { renderRadioButtons } from '../manageCrew/renderRadioButtons.js';
 import { renderCrew } from '../manageCrew/renderCrew.js';
+import { renderSelectBox } from '../manageTeam/renderSelectBox.js';
 
 export const changeTab = (e, state) => {
   const tab = e.target.innerText;
@@ -19,6 +20,7 @@ export const changeTab = (e, state) => {
   }
 
   if (tab === TABS.TEAM_MATCHING_TAB) {
+    renderSelectBox();
     return;
   }
 };

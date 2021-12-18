@@ -1,10 +1,10 @@
 import $ from '../common/selector.js';
-import { templates } from '../../constants/templates/crew.js';
+import { crewTemplates } from '../../constants/templates/crew.js';
 import { addCrew } from './addCrew.js';
 import { removeCrew } from './removeCrew.js';
 
 export const renderCrew = async (state, value) => {
-  const { inputCrew, crewTable, crew } = templates;
+  const { inputCrew, crewTable, crew } = crewTemplates;
   const crewList = state.crew[value].map((item, i) => crew(item, i)).join('');
 
   $('#section_2').innerHTML = inputCrew(value);
