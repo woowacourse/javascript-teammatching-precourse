@@ -42,6 +42,7 @@ export default class ClickEventManager {
     $('#crew-name-input').value = '';
 
     DOM.showCrewList(courseType);
+    DOM.showCrewUnorderedList($('#course-select').value);
   }
 
   crewDelete(event) {
@@ -56,6 +57,7 @@ export default class ClickEventManager {
     DB.overwrite(keyName, temporaryCrew);
 
     DOM.showCrewList(DOM.getCourseType());
+    DOM.showCrewUnorderedList($('#course-select').value);
   }
 
   showTeamMatcher() {
