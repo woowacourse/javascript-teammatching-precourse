@@ -7,9 +7,16 @@ export default class VendingMachineView {
 
   render() {
     this.renderTitle();
+    this.renderContent();
   }
 
   renderTitle() {
     this.app.innerHTML = title.header;
+  }
+
+  renderContent() {
+    const contentContainer = document.createElement("main");
+    contentContainer.setAttribute("id", "content-container");
+    this.app.appendChild(contentContainer);
   }
 }
