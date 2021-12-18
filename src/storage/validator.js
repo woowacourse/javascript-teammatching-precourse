@@ -35,3 +35,12 @@ export function checkName(name, peopleList) {
 
   return false;
 }
+
+export function checkCount(count, peopleListLen) {
+  if (count > peopleListLen) {
+    alert('크루원 수보다 작은 수를 입력해주세요.');
+    return;
+  }
+
+  return true;
+}

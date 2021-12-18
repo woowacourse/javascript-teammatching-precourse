@@ -1,3 +1,4 @@
+import { checkCount } from '../storage/validator.js';
 import Model from './Model.js';
 import View from './View.js';
 
@@ -40,8 +41,21 @@ export default class Controller {
       e.preventDefault();
 
       const count = this.$countInput.value;
+      this.setTeam(this.model.selectInfo[0], count);
       console.log(count);
     });
+  }
+
+  setTeam(course, count) {
+    if (course == 'frontend') {
+      if (!checkCount(count, this.model.FrontPeopleList.length)) {
+        return;
+      }
+    } else if (course == 'backend') {
+      if (!checkCount(count, this.model.BackPeopleList.length)) {
+        return;
+      }
+    }
   }
 
   addPeopleList(peopleList) {
