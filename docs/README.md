@@ -5,7 +5,7 @@
 > `크루 관리` 탭은 크루를 추가하거나 삭제하기 위한 기능을 수행한다.
 > `팀 매칭 관리` 탭은 팀 매칭을 하기 위한 기능을 수행한다.
 
-- [ ] 제공하는 마크업을 활용하여 html을 작성한다
+- [x] 제공하는 마크업을 활용하여 html을 작성한다
 - [ ] 크루 관리를 클릭할 수 있다
 - [ ] 팀 매칭 관리 클릭할 수 있다
 - [ ] 다른 탭으로 이동했다 돌아와도 기존 탭의 상태가 유지되어야 한다
@@ -66,35 +66,35 @@
 
 각 요소에 아래와 같은 선택자를 반드시 지정한다.
 
-- [ ] `크루 관리` 버튼의 메뉴 id는 `crew-tab`이다.
-- [ ] `팀 관리` 버튼의 메뉴 id는 `team-tab`이다.
+- [x] `크루 관리` 버튼의 메뉴 id는 `crew-tab`이다.
+- [x] `팀 관리` 버튼의 메뉴 id는 `team-tab`이다.
 
 ### 크루 관리 탭
 
 **코스 선택 radio input**
 
-- [ ] 프론트엔드 코스 선택 radio input의 id는 `frontend-course`이다.
-- [ ] 백엔드 코스 선택 radio input의 id는 `backend-course`이다.
+- [x] 프론트엔드 코스 선택 radio input의 id는 `frontend-course`이다.
+- [x] 백엔드 코스 선택 radio input의 id는 `backend-course`이다.
 
 **크루 추가/삭제 button**
 
-- [ ] 크루 이름을 입력하기 위한 input의 id는`crew-name-input`이다.
-- [ ] 크루 추가를 위한 확인 버튼의 id는 `add-crew-buttton`이다.
-- [ ] 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-buttton`이다.
+- [x] 크루 이름을 입력하기 위한 input의 id는`crew-name-input`이다.
+- [x] 크루 추가를 위한 확인 버튼의 id는 `add-crew-buttton`이다.
+- [x] 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-buttton`이다.
 
 **크루 table**
 
-- [ ] 크루 목록을 보여주기 위한 table의 id는 `crew-table`이다.
+- [x] 크루 목록을 보여주기 위한 table의 id는 `crew-table`이다.
 
 ### 팀 매칭 관리 탭
 
-- [ ] 코스를 선택하는 select의 id는 `course-select`이다.
-- [ ] 미션을 선택하는 select의 id는 `mission-select`이다.
-- [ ] 미션에 해당하는 팀을 관리하기 위한 확인 버튼의 id는 `show-team-matcher-button`이다.
-- [ ] 팀 매칭을 위한 인원 입력 요소의 id는 `team-member-count-input`이다.
-- [ ] 팀 매칭을 위한 버튼의 id는 `match-team-button`이다.
-- [ ] 팀 매칭 결과를 보여주기 위한 ul의 id는 `team-match-result`이다.
-- [ ] 팀 재매칭을 위한 버튼의 id는 `rematch-team-button`이다.
+- [x] 코스를 선택하는 select의 id는 `course-select`이다.
+- [x] 미션을 선택하는 select의 id는 `mission-select`이다.
+- [x] 미션에 해당하는 팀을 관리하기 위한 확인 버튼의 id는 `show-team-matcher-button`이다.
+- [x] 팀 매칭을 위한 인원 입력 요소의 id는 `team-member-count-input`이다.
+- [x] 팀 매칭을 위한 버튼의 id는 `match-team-button`이다.
+- [x] 팀 매칭 결과를 보여주기 위한 ul의 id는 `team-match-result`이다.
+- [x] 팀 재매칭을 위한 버튼의 id는 `rematch-team-button`이다.
 
 <br>
 
