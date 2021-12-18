@@ -37,7 +37,9 @@
 
     - [ ] 크루 이름을 입력하기 위한 input의 id는`crew-name-input`이다.
     - [ ] 크루 추가를 위한 확인 버튼의 id는 `add-crew-buttton`이다.
+      - 제시된 id가 오타인 것으로 판단되어 button으로 수정
     - [ ] 크루 삭제를 위한 삭제 버튼의 class는 `delete-crew-buttton`이다.
+      - 제시된 id가 오타인 것으로 판단되어 button으로 수정
 
   - [ ] **크루 table**
     - [ ] 크루 목록을 보여주기 위한 table의 id는 `crew-table`이다.
