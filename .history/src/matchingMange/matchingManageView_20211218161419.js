@@ -52,11 +52,9 @@ export default class MatchingManageView {
   };
 
   renderMatchingResult = (shuffledCrews, container) => {
-    const template = shuffledCrews
-      .map((crews) => {
-        return `<li>${crews.join(",")}</li>`;
-      })
-      .join("");
-    container.innerHTML = template;
+    const template = shuffledCrews.forEach((crews) => {
+      return `<li>${crews.join(",")}</li>`;
+    });
+    container.innerHTML = "template";
   };
 }
