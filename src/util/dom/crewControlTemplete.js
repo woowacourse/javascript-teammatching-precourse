@@ -37,31 +37,13 @@ export function controlCrewListTemplete(courseName) {
   return controlCrewListTemplete;
 }
 
-export function CrewListTemplete(crewList) {
+export function CrewListTemplete(crew, index) {
   const divFragment = document.createElement('tr');
-  const div = document.createElement('tr');
-  let temp ="";
-  if (crewList) {
-    const crewListTemplete = crewList.map((crew, index) => `
-    <td>${index}</td>
+  const crewTemplete = `
+    <td>${index + 1}</td>
     <td>${crew}</td>
     <td><button class="delete-crew-buttton">삭제</button></td>
-    `).join('');
-    divFragment.innerHTML = crewListTemplete;
-    return divFragment;
-  }
-
-
-  // for (let i = 0; i < crewList.length; i++) {
-  //   console.log("실해")
-  //   temp += `<td>${i+1}</td>
-  //   <td>${crewList[i]}</td>
-  //   <button class="delete-crew-buttton">삭제</button>
-  //   `;
-  //   div.innerHTML = temp;
-  // }
-  // divFragment.append (div)
-
-
-
+  `;
+  divFragment.innerHTML = crewTemplete;
+  return divFragment;
 }

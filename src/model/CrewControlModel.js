@@ -32,4 +32,15 @@ export default class CrewControlModel {
     return fromLocalBackCrew;
   }
 
+  handleDeleteCrew(course, deleteCrewIndex) {
+    let deleteCourse;
+    course === '프론트엔드'
+    ? deleteCourse = JSON.parse(localStorage.getItem("FRONT_CREW"))
+    : deleteCourse = JSON.parse(localStorage.getItem("BACK_CREW"));
+    deleteCourse.find((crew, index) => index === deleteCrewIndex - 1 ? deleteCourse.splice(index, 1) : "");
+    course === '프론트엔드'
+    ? localStorage.setItem("FRONT_CREW", JSON.stringify(deleteCourse))
+    : localStorage.setItem("BACK_CREW", JSON.stringify(deleteCourse));
+  }
+
 }

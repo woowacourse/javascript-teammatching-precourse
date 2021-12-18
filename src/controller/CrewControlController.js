@@ -21,4 +21,8 @@ export default class CrewControlController {
     this.backCrew = this.crewControlView.fromLocalBackCrew();
   }
 
+  setDeleteCrew() {
+    this.crewControlView.handleDeleteCrew(this.course, this.deleteCrewIndex);
+  }
+
 }

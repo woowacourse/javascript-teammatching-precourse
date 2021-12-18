@@ -45,9 +45,25 @@ export default class CrewControlView extends CrewControlController {
     const crewListField = document.querySelector('#crew-list-field')
     crewListField.innerHTML = "";
     this.course === '프론트엔드'
-    ? this.crewListTemplete = CrewListTemplete(this.frontCrew)
-    : this.crewListTemplete = CrewListTemplete(this.backCrew);
-    this.crewListTemplete && crewListField.append(this.crewListTemplete);
+    ? this.crewListTemplete = this.frontCrew && this.frontCrew.map((crew, index) => CrewListTemplete(crew, index))
+    : this.crewListTemplete = this.backCrew && this.backCrew.map((crew, index) => CrewListTemplete(crew, index));
+    this.crewListTemplete ? this.crewListTemplete.map(v => crewListField.append(v)) : "";
+    this.crewDelete();
   }
 
+  crewDelete() {
+    [...this.crewControlField.querySelectorAll('.delete-crew-buttton')].map(deleteButton => {
+      deleteButton.addEventListener('click', ({ target }) => {
+        if (confirm('정말 삭제하시겠습니까?')) {
+          this.deleteCrewIndex = target.parentNode.parentNode.childNodes[1].innerText;
+          target.parentNode.parentNode.remove();
+          this.setDeleteCrew();
+          this.getLocalFrontCrew();
+          this.getLocalBackCrew();
+          this.renderCrewList();
+        } 
+      })
+    })
+  }
+  
 }
