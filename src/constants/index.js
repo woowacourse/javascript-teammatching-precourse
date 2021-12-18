@@ -16,3 +16,11 @@ export const ID = {
   DELETE_CREW_BUTTON: 'delete-crew-buttton',
   CREW_TABLE: 'crew-table',
 };
+
+export const NUM = {
+  MAX_CREW_NAME: 5,
+};
+
+export const ERROR = {
+  CREW_NAME_IS_LONG: `크루 이름은 ${NUM.MAX_CREW_NAME}자가 초과되지 않도록 입력해주세요.`,
+};

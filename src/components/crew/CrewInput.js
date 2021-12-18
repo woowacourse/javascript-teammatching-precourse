@@ -1,5 +1,6 @@
 import { ID } from '../../constants/index.js';
 import { $ } from '../../utils/selector.js';
+import { isValidCrewName } from '../../utils/valid.js';
 
 class CrewInput {
   constructor($manageSection, $resultSection, courseName) {
@@ -34,7 +35,12 @@ class CrewInput {
 
   clickButton(e) {
     e.preventDefault();
+
     console.log(this.$nameInput.value);
+    const { value } = this.$nameInput;
+    if (!isValidCrewName(value)) {
+      return;
+    }
   }
 }
 
