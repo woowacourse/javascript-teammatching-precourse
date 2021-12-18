@@ -65,7 +65,17 @@ export default class CrewEvent {
             crew[name] = { course: course}; //중복 체크
             localStorage.setItem("CrewFront", JSON.stringify(crew));
         }
+    }
 
+    static storeBackCrew(name, course) {
+        const crew = JSON.parse(localStorage.getItem("CrewBack"));
+
+        if(localStorage.getItem("CrewBack") === null) {
+            localStorage.setItem("CrewBack", JSON.stringify({ [name]: { course: course}})); // 새로 저장
+        } else {
+            crew[name] = { course: course}; //중복 체크
+            localStorage.setItem("CrewBack", JSON.stringify(crew));
+        }
     }
 
        //이거 조금 이상함
