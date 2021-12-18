@@ -1,5 +1,5 @@
 import { templates as $ } from '../view/templates.js';
-import { ID, CLASS, COURSE, MISSION, KEY } from '../constants/constants.js';
+import { ID, CLASS, COURSE, MISSION, KEY, MESSAGE } from '../constants/constants.js';
 
 export default class TeamController {
   constructor(model, view) {
@@ -26,16 +26,20 @@ export default class TeamController {
     this.view.showCourseSelectSection(COURSE.frontendKor);
     this.view.showTab($.crewTab());
     const courses = document.getElementsByName(COURSE.course);
-    courses.forEach((course) => course.addEventListener('click', () => this.loadCourseSelectSection(course)));
+    courses.forEach((course) =>
+      course.addEventListener('click', () => {
+        this.courseName = course.value;
+        this.loadCourseSelectSection(course);
+      }),
+    );
     $.addCrewButton().addEventListener('click', (e) => this.getCrewNameInput(e));
     this.showCrewTable();
   }
 
-  loadCourseSelectSection(course) {
-    this.courseName = course.value;
-    if (course.value === 'frontend') {
+  loadCourseSelectSection() {
+    if (this.courseName === 'frontend') {
       this.view.showCourseSelectSection(COURSE.frontendKor);
-    } else if (course.value === 'backend') {
+    } else if (this.courseName === 'backend') {
       this.view.showCourseSelectSection(COURSE.backendKor);
     }
     $.addCrewButton().addEventListener('click', (e) => this.getCrewNameInput(e));
@@ -54,9 +58,21 @@ export default class TeamController {
     console.log(this.model.teamObj);
     console.log(this.courseName);
     this.view.clearTarget($.crewTableTbody());
-    this.model.teamObj[this.courseName]['crew'].forEach((crewName, index) => {
+    this.model._teamObj[this.courseName]['crew'].forEach((crewName, index) => {
       this.view.renderTable($.crewTableTbody(), $.crewTableTbodyHTML(index + 1, crewName));
     });
+    $.deleteCrewButtons().forEach((button) =>
+      button.addEventListener('click', (event) => this.deleteCrewButtonHandler(event)),
+    );
+  }
+  deleteCrewButtonHandler(event) {
+    if (window.confirm(MESSAGE.confirmDeleteCrew)) {
+      const index = event.target.parentElement.parentElement.childNodes[1].innerText - 1;
+      const crewName = event.target.parentElement.parentElement.childNodes[3].innerText;
+      this.model.deleteCrewData(this.courseName, index);
+      console.log(this.model.teamObj);
+      this.loadCourseSelectSection();
+    }
   }
 
   loadTeamManagerBtnHandler() {

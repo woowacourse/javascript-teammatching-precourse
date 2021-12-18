@@ -59,9 +59,8 @@ const KEY = Object.freeze({
   localKey: 'teamMatchingData',
 });
 
-const DIR = Object.freeze({
-  crew: 'crew',
-  team: 'team',
+const MESSAGE = Object.freeze({
+  confirmDeleteCrew: '해당 크루를 정말로 삭제하시겠습니까?',
 });
 
-export { ID, CLASS, COURSE, MISSION, KEY, DIR };
+export { ID, CLASS, COURSE, MISSION, KEY, MESSAGE };

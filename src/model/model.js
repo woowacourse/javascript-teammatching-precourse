@@ -24,4 +24,14 @@ export default class TeamModel {
   loadAllDataFromLocalStorage() {
     this._teamObj = this.getLocalStorage(KEY.localKey) ?? this._teamObj;
   }
+
+  deleteCrewData(courseName, index) {
+    this._teamObj[courseName]['crew'].splice(index, 1);
+    // this._teamObj[courseName]['crew'].forEach((target, index) => {
+    //   if (target === crewName) {
+    //     return this._teamObj[courseName]['crew'].splice(index, 1);
+    //   }
+    // });
+    this.setLocalStorage(KEY.localKey, this._teamObj);
+  }
 }
