@@ -14,7 +14,8 @@ export const HTML_OF_HEADER = `
 </header>`;
 
 
-export const HTML_OF_CREW_TAB = `
+
+export const HTML_OF_CREW_RADIO = `
 <div id="app">
   <main>
     <section>
@@ -26,7 +27,11 @@ export const HTML_OF_CREW_TAB = `
         <label for="backend">백엔드</label>
       </div>
     </section>
-    <section>
+  </main>
+</div>`;
+
+export const HTML_OF_CREW_INPUT = `
+<section>
       <h3>프론트엔드 크루 관리</h3>
       <form>
         <label>크루 이름</label>
@@ -54,9 +59,9 @@ export const HTML_OF_CREW_TAB = `
           </tr>
         </tbody>
       </table>
-    </section>
-  </main>
-</div>`;
+    </section>`;
+
+
 
 export const HTML_OF_TEAM_TAB = `
 <div id="app">

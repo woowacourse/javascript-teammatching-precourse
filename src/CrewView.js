@@ -1,4 +1,4 @@
-import { HTML_OF_CREW_TAB, HTML_OF_HEADER } from "./utils/html.js";
+import { HTML_OF_HEADER, HTML_OF_CREW_RADIO, HTML_OF_CREW_INPUT} from "./utils/html.js";
 
 export default class CrewView {
     static render() {
@@ -7,6 +7,6 @@ export default class CrewView {
 
     // 순서대로 나오도록 수정
     static showPage() {
-        document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_CREW_TAB;
+        document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_CREW_RADIO + HTML_OF_CREW_INPUT;
     }
 }
