@@ -96,13 +96,13 @@ export default class TeamManage {
 
     const member = this.crew.getCrew(this.kindOfCrew);
     const totalMember = member.length;
-    const totalGroupCount = parseInt(totalMember / lineMembers, 10);
+    const totalGroupCount = parseInt(totalMember / memberCount, 10);
     const moreMemberGroupCount = totalMember - memberCount * totalGroupCount;
     document.getElementById("not-match").style.display = "none";
     document.getElementById("match").style.display = "block";
     this.newMemberList = document.getElementById("team-match-result");
     this.newMemberList.innerHTML = "";
-    this.makeMemberList(
+    this.makeMemberList(lineMembers, 
       member,
       totalGroupCount,
       moreMemberGroupCount,
@@ -110,7 +110,7 @@ export default class TeamManage {
     );
   }
 
-  makeMemberList(inputMember, totalGroupCount, moreMemberGroupCount, memberCount) {
+  makeMemberList( lineMembers, inputMember, totalGroupCount, moreMemberGroupCount, memberCount) {
       console.log(
         inputMember, totalGroupCount, moreMemberGroupCount, memberCount
       );
@@ -118,17 +118,19 @@ export default class TeamManage {
     let i = 0;
     for (; i < moreMemberGroupCount; i += 1) {
       const newMemberGroup = document.createElement("li");
-      const newMember = member.splice(0, memberCount+1);
+      const newMember = lineMembers.splice(0, memberCount + 1);
       const totalMember = this.crew.getCrew(this.kindOfCrew);
-      const newMeberList = newMember.map((index) => totalMember[index]);
+      const newMeberList = lineMembers.map((index) => totalMember[index]);
       newMemberGroup.innerHTML = newMeberList.join(",");
       this.newMemberList.append(newMemberGroup);
     }
     for (; i < totalGroupCount; i += 1) {
       const newMemberGroup = document.createElement("li");
-      const newMember = member.splice(0, memberCount);
+      const newMember = lineMembers.splice(0, memberCount);
       const totalMember = this.crew.getCrew(this.kindOfCrew);
-      const newMeberList = newMember.map((index) => totalMember[index]);
+      console.log(newMember);
+      const newMeberList = newMember.map((num) => totalMember[num]);
+      console.log(totalMember);
       newMemberGroup.innerHTML = newMeberList.join(",");
       this.newMemberList.append(newMemberGroup);
     }
