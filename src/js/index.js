@@ -12,6 +12,7 @@ import {
 import { $ } from './util/dom.js';
 import { FRONT_END, BACK_END } from './constants/constants.js';
 import { makeCrewTemplate, confirmDeleteCrew } from './core/manageCrew.js';
+import { makeTeamTemplate } from './core/manageTeam.js';
 import { checkExistTeam } from './core/manageTeam.js';
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
         break;
       case 'select-course-and-mission':
         checkExistTeam(e);
+        break;
+      case 'number-of-people-per-team-form':
+        makeTeamTemplate(e);
         break;
     }
   };

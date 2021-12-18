@@ -1,4 +1,6 @@
+import { store } from '../store/store.js';
 import { $ } from './dom.js';
+import { DECIMAL, NUM } from '../constants/constants.js';
 
 export const check = {
   crewNameDuplication(inputValue, crewList) {
@@ -37,5 +39,15 @@ export const check = {
 
   inputValueRange(inputValue, minValue) {
     return parseInt(inputValue, 10) < minValue;
+  },
+
+  numberSmallerThanCrew(course) {
+    const crews = store.getItem(course);
+    let numberOfCrew = 0;
+    if (crews !== null) {
+      numberOfCrew = crews.length;
+    }
+    const numberOfPeople = $('#number-of-people-per-team-input').value;
+    return numberOfPeople * 2 > numberOfCrew;
   },
 };

@@ -39,9 +39,9 @@ export const renderNotExistTeam = course => {
     return `<h3>${course} 숫자야구게임 미션의 팀 매칭</h3>
         <div>
           <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
-          <form>
+          <form id='number-of-people-per-team-form'>
             <label>1팀당 인원 수</label>
-            <input type="number" />
+            <input id='number-of-people-per-team-input' type="number" />
             <button>팀 매칭</button>
           </form>
         </div>
@@ -49,3 +49,5 @@ export const renderNotExistTeam = course => {
   };
   $('#add-team-form').innerHTML = template();
 };
+
+export const renderExistTeam = course => {};
