@@ -39,7 +39,13 @@ export class TeamController {
     if (!isHeadCountInputValid(headCountPerTeam)) {
       return;
     }
+    let crewList = this.getCrewListFromModel(selectedCourse);
+    if (headCountPerTeam > crewList.length) {
+      alert('숫자가 큽니다.');
+      return;
+    }
     const teamList = this.matchTeam(headCountPerTeam, selectedCourse);
+
     this.coreView.teamView.showTeamMatchResult(selectedCourse, selectedMission, teamList);
     this.triggerReMatchClickEvent(headCountPerTeam, selectedCourse, selectedMission);
   }
