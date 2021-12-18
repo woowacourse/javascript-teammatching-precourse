@@ -1,4 +1,3 @@
-import { ID } from '../constants/selector.js';
 import Member from './member.js';
 import Team from './team.js';
 
@@ -31,6 +30,14 @@ export default class Model {
 
   removeMember(name) {
     this.members = this.members.filter((member) => member.name !== name);
+  }
+
+  removeTeams(type, mission) {
+    console.log(type, mission);
+    this.teams = this.teams.filter(
+      (team) => team.type !== type || team.mission !== mission
+    );
+    console.log(this.teams);
   }
 
   teamMatch(type, mission, number) {

@@ -73,7 +73,7 @@ export default class Controller {
 
   removeCrew = (e) => {
     const memberNameToRemove = e.target.value;
-    let result = confirm('정말로 삭제하시겠습니까?');
+    const result = confirm('정말로 삭제하시겠습니까?');
     if (result) {
       this.model.removeMember(memberNameToRemove);
       this.view.updateCrewTable(this.field, this.model.getCrew(this.field));
@@ -125,5 +125,24 @@ export default class Controller {
       this.matchingMission,
       this.model.getTeams(this.matchingType, this.matchingMission)
     );
+    this.addEventstoRematch();
+  };
+
+  addEventstoRematch() {
+    document
+      .getElementById(ID.REMATCH_BUTTON)
+      .addEventListener('click', this.rematch);
+  }
+
+  rematch = () => {
+    this.model.removeTeams(this.matchingType, this.matchingMission);
+    this.view.matchingStart(
+      this.matchingType,
+      this.matchingMission,
+      this.model.getCrew(this.matchingType)
+    );
+    document
+      .getElementById(ID.TEAM_MATCH_BUTTON)
+      .addEventListener('click', this.startTeamMatching);
   };
 }
