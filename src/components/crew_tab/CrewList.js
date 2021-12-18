@@ -6,10 +6,11 @@ export default class CrewList extends Component {
   }
 
   template() {
-    const { courseName } = this.$props;
+    const { courseName, currentCrews } = this.$props;
 
     if (!courseName) return ``;
 
+    console.log(currentCrews);
     return `
         <h3>${courseName} 크루 목록</h3>
         <table border="1" id="crew-table">
@@ -21,15 +22,33 @@ export default class CrewList extends Component {
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>준</td>
-                <td>
-                <button id="delete-crew-buttton">삭제</button>
-                </td>
-            </tr>
+            ${currentCrews
+              .map((crewName, index) => {
+                return `
+                <tr >
+                    <td>${index + 1}</td>
+                    <td>${crewName}</td>
+                    <td>
+                        <button class="delete-crew-buttton">삭제</button>
+                    </td>
+                </tr>
+                `;
+              })
+              .join("")}
             </tbody>
         </table>
     `;
+  }
+
+  mounted() {
+    document
+      .querySelectorAll(".delete-crew-buttton")
+      .forEach((btn) =>
+        this.addEvent("click", btn, (e) => this.onClickDeleteCrew(e))
+      );
+  }
+
+  onClickDeleteCrew(e) {
+    console.log(e.target);
   }
 }

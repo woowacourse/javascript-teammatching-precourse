@@ -55,7 +55,7 @@ export default class CrewTab extends Component {
       addCrew: addCrew.bind(this),
     });
 
-    new CrewList($crewList, { courseName });
+    new CrewList($crewList, { courseName, checkedCrewCourse, currentCrews });
   }
 
   setChangeCourse(newCourse) {
