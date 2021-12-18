@@ -1,3 +1,4 @@
+import { WRONG_COUNT } from '../constants/alert-messages.js';
 import { fetchHtmlView } from '../fetch.js';
 import TeamView from '../view/team-view.js';
 
@@ -21,9 +22,22 @@ class TeamController {
         const courseSelected = document.querySelector("#course-select").value;
         const missionSelected = document.querySelector("#mission-select").value;
         this.checkMatchedTeam(courseSelected, missionSelected);
+    }
+
+    onMatchTeamClick() {
+        const memberCount = document.querySelector("#team-member-count-input").value;
+        if(this.checkMemberCount(memberCount)) {
+            
+        }
+        else alert(WRONG_COUNT);
+    }
+
+    onRematchTeamClick() {
         
-    
-        const crew = this.filterCrewListByCourse(courseSelected);
+    }
+
+    checkMemberCount(count) {
+        return Number(count) && parseInt(count, 10) >= 1;
     }
 
     checkMatchedTeam(course, mission) {
@@ -48,6 +62,8 @@ class TeamController {
             .filter(team => team.course === course)
             .filter(team => team.mission === mission);
     }
+
+
 }
 
 export default TeamController;

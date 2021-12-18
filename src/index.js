@@ -19,6 +19,8 @@ function eventHandler(e) {
         "add-crew-buttton"() { crewController.onAddCrewClick(); },
         "delete-crew-buttton"() { crewController.onDeleteCrewClick(e.target); },
         "show-team-matcher-button"() { teamController.onShowTeamClick(); },
+        "match-team-button"() { teamController.onMatchTeamClick(); },
+        "rematch-team-button"() { teamController.onRematchTeamClick(); }
     };
     const handlerKeys = Object.keys(handlers);
     if(handlerKeys.includes(e.target.id)) handlers[e.target.id]();
