@@ -3,6 +3,7 @@ import { SELECTOR } from '../data/selector.js';
 import { MESSAGE } from '../data/constants.js';
 import { getCrewInputErrorMessage } from './getErrorMessage.js';
 import { showAlert } from '../utils/showAlert.js';
+import { setLocalStorage, getLocalStorage } from '../utils/localStorage.js';
 import TeamMatcherView from '../view/teamMatcherView.js';
 import CrewManager from '../model/crewManager.js';
 import TabMenuController from './tabMenuController.js';
@@ -16,11 +17,16 @@ export default class TeamMatcherController {
     this.tabMenu = new TabMenuController();
     this.createModels();
     this.veiw = new TeamMatcherView(this.crewManager.crew);
+    this.initPage();
     this.setEvent();
   }
 
+  initPage() {
+    this.veiw.renderCrewList(this.crewManager.crew['frontend']);
+  }
+
   createModels() {
-    this.crewManager = new CrewManager();
+    this.crewManager = new CrewManager(getLocalStorage());
   }
 
   setEvent() {
@@ -43,6 +49,7 @@ export default class TeamMatcherController {
 
     this.crewManager.add(course, name);
     this.veiw.renderCrewList(crewList);
+    setLocalStorage(this.crewManager.crew);
   }
 
   getCourse() {
@@ -67,6 +74,7 @@ export default class TeamMatcherController {
       }
 
       this.veiw.renderCrewList(this.crewManager.crew[course]);
+      setLocalStorage(this.crewManager.crew);
     }
   }
 }

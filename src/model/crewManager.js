@@ -1,9 +1,6 @@
 export default class CrewManager {
-  constructor() {
-    this.crew = {
-      frontend: [],
-      backend: [],
-    };
+  constructor(crew) {
+    this.crew = crew
   }
 
   add(course, name) {
