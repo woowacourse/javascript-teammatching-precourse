@@ -1,7 +1,5 @@
-import Storage from './Storage.js';
-import util from '../../common/index.js';
-
-const { $, $addEvent } = util.dom;
+import Storage from '../../store/Storage.js';
+import {$, $addEvent} from '../../common/dom.js';
 
 export default class Component {
   constructor(selector, props) {
@@ -34,8 +32,8 @@ export default class Component {
 
   setEvents() {
     const registed = this.eventSetter();
-    registed.forEach(({ type, callback }) => {
-      $addEvent(this.$element, type, callback);
+    registed.forEach(({ type, callback, $element }) => {
+      $addEvent($element || this.$element, type, callback);
     });
   }
 }

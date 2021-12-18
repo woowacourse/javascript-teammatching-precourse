@@ -24,6 +24,22 @@ export const ERROR_MESSAGES = Object.freeze({
 
 export const EVENT_TYPE_CLICK = 'click';
 
-export const CURRENT_TAB = 'current_tab';
-export const CREW_TAB = 'crew-tab';
-export const TEAM_TAB = 'team-tab';
+export const RADIO_TAB = 'radioTab';
+export const CURRENT_TAB = 'currentTab';
+
+export const DOM = Object.freeze({
+  CREW_TAB: 'crew-tab',
+  TEAM_TAB: 'team-tab',
+  FRONTEND_COURSE: 'frontend-course',
+  BACKEND_COURSE: 'backend-course',
+  CREW_NAME_INPUT: 'crew-name-input',
+  ADD_CREW_BUTTON: 'add-crew-buttton',
+  DELETE_CREW_BUTTON: 'delete-crew-buttton',
+  COURSE_SELECT: 'course-select',
+  MISSION_SELECT: 'mission-select',
+  SHOW_TEAM_MATCHER_BUTTON: 'show-team-matcher-button',
+  TEAM_MEMBER_COUNT_INPUT: 'team-member-count-input',
+  MATCH_TEAM_BUTTON: 'match-team-button',
+  TEAM_MATCH_RESULT: 'team-match-result',
+  REMATCH_TEAM_BUTTON: 'rematch-team-button',
+});

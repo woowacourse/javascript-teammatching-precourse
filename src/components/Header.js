@@ -1,5 +1,5 @@
 import { CURRENT_TAB, EVENT_TYPE_CLICK } from '../constants/index.js';
-import { Menu } from '../presentational/index.js';
+import { Menu } from '../view/index.js';
 import Component from './root/Component.js';
 
 export default class Header extends Component {

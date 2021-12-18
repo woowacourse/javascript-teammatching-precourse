@@ -1,6 +1,6 @@
-import { EMPTY } from '../constants/index.js';
+import { APP_MENU, APP_TITLE, EMPTY } from '../constants/index.js';
 
-const Menu = ({ APP_TITLE, APP_MENU }) => `
+const Menu = () => `
 <h1>${APP_TITLE}</h1>
 <nav>
   <ul>

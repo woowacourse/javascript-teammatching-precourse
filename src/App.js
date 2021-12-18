@@ -1,6 +1,6 @@
-import Component from './container/root/Component.js';
-import Header from './container/Header.js';
-import Main from './container/Main.js';
+import Component from './components/root/Component.js';
+import Header from './components/Header.js';
+import Main from './components/Main.js';
 
 export default class App extends Component {
   template() {
