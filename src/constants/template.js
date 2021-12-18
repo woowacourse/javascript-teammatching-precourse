@@ -34,7 +34,7 @@ export const crewManageTemplate = `
 `;
 
 export const crewInputAndTableTemplate = course => `
-<h3>${course.name} 크루 관리</h3>
+<h3>${course} 크루 관리</h3>
 <form>
 <label>크루 이름</label>
 <input type="text" />
@@ -42,7 +42,7 @@ export const crewInputAndTableTemplate = course => `
 </form>
 </section>
 <section>
-<h3>${course.name} 크루 목록</h3>
+<h3>${course} 크루 목록</h3>
 <table border="1">
 <thead>
     <tr>

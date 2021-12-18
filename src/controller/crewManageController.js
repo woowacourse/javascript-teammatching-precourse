@@ -21,5 +21,10 @@ export default class CrewManager {
     );
   }
 
-  selectCourse() {}
+  selectCourse() {
+    const selected = document.querySelector(`input[name=${SELECTOR.radioName}]:checked`).value;
+    this.view.renderSelectedCourseContents(
+      document.querySelector(`label[for=${selected}]`).innerHTML,
+    );
+  }
 }

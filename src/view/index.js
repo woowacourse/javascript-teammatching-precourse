@@ -4,6 +4,7 @@ import {
   headerTemplate,
   crewManageTemplate,
   teamMatchingManageTemplate,
+  crewInputAndTableTemplate,
 } from '../constants/template.js';
 
 export default class View {
@@ -29,5 +30,13 @@ export default class View {
   renderTeamMatchingManageTab() {
     this.clearContainer();
     this.$container.insertAdjacentHTML('afterbegin', teamMatchingManageTemplate);
+  }
+
+  renderSelectedCourseContents(course) {
+    $(SELECTOR.selectedCourseContents).innerHTML = '';
+    $(SELECTOR.selectedCourseContents).insertAdjacentHTML(
+      'afterbegin',
+      crewInputAndTableTemplate(course),
+    );
   }
 }
