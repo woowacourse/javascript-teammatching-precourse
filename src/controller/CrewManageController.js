@@ -1,5 +1,5 @@
-import { ID } from '../utils/constants.js';
-import { $id } from '../utils/dom.js';
+import { CLASS, ID } from '../utils/constants.js';
+import { $class, $id } from '../utils/dom.js';
 import { isValidCrewName } from '../utils/validation/index.js';
 
 class CrewManageController {
@@ -8,15 +8,11 @@ class CrewManageController {
     this.view = view;
   }
 
-  initEventListener() {
-    this.triggerCourseInputRadioClickEvent();
-    this.triggerCrewNameAddFormSubmitEvent();
-  }
-
   showScreen(currentTabMenu) {
     if (currentTabMenu === this.model.getCurrentTabMenu()) {
       return;
     }
+
     this.model.setCurrentTabMenu(currentTabMenu);
     this.view.showCrewCourseScreen();
     this.triggerCourseInputRadioClickEvent();
@@ -32,6 +28,7 @@ class CrewManageController {
       const crewList = this.model.getCrewListInCrewMenu();
       this.view.showCrewManageScreen(crewList, course);
       this.triggerCrewNameAddFormSubmitEvent();
+      this.triggerDeleteCrewNameEvent();
     });
 
     $id(ID.BACKEND_COURSE).addEventListener('click', (e) => {
@@ -43,6 +40,7 @@ class CrewManageController {
       const crewList = this.model.getCrewListInCrewMenu();
       this.view.showCrewManageScreen(crewList, course);
       this.triggerCrewNameAddFormSubmitEvent();
+      this.triggerDeleteCrewNameEvent();
     });
   }
 
@@ -58,8 +56,30 @@ class CrewManageController {
       if (isValidCrewName(crewList, crewName)) {
         tabMenu['crewManageMenu'][currentMenu].push(crewName);
         this.model.setLocalStorage(tabMenu);
-        this.view.showCrewManageScreen(this.model.getCrewListInCrewMenu(), currentMenu);
+        this.view.changeCrewListScreen(this.model.getCrewListInCrewMenu());
+        this.view.resetInputValue($id(ID.CREW_NAME_INPUT));
       }
+    });
+  }
+
+  deleteCrewLogic(position) {
+    const tabMenu = this.model.getLocalStorage();
+    const currentCourse = this.model.getCourseInCrewMenu();
+    const crewList = this.model.getCrewListInCrewMenu();
+    crewList.splice(position, 1);
+    tabMenu['crewManageMenu'][currentCourse] = crewList;
+    this.model.setLocalStorage(tabMenu);
+    this.view.changeCrewListScreen(this.model.getCrewListInCrewMenu());
+  }
+
+  triggerDeleteCrewNameEvent() {
+    const deleteCrewButtons = Array.from($class(CLASS.DELETE_CREW_BUTTON));
+    deleteCrewButtons.map((button) => {
+      button.addEventListener('click', (e) => {
+        if (confirm('정말 삭제하시겠습니까?')) {
+          this.deleteCrewLogic(e.target.id);
+        }
+      });
     });
   }
 }

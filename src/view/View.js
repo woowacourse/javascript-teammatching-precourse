@@ -5,6 +5,7 @@ import {
   CREW_MANAGE_TEMPLATE,
   TAB_MENUS_TEMPLATE,
   TEAM_MATCHING_MANAGE_TEMPLATE,
+  getCrewListTemplate,
 } from '../utils/template/index.js';
 
 class View {
@@ -31,12 +32,20 @@ class View {
     $id(ID.CREW_MANAGE_SECTION).innerHTML = CREW_MANAGE_TEMPLATE(crewList, course);
   }
 
+  changeCrewListScreen(crewList) {
+    $id('crewList').innerHTML = getCrewListTemplate(crewList);
+  }
+
   showTeamManageScreen() {
     this.$content.innerHTML = TEAM_MATCHING_MANAGE_TEMPLATE;
   }
 
   initScreen() {
     this.$content.innerHTML = '';
+  }
+
+  resetInputValue(element) {
+    element.value = '';
   }
 }
 

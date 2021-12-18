@@ -53,7 +53,7 @@ export const CREW_MANAGE_TEMPLATE = (crewList, course) => {
             <th>관리</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="crewList">
         ${crewList
           .map(
             (crew, index) => `
@@ -61,7 +61,7 @@ export const CREW_MANAGE_TEMPLATE = (crewList, course) => {
             <td>${index + 1}</td>
             <td>${crew}</td>
             <td>
-              <button class=${CLASS.DELETE_CREW_BUTTON}>삭제</button>
+              <button id=${index} class=${CLASS.DELETE_CREW_BUTTON}>삭제</button>
             </td>
           </tr>
         `
@@ -71,6 +71,23 @@ export const CREW_MANAGE_TEMPLATE = (crewList, course) => {
       </table>
     </section>
 `;
+};
+
+export const getCrewListTemplate = (crewList) => {
+  return `
+  ${crewList
+    .map(
+      (crew, index) => `
+    <tr>
+      <td>${index + 1}</td>
+      <td>${crew}</td>
+      <td>
+        <button id=${index} class=${CLASS.DELETE_CREW_BUTTON}>삭제</button>
+      </td>
+    </tr>
+  `
+    )
+    .join('')}`;
 };
 
 export const TEAM_MATCHING_MANAGE_TEMPLATE = `
