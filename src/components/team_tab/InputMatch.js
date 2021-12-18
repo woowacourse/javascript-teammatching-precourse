@@ -25,4 +25,18 @@ export default class InputMatch extends Component {
         </div>
     `;
   }
+
+  mounted() {
+    this.addEvent("submit", this.$target, (e) => this.onSubmitHandler(e));
+  }
+
+  onSubmitHandler(e) {
+    e.preventDefault();
+    const numbers = document.querySelector("#team-member-count-input").value;
+    console.log(numbers);
+    if (numbers === "") {
+      window.alert(`인원 수를 입력해주세요.`);
+      return;
+    }
+  }
 }
