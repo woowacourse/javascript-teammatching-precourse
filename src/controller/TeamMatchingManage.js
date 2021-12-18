@@ -101,35 +101,6 @@ class TeamMatchingManageController {
 
     return team;
   }
-
-  // matchingTeamMemberWithSuffle(suffleMemberIndexArray, memberTeamCount) {
-  //   let arrayLength = suffleMemberIndexArray.length;
-  //   let count = 0;
-  //   const teamArray = [];
-
-  //   console.log(arrayLength, memberTeamCount);
-  //   while (arrayLength % memberTeamCount !== 0 && arrayLength > 0) {
-  //     const temp = [];
-  //     for (let i = count * memberTeamCount; i < memberTeamCount + 1; i += 1) {
-  //       temp.push(suffleMemberIndexArray[i]);
-  //     }
-  //     arrayLength -= memberTeamCount + 1;
-  //     count += 1;
-  //     teamArray.push(temp);
-  //   }
-
-  //   while (arrayLength > 0) {
-  //     const temp = [];
-  //     for (let i = count * memberTeamCount; i < suffleMemberIndexArray.length; i += 1) {
-  //       temp.push(suffleMemberIndexArray[i]);
-  //     }
-  //     arrayLength -= memberTeamCount;
-  //     count += 1;
-  //     teamArray.push(temp);
-  //   }
-
-  //   return teamArray;
-  // }
 }
 
 export default TeamMatchingManageController;
