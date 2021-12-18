@@ -6,6 +6,7 @@ import {
   teamMatchingManageTemplate,
   crewInputAndTableTemplate,
   teamMatchingSettingTemplate,
+  teamMatchingResultTemplate,
 } from '../constants/template.js';
 
 export default class View {
@@ -76,15 +77,29 @@ export default class View {
       'afterbegin',
       teamMatchingSettingTemplate(KEY_VALUE[course], KEY_VALUE[mission]),
     );
-    this.addListInUL($(SELECTOR.matchResult), crewList);
+    this.addListInUL($(SELECTOR.teamMatchCrewList), crewList);
   }
 
   addListInUL(ul, list) {
-      console.log(list)
     list.forEach(crew => {
       const liTag = document.createElement('li');
       liTag.innerHTML = crew;
       ul.appendChild(liTag);
     });
+  }
+
+  addListInResultUL(ul, list) {
+    const liTag = document.createElement('li');
+    liTag.innerHTML = list.join(',');
+    ul.appendChild(liTag);
+  }
+
+  renderAlreadyMatchingTemplate(member) {
+    $(SELECTOR.teamCourseAndMissionContents).innerHTML = '';
+    $(SELECTOR.teamCourseAndMissionContents).insertAdjacentHTML(
+      'afterbegin',
+      teamMatchingResultTemplate,
+    );
+    member.forEach(team => this.addListInResultUL($(SELECTOR.matchResult), team));
   }
 }

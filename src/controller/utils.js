@@ -35,4 +35,8 @@ export const validation = {
 
     return isExist;
   },
+
+  isAlreadyMatchedTeam(memberList) {
+    return memberList.length !== 0;
+  },
 };

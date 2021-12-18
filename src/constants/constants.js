@@ -18,6 +18,7 @@ export const SELECTOR = {
   missionSelect: 'mission-select',
   teamMatcherButton: 'show-team-matcher-button',
   memberCountInput: 'team-member-count-input',
+  teamMatchCrewList: 'team-match-crew-list',
   matchTeamButton: 'match-team-button',
   matchResult: 'team-match-result',
   rematchButton: 'rematch-team-button',

@@ -1,4 +1,4 @@
-import { $ } from './utils.js';
+import { $, validation } from './utils.js';
 import { SELECTOR, COURSE_OPTIONS, MISSION_OPTIONS, KEY_VALUE } from '../constants/constants.js';
 
 export default class TeamMatchManager {
@@ -31,6 +31,53 @@ export default class TeamMatchManager {
     const selectedMission = $(SELECTOR.missionSelect).value;
     this.model.selectCourse(KEY_VALUE[selectedCourse]);
     const { crewList } = this.model.getSelectedCourse();
-    this.view.renderTeamMatchingSettingTemplate(selectedCourse, selectedMission, crewList);
+    const { missionList } = this.model.getSelectedCourse();
+    const missionMember = missionList.find(e => e.name === KEY_VALUE[selectedMission]).member;
+    if (!validation.isAlreadyMatchedTeam(missionMember)) {
+      this.view.renderTeamMatchingSettingTemplate(selectedCourse, selectedMission, crewList);
+      this.addTeamMatchingSettingEventListeners();
+      return;
+    }
+    this.view.renderAlreadyMatchingTemplate(missionMember);
+  }
+
+  addTeamMatchingSettingEventListeners() {
+    $(SELECTOR.matchTeamButton).addEventListener('click', event => this.matchTeam(event));
+  }
+
+  matchTeam(event) {
+    event.preventDefault();
+    const allCourse = this.model.getAllCourse();
+    const selectedCourse = allCourse.find(e => e.name === this.model.selectedCourse);
+    const selectedMission = selectedCourse.missionList.find(
+      e => e.name === KEY_VALUE[$(SELECTOR.missionSelect).value],
+    );
+    console.log($(SELECTOR.memberCountInput));
+    const memberCountPerTeam = $(SELECTOR.memberCountInput).value;
+    this.matchTeamByCount(memberCountPerTeam, selectedCourse, selectedMission);
+    this.model.setAllCourse(allCourse);
+  }
+
+  matchTeamByCount(memberCount, selectedCourse, selectedMission) {
+    const randomArray = selectedCourse.crewList.map((x, i) => i); // [0~인원수까지 배열]
+    const randomOrderMember = MissionUtils.Random.shuffle(randomArray); // 무작위 배열
+    let i;
+
+    while (randomOrderMember.length >= 1) {
+      let array = [];
+      for (i = 0; i < memberCount; i += 1) {
+        if (randomOrderMember.length - memberCount < memberCount) {
+          array = randomOrderMember.map(x => {
+            return selectedCourse.crewList[x];
+          });
+          randomOrderMember.splice(0, array.length);
+          break;
+        } else {
+          array.push(selectedCourse.crewList[randomOrderMember[0]]);
+          randomOrderMember.shift();
+        }
+      }
+      selectedMission.member.push(array);
+    }
   }
 }
