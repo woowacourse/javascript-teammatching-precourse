@@ -82,11 +82,11 @@
 
 [ ] 1팀당 인원수를 유저에게 입력받는다
 
-[ ] 인원수를 유저에게 입력받는 input요소의 id는 team-number-count-input 이다
+[x] 인원수를 유저에게 입력받는 input요소의 id는 team-number-count-input 이다
 
 [ ] 팀매칭 버튼을 클릭시 유저가 입력한 1팀당 인원수 의 유효성을 평가한다
 
-[ ] 팀매칭 버튼의 id는 match-team-button 이다
+[x] 팀매칭 버튼의 id는 match-team-button 이다
 
 ### 1팀당 인원수 예외 사항
 
@@ -102,7 +102,7 @@
 
 [ ] 1팀당 인원수를 입력한 후 팀매칭 버튼을 클릭하면 크루 목록과 input 요소가 사라지고 팀매칭이 된 정보를 알려주는 element와 재매칭 버튼이 render 된다
 
-[ ] 팀 매칭 결과를 보여주기 위한 ul id는 team-match-result 이다
+[x] 팀 매칭 결과를 보여주기 위한 ul id는 team-match-result 이다
 
 [ ] 팀매칭 결과에서 이름들 간에는 쉼표로 구분한다
 

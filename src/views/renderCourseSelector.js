@@ -23,6 +23,5 @@ export default function renderCourseSelctor() {
       </form>
     </section>
     <section class="team-matching-container"></section>
-    <section class="result-container"></section>
   `;
 }
