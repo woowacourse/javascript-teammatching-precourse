@@ -36,8 +36,6 @@ export default class MatchingTeam extends Component {
   }
 
   templateCrewList() {
-    const selectedCourse = team.getSelectedCourse();
-    // const crewList = crew.getCrewsByCourse(selectedCourse);
     return `
       <h4>크루 목록</h4>
       <ul>
@@ -46,6 +44,4 @@ export default class MatchingTeam extends Component {
       </ul>
     `;
   }
-
-  
 }
