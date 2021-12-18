@@ -95,7 +95,13 @@ export default class Controller {
     const $matcherBtn = document.querySelector("#show-team-matcher-button");
     $matcherBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      this.teamMathcingView.showSelected("#make-team-matching");
+      const course = document.querySelector("#course-select").value;
+      const mission = document.querySelector("#mission-select").value;
+      this.teamMathcingView.showSelectedMissionCourse(
+        "#make-team-matching",
+        course,
+        mission
+      );
     });
   }
 }

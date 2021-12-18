@@ -22,6 +22,18 @@ export default class TeamMatchingView {
 
   showSelected(selector) {
     const $selected = document.querySelector(selector);
+
+    showElement($selected);
+  }
+
+  showSelectedMissionCourse(selector, course, mission) {
+    const $selected = document.querySelector(selector);
+    if (course === "frontend") {
+      $selected.children[0].innerText = `프론트엔드 ${mission} 미션의 팀 매칭`;
+      showElement($selected);
+      return;
+    }
+    $selected.children[0].innerText = `백엔드 ${mission} 미션의 팀 매칭`;
     showElement($selected);
   }
 }
