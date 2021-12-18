@@ -32,7 +32,6 @@ export const selectListener = (value) => {
 };
 
 const setCrewEvent = (storage) => {
-    console.log(storage, "@");
     const $crewInput = document.getElementById(CREW.CREW_INPUT);
     const $crewAddButton = document.getElementById(CREW.CREW_ADD_BTN);
     $crewAddButton.addEventListener("click", function (e) {
@@ -57,7 +56,6 @@ const appendLocal = (inputVal, storage) => {
 };
 
 const appendTable = (crewName, crewId, storage) => {
-    console.log(storage, "@");
     const $crewTable = document.getElementById(CREW.CREW_TABLE);
     const $tbody = $crewTable.children[1];
     const tr = document.createElement("tr");
@@ -95,14 +93,12 @@ const checkRowIdx = (body, tr) => {
 };
 
 const showExistCrew = (storage) => {
-    console.log(storage, "@");
     const crews = JSON.parse(getLocalStorage(storage));
     crews.forEach((element) => appendTable(element.name, element.id, storage));
 };
 
 const deleteStorage = (delId, storage) => {
     const crews = JSON.parse(getLocalStorage(storage));
-    console.log(storage, crews, "2");
     const newCrews = crews.filter((element) => element.id !== delId);
     setLocalStorage(storage, JSON.stringify(newCrews));
 };

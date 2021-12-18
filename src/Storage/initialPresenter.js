@@ -14,7 +14,7 @@ export const InitialPresenter = function () {
         const $crewTab = document.getElementById(ID.CREW_TAB);
         const $teamTab = document.getElementById(ID.TEAM_TAB);
         addListener($crewTab, View.CrewFirstView(), crewPresenter);
-        addListener($teamTab, "");
+        addListener($teamTab, View.TeamFirstView(), teamPresenter);
     };
 
     const addListener = (button, view, presenter) => {

@@ -71,11 +71,11 @@ export const TeamFirstView = () => {
     <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
     <form>
         <select id = ${TEAM_TAB.COURSE_SELECT} >
-        <option>프론트엔드</option>
-        <option>백엔드</option>
+            <option>프론트엔드</option>
+            <option>백엔드</option>
         </select>
-        <select> id = ${TEAM_TAB.MISSION_SELECT}
-        <option>숫자야구게임</option>
+        <select id = ${TEAM_TAB.MISSION_SELECT}>
+            <option>숫자야구게임</option>
         </select>
         <button id = ${TEAM_TAB.SHOW_TEAM_BTN}>확인</button>
     </form>
@@ -100,9 +100,7 @@ export const TeamBeforeMatchingView = (team, mission) => {
         </form>
         </div>
         <h4>크루 목록</h4>
-        <ul>
-        <li>준</li>
-        <li>포코</li>
+        <ul id='crew-list'>
         </ul>
     </div>
     </section>
