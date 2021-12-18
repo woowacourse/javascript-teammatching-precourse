@@ -16,8 +16,6 @@ class MatchingController {
     }
     const selectedCourse = $('#course-select').options[$('#course-select').selectedIndex].innerText;
     const crewList = selectedCourse === '프론트엔드' ? feCrewList : beCrewList;
-    // const shuffledCrewList = shuffleArray([...feCrewList]);
-    // console.log(shuffledCrewList);
   }
 
   bindEvent() {
