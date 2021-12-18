@@ -45,6 +45,9 @@ export class CrewView {
   }
 
   showCrewList(crewList) {
+    if (crewList === undefined) {
+      return;
+    }
     if (crewList.length === 0) {
       this.$crewTableBody.innerHTML = '';
       return;

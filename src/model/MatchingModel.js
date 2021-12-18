@@ -1,3 +1,5 @@
+import { USER_INPUT_ALERT } from '../utils/constant.js';
+
 export class MatchingModel {
   frontEndCrewList = [
     '김의진',
@@ -13,11 +15,25 @@ export class MatchingModel {
 
   addCrewList(crewName, course) {
     if (course === 'frontend') {
+      if (this.isSameName(this.frontEndCrewList, crewName)) {
+        return;
+      }
+      console.log(`1`);
       this.frontEndCrewList.push(crewName);
       return this.frontEndCrewList;
     }
+    if (this.isSameName(this.backEndCrewList, crewName)) {
+      return;
+    }
     this.backEndCrewList.push(crewName);
     return this.backEndCrewList;
+  }
+
+  isSameName(crewList, crewName) {
+    if (crewList.includes(crewName)) {
+      alert(USER_INPUT_ALERT.sameNameError);
+      return true;
+    }
   }
 
   deleteCrewList(crewName, course) {
