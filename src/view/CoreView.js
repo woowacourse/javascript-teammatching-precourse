@@ -9,6 +9,12 @@ export class CoreView {
     this.addCommonElements();
     this.crewView = new CrewView();
     this.teamView = new TeamView();
+    this.onLoad();
+  }
+
+  onLoad() {
+    const $mainArray = Array.from(this.$mains);
+    $mainArray[1].style.display = 'none';
   }
 
   setOnTabClick() {
