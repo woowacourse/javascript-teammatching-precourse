@@ -7,7 +7,7 @@ import {
 } from '../../utils/constants.js';
 import { getLocalStorage, setLocalStorage } from '../../utils/LocalStorage.js';
 import { matchRandomTeam } from '../../utils/util.js';
-import { isValidTeamHeadCount } from '../../utils/validation.js';
+import { isValidTeamHeadCount, isValidTeamMatching } from '../../utils/validation.js';
 import Component from '../core/Component.js';
 
 export default class TeamManageContainer extends Component {
@@ -62,7 +62,8 @@ export default class TeamManageContainer extends Component {
   }
 
   printNotMatchedTeamSection() {
-    return `
+    return isValidTeamMatching(this.$state.crews, this.$state.selectedCourse)
+      ? `
     <h3>${COURSE_KOR[this.$state.selectedCourse]} ${MISSION_KOR[this.$state.selectedMission]} 미션의 팀 매칭</h3>
     <div>
       <div>
@@ -75,7 +76,8 @@ export default class TeamManageContainer extends Component {
       </div>
       ${this.printCrewList()}
     </div>
-    `;
+    `
+      : '';
   }
 
   printCrewList() {
