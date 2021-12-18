@@ -6,10 +6,22 @@ import InputSection from "./inputSection.js";
 import RadioButtonSection from "./radioButtonSection.js";
 import SelectSection from "./selectSection.js";
 import Table from "./table.js";
+import UnmatchedSelection from "./unmatchedSection.js";
 
 const courseIdToTitle = {
   "frontend-course": "프런트엔드",
   "backend-course": "백엔드",
+};
+
+const missionIdToTitle = {
+  baseball: "숫자야구게임",
+  racingcar: "자동차경주",
+  lotto: "로또",
+  "shopping-cart": "장바구니",
+  payments: "결제",
+  subway: "지하철노선도",
+  performance: "성능개선",
+  deploy: "배포",
 };
 
 const courseOptions = [
@@ -32,6 +44,9 @@ const ADD_CREW_INPUT_ID = "crew-name-input";
 const DELETE_CREW_BUTTON_CLASS = "delete-crew-buttton";
 const CREW_TAB_ID = "crew-tab";
 const TEAM_TAB_ID = "team-tab";
+const SHOW_TEAM_MATCHER_BUTTON_ID = "show-team-matcher-button";
+const COURSE_SELECT_ID = "course-select";
+const MISSION_SELECT_ID = "mission-select";
 
 export default class App extends Component {
   initialize() {
@@ -84,6 +99,19 @@ export default class App extends Component {
 
   mountTeamSection() {
     this.mountSelectSection();
+    if (this.$state.activeSelectCourse !== "") {
+      this.mountUnmatchedResult();
+    }
+  }
+
+  mountUnmatchedResult() {
+    const $sectionSelector = document.querySelectorAll("section")[1];
+
+    new UnmatchedSelection($sectionSelector, {
+      missionName: missionIdToTitle[this.$state.activeSelectMission],
+      courseName: courseIdToTitle[this.$state.activeSelectCourse],
+      crews: this.$teamMatcher.getCrews(this.$state.activeSelectCourse),
+    });
   }
 
   mountRadioSection() {
@@ -105,9 +133,9 @@ export default class App extends Component {
 
     new SelectSection($sectionSelector, {
       title: "팀 매칭을 관리할 코스, 미션을 선택하세요.",
-      courseSelectId: "course-select",
+      courseSelectId: COURSE_SELECT_ID,
       courseOptions,
-      missionSelectId: "mission-select",
+      missionSelectId: MISSION_SELECT_ID,
       missionOptions,
     });
   }
@@ -148,6 +176,8 @@ export default class App extends Component {
       this.onClickRemoveCrew(target.value);
     } else if (target.id === CREW_TAB_ID || target.id === TEAM_TAB_ID) {
       this.setState({ activeTab: target.id });
+    } else if (target.id === SHOW_TEAM_MATCHER_BUTTON_ID) {
+      this.onClickShowTeamMatcher();
     }
   }
 
@@ -167,5 +197,12 @@ export default class App extends Component {
   onClickRemoveCrew(crewName) {
     this.$teamMatcher.removeCrew(crewName, this.$state.activeRadioCourse);
     this.render();
+  }
+
+  onClickShowTeamMatcher() {
+    const activeSelectCourse = document.getElementById(COURSE_SELECT_ID).value;
+    const activeSelectMission =
+      document.getElementById(MISSION_SELECT_ID).value;
+    this.setState({ activeSelectCourse, activeSelectMission });
   }
 }
