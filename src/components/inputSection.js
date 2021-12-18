@@ -3,13 +3,20 @@ import Component from "../common/component.js";
 export default class InputSection extends Component {
   template() {
     return `
-      <h3>${this.$props.title}</h3>
+      ${this.getTitle()}
       <form>
         ${this.getLabel()}
         ${this.getInputTextbox()}
         ${this.getSubmitButton()}
       </form>
     `;
+  }
+
+  getTitle() {
+    return `
+    <${this.$props.titleElementType}>
+      ${this.$props.title}
+    </${this.$props.titleElementType}>`;
   }
 
   getLabel() {
@@ -23,7 +30,7 @@ export default class InputSection extends Component {
   }
 
   getInputTextbox() {
-    return `<input type="text" />`;
+    return `<input type=${this.$props.buttonType} />`;
   }
 
   getSubmitButton() {
