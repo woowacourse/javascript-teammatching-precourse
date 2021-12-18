@@ -92,10 +92,9 @@ export const TEAM_TEMPLATE = `
       <button id="show-team-matcher-button" >확인</button>
     </form>
   </section>
-  <section id="team-member-section" >
+  <section id="team-matching-section" >
   </section>
-  <section id="team-result-section">
-  </section>
+
 `;
 
 export function getMatchingQuestion(selectedCourse, selectedMission) {
@@ -117,14 +116,16 @@ export function getMatchingQuestion(selectedCourse, selectedMission) {
   `;
 }
 
-export const MATCHING_RESULT_TEMPLATE = `
-  <h3>프론트엔드 숫자야구게임 조회</h3>
-  <p>팀이 매칭되었습니다.</p>
-  <ul id="team-match-result">
-    <li>준,포코</li>
-  </ul>
-  <p>
-    팀을 재매칭 하시겠습니까?
-    <button id="rematch-team-button">재매칭</button>
-  </p>
-`;
+export function getMatchingResult(selectedCourse, selectedMission) {
+  return `
+    <h3>${selectedCourse} ${selectedMission} 조회</h3>
+    <p>팀이 매칭되었습니다.</p>
+    <ul id="team-match-result">
+      <li>준,포코</li>
+    </ul>
+    <p>
+      팀을 재매칭 하시겠습니까?
+      <button id="rematch-team-button">재매칭</button>
+    </p>
+  `;
+}

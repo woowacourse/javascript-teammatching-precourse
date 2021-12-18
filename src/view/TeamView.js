@@ -1,5 +1,5 @@
 import { $ } from '../utils/DOM.js';
-import { getMatchingQuestion, TEAM_TEMPLATE } from '../utils/template.js';
+import { getMatchingQuestion, getMatchingResult, TEAM_TEMPLATE } from '../utils/template.js';
 
 export class TeamView {
   constructor() {
@@ -7,7 +7,7 @@ export class TeamView {
     this.addElements();
   }
 
-  setOnTeamMatcherButtonClick(fn) {
+  setOnOptionsClick(fn) {
     this.$showTeamMatcherButton.addEventListener('click', (e) => {
       e.preventDefault();
       const courseOptionsIndex = this.$courseSelect.options.selectedIndex;
@@ -18,19 +18,27 @@ export class TeamView {
     });
   }
 
-  setOnMatchButtonClick(fn, selectedCourse) {
+  setOnMatchButtonClick(fn, selectedCourse, selectedMission) {
     $('#match-team-button').addEventListener('click', (e) => {
       e.preventDefault();
       const headCountPerTeam = $('#team-member-count-input').value;
 
-      fn(headCountPerTeam, selectedCourse);
+      fn(headCountPerTeam, selectedCourse, selectedMission);
     });
   }
 
-  showCrewList(selectedCourse, selectedMission, crewList) {
-    this.$teamMemberSection.innerHTML = getMatchingQuestion(selectedCourse, selectedMission);
+  showMatchingQuestion(selectedCourse, selectedMission, crewList) {
+    this.$teamMatchingSection.innerHTML = getMatchingQuestion(selectedCourse, selectedMission);
+    this.showCrewList(crewList);
+  }
+
+  showCrewList(crewList) {
     const $crewList = $('#crew-list');
     crewList.map((crew) => ($crewList.innerHTML += `<li>${crew}</li>`));
+  }
+
+  showTeamMatchResult(selectedCourse, selectedMission) {
+    this.$teamMatchingSection.innerHTML = getMatchingResult(selectedCourse, selectedMission);
   }
 
   addElements() {
@@ -38,7 +46,6 @@ export class TeamView {
     this.$courseSelect = $('#course-select');
     this.$missionSelect = $('#mission-select');
     this.$showTeamMatcherButton = $('#show-team-matcher-button');
-    this.$teamMemberSection = $('#team-member-section');
-    this.$teamResultSection = $('#team-result-section');
+    this.$teamMatchingSection = $('#team-matching-section');
   }
 }

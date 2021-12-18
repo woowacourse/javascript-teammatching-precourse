@@ -1,3 +1,5 @@
+import { FRONT_END } from '../utils/constant.js';
+
 export class TeamController {
   constructor(model, coreView) {
     this.model = model;
@@ -5,25 +7,26 @@ export class TeamController {
   }
 
   triggerEvent() {
-    this.coreView.teamView.setOnTeamMatcherButtonClick(this.onTeamMatcherButtonClick.bind(this));
+    this.coreView.teamView.setOnOptionsClick(this.onOptionsClick.bind(this));
   }
 
-  triggerMatchClickEvent(selectedCourse) {
+  triggerMatchClickEvent(selectedCourse, selectedMission) {
     this.coreView.teamView.setOnMatchButtonClick(
       this.onMatchButtonClick.bind(this),
       selectedCourse,
+      selectedMission,
     );
   }
 
-  onTeamMatcherButtonClick(selectedCourse, selectedMission) {
+  onOptionsClick(selectedCourse, selectedMission) {
     const crewList = this.getCrewListFromModel(selectedCourse);
-    this.coreView.teamView.showCrewList(selectedCourse, selectedMission, crewList);
-    this.triggerMatchClickEvent(selectedCourse);
+    this.coreView.teamView.showMatchingQuestion(selectedCourse, selectedMission, crewList);
+    this.triggerMatchClickEvent(selectedCourse, selectedMission);
   }
 
-  onMatchButtonClick(headCountPerTeam, selectedCourse) {
+  onMatchButtonClick(headCountPerTeam, selectedCourse, selectedMission) {
     const crewList = this.getCrewListFromModel(selectedCourse);
-    this.coreView.teamView.showCrewList(crewList);
+    this.coreView.teamView.showTeamMatchResult(selectedCourse, selectedMission);
   }
 
   getCrewListFromModel(selectedCourse) {
