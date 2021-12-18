@@ -110,7 +110,21 @@ export default class TeamController {
   startMatching(e, memberCount, courseName, missionName) {
     e.preventDefault();
     console.log(memberCount, courseName, missionName);
+    let crewArray = this.model._teamObj[courseName]['crew'];
+    let indexArray = [];
+    for (const i in crewArray) {
+      indexArray.push(parseInt(i, 10));
+    }
+    MissionUtils.Random.shuffle(indexArray);
+    indexArray.forEach((index) => {
+      console.log(crewArray[index]);
+      //   this.makeLi(crewArray[index]);
+    });
+    console.log(indexArray);
+  }
 
-    // this.view.renderInTarget($.showMatchedTeamSection(), $.showMatchedTeamHTML);
+  makeLi(name) {
+    const li = `<li>${name}</li>`;
+    this.view.renderInTarget($.showMatchedTeamSection(), $.showMatchedTeamHTML());
   }
 }
