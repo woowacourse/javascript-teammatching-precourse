@@ -12,7 +12,9 @@ import {
   DELETE_BUTTON,
 } from "./constant.js";
 import {
+  onClickBackEndDeleteButton,
   onClickBackEndInput,
+  onClickFrontEndDeleteButton,
   onClickFrontEndInput,
 } from "../controller/manageCrewController.js";
 
@@ -153,25 +155,35 @@ const createNameTd = text => {
   return td;
 };
 
-const createDeleteButton = () => {
+const createDeleteButton = event => {
   const button = document.createElement("button");
   button.innerText = DELETE_BUTTON;
+  button.addEventListener("click", event);
 
   return button;
 };
 
-const createButtonTd = () => {
+const createButtonTd = event => {
   const td = document.createElement("td");
-  td.appendChild(createDeleteButton());
+  td.appendChild(createDeleteButton(event));
 
   return td;
 };
 
-export const createTableRaw = (member, index) => {
+export const createFrontEndTableRaw = (member, index) => {
   const tr = document.createElement("tr");
   tr.appendChild(createIndexTd(index));
   tr.appendChild(createNameTd(member));
-  tr.appendChild(createButtonTd());
+  tr.appendChild(createButtonTd(onClickFrontEndDeleteButton));
+
+  return tr;
+};
+
+export const createBackEndTableRaw = (member, index) => {
+  const tr = document.createElement("tr");
+  tr.appendChild(createIndexTd(index));
+  tr.appendChild(createNameTd(member));
+  tr.appendChild(createButtonTd(onClickBackEndDeleteButton));
 
   return tr;
 };

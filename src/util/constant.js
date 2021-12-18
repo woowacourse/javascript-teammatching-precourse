@@ -15,6 +15,7 @@ export const BACK_END_TABLE_TITLE = "백엔드 크루 목록";
 export const TABLE_HEADERS = ["", "크루", "관리"];
 export const DELETE_BUTTON = "삭제";
 
+export const CONFIRM_MESSAGE = "정말 삭제하시겠습니까?";
 export const NAME_LENGTH = 5;
 export const ERROR_MESSAGE = {
   isNull: "이름을 입력해 주세요.",
