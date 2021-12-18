@@ -25,14 +25,7 @@ export default class TeamMatchManager {
     this.view.addOptionsInSelect(missionSelect, MISSION_OPTIONS);
   }
 
-  selectCourseAndMission(event) {
-    event.preventDefault();
-    const selectedCourse = $(SELECTOR.courseSelect).value;
-    const selectedMission = $(SELECTOR.missionSelect).value;
-    this.model.selectCourse(KEY_VALUE[selectedCourse]);
-    const { crewList } = this.model.getSelectedCourse();
-    const { missionList } = this.model.getSelectedCourse();
-    const missionMember = missionList.find(e => e.name === KEY_VALUE[selectedMission]).member;
+  renderByMatchCondition(missionMember, selectedCourse, selectedMission, crewList) {
     if (!validation.isAlreadyMatchedTeam(missionMember)) {
       this.view.renderTeamMatchingSettingTemplate(selectedCourse, selectedMission, crewList);
       this.addTeamMatchingSettingEventListeners();
@@ -44,6 +37,17 @@ export default class TeamMatchManager {
       missionMember,
     );
     this.addAlreadyMatchingEventListeners();
+  }
+
+  selectCourseAndMission(event) {
+    event.preventDefault();
+    const selectedCourse = $(SELECTOR.courseSelect).value;
+    const selectedMission = $(SELECTOR.missionSelect).value;
+    this.model.selectCourse(KEY_VALUE[selectedCourse]);
+    const { crewList } = this.model.getSelectedCourse();
+    const { missionList } = this.model.getSelectedCourse();
+    const missionMember = missionList.find(e => e.name === KEY_VALUE[selectedMission]).member;
+    this.renderByMatchCondition(missionMember, selectedCourse, selectedMission, crewList);
   }
 
   addAlreadyMatchingEventListeners() {
@@ -74,15 +78,7 @@ export default class TeamMatchManager {
     );
   }
 
-  matchTeam(event) {
-    event.preventDefault();
-    const allCourse = this.model.getAllCourse();
-    const selectedCourse = allCourse.find(e => e.name === this.model.selectedCourse);
-    const selectedMission = selectedCourse.missionList.find(
-      e => e.name === KEY_VALUE[$(SELECTOR.missionSelect).value],
-    );
-    console.log($(SELECTOR.memberCountInput));
-    const memberCountPerTeam = $(SELECTOR.memberCountInput).value;
+  renderMatchTeamByCondition(memberCountPerTeam, selectedCourse, selectedMission, allCourse) {
     if (validation.isMemberCountValid(memberCountPerTeam)) {
       this.matchTeamByCount(memberCountPerTeam, selectedCourse, selectedMission);
       this.model.setAllCourse(allCourse);
@@ -95,6 +91,17 @@ export default class TeamMatchManager {
       return;
     }
     this.view.clearInput($(SELECTOR.memberCountInput));
+  }
+
+  matchTeam(event) {
+    event.preventDefault();
+    const allCourse = this.model.getAllCourse();
+    const selectedCourse = allCourse.find(e => e.name === this.model.selectedCourse);
+    const selectedMission = selectedCourse.missionList.find(
+      e => e.name === KEY_VALUE[$(SELECTOR.missionSelect).value],
+    );
+    const memberCountPerTeam = $(SELECTOR.memberCountInput).value;
+    this.renderMatchTeamByCondition(memberCountPerTeam, selectedCourse, selectedMission, allCourse);
   }
 
   matchTeamByCount(memberCount, selectedCourse, selectedMission) {
