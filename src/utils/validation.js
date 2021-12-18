@@ -62,5 +62,18 @@ export const isValidTeamHeadCount = (inputValue, crewLength) => {
     alert(ERROR_MESSAGE.NOT_VALID_HEADCOUNT);
     return false;
   }
+
+  return true;
+};
+
+const isNoCrew = (crews, course) => {
+  return !crews[course] || crews[course].length === 0;
+};
+
+export const isValidTeamMatching = (crews, course) => {
+  if (isNoCrew(crews, course)) {
+    alert(ERROR_MESSAGE.NO_CREW);
+    return false;
+  }
   return true;
 };
