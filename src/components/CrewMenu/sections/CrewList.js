@@ -27,7 +27,7 @@ export default class CrewList extends Component {
               <td>${idx + 1}</td>
               <td>${crew.name}</td>
               <td>
-                <button class='delete-crew-button'>삭제</button>
+                <button class='delete-crew-buttton'>삭제</button>
               </td>
             </tr>
           `;
@@ -39,7 +39,7 @@ export default class CrewList extends Component {
   }
 
   setEvent() {
-    this.addEvent('click', '.delete-crew-button', ({ target }) => {
+    this.addEvent('click', '.delete-crew-buttton', ({ target }) => {
       const $tr = target.closest('tr');
       const { id } = $tr.dataset;
       const result = window.confirm('정말 삭제하시겠습니까?');
