@@ -42,6 +42,9 @@ export default class Model {
     const crew = this.members
       .filter((member) => member.type === type)
       .map((member) => member.name);
+    if (number <= crew.length) {
+      return this.teams.push(new Team(type, mission, crew));
+    }
     const range = [...Array(crew.length)].map((v, i) => i);
     const random = MissionUtils.Random.shuffle(range);
     const randomCrew = random.map((num) => crew[num]);
