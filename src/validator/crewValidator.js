@@ -13,9 +13,17 @@ class crewValidator {
     }
   }
 
+  static isBlank(crewName) {
+    if (crewName === '') {
+      alert('크루 이름을 입력해주세요.');
+      return true;
+    }
+  }
+
   static isInvalidCrewName({ crewName, crewList }) {
     if (this.isDuplicate({ crewName, crewList })) return true;
     if (this.isOverFiveCharacter(crewName)) return true;
+    if (this.isBlank(crewName)) return true;
     return false;
   }
 }
