@@ -1,5 +1,9 @@
+import InitPresent from './storage/initPresent.js';
+
 export default class Final {
-  constructor() {}
+  constructor() {
+    this.init = new InitPresent();
+  }
 }
 
 const finalProject = new Final();
