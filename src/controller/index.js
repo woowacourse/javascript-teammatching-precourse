@@ -8,5 +8,15 @@ export default class Controller {
     this.view.renderCrewManageTab();
   }
 
-  addEventListeners() {}
+  addEventListeners() {
+    $(SELECTOR.crewManageButton).addEventListener('click', () => this.renderCrewManageTab());
+    $(SELECTOR.teamManageButton).addEventListener('click', () =>
+      this.renderTeamMatchingManageTab(),
+    );
+  }
+
+  renderCrewManageTab() {
+    this.view.renderCrewManageTab();
+  }
+
 }

@@ -13,11 +13,21 @@ export default class View {
     this.$container = $(SELECTOR.container);
   }
 
+  clearContainer() {
+    this.$container.innerHTML = '';
+  }
+
   renderHeader() {
     this.$app.insertAdjacentHTML('afterbegin', headerTemplate);
   }
 
   renderCrewManageTab() {
+    this.clearContainer();
     this.$container.insertAdjacentHTML('afterbegin', crewManageTemplate);
+  }
+
+  renderTeamMatchingManageTab() {
+    this.clearContainer();
+    this.$container.insertAdjacentHTML('afterbegin', teamMatchingManageTemplate);
   }
 }

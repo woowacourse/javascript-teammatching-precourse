@@ -6,10 +6,10 @@ export const headerTemplate = `
 <nav>
     <ul>
     <li>
-        <button>크루 관리</button>
+        <button id=${SELECTOR.crewManageButton}>크루 관리</button>
     </li>
     <li>
-        <button>팀 매칭 관리</button>
+        <button id=${SELECTOR.teamManageButton}>팀 매칭 관리</button>
     </li>
     </ul>
 </nav>
@@ -28,7 +28,11 @@ export const crewManageTemplate = `
         <label for="backend">백엔드</label>
       </div>
     </section>
-    <section>
+  </main>
+`;
+
+export const crewInputAndTableTemplate = `
+<section>
       <h3>프론트엔드 크루 관리</h3>
       <form>
         <label>크루 이름</label>
@@ -57,7 +61,10 @@ export const crewManageTemplate = `
         </tbody>
       </table>
     </section>
-  </main>
+`;
+
+export const crewTableTemplate = `
+
 `;
 
 export const teamMatchingManageTemplate = `
