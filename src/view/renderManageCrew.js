@@ -2,10 +2,12 @@ import $ from '../util/$.js';
 import {
   APP_ID,
   TAB_ID,
+  SECTION_ID,
+  CREW_INPUT_ID,
 } from '../constant/constant.js';
 import tabHandler from '../eventHandler/tabHandler.js';
 
-export default function renderManageCrew() {
+export default function renderManageCrew(manager) {
   const $app = $(`#${APP_ID}`);
 
   $app.innerHTML = `
@@ -26,13 +28,13 @@ export default function renderManageCrew() {
       <section>
         <h3>크루를 관리할 코스를 선택해주세요</h3>
         <div>
-          <input type="radio" name="course" value="frontend" />
+          <input type="radio" name="course" value="frontend" id="${CREW_INPUT_ID.FRONT_COURSE_INPUT}"/>
           <label for="frontend">프론트엔드</label>
-          <input type="radio" name="course" value="backend" />
+          <input type="radio" name="course" value="backend" id="${CREW_INPUT_ID.BACK_COURSE_INPUT}"/>
           <label for="backend">백엔드</label>
         </div>
       </section>
-      <section>
+      <section id="${SECTION_ID.CREW_ADD}" style="display: none">
         <h3>프론트엔드 크루 관리</h3>
         <form>
           <label>크루 이름</label>
@@ -40,7 +42,7 @@ export default function renderManageCrew() {
           <button>확인</button>
         </form>
       </section>
-      <section>
+      <section id="${SECTION_ID.CREW_LIST}" style="display: none">
         <h3>프론트엔드 크루 목록</h3>
         <table border="1">
           <thead>

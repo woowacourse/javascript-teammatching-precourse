@@ -1,9 +1,9 @@
-import tabHandler from './eventHandler/tabHandler.js';
-import renderAppHeader from './view/renderAppHeader.js';
+import Manager from './manager/Manager.js';
 import renderCurrentTab from './view/renderCurrentTab.js';
 
 function initTeamMatching() {
-  renderCurrentTab();
+  const manager = new Manager();
+  renderCurrentTab(manager);
 }
 
 initTeamMatching();

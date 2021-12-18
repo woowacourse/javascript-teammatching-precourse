@@ -5,7 +5,7 @@ import {
 } from '../constant/constant.js';
 import tabHandler from '../eventHandler/tabHandler.js';
 
-export default function renderManageTeam() {
+export default function renderManageTeam(manager) {
   const $app = $(`#${APP_ID}`);
 
   $app.innerHTML = `
@@ -23,7 +23,7 @@ export default function renderManageTeam() {
       </nav>
     </header>
     <main>
-      <section>
+      <section id="">
         <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
         <form>
           <select>
