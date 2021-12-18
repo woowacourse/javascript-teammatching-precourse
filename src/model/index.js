@@ -28,3 +28,5 @@ export const deleteCrewOnCourse = (course, findCrewName) =>
         course,
         getCrewsOnCourse(course).filter((crewName) => crewName !== findCrewName),
     );
+
+export const getTeamOnCourse = (course, mission) => getJsonItem(`${course}_${mission}`);
