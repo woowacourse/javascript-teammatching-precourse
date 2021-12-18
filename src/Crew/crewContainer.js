@@ -10,6 +10,8 @@ import {
     getLocalStorage,
     setLocalStorage,
 } from "../Storage/localStorage.js";
+import { checkCrewDuplicate } from "../Storage/validation.js";
+
 export const selectListener = (value) => {
     const $main = document.getElementById("main-container");
     if (value === "frontend") {
@@ -36,9 +38,13 @@ const setCrewEvent = (storage) => {
     const $crewAddButton = document.getElementById(CREW.CREW_ADD_BTN);
     $crewAddButton.addEventListener("click", function (e) {
         e.preventDefault();
-        const inputVal = $crewInput.value; // 여기서 유효성 검사
-        const id = appendLocal(inputVal, storage);
-        appendTable(inputVal, id, storage);
+        const inputVal = checkCrewDuplicate($crewInput.value, storage);
+        if (!inputVal) {
+            $crewInput.value = "";
+        } else {
+            const id = appendLocal(inputVal, storage);
+            appendTable(inputVal, id, storage);
+        }
     });
 };
 

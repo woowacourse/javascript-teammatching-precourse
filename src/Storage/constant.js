@@ -28,3 +28,11 @@ export const LOACL_STORAGE = Object.freeze({
     FRONTEND_CREW: "frontend_crew",
     MATCHING_RESULT: "matching_result",
 });
+
+export const ERROR_MESSAGE = Object.freeze({
+    SAME_NAME: "동일한 이름은 추가할 수 없습니다",
+    OVER_LENGTH: "최대 5글자까지 가능합니다",
+    OVER_ZERO: "0 이상의 숫자를 입력해주세요",
+    IS_EMPTY: "공란을 입력하실 수 없습니다",
+    IS_NUM: "숫자를 입력해주세요",
+});
