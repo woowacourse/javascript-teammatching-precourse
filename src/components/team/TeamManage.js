@@ -1,29 +1,48 @@
+import { ID } from '../../constants/index.js';
+import { crewLists } from '../../utils/template.js';
+
 class TeamManage {
-  constructor($target) {
+  constructor($target, course, mission) {
     this.$target = $target;
+    this.course = course;
+    this.mission = mission;
 
     this.addTemplate();
+    this.selectDom();
+    this.addEvent();
   }
 
   addTemplate() {
     this.$target.innerHTML = `
-    <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
+    <h3>${this.course} ${this.mission} 미션의 팀 매칭</h3>
     <div>
       <div>
         <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
         <form>
           <label>1팀당 인원 수</label>
-          <input type="number" />
-          <button>팀 매칭</button>
+          <input id=${ID.TEAM_MEMBER_COUNT_INPUT} type="number" />
+          <button id=${ID.MATCH_TEAM_BUTTON}>팀 매칭</button>
         </form>
       </div>
       <h4>크루 목록</h4>
       <ul>
-        <li>준</li>
-        <li>포코</li>
+        ${crewLists(this.course)} 
       </ul>
     </div>
     `;
+  }
+
+  selectDom() {
+    this.$countInput = $(`#${ID.TEAM_MEMBER_COUNT_INPUT}`);
+    this.$matchButton = $(`#${ID.MATCH_TEAM_BUTTON}`);
+  }
+
+  addEvent() {
+    this.$matchButton.addEventListener('click', this.clickButton.bind(this));
+  }
+
+  clickButton(e) {
+    e.preventDefault();
   }
 }
 

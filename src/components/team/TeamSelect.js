@@ -1,4 +1,4 @@
-import { ID } from '../../constants/index.js';
+import { COURSE_NAME, ID, MISSION_NAME } from '../../constants/index.js';
 import { $ } from '../../utils/selector.js';
 import { courseList, missionList } from '../../data/index.js';
 import { optionSelectList } from '../../utils/template.js';
@@ -45,10 +45,11 @@ class TeamSelect {
     const course = this.$courseSelect.value;
     const mission = this.$missionSelect.value;
 
-    console.log(this.$courseSelect.value);
-    console.log(this.$missionSelect.value);
-
-    new TeamManage(this.$manageSection, course, mission);
+    new TeamManage(
+      this.$manageSection,
+      COURSE_NAME[course],
+      MISSION_NAME[mission]
+    );
   }
 }
 

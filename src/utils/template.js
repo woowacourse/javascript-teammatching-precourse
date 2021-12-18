@@ -45,3 +45,22 @@ export const optionSelectList = list => {
 
   return html;
 };
+
+export const crewLists = courseName => {
+  let html = '';
+  let list = '';
+
+  if (courseName === '프론트엔드') {
+    list = getLocalStorage(LOCAL_DB.CREW_FRONT);
+  } else {
+    list = getLocalStorage(LOCAL_DB.CREW_BACK);
+  }
+
+  list.forEach((name, i) => {
+    html += `
+      <li>${name}</li>
+    `;
+  });
+
+  return html;
+};
