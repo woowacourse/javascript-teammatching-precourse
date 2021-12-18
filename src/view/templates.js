@@ -96,10 +96,14 @@ const templates = Object.freeze({
     </section>
 
 <!--팀매칭 관리할 코스와 미션을 선택한 경우 matchTeamHTML를 innerHTML--!>
-    <section id="${ID.matchTeamSection}"></section>
+    <section id="${ID.matchTeamSection}">
+    
+      <!--팀매칭이 된 경우 showMatchedTeamHTML를 innerHTML--!>
+      <section id="${ID.showMatchedTeamSection}></section>
+    
+    </section>
 
-<!--팀매칭이 된 경우 showMatchedTeamHTML를 innerHTML--!>
-    <section id="${ID.showMatchedTeamSection}></section>
+
 
   </main>
 `,
@@ -118,8 +122,7 @@ const templates = Object.freeze({
         </div>
         <h4>크루 목록</h4>
         <ul id=${ID.teamMatchResult}>
-          <li>준</li>
-          <li>포코</li>
+
         </ul>
       </div>
     </section>

@@ -90,6 +90,27 @@ export default class TeamController {
   }
 
   loadTeamManagerBtnHandler() {
+    $.showTeamMatcherButton().addEventListener('click', (e) => this.selectTeamMatching(e));
     this.view.showTab($.teamTab());
+  }
+
+  selectTeamMatching(e) {
+    e.preventDefault();
+    const courseName = $.courseSelect().value;
+    const missionName = $.missionSelect().value;
+    this.view.clearTarget($.matchTeamSection());
+    this.view.renderInTarget($.matchTeamSection(), $.matchTeamHTML);
+    const memberCount = $.teamMemberCountInput().value;
+    $.matchTeamButton().addEventListener('click', (e) => {
+      const memberCount = $.teamMemberCountInput().value;
+      this.startMatching(e, memberCount, courseName, missionName);
+    });
+  }
+
+  startMatching(e, memberCount, courseName, missionName) {
+    e.preventDefault();
+    console.log(memberCount, courseName, missionName);
+
+    // this.view.renderInTarget($.showMatchedTeamSection(), $.showMatchedTeamHTML);
   }
 }

@@ -118,7 +118,7 @@ const dataObj = {
 - [ ] 팀 매칭 결과는 프로그램 실행 결과 예시와 같이 쉼표로 구분한다.
 - [ ] 제공하는 마크업을 활용하여 프로그램을 구현한다.
 
-- [ ] DOM 선택자
+- [x] DOM 선택자
 
   - [x] 코스를 선택하는 select의 id는 `course-select`이다.
   - [x] 미션을 선택하는 select의 id는 `mission-select`이다.
@@ -128,7 +128,7 @@ const dataObj = {
   - [x] 팀 매칭 결과를 보여주기 위한 ul의 id는 `team-match-result`이다.
   - [x] 팀 재매칭을 위한 버튼의 id는 `rematch-team-button`이다.
 
-- [ ] 데이터
+- [x] 데이터
   - [x] 팀 매칭을 위한 select option에 아래 데이터를 반드시 예시와 같이 괄호안에 있는 값을 option의 value로 추가해야 한다.
 
 ```
