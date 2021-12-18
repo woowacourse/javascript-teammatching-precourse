@@ -51,3 +51,5 @@ export const ELEMENT_DATA_ATTRIBUTES = Object.freeze({
 export const REMOVE_CREW_CONFIRM_MESSAGE = (name, course) => {
   return `정말 ${name}을(를) ${course} 크루 목록 에서 삭제하시겠습니까?`;
 };
+
+export const MAX_NAME_LENGTH = 5;

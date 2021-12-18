@@ -1,4 +1,11 @@
-import { ELEMENT_SELECTOR, FRONTEND_COURSE, FRONTEND, BACKEND, VALIDATION_MESSAGES } from '../../constants/index.js';
+import {
+  ELEMENT_SELECTOR,
+  FRONTEND_COURSE,
+  FRONTEND,
+  BACKEND,
+  VALIDATION_MESSAGES,
+  MAX_NAME_LENGTH,
+} from '../../constants/index.js';
 import { $, getCourseNameById, getTrimedInputValues } from '../../utils/index.js';
 import { isEmptyString } from '../../utils/validations.js';
 import Component from '../../abstracts/component.js';
@@ -32,7 +39,7 @@ class AddCrewForm extends Component {
   }
 
   isValidCrew(course, name) {
-    if (isEmptyString(name)) {
+    if (isEmptyString(name) || name.length > MAX_NAME_LENGTH) {
       return { isValid: false, message: VALIDATION_MESSAGES.CREW_MANAGE.NAME };
     }
     const { crews } = Store.instance.getState().crewManage;
