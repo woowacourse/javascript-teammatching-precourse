@@ -8,8 +8,7 @@ export default class CrewManageContainer extends Component {
   init() {
     this.$state = {
       crews: getLocalStorage(STORAGE_KEY.CREW, {}),
-      selectedCourse: '',
-      isShowTable: false
+      selectedCourse: ''
     };
   }
 
@@ -26,7 +25,7 @@ export default class CrewManageContainer extends Component {
     if (this.$state.selectedCourse) {
       this.$target.querySelector('#crew-manage').innerHTML = this.printCrewManageSection();
     }
-    if (this.$state.isShowTable) {
+    if (this.$state.selectedCourse) {
       this.$target.querySelector('#crew-list').innerHTML = this.printCrewListSection();
     }
   }
@@ -86,8 +85,7 @@ export default class CrewManageContainer extends Component {
         this.setState({
           crews: Object.assign(this.$state.crews, {
             [course]: this.$state.crews[course] ? [...this.$state.crews[course], name] : [name]
-          }),
-          isShowTable: true
+          })
         });
         this.saveCrewsInStroage();
         this.$target.querySelector('#crew-list').innerHTML = this.printCrewListSection();
@@ -97,16 +95,16 @@ export default class CrewManageContainer extends Component {
 
   crewDeleteClickHandler() {
     this.addEvent('click', '.delete-crew-buttton', ({ target }) => {
-      const { index } = target.dataset;
-      const course = this.$state.selectedCourse;
-      console.log(index);
-      console.log(this.$state.crews[course].filter((crew, crewIndex) => crewIndex !== Number.parseInt(index, 10)));
-      this.setState({
-        crews: Object.assign(this.$state.crews, {
-          [course]: this.$state.crews[course].filter((crew, crewIndex) => crewIndex !== Number.parseInt(index, 10))
-        })
-      });
-      this.saveCrewsInStroage();
+      if (confirm('정말 삭제하시겠습니까?')) {
+        const { index } = target.dataset;
+        const course = this.$state.selectedCourse;
+        this.setState({
+          crews: Object.assign(this.$state.crews, {
+            [course]: this.$state.crews[course].filter((_, crewIndex) => crewIndex !== Number.parseInt(index, 10))
+          })
+        });
+        this.saveCrewsInStroage();
+      }
     });
   }
 
