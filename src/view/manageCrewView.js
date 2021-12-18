@@ -25,6 +25,17 @@ export default class ManageCrewView {
   }
 
   showCrewList(course) {
+    const $title = document.querySelector("#crew-name").children[0];
+    const $listTitle = document.querySelector("#crew-list").children[0];
+    if (course === "frontend") {
+      $title.innerHTML = "프론트엔드 크루 관리";
+      $listTitle.innerHTML = "프론트엔드 크루 목록";
+    }
+    if (course === "backend") {
+      $title.innerHTML = "백엔드 크루 관리";
+      $listTitle.innerHTML = "백엔드 크루 목록";
+    }
+
     showElement(document.querySelector("#crew-name"));
     showElement(document.querySelector("#crew-list"));
   }
@@ -34,7 +45,7 @@ export default class ManageCrewView {
     $table.innerHTML = "";
     crewList.forEach((crew, idx) => {
       $table.innerHTML += `<tr>
-            <td>${idx}</td>
+            <td>${idx + 1}</td>
             <td>${crew}</td>
             <td>
               <button id="delete-crew-buttton">삭제</button>

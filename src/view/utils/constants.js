@@ -23,7 +23,7 @@ const crewInfo = `<main>
       </div>
     </section>
     <section id="crew-name">
-      <h3>프론트엔드 크루 관리</h3>
+      <h3></h3>
       <form>
         <label>크루 이름</label>
         <input type="text" id="crew-name-input"/>
@@ -31,7 +31,7 @@ const crewInfo = `<main>
       </form>
     </section>
     <section id="crew-list">
-      <h3>프론트엔드 크루 목록</h3>
+      <h3></h3>
       <table border="1" id="crew-table">
         <thead>
           <tr>
