@@ -71,6 +71,10 @@ export default class View {
     );
   }
 
+  clearTeamCourseAndMissionContents() {
+    $(SELECTOR.teamCourseAndMissionContents).innerHTML = '';
+  }
+
   renderTeamMatchingSettingTemplate(course, mission, crewList) {
     $(SELECTOR.teamCourseAndMissionContents).innerHTML = '';
     $(SELECTOR.teamCourseAndMissionContents).insertAdjacentHTML(
@@ -94,11 +98,11 @@ export default class View {
     ul.appendChild(liTag);
   }
 
-  renderAlreadyMatchingTemplate(member) {
+  renderAlreadyMatchingTemplate(course, mission, member) {
     $(SELECTOR.teamCourseAndMissionContents).innerHTML = '';
     $(SELECTOR.teamCourseAndMissionContents).insertAdjacentHTML(
       'afterbegin',
-      teamMatchingResultTemplate,
+      teamMatchingResultTemplate(KEY_VALUE[course], KEY_VALUE[mission]),
     );
     member.forEach(team => this.addListInResultUL($(SELECTOR.matchResult), team));
   }

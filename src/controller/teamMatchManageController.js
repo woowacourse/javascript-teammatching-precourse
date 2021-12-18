@@ -38,7 +38,22 @@ export default class TeamMatchManager {
       this.addTeamMatchingSettingEventListeners();
       return;
     }
-    this.view.renderAlreadyMatchingTemplate(missionMember);
+    this.view.renderAlreadyMatchingTemplate(selectedCourse, selectedMission, missionMember);
+    this.addAlreadyMatchingEventListeners();
+  }
+
+  addAlreadyMatchingEventListeners() {
+    $(SELECTOR.rematchButton).addEventListener('click', () => this.rematchTeam());
+  }
+
+  rematchTeam() {
+    this.view.clearTeamCourseAndMissionContents();
+    const allCourse = this.model.getAllCourse();
+    const selectedCourse = allCourse.find(e => e.name === this.model.selectedCourse);
+    const selectedMission = $(SELECTOR.missionSelect).value;
+    const mission = selectedCourse.missionList.find(e => e.name === KEY_VALUE[selectedMission]);
+    mission.member = [];
+    this.model.setAllCourse(allCourse);
   }
 
   addTeamMatchingSettingEventListeners() {

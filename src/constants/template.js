@@ -100,16 +100,16 @@ export const teamMatchingSettingTemplate = (course, mission) => `
       </div>
 `;
 
-export const teamMatchingResultTemplate = `
+export const teamMatchingResultTemplate = (course, mission) => `
 <!-- 팀 매칭이 된 경우 -->
     <section>
-      <h3>프론트엔드 숫자야구게임 조회</h3>
+      <h3>${course} ${mission} 조회</h3>
       <p>팀이 매칭되었습니다.</p>
       <ul id=${SELECTOR.matchResult}>
       </ul>
       <p>
         팀을 재매칭 하시겠습니까?
-        <button id=${SELECTOR.rematchButton}>재매칭</button>
+        <button id=${SELECTOR.rematchButton} data-course=${course} data-mission=${mission}>재매칭</button>
       </p>
     </section>
 `;
