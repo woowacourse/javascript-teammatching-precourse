@@ -1,7 +1,9 @@
 import { $ } from '../utils/dom.js';
-import { ID, INDEX, ERROR_MSG } from '../utils/constants.js';
+import { ID, INDEX, CLASS, ERROR_MSG } from '../utils/constants.js';
 import { template as crewTabTemplate } from '../view/templates/crew-tab.js';
 import { getLocalStorage, setLocalStorage } from '../utils/commonLogics.js';
+import Crew from '../model/Crew.js';
+import { clearInputs } from '../view/OutputView.js';
 
 export default class CrewTabController {
   constructor() {
@@ -13,9 +15,13 @@ export default class CrewTabController {
   }
   init = () => {
     this.choice = getLocalStorage('choice');
-    $(`#${ID.MAIN}`).innerHTML = crewTabTemplate;
+    this.feCrews = getLocalStorage('feCrews');
+    this.beCrews = getLocalStorage('beCrews');
 
+    // paint
+    $(`#${ID.MAIN}`).innerHTML = crewTabTemplate;
     this.loadRecentChoice(this.choice);
+
     $(`div`).addEventListener('click', this.handleCourseBarClick);
     $('form').addEventListener('submit', this.handleCrewNameSubmit);
   };
@@ -32,8 +38,36 @@ export default class CrewTabController {
       alert(ERROR_MSG.CREW_TAB);
     }
     if (isValid) {
-      console.log('valid');
+      // createCrew
+      const newId =
+        this.choice === '0' ? this.feCrews.length + 1 : this.beCrews.length + 1;
+      const newCrew = this.createCrew(newId, name);
+
+      this.paintCrew(newCrew);
+
+      // update
+      this.choice === '0' ? this.feCrews.push(newCrew) : this.beCrews.push(newCrew);
+
+      // set
+      setLocalStorage('feCrews', this.feCrews);
+      setLocalStorage('beCrews', this.beCrews);
+      clearInputs([this.$nameInput]);
     }
+  };
+  paintCrew = ({ id, name }) => {
+    const $table = $(`tbody`);
+    const $tr = document.createElement('tr');
+    // $tr.classList.add(CLASS.PRODUCT_MANAGE_ITEM);
+    $tr.innerHTML = `
+      <td>${id}</td>
+      <td>${name}</td>
+      <td><button class=${CLASS.DELETE_CREW_BTN}>삭제</button></td>
+    `;
+    $table.appendChild($tr);
+  };
+
+  createCrew = (id, name) => {
+    return new Crew(id, name);
   };
 
   validateHelper = (name, choice) => {
@@ -52,15 +86,11 @@ export default class CrewTabController {
   loadRecentChoice = (choice) => {
     if (choice === '0') {
       $(`#${ID.FRONTEND_COURSE}`).checked = true;
-      this.feCrews = getLocalStorage('feCrews');
-      console.log('this.feCrews');
-      console.log(this.feCrews);
+      this.feCrews.map((crew) => this.paintCrew(crew));
     }
     if (choice === '1') {
       $(`#${ID.BACKEND_COURSE}`).checked = true;
-      this.beCrews = getLocalStorage('beCrews');
-      console.log('this.beCrews');
-      console.log(this.beCrews);
+      this.beCrews.map((crew) => this.paintCrew(crew));
     }
   };
 
@@ -73,14 +103,14 @@ export default class CrewTabController {
   initMenu = (btnId) => {
     if (btnId === ID.FRONTEND_COURSE) {
       this.choice = '0';
-      console.log('this.feCrews');
-      console.log(this.feCrews);
+      $(`tbody`).innerHTML = '';
+      this.feCrews.map((crew) => this.paintCrew(crew));
       setLocalStorage('choice', '0');
     }
     if (btnId === ID.BACKEND_COURSE) {
       this.choice = '1';
-      console.log('this.beCrews');
-      console.log(this.beCrews);
+      $(`tbody`).innerHTML = '';
+      this.beCrews.map((crew) => this.paintCrew(crew));
       setLocalStorage('choice', '1');
     }
   };
