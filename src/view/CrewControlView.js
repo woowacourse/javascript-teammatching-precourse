@@ -1,5 +1,6 @@
 import CrewControlController from "../controller/CrewControlController.js";
 import { controlCrewListTemplete, crewControlTemplete, CrewListTemplete } from "../util/dom/crewControlTemplete.js";
+import { emptyCrewName, FiveOverCrewName } from "../util/validate/crewNameCheck.js";
 
 export default class CrewControlView extends CrewControlController {
 
@@ -35,9 +36,13 @@ export default class CrewControlView extends CrewControlController {
     this.crewControlField.querySelector('#add-crew-buttton').addEventListener('click', (e) => {
       e.preventDefault();
       this.crewName = e.target.previousSibling.previousSibling.value;
-      this.setLocalCrewName();
-      this.course === '프론트엔드' ? this.getLocalFrontCrew() : this.getLocalBackCrew();
-      this.renderCrewList();
+      this.emptyCrewNameCheck = emptyCrewName(this.crewName);
+      this.fiveOverCrewNameCheck = FiveOverCrewName(this.crewName);
+      this.emptyCrewNameCheck && this.fiveOverCrewNameCheck
+      ? (this.setLocalCrewName(),
+      this.course === '프론트엔드' ? this.getLocalFrontCrew() : this.getLocalBackCrew(),
+      this.renderCrewList())
+      : "";
     })
   }
 
@@ -65,5 +70,5 @@ export default class CrewControlView extends CrewControlController {
       })
     })
   }
-  
+
 }
