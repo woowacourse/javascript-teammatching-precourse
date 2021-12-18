@@ -19,7 +19,7 @@ export class CrewView {
 
   setOnCrewAddButtonClick(fn, course) {
     // console.log(`$addCrewButton`, $addCrewButton);
-    $('#add-crew-button').addEventListener('click', (e) => {
+    $('#add-crew-buttton').addEventListener('click', (e) => {
       e.preventDefault();
       const crewName = $('#crew-name-input').value;
       fn(crewName, course);

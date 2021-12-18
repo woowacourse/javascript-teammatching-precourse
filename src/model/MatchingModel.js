@@ -2,16 +2,18 @@ import { USER_INPUT_ALERT } from '../utils/constant.js';
 
 export class MatchingModel {
   frontEndCrewList = [
-    '김의진',
-    '오정은',
-    '히히히',
-    '하하하',
-    '호호호',
-    '헤헤헤',
-    '휴휴휴',
-    '뉴뉴뉴',
+    // '김의진',
+    // '오정은',
+    // '히히히',
+    // '하하하',
+    // '호호호',
+    // '헤헤헤',
+    // '휴휴휴',
+    // '뉴뉴뉴',
   ];
-  backEndCrewList = ['1', '2', '3', '4', '5', '6', '7', '8'];
+  backEndCrewList = [
+    // '1', '2', '3', '4', '5', '6', '7', '8'
+  ];
 
   addCrewList(crewName, course) {
     if (course === 'frontend') {

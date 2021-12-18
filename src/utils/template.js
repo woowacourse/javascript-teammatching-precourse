@@ -36,7 +36,7 @@ export function getCrewList(course) {
       <form>
         <label>크루 이름</label>
         <input id="crew-name-input" type="text" />
-        <button id="add-crew-button" >확인</button>
+        <button id="add-crew-buttton" >확인</button>
       </form>
     </section>
     <section>

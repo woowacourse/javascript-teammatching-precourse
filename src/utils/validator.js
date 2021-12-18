@@ -29,13 +29,6 @@ export const HeadCountInputCheckMethods = [
     }
     return isNaturalNumber;
   },
-  (value) => {
-    const isFilled = value.trim() !== '';
-    if (!isFilled) {
-      alert(USER_INPUT_ALERT.blankError);
-    }
-    return isFilled;
-  },
 ];
 
 export function isHeadCountInputValid(value) {
