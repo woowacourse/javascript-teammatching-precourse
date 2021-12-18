@@ -1,0 +1,21 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": ["eslint:recommended", "airbnb-base", "plugin:prettier/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "rules": {
+    "import/extensions": "off",
+    "no-alert": "off",
+    "no-new": "off",
+    "no-useless-return": "off",
+    "class-methods-use-this": "off",
+    "no-undef": "off",
+    "no-param-reassign": "off",
+    "consistent-return": "off"
+  }
+}
