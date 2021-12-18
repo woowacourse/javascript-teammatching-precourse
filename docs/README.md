@@ -62,13 +62,13 @@
 
 [x] 팀 관리 버튼의 id는 team-tab 이다
 
-[ ] 팀 매칭 관리 탭을 클릭하면, 팀매칭을 관리할 코스 미션을 선택하는 element가 render 된다
+[x] 팀 매칭 관리 탭을 클릭하면, 팀매칭을 관리할 코스 미션을 선택하는 element가 render 된다
 
-[ ] 코스를 선택하는 select id는 course-select이다
+[x] 코스를 선택하는 select id는 course-select이다
 
-[ ] 미션을 선택하는 select id는 mission-select이다
+[x] 미션을 선택하는 select id는 mission-select이다
 
-[ ] 팀을 관리하기 위한 확인 버튼 id는 show-team-matcher-button이다
+[x] 팀을 관리하기 위한 확인 버튼 id는 show-team-matcher-button이다
 
 [ ] 유저가 코스와 게임을 선택하고 확인버튼을 누르게 되면 해당 팀 매칭 관련 element가 render된다
 
