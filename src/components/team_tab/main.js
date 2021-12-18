@@ -19,9 +19,7 @@ export default class TeamTab extends Component {
   template() {
     return `
       <section id="select-option"></section>
-      <section id="input-match">
-        
-      </section>
+      <section id="input-match"></section>
 
       <!-- 팀 매칭이 된 경우 -->
       <section id="matched-team">
@@ -53,7 +51,11 @@ export default class TeamTab extends Component {
       selectedMission,
     });
 
-    new InputMatch($inputMatch, { setTeamNumbers: setTeamNumbers.bind(this) });
+    new InputMatch($inputMatch, {
+      selectedCourse,
+      selectedMission,
+      setTeamNumbers: setTeamNumbers.bind(this),
+    });
   }
 
   setSelectedOption(props) {
