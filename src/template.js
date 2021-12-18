@@ -6,7 +6,6 @@ export const FRONT_CREW_MANAGE_TEMPLATE = `<section id="front">
   <button id="add-crew-buttton">확인</button>
 </form>
 </section>
-
 <section>
 <h3>프론트엔드 크루 목록</h3>
 <table id="crew-table" border="1">
@@ -18,13 +17,7 @@ export const FRONT_CREW_MANAGE_TEMPLATE = `<section id="front">
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>준</td>
-      <td>
-        <button class="delete-crew-buttton">삭제</button>
-      </td>
-    </tr>
+
   </tbody>
 </table>
 </section>`;
@@ -32,11 +25,10 @@ export const BACK_CREW_MANAGE_TEMPLATE = `<section id="back">
 <h3>백엔드 크루 관리</h3>
 <form>
   <label>크루 이름</label>
-  <input id="crew-name-input" type="text" />
+  <input id="" type="text" />
   <button id="add-crew-buttton">확인</button>
 </form>
 </section>
-
 <section>
 <h3>백엔드 크루 목록</h3>
 <table id="crew-table" border="1">
@@ -48,13 +40,7 @@ export const BACK_CREW_MANAGE_TEMPLATE = `<section id="back">
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>준</td>
-      <td>
-        <button class="delete-crew-buttton">삭제</button>
-      </td>
-    </tr>
+
   </tbody>
 </table>
 </section>`;
