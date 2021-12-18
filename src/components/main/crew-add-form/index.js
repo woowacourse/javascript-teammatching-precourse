@@ -18,10 +18,10 @@ export default class CrewAddForm extends Component {
   }
 
   mounted() {
-    const { data, type } = this.$props;
+    const { data, type, deleteCrew } = this.$props;
 
     const $crewTable = this.$target.querySelector('[data-component="crew-table"]');
-    new CrewTable($crewTable, { type, data: data[type] });
+    new CrewTable($crewTable, { type, data: data[type], deleteCrew });
   }
 
   setEvent() {

@@ -78,7 +78,8 @@ export default class App extends Component {
   }
 
   deleteCrew(courseType, name) {
-    const crews = [];
+    const { data } = this.$state;
+    let crews = [];
 
     if (courseType === 'frontend') {
       crews = [...this.$state.data.frontend];
@@ -91,10 +92,7 @@ export default class App extends Component {
       });
     } else if (courseType === 'backend') {
       crews = [...this.$state.data.backend];
-      crews.splice(
-        crews.findIndex(v => v === name),
-        1
-      );
+      crews.splice(crews.findIndex(v => v === name));
       this.setState({ data: { ...data, backend: crews } });
     }
   }

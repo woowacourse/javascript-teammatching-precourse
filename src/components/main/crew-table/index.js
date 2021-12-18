@@ -29,8 +29,8 @@ export default class CrewTable extends Component {
         .map(
           (name, index) => `
             <tr>
-              <td>${index + 1}</td>
-              <td>${name}</td>
+              <td id="crew-index">${index + 1}</td>
+              <td id="crew-name">${name}</td>
               <td>
                 <button class="${ID.DELETE_CREW_BUTTON}">삭제</button>
               </td>
@@ -38,5 +38,13 @@ export default class CrewTable extends Component {
         )
         .join('')}
     `;
+  }
+
+  setEvent() {
+    const { type, deleteCrew } = this.$props;
+    this.addEvent('click', `.${ID.DELETE_CREW_BUTTON}`, ({ target }) => {
+      const $name = this.$target.querySelector('#crew-name');
+      deleteCrew(type, $name.text);
+    });
   }
 }
