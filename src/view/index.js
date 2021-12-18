@@ -1,14 +1,23 @@
 import { $ } from '../controller/utils.js';
 import { SELECTOR } from '../constants/constants.js';
-import { crewManageTemplate, teamMatchingManageTemplate } from '../constants/template.js';
+import {
+  headerTemplate,
+  crewManageTemplate,
+  teamMatchingManageTemplate,
+} from '../constants/template.js';
 
 export default class View {
   constructor() {
     this.$app = $(SELECTOR.app);
-    this.renderCrewManageTab();
+    this.renderHeader();
+    this.$container = $(SELECTOR.container);
+  }
+
+  renderHeader() {
+    this.$app.insertAdjacentHTML('afterbegin', headerTemplate);
   }
 
   renderCrewManageTab() {
-    this.$app.insertAdjacentHTML('afterbegin', header);
+    this.$container.insertAdjacentHTML('afterbegin', crewManageTemplate);
   }
 }
