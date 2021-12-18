@@ -12,3 +12,5 @@ export const INDEX_KEY = 'index';
 
 export const CREW_NAME_LIMIT = 5;
 export const CREW_STORAGE_INDEX_START = 1;
+
+export const CONFIRM_MSG = '정말로 삭제하시겠습니까?';

@@ -42,19 +42,19 @@
 
 [x] 만약 유저가 입력한 크루 이름이 유효한 값이라면 해당 localStorage에 업데이트 한다
 
-[ ] localStorage에 업데이트 된 값을 보여준다
+[x] localStorage에 업데이트 된 값을 보여준다
 
 [x] 크루 목록을 보여주기 위한 table의 id는 crew-table 이다
 
 [x] 크루 삭제버튼의 class는 delete-crew-button 이다
 
-[ ] 코스별로 크루 관리 삭제버튼을 confirm을 통해서 유저에게 삭제 여부를 확인한다
+[x] 코스별로 크루 관리 삭제버튼을 confirm을 통해서 유저에게 삭제 여부를 확인한다
 
-[ ] 만약 confirm에서 유저가 확인을 눌렀을 때에 해당 크루를 삭제한다
+[x] 만약 confirm에서 유저가 확인을 눌렀을 때에 해당 크루를 삭제한다
 
-[ ] 삭제한 내용을 localStorage에 업데이트 한다
+[x] 삭제한 내용을 localStorage에 업데이트 한다
 
-[ ] 크루 table의 첫번째 열에는 index를 넣어 순서를 표기한다 단, index는 1 부터 시작한다
+[x] 크루 table의 첫번째 열에는 index를 넣어 순서를 표기한다 단, index는 1 부터 시작한다
 
 <hr>
 
