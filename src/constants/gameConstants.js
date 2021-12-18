@@ -6,5 +6,5 @@ export const GAMEOBJ = {
   payments: '결제',
   subway: '지하철노선도',
   performance: '성능개선',
-  deplot: '배포',
+  deploy: '배포',
 };
