@@ -24,6 +24,7 @@ export default class CrewManageContainer extends Component {
 
   setEvent() {
     this.courseRadioClickHandler();
+    this.crewManageClickHandler();
   }
 
   printSelectCourseSection() {
@@ -38,6 +39,17 @@ export default class CrewManageContainer extends Component {
     `;
   }
 
+  printCrewManageSection() {
+    return `
+    <h3>프론트엔드 크루 관리</h3>
+    <form id="add-crew-form">
+      <label>크루 이름</label>
+      <input type="text" id="crew-name-input" />
+      <button id="add-crew-buttton">확인</button>
+    </form>
+    `;
+  }
+
   courseRadioClickHandler() {
     this.addEvent('change', 'input[name="course"]', ({ target }) => {
       this.setState({ selected: target.value });
@@ -46,14 +58,12 @@ export default class CrewManageContainer extends Component {
     });
   }
 
-  printCrewManageSection() {
-    return `
-    <h3>프론트엔드 크루 관리</h3>
-    <form>
-      <label>크루 이름</label>
-      <input type="text" />
-      <button>확인</button>
-    </form>
-    `;
+  crewManageClickHandler() {
+    this.addEvent('submit', '#add-crew-form', (event) => {
+      event.preventDefault();
+
+      const name = this.$target.querySelector('#crew-name-input').value;
+      console.log(name);
+    });
   }
 }
