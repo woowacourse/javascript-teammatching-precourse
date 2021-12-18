@@ -1,5 +1,5 @@
-import CrewView from './CrewView.js';
-import TeamView from './TeamView.js';
+import CrewView from './Crew/CrewView.js';
+import TeamView from './Team/TeamView.js';
 
 export default class MainMenuCheck {
   static checkFirstMenu(targetId) {

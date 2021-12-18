@@ -1,4 +1,4 @@
-import { HTML_OF_HEADER, HTML_OF_CREW_RADIO, HTML_OF_CREW_TABLE } from './utils/html.js';
+import { HTML_OF_HEADER, HTML_OF_CREW_RADIO, HTML_OF_CREW_TABLE } from '../utils/html.js';
 
 export default class CrewView {
   static render() {

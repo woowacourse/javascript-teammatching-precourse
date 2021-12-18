@@ -1,8 +1,8 @@
-import { CREW_BACK, CREW_FRONT, ERROR_MESSAGE } from './constants.js';
+import { CREW_BACK, CREW_FRONT, ERROR_MESSAGE } from '../utils/constants.js';
 import CrewCheck from './CrewCheck.js';
 // eslint-disable-next-line import/no-cycle
 import CrewView from './CrewView.js';
-import { HTML_OF_FRONT_CREW_INPUT, HTML_OF_BACK_CREW_INPUT, HTML_OF_CREW_TABLE, HTML_OF_FRONT_CHECKED_RADIO, HTML_OF_HEADER, HTML_OF_BACK_CHECKED_RADIO } from './utils/html.js';
+import { HTML_OF_FRONT_CREW_INPUT, HTML_OF_BACK_CREW_INPUT, HTML_OF_CREW_TABLE, HTML_OF_FRONT_CHECKED_RADIO, HTML_OF_HEADER, HTML_OF_BACK_CHECKED_RADIO } from '../utils/html.js';
 
 export default class CrewEvent {
   static addEvent() {

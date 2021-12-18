@@ -1,4 +1,4 @@
-import { HTML_OF_TEAM_TAB, HTML_OF_HEADER } from './utils/html.js';
+import { HTML_OF_TEAM_TAB, HTML_OF_HEADER } from '../utils/html.js';
 
 export default class TeamView {
   static render() {

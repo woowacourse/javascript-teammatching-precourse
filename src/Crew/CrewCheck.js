@@ -1,4 +1,4 @@
-import { MAX_LENGTH_NAME, NOT_EXIST } from './constants.js';
+import { MAX_LENGTH_NAME, NOT_EXIST } from '../utils/constants.js';
 
 export default class CrewCheck {
   constructor(name) {
