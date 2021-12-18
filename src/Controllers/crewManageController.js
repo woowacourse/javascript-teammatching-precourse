@@ -43,6 +43,19 @@ export default class CrewManageController {
     this.configureButton();
   };
 
+  onClickDelete = (event) => {
+    const targetNumber = Number(event.path[2].childNodes[1].textContent);
+    let data = this.getSelectedData();
+    data.splice(targetNumber - 1, 1);
+    if (this.selectCourse === ID.FRONT_RADIO) {
+      LocalStorageUtils.setItem(LocalStorageUtils.keys.frontCrewManage, data);
+    } else {
+      LocalStorageUtils.setItem(LocalStorageUtils.keys.BackendCrewManage, data);
+    }
+    this.crewManageView.renderTable(data);
+    this.configureButton();
+  };
+
   getSelectedData() {
     let data;
     if (this.selectCourse === ID.FRONT_RADIO) {
