@@ -19,8 +19,9 @@ export const selectListener = (value) => {
             "beforeend",
             View.CrewSecnodView("프론트엔드"),
         );
-
+        console.log(getLocalStorage(LOCAL.FRONTEND_CREW));
         if (getLocalStorage(LOCAL.FRONTEND_CREW) !== EMPTY) {
+            console.log("@@@@");
             showExistCrew(LOCAL.FRONTEND_CREW);
         }
         setCrewEvent(LOCAL.FRONTEND_CREW);
@@ -74,6 +75,7 @@ const appendTable = (crewName, crewId, storage) => {
 };
 
 const appendTd = (tr, ...tds) => {
+    console.log(tds);
     tds.forEach((element) => tr.append(element));
 };
 

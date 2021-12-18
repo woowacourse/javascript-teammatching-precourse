@@ -9,7 +9,7 @@ export const InitialPresenter = function () {
     const crewPresenter = new CrewPresenter();
     const teamPresenter = new TeamPresenter();
     this.init = () => {
-        // initialStorageSet();/
+        initialStorageSet();
         $app.insertAdjacentHTML("afterbegin", View.Header());
         const $crewTab = document.getElementById(ID.CREW_TAB);
         const $teamTab = document.getElementById(ID.TEAM_TAB);
@@ -20,7 +20,6 @@ export const InitialPresenter = function () {
     const addListener = (button, view, presenter) => {
         button.addEventListener("click", function (e) {
             e.preventDefault();
-
             $app.insertAdjacentHTML("beforeend", view);
 
             presenter.init();

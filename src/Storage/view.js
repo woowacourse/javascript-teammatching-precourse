@@ -24,9 +24,9 @@ export const CrewFirstView = () => {
         <section>
         <h3>크루를 관리할 코스를 선택해주세요</h3>
         <div>
-            <input type="radio" name="course" value="frontend" />
+            <input type="radio" name="course" value="frontend" id = ${CREW_TAB.FRONT_COURSE} />
             <label for="frontend">프론트엔드</label>
-            <input type="radio" name="course" value="backend" />
+            <input type="radio" name="course" value="backend" id = ${CREW_TAB.BACK_COURSE} />
             <label for="backend">백엔드</label>
         </div>
         </section>
