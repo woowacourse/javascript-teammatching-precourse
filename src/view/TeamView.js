@@ -18,6 +18,15 @@ export class TeamView {
     });
   }
 
+  setOnMatchButtonClick(fn, selectedCourse) {
+    $('#match-team-button').addEventListener('click', (e) => {
+      e.preventDefault();
+      const headCountPerTeam = $('#team-member-count-input').value;
+
+      fn(headCountPerTeam, selectedCourse);
+    });
+  }
+
   showCrewList(selectedCourse, selectedMission, crewList) {
     this.$teamMemberSection.innerHTML = getMatchingQuestion(selectedCourse, selectedMission);
     const $crewList = $('#crew-list');
