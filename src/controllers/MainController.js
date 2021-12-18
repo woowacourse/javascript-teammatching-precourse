@@ -1,3 +1,4 @@
+import CrewManageModel from '../models/CrewManageModel.js';
 import { $ } from '../utils/dom.js';
 
 import CrewManageView from '../views/CrewManageView.js';
@@ -8,9 +9,9 @@ export default {
   init() {
     LayoutView.setup($('#app'));
     TabView.setup($('#tab-view')).on('@changeTab', (e) => this.onChangeTabView(e.detail.tab));
-    CrewManageView.setup($('main')).on('@changeCourse', (e) =>
-      this.onChangeCourse(e.detail.course),
-    );
+    CrewManageView.setup($('main'))
+      .on('@changeCourse', (e) => this.onChangeCourse(e.detail.course))
+      .on('@submitCrewName', (e) => this.onSubmitCrew(e.detail));
 
     this.selectedTab = '크루 관리';
     this.renderView();
@@ -32,6 +33,10 @@ export default {
   },
 
   onChangeCourse(course) {
-    console.log(course);
+    CrewManageView.setCourse(course);
+  },
+
+  onSubmitCrew(crew) {
+    CrewManageModel.add(crew);
   },
 };

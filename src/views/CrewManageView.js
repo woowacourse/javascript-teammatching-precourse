@@ -1,3 +1,4 @@
+import CrewManageModel from '../models/CrewManageModel.js';
 import View from './View.js';
 
 const CrewManageView = { ...View };
@@ -5,6 +6,8 @@ const CrewManageView = { ...View };
 CrewManageView.setup = function (element) {
   this.init(element);
   this.bindEvent();
+
+  this.course;
   return this;
 };
 
@@ -12,12 +15,25 @@ CrewManageView.bindEvent = function () {
   this.element.addEventListener('click', (e) => {
     if (e.target.closest('div').id === 'course-select-form' && e.target.tagName === 'INPUT') {
       this.onChangeCourse(e.target.value);
+      return;
+    }
+    if (e.target.id === 'add-crew-button') {
+      e.preventDefault();
+      this.onSubmitCrewName(this.child('#crew-name-input').value);
     }
   });
 };
 
+CrewManageView.setCourse = function (course) {
+  this.course = course;
+};
+
 CrewManageView.onChangeCourse = function (course) {
   this.emit('@changeCourse', { course });
+};
+
+CrewManageView.onSubmitCrewName = function (name) {
+  this.emit('@submitCrewName', { course: this.course, name });
 };
 
 CrewManageView.render = function () {
@@ -36,7 +52,7 @@ CrewManageView.render = function () {
       <form>
         <label>크루 이름</label>
         <input id="crew-name-input" type="text" />
-        <button id="add-crew-buttton" >확인</button>
+        <button id="add-crew-button" >확인</button>
       </form>
     </section>
     <section>
@@ -50,16 +66,21 @@ CrewManageView.render = function () {
           </tr>
         </thead>
         <tbody>
+        ${CrewManageModel.list()['frontend'].map(
+          (name, idx) => `
           <tr>
-            <td>1</td>
-            <td>준</td>
-            <td>
-              <button class="delete-crew-buttton">삭제</button>
-            </td>
-          </tr>
+              <td>${idx + 1}</td>
+              <td>${name}</td>
+              <td>
+                <button class="delete-crew-button">삭제</button>
+              </td>
+            </tr>
+          `,
+        )}
         </tbody>
       </table>
-    </section>`;
+    </section>
+    `;
 };
 
 export default CrewManageView;
