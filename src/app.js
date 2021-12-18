@@ -25,8 +25,8 @@ class App {
 
   renderCrewView() {
     $('main').insertAdjacentHTML('beforeend', this.crewView.manageCourseTemplate());
-    $('main').insertAdjacentHTML('beforeend', this.crewView.manageFECrewTemplate());
-    $('main').insertAdjacentHTML('beforeend', this.crewView.manageBECrewTemplate());
+    $('main').insertAdjacentHTML('beforeend', this.crewView.manageCrewTemplate());
+    $('main').insertAdjacentHTML('beforeend', this.crewView.crewListTemplate());
     hideCrewManage();
   }
 

@@ -1,11 +1,11 @@
-import { $ } from '../utils/dom.js';
+import { $, $$ } from '../utils/dom.js';
 
 class crewView {
   getInput() {
     return $('#crew-name-input').value;
   }
 
-  feCrewListTemplate() {
+  getFECrewList() {
     return `<tr>
     <td>1</td>
     <td>준</td>
@@ -15,7 +15,7 @@ class crewView {
   </tr>`;
   }
 
-  beCrewListTemplate() {
+  getBECrewList() {
     return `<tr>
     <td>1</td>
     <td>준</td>
@@ -38,9 +38,9 @@ class crewView {
       </section>`;
   }
 
-  manageFECrewTemplate() {
+  manageCrewTemplate() {
     return `      
-      <section id="manage-fe-crew">
+      <section id="manage-crew">
         <h3>프론트엔드 크루 관리</h3>
         <form>
           <label>크루 이름</label>
@@ -48,36 +48,14 @@ class crewView {
           <button id="add-crew-buttton">확인</button>
         </form>
       </section>
-      <section id="fe-crew-list">
-        <h3>프론트엔드 크루 목록</h3>
-        <table id="crew-table" border="1">
-          <thead>
-            <tr>
-              <th></th>
-              <th>크루</th>
-              <th>관리</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </section>
       `;
   }
 
-  manageBECrewTemplate() {
-    return `      
-      <section id="manage-be-crew">
-        <h3>백엔드 크루 관리</h3>
-        <form>
-          <label>크루 이름</label>
-          <input id="crew-name-input" type="text" />
-          <button id="add-crew-buttton">확인</button>
-        </form>
-      </section>
-      <section id="be-crew-list">
-        <h3>백엔드 크루 목록</h3>
-        <table id="crew-table" border="1">
+  crewListTemplate() {
+    return `
+    <section id="crew-list"> 
+      <table id="crew-table" border="1">
+          <h3>프론트엔드 크루 목록</h3>
           <thead>
             <tr>
               <th></th>
@@ -85,11 +63,10 @@ class crewView {
               <th>관리</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="crew-table-tbody">
           </tbody>
-        </table>
-      </section>
-      `;
+      </table>
+      </section>`;
   }
 }
 
