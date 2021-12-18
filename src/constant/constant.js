@@ -16,3 +16,6 @@ export const CREW_INPUT_ID = {
   NAME_INPUT: 'crew-name-input',
   ADD_BUTTON: 'add-crew-buttton',
 };
+export const ERROR_MESSAGE = {
+  NAME_ERROR: '크루의 이름은 공백없이 5자 이하이고 중복이 불가합닌다.',
+};
