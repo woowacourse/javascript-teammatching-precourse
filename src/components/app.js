@@ -47,6 +47,8 @@ const TEAM_TAB_ID = "team-tab";
 const SHOW_TEAM_MATCHER_BUTTON_ID = "show-team-matcher-button";
 const COURSE_SELECT_ID = "course-select";
 const MISSION_SELECT_ID = "mission-select";
+const TEAM_MEMBER_COUNT_INPUT_ID = "team-member-count-input";
+const MATCH_TEAM_BUTTON_ID = "match-team-button";
 
 export default class App extends Component {
   initialize() {
@@ -180,6 +182,8 @@ export default class App extends Component {
       this.setState({ activeTab: target.id });
     } else if (target.id === SHOW_TEAM_MATCHER_BUTTON_ID) {
       this.onClickShowTeamMatcher();
+    } else if (target.id === MATCH_TEAM_BUTTON_ID) {
+      this.onClickCreateTeam();
     }
   }
 
@@ -206,5 +210,16 @@ export default class App extends Component {
     const activeSelectMission =
       document.getElementById(MISSION_SELECT_ID).value;
     this.setState({ activeSelectCourse, activeSelectMission });
+  }
+
+  onClickCreateTeam() {
+    const { value } = document.getElementById(TEAM_MEMBER_COUNT_INPUT_ID);
+    console.log(
+      this.$teamMatcher.getTeam(
+        this.$state.activeSelectCourse,
+        this.$state.activeSelectMission,
+        value
+      )
+    );
   }
 }

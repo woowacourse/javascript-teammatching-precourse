@@ -26,9 +26,11 @@ export default class TeamManager {
   #getRandomAssignment(numPerGroup, crews) {
     const arrSize = Math.ceil(crews.length / numPerGroup);
     const arrCrew = this.#getInitArray(arrSize);
-    const shuffled = MissionUtils.Random.shuffle(crews);
+    const shuffled = MissionUtils.Random.shuffle([
+      ...Array(crews.length).keys(),
+    ]);
     for (let i = 0; i < crews.length; i += 1) {
-      arrCrew[i % arrSize].push(shuffled[i]);
+      arrCrew[i % arrSize].push(crews[shuffled[i]]);
     }
     return arrCrew;
   }

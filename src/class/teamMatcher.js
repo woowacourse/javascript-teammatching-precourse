@@ -27,7 +27,12 @@ export default class TeamMatcher {
       : false;
   }
 
-  getTeam(courseId, missionId, numPerGroup, crews) {
-    this.teamManager.getTeam(courseId, missionId, numPerGroup, crews);
+  getTeam(courseId, missionId, numPerGroup) {
+    return this.teamManager.getTeam(
+      courseId,
+      missionId,
+      numPerGroup,
+      this.getCrews(courseId)
+    );
   }
 }
