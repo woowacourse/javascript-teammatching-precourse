@@ -8,7 +8,6 @@ export default class MatchedTeam extends Component {
   template() {
     const { matchedTeam } = this.$props;
 
-    console.log("000000000matchedTeam", matchedTeam);
     return `
         <h3>프론트엔드 숫자야구게임 조회</h3>
         <p>팀이 매칭되었습니다.</p>
@@ -26,5 +25,15 @@ export default class MatchedTeam extends Component {
         <button id="rematch-team-button">재매칭</button>
         </p>
     `;
+  }
+
+  mounted() {
+    const $rematchTeamButton = document.querySelector("#rematch-team-button");
+
+    this.addEvent("click", $rematchTeamButton, (e) => this.onClick(e));
+  }
+
+  onClick(e) {
+    console.log(e);
   }
 }
