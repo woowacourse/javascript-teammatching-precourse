@@ -18,6 +18,14 @@ export const isDuplicatedName = (inputValue, course) => {
   return false;
 };
 
+export const isInputNotPositive = (inputValue) => {
+  return inputValue <= 0;
+};
+
+export const isInputNotInteger = (inputValue) => {
+  return isNaN(inputValue) || !Number.isInteger(inputValue);
+};
+
 export const isValidCrewName = (inputValue, course) => {
   if (isInputEmpty(inputValue)) {
     alert(ERROR_MESSAGE.EMPTY);
@@ -29,6 +37,21 @@ export const isValidCrewName = (inputValue, course) => {
   }
   if (isDuplicatedName(inputValue, course)) {
     alert(ERROR_MESSAGE.DUPLICATED_NAME);
+    return false;
+  }
+
+  return true;
+};
+
+export const isValidTeamHeadCount = (inputValue) => {
+  inputValue = Number.parseInt(inputValue, 10);
+
+  if (isInputEmpty(inputValue)) {
+    alert(ERROR_MESSAGE.EMPTY);
+    return false;
+  }
+  if (isInputNotInteger(inputValue) || isInputNotPositive(inputValue)) {
+    alert(ERROR_MESSAGE.NOT_POSITIVE_INTEGER);
     return false;
   }
 
