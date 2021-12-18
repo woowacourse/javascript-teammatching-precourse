@@ -40,7 +40,6 @@ class Crew {
     }
 
     getMatchedTeam(input) {
-        console.log(this.getNumberList());
         const randomNumberList = MissionUtils.Random.shuffle(this.getNumberList());
         const randomCrewList = this.convertNumberListToCrewList(randomNumberList);
         const teamList = [];
@@ -49,10 +48,12 @@ class Crew {
         let idx = 0;
 
         while(idx < total) {
-            let member = (remainder > 0) ? input + 1 : input;
+            let member = (remainder > 0) ? Number(input) + 1 : Number(input);
             remainder--;
-            teamList.push(randomCrewList.slice(idx, idx+member));
+            teamList.push(randomCrewList.slice(idx, Number(idx)+Number(member)));
+            console.log(idx, Number(idx)+Number(member));
             idx += member;
+
         }
 
         console.log(teamList);
