@@ -1,9 +1,11 @@
-import { CrewController } from './controller/CrewController';
-import { TeamController } from './controller/TeamController';
+import { CrewController } from './controller/CrewController.js';
+import { TeamController } from './controller/TeamController.js';
+import { MatchingModel } from './model/MatchingModel.js';
+import { CoreView } from './view/CoreView.js';
 
 class App {
   constructor() {
-    const model = new VendingMachineModel();
+    const model = new MatchingModel();
     this.coreView = new CoreView();
 
     const crewController = new CrewController(model, this.coreView);

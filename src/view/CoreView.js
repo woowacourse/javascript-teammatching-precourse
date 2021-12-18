@@ -1,3 +1,5 @@
+import { $ } from '../utils/DOM.js';
+import { APP_TEMPLATE } from '../utils/template.js';
 import { CrewView } from './CrewView.js';
 import { TeamView } from './TeamView.js';
 
@@ -11,5 +13,8 @@ export class CoreView {
 
   addCommonElements() {
     this.$app.innerHTML = APP_TEMPLATE;
+    this.$nav = $('#app > nav');
+    this.$crewTab = $('#crew-tab');
+    this.$teamTab = $('#team-tab');
   }
 }
