@@ -24,14 +24,14 @@ export default class AppModel {
     return loadDataFromLocalStorage(STORAGE_KEY.BACK_CREWS);
   }
 
-  addBackCrew(name, course) {
-    this.backCrews.push(new Crew(name, course));
+  addBackCrew(name) {
+    this.backCrews.push(new Crew(name));
 
     return setDataOnLocalStorage(STORAGE_KEY.BACK_CREWS, this.backCrews);
   }
 
-  addFrontCrew(name, course) {
-    this.frontCrews.push(new Crew(name, course));
+  addFrontCrew(name) {
+    this.frontCrews.push(new Crew(name));
 
     return setDataOnLocalStorage(STORAGE_KEY.FRONT_CREWS, this.frontCrews);
   }

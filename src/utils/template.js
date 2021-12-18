@@ -30,13 +30,13 @@ export const selectCourseTemplate = () => {
         <label for="backend">백엔드</label>
       </div>
     </section>
+    <section id="crew-manage-section"></section>
   `;
 };
 
 export const crewManageTemplate = (crews, course) => {
   return `
     ${crewInputTemplate(course)}
-    <section >
       <h3>${course} 크루 목록</h3>
       <table id="crew-table" border="1">
         <thead>
@@ -50,7 +50,6 @@ export const crewManageTemplate = (crews, course) => {
           ${crewTableTemplate(crews)}
         </tbody>
       </table>
-    </section>
     `;
 };
 

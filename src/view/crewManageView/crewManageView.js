@@ -18,10 +18,11 @@ export default class CrewManageView {
     this.$$courseRadio = $$('input[name="course"]');
     this.$frontendCourseRadio = $('#frontend-course');
     this.$backendCourseRadio = $('#backend-course');
+    this.$crewManageSection = $('#crew-manage-section');
   }
 
   renderCrewManage(crews, course) {
-    this.$main.insertAdjacentHTML('beforeend', crewManageTemplate(crews, course));
+    this.$crewManageSection.innerHTML = crewManageTemplate(crews, course);
   }
 
   selectCrewManageDOM() {

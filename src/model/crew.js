@@ -1,6 +1,5 @@
 export default class Crew {
-  constructor(name, course) {
+  constructor(name) {
     this.name = name;
-    this.course = course;
   }
 }
