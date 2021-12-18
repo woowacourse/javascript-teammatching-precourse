@@ -145,9 +145,9 @@
 
 [validation.js] : input에 올바른 값이 들어갔는데 조건에 대해 판별한다.
 
-- [ ] 크루 이름 input (x <= 5) - `isNameLength`
-- [ ] 공백은 허용하지 않는다. -`isEmpty`
-- [ ] 같은 이름이 있을 수 없다. -`isSame`
+- [x] 크루 이름 input (x <= 5) - `isNameLength`
+- [x] 공백은 허용하지 않는다. -`isEmpty`
+- [x] 같은 이름이 있을 수 없다. -`isSame`
 
 
 
@@ -157,7 +157,7 @@
 
 [localStorage.js] - localStorage와 관련된 로직에 대한 함수를 관리한다. <b>(프론트, 백 따로 관리 유의)</b>
 
-- [ ] 크루 관리 table 추가 및 삭제 시 localStorage를 갱신한다. - `setCrewLocalStorage`
+- [x] 크루 관리 table 추가 및 삭제 시 localStorage를 갱신한다. - `setCrewLocalStorage`
 - [ ] 크루 관리 table을 가져와 데이터를 배열 형태로 return한다. - `getCrewLocalStorage`
 
 

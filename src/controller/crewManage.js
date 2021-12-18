@@ -1,5 +1,6 @@
 import { crewManageDOM, addCrewDOM } from "../view/crewDOM.js";
 import { setCrewLocalStorage, getCrewLocalStorage } from "../data/localStorage.js";
+import { validateInput } from "./validation.js";
 
 export const initCrewManage = () => {
   selectCourseRadio();
@@ -23,8 +24,15 @@ export const addCrewData = () => {
   $addButton.addEventListener('click', e => {
     e.preventDefault();
     
-    const index = setCrewLocalStorage($addInput.value);
-    addCrewDOM(index, $addInput.value);
+    const input = $addInput.value;
+    const index = setCrewLocalStorage(input);
+    
+    if(validateInput(input)) {
+      addCrewDOM(index, $addInput.value);
+    }
+    else {
+      alert("올바르게 입력해주세요!");
+    }
     
     $addInput.value = '';
   });
