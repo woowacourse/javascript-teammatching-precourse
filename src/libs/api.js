@@ -8,6 +8,8 @@ export default class Api {
       checkedCrewCourse: undefined,
       frontends: [],
       backends: [],
+      selectedCourse: undefined,
+      selectedMission: undefined,
     };
 
     if (!this.getTeamMatching()) {
