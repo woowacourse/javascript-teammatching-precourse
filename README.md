@@ -117,6 +117,8 @@
 
 - [ ] 각 button과 input의 id를 통한 객체 setting
 
+[doms.js] : 각 프로그램에서 필요한 dom을 나누어 사용한다.
+
 
 
 <br/>
