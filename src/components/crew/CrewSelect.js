@@ -1,7 +1,7 @@
 import { ID } from '../../constants/index.js';
 import State from '../../observer/State.js';
 import { $ } from '../../utils/selector.js';
-import CrewInput from './CrewInput.js';
+import CrewManage from './CrewManage.js';
 import CrewTable from './CrewTable.js';
 
 class CrewSelect {
@@ -47,7 +47,7 @@ class CrewSelect {
     const { id } = e.target;
 
     if (id === ID.FRONTEND_COURSE || id === ID.BACKEND_COURSE) {
-      new CrewInput(this.$manageSection, textContent, this.state);
+      new CrewManage(this.$manageSection, textContent, this.state);
       new CrewTable(this.$resultSection, textContent, this.state);
     }
   }

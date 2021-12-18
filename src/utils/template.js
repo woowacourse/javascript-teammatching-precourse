@@ -35,3 +35,13 @@ export const crewTableContents = courseName => {
 
   return html;
 };
+
+export const optionSelectList = list => {
+  let html = '';
+
+  list.forEach(({ name, value }) => {
+    html += `<option value=${value}>${name}</option>`;
+  });
+
+  return html;
+};

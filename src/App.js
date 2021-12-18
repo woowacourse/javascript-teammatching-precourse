@@ -1,4 +1,5 @@
 import CrewSelect from './components/crew/CrewSelect.js';
+import TeamSelect from './components/team/TeamSelect.js';
 import { ID } from './constants/index.js';
 import { $ } from './utils/selector.js';
 
@@ -6,6 +7,10 @@ class App {
   constructor($target) {
     this.$target = $target;
 
+    this.render();
+  }
+
+  render() {
     this.addTemplate();
     this.selectDom();
     this.addEvent();
@@ -56,7 +61,7 @@ class App {
       );
     }
     if (id === ID.TEAM_TAB) {
-      //
+      new TeamSelect(this.$selectSection, this.$manageSection);
     }
   }
 }

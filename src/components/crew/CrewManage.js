@@ -3,7 +3,7 @@ import { getLocalStorage, saveLocalStorage } from '../../utils/localStorage.js';
 import { $ } from '../../utils/selector.js';
 import { isValidCrewName } from '../../utils/valid.js';
 
-class CrewInput {
+class CrewManage {
   constructor($manageSection, courseName, state) {
     this.$manageSection = $manageSection;
     this.courseName = courseName;
@@ -59,4 +59,4 @@ class CrewInput {
   }
 }
 
-export default CrewInput;
+export default CrewManage;
