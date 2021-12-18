@@ -21,3 +21,10 @@ export const TEAM_TAB = Object.freeze({
     RESULT: "team-match-result",
     REMATCH_BTN: "rematch-team-button",
 });
+
+export const EMPTY = "";
+export const LOACL_STORAGE = Object.freeze({
+    BACKEND_CREW: "backend_crew",
+    FRONTEND_CREW: "frontend_crew",
+    MATCHING_RESULT: "matching_result",
+});
