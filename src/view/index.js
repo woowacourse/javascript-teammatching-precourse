@@ -18,6 +18,15 @@ export default class View {
     return document.querySelector('tbody');
   }
 
+  addOptionsInSelect(select, options) {
+    options.forEach(option => {
+      const optionTag = document.createElement('option');
+      optionTag.innerHTML = option.name;
+      optionTag.value = option.value;
+      select.appendChild(optionTag);
+    });
+  }
+
   clearTable(table) {
     table.innerHTML = '';
   }

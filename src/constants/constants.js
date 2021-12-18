@@ -35,15 +35,18 @@ export const LOCALSTORAGE_KEY = {
   course: 'course',
 };
 
-export const COURSE_OPTIONS = ['프론트엔드', '백엔드'];
+export const COURSE_OPTIONS = [
+  { name: '프론트엔드', value: 'frontend' },
+  { name: '백엔드', value: 'backend' },
+];
 
 export const MISSION_OPTIONS = [
-  '숫자야구게임(baseball)',
-  '자동차경주(racingcar)',
-  '로또(lotto)',
-  '장바구니(shopping-cart)',
-  '결제(payments)',
-  '지하철노선도(subway)',
-  '성능개선(performance)',
-  '배포(deploy)',
+  { name: '숫자야구게임', value: 'baseball' },
+  { name: '자동차경주', value: 'racingcar' },
+  { name: '로또', value: 'lotto' },
+  { name: '장바구니', value: 'shopping-cart' },
+  { name: '결제', value: 'payments' },
+  { name: '지하철노선도', value: 'subway' },
+  { name: '성능개선', value: 'performance' },
+  { name: '배포', value: 'deploy' },
 ];
