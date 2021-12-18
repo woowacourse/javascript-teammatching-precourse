@@ -12,7 +12,6 @@ export default class CrewEvent {
   static addCrewEvent() {
     document.getElementById('add-crew-buttton').addEventListener('click', (e) => {
       e.preventDefault();
-
       const name = document.getElementById('crew-name-input').value;
       const crewCheck = new CrewCheck(name);
 
@@ -80,10 +79,11 @@ export default class CrewEvent {
       if (targetId === 'frontend-course') {
         document.getElementById('app').innerHTML = HTML_OF_HEADER + HTML_OF_FRONT_CHECKED_RADIO + HTML_OF_FRONT_CREW_INPUT + HTML_OF_CREW_TABLE;
 
-        if (localStorage.getItem(CREW_FRONT) !== null) {
-          CrewView.showFrontTable();
-          // this.addCrewEvent();
-        }
+        this.checkCanShowFront();
+        // if (localStorage.getItem(CREW_FRONT) !== null) {
+        //   CrewView.showFrontTable();
+        //   // this.addCrewEvent();
+        // }
         this.addCrewEvent();
       }
 
@@ -96,5 +96,11 @@ export default class CrewEvent {
         this.addCrewEvent();
       }
     });
+  }
+
+  static checkCanShowFront() {
+    if (localStorage.getItem(CREW_FRONT) !== null) {
+        CrewView.showFrontTable();
+      }
   }
 }
