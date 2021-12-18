@@ -1,1 +1,4 @@
-export class MatchingModel {}
+export class MatchingModel {
+  frontEndCrewList = [];
+  backEndCrewList = [];
+}

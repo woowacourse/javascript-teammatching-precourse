@@ -3,4 +3,6 @@ export class TeamController {
     this.model = model;
     this.coreView = coreView;
   }
+
+  triggerEvent() {}
 }
