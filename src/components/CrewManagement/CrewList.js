@@ -27,9 +27,10 @@ export default class CrewList extends Component {
 
   render() {
     const { selectedCourse } = this.props;
+    if (!selectedCourse) return;
     const crewList = this.getGlobalState()[selectedCourse];
-    this.$container.innerHTML = selectedCourse
-      ? `
+
+    this.$container.innerHTML = `
       <h3>${COURSE_NAME[selectedCourse]} 크루 목록</h3>
       <table id="crew-table" border="1">
         <thead>
@@ -43,7 +44,6 @@ export default class CrewList extends Component {
         ${generateCrewTable(crewList)}
         </tbody>
       </table>
-      `
-      : '';
+    `;
   }
 }

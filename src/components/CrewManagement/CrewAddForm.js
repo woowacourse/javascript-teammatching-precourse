@@ -28,15 +28,14 @@ export default class CrewAddForm extends Component {
 
   render() {
     const { selectedCourse } = this.props;
-    this.$container.innerHTML = selectedCourse
-      ? `
-        <h3>${COURSE_NAME[selectedCourse]} 크루 관리</h3>
-        <form>
-          <label>크루 이름</label>
-          <input type="text" id="crew-name-input" required/>
-          <button id="add-crew-buttton">확인</button>
-        </form>
-        `
-      : '';
+    if (!selectedCourse) return;
+    this.$container.innerHTML = `
+      <h3>${COURSE_NAME[selectedCourse]} 크루 관리</h3>
+      <form>
+        <label>크루 이름</label>
+        <input type="text" id="crew-name-input" required/>
+        <button id="add-crew-buttton">확인</button>
+      </form>
+        `;
   }
 }
