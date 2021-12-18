@@ -18,21 +18,35 @@ export default class CrewTab {
     });
   }
 
-  setAddButtonEvent() {
-    this.addCrewButton.addEventListener('click', this.onClickAddCrew.bind(this));
+  setManageButtonEvent() {
+    document.querySelector('#add-crew-buttton').addEventListener('click', this.onClickAddCrew.bind(this));
+    this.setCrewDeleteButtonEvent();
+  }
+
+  setCrewDeleteButtonEvent() {
+    document.querySelectorAll('.delete-crew-buttton').forEach((button) => {
+      button.addEventListener('click', this.onClickDeleteCrew.bind(this));
+    });
   }
 
   onSelectCourseRadio(e) {
     this.course = e.target.value;
-    this.view.updateOnSelectRadio(this.course, ['소이', '재이', '병현']);
+    this.view.updateOnSelectRadio(this.course, this.storage.crew);
     this.crewNameInput = document.querySelector('#crew-name-input');
-    this.addCrewButton = document.querySelector('#add-crew-buttton');
-    this.setAddButtonEvent();
+    this.setManageButtonEvent();
   }
 
   onClickAddCrew(e) {
     e.preventDefault();
     const crewName = this.crewNameInput.value;
     this.storage.addCrew(this.course, crewName);
+    this.view.updateOnManageCrew(this.course, this.storage.crew);
+  }
+
+  onClickDeleteCrew(e) {
+    const { crewName } = e.target.dataset;
+    this.storage.deleteCrew(this.course, crewName);
+    this.view.updateOnManageCrew(this.course, this.storage.crew);
+    this.setCrewDeleteButtonEvent();
   }
 }

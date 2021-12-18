@@ -17,6 +17,7 @@ export default class CrewTabView {
   }
 
   renderCrewTableItem(crews) {
+    this.crewTableBody.innerHTML = '';
     crews.forEach((crew, idx) => {
       this.crewTableBody.innerHTML += crewTabTemplate.tableItem(idx + 1, crew);
     });
@@ -31,6 +32,10 @@ export default class CrewTabView {
   updateOnSelectRadio(course, crew) {
     const courseName = NAME[course];
     this.renderCrewAddSection(courseName);
-    this.renderCrewListSection(courseName, crew);
+    this.renderCrewListSection(courseName, crew[course]);
+  }
+
+  updateOnManageCrew(course, crew) {
+    this.renderCrewTableItem(crew[course]);
   }
 }

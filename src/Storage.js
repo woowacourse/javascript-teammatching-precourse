@@ -27,4 +27,11 @@ export default class Storage {
     }
     this.setCrew(newCrew);
   }
+
+  deleteCrew(course, crewToDelete) {
+    const newCrewOnCourse = this.crew[course].filter((name) => name !== crewToDelete);
+    const newCrew = this.crew;
+    newCrew[course] = newCrewOnCourse;
+    this.setCrew(newCrew);
+  }
 }

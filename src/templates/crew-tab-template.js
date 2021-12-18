@@ -36,7 +36,7 @@ const crewTabTemplate = {
     <td>${index}</td>
     <td>${name}</td>
     <td>
-      <button class="delete-crew-buttton">삭제</button>
+      <button class="delete-crew-buttton" data-crew-name="${name}">삭제</button>
     </td>
   </tr>
   `,
