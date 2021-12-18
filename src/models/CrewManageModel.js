@@ -6,6 +6,7 @@ const initCrews = () => {
 
 export default {
   crews: initCrews(),
+  minCrewLength: 0,
   add(newCrew) {
     if (newCrew.name.length > 5) {
       alert('크루 이름은 최대 5글자만 가능합니다.');
@@ -30,4 +31,8 @@ export default {
   setCrews() {
     localStorage.setItem('crews', JSON.stringify(this.crews));
   },
+  setMinCrewLength(count) {
+    this.minCrewLength = count;
+  },
+  match() {},
 };

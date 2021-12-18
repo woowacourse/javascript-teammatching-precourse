@@ -1,3 +1,4 @@
+import CourseModel from '../models/CourseModel.js';
 import CrewManageModel from '../models/CrewManageModel.js';
 import MissionModel from '../models/MissionModel.js';
 import { COURSE } from '../utils/constants.js';
@@ -18,6 +19,11 @@ MatchingManageView.bindEvent = function () {
     if (e.target.id === 'show-team-matcher-button') {
       e.preventDefault();
       this.onSubmitMissionAndCourse();
+      return;
+    }
+    if (e.target.id === 'match-team-button') {
+      e.preventDefault();
+      this.onSubmitMinCrewCount();
     }
   });
 };
@@ -27,6 +33,10 @@ MatchingManageView.onSubmitMissionAndCourse = function () {
     course: this.child('#course-select').value,
     mission: this.child('#mission-select').value,
   });
+};
+
+MatchingManageView.onSubmitMinCrewCount = function () {
+  this.emit('@submitMinCrewCount', { count: this.child('#team-member-count-input').value });
 };
 
 MatchingManageView.setMission = function (mission) {
@@ -43,12 +53,16 @@ MatchingManageView.render = function () {
       <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
       <form>
         <select id="course-select">
-          <option>프론트엔드</option>
-          <option>백엔드</option>
+        ${CourseModel.list().map(
+          (course) => `<option ${this.course === course ? 'selected' : ''}>${course}</option>`,
+        )}
         </select>
         <select id="mission-select">
         ${MissionModel.list()
-          .map((mission) => `<option>${mission}</option>`)
+          .map(
+            (mission) =>
+              `<option ${this.mission === mission ? 'selected' : ''}>${mission}</option>`,
+          )
           .join('')}
         </select>
         <button id="show-team-matcher-button">확인</button>
@@ -57,7 +71,7 @@ MatchingManageView.render = function () {
     ${
       this.course
         ? `<section>
-    <h3>${this.course} 숫자야구게임 미션의 팀 매칭</h3>
+    <h3>${this.course} ${this.mission} 미션의 팀 매칭</h3>
     <div>
       <div>
         <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>

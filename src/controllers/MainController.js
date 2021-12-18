@@ -15,9 +15,10 @@ export default {
       .on('@changeCourse', (e) => this.onChangeCourse(e.detail.course))
       .on('@submitCrewName', (e) => this.onSubmitCrew(e.detail))
       .on('@deleteCrew', (e) => this.onDeleteCrew(e.detail));
-    MatchingManageView.setup($('main')).on('@submitCourseAndMission', (e) =>
-      this.onSubmitCourseAndMission(e.detail),
-    );
+    MatchingManageView.setup($('main'))
+      .on('@submitCourseAndMission', (e) => this.onSubmitCourseAndMission(e.detail))
+      .on('@submitMinCrewCount', (e) => this.onSubmitMinCrewCount(e.detail.count));
+
     this.selectedTab = '크루 관리';
     this.renderView();
   },
@@ -63,5 +64,9 @@ export default {
     MatchingManageView.setCourse(course);
     MatchingManageView.setMission(mission);
     this.renderView();
+  },
+
+  onSubmitMinCrewCount(count) {
+    CrewManageModel.setMinCrewLength(count);
   },
 };
