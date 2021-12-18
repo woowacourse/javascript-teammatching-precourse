@@ -18,6 +18,7 @@
         "implicit-arrow-linebreak": "off",
         "comma-dangle": "off",
         "no-loop-func": "off",
-        "no-underscore-dangle": "off"
+        "no-underscore-dangle": "off",
+        "indent": "off"
     }
 }
