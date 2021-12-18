@@ -36,6 +36,10 @@ const TeamTab = () => {
         ''
       );
       getChildDom(ResultSection, `#${ID_TEAM_RESULT}`).innerHTML = teams;
+      getChildDom(ResultSection, '#rematch-team-button').addEventListener(
+        'click',
+        () => renderResult([], course)
+      );
     } else {
       ResultSection.innerHTML = TEMPLATE_NO_MATCH;
       addCrewList(ResultSection, course);
