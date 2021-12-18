@@ -36,16 +36,17 @@ export default class CrewController {
       this.crewTapView.crewListView(select, this.crewModel.getStorage(select));
     }
     if (crewInput.isValidCrewName(storage) !== true) {
-      console.log(crewInput.isValidCrewName(storage));
       this.crewTapView.errView(crewInput.isValidCrewName(storage));
     }
   }
 
   clickDeleteButton(event) {
-    const trEl = event.target.closest('tr');
-    const crewName = trEl.querySelector('.name').innerHTML;
-    const select = new CrewInput().getSelectValue();
-    this.crewModel.deleteStorage(select, crewName);
-    this.crewTapView.crewListView(select, this.crewModel.getStorage(select));
+    if (window.confirm('정말 삭제하시겠습니까?')) {
+      const trEl = event.target.closest('tr');
+      const crewName = trEl.querySelector('.name').innerHTML;
+      const select = new CrewInput().getSelectValue();
+      this.crewModel.deleteStorage(select, crewName);
+      this.crewTapView.crewListView(select, this.crewModel.getStorage(select));
+    }
   }
 }
