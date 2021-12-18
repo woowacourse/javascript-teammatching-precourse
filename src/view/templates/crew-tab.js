@@ -4,9 +4,9 @@ export const template = `
 <section>
   <h3>크루를 관리할 코스를 선택해주세요</h3>
   <div>
-    <input type="radio" name="course" value="frontend" />
+    <input id=${ID.FRONTEND_COURSE} type="radio" name="course" value="frontend" />
     <label for="frontend">프론트엔드</label>
-    <input type="radio" name="course" value="backend" />
+    <input id=${ID.BACKEND_COURSE} type="radio" name="course" value="backend" />
     <label for="backend">백엔드</label>
   </div>
 </section>
@@ -14,13 +14,13 @@ export const template = `
   <h3>프론트엔드 크루 관리</h3>
   <form>
     <label>크루 이름</label>
-    <input type="text" />
-    <button>확인</button>
+    <input id=${ID.CREW_NAME_INPUT} type="text" />
+    <button id=${ID.ADD_CREW_BTN}>확인</button>
   </form>
 </section>
 <section>
   <h3>프론트엔드 크루 목록</h3>
-  <table border="1">
+  <table id=${ID.CREW_TABLE} border="1">
     <thead>
       <tr>
         <th></th>
