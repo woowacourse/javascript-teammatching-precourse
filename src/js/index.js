@@ -35,7 +35,7 @@ function App() {
       case 'select-course-and-mission':
         checkExistTeam(e);
         break;
-      case 'number-of-people-per-team-form':
+      case 'team-member-count-form':
         makeTeamTemplate(e);
         break;
     }

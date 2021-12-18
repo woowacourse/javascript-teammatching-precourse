@@ -6,20 +6,24 @@ import { ALERT } from '../constants/constants.js';
 
 export const checkExistTeam = e => {
   e.preventDefault();
-  const course = $('#select-course').value;
+  let target = $('#course-select');
+  const course = target.options[target.selectedIndex].text;
+  target = $('#mission-select');
+  const mission = target.options[target.selectedIndex].text;
+
   const courseTeam = checkcourseTeam();
   const teamList = store.getItem(courseTeam);
   if (teamList === null) {
-    renderNotExistTeam(course);
+    renderNotExistTeam(course, mission);
   } else {
-    renderExistTeam(course);
+    renderExistTeam(course, mission);
   }
 };
 
 export const makeTeamTemplate = e => {
   e.preventDefault();
   const courseCrew = checkcourseCrew();
-  const numberOfPeople = $('#number-of-people-per-team-input').value;
+  const numberOfPeople = $('#team-member-count-input').value;
   if (
     check.inputValueBlank(numberOfPeople) ||
     check.inputValueNotNum(numberOfPeople) ||
@@ -29,10 +33,14 @@ export const makeTeamTemplate = e => {
     window.alert(ALERT);
     return;
   }
+  makeTeam(checkcourseTeam(), checkMission());
 };
 
+export const makeTeam = (course, mission) => {};
+
 export const checkcourseTeam = () => {
-  const course = $('#select-course').value;
+  let target = $('#course-select');
+  const course = target.options[target.selectedIndex].text;
   let courseTeam = '';
   if (course === '프론트엔드') {
     courseTeam = 'frontTeam';
@@ -42,8 +50,15 @@ export const checkcourseTeam = () => {
   return courseTeam;
 };
 
+export const checkMission = () => {
+  let target = $('#mission-select');
+  const mission = target.options[target.selectedIndex].value;
+  return mission;
+};
+
 export const checkcourseCrew = () => {
-  const course = $('#select-course').value;
+  let target = $('#course-select');
+  const course = target.options[target.selectedIndex].text;
   let courseCrew = '';
   if (course === '프론트엔드') {
     courseCrew = 'frontCrew';
