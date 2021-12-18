@@ -6,6 +6,7 @@ class Crew {
 
     addCrew(name) {
         this.list.push(name);
+        console.log(this.list);
     }
 
     getCrewList() {

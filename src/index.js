@@ -3,4 +3,5 @@ import Crew from "./domain/Crew/Crew.js";
 
 tabMenu();
 
-const crew = new Crew();
+const frontEndCrew = new Crew();
+const backEndCrew = new Crew();
