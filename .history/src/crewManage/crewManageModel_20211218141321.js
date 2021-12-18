@@ -1,4 +1,4 @@
-import { checkValidName } from "../utils/validator.js";
+import { checkValidName } from "../utils/validator";
 
 export default class CrewManageModel {
   constructor() {

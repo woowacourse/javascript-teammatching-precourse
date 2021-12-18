@@ -39,7 +39,6 @@ export default class CrewManageController {
 
   setClickAddButtonEvent = (e) => {
     e.preventDefault();
-
     try {
       const name = this.$crewNameInput.value;
       const selectedState = this.checkRadioState();
