@@ -18,6 +18,11 @@ export default class AppModel {
     setDataOnLocalStorage(STORAGE_KEY.CREWS, this.crews);
   }
 
+  deleteCrew(idx) {
+    this.crews.splice(idx - 1, 1);
+    console.log(this.crews);
+  }
+
   isCrewExist(name) {
     return this.crews.some((crew) => {
       return crew.name === name;

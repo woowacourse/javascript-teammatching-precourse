@@ -36,6 +36,9 @@ export default class CrewManageController {
 
   attachCrewManageEvents() {
     this.view.$addCrewButton.addEventListener('click', this.handleAddCrew.bind(this));
+    this.view.$$deleteCrewButton.forEach((element) => {
+      element.addEventListener('click', this.handleDeleteCrew.bind(this));
+    });
   }
 
   handleAddCrew(e) {
@@ -45,12 +48,21 @@ export default class CrewManageController {
 
     if (isValidCrewName(crewName, this.model)) {
       this.model.addCrew(crewName);
-      this.view.renderCrewTable(this.model.crews);
-      console.log(this.model);
-      return console.log(crewName);
+
+      return this.view.renderCrewTable(this.model.crews);
     }
 
     return showError();
+  }
+
+  handleDeleteCrew(e) {
+    e.preventDefault();
+
+    const closestTR = e.target.closest('tr');
+    const targetIdx = closestTR.children[0].innerText;
+    console.log(targetIdx);
+
+    this.model.deleteCrew(targetIdx);
   }
 }
 
