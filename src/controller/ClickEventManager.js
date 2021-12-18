@@ -5,12 +5,12 @@ export default class ClickEventManager {
     this.controller = controller;
   }
 
-  crewTab() {
-    console.log('crewTab');
+  crewTab(event) {
+    this.controller.handleMenuClick(event);
   }
 
-  teamTab() {
-    console.log('teamTab');
+  teamTab(event) {
+    this.controller.handleMenuClick(event);
   }
 
   onClick(event) {
