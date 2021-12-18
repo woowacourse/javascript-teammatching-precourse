@@ -1,5 +1,6 @@
 import Component from './core/Component.js';
 import CrewTab from './components/CrewTab.js';
+import TeamTab from './components/TeamTab.js';
 import { $, $$, visibleElement } from './utils/element-tools.js';
 
 export default class App extends Component {
@@ -25,6 +26,7 @@ export default class App extends Component {
 
   mounted() {
     this.addMount('crew-tab', CrewTab);
+    this.addMount('team-tab', TeamTab);
   }
 
   bindEvents() {
