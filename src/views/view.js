@@ -39,7 +39,7 @@ export function crewManageComponent() {
       </div>
     </section>
     <section>
-      <h3>프론트엔드 크루 관리</h3>
+      <h3 id="crew-manage-title">프론트엔드 크루 관리</h3>
       <form>
         <label>크루 이름</label>
         <input type="text" id="crew-name-input"/>
@@ -47,7 +47,7 @@ export function crewManageComponent() {
       </form>
     </section>
     <section>
-      <h3>프론트엔드 크루 목록</h3>
+      <h3 id="crew-magage-list">프론트엔드 크루 목록</h3>
       <table border="1" id="crew-table">
         <thead>
           <tr>

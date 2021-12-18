@@ -2,11 +2,12 @@ import {
   clickCrewManage,
   clickTeamGenerate,
 } from "./eventHandlers/tabClickEvents.js";
-import { clickAddCrewButton } from "./eventHandlers/crewManageEvent.js";
+import { clickAddCrewButton, checkedFrontendButton, checkedBackendButton } from "./eventHandlers/crewManageEvent.js";
 
 export function initialEvent() {
   tabEvent();
   addCrewButton();
+  checkedCourseButton();
 }
 
 export function tabEvent() {
@@ -15,6 +16,14 @@ export function tabEvent() {
 
   $crewTab.addEventListener("click", clickCrewManage);
   $teamTab.addEventListener("click", clickTeamGenerate);
+}
+
+export function checkedCourseButton() {
+  const $frontendCourse = document.getElementById("frontend-course");
+  const $backendCourse = document.getElementById("backend-course");
+
+  $frontendCourse.addEventListener("change", checkedFrontendButton)
+  $backendCourse.addEventListener("change",checkedBackendButton)
 }
 
 export function addCrewButton() {
