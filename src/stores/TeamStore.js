@@ -41,11 +41,13 @@ class TeamStore extends Store {
     const crew = CrewStore.getState()[course];
     const matchedTeamList = matchRandomTeam(crew, headCount);
     this.setState({
-      frontend: { ...this.state.frontend, [mission]: matchedTeamList },
+      [course]: { ...this.state[course], [mission]: matchedTeamList },
     });
   }
 
-  unMatchTeam(course, mission) {}
+  unMatchTeam(course, mission) {
+    this.setState({ [course]: { ...this.state[course], [mission]: [] } });
+  }
 }
 
 export default new TeamStore(initialState, TeamStorage);

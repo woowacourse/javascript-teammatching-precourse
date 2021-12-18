@@ -1,7 +1,7 @@
 import Component from '../../core/Component.js';
 import TeamStore from '../../stores/TeamStore.js';
 import CrewStore from '../../stores/CrewStore.js';
-import { matchTeamAction } from '../../actions/team.js';
+import { matchTeamAction, unmatchTeamAction } from '../../actions/team.js';
 import { $ } from '../../utils/dom.js';
 import { isValidHeadCount } from '../../utils/validation.js';
 import { parseNumber } from '../../utils/input.js';
@@ -19,6 +19,9 @@ export default class TeamStatus extends Component {
 
   bindEvents() {
     this.appendRootEvents(EVENT_TYPE.SUBMIT, () => this.onSubmitMatchTeam());
+    this.appendRootEvents(EVENT_TYPE.CLICK, event =>
+      this.onClickRematchButton(event)
+    );
   }
 
   onSubmitMatchTeam() {
@@ -28,6 +31,12 @@ export default class TeamStatus extends Component {
     if (!isValidHeadCount(headCount, crewCount))
       return alert(ERROR_MESSAGES.TEAM_HEADCOUNT);
     return TeamStore.dispatch(matchTeamAction({ course, mission, headCount }));
+  }
+
+  onClickRematchButton({ target }) {
+    if (target.id !== 'rematch-team-button') return;
+    const { course, mission } = this.props;
+    return TeamStore.dispatch(unmatchTeamAction({ course, mission }));
   }
 
   render() {
