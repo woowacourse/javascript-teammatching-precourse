@@ -32,26 +32,28 @@ export default class matchingManageController {
 
   setSelectOptionEvent = (e) => {
     e.preventDefault();
-    const courseText = this.$courseSelect.options[this.$courseSelect.selectedIndex].text;
-    const courseValue = this.$courseSelect.options[this.$courseSelect.selectedIndex].value;
-    const missionText = this.$missionSelect.options[this.$missionSelect.selectedIndex].text;
-    this.view.renderMatchingPage(courseText, missionText, this.$matchingSection);
-    const $crewList = document.getElementById("crew-list");
-    this.view.renderAllCrewList(this.crews.model.getCrewsById(courseValue), $crewList);
-    this.initAfterRenderMatching();
+
+    this.renderMatchingForm();
   };
 
   setRematchingEvent = ({ target }) => {
     if (target.id !== "rematch-team-button") return;
 
+    this.renderMatchingForm();
+  };
+
+  renderMatchingForm = () => {
     const courseText = this.$courseSelect.options[this.$courseSelect.selectedIndex].text;
     const courseValue = this.$courseSelect.options[this.$courseSelect.selectedIndex].value;
     const missionText = this.$missionSelect.options[this.$missionSelect.selectedIndex].text;
+
     this.view.renderMatchingPage(courseText, missionText, this.$matchingSection);
     const $crewList = document.getElementById("crew-list");
     this.view.renderAllCrewList(this.crews.model.getCrewsById(courseValue), $crewList);
+
     this.initAfterRenderMatching();
   };
+
   initAfterRenderMatching = () => {
     this.initDOMSAfterRenderMatching();
     this.setEventAfterRenderMatching();
