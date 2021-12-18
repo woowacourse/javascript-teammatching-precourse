@@ -19,6 +19,7 @@ const makeForm = () => {
 
 const printAddCrewForm = (course) => {
   const $section = makeSection(ADD_CREW_FORM_TITLE[course], makeForm());
+  $section.dataset.course = course;
   const $main = document.querySelector(MAIN);
   $main.appendChild($section);
 };
