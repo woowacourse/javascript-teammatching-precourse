@@ -1,6 +1,6 @@
 import { $ } from '../util/dom.js';
 import { check } from '../util/checkValue.js';
-import { ALERT } from '../constants/constants.js';
+import { ALERT, CONFIRM } from '../constants/constants.js';
 import { store } from '../store/store.js';
 import { renderCrewTableItems } from '../view/render.js';
 
@@ -40,4 +40,26 @@ export const addCrewLocalStorage = (index, name, course) => {
   }
   totalCrew.push({ index: index, name: name });
   store.setItem(course, totalCrew);
+};
+
+export const confirmDeleteCrew = target => {
+  if (window.confirm(CONFIRM)) {
+    deleteCrew(target);
+  }
+};
+
+export const deleteCrew = target => {
+  const targetName =
+    target.closest('tr').firstChild.nextSibling.nextSibling.nextSibling
+      .innerText;
+  const course = check.course();
+  const crewList = store.getItem(course);
+  const totalCrew = [];
+  for (let crew in crewList) {
+    if (crewList[crew].name !== targetName) {
+      totalCrew.push(crewList[crew]);
+    }
+  }
+  store.setItem(course, totalCrew);
+  renderCrewTableItems(course);
 };

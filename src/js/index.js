@@ -7,7 +7,7 @@ import {
 } from './view/render.js';
 import { $ } from './util/dom.js';
 import { FRONT_END, BACK_END } from './constants/constants.js';
-import { makeCrewTemplate } from './core/manageCrew.js';
+import { makeCrewTemplate, confirmDeleteCrew } from './core/manageCrew.js';
 
 function App() {
   //$('head').innerHTML = `<link rel="stylesheet" href="src/css/style.css"/>`;
@@ -15,6 +15,11 @@ function App() {
   const handleClick = e => {
     changeTab(e);
     selectCourse(e);
+    switch (e.target.id) {
+      case 'crew-delete-button':
+        confirmDeleteCrew(e.target);
+        break;
+    }
   };
 
   const handleSumbit = e => {

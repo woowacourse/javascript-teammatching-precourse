@@ -67,7 +67,7 @@ export const renderCrewTableItems = course => {
       <tr>
         <td>${crew.index}</td>
         <td>${crew.name}</td>
-        <td><button>삭제</button></td>
+        <td><button id='crew-delete-button'>삭제</button></td>
       </tr>`;
   });
   $('tbody').innerHTML = template.join('');
