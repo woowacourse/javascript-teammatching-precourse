@@ -9,6 +9,7 @@ import {
   INPUT_FORM_BUTTON,
   TABLE_BORDER,
   TABLE_HEADERS,
+  DELETE_BUTTON,
 } from "./constant.js";
 import {
   onClickBackEndInput,
@@ -48,19 +49,20 @@ const createInputFormInput = () => {
   return input;
 };
 
-const createInputFormButton = () => {
+const createInputFormButton = event => {
   const button = document.createElement("button");
   button.type = "submit";
   button.innerText = INPUT_FORM_BUTTON;
+  button.addEventListener("click", event);
 
   return button;
 };
 
-export const createInputForm = () => {
+export const createInputForm = event => {
   const form = document.createElement("form");
   form.appendChild(createInputFormLabel());
   form.appendChild(createInputFormInput());
-  form.appendChild(createInputFormButton());
+  form.appendChild(createInputFormButton(event));
 
   return form;
 };
@@ -134,6 +136,36 @@ const createMemberTable = () => {
   table.appendChild(createTbody());
 
   return table;
+};
+
+const createTd = text => {
+  const td = document.createElement("td");
+  td.innerText = text;
+
+  return td;
+};
+
+const createDeleteButton = () => {
+  const button = document.createElement("button");
+  button.innerText = DELETE_BUTTON;
+
+  return button;
+};
+
+const createButtonTd = () => {
+  const td = document.createElement("td");
+  td.appendChild(createDeleteButton());
+
+  return td;
+};
+
+export const createTableRaw = (member, index) => {
+  const tr = document.createElement("tr");
+  tr.appendChild(createTd(index));
+  tr.appendChild(createTd(member));
+  tr.appendChild(createButtonTd());
+
+  return tr;
 };
 
 export const resetListSection = title => {

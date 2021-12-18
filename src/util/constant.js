@@ -13,6 +13,7 @@ export const TABLE_BORDER = 1;
 export const FRONT_END_TABLE_TITLE = "프론트엔드 크루 목록";
 export const BACK_END_TABLE_TITLE = "백엔드 크루 목록";
 export const TABLE_HEADERS = ["", "크루", "관리"];
+export const DELETE_BUTTON = "삭제";
 
 export const PUBLIC_HEADER = `
 <header>
