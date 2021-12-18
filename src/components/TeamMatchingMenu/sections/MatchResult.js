@@ -1,10 +1,10 @@
+import { COURSE, MISSION } from '../../../configs/contants.js';
 import Component from '../../../core/Component.js';
 
 export default class MatchResult extends Component {
   template() {
     const { matchedTeamList } = this.props;
     const { course, mission, teamList } = matchedTeamList;
-    console.log(matchedTeamList);
 
     const matchResult = `
       <ul id='team-match-result'>
@@ -19,7 +19,7 @@ export default class MatchResult extends Component {
     `;
 
     return `
-      <h3>${course} ${mission} 조회</h3>
+      <h3>${COURSE[course]} ${MISSION[mission]} 조회</h3>
       <p>팀이 매칭되었습니다.</p>
       ${matchResult}
       <p>

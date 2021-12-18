@@ -1,3 +1,4 @@
+import { COURSE, MISSION } from '../../../configs/contants.js';
 import Component from '../../../core/Component.js';
 import { $ } from '../../../utils/helper.js';
 
@@ -6,7 +7,9 @@ export default class MatchTeam extends Component {
     const { crewList, teamMatchCourse, teamMatchMission } = this.props;
 
     return `
-      <h3>${teamMatchCourse} ${teamMatchMission} 미션의 팀 매칭</h3>
+      <h3>${COURSE[teamMatchCourse]} ${
+      MISSION[teamMatchMission]
+    } 미션의 팀 매칭</h3>
       <div>
         <div>
           <p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>

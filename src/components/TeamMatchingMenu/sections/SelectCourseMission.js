@@ -3,8 +3,6 @@ import { $ } from '../../../utils/helper.js';
 
 export default class SelectCourseMission extends Component {
   template() {
-    const { teamMatchCourse, teamMatchMission } = this.props;
-
     return `
       <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
       <form>

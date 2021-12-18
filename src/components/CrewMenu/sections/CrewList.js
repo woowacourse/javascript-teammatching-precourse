@@ -1,16 +1,22 @@
 import Component from '../../../core/Component.js';
+import { COURSE, CONFIRM_MESSAGE } from '../../../configs/contants.js';
 
 export default class CrewList extends Component {
   template() {
     const { course, crewList } = this.props;
     const filteredCrewList = crewList.filter((crew) => crew.course === course);
 
-    return (
-      course &&
-      `
-      <h3>
-        ${course === 'frontend' ? '프론트엔드' : '백엔드'} 크루 목록
-      </h3>
+    const row = (idx, id, name) => `
+      <tr data-id='${id}' data-name='${name}'>
+        <td>${idx + 1}</td>
+        <td>${name}</td>
+        <td>
+          <button class='delete-crew-buttton'>삭제</button>
+        </td>
+      </tr>
+    `;
+
+    const table = (list) => `
       <table border="1" id='crew-table'>
         <thead>
           <tr>
@@ -20,20 +26,20 @@ export default class CrewList extends Component {
           </tr>
         </thead>
         <tbody>
-          ${filteredCrewList.reduce((acc, crew, idx) => {
-            return `
-            ${acc}
-            <tr data-id='${crew.id}' data-name='${crew.name}'>
-              <td>${idx + 1}</td>
-              <td>${crew.name}</td>
-              <td>
-                <button class='delete-crew-buttton'>삭제</button>
-              </td>
-            </tr>
-          `;
-          }, '')}
+          ${list.reduce(
+            (acc, crew, idx) => `${acc}${row(idx, crew.id, crew.name)}`,
+            ''
+          )}
         </tbody>
       </table>
+    `;
+
+    return (
+      course &&
+      `
+      <h3>${COURSE[course].string} 크루 목록</h3>
+      ${table(filteredCrewList)}
+      
       `
     );
   }
@@ -42,7 +48,7 @@ export default class CrewList extends Component {
     this.addEvent('click', '.delete-crew-buttton', ({ target }) => {
       const $tr = target.closest('tr');
       const { id } = $tr.dataset;
-      const result = window.confirm('정말 삭제하시겠습니까?');
+      const result = window.confirm(CONFIRM_MESSAGE.DELETE);
 
       if (result) this.props.deleteCrew(Number(id));
     });
