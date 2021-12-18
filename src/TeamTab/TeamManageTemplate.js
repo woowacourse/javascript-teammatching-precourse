@@ -1,5 +1,5 @@
 export default function TeamManageTemplate() {
-  return `<main id="team-manage-main">
+  return `<div id="team-manage-main">
     <section>
       <h3>팀 매칭을 관리할 코스, 미션을 선택하세요.</h3>
       <form>
@@ -43,5 +43,5 @@ export default function TeamManageTemplate() {
         <button>재매칭</button>
       </p>
     </section>
-  </main>`;
+  </div>`;
 }

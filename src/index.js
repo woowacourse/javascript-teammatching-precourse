@@ -23,19 +23,19 @@ export default class Woowacourse {
     this.teamManage = new TeamManage();
     this.crewManageScreen = this.crewManage.tabSection();
     this.teamManageScreen = this.teamManage.tabSection();
-    document.getElementById("crew-manage-main").style.display = "none";
+    this.crewManageScreen.style.display = "none";
     this.teamManageScreen.style.display = "none";
   }
 
   crewTabView(e) {
     e.preventDefault();
-    document.getElementById("crew-manage-main").style.display = "block";
+    this.crewManageScreen.style.display = "block";
     this.teamManageScreen.style.display = "none";
   }
 
   teamTabView(e) {
     e.preventDefault();
-    document.getElementById("crew-manage-main").style.display = "none";
+    this.crewManageScreen.style.display = "none";
     this.teamManageScreen.style.display = "block";
   }
 }
