@@ -1,10 +1,6 @@
 import Component from "../../core/Component.js";
 
 export default class SelectCourse extends Component {
-  setup() {
-    console.log("selectCourse", this);
-  }
-
   template() {
     return `
         <h3>크루를 관리할 코스를 선택해주세요</h3>

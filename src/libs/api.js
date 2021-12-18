@@ -6,6 +6,8 @@ export default class Api {
       currentTabId: "crew-tab",
       tabIdList: ["crew-tab", "team-tab"],
       checkedCrewCourse: "",
+      frontends: [],
+      backends: [],
     };
 
     if (!this.getTeamMatching()) {

@@ -1,5 +1,6 @@
 import Component from "../../core/Component.js";
 import SelectCourse from "./SelectCourse.js";
+import CrewManage from "./CrewManage.js";
 
 import Api from "../../libs/api.js";
 
@@ -18,15 +19,7 @@ export default class CrewTab extends Component {
   template() {
     return `
         <section id="select-course"></section>
-
-        <section id="crew-manage">
-        <h3>프론트엔드 크루 관리</h3>
-        <form>
-            <label>크루 이름</label>
-            <input type="text" id="crew-name-input"/>
-            <button id="add-crew-buttton">확인</button>
-        </form>
-        </section>
+        <section id="crew-manage"></section>
         <section id="crew-list">
         <h3>프론트엔드 크루 목록</h3>
         <table border="1" id="crew-table">
@@ -55,19 +48,29 @@ export default class CrewTab extends Component {
     const {
       $state: { checkedCrewCourse },
       setChangeCourse,
+      getCourseName,
     } = this;
     const [$selectCourse, $crewManage, $crewList] =
       document.querySelectorAll("section");
+
+    const courseName = getCourseName(checkedCrewCourse);
 
     new SelectCourse($selectCourse, {
       checkedCrewCourse,
       setChangeCourse: setChangeCourse.bind(this),
     });
+
+    new CrewManage($crewManage, { courseName });
   }
 
   setChangeCourse(newCourse) {
     const payload = { checkedCrewCourse: newCourse };
     this.callAPI.setTeamMatching(payload);
     this.setState(payload);
+  }
+
+  getCourseName(course) {
+    if (course === "frontend") return "프론트엔드";
+    if (course === "backend") return "백엔드";
   }
 }
