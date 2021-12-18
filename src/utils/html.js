@@ -31,7 +31,7 @@ export const HTML_OF_CREW_RADIO = `
 </div>`;
 
 export const HTML_OF_CREW_INPUT = `
-<section>
+    <section>
       <h3>프론트엔드 크루 관리</h3>
       <form>
         <label>크루 이름</label>
@@ -40,7 +40,13 @@ export const HTML_OF_CREW_INPUT = `
       </form>
     </section>
     <section>
-      <h3>프론트엔드 크루 목록</h3>
+    <h3>프론트엔드 크루 목록</h3>
+    </section>`;
+
+
+
+export const HTML_OF_CREW_TABLE = `
+<section>  
       <table border="1" id="crew-table">
         <thead>
           <tr>
@@ -49,15 +55,6 @@ export const HTML_OF_CREW_INPUT = `
             <th>관리</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>준</td>
-            <td>
-              <button id="delete-crew-buttton">삭제</button>
-            </td>
-          </tr>
-        </tbody>
       </table>
     </section>`;
 

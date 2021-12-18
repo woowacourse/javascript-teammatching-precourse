@@ -1,4 +1,5 @@
 import CrewCheck from "./CrewCheck.js";
+import CrewView from "./CrewView.js";
 import { HTML_OF_CREW_INPUT } from "./utils/html.js";
 export default class CrewEvent {
     static addEvent() {
@@ -31,6 +32,8 @@ export default class CrewEvent {
                 this.storeCrew(name, this.getCourse());
                 // this.getCourse();
                 console.log(name);
+                CrewView.showTable();
+                
             } else {
                 alert("유효하지 않은 입력입니다!"); // 상수로 변경
             }
