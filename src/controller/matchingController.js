@@ -10,12 +10,14 @@ class MatchingController {
   }
 
   matchTeam() {
-    const memberCount = this.view.getMemberCountInput();
+    const memberCount = Number(this.view.getMemberCountInput());
     if (MatchingValidator.isInvalidMemberCount(memberCount)) {
       return;
     }
     const selectedCourse = $('#course-select').options[$('#course-select').selectedIndex].innerText;
     const crewList = selectedCourse === '프론트엔드' ? feCrewList : beCrewList;
+    // const shuffledCrewList = shuffleArray([...feCrewList]);
+    // console.log(shuffledCrewList);
   }
 
   bindEvent() {
