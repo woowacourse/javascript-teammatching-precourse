@@ -14,10 +14,11 @@ const makeTableHeader = () => {
   return $thead;
 };
 
-const makeDeleteButonTd = () => {
+const makeDeleteButonTd = (idx) => {
   const $buttonTd = makeElement('td');
   const $deleteButton = makeElement('button', DELETE_BUTTON.text);
   $deleteButton.className = DELETE_BUTTON.className;
+  $deleteButton.dataset['index'] = idx;
 
   $buttonTd.appendChild($deleteButton);
   return $buttonTd;
@@ -27,7 +28,7 @@ const makeTableBodyRow = (name, index) => {
   const $tr = makeElement('tr');
   const $indexTd = makeElement('td', index + 1);
   const $nameTd = makeElement('td', name);
-  const $buttonTd = makeDeleteButonTd();
+  const $buttonTd = makeDeleteButonTd(index);
 
   $tr.appendChild($indexTd);
   $tr.appendChild($nameTd);
@@ -70,6 +71,7 @@ const printCrewList = (course, crewManager) => {
   const $main = document.querySelector(MAIN);
   const $table = makeTable(course, crewManager);
   const $section = makeSection(CREW_LIST_TITLE, $table);
+  $section.dataset.course = course;
 
   $main.appendChild($section);
 };

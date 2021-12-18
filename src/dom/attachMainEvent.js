@@ -1,4 +1,4 @@
-import { MAIN, COURSE, CREW_MANAGE_DOM_SELECTOR } from '../constants.js';
+import { MAIN, COURSE, CREW_MANAGE_DOM_SELECTOR, DELETE_BUTTON } from '../constants.js';
 import Crew from '../Crew.js';
 import printAddCrewForm from './printAddCrewForm.js';
 import isValidName from '../utils/isValidName.js';
@@ -35,10 +35,23 @@ const addCrewEvent = (crewManager) => {
   };
 };
 
+const deleteCrewEvent = (crewManager) => {
+  return (event) => {
+    if (event.target.className !== DELETE_BUTTON.className) return;
+
+    const course = event.target.closest('section').dataset.course;
+    const index = event.target.dataset['index'];
+
+    crewManager.deleteCrew(course, index);
+    printCrewList(course, crewManager);
+  };
+};
+
 const attachMainEvent = (crewManager) => {
   const $main = document.querySelector(MAIN);
   $main.addEventListener('click', selectCourseEvent(crewManager));
   $main.addEventListener('click', addCrewEvent(crewManager));
+  $main.addEventListener('click', deleteCrewEvent(crewManager));
 };
 
 export default attachMainEvent;

@@ -33,4 +33,8 @@ export default class CrewManager {
   getCrewList(course) {
     return this[course].map((crew) => crew.name);
   }
+
+  deleteCrew(course, index) {
+    this[course].splice(index, 1);
+  }
 }
