@@ -6,7 +6,12 @@ class Crew {
 
     addCrew(name) {
         this.list.push(name);
-        console.log(this.list);
+        //console.log(this.list);
+    }
+
+    deleteCrew(index) {
+        this.list.splice(index, 1);
+        //console.log(this.list);
     }
 
     getCrewList() {

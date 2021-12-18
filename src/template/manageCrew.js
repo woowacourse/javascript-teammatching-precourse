@@ -52,7 +52,14 @@ function addCrew(name, value) {
     displayCrewList(value);
 }
 
-function deleteCrew(index, value) {
+window.deleteCrew = (index, value) => {
+    if(value === "프론트엔드") {
+        frontCrew.deleteCrew(index);
+    }
+    else {
+        backCrew.deleteCrew(index);
+    }
+    displayCrewList(value);
 }
 
 function displayFrontCrewList() {
@@ -67,7 +74,7 @@ function displayFrontCrewList() {
                 <td>${i}</td>
                 <td>${item}</td>
                 <td>
-                    <button class="delete-crew-buttton" onclick="deleteCrew(${i}, '프론트엔드')">삭제</button>
+                    <button class="delete-crew-buttton" onclick="deleteCrew(${i-1}, '프론트엔드')">삭제</button>
                 </td>
             </tr>`
     });
@@ -76,14 +83,16 @@ function displayFrontCrewList() {
 function displayBackCrewList() {
     const tbody = document.querySelector("tbody");
     tbody.innerHTML = "";
+    let i = 0;
 
     backCrew.getCrewList().map((item) => {
+        i++;
         tbody.innerHTML += `
             <tr>
-                <td>${item.index}</td>
-                <td>${item.name}</td>
+                <td>${i}</td>
+                <td>${item}</td>
                 <td>
-                    <button class="delete-crew-buttton" onclick="deleteCrew(${item.index})">삭제</button>
+                    <button class="delete-crew-buttton" onclick="deleteCrew(${i-1}, '백엔드')">삭제</button>
                 </td>
             </tr>`
     });
@@ -96,6 +105,16 @@ function displayCrewList(value) {
     else {
         displayBackCrewList();
     }
-}
 
+    //bindDeleteCrewEvent();
+}
+/*
+function bindDeleteCrewEvent() {
+    const deleteButtons = document.getElementsByClassName("delete-crew-buttton");
+    for() {
+        deleteButtons.onclick
+    }
+    deleteCrew(i, '프론트엔드');
+}
+*/
 export default manageCrew;
