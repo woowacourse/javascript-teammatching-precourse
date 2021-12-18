@@ -29,6 +29,10 @@ export default class Manager {
     localStorage.setItem(STORAGE_KEY.CREWS, JSON.stringify(this.crews));
   }
 
+  matchTeam({ course, mission }) {
+    
+  }
+
   renderUpdate($nodeToDelete) {
     const $copy = $nodeToDelete;
 

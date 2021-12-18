@@ -12,7 +12,6 @@ export const SECTION_ID = {
   CREW_ADD: 'crew-add-id',
   CREW_LIST: 'crew-list-id',
   TEAM_MATCH: 'team-match-id',
-  TEAM_MATCHED: 'team-matched-id',
 };
 export const CREW_INPUT_ID = {
   FRONT_COURSE_INPUT: 'frontend-course',
@@ -25,6 +24,10 @@ export const TEAM_INPUT_ID = {
   COURSE: 'course-select',
   MISSION: 'mission-select',
   CHECK_BUTTON: 'show-team-matcher-button',
+  TEAM_NUMBER_INPUT: 'team-member-count-input',
+  MATCH_BUTTON: 'match-team-button',
+  MATCH_RESULT: 'team-match-result',
+  REMATCH_BUTTON: 'rematch-team-button',
 };
 export const ERROR_MESSAGE = {
   NAME_ERROR: '크루의 이름은 공백없이 5자 이하이고 중복이 불가합니다.',

@@ -16,6 +16,25 @@ function courseMissionHandler() {
   });
 }
 
+function onMatch(manager) {
+  const team = {
+    course: $(`#${TEAM_INPUT_ID.COURSE}`).value,
+    mission: $(`#${TEAM_INPUT_ID.MISSION}`).value,
+  }
+
+  manager.matchTeam(team);
+}
+
+function memberNumberHander(manager) {
+  const $button = $(`#${TEAM_INPUT_ID.MATCH_BUTTON}`);
+
+  $button.addEventListener('click', (event) => {
+    event.preventDefault();
+    onMatch(manager);
+  })
+}
+
 export default function manageTeamHandler(manager) {
   courseMissionHandler();
+  memberNumberHander(manager);
 }
