@@ -120,29 +120,23 @@ class TeamManage {
   }
 
   getTeamName(arr) {
+    let crews;
+
     if (this.course === '프론트엔드') {
-      let crews = getLocalStorage(LOCAL_DB.CREW_FRONT);
-      const crewBlock = [];
-      crews.forEach((crew, i) => {
-        if (arr.includes(i)) {
-          crewBlock.push(crew);
-        }
-      });
-
-      return crewBlock;
+      crews = getLocalStorage(LOCAL_DB.CREW_FRONT);
     }
-
     if (this.course === '백엔드') {
-      let crews = getLocalStorage(LOCAL_DB.CREW_BACK);
-      const crewBlock = [];
-      crews.forEach((crew, i) => {
-        if (arr.includes(i)) {
-          crewBlock.push(crew);
-        }
-      });
-
-      return crewBlock;
+      crews = getLocalStorage(LOCAL_DB.CREW_BACK);
     }
+
+    const crewBlock = [];
+    crews.forEach((crew, i) => {
+      if (arr.includes(i)) {
+        crewBlock.push(crew);
+      }
+    });
+
+    return crewBlock;
   }
 }
 
