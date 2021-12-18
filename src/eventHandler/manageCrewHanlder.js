@@ -6,7 +6,7 @@ import {
   CREW_TABLE_INDEX,
 } from '../constant/constant.js';
 
-function showNextSection(dom) {
+export function showNextSection(dom) {
   const $copy = $(`#${dom}`);
 
   $copy.style.display = 'block';
