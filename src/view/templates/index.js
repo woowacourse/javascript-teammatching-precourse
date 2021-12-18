@@ -104,8 +104,18 @@ export const createCourseAndMissionSelectSection = () => `
 	<section id="${SELECTOR.teamMatchingContainer}"></section>
 `;
 
-export const createTeamMemberCountForm = course => `
-	<h3>${course} 숫자야구게임 미션의 팀 매칭</h3>
+const createListItemWithCrewMembers = crewMembers => `
+	${crewMembers
+    .map(
+      member => `
+		<li>${member.name}</li>
+	`,
+    )
+    .join('')}
+`;
+
+export const createTeamMemberCountForm = (course, mission, crewMembers) => `
+	<h3>${course} ${mission} 미션의 팀 매칭</h3>
 	<div>
 		<div>
 			<p>아직 매칭된 팀이 없습니다. 팀을 매칭하겠습니까?</p>
@@ -117,17 +127,27 @@ export const createTeamMemberCountForm = course => `
 		</div>
 		<h4>크루 목록</h4>
 		<ul>
-			<li>준</li>
-			<li>포코</li>
+			${createListItemWithCrewMembers(crewMembers)}
 		</ul>
 	</div>
 `;
 
-export const createTeamMatchingResult = course => `
-	<h3>${course} 숫자야구게임 조회</h3>
+const createMatchingResults = matchResults => `
+	${matchResults
+    .map(
+      result => `
+		<li>${result.join(',')}</li>
+	`,
+    )
+    .join('')}
+`;
+
+export const createTeamMatchingResult = (course, mission, matchResults) => `
+	<h3>${course} ${mission} 조회</h3>
 	<p>팀이 매칭되었습니다.</p>
 	<ul id="${SELECTOR.teamMatchResultUlId}">
 		<li>준,포코</li>
+		${createMatchingResults(matchResults)}
 	</ul>
 	<p>
 		팀을 재매칭 하시겠습니까?
