@@ -17,7 +17,6 @@ export function getCourse() {
       }
     });
   });
-  deleteMember();
 }
 
 export function checkCourseView(value) {
@@ -60,6 +59,7 @@ export function addToTable(crewMember) {
         </td>
       </tr>`;
   });
+  deleteMember();
 }
 export function addToList(_member) {
   if (_member == '') return;
@@ -72,8 +72,17 @@ export function addToList(_member) {
 }
 
 export function deleteMember() {
+  let crewMember = getData('crewMember');
   const deleteBtn = document.getElementsByClassName('delete-crew-buttton');
-  console.log(deleteBtn);
+  for (let btn of deleteBtn) {
+    btn.addEventListener('click', (e) => {
+      let checkOk = confirm('정말로 삭제하시겠습니까?');
+      if (checkOk) {
+        e.target.parentElement.parentElement.remove();
+      }
+      return;
+    });
+  }
 }
 export function checkName(nameInput) {
   if (nameInput <= 0) {

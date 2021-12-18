@@ -17,7 +17,6 @@ export const FRONT_CREW_MANAGE_TEMPLATE = `<section id="front">
     </tr>
   </thead>
   <tbody>
-
   </tbody>
 </table>
 </section>`;
