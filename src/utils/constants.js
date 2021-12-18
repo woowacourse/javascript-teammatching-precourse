@@ -26,3 +26,19 @@ export const MISSION_SELECT_OPTIONS = [
   { name: '성능개선', value: 'performance' },
   { name: '배포', value: 'deploy' }
 ];
+
+export const COURSE_KOR = Object.freeze({
+  frontend: '프론트엔드',
+  backend: '백엔드'
+});
+
+export const MISSION_KOR = Object.freeze({
+  baseball: '숫자야구게임',
+  racingcar: '자동차경주',
+  lotto: '로또',
+  'shopping-cart': '장바구니',
+  payments: '결제',
+  subway: '지하철노선도',
+  performance: '성능개선',
+  deploy: '배포'
+});
