@@ -11,3 +11,9 @@ export const CREW_PAGE = {
     FRONT_PAGE: 'front-page',
     BACK_PAGE: 'back-page'
 }
+
+export const COURSE_PAGE = {
+    CREW_INPUT: 'crew-name-input',
+    ADD_BUTTON: 'add-crew-buttton',
+    DELETE_BUTTON: 'delete-crew-buttton'
+}

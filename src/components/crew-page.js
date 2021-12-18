@@ -1,4 +1,4 @@
-import { CREW_PAGE } from "../constants.js";
+import { COURSE_PAGE, CREW_PAGE } from "../constants.js";
 
 export default () => {
     const $app = document.querySelector('#app');
@@ -19,8 +19,8 @@ export default () => {
     <h3>프론트엔드 크루 관리</h3>
     <form>
       <label>크루 이름</label>
-      <input type="text" />
-      <button>확인</button>
+      <input id=${COURSE_PAGE.CREW_INPUT} type="text" />
+      <button id=${COURSE_PAGE.ADD_BUTTON} >확인</button>
     </form>
     <h3>프론트엔드 크루 목록</h3>
     <table border="1">
