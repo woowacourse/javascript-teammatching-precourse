@@ -1,10 +1,10 @@
-import { getLocalStorage, setLocalStorage } from "../utils/localStorage.js";
+import { setLocalStorage } from "../utils/localStorage.js";
 import { checkValidName } from "../utils/validator.js";
 
 export default class CrewManageModel {
   constructor() {
-    this.frontendCrews = getLocalStorage("frontend") ?? [];
-    this.backendCrews = getLocalStorage("backend") ?? [];
+    this.frontendCrews = [];
+    this.backendCrews = [];
   }
 
   getCrewsById = (id) => {
@@ -23,7 +23,6 @@ export default class CrewManageModel {
     } else if (id === "backend") {
       this.backendCrews.push(name);
     }
-    setLocalStorage(id, this.getCrewsById(id));
   };
 
   deleteCrew = (id, name) => {

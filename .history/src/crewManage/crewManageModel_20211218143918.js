@@ -1,10 +1,10 @@
-import { getLocalStorage, setLocalStorage } from "../utils/localStorage.js";
+import { setLocalStorage } from "../utils/localStorage.js";
 import { checkValidName } from "../utils/validator.js";
 
 export default class CrewManageModel {
   constructor() {
-    this.frontendCrews = getLocalStorage("frontend") ?? [];
-    this.backendCrews = getLocalStorage("backend") ?? [];
+    this.frontendCrews = [];
+    this.backendCrews = [];
   }
 
   getCrewsById = (id) => {
