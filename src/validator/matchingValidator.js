@@ -6,8 +6,16 @@ class MatchingValidator {
     }
   }
 
+  static isFloat(memberCount) {
+    if (!Number.isInteger(memberCount)) {
+      alert('1 이상의 정수를 입력해주세요.');
+      return true;
+    }
+  }
+
   static isInvalidMemberCount(memberCount) {
     if (this.isNegative(memberCount)) return true;
+    if (this.isFloat(memberCount)) return true;
     return false;
   }
 }
