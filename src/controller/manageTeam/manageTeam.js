@@ -29,14 +29,25 @@ const getTeam = () => createTeam().getTeam($('#mission-select').value);
 
 const isExistTeam = () => getTeam().length > 0;
 
-const renderTeam = () => {
+const renderBySection = (section) => {
     $('#team-section').classList.remove('match');
-    $('#team-section').classList.add('result');
+    $('#team-section').classList.remove('result');
+    $('#team-section').classList.add(section);
+};
+
+const renderCrewList = () => {
+    $('#crew-list').innerHTML = createCrew()
+        .getCrews()
+        .reduce((m, crewName) => `${m}<li>${crewName}</li>`, '');
+};
+
+const renderTeam = () => {
+    renderBySection('result');
 };
 
 const renderMatch = () => {
-    $('#team-section').classList.remove('result');
-    $('#team-section').classList.add('match');
+    renderBySection('match');
+    renderCrewList();
 };
 
 export const triggerShowTeam = () => {
