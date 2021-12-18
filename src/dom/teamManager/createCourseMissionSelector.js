@@ -1,12 +1,13 @@
 import { teamMatching } from '../../index.js';
-import { app } from '../domElement.js';
+import { app, getTeamManager } from '../domElement.js';
 
 export const createCourseMissionSelector = () => {
   const manager = document.createElement('div');
+  const teamManager = getTeamManager();
 
   manager.append(createTitle(), createSelectorForm());
 
-  app.append(manager);
+  teamManager.append(manager);
 };
 
 const createTitle = () => {

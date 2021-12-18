@@ -1,10 +1,12 @@
-import { app } from '../domElement.js';
+import { app, getCrewManager } from '../domElement.js';
 
 export const createCourseSelector = () => {
   const section = document.createElement('section');
+  const crewManager = getCrewManager();
 
   section.append(createTitle(), createSelector());
-  app.appendChild(section);
+
+  crewManager.appendChild(section);
 };
 
 const createTitle = () => {
