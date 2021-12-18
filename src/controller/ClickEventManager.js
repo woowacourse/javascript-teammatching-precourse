@@ -1,4 +1,5 @@
 import { $, default as DOM } from '../utils/DOMUtils.js';
+import { default as DB } from '../model/database.js';
 
 export default class ClickEventManager {
   constructor(element, controller) {
@@ -30,7 +31,15 @@ export default class ClickEventManager {
   }
 
   createCrew() {
-    console.log(document.querySelector('input[name="course"]:checked').value);
+    let courseType = '';
+
+    const ele = document.getElementsByName('course');
+
+    for (let i = 0; i < ele.length; i++) {
+      if (ele[i].getAttribute('checked')) courseType = ele[i].value;
+    }
+
+    DB.save(`${courseType}Crew`, $('#crew-name-input').value);
   }
 
   onClick(event) {
