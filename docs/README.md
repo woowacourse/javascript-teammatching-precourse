@@ -40,6 +40,10 @@
 
     [x] 크루 이름은 최대 5글자까지만 허용된다
 
+[x] 만약 유저가 입력한 크루 이름이 유효한 값이라면 해당 localStorage에 업데이트 한다
+
+[ ] localStorage에 업데이트 된 값을 보여준다
+
 [x] 크루 목록을 보여주기 위한 table의 id는 crew-table 이다
 
 [x] 크루 삭제버튼의 class는 delete-crew-button 이다

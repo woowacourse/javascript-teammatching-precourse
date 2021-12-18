@@ -11,3 +11,4 @@ export const NAME_KEY = 'name';
 export const INDEX_KEY = 'index';
 
 export const CREW_NAME_LIMIT = 5;
+export const CREW_STORAGE_INDEX_START = 1;
