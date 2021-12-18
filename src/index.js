@@ -19,10 +19,14 @@ class TeamMatchingBoard {
   }
 
   loadDataFromLocalStorage() {
+    const { CREW_MANAGE } = ELEMENT_SELECTOR.IDS;
     const json = window.localStorage.getItem(LOCAL_STORAGE_KEY);
     const data = JSON.parse(json);
     return {
-      tabPane: (data && data.tabPane) || { activeTabPaneId: ELEMENT_SELECTOR.IDS.CREW_MANAGE.PANE },
+      tabPane: (data && data.tabPane) || { activeTabPaneId: CREW_MANAGE.PANE },
+      crewManage: (data && data.crewManage) || {
+        activeCourseId: CREW_MANAGE.FRONTEND_COURSE_RADIO,
+      },
     };
   }
 }

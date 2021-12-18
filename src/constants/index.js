@@ -6,6 +6,9 @@ export const ELEMENT_SELECTOR = Object.freeze({
     CREW_MANAGE: {
       MENU: 'crew-tab',
       PANE: 'crew-tab-pane',
+      COURSE_SELECT: 'course-select',
+      FRONTEND_COURSE_RADIO: 'frontend-course',
+      BACKEND_COURSE_RADIO: 'backend-course',
     },
     TEAM_MATCHING: {
       MENU: 'team-tab',
