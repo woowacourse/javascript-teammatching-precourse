@@ -25,11 +25,11 @@ const addCrewToCourse = (crewName) => {
 };
 
 const renderCrewTable = () => {
-    $('#crew-table-tbody').innerHTML = getCrewsOnCourse(
-        isFrontCourse() ? 'frontCrews' : 'backCrews',
-    ).reduce(
-        (m, crewName, idx) =>
-            `${m}
+    $('#crew-table-tbody').innerHTML = createCrew()
+        .getCrews()
+        .reduce(
+            (m, crewName, idx) =>
+                `${m}
             <tr>
                 <td>${idx + 1}</td>
                 <td>${crewName}</td>
@@ -37,8 +37,8 @@ const renderCrewTable = () => {
                 <button>삭제</button>
                 </td>
             </tr>`,
-        '',
-    );
+            '',
+        );
 };
 
 const isUniqueCrewNameOfCourse = (crewName) =>
