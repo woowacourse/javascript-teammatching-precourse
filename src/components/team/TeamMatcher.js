@@ -1,7 +1,13 @@
 import Component from '../../core/Component.js';
 
 export default class TeamMatcher extends Component {
+  init() {
+    const { state } = this._props;
+    state.add(this);
+  }
+
   htmlTemplate() {
+    const { state } = this._props;
     return `
     <h3>프론트엔드 숫자야구게임 미션의 팀 매칭</h3>
     <div>
@@ -15,8 +21,7 @@ export default class TeamMatcher extends Component {
       </div>
       <h4>크루 목록</h4>
       <ul>
-        <li>준</li>
-        <li>포코</li>
+        ${state.value.crew.map(({ name }) => `<li>${name}</li>`).join('')}
       </ul>
     </div>
     `;

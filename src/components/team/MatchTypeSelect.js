@@ -38,6 +38,7 @@ export default class MatchTypeSelect extends Component {
   }
 
   handleTeamTypeSelect(event) {
+    // 일단 쓰레기 코드라도 작성 했습니다... ㅠㅠ..
     event.preventDefault();
 
     const { teamManager, state } = this._props;
@@ -47,14 +48,21 @@ export default class MatchTypeSelect extends Component {
       $('#course-select').value
     ).filterList;
 
-    const $teamMatcher = $('.component[data-component="team-matcher"]');
-    visibleElement([$teamMatcher]);
-
     const teamList = teamManager
       .setCrewList(crewList)
       .setTeamType(
         $('#course-select').value,
         $('#mission-select').value
       ).result;
+
+    state.value = { crew: crewList };
+
+    if (teamList.length === 0) {
+      const $teamMatcher = $('.component[data-component="team-matcher"]');
+      visibleElement([$teamMatcher], true);
+    } else if (teamList.length > 0) {
+      const $teamMatcher = $('.component[data-component="team-match-result"]');
+      visibleElement([$teamMatcher], true);
+    }
   }
 }

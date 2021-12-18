@@ -34,7 +34,9 @@ export default class TeamTab extends Component {
       teamManager: this._teamManager,
       crewList: this._crewList,
     });
-    this.addMount('team-matcher', TeamMatcher);
+    this.addMount('team-matcher', TeamMatcher, {
+      state: $teamList,
+    });
     this.addMount('team-match-result', TeamMatchResult);
   }
 }
