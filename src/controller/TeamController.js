@@ -4,5 +4,11 @@ export class TeamController {
     this.coreView = coreView;
   }
 
-  triggerEvent() {}
+  triggerEvent() {
+    this.coreView.teamView.setOnTeamMatcherButtonClick(this.onTeamMatcherButtonClick.bind(this));
+  }
+
+  onTeamMatcherButtonClick(selectedCourse, selectedMission) {
+    this.coreView.teamView.showCrewList(selectedCourse, selectedMission);
+  }
 }

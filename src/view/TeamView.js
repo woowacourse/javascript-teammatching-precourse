@@ -1,5 +1,5 @@
 import { $ } from '../utils/DOM.js';
-import { TEAM_TEMPLATE } from '../utils/template.js';
+import { getMatchingQuestion, TEAM_TEMPLATE } from '../utils/template.js';
 
 export class TeamView {
   constructor() {
@@ -10,7 +10,16 @@ export class TeamView {
   setOnTeamMatcherButtonClick(fn) {
     this.$showTeamMatcherButton.addEventListener('click', (e) => {
       e.preventDefault();
+      const courseOptionsIndex = this.$courseSelect.options.selectedIndex;
+      const selectedCourse = this.$courseSelect.options[courseOptionsIndex].innerText;
+      const missionOptionsIndex = this.$missionSelect.options.selectedIndex;
+      const selectedMission = this.$missionSelect.options[missionOptionsIndex].innerText;
+      fn(selectedCourse, selectedMission);
     });
+  }
+
+  showCrewList(selectedCourse, selectedMission) {
+    this.$teamMemberSection.innerHTML = getMatchingQuestion(selectedCourse, selectedMission);
   }
 
   addElements() {
