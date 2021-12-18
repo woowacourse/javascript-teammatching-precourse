@@ -65,12 +65,17 @@ export default class CrewManageController {
     e.preventDefault();
     const course = $('input[name="course"]:checked').value;
     const isDelete = confirm('삭제하시겠습니까?');
-
     if (isDelete) {
       const closestTR = e.target.closest('tr');
       const targetIdx = closestTR.children[0].innerText;
       this.model.deleteCrew(targetIdx, course);
     }
+    // this.renderCrewTableByCourse(course);
+    // this.view.selectCrewManageDOM();
+    // this.attachCrewManageEvents();
+  }
+
+  renderCrewTableByCourse(course) {
     if (course === 'backend') {
       return this.view.renderCrewTable(this.model.backCrews);
     }

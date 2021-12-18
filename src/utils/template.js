@@ -160,7 +160,7 @@ export const matchResultTemplate = (course, missionText, teams) => {
     </ul>
     <p>
       팀을 재매칭 하시겠습니까?
-      <button>재매칭</button>
+      <button id="rematch-team-button">재매칭</button>
     </p>
   `;
 };

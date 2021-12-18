@@ -24,11 +24,9 @@ export default class TeamMatchView {
   getSelectedValue() {
     const course = this.$courseSelect.options[this.$courseSelect.selectedIndex].value;
 
-    const mission = this.$missionSelect.options[this.$missionSelect.selectedIndex].value;
-
     const missionText = this.$missionSelect.options[this.$missionSelect.selectedIndex].text;
 
-    return { course, mission, missionText };
+    return { course, missionText };
   }
 
   renderTeamMatch(course, missionText, crews) {
@@ -42,5 +40,11 @@ export default class TeamMatchView {
 
   renderMatchResult(course, missionText, teams) {
     this.$teamMatchSection.innerHTML = matchResultTemplate(course, missionText, teams);
+
+    this.selectMatchResultDOM();
+  }
+
+  selectMatchResultDOM() {
+    this.$rematchTeamButton = $('#rematch-team-button');
   }
 }

@@ -44,12 +44,30 @@ export default class TeamMatchController {
     e.preventDefault();
     const memberCount = this.view.$teamMemberCountInput.value;
     const { course, missionText } = this.view.getSelectedValue();
+
     if (isValidMemberCount(memberCount, this.model.selectedCrews.length)) {
       const finalteams = matchTeam(this.model.selectedCrews, memberCount);
-      console.log(finalteams);
-
-      return this.view.renderMatchResult(course, missionText, this.model.changeToNames(finalteams));
+      this.view.renderMatchResult(course, missionText, this.model.changeToNames(finalteams));
+      // console.log(finalteams);
+      // console.log(this.model);
+      return this.attachMatchResultEvents();
     }
     return showError();
+  }
+
+  attachMatchResultEvents() {
+    this.view.$rematchTeamButton.addEventListener('click', this.handleRematch.bind(this));
+  }
+
+  handleRematch(e) {
+    e.preventDefault();
+
+    const { course, missionText } = this.view.getSelectedValue();
+
+    const crews = this.model.getCrews(course);
+
+    this.view.renderTeamMatch(course, missionText, crews);
+    this.view.selectTeamMatchDOM();
+    return this.attachTeamMatchEvents();
   }
 }
