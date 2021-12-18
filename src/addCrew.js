@@ -6,7 +6,7 @@ export function addCrew(){
     console.log(CREW.COURSE)
     let $crewNameInputValue = document.querySelector('#crew-name-input').value
 
-    
+
     if(CREW.COURSE === 'Frontend'){
         $crewNameInputValue = new FRONTCREW($crewNameInputValue)
         CREW.FRONTCREWLIST.push($crewNameInputValue)
@@ -20,5 +20,6 @@ export function addCrew(){
 
 
     printCrewTable();
+  
  
 }

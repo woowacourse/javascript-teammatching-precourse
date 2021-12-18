@@ -64,6 +64,9 @@ export function printPage() {
 
 </main>
 
+
+
+
 <main id="team-tab-content" class="hide">
 
 <section id="team-tab-select-mission">

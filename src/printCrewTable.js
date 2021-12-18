@@ -10,7 +10,7 @@ export function printCrewTable(){
             $crewTableTbody.innerHTML += `<tr>
                 <td>${Number(index)+1}</td>
                 <td>${CREW.FRONTCREWLIST[index].name}</td>
-                <td><button class="delete-crew-buttton">삭제</button></td>
+                <td><button class="delete-crew-buttton" data-crewName="${CREW.FRONTCREWLIST[index].name}">삭제</button></td>
             </tr>`
         }
     }
@@ -21,7 +21,7 @@ export function printCrewTable(){
             $crewTableTbody.innerHTML += `<tr>
                 <td>${Number(index)+1}</td>
                 <td>${CREW.BACKCREWLIST[index].name}</td>
-                <td><button class="delete-crew-buttton">삭제</button></td>
+                <td><button class="delete-crew-buttton" data-crewName="${CREW.BACKCREWLIST[index].name}">삭제</button></td>
             </tr>`
         }
     }
