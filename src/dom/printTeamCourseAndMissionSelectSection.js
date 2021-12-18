@@ -5,6 +5,7 @@ import makeButton from './makeButton.js';
 
 const makeSelect = (id, options) => {
   const $select = makeElement('select');
+  $select.setAttribute('id', id);
 
   options.forEach((option) => {
     const $option = makeElement('option', option.text);
