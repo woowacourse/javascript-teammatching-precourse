@@ -43,6 +43,7 @@ export default class TeamManageContainer extends Component {
   setEvent() {
     this.showTeamMatcherClickHandler();
     this.matchTeamClickHandler();
+    this.reMatchClickHandler();
   }
 
   printSelectSection() {
@@ -90,14 +91,14 @@ export default class TeamManageContainer extends Component {
     return `
     <h3>${COURSE_KOR[this.$state.selectedCourse]} ${MISSION_KOR[this.$state.selectedMission]} 조회</h3>
       <p>팀이 매칭되었습니다.</p>
-      <ul>
+      <ul id="team-match-result">
         ${this.$state.teams[this.$state.selectedCourse][this.$state.selectedMission]
           .map((team) => `<li>${team}</li>`)
           .join('')}
       </ul>
       <p>
         팀을 재매칭 하시겠습니까?
-        <button>재매칭</button>
+        <button id="rematch-team-button">재매칭</button>
       </p>
     `;
   }
@@ -130,6 +131,19 @@ export default class TeamManageContainer extends Component {
         });
         this.saveTeamsInStroage();
       }
+    });
+  }
+
+  reMatchClickHandler() {
+    this.addEvent('click', '#rematch-team-button', () => {
+      this.setState({
+        teams: Object.assign(this.$state.teams, {
+          [this.$state.selectedCourse]: {
+            [this.$state.selectedMission]: null
+          }
+        })
+      });
+      setLocalStorage(STORAGE_KEY.TEAM, this.$state.teams);
     });
   }
 
