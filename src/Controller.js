@@ -22,6 +22,21 @@ export default class Controller {
     this.tabView
       .on(CUSTOM_EVENT_NAME.SHOW_CREW_TAB, () => this.handleShowCrewTab())
       .on(CUSTOM_EVENT_NAME.SHOW_TEAM_TAB, () => this.handleShowTeamTab());
+    this.crewManagementView.on(CUSTOM_EVENT_NAME.ADD_CREW, (event) =>
+      this.handleAddCrew(event),
+    ).on(CUSTOM_EVENT_NAME.DELETE_CREW, (event) => 
+      this.handleDeleteCrew(event),
+    );
+  }
+
+  handleAddCrew(event) {
+    this.store.addCrew(event.detail.request)
+    this.crewManagementView.show(this.store.getCrewList())
+  }
+
+  handleDeleteCrew(event) {
+    this.store.deleteCrew(event.detail.request);
+    this.crewManagementView.show(this.store.getCrewList())
   }
 
   handleShowCrewTab() {
@@ -35,7 +50,7 @@ export default class Controller {
   }
 
   showCrewTab() {
-    this.crewManagementView.show();
+    this.crewManagementView.show(this.store.getCrewList());
     this.teamManagementView.hide();
   }
 

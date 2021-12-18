@@ -14,7 +14,18 @@ export const EVENT_LISTENER_TYPE = {
 export const CUSTOM_EVENT_NAME = {
   SHOW_CREW_TAB: '@showCrewTab',
   SHOW_TEAM_TAB: '@showTeamTab',
+  ADD_CREW: '@addCrew',
+  DELETE_CREW: '@deleteCrew',
 };
+
+export const LOCAL_STORAGE_KEY = {
+  CREW_LIST: 'crewList',
+}
+
+export const CREW_COURSE = {
+  FRONTEND: 'frontend',
+  BACKEND: 'backend',
+}
 
 export const SELECTOR = {
   APP: 'app',
@@ -43,6 +54,8 @@ export const SELECTOR = {
   TAB_BUTTONS: 'tab-buttons',
   CREW_MANAGEMENT_VIEW: 'crew-management-view',
   TEAM_MANAGEMENT_VIEW: 'team-management-view',
+  FRONTEND_SECTION_VIEW: 'frontend-section-view',
+  BACKEND_SECTION_VIEW: 'backend-section-view',
 };
 
 export const TAB_TYPE = {
