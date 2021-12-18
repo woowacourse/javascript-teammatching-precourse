@@ -1,0 +1,23 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": ["eslint:recommended", "airbnb-base", "plugin:prettier/recommended"],
+    "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module"
+    },
+    "rules": {
+        "prettier/prettier": ["warn", { "singleQuote": true }],
+        "consistent-return": "off",
+        "import/extensions": "off",
+        "no-new": "off",
+        "no-alert": "off",
+        "no-undef": "warn",
+        "radix": "off",
+        "no-param-reassign": "off",
+        "class-methods-use-this": "warn",
+        "import/prefer-default-export": "off"
+    }
+}
