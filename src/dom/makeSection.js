@@ -9,6 +9,8 @@ const makeSection = (titleText, content) => {
   const $section = makeElement('section');
   $section.appendChild(makeSectionTitle(titleText));
   $section.appendChild(content);
+
+  return $section;
 };
 
 export default makeSection;
