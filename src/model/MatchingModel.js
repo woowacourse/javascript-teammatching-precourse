@@ -9,14 +9,14 @@ export class MatchingModel {
     '휴휴휴',
     '뉴뉴뉴',
   ];
-  backEndCrewList = [];
+  backEndCrewList = ['1', '2', '3', '4', '5', '6', '7', '8'];
 
   addCrewList(crewName, course) {
     if (course === 'frontend') {
       this.frontEndCrewList.push(crewName);
       return this.frontEndCrewList;
     }
-    this.backsEndCrewList.push(crewName);
+    this.backEndCrewList.push(crewName);
     return this.backEndCrewList;
   }
 
@@ -26,8 +26,8 @@ export class MatchingModel {
       this.frontEndCrewList.splice(index, 1);
       return this.frontEndCrewList;
     }
-    const index = this.backsEndCrewList.indexOf(crewName);
-    this.backsEndCrewList.splice(index, 1);
+    const index = this.backEndCrewList.indexOf(crewName);
+    this.backEndCrewList.splice(index, 1);
     return this.backEndCrewList;
   }
 }
