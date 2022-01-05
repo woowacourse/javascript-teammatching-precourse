@@ -1,5 +1,4 @@
-import { FROINTEND_STORAGE_NAME, NAME_KEY } from '../constants/constants.js';
-import { GAMEOBJ } from '../constants/gameConstants.js';
+import { NAME_KEY } from '../constants/constants.js';
 import { $ } from '../dom/dom.js';
 import store from '../store/store.js';
 import getCourseTitle from '../modules/getCourseTitle.js';
