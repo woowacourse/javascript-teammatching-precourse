@@ -12,6 +12,6 @@ export default function controlTeamMatching() {
     const courseName = teamInfo[0];
     const missionName = teamInfo[1];
     renderTeamMatching(courseName, missionName);
-    handleMatchTeamEvent();
+    handleMatchTeamEvent(courseName, missionName);
   });
 }
