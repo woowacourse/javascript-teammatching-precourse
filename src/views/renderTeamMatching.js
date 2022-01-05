@@ -2,19 +2,8 @@ import { FROINTEND_STORAGE_NAME, NAME_KEY } from '../constants/constants.js';
 import { GAMEOBJ } from '../constants/gameConstants.js';
 import { $ } from '../dom/dom.js';
 import store from '../store/store.js';
-
-function getCourseTitle(courseName) {
-  if (courseName === FROINTEND_STORAGE_NAME) {
-    return '프론트엔드';
-  } else {
-    return '백엔드';
-  }
-}
-
-function getMissionTitle(missionName) {
-  return GAMEOBJ[missionName];
-}
-
+import getCourseTitle from '../modules/getCourseTitle.js';
+import getMissionTitle from '../modules/getMissionTitle.js';
 function renderTeamMember(courseName) {
   const storage = store.getLocalStorage(courseName);
   if (storage) {
