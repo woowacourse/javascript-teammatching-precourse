@@ -1,6 +1,7 @@
 import { $ } from '../dom/dom.js';
 import getCourseTitle from '../modules/getCourseTitle.js';
 import getMissionTitle from '../modules/getMissionTitle.js';
+import renderTeamMatching from './renderTeamMatching.js';
 
 function renderTeamList(crewList) {
   crewList.forEach((item) => {

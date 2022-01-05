@@ -31,8 +31,8 @@ export default function renderTeamMatching(courseName, missionName) {
           </form>
         </div>
         <h4>크루 목록</h4>
-        <ul id="team-match-result"></ul>
+        <ul id="crew-list"></ul>
       </div>
   `;
-  $('#team-match-result').innerHTML = renderTeamMember(courseName);
+  $('#crew-list').innerHTML = renderTeamMember(courseName);
 }
