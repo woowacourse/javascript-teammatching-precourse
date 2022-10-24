@@ -15,9 +15,18 @@ export default class Tab {
         </li>
       </ul>
     </nav>
+    <main></main>
   </header>`;
     this.app.insertAdjacentHTML("beforebegin", this.button);
-    const crewTab = document.querySelector("crew-tab");
-    const teamTab = document.querySelector("team-tab");
+    const crewTab = document.querySelector("#crew-tab");
+    const teamTab = document.querySelector("#team-tab");
+    crewTab.addEventListener("click", () => {
+      document.querySelector("main").remove();
+      new Crew();
+    });
+    teamTab.addEventListener("click", () => {
+      document.querySelector("main").remove();
+      new Team();
+    });
   }
 }

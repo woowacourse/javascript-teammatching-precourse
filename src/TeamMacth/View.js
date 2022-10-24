@@ -1,4 +1,4 @@
-class View {
+export default class View {
   constructor() {
     this.inner = `
 
@@ -55,6 +55,6 @@ class View {
     </section>
   </main>`;
     this.app = document.querySelector("#app");
-    this.app.insertAdjacentHTML("beforeend", inner);
+    this.app.insertAdjacentHTML("beforeend", this.inner);
   }
 }
